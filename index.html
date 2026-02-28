@@ -28,56 +28,48 @@
         
         header {
             text-align: center;
-            padding: 15px 15px 12px;
+            padding: 12px 15px 10px;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
             border-radius: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         header h1 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
         
-        header p {
-            color: #a0a0c0;
-            font-size: 0.75rem;
-            margin: 0;
-        }
-        
-        .tabs {
+        .nav-tabs {
             display: flex;
-            gap: 6px;
-            margin-bottom: 15px;
+            gap: 8px;
             justify-content: center;
-            flex-wrap: nowrap;
-            overflow-x: auto;
+            flex-wrap: wrap;
         }
         
-        .tab {
-            padding: 6px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+        .nav-tab {
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            color: #a0a0c0;
+            transition: all 0.2s ease;
+            color: #b0b0d0;
             font-weight: 500;
-            font-size: 0.8rem;
-            white-space: nowrap;
+            font-size: 0.75rem;
         }
         
-        .tab:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
         }
         
-        .tab.active {
+        .nav-tab.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-color: transparent;
@@ -261,15 +253,13 @@
     <div class="container">
         <header>
             <h1>一周简报 (2026.2.28)</h1>
-            <p>航运 · 财经 · 时政 · AI</p>
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showTab('shipping')">🚢 航运</div>
+                <div class="nav-tab" onclick="showTab('finance')">💰 财经</div>
+                <div class="nav-tab" onclick="showTab('politics')">🌍 时政</div>
+                <div class="nav-tab" onclick="showTab('ai')">🤖 AI</div>
+            </div>
         </header>
-        
-        <div class="tabs">
-            <div class="tab active" onclick="showTab('shipping')">🚢 航运</div>
-            <div class="tab" onclick="showTab('finance')">💰 财经</div>
-            <div class="tab" onclick="showTab('politics')">🌍 时政</div>
-            <div class="tab" onclick="showTab('ai')">🤖 AI</div>
-        </div>
         
         <!-- 航运板块 -->
         <div id="shipping" class="content active">
@@ -1118,7 +1108,7 @@
                 content.classList.remove('active');
             });
             // 移除所有标签激活状态
-            document.querySelectorAll('.tab').forEach(tab => {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             // 显示选中内容
