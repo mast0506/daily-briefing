@@ -154,7 +154,25 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .table-wrapper table {
+            margin: 0;
+            display: table;
+            width: 100%;
+            min-width: 600px;
         }
         
         th, td {
@@ -294,7 +312,7 @@
             
             <div class="section">
                 <h2>💵 各船型日租金</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>船型</th>
@@ -329,7 +347,7 @@
                             <td>中东-亚洲航线</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
@@ -350,7 +368,7 @@
             
             <div class="section">
                 <h2>📋 新造船订单</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>船东</th>
@@ -397,12 +415,12 @@
                             <td>约2.5亿美元</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
                 <h2>🔄 二手船交易</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>买方</th>
@@ -435,22 +453,22 @@
                             <td>约7亿美元</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
                 <h2>📰 行业新闻</h2>
                 <ul class="news-list">
                     <li>
-                        <strong>美国发布港口费计划</strong>
-                        白宫2月13日发布《美国海事行动计划》(MAP)，拟对外籍建造商船征收0.01-0.25美元/公斤的港口费，引发国际航运界强烈反弹。ICS明确表示反对任何拟议港口费用。
+                        <strong>美国对华船舶港口费计划引发国际反弹</strong>
+                        白宫2月13日发布《美国海事行动计划》(MAP)，拟对外籍建造商船征收0.01-0.25美元/公斤的港口费，引发国际航运界强烈反弹。ICS明确表示反对任何拟议港口费用，中国船厂因价格优势(低5-10%)持续获得订单。
                     </li>
                     <li>
                         <strong>巴拿马港口风波</strong>
                         巴拿马最高法院裁定李嘉诚旗下港口特许经营合同"违宪无效"，政府临时接管巴尔博亚港与克里斯托瓦尔港，马士基及MSC临时接管这些港口。
                     </li>
                     <li>
-                        <strong>MSC宣布独立涨价</strong>
+                        <strong>四大船司宣布涨价</strong>
                         MSC、马士基、达飞、赫伯罗特四大船司宣布自3月1日起对多条核心航线实施运价上调，涉及欧地、非洲、拉美等关键航线。
                     </li>
                     <li>
@@ -504,7 +522,7 @@
             <div class="section">
                 <h2>📊 股票市场</h2>
                 <h3>A股主要指数</h3>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>指数</th>
@@ -539,10 +557,10 @@
                             <td>850亿</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
                 
                 <h3>美股主要指数</h3>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>指数</th>
@@ -577,10 +595,10 @@
                             <td>财报后下跌</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
                 
                 <h3>港股主要指数</h3>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>指数</th>
@@ -605,12 +623,12 @@
                             <td class="positive">+0.9%</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
                 <h2>⛽ 大宗商品</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>品种</th>
@@ -657,12 +675,12 @@
                             <td>暖冬影响</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
                 <h2>₿ 加密货币</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>币种</th>
@@ -691,7 +709,7 @@
                             <td>$470亿</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
                 <div class="analysis" style="margin-top: 15px;">
                     <h4>加密货币市场动态</h4>
                     <p>本周比特币一度触及70,000美元后回落至67,000美元附近。以太坊ETF出现净流出，7日内流出65,691 ETH。市场关注美联储货币政策走向及机构资金流动情况。</p>
@@ -722,7 +740,7 @@
             
             <div class="section">
                 <h2>📈 宏观数据</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>指标</th>
@@ -757,7 +775,7 @@
                             <td>3.10%</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
@@ -964,7 +982,7 @@
             
             <div class="section">
                 <h2>🔬 技术突破</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>技术领域</th>
@@ -999,7 +1017,7 @@
                             <td>软件开发范式变革</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
             </div>
             
             <div class="section">
@@ -1025,7 +1043,7 @@
             
             <div class="section">
                 <h2>📈 相关股价</h2>
-                <table>
+                <div class="table-wrapper"><table>
                     <thead>
                         <tr>
                             <th>公司</th>
@@ -1072,7 +1090,7 @@
                             <td>$320亿</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
                 <div class="analysis" style="margin-top: 15px;">
                     <p><strong>Tesla Cybercab量产：</strong>首台Cybercab量产车在美国得州下线，比原计划提前两个月。该车专为完全自动驾驶设计，无方向盘和脚踏板，标志着Robotaxi商业化迈出关键一步。</p>
                 </div>
@@ -1176,6 +1194,3 @@
     </script>
 </body>
 </html>
-// Force rebuild Sat Feb 28 11:16:12 AM CST 2026
-// Trigger GitHub Actions build Sat Feb 28 11:26:41 AM CST 2026
-<!-- Build: Sat Feb 28 12:09:38 PM CST 2026 -->
