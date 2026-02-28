@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年2月24日 - 28日 | 周报</title>
+    <title>一周简报 (2026.2.28)</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -28,49 +28,53 @@
         
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 15px 15px 12px;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
-            border-radius: 20px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         header h1 {
-            font-size: 2.5rem;
+            font-size: 1.4rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
+            font-weight: 600;
         }
         
         header p {
             color: #a0a0c0;
-            font-size: 1.1rem;
+            font-size: 0.75rem;
+            margin: 0;
         }
         
         .tabs {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 6px;
+            margin-bottom: 15px;
             justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
         }
         
         .tab {
-            padding: 12px 24px;
+            padding: 6px 12px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
             color: #a0a0c0;
             font-weight: 500;
+            font-size: 0.8rem;
+            white-space: nowrap;
         }
         
         .tab:hover {
             background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
         }
         
         .tab.active {
@@ -256,15 +260,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>📊 2026年2月24日 - 28日 | 周报</h1>
-            <p>航运 · 财经 · 时政 · AI/机器人 | 深度市场分析与资讯汇总</p>
+            <h1>一周简报 (2026.2.28)</h1>
+            <p>航运 · 财经 · 时政 · AI</p>
         </header>
         
         <div class="tabs">
-            <div class="tab active" onclick="showTab('shipping')">🚢 航运板块</div>
-            <div class="tab" onclick="showTab('finance')">💰 财经板块</div>
-            <div class="tab" onclick="showTab('politics')">🌍 时政板块</div>
-            <div class="tab" onclick="showTab('ai')">🤖 AI/机器人板块</div>
+            <div class="tab active" onclick="showTab('shipping')">🚢 航运</div>
+            <div class="tab" onclick="showTab('finance')">💰 财经</div>
+            <div class="tab" onclick="showTab('politics')">🌍 时政</div>
+            <div class="tab" onclick="showTab('ai')">🤖 AI</div>
         </div>
         
         <!-- 航运板块 -->
