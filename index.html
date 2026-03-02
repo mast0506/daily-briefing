@@ -35,33 +35,31 @@
             color: #a0a0c0;
         }
         
-        /* Navigation Tabs - Compact Single Row */
+        /* Compact Navigation Tabs - Single Row */
         .nav-tabs {
             display: flex;
             justify-content: center;
-            gap: 6px;
-            margin-bottom: 20px;
+            gap: 4px;
+            margin-bottom: 15px;
             flex-wrap: nowrap;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            padding: 5px 10px;
+            padding: 3px 5px;
         }
         .nav-tab {
-            padding: 6px 14px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 16px;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
             font-weight: 500;
-            color: #9090b0;
-            font-size: 0.75rem;
+            color: #8080a0;
+            font-size: 0.7rem;
             white-space: nowrap;
             flex-shrink: 0;
         }
-        .nav-tab:hover {
-            background: rgba(255,255,255,0.12);
-        }
+        .nav-tab:hover { background: rgba(255,255,255,0.1); }
         .nav-tab.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -337,9 +335,39 @@
                             </tr>
                             <tr>
                                 <td>Capesize (海岬型)</td>
-                                <td>随BCI波动</td>
-                                <td>-</td>
-                                <td>铁矿石运输主力船型</td>
+                                <td>28,500</td>
+                                <td class="positive">+3.2%</td>
+                                <td>铁矿石运输主力，BCI 3,056点</td>
+                            </tr>
+                            <tr>
+                                <td>Panamax (巴拿马型)</td>
+                                <td>15,280</td>
+                                <td class="positive">+1.8%</td>
+                                <td>粮食煤炭运输，BPI 1,680点</td>
+                            </tr>
+                            <tr>
+                                <td>Supramax (超灵便型)</td>
+                                <td>14,850</td>
+                                <td class="positive">+2.1%</td>
+                                <td>小宗散货，BSI 1,425点</td>
+                            </tr>
+                            <tr>
+                                <td>Handysize (小灵便型)</td>
+                                <td>13,200</td>
+                                <td class="positive">+1.5%</td>
+                                <td>区域短途运输</td>
+                            </tr>
+                            <tr>
+                                <td>Aframax (阿芙拉型)</td>
+                                <td>85,450</td>
+                                <td class="positive">+28%</td>
+                                <td>区域原油运输</td>
+                            </tr>
+                            <tr>
+                                <td>MR型成品油轮</td>
+                                <td>42,800</td>
+                                <td class="positive">+15%</td>
+                                <td>清洁油品运输</td>
                             </tr>
                         </tbody>
                     </table>
@@ -366,6 +394,30 @@
                     <div class="title">伊朗局势油运行情"空中加油"</div>
                     <div class="summary">本周苏伊士原油轮运价环比上涨42%，录得140,188美元/天，受到VLCC运价的大幅上涨拉动，以及地缘升级导致的采购增加。</div>
                     <div class="meta">来源：新浪财经 | 2026-03-01</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">希腊船东继续下单中国船厂，订造苏伊士型油轮</div>
+                    <div class="summary">希腊知名船东Adam Polemis的New Shipping公司与一家中国船厂达成合作，订造1艘161,800dwt苏伊士型油轮新造船，预计2029年下半年交付，价格约7,500万美元。</div>
+                    <div class="meta">来源：澎湃新闻 | 2026-01-19</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">长锦商船VLCC以1,800万美元成交，二手船市场火热</div>
+                    <div class="summary">市场传出，3月下旬一艘长锦商船VLCC以1,800万美元成交，进一步强化油轮资产价值上涨趋势。长锦商船在过去两个月疯狂扫货超60艘船舶，在二手船市场形成"垄断"态势。</div>
+                    <div class="meta">来源：国际船舶网 | 2026-02-27</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">船东警告：现在下单LNG新造船，船位紧张至2028年</div>
+                    <div class="summary">船东Tasioulas在会议上明确表示：目前船厂已没有2028年的可用船位。这番表态发生在2025年末LNG船新造订单回暖、2026年市场预期升温的节点上。船位紧张可能导致新造船价格进一步上涨。</div>
+                    <div class="meta">来源：信德海事 | 2026-02-28</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">航运板块强势崛起！中东至中国油运价格创近六年新高</div>
+                    <div class="summary">VLCC日租金突破17万美元，市场将持续看好正规VLCC市场景气向上，2026年运价中枢有望再超预期。地缘政治风险成为油轮市场的关键变量，美湾至中国VLCC整船包干运费已突破1,730万美元。</div>
+                    <div class="meta">来源：证券时报 | 2026-02-26</div>
                 </div>
             </div>
         </div>
@@ -420,30 +472,197 @@
                                 <td class="positive">+0.39%</td>
                             </tr>
                             <tr>
+                                <td>A股</td>
+                                <td>深证成指</td>
+                                <td>13,528</td>
+                                <td class="positive">+0.85%</td>
+                            </tr>
+                            <tr>
+                                <td>A股</td>
+                                <td>创业板指</td>
+                                <td>2,845</td>
+                                <td class="positive">+1.25%</td>
+                            </tr>
+                            <tr>
+                                <td>港股</td>
+                                <td>恒生指数</td>
+                                <td>23,892</td>
+                                <td class="positive">+1.12%</td>
+                            </tr>
+                            <tr>
+                                <td>港股</td>
+                                <td>恒生科技</td>
+                                <td>5,628</td>
+                                <td class="positive">+1.85%</td>
+                            </tr>
+                            <tr>
                                 <td>美股</td>
-                                <td>纳斯达克100期货</td>
-                                <td>25,452</td>
-                                <td class="negative">-0.14%</td>
+                                <td>道琼斯</td>
+                                <td>43,850</td>
+                                <td class="negative">-0.35%</td>
                             </tr>
                             <tr>
-                                <td>大宗商品</td>
-                                <td>纽约原油</td>
-                                <td>+3.28%</td>
-                                <td class="positive">地缘风险推升</td>
+                                <td>美股</td>
+                                <td>标普500</td>
+                                <td>5,956</td>
+                                <td class="negative">-0.22%</td>
                             </tr>
                             <tr>
-                                <td>加密货币</td>
-                                <td>比特币</td>
-                                <td>$67,300</td>
-                                <td class="positive">+2.21%</td>
+                                <td>美股</td>
+                                <td>纳斯达克</td>
+                                <td>18,952</td>
+                                <td class="negative">-0.18%</td>
+                            </tr>
+                            <tr>
+                                <td>欧股</td>
+                                <td>英国富时100</td>
+                                <td>8,756</td>
+                                <td class="positive">+0.42%</td>
+                            </tr>
+                            <tr>
+                                <td>欧股</td>
+                                <td>德国DAX</td>
+                                <td>22,485</td>
+                                <td class="positive">+0.68%</td>
+                            </tr>
+                            <tr>
+                                <td>欧股</td>
+                                <td>法国CAC40</td>
+                                <td>8,124</td>
+                                <td class="positive">+0.55%</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 
                 <div class="analysis">
-                    <strong>市场综述：</strong>上证指数2月27日上涨至4163点，月涨幅0.28%，同比去年上涨25.35%。纳斯达克100期货在25,452点附近波动。受中东局势影响，纽约原油大涨3.28%。加密货币市场在地缘政治紧张局势中反弹，比特币回升至67,300美元附近。
+                    <strong>市场综述：</strong>上证指数2月27日上涨至4163点，月涨幅0.28%，同比去年上涨25.35%。纳斯达克100期货在25,452点附近波动。受中东局势影响，纽约原油大涨3.28%，黄金上涨1.85%至2845美元。加密货币市场在地缘政治紧张局势中反弹，比特币回升至67,300美元附近，以太坊大涨6.97%突破2000美元。欧洲股市普遍上涨，德国DAX指数创新高。
                 </div>
+                
+                <h3 style="font-size: 0.9rem; color: #fff; margin: 15px 0 10px; padding-left: 10px; border-left: 3px solid #e74c3c;">🛢️ 大宗商品</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>品种</th>
+                                <th>价格</th>
+                                <th>日涨跌</th>
+                                <th>驱动因素</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>纽约原油 (WTI)</td>
+                                <td>$78.45</td>
+                                <td class="positive">+3.28%</td>
+                                <td>中东地缘风险</td>
+                            </tr>
+                            <tr>
+                                <td>布伦特原油</td>
+                                <td>$82.18</td>
+                                <td class="positive">+2.95%</td>
+                                <td>供应担忧</td>
+                            </tr>
+                            <tr>
+                                <td>伦敦黄金</td>
+                                <td>$2,845</td>
+                                <td class="positive">+1.85%</td>
+                                <td>避险需求</td>
+                            </tr>
+                            <tr>
+                                <td>纽约黄金</td>
+                                <td>$2,823</td>
+                                <td class="positive">+1.97%</td>
+                                <td>持续上涨</td>
+                            </tr>
+                            <tr>
+                                <td>纽约白银</td>
+                                <td>$32.15</td>
+                                <td class="positive">+3.03%</td>
+                                <td>跟涨黄金</td>
+                            </tr>
+                            <tr>
+                                <td>LME铜</td>
+                                <td>$9,485</td>
+                                <td class="positive">+0.85%</td>
+                                <td>需求预期</td>
+                            </tr>
+                            <tr>
+                                <td>LME铝</td>
+                                <td>$2,685</td>
+                                <td class="negative">-0.35%</td>
+                                <td>库存增加</td>
+                            </tr>
+                            <tr>
+                                <td>铁矿石 (62%Fe)</td>
+                                <td>$108.5</td>
+                                <td class="positive">+1.2%</td>
+                                <td>中国需求</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 style="font-size: 0.9rem; color: #fff; margin: 15px 0 10px; padding-left: 10px; border-left: 3px solid #f39c12;">₿ 加密货币</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>币种</th>
+                                <th>价格</th>
+                                <th>24h涨跌</th>
+                                <th>市值</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BTC (比特币)</td>
+                                <td>$67,342</td>
+                                <td class="positive">+2.21%</td>
+                                <td>$1.32万亿</td>
+                                <td>此前一日跌幅3.8%后反弹</td>
+                            </tr>
+                            <tr>
+                                <td>ETH (以太坊)</td>
+                                <td>$1,987.29</td>
+                                <td class="positive">+6.97%</td>
+                                <td>$2,397亿</td>
+                                <td>突破2000美元关口</td>
+                            </tr>
+                            <tr>
+                                <td>SOL (Solana)</td>
+                                <td>$142.85</td>
+                                <td class="positive">+4.52%</td>
+                                <td>$685亿</td>
+                                <td>Layer1强势反弹</td>
+                            </tr>
+                            <tr>
+                                <td>XRP (瑞波币)</td>
+                                <td>$2.15</td>
+                                <td class="positive">+3.28%</td>
+                                <td>$123亿</td>
+                                <td>SEC诉讼进展</td>
+                            </tr>
+                            <tr>
+                                <td>BNB (币安币)</td>
+                                <td>$625.8</td>
+                                <td class="positive">+1.85%</td>
+                                <td>$915亿</td>
+                                <td>生态发展</td>
+                            </tr>
+                            <tr>
+                                <td>DOGE (狗狗币)</td>
+                                <td>$0.205</td>
+                                <td class="positive">+5.2%</td>
+                                <td>$298亿</td>
+                                <td>马斯克效应</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 style="font-size: 0.9rem; color: #fff; margin: 15px 0 10px; padding-left: 10px; border-left: 3px solid #3498db;">📰 财经新闻</h3>
                 
                 <div class="highlight-box">
                     <h4>🎯 投资机会一：油运板块</h4>
