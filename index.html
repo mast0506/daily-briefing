@@ -8,34 +8,22 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             min-height: 100vh;
             color: #e0e0e0;
-            padding: 20px;
+            padding: 12px;
         }
         .container { max-width: 1400px; margin: 0 auto; }
-        
-        /* Header */
-        header {
-            text-align: center;
-            padding: 25px 15px 15px;
-            margin-bottom: 15px;
-        }
+        header { text-align: center; padding: 20px 10px 15px; }
         header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        .date {
-            font-size: 0.9rem;
-            color: #a0a0c0;
-        }
-        
-        /* Compact Navigation Tabs - Single Row */
+        .date { font-size: 0.8rem; color: #a0a0c0; }
         .nav-tabs {
             display: flex;
             justify-content: center;
@@ -43,7 +31,6 @@
             margin-bottom: 15px;
             flex-wrap: nowrap;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
             padding: 3px 5px;
         }
         .nav-tab {
@@ -52,781 +39,447 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
             font-weight: 500;
             color: #8080a0;
             font-size: 0.7rem;
             white-space: nowrap;
             flex-shrink: 0;
         }
-        .nav-tab:hover { background: rgba(255,255,255,0.1); }
         .nav-tab.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-color: transparent;
         }
-        
-        /* Content Sections */
-        .content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        .content.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Cards */
+        .content { display: none; }
+        .content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
         }
+        @media (max-width: 768px) { .cards { grid-template-columns: repeat(2, 1fr); } }
         .card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 12px 8px;
             text-align: center;
-            transition: transform 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.08);
-        }
-        .card h4 {
-            font-size: 0.85rem;
-            color: #a0a0c0;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .card .value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-        .card .change {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+        .card h4 { font-size: 0.65rem; color: #8080a0; margin-bottom: 6px; }
+        .card .value { font-size: 1.1rem; font-weight: bold; color: #fff; margin-bottom: 3px; }
+        .card .change { font-size: 0.7rem; }
         .positive { color: #4ade80; }
         .negative { color: #f87171; }
-        
-        /* Section Box */
         .section-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
         }
         .section-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 2px solid;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         .shipping { border-color: #3498db; color: #3498db; }
         .finance { border-color: #e74c3c; color: #e74c3c; }
         .politics { border-color: #9b59b6; color: #9b59b6; }
         .ai { border-color: #27ae60; color: #27ae60; }
-        
-        /* Table Wrapper */
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        th {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        tr:hover {
-            background: rgba(255,255,255,0.03);
-        }
-        
-        /* News Items */
+        .table-wrapper { overflow-x: auto; margin-bottom: 12px; border-radius: 8px; background: rgba(0,0,0,0.15); }
+        table { width: 100%; border-collapse: collapse; min-width: 450px; font-size: 0.8rem; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: rgba(102, 126, 234, 0.15); color: #667eea; font-weight: 600; font-size: 0.75rem; }
         .news-item {
-            background: rgba(255,255,255,0.03);
-            border-left: 3px solid #667eea;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border-radius: 0 12px 12px 0;
-        }
-        .news-item .title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        .news-item .summary {
-            color: #a0a0c0;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-        .news-item .meta {
-            font-size: 0.8rem;
-            color: #667eea;
-        }
-        
-        /* Chart Container */
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin-bottom: 25px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 15px;
-        }
-        
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-        .highlight-box h4 {
-            color: #667eea;
+            background: rgba(255,255,255,0.02);
+            border-left: 2px solid #667eea;
+            padding: 10px 12px;
             margin-bottom: 10px;
-            font-size: 1rem;
+            border-radius: 0 8px 8px 0;
         }
-        .highlight-box p {
-            color: #a0a0c0;
-            font-size: 0.9rem;
-            line-height: 1.6;
+        .news-item .title { font-weight: 600; color: #fff; margin-bottom: 5px; font-size: 0.85rem; }
+        .news-item .summary { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; margin-bottom: 5px; }
+        .news-item .meta { font-size: 0.7rem; color: #667eea; }
+        .analysis { background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px; margin: 12px 0; font-size: 0.8rem; color: #b0b0c0; line-height: 1.6; }
+        .analysis strong { color: #fff; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
         }
-        
-        /* Analysis Text */
-        .analysis {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #a0a0c0;
-            line-height: 1.8;
-        }
-        .analysis strong {
-            color: #fff;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #a0a0c0;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 40px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .nav-tab { padding: 10px 20px; font-size: 0.9rem; }
-            .cards { grid-template-columns: repeat(2, 1fr); }
-            .card .value { font-size: 1.4rem; }
-        }
+        .highlight-box h4 { color: #667eea; margin-bottom: 6px; font-size: 0.85rem; }
+        .highlight-box p { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; }
+        footer { text-align: center; padding: 20px; color: #707090; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header>
             <h1>📊 每日简报</h1>
-            <div class="date">2026年3月3日 星期二 | Daily Briefing #43</div>
+            <div class="date">2026年3月3日 星期二 | 第43期</div>
         </header>
         
-        <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <div class="nav-tab active" onclick="showTab('shipping')">🚢 航运</div>
             <div class="nav-tab" onclick="showTab('finance')">💰 财经</div>
             <div class="nav-tab" onclick="showTab('politics')">🌍 时政</div>
             <div class="nav-tab" onclick="showTab('ai')">🤖 AI/机器人</div>
         </div>
-        
-        <!-- Shipping Section -->
         <div id="shipping" class="content active">
+            <div class="cards">
+                <div class="card">
+                    <h4>BDI 干散货指数</h4>
+                    <div class="value">2,121</div>
+                    <div class="change negative">↓ -0.4% (-8)</div>
+                </div>
+                <div class="card">
+                    <h4>BCI 海岬型</h4>
+                    <div class="value">3,048</div>
+                    <div class="change negative">↓ -0.26%</div>
+                </div>
+                <div class="card">
+                    <h4>VLCC 日租金</h4>
+                    <div class="value">$172,500</div>
+                    <div class="change positive">↑ +1.4%</div>
+                </div>
+                <div class="card">
+                    <h4>Suezmax 租金</h4>
+                    <div class="value">$138,800</div>
+                    <div class="change negative">↓ -1.0%</div>
+                </div>
+            </div>
+            
             <div class="section-box">
-                <h2 class="section-title shipping">🚢 航运资讯</h2>
+                <h2 class="section-title shipping">🚢 航运市场概览</h2>
                 
-                <!-- Data Cards -->
-                <div class="cards">
-                    <div class="card">
-                        <h4>BDI 干散货指数</h4>
-                        <div class="value">2,140</div>
-                        <div class="change positive">↑ +1.09%</div>
-                    </div>
-                    <div class="card">
-                        <h4>BCI 海岬型</h4>
-                        <div class="value">3,056</div>
-                        <div class="change positive">↑ +0.16%</div>
-                    </div>
-                    <div class="card">
-                        <h4>VLCC 日租金</h4>
-                        <div class="value">$170K+</div>
-                        <div class="change positive">↑ 创近年新高</div>
-                    </div>
-                    <div class="card">
-                        <h4>Suezmax 租金</h4>
-                        <div class="value">$140K</div>
-                        <div class="change positive">↑ +42% 周环比</div>
-                    </div>
+                <div class="analysis">
+                    <strong>市场分析：</strong>据Baltic Exchange数据，波罗的海干散货指数(BDI)周三报2,121点，从三周高点小幅回落8点，跌幅0.4%。近一年涨幅仍高达133.63%，显示航运市场长期向好趋势。油轮市场方面，VLCC日租金继续上涨至172,500美元，苏伊士型小幅回调至138,800美元。地缘政治风险持续支撑油运市场高位运行。
                 </div>
                 
-                <!-- Chart -->
-                <div class="chart-container">
-                    <canvas id="bdiChart"></canvas>
-                </div>
-                
-                <!-- Table -->
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr>
-                                <th>船型</th>
-                                <th>日租金 (美元/天)</th>
-                                <th>周环比</th>
-                                <th>备注</th>
-                            </tr>
+                            <tr><th>船型</th><th>日租金($/天)</th><th>日涨跌</th><th>周涨跌</th><th>备注</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>VLCC (超大型油轮)</td>
-                                <td>170,000+</td>
-                                <td class="positive">大幅上涨</td>
-                                <td>突破17万美元，创近年新高</td>
-                            </tr>
-                            <tr>
-                                <td>Suezmax (苏伊士型)</td>
-                                <td>140,188</td>
-                                <td class="positive">+42%</td>
-                                <td>受地缘冲突推动跳涨</td>
-                            </tr>
-                            <tr>
-                                <td>VLCC期租(1年)</td>
-                                <td>100,500-115,000</td>
-                                <td class="positive">快速追涨</td>
-                                <td>非节能型10.05万/节能型11.5万</td>
-                            </tr>
-                            <tr>
-                                <td>Capesize (海岬型)</td>
-                                <td>28,500</td>
-                                <td class="positive">+3.2%</td>
-                                <td>铁矿石运输主力，BCI 3,056点</td>
-                            </tr>
-                            <tr>
-                                <td>Panamax (巴拿马型)</td>
-                                <td>15,280</td>
-                                <td class="positive">+1.8%</td>
-                                <td>粮食煤炭运输，BPI 1,680点</td>
-                            </tr>
-                            <tr>
-                                <td>Supramax (超灵便型)</td>
-                                <td>14,850</td>
-                                <td class="positive">+2.1%</td>
-                                <td>小宗散货，BSI 1,425点</td>
-                            </tr>
-                            <tr>
-                                <td>Handysize (小灵便型)</td>
-                                <td>13,200</td>
-                                <td class="positive">+1.5%</td>
-                                <td>区域短途运输</td>
-                            </tr>
-                            <tr>
-                                <td>Aframax (阿芙拉型)</td>
-                                <td>85,450</td>
-                                <td class="positive">+28%</td>
-                                <td>区域原油运输</td>
-                            </tr>
-                            <tr>
-                                <td>MR型成品油轮</td>
-                                <td>42,800</td>
-                                <td class="positive">+15%</td>
-                                <td>清洁油品运输</td>
-                            </tr>
+                            <tr><td>VLCC</td><td>172,500</td><td class="positive">+1.4%</td><td class="positive">+16%</td><td>创2020年以来新高</td></tr>
+                            <tr><td>Suezmax</td><td>138,800</td><td class="negative">-1.0%</td><td class="positive">+40%</td><td>地缘冲突支撑</td></tr>
+                            <tr><td>Aframax</td><td>86,200</td><td class="positive">+0.9%</td><td class="positive">+30%</td><td>区域航线</td></tr>
+                            <tr><td>Capesize</td><td>28,350</td><td class="negative">-0.5%</td><td class="positive">+2.8%</td><td>铁矿石运输</td></tr>
+                            <tr><td>Panamax</td><td>15,180</td><td class="negative">-0.7%</td><td class="negative">-11%</td><td>粮食煤炭</td></tr>
+                            <tr><td>Supramax</td><td>14,920</td><td class="positive">+0.5%</td><td class="negative">-9%</td><td>小宗散货</td></tr>
                         </tbody>
                     </table>
                 </div>
-                
-                <div class="analysis">
-                    <strong>市场分析：</strong>通常春节前后为油运市场传统淡季，但2026年开年VLCC日租金突破17万美元，苏伊士型油轮运价周环比上涨42%至140,188美元/天。地缘政治风险持续升温与运力结构加速集中双重作用下，油轮市场正上演"日租金连创新高"的加速行情。美湾至中国VLCC整船包干运费已突破1730万美元，创2020年以来新高。
+            </div>
+            
+            <div class="two-col">
+                <div class="section-box">
+                    <h2 class="section-title shipping">📰 新造船动态</h2>
+                    
+                    <div class="news-item">
+                        <div class="title">恒力重工3天签下25艘订单，金额24-30亿美元</div>
+                        <div class="summary">据信德海事网报道，恒力重工在3天内新增确认订单金额合计约24–30亿美元。30.6万吨VLCC是恒力造船2026开年接单的"压舱石"。</div>
+                        <div class="meta">信德海事网 | 2026-02-12</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">开年43天斩获64艘新船大单</div>
+                        <div class="summary">信德海事网讯，恒力重工斩获64艘新船大单。30.6万吨VLCC是接单"压舱石"，显示中国船厂竞争力持续提升。</div>
+                        <div class="meta">信德海事网 | 2026-02-24</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">北海造船拿下希腊船东1+1艘VLCC大单</div>
+                        <div class="summary">希腊船东Cape Shipping在北海造船签约1+1艘31.9万吨VLCC，中船集团旗下船厂继续领跑大型油轮建造市场。</div>
+                        <div class="meta">中国船舶网 | 2026-01-09</div>
+                    </div>
                 </div>
                 
-                <!-- News -->
-                <div class="news-item">
-                    <div class="title">恒力重工3天内签下25艘新造船订单，金额约24-30亿美元</div>
-                    <div class="summary">据信德海事网报道，恒力重工在3天内新增确认订单金额合计约24–30亿美元。从数量、金额与交付节奏看，30.6万吨VLCC是恒力造船2026开年接单的"压舱石"。Seatankers Management订造2艘VLCC，约2–3亿美元，2028年交付。</div>
-                    <div class="meta">来源：信德海事网 / 新浪财经 | 2026-02-12</div>
+                <div class="section-box">
+                    <h2 class="section-title shipping">🏷️ 二手船市场</h2>
+                    
+                    <div class="news-item">
+                        <div class="title">15年船龄VLCC价值飙升57%至8,300万美元</div>
+                        <div class="summary">15年船龄VLCC市场价值约8,300万美元，较2025年2月的5,300万美元增长57%，二手船市场呈现量价齐升态势。</div>
+                        <div class="meta">信德海事网 | 2026-02-24</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">长锦商船VLCC以1,800万美元成交</div>
+                        <div class="summary">长锦商船VLCC以1,800万美元成交，过去两个月疯狂扫货超60艘船舶，在二手船市场形成"垄断"态势。</div>
+                        <div class="meta">国际船舶网 | 2026-02-27</div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>📊 VLCC二手船价格</h4>
+                        <p>5年船龄：$1.05亿 (+35% YoY)<br/>10年船龄：$8,500万 (+48%)<br/>15年船龄：$8,300万 (+57%)</p>
+                    </div>
                 </div>
-                
-                <div class="news-item">
-                    <div class="title">开年43天斩获64艘新船大单！恒力重工接单势头强劲</div>
-                    <div class="summary">信德海事网讯，太疯狂了！开年43天，恒力重工斩获64艘新船大单。30.6万吨VLCC是恒力造船2026开年接单的"压舱石"，显示中国船厂在国际油轮建造市场的竞争力持续提升。</div>
-                    <div class="meta">来源：信德海事网 | 2026-02-24</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">北海造船拿下希腊船东Cape Shipping 1+1艘31.9万吨VLCC大单</div>
-                    <div class="summary">重磅确认：Cape Shipping在北海造船签约1+1艘31.9万吨VLCC。新年伊始，希腊船东Cape Shipping的超大型油轮新造计划迎来关键官宣节点。中船集团旗下船厂继续领跑大型油轮建造市场。</div>
-                    <div class="meta">来源：信德海事网 / 中国船舶网 | 2026-01-09</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">BDI指数报2,121点，从三周高点小幅回落</div>
-                    <div class="summary">据Baltic Exchange数据，波罗的海干散货指数(BDI)周三报2,121点，较前一日的三周高点小幅回落8点，跌幅0.4%。近一年涨幅仍高达133.63%，显示航运市场长期向好趋势。</div>
-                    <div class="meta">来源：Baltic Exchange / Trading Economics | 2026-03-01</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">船价大涨！运价大涨！交易量大涨！</div>
-                    <div class="summary">15年船龄的VLCC价值同比大幅飙升，2026年2月其市场价值约为8300万美元，较2025年2月的5300万美元增长57%，涨幅显著。</div>
-                    <div class="meta">来源：信德海事 | 2026-02-24</div>
-                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title shipping">🔥 行业热点</h2>
                 
                 <div class="news-item">
                     <div class="title">伊朗局势油运行情"空中加油"</div>
-                    <div class="summary">本周苏伊士原油轮运价环比上涨42%，录得140,188美元/天，受到VLCC运价的大幅上涨拉动，以及地缘升级导致的采购增加。</div>
-                    <div class="meta">来源：新浪财经 | 2026-03-01</div>
+                    <div class="summary">苏伊士原油轮运价环比上涨42%，受到VLCC运价大幅上涨拉动，以及地缘升级导致的采购增加。美湾至中国VLCC整船包干运费突破1,730万美元。</div>
+                    <div class="meta">新浪财经 | 2026-03-01</div>
                 </div>
                 
-                <div class="news-item">
-                    <div class="title">希腊船东继续下单中国船厂，订造苏伊士型油轮</div>
-                    <div class="summary">希腊知名船东Adam Polemis的New Shipping公司与一家中国船厂达成合作，订造1艘161,800dwt苏伊士型油轮新造船，预计2029年下半年交付，价格约7,500万美元。</div>
-                    <div class="meta">来源：澎湃新闻 | 2026-01-19</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">长锦商船VLCC以1,800万美元成交，二手船市场火热</div>
-                    <div class="summary">市场传出，3月下旬一艘长锦商船VLCC以1,800万美元成交，进一步强化油轮资产价值上涨趋势。长锦商船在过去两个月疯狂扫货超60艘船舶，在二手船市场形成"垄断"态势。</div>
-                    <div class="meta">来源：国际船舶网 | 2026-02-27</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">船东警告：现在下单LNG新造船，船位紧张至2028年</div>
-                    <div class="summary">船东Tasioulas在会议上明确表示：目前船厂已没有2028年的可用船位。这番表态发生在2025年末LNG船新造订单回暖、2026年市场预期升温的节点上。船位紧张可能导致新造船价格进一步上涨。</div>
-                    <div class="meta">来源：信德海事 | 2026-02-28</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">航运板块强势崛起！中东至中国油运价格创近六年新高</div>
-                    <div class="summary">VLCC日租金突破17万美元，市场将持续看好正规VLCC市场景气向上，2026年运价中枢有望再超预期。地缘政治风险成为油轮市场的关键变量，美湾至中国VLCC整船包干运费已突破1,730万美元。</div>
-                    <div class="meta">来源：证券时报 | 2026-02-26</div>
+                <div class="highlight-box">
+                    <h4>💡 投资建议</h4>
+                    <p><strong>油运板块</strong>：VLCC日租金突破17万美元，地缘政治风险持续，2026年运价中枢有望再超预期。<strong>关注</strong>：招商轮船、中远海能、ST松发</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Finance Section -->
         <div id="finance" class="content">
+            <div class="cards">
+                <div class="card">
+                    <h4>上证指数</h4>
+                    <div class="value">4,185</div>
+                    <div class="change positive">↑ +0.53%</div>
+                </div>
+                <div class="card">
+                    <h4>纳斯达克</td>
+                    <div class="value">18,925</div>
+                    <div class="change negative">↓ -0.14%</div>
+                </div>
+                <div class="card">
+                    <h4>纽约原油</h4>
+                    <div class="value">$79.12</div>
+                    <div class="change positive">↑ +0.85%</div>
+                </div>
+                <div class="card">
+                    <h4>比特币</h4>
+                    <div class="value">$68,450</div>
+                    <div class="change positive">↑ +1.65%</div>
+                </div>
+            </div>
+            
             <div class="section-box">
-                <h2 class="section-title finance">💰 财经资讯</h2>
-                
-                <div class="cards">
-                    <div class="card">
-                        <h4>上证指数</h4>
-                        <div class="value">4,163</div>
-                        <div class="change positive">↑ +0.39%</div>
-                    </div>
-                    <div class="card">
-                        <h4>纳斯达克期货</h4>
-                        <div class="value">25,452</div>
-                        <div class="change negative">↓ -0.14%</div>
-                    </div>
-                    <div class="card">
-                        <h4>纽约原油</h4>
-                        <div class="value">+3.28%</div>
-                        <div class="change positive">地缘推升</div>
-                    </div>
-                    <div class="card">
-                        <h4>比特币</h4>
-                        <div class="value">$67.3K</div>
-                        <div class="change positive">↑ +2.21%</div>
-                    </div>
-                </div>
-                
-                <div class="chart-container">
-                    <canvas id="marketChart"></canvas>
-                </div>
-                
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>市场</th>
-                                <th>指数</th>
-                                <th>最新点位</th>
-                                <th>涨跌幅</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>A股</td>
-                                <td>上证指数</td>
-                                <td>4,163</td>
-                                <td class="positive">+0.39%</td>
-                            </tr>
-                            <tr>
-                                <td>A股</td>
-                                <td>深证成指</td>
-                                <td>13,528</td>
-                                <td class="positive">+0.85%</td>
-                            </tr>
-                            <tr>
-                                <td>A股</td>
-                                <td>创业板指</td>
-                                <td>2,845</td>
-                                <td class="positive">+1.25%</td>
-                            </tr>
-                            <tr>
-                                <td>港股</td>
-                                <td>恒生指数</td>
-                                <td>23,892</td>
-                                <td class="positive">+1.12%</td>
-                            </tr>
-                            <tr>
-                                <td>港股</td>
-                                <td>恒生科技</td>
-                                <td>5,628</td>
-                                <td class="positive">+1.85%</td>
-                            </tr>
-                            <tr>
-                                <td>美股</td>
-                                <td>道琼斯</td>
-                                <td>43,850</td>
-                                <td class="negative">-0.35%</td>
-                            </tr>
-                            <tr>
-                                <td>美股</td>
-                                <td>标普500</td>
-                                <td>5,956</td>
-                                <td class="negative">-0.22%</td>
-                            </tr>
-                            <tr>
-                                <td>美股</td>
-                                <td>纳斯达克</td>
-                                <td>18,952</td>
-                                <td class="negative">-0.18%</td>
-                            </tr>
-                            <tr>
-                                <td>欧股</td>
-                                <td>英国富时100</td>
-                                <td>8,756</td>
-                                <td class="positive">+0.42%</td>
-                            </tr>
-                            <tr>
-                                <td>欧股</td>
-                                <td>德国DAX</td>
-                                <td>22,485</td>
-                                <td class="positive">+0.68%</td>
-                            </tr>
-                            <tr>
-                                <td>欧股</td>
-                                <td>法国CAC40</td>
-                                <td>8,124</td>
-                                <td class="positive">+0.55%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2 class="section-title finance">📈 全球市场概览</h2>
                 
                 <div class="analysis">
-                    <strong>市场综述：</strong>上证指数2月27日上涨至4163点，月涨幅0.28%，同比去年上涨25.35%。纳斯达克100期货在25,452点附近波动。受中东局势影响，纽约原油大涨3.28%，黄金上涨1.85%至2845美元。加密货币市场在地缘政治紧张局势中反弹，比特币回升至67,300美元附近，以太坊大涨6.97%突破2000美元。欧洲股市普遍上涨，德国DAX指数创新高。
+                    <strong>市场综述：</strong>上证指数今日上涨至4,185点，涨幅0.53%，延续近期反弹态势。美股方面，纳斯达克小幅回调0.14%，道指上涨0.25%。受中东局势持续影响，纽约原油上涨0.85%至79.12美元。加密货币市场继续反弹，比特币上涨1.65%至68,450美元，以太坊上涨2.1%。
                 </div>
                 
-                <h3 style="font-size: 0.9rem; color: #fff; margin: 15px 0 10px; padding-left: 10px; border-left: 3px solid #e74c3c;">🛢️ 大宗商品</h3>
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr>
-                                <th>品种</th>
-                                <th>价格</th>
-                                <th>日涨跌</th>
-                                <th>驱动因素</th>
-                            </tr>
+                            <tr><th>市场</th><th>指数</th><th>点位</th><th>涨跌</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>纽约原油 (WTI)</td>
-                                <td>$78.45</td>
-                                <td class="positive">+3.28%</td>
-                                <td>中东地缘风险</td>
-                            </tr>
-                            <tr>
-                                <td>布伦特原油</td>
-                                <td>$82.18</td>
-                                <td class="positive">+2.95%</td>
-                                <td>供应担忧</td>
-                            </tr>
-                            <tr>
-                                <td>伦敦黄金</td>
-                                <td>$2,845</td>
-                                <td class="positive">+1.85%</td>
-                                <td>避险需求</td>
-                            </tr>
-                            <tr>
-                                <td>纽约黄金</td>
-                                <td>$2,823</td>
-                                <td class="positive">+1.97%</td>
-                                <td>持续上涨</td>
-                            </tr>
-                            <tr>
-                                <td>纽约白银</td>
-                                <td>$32.15</td>
-                                <td class="positive">+3.03%</td>
-                                <td>跟涨黄金</td>
-                            </tr>
-                            <tr>
-                                <td>LME铜</td>
-                                <td>$9,485</td>
-                                <td class="positive">+0.85%</td>
-                                <td>需求预期</td>
-                            </tr>
-                            <tr>
-                                <td>LME铝</td>
-                                <td>$2,685</td>
-                                <td class="negative">-0.35%</td>
-                                <td>库存增加</td>
-                            </tr>
-                            <tr>
-                                <td>铁矿石 (62%Fe)</td>
-                                <td>$108.5</td>
-                                <td class="positive">+1.2%</td>
-                                <td>中国需求</td>
-                            </tr>
+                            <tr><td>A股</td><td>上证指数</td><td>4,185</td><td class="positive">+0.53%</td></tr>
+                            <tr><td>A股</td><td>深证成指</td><td>13,625</td><td class="positive">+0.72%</td></tr>
+                            <tr><td>A股</td><td>创业板指</td><td>2,875</td><td class="positive">+1.05%</td></tr>
+                            <tr><td>港股</td><td>恒生指数</td><td>24,125</td><td class="positive">+0.98%</td></tr>
+                            <tr><td>美股</td><td>道琼斯</td><td>43,958</td><td class="positive">+0.25%</td></tr>
+                            <tr><td>美股</td><td>标普500</td><td>5,982</td><td class="negative">-0.08%</td></tr>
+                            <tr><td>美股</td><td>纳斯达克</td><td>18,925</td><td class="negative">-0.14%</td></tr>
+                            <tr><td>欧股</td><td>英国富时100</td><td>8,825</td><td class="positive">+0.79%</td></tr>
+                            <tr><td>欧股</td><td>德国DAX</td><td>22,685</td><td class="positive">+0.89%</td></tr>
                         </tbody>
                     </table>
                 </div>
-                
-                <h3 style="font-size: 0.9rem; color: #fff; margin: 15px 0 10px; padding-left: 10px; border-left: 3px solid #f39c12;">₿ 加密货币</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>币种</th>
-                                <th>价格</th>
-                                <th>24h涨跌</th>
-                                <th>市值</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>BTC (比特币)</td>
-                                <td>$67,342</td>
-                                <td class="positive">+2.21%</td>
-                                <td>$1.32万亿</td>
-                                <td>此前一日跌幅3.8%后反弹</td>
-                            </tr>
-                            <tr>
-                                <td>ETH (以太坊)</td>
-                                <td>$1,987.29</td>
-                                <td class="positive">+6.97%</td>
-                                <td>$2,397亿</td>
-                                <td>突破2000美元关口</td>
-                            </tr>
-                            <tr>
-                                <td>SOL (Solana)</td>
-                                <td>$142.85</td>
-                                <td class="positive">+4.52%</td>
-                                <td>$685亿</td>
-                                <td>Layer1强势反弹</td>
-                            </tr>
-                            <tr>
-                                <td>XRP (瑞波币)</td>
-                                <td>$2.15</td>
-                                <td class="positive">+3.28%</td>
-                                <td>$123亿</td>
-                                <td>SEC诉讼进展</td>
-                            </tr>
-                            <tr>
-                                <td>BNB (币安币)</td>
-                                <td>$625.8</td>
-                                <td class="positive">+1.85%</td>
-                                <td>$915亿</td>
-                                <td>生态发展</td>
-                            </tr>
-                            <tr>
-                                <td>DOGE (狗狗币)</td>
-                                <td>$0.205</td>
-                                <td class="positive">+5.2%</td>
-                                <td>$298亿</td>
-                                <td>马斯克效应</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            </div>
+            
+            <div class="two-col">
+                <div class="section-box">
+                    <h2 class="section-title finance">🛢️ 大宗商品</h2>
+                    
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>品种</th><th>价格</th><th>涨跌</th></tr></thead>
+                            <tbody>
+                                <tr><td>WTI原油</td><td>$79.12</td><td class="positive">+0.85%</td></tr>
+                                <tr><td>布伦特原油</td><td>$82.85</td><td class="positive">+0.81%</td></tr>
+                                <tr><td>伦敦黄金</td><td>$2,868</td><td class="positive">+0.81%</td></tr>
+                                <tr><td>纽约白银</td><td>$32.45</td><td class="positive">+0.93%</td></tr>
+                                <tr><td>LME铜</td><td>$9,525</td><td class="positive">+0.42%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 
-                <h3 style="font-size: 0.9rem; color: #fff; margin: 15px 0 10px; padding-left: 10px; border-left: 3px solid #3498db;">📰 财经新闻</h3>
+                <div class="section-box">
+                    <h2 class="section-title finance">₿ 加密货币</h2>
+                    
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>币种</th><th>价格</th><th>24h涨跌</th></tr></thead>
+                            <tbody>
+                                <tr><td>BTC</td><td>$68,450</td><td class="positive">+1.65%</td></tr>
+                                <tr><td>ETH</td><td>$2,028</td><td class="positive">+2.10%</td></tr>
+                                <tr><td>SOL</td><td>$145.2</td><td class="positive">+1.65%</td></tr>
+                                <tr><td>XRP</td><td>$2.18</td><td class="positive">+1.38%</td></tr>
+                                <tr><td>BNB</td><td>$632.5</td><td class="positive">+1.07%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title finance">📰 财经新闻</h2>
                 
-                <div class="highlight-box">
-                    <h4>🎯 投资机会一：油运板块</h4>
-                    <p>VLCC日租金突破17万美元，苏伊士型环比上涨42%。地缘政治风险持续，2026年运价中枢有望再超预期。关注：招商轮船、ST松发</p>
+                <div class="news-item">
+                    <div class="title">美股期货暴跌，油价飙升，市场因伊朗冲突动荡</div>
+                    <div class="summary">据Yahoo Finance报道，美国股指期货暴跌，油价飙升，美国和以色列对伊朗的军事打击震惊了全球市场。道琼斯期货下跌超过500点。</div>
+                    <div class="meta">Yahoo Finance | 2026-03-02</div>
                 </div>
                 
-                <div class="highlight-box">
-                    <h4>🎯 投资机会二：AI芯片/半导体</h4>
-                    <p>英伟达Q4暴赚430亿美元，黄仁勋称智能体AI拐点已来。Blackwell Ultra和Vera Rubin平台大幅降低AI推理成本。关注：NVIDIA、ASML、美光</p>
+                <div class="news-item">
+                    <div class="title">英伟达财报超预期，全年净利润达1200亿美元</div>
+                    <div class="summary">NVIDIA发布2026财年Q4财报，收入达681亿美元，同比增长73%。全年营收2159.4亿美元，净利润1200.8亿美元，同比增长65%。</div>
+                    <div class="meta">Yahoo Finance | 2026-02-27</div>
                 </div>
                 
-                <div class="highlight-box">
-                    <h4>🎯 投资机会三：人形机器人</h4>
-                    <p>2026年将是人形机器人迈向商业化的关键年，全球出货量可望突破5万台。智元、宇树、优必选、智平方提出万级规模产能规划。关注：优必选、特斯拉(TSLA)</p>
+                <div class="news-item">
+                    <div class="title">科技巨头签署十亿美元基础设施协议</div>
+                    <div class="summary">OpenAI、Oracle、NVIDIA、Microsoft、Google和Meta等巨头签署十亿美元基础设施协议，扩大数据中心以支持AI增长。</div>
+                    <div class="meta">Yahoo Finance | 2026-03-01</div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title finance">🎯 投资机会</h2>
+                
+                <div class="two-col">
+                    <div class="highlight-box">
+                        <h4>🛢️ 油运板块</h4>
+                        <p>VLCC日租金突破17万美元，地缘政治风险持续。<strong>关注</strong>：招商轮船、中远海能</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>🤖 AI芯片</h4>
+                        <p>英伟达Q4暴赚430亿美元，智能体AI拐点已来。<strong>关注</strong>：NVIDIA、AMD</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Politics Section -->
         <div id="politics" class="content">
             <div class="section-box">
-                <h2 class="section-title politics">🌍 时政要闻</h2>
+                <h2 class="section-title politics">🇨🇳 中国要闻</h2>
                 
                 <div class="news-item">
                     <div class="title">王毅同俄罗斯外长拉夫罗夫通电话</div>
-                    <div class="summary">王毅表示，在中俄推动下，联合国安理会昨天就当前伊朗局势举行紧急会议。中方一贯主张遵守联合国宪章宗旨原则，反对在国际关系中使用武力。中俄两国就中东局势保持密切沟通协调，共同维护地区和平稳定。</div>
-                    <div class="meta">来源：中国新闻网 | 2026-03-01</div>
+                    <div class="summary">王毅表示，中俄就中东局势保持密切沟通协调，共同维护地区和平稳定。中方一贯主张遵守联合国宪章宗旨原则，反对在国际关系中使用武力。</div>
+                    <div class="meta">新华社 | 2026-03-01</div>
                 </div>
                 
                 <div class="news-item">
                     <div class="title">外交部提醒在伊朗中国公民尽快撤离</div>
-                    <div class="summary">外交部和中国驻伊朗使领馆提醒在伊朗中国公民密切关注形势变化，加强自身安全防范，尽快通过适当方式撤离至安全地区。据掌握，目前多条撤离通道可通行，包括陆路和航空通道。</div>
-                    <div class="meta">来源：央视网/领事直通车 | 2026-03-01</div>
+                    <div class="summary">外交部和中国驻伊朗使领馆提醒在伊朗中国公民密切关注形势变化，尽快通过适当方式撤离至安全地区。目前多条撤离通道可通行。</div>
+                    <div class="meta">领事直通车 | 2026-03-01</div>
+                </div>
+            </div>
+            
+            <div class="two-col">
+                <div class="section-box">
+                    <h2 class="section-title politics">🇺🇸 美国要闻</h2>
+                    
+                    <div class="news-item">
+                        <div class="title">伊朗导弹袭击以色列Beit Shemesh，9人死亡</div>
+                        <div class="summary">据BBC报道，伊朗导弹袭击以色列城市Beit Shemesh，造成至少9人死亡。这是伊朗对美以打击的报复行动。</div>
+                        <div class="meta">BBC News | 2026-03-02</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">特朗普："可能会有更多"美国人死亡</div>
+                        <div class="summary">CNN报道，特朗普表示随着伊朗继续报复，"可能会有更多"美国人死亡。伊朗已向以色列和四个海湾国家发射导弹和无人机。</div>
+                        <div class="meta">CNN | 2026-03-02</div>
+                    </div>
                 </div>
                 
-                <div class="news-item">
-                    <div class="title">伊朗导弹袭击以色列Beit Shemesh，造成至少9人死亡</div>
-                    <div class="summary">据BBC报道，伊朗导弹袭击了以色列城市Beit Shemesh，造成至少9人死亡。这是伊朗对美国和以色列军事打击的报复行动的一部分。以色列救护车服务确认了伤亡人数。</div>
-                    <div class="meta">来源：BBC News | 2026-03-02</div>
+                <div class="section-box">
+                    <h2 class="section-title politics">🇪🇺 欧洲要闻</h2>
+                    
+                    <div class="news-item">
+                        <div class="title">欧盟对伊朗局势表示关切，呼吁克制</div>
+                        <div class="summary">欧盟呼吁各方保持克制，保护平民，尊重国际法。欧盟外交与安全政策高级代表表示将继续通过外交途径推动局势降温。</div>
+                        <div class="meta">Reuters | 2026-03-01</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">德国总理默茨访华，对华态度转向合作</div>
+                        <div class="summary">德国总理默茨访华，标志着德国对华政策从"去风险"向主动寻求合作的转变。法国、英国等国领导人也已相继访华。</div>
+                        <div class="meta">Reuters | 2026-03-01</div>
+                    </div>
                 </div>
-                
-                <div class="news-item">
-                    <div class="title">特朗普表示"可能会有更多"美国人死亡，伊朗继续报复</div>
-                    <div class="summary">CNN报道，美国总统特朗普表示，随着伊朗继续对美国和以色列的打击进行报复，"可能会有更多"美国人死亡。伊朗已向以色列和四个海湾阿拉伯国家发射导弹和无人机，这些国家都设有美国军事基地。</div>
-                    <div class="meta">来源：CNN | 2026-03-02</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">英国防长：伊朗以"不加区分"的攻击回应美以打击</div>
-                    <div class="summary">据英国防长表示，伊朗政权正以"不加区分"的攻击回应美以打击，袭击范围覆盖整个中东地区。伊朗最高领导人据传在美以袭击中身亡，以色列军方称正在"核实"有关伊朗一所女子学校遭袭的报道。</div>
-                    <div class="meta">来源：CNN / BBC | 2026-03-02</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">欧盟对伊朗局势表示关切，呼吁各方保持克制</div>
-                    <div class="summary">欧盟对伊朗局势的发展表示关切，并呼吁所有相关各方保持克制，保护平民，尊重国际法。欧盟委员会和欧洲理事会担心局势升级，冲突可能牵涉或波及中东其他地区。</div>
-                    <div class="meta">来源：罗马尼亚国际广播电台 | 2026-03-01</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">德国总理默茨访华，对华态度从"去风险"转向合作</div>
-                    <div class="summary">春节刚过，中国外交舞台就迎来了一位重量级客人——德国总理默茨。其实，早在春节前，法国、英国等国的领导人就已相继访华。默茨此次访问格外引人注目，标志着德国对华政策从"去风险"向主动寻求合作的转变。</div>
-                    <div class="meta">来源：光明网 | 2026-03-01</div>
-                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title politics">🔍 深度分析</h2>
                 
                 <div class="highlight-box">
-                    <h4>🔍 中东局势深度分析</h4>
-                    <p>美以联手打击伊朗标志着中东地缘政治格局的重大变化。伊朗作为地区大国，其核设施遭袭后必然采取报复行动，可能导致冲突螺旋式升级。国际社会普遍呼吁克制，但局势走向仍充满不确定性。建议密切关注联合国安理会后续行动及大国协调。</p>
+                    <h4>中东局势分析</h4>
+                    <p>美以联手打击伊朗标志着中东地缘政治格局重大变化。伊朗核设施遭袭后必然采取报复行动，可能导致冲突螺旋式升级。国际社会普遍呼吁克制。</p>
                 </div>
             </div>
         </div>
-        
-        <!-- AI Section -->
         <div id="ai" class="content">
+            <div class="cards">
+                <div class="card">
+                    <h4>OpenAI融资</h4>
+                    <div class="value">$110B</div>
+                    <div class="change positive">估值$730B</div>
+                </div>
+                <div class="card">
+                    <h4>英伟达Q4收入</h4>
+                    <div class="value">$681亿</div>
+                    <div class="change positive">↑+73%</div>
+                </div>
+                <div class="card">
+                    <h4>人形机器人出货</h4>
+                    <div class="value">5万台+</div>
+                    <div class="change positive">2026年预测</div>
+                </div>
+                <div class="card">
+                    <h4>比特币NFT交易</h4>
+                    <div class="value">$2500万</div>
+                    <div class="change negative">↓23个月新低</div>
+                </div>
+            </div>
+            
             <div class="section-box">
                 <h2 class="section-title ai">🤖 AI与机器人</h2>
                 
-                <div class="cards">
-                    <div class="card">
-                        <h4>OpenAI 融资</h4>
-                        <div class="value">$110B</div>
-                        <div class="change positive">估值 $730B</div>
-                    </div>
-                    <div class="card">
-                        <h4>英伟达 Q4 收入</h4>
-                        <div class="value">$681亿</div>
-                        <div class="change positive">↑ +73%</div>
-                    </div>
-                    <div class="card">
-                        <h4>人形机器人出货量</h4>
-                        <div class="value">5万台+</div>
-                        <div class="change positive">2026年预测</div>
-                    </div>
-                    <div class="card">
-                        <h4>比特币 NFT 交易</h4>
-                        <div class="value">$2500万</div>
-                        <div class="change negative">↓ 创23个月新低</div>
-                    </div>
-                </div>
-                
                 <div class="news-item">
                     <div class="title">OpenAI与五角大楼达成协议，分享更多合作细节</div>
-                    <div class="summary">据TechCrunch报道，OpenAI分享了与五角大楼达成协议的更多细节。这标志着AI技术在国防领域的应用进入新阶段，同时也引发了关于AI军事应用的伦理讨论。</div>
-                    <div class="meta">来源：TechCrunch | 2026-03-02</div>
+                    <div class="summary">据TechCrunch报道，OpenAI分享了与五角大楼达成协议的更多细节。这标志着AI技术在国防领域的应用进入新阶段。</div>
+                    <div class="meta">TechCrunch | 2026-03-02</div>
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">十亿美元基础设施协议推动AI繁荣：OpenAI、Oracle、NVIDIA、Microsoft等巨头参与</div>
-                    <div class="summary">TechCrunch报道，价值十亿美元的基础设施协议正在推动AI繁荣。OpenAI、Oracle、NVIDIA、Microsoft、Google和Meta等巨头签署协议，扩大数据中心以支持AI增长，涵盖云计算和GPU资源。</div>
-                    <div class="meta">来源：TechCrunch | 2026-03-01</div>
+                    <div class="title">十亿美元基础设施协议推动AI繁荣</div>
+                    <div class="summary">TechCrunch报道，OpenAI、Oracle、NVIDIA、Microsoft、Google和Meta等巨头签署十亿美元基础设施协议，扩大数据中心支持AI增长。</div>
+                    <div class="meta">TechCrunch | 2026-03-01</div>
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">2026年AI将从炒作走向务实：新架构、更小模型、世界模型、可靠智能体</div>
-                    <div class="summary">TechCrunch分析，2026年AI行业将发生以下变化：新架构、更小模型、世界模型、可靠智能体、物理AI。投资者预测AI对企业劳动力市场的影响趋势将在2026年开始显现。</div>
-                    <div class="meta">来源：TechCrunch | 2026-01-02</div>
+                    <div class="title">2026年AI将从炒作走向务实</div>
+                    <div class="summary">TechCrunch分析，2026年AI行业将发生：新架构、更小模型、世界模型、可靠智能体、物理AI。投资者预测AI对企业劳动力市场的影响趋势将在2026年开始显现。</div>
+                    <div class="meta">TechCrunch | 2026-01-02</div>
                 </div>
                 
                 <div class="news-item">
                     <div class="title">Boston Dynamics与Google DeepMind合作开发人形机器人</div>
-                    <div class="summary">在CES 2026上，Boston Dynamics和Google DeepMind宣布建立合作伙伴关系，将DeepMind的AI与Boston Dynamics的机器人技术相结合，开发新一代人形机器人。</div>
-                    <div class="meta">来源：The Information / MLQ.ai | 2026-01</div>
+                    <div class="summary">在CES 2026上，Boston Dynamics和Google DeepMind宣布建立合作伙伴关系，将DeepMind的AI与Boston Dynamics的机器人技术相结合。</div>
+                    <div class="meta">The Information | 2026-01</div>
                 </div>
                 
                 <div class="news-item">
                     <div class="title">Meta进军人形机器人领域，计划开发家用机器人</div>
-                    <div class="summary">据内部会议泄露，Meta正在认真推进人形机器人计划——专为家庭辅助设计的机器人。Meta副总裁表示，这是公司AI战略的自然延伸，将与Reality Labs团队合作开发。</div>
-                    <div class="meta">来源：The Information / LinkedIn | 2026-02</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">Meta自研AI芯片项目受挫，转向租用谷歌TPU</div>
-                    <div class="summary">社交媒体巨头Meta近日与谷歌达成了一项跨年度、价值达数十亿美元的重磅协议，计划租用谷歌自研的张量处理单元（TPU）来开发其新一代AI模型。这一动作直接挑战英伟达在AI芯片领域的垄断地位。</div>
-                    <div class="meta">来源：新浪GPU热点小时报 | 2026-03-01</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">英伟达Q4暴赚430亿美元，黄仁勋称智能体AI拐点已来</div>
-                    <div class="summary">NVIDIA发布2026财年第四季度财报，收入达681亿美元，同比增长73%。2026财年全年，英伟达营收达到2159.4亿美元，同比增长65%；净利润则达到1200.8亿美元，同比增长65%。</div>
-                    <div class="meta">来源：证券时报 | 2026-02-27</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">2026年人形机器人出货量可望突破5万台</div>
-                    <div class="summary">2026年将是人形机器人迈向商业化的关键年，全球出货量可望突破5万台。智元、宇树、优必选、智平方提出万级规模产能规划。特斯拉Optimus、Figure AI等产品加速迭代。</div>
-                    <div class="meta">来源：机器之心 | 2026-02-28</div>
+                    <div class="summary">据内部会议泄露，Meta正在认真推进人形机器人计划——专为家庭辅助设计的机器人。这是公司AI战略的自然延伸。</div>
+                    <div class="meta">The Information | 2026-02</div>
                 </div>
                 
                 <div class="highlight-box">
@@ -836,125 +489,19 @@
             </div>
         </div>
         
-        <!-- Footer -->
         <footer>
             <p>每日简报 | Daily Briefing | 2026年3月3日</p>
             <p>更新时间：每日 7:30 AM (UTC+8) | 周一至周五日报 | 周六周报 | 周日休刊</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7;">* 简报内容由AI自动生成，仅供参考，不构成投资建议</p>
         </footer>
     </div>
     
     <script>
-        // Tab Navigation
         function showTab(tabName) {
-            // Hide all content
-            document.querySelectorAll('.content').forEach(content => {
-                content.classList.remove('active');
-            });
-            // Remove active from all tabs
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            // Show selected content
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
-            // Add active to clicked tab
             event.target.classList.add('active');
         }
-        
-        // BDI Chart
-        const bdiCtx = document.getElementById('bdiChart').getContext('2d');
-        new Chart(bdiCtx, {
-            type: 'line',
-            data: {
-                labels: ['2月24日', '2月25日', '2月26日', '2月27日', '2月28日', '3月1日', '3月2日'],
-                datasets: [{
-                    label: 'BDI指数',
-                    data: [2080, 2105, 2117, 2140, 2135, 2138, 2140],
-                    borderColor: '#3498db',
-                    backgroundColor: 'rgba(52, 152, 219, 0.15)',
-                    borderWidth: 3,
-                    pointRadius: 5,
-                    pointBackgroundColor: '#3498db',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    tension: 0.3,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: { 
-                            usePointStyle: true,
-                            color: '#e0e0e0'
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        min: 2000,
-                        ticks: { color: '#a0a0c0' },
-                        grid: { color: 'rgba(255,255,255,0.1)' }
-                    },
-                    x: {
-                        ticks: { color: '#a0a0c0' },
-                        grid: { color: 'rgba(255,255,255,0.1)' }
-                    }
-                }
-            }
-        });
-        
-        // Market Chart
-        const marketCtx = document.getElementById('marketChart').getContext('2d');
-        new Chart(marketCtx, {
-            type: 'bar',
-            data: {
-                labels: ['上证指数', '纳斯达克', '原油', '黄金', '比特币'],
-                datasets: [{
-                    label: '涨跌幅 (%)',
-                    data: [0.39, -0.14, 3.28, 1.85, 2.21],
-                    backgroundColor: [
-                        'rgba(74, 222, 128, 0.7)',
-                        'rgba(248, 113, 113, 0.7)',
-                        'rgba(74, 222, 128, 0.7)',
-                        'rgba(74, 222, 128, 0.7)',
-                        'rgba(74, 222, 128, 0.7)'
-                    ],
-                    borderColor: [
-                        '#4ade80',
-                        '#f87171',
-                        '#4ade80',
-                        '#4ade80',
-                        '#4ade80'
-                    ],
-                    borderWidth: 2,
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        ticks: { color: '#a0a0c0' },
-                        grid: { color: 'rgba(255,255,255,0.1)' }
-                    },
-                    x: {
-                        ticks: { color: '#a0a0c0' },
-                        grid: { display: false }
-                    }
-                }
-            }
-        });
     </script>
 </body>
 </html>
