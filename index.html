@@ -100,6 +100,10 @@
         .news-item .title { font-weight: 600; color: #fff; margin-bottom: 5px; font-size: 0.85rem; }
         .news-item .summary { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; margin-bottom: 5px; }
         .news-item .meta { font-size: 0.7rem; color: #667eea; }
+        .analysis { background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px; margin: 12px 0; font-size: 0.8rem; color: #b0b0c0; line-height: 1.6; }
+        .analysis strong { color: #fff; }
+        .sub-section { margin: 15px 0; }
+        .sub-title { font-size: 0.9rem; color: #a0a0c0; margin-bottom: 8px; border-left: 3px solid #667eea; padding-left: 8px; }
         footer { text-align: center; padding: 20px; color: #707090; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; }
     </style>
 </head>
@@ -122,45 +126,43 @@
             <div class="cards">
                 <div class="card">
                     <h4>BDI 干散货指数</h4>
-                    <div class="value">2,187</div>
-                    <div class="positive">↑ +2.2% (+47)</div>
+                    <div class="value">2,242</div>
+                    <div class="positive">↑ +2.51% (+55)</div>
                 </div>
                 <div class="card">
                     <h4>BCI 海岬型</h4>
-                    <div class="value">3,105</div>
-                    <div class="positive">↑ +1.8%</div>
+                    <div class="value">3,245</div>
+                    <div class="positive">↑ +3.57%</div>
                 </div>
                 <div class="card">
-                    <h4>VLCC 日租金</h4>
-                    <div class="value">$175,200</div>
-                    <div class="positive">↑ +1.6%</div>
+                    <h4>BPI 巴拿马型</h4>
+                    <div class="value">2,002</div>
+                    <div class="positive">↑ +1.16%</div>
                 </div>
                 <div class="card">
-                    <h4>Suezmax 租金</h4>
-                    <div class="value">$142,500</div>
-                    <div class="positive">↑ +2.7%</div>
+                    <h4>BSI 超灵便型</h4>
+                    <div class="value">1,383</div>
+                    <div class="positive">↑ +1.62%</div>
                 </div>
             </div>
             
             <div class="section-box">
                 <h2 class="section-title shipping">🚢 航运市场概览</h2>
                 
-                <div style="background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px; margin: 12px 0; font-size: 0.8rem; color: #b0b0c0; line-height: 1.6;">
-                    <strong>市场分析：</strong>据Baltic Exchange数据，波罗的海干散货指数(BDI)周一上涨47点至2,187点，涨幅2.2%，创12月16日以来新高。所有船型板块均上涨，投资者因伊朗冲突和主要出口国出货量减少而预期运费上涨。油轮市场方面，VLCC日租金继续上涨至175,200美元，苏伊士型上涨2.7%至142,500美元。地缘政治风险持续支撑油运市场高位运行。
+                <div class="analysis">
+                    <strong>市场分析：</strong>据Baltic Exchange数据，波罗的海干散货指数(BDI)周二上涨55点至2,242点，涨幅2.51%，创2025年12月11日以来新高，为连续第3天上涨。所有船型板块全线走强：海岬型(BCI)涨3.57%至3,245点，巴拿马型(BPI)涨1.16%至2,002点，超灵便型(BSI)涨1.62%至1,383点。BDI年初至今累计上涨19.13%，近一周涨幅5.31%，显示出近期干散货航运市场需求与运价同步走强。
                 </div>
                 
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>船型</th><th>日租金($/天)</th><th>日涨跌</th><th>备注</th></tr>
+                            <tr><th>指数</th><th>点位</th><th>日涨跌</th><th>周涨跌</th><th>年初至今</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>VLCC</td><td>175,200</td><td class="positive">+1.6%</td><td>创2020年以来新高</td></tr>
-                            <tr><td>Suezmax</td><td>142,500</td><td class="positive">+2.7%</td><td>地缘冲突支撑</td></tr>
-                            <tr><td>Aframax</td><td>87,800</td><td class="positive">+1.8%</td><td>区域航线</td></tr>
-                            <tr><td>Capesize</td><td>29,650</td><td class="positive">+2.1%</td><td>铁矿石运输</td></tr>
-                            <tr><td>Panamax</td><td>15,380</td><td class="positive">+1.3%</td><td>粮食煤炭</td></tr>
-                            <tr><td>Supramax</td><td>15,120</td><td class="positive">+1.4%</td><td>小宗散货</td></tr>
+                            <tr><td>BDI</td><td>2,242</td><td class="positive">+2.51%</td><td class="positive">+5.31%</td><td class="positive">+19.13%</td></tr>
+                            <tr><td>BCI (海岬型)</td><td>3,245</td><td class="positive">+3.57%</td><td class="positive">+6.2%</td><td class="positive">+25.4%</td></tr>
+                            <tr><td>BPI (巴拿马型)</td><td>2,002</td><td class="positive">+1.16%</td><td class="positive">+3.1%</td><td class="positive">+14.8%</td></tr>
+                            <tr><td>BSI (超灵便型)</td><td>1,383</td><td class="positive">+1.62%</td><td class="positive">+1.6%</td><td class="positive">+12.3%</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -170,9 +172,9 @@
                 <h2 class="section-title shipping">📰 行业新闻</h2>
                 
                 <div class="news-item">
-                    <div class="title">BDI创两个多月新高，伊朗冲突推动运费上涨</div>
-                    <div class="summary">波罗的海干散货指数连续第二日上涨，涨幅2.2%至2,187点，创12月16日以来最高水平。所有船型板块均上涨，投资者预期伊朗冲突将推高运费。</div>
-                    <div class="meta">Hellenic Shipping News | 2026-03-03</div>
+                    <div class="title">BDI创两个多月新高，船运费率全线走强</div>
+                    <div class="summary">波罗的海干散货航运指数周二上涨55点至2,242点，创2025年12月11日以来新高。各细分船型运价普遍坚挺，显示出近期干散货航运市场需求与运价同步走强。</div>
+                    <div class="meta">汇通财经 / 网易新闻 | 2026-03-03</div>
                 </div>
                 
                 <div class="news-item">
@@ -183,7 +185,7 @@
                 
                 <div class="news-item">
                     <div class="title">航运股大涨，招商轮船、中远海能涨停</div>
-                    <div class="summary">伊朗局势紧张推动航运运费上涨，2月24日BDI达2,129点，创1月30日以来新高。VLCC中东至中国航线日租金飙升，招商轮船、中远海能等航运股涨停。</div>
+                    <div class="summary">伊朗局势紧张推动航运运费上涨，BDI创1月30日以来新高。VLCC中东至中国航线日租金飙升，招商轮船、中远海能等航运股涨停。</div>
                     <div class="meta">格隆汇 | 2026-02-25</div>
                 </div>
             </div>
@@ -194,46 +196,45 @@
             <div class="cards">
                 <div class="card">
                     <h4>道琼斯</h4>
-                    <div class="value">43,482</div>
-                    <div class="negative">↓ -0.8% (-476)</div>
+                    <div class="value">48,501</div>
+                    <div class="negative">↓ -0.83% (-403)</div>
                 </div>
                 <div class="card">
                     <h4>标普500</h4>
-                    <div class="value">5,880</div>
-                    <div class="negative">↓ -0.9%</div>
+                    <div class="value">6,817</div>
+                    <div class="negative">↓ -0.94%</div>
                 </div>
                 <div class="card">
                     <h4>纳斯达克</h4>
-                    <div class="value">18,773</div>
-                    <div class="negative">↓ -0.7%</div>
+                    <div class="value">22,517</div>
+                    <div class="negative">↓ -1.02%</div>
                 </div>
                 <div class="card">
                     <h4>VIX波动率</h4>
-                    <div class="value">23.31</div>
-                    <div class="positive">↑ +17.35%</div>
+                    <div class="value">25+</div>
+                    <div class="positive">↑ 创2025年4月新高</div>
                 </div>
             </div>
             
             <div class="section-box">
                 <h2 class="section-title finance">📈 全球市场概览</h2>
                 
-                <div style="background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px; margin: 12px 0; font-size: 0.8rem; color: #b0b0c0; line-height: 1.6;">
-                    <strong>市场综述：</strong>美股周二大幅下跌，道指跌476点(-0.8%)，标普500跌0.9%，纳斯达克跌0.7%。VIX波动率指数飙升17.35%至23.31，显示市场恐慌情绪升温。中东冲突持续发酵，特朗普表示美国海军将开始为油轮护航通过霍尔木兹海峡。亚太股市普遍下跌，韩国KOSPI跌超5%，日本日经225跌2.49%。
+                <div class="analysis">
+                    <strong>市场综述：</strong>美股周二大幅低开，道指一度下跌超过1,270点，最低跌至47,626点。尾盘跌幅收窄，最终道指跌403点(-0.83%)，标普500跌0.94%，纳斯达克跌1.02%。VIX波动率指数突破25点，创2025年4月以来最高水平。中东冲突持续发酵，特朗普誓言在伊朗问题上将"不惜代价"，市场担忧战争长期化将推高油价、重燃通胀，影响美联储降息路径。午后特朗普宣布将为过境霍尔木兹海峡油轮提供保险及护航，原油、美元和美债收益率自高位大幅回落。
                 </div>
                 
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>市场</th><th>指数</th><th>点位</th><th>涨跌</th></tr>
+                            <tr><th>市场</th><th>指数</th><th>收盘</th><th>涨跌</th><th>盘中最大跌幅</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>美股</td><td>道琼斯</td><td>43,482</td><td class="negative">-0.8%</td></tr>
-                            <tr><td>美股</td><td>标普500</td><td>5,880</td><td class="negative">-0.9%</td></tr>
-                            <tr><td>美股</td><td>纳斯达克</td><td>18,773</td><td class="negative">-0.7%</td></tr>
-                            <tr><td>亚太</td><td>日经225</td><td>36,850</td><td class="negative">-2.49%</td></tr>
-                            <tr><td>亚太</td><td>韩国KOSPI</td><td>2,450</td><td class="negative">-5.2%</td></tr>
-                            <tr><td>亚太</td><td>恒生指数</td><td>23,850</td><td class="negative">-0.29%</td></tr>
-                            <tr><td>欧股</td><td>英国富时100</td><td>8,756</td><td class="positive">+0.42%</td></tr>
+                            <tr><td>美股</td><td>道琼斯</td><td>48,501.27</td><td class="negative">-0.83%</td><td class="negative">-2.6%</td></tr>
+                            <tr><td>美股</td><td>标普500</td><td>6,816.63</td><td class="negative">-0.94%</td><td class="negative">-2.2%</td></tr>
+                            <tr><td>美股</td><td>纳斯达克</td><td>22,516.69</td><td class="negative">-1.02%</td><td class="negative">-2.3%</td></tr>
+                            <tr><td>大宗商品</td><td>布伦特原油</td><td>$81.23</td><td class="positive">+4.49%</td><td>一度突破$85</td></tr>
+                            <tr><td>大宗商品</td><td>WTI原油</td><td>$74.20</td><td class="positive">+4.17%</td><td>一度突破$77</td></tr>
+                            <tr><td>贵金属</td><td>现货黄金</td><td>$5,095</td><td class="negative">-4.25%</td><td>一度跌破$5,000</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -243,21 +244,33 @@
                 <h2 class="section-title finance">📰 财经新闻</h2>
                 
                 <div class="news-item">
-                    <div class="title">道指暴跌1000点，创2025年4月以来最差交易日</div>
-                    <div class="summary">道琼斯工业平均指数周二上午跌超1000点(-2.1%)，创2025年4月以来最差交易日。中东冲突持续引发市场动荡。</div>
-                    <div class="meta">CNBC | 2026-03-04</div>
+                    <div class="title">美股盘中暴跌超2%，道指一度跌逾1200点</div>
+                    <div class="summary">美股周二大幅低开，道指一度下跌超过1,270点，标普500和纳斯达克盘中均跌超2%。尾盘在特朗普宣布护航消息后跌幅收窄。</div>
+                    <div class="meta">新浪财经 / 财联社 | 2026-03-04</div>
                 </div>
                 
                 <div class="news-item">
                     <div class="title">特朗普：美国海军将为油轮护航通过霍尔木兹海峡</div>
-                    <div class="summary">特朗普表示，如有必要，美国海军将开始为油轮护航通过霍尔木兹海峡。伊朗此前誓言在美国和以色列周末打击后封锁该海峡。</div>
+                    <div class="summary">特朗普表示，如有必要，美国海军将开始为油轮护航通过霍尔木兹海峡。消息公布后美股跌幅收窄，原油价格回落。</div>
                     <div class="meta">CNBC | 2026-03-04</div>
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">韩国军工股大涨，韩华航空涨22%</div>
-                    <div class="summary">韩国军工股周二大涨，韩华航空涨22%，韩国航空宇宙产业涨7%，LIG Nex1涨30%，因伊朗战争引发全球对军工股兴趣。</div>
-                    <div class="meta">CNBC | 2026-03-04</div>
+                    <div class="title">VIX飙升至2025年4月以来最高水平</div>
+                    <div class="summary">芝加哥期权交易所波动率指数(VIX)周二突破25点，跃升至2025年4月以来最高水平，反映市场对中东战争持续时间的担忧。</div>
+                    <div class="meta">新浪财经 | 2026-03-04</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">黄金价格重挫，一度跌破5000美元/盎司</div>
+                    <div class="summary">国际贵金属价格齐跌，现货黄金一度跌破5000美元/盎司，现货白银、现货铂金一度跌超10%。截至收盘，伦敦金报5095美元/盎司，下跌4.25%。</div>
+                    <div class="meta">21世纪经济报道 | 2026-03-04</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">中概股普跌，纳斯达克中国金龙指数跌3.34%</div>
+                    <div class="summary">中概股普遍下跌，纳斯达克中国金龙指数跌3.34%。个股方面，禾赛科技跌近9%，金山云跌超8%。</div>
+                    <div class="meta">21世纪经济报道 | 2026-03-04</div>
                 </div>
             </div>
         </div>
@@ -265,23 +278,45 @@
         <!-- 时政板块 -->
         <div id="politics" class="content">
             <div class="section-box">
-                <h2 class="section-title politics">🇺🇸 美国/中东要闻</h2>
+                <h2 class="section-title politics">🇮🇷 伊朗局势</h2>
                 
                 <div class="news-item">
                     <div class="title">伊朗最高领袖哈梅内伊在美以袭击中身亡</div>
-                    <div class="summary">伊朗官方媒体3月1日确认，86岁的最高领袖阿亚图拉·阿里·哈梅内伊在德黑兰官邸遭袭身亡。此次行动代号"史诗之怒"(美国)和"怒吼雄狮"(以色列)，造成约49名高级领导人死亡。</div>
-                    <div class="meta">Sadr Media | 2026-03-03</div>
+                    <div class="summary">伊朗官方媒体3月1日确认，86岁的最高领袖阿亚图拉·阿里·哈梅内伊在2月28日美以联合空袭中身亡。哈梅内伊与7名最高安全层成员在近乎同时的打击中身亡，前后仅间隔60秒。约12名家属和核心随行人员一同遇袭。伊朗宣布全国哀悼40天。</div>
+                    <div class="meta">新京报 / 中国新闻周刊 | 2026-03-03</div>
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">特朗普政府战争目标频繁变动引发质疑</div>
-                    <div class="summary">参议员马克·华纳表示，战争目标已变动四五次：从伊朗核能力到弹道导弹，再到政权更迭，现在是击沉伊朗舰队。目标不明确引发对结束游戏的担忧。</div>
-                    <div class="meta">CNBC | 2026-03-04</div>
+                    <div class="title">美以行动击毙约40名伊朗高级官员</div>
+                    <div class="summary">以色列宣布已击毙约40名伊朗高级官员，包括：前伊朗国家安全委员会秘书阿里·沙姆哈尼、伊斯兰革命卫队总司令帕克普尔、武装部队总参谋长穆萨维、国防部长阿齐兹·纳西尔扎德等。</div>
+                    <div class="meta">财新网 | 2026-03-01</div>
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">美国务院下令撤离巴林、伊拉克、约旦三国非紧急人员</div>
-                    <div class="summary">因安全担忧，美国务院下令撤离驻巴林、伊拉克、约旦的非紧急政府人员及其家属。此前美国基地在巴林遭报复性打击，伊拉克酒店遭无人机袭击。</div>
+                    <div class="title">伊朗反击造成560名美军伤亡，6名美军士兵身亡</div>
+                    <div class="summary">伊朗伊斯兰革命卫队称反击行动已造成560名美军伤亡。美国中央司令部确认有3名美国现役人员丧生，5人重伤。另有3架美军F-15E战斗机在科威特坠毁。</div>
+                    <div class="meta">央视新闻 / 新京报 | 2026-03-03</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">中国外交部：坚决反对和强烈谴责</div>
+                    <div class="summary">中国外交部发言人3月1日表示，袭击并杀害伊朗最高领导人严重侵犯伊朗主权安全，践踏《联合国宪章》宗旨原则和国际关系基本准则，中方对此予以坚决反对和强烈谴责，敦促立即停止军事行动。</div>
+                    <div class="meta">新华社 | 2026-03-01</div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title politics">🇺🇸 美国/国际反应</h2>
+                
+                <div class="news-item">
+                    <div class="title">特朗普：军事行动预计将持续四到五周</div>
+                    <div class="summary">特朗普3月1日接受福克斯新闻采访时表示，美以军事行动预计将持续"四到五周"，美方伤亡预计还会上升。他称已造成48名伊朗领导人死亡。</div>
+                    <div class="meta">财新网 | 2026-03-01</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">美国务院下令撤离中东三国非紧急人员</div>
+                    <div class="summary">美国务院下令撤离驻巴林、伊拉克、约旦的非紧急政府人员及其家属。此前美国基地在巴林遭报复性打击，伊拉克酒店遭无人机袭击。</div>
                     <div class="meta">CNBC | 2026-03-04</div>
                 </div>
                 
@@ -290,21 +325,11 @@
                     <div class="summary">据Rotate数据，美以对伊朗军事行动后48小时内，全球约18%空运能力退出市场。迪拜国际机场遭无人机两次袭击，4名员工受伤。</div>
                     <div class="meta">Supply Status | 2026-03-02</div>
                 </div>
-            </div>
-            
-            <div class="section-box">
-                <h2 class="section-title politics">🇨🇳 中国/亚太要闻</h2>
                 
                 <div class="news-item">
-                    <div class="title">印度航空公司暂停中东航班</div>
-                    <div class="summary">印度航空、IndiGo等暂停所有中东航班至3月1日。DGCA将11国列为禁飞区，孟买和德里机场单日取消近180个航班。</div>
-                    <div class="meta">Travel And Tour World | 2026-03-01</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">澳大利亚敦促公民立即离开伊朗、以色列和黎巴嫩</div>
-                    <div class="summary">澳大利亚外交贸易部(DFAT)发布紧急警告，敦促在伊朗、以色列和黎巴嫩的澳大利亚公民如安全应立即离开。冲突可能进一步升级。</div>
-                    <div class="meta">Go Insurance | 2026-03-02</div>
+                    <div class="title">多国民众抗议美以袭击，巴基斯坦冲突致20死</div>
+                    <div class="summary">土耳其、希腊、巴基斯坦、也门、黎巴嫩等多国民众举行反美反以示威游行。在巴基斯坦，抗议活动演变为暴力冲突，已造成至少20人死亡、超100人受伤。</div>
+                    <div class="meta">财新网 | 2026-03-02</div>
                 </div>
             </div>
         </div>
@@ -313,58 +338,100 @@
         <div id="ai" class="content">
             <div class="cards">
                 <div class="card">
-                    <h4>OpenAI自研芯片</h4>
-                    <div class="value">2026</div>
-                    <div class="positive">与Broadcom合作</div>
+                    <h4>OpenAI GPT-5.3</h4>
+                    <div class="value">上线</div>
+                    <div class="positive">全面免费开放</div>
                 </div>
                 <div class="card">
-                    <h4>Meta计算集群</h4>
-                    <div class="value">1GW</div>
-                    <div class="positive">Prometheus项目</div>
+                    <h4>Meta AI购物</h4>
+                    <div class="value">测试</div>
+                    <div class="positive">挑战ChatGPT</div>
                 </div>
                 <div class="card">
-                    <h4>科技巨头会议</h4>
+                    <h4>白宫AI峰会</h4>
                     <div class="value">3月4日</div>
-                    <div class="positive">白宫签署 pledge</div>
+                    <div class="positive">七巨头签署承诺</div>
                 </div>
                 <div class="card">
-                    <h4>AI芯片订单</h4>
-                    <div class="value">$10B+</div>
-                    <div class="positive">Broadcom新订单</div>
+                    <h4>阿里QoderWork</h4>
+                    <div class="value">开放</div>
+                    <div class="positive">桌面AI助手</div>
                 </div>
             </div>
             
             <div class="section-box">
                 <h2 class="section-title ai">🤖 AI与机器人</h2>
                 
-                <div class="news-item">
-                    <div class="title">OpenAI与Broadcom合作开发首款AI芯片，2026年推出</div>
-                    <div class="summary">OpenAI计划2026年推出首款AI芯片，与Broadcom合作，台积电代工。芯片仅供内部使用，旨在减少对英伟达的依赖。Broadcom CEO Hock Tan透露已获得超100亿美元AI基础设施订单。</div>
-                    <div class="meta">Financial Times / Reuters | 2026-03</div>
+                <div class="sub-section">
+                    <div class="sub-title">OpenAI动态</div>
+                    
+                    <div class="news-item">
+                        <div class="title">OpenAI上线GPT-5.3即时版，全面免费开放</div>
+                        <div class="summary">2026年3月4日，OpenAI正式推出GPT-5.3即时版网站，即日起面向所有ChatGPT用户免费开放使用。</div>
+                        <div class="meta">千家网 | 2026-03-04</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">OpenAI与Broadcom合作开发首款AI芯片，2026年推出</div>
+                        <div class="summary">OpenAI计划2026年推出首款AI芯片，与Broadcom合作，台积电代工。芯片仅供内部使用，旨在减少对英伟达的依赖。</div>
+                        <div class="meta">Financial Times / Reuters | 2026-03</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">OpenAI、Google、PayPal合作推出AI支付功能</div>
+                        <div class="summary">OpenAI与Google Cloud、PayPal合作，将在ChatGPT中嵌入购物和支付功能。2026年起，用户可直接在聊天中搜索商品、获取推荐并完成购买。</div>
+                        <div class="meta">The AI Library | 2026-03</div>
+                    </div>
                 </div>
                 
-                <div class="news-item">
-                    <div class="title">Meta任命OpenAI前研究员赵盛佳领导AI实验室</div>
-                    <div class="summary">Meta CEO扎克伯格任命前OpenAI研究员赵盛佳(Shengjia Zhao)领导新成立的Meta Superintelligence Labs。赵盛佳曾参与ChatGPT、GPT-4和o1模型开发。Meta计划2026年部署1吉瓦计算集群Prometheus。</div>
-                    <div class="meta">TechCrunch / 智人AI | 2026-03</div>
+                <div class="sub-section">
+                    <div class="sub-title">Meta动态</div>
+                    
+                    <div class="news-item">
+                        <div class="title">Meta任命OpenAI前研究员赵盛佳领导AI实验室</div>
+                        <div class="summary">Meta CEO扎克伯格任命前OpenAI研究员赵盛佳(Shengjia Zhao)领导新成立的Meta Superintelligence Labs。赵盛佳曾参与ChatGPT、GPT-4和o1模型开发。</div>
+                        <div class="meta">TechCrunch | 2026-03</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">Meta加入AI购物大战，挑战ChatGPT和Gemini</div>
+                        <div class="summary">Meta正在其AI聊天机器人中测试购物功能，向部分美国用户推出。用户可请求产品推荐，聊天机器人以轮播图形式回复，展示品牌、网站和价格信息。</div>
+                        <div class="meta">彭博社 / 搜狐 | 2026-03-04</div>
+                    </div>
                 </div>
                 
-                <div class="news-item">
-                    <div class="title">科技巨头将在白宫签署AI数据中心能源承诺</div>
-                    <div class="summary">亚马逊、谷歌、Meta、微软、xAI、Oracle和OpenAI将于3月4日在白宫与特朗普会面，签署承诺为AI数据中心自备电力，确保美国民众电费不上涨。</div>
-                    <div class="meta">CNBC | 2026-02-26</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">OpenAI、Google、PayPal合作推出AI支付功能</div>
-                    <div class="summary">OpenAI与Google Cloud、PayPal合作，将在ChatGPT中嵌入购物和支付功能。2026年起，用户可直接在聊天中搜索商品、获取推荐并完成购买。</div>
-                    <div class="meta">The AI Library | 2026-03</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">WhatsApp禁止通用AI助手接入，2026年生效</div>
-                    <div class="summary">Meta旗下WhatsApp更新商业API政策，明确禁止通用AI助手类应用接入，2026年1月15日生效。受影响企业包括OpenAI、Perplexity等。WhatsApp全球月活用户超30亿。</div>
-                    <div class="meta">TechCrunch / 智人AI | 2026-03</div>
+                <div class="sub-section">
+                    <div class="sub-title">行业动态</div>
+                    
+                    <div class="news-item">
+                        <div class="title">科技巨头将在白宫签署AI数据中心能源承诺</div>
+                        <div class="summary">亚马逊、谷歌、Meta、微软、xAI、Oracle和OpenAI将于3月4日在白宫与特朗普会面，签署承诺为AI数据中心自备电力，确保美国民众电费不上涨。</div>
+                        <div class="meta">36氪 / CNBC | 2026-02-27</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">阿里巴巴全面开放桌面AI助手QoderWork</div>
+                        <div class="summary">3月3日，阿里巴巴正式全面开放桌面AI助手QoderWork，同步上线Mac与Windows双版本。用户无需本地部署即可获得具备任务执行能力的专属AI助理。</div>
+                        <div class="meta">千家网 | 2026-03-04</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">苹果或深化与谷歌AI合作，Siri升级可能使用云服务</div>
+                        <div class="summary">苹果正在考虑让谷歌在其数据中心内部署服务器，运行未来由Gemini驱动的新版Siri。苹果目前已在在线存储、内部AI模型训练等服务上依赖谷歌云。</div>
+                        <div class="meta">千家网 | 2026-03-04</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">高通CEO：机器人技术有望两年内实现规模化</div>
+                        <div class="summary">高通CEO克里斯蒂诺·阿蒙表示，随着公司拓展智能手机之外的业务，未来两年内机器人技术将成为一个"更大的机遇"，将实现规模化。</div>
+                        <div class="meta">千家网 | 2026-03-04</div>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="title">WhatsApp禁止通用AI助手接入，2026年生效</div>
+                        <div class="summary">Meta旗下WhatsApp更新商业API政策，明确禁止通用AI助手类应用接入，2026年1月15日生效。受影响企业包括OpenAI、Perplexity等。</div>
+                        <div class="meta">TechCrunch | 2026-03</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -372,6 +439,7 @@
         <footer>
             <p>每日简报 | Daily Briefing | 2026年3月4日</p>
             <p>更新时间：每日 7:30 AM (UTC+8) | 周一至周五日报 | 周六周报 | 周日休刊</p>
+            <p style="margin-top:8px;">数据来源：Baltic Exchange、汇通财经、财联社、新浪财经、CNBC、财新网、新京报、36氪、TechCrunch</p>
         </footer>
     </div>
 </body>
