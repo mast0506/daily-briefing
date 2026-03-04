@@ -104,6 +104,15 @@
         .analysis strong { color: #fff; }
         .sub-section { margin: 15px 0; }
         .sub-title { font-size: 0.9rem; color: #a0a0c0; margin-bottom: 8px; border-left: 3px solid #667eea; padding-left: 8px; }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .highlight-box h4 { color: #667eea; margin-bottom: 6px; font-size: 0.85rem; }
+        .highlight-box p { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; }
         footer { text-align: center; padding: 20px; color: #707090; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; }
     </style>
 </head>
@@ -184,9 +193,9 @@
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">航运股大涨，招商轮船、中远海能涨停</div>
-                    <div class="summary">伊朗局势紧张推动航运运费上涨，BDI创1月30日以来新高。VLCC中东至中国航线日租金飙升，招商轮船、中远海能等航运股涨停。</div>
-                    <div class="meta">格隆汇 | 2026-02-25</div>
+                    <div class="title">"三桶油"携手两连板，股价续创新高</div>
+                    <div class="summary">3月3日，A股"三桶油"再度集体涨停，史上首次齐齐走出两连板。中国石油报13.15元创11年来新高，中国石化报7.82元创2008年以来新高，中国海油报43.41元刷新上市以来最高点。</div>
+                    <div class="meta">澎湃新闻 | 2026-03-03</div>
                 </div>
             </div>
         </div>
@@ -210,9 +219,9 @@
                     <div class="negative">↓ -1.02%</div>
                 </div>
                 <div class="card">
-                    <h4>VIX波动率</h4>
-                    <div class="value">25+</div>
-                    <div class="positive">↑ 创2025年4月新高</div>
+                    <h4>上证指数</h4>
+                    <div class="value">4,123</div>
+                    <div class="negative">↓ -1.43%</div>
                 </div>
             </div>
             
@@ -220,23 +229,77 @@
                 <h2 class="section-title finance">📈 全球市场概览</h2>
                 
                 <div class="analysis">
-                    <strong>市场综述：</strong>美股周二大幅低开，道指一度下跌超过1,270点，最低跌至47,626点。尾盘跌幅收窄，最终道指跌403点(-0.83%)，标普500跌0.94%，纳斯达克跌1.02%。VIX波动率指数突破25点，创2025年4月以来最高水平。中东冲突持续发酵，特朗普誓言在伊朗问题上将"不惜代价"，市场担忧战争长期化将推高油价、重燃通胀，影响美联储降息路径。午后特朗普宣布将为过境霍尔木兹海峡油轮提供保险及护航，原油、美元和美债收益率自高位大幅回落。
+                    <strong>市场综述：</strong>美股周二大幅低开，道指一度下跌超过1,270点，最低跌至47,626点。尾盘跌幅收窄，最终道指跌403点(-0.83%)，标普500跌0.94%，纳斯达克跌1.02%。VIX波动率指数突破25点，创2025年4月以来最高水平。A股方面，上证指数跌1.43%，深证成指跌3.07%，创业板指跌2.57%，全市场超4800只个股下跌，成交额3.13万亿。欧洲股市全线大跌，德国DAX跌2.7%，法国CAC40跌近2%，英国富时100跌1.28%。
                 </div>
                 
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr><th>市场</th><th>指数</th><th>收盘</th><th>涨跌</th><th>盘中最大跌幅</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>美股</td><td>道琼斯</td><td>48,501.27</td><td class="negative">-0.83%</td><td class="negative">-2.6%</td></tr>
-                            <tr><td>美股</td><td>标普500</td><td>6,816.63</td><td class="negative">-0.94%</td><td class="negative">-2.2%</td></tr>
-                            <tr><td>美股</td><td>纳斯达克</td><td>22,516.69</td><td class="negative">-1.02%</td><td class="negative">-2.3%</td></tr>
-                            <tr><td>大宗商品</td><td>布伦特原油</td><td>$81.23</td><td class="positive">+4.49%</td><td>一度突破$85</td></tr>
-                            <tr><td>大宗商品</td><td>WTI原油</td><td>$74.20</td><td class="positive">+4.17%</td><td>一度突破$77</td></tr>
-                            <tr><td>贵金属</td><td>现货黄金</td><td>$5,095</td><td class="negative">-4.25%</td><td>一度跌破$5,000</td></tr>
-                        </tbody>
-                    </table>
+                <div class="sub-section">
+                    <div class="sub-title">美股市场</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>盘中最大跌幅</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>道琼斯</td><td>48,501.27</td><td class="negative">-0.83%</td><td class="negative">-2.6%</td></tr>
+                                <tr><td>标普500</td><td>6,816.63</td><td class="negative">-0.94%</td><td class="negative">-2.2%</td></tr>
+                                <tr><td>纳斯达克</td><td>22,516.69</td><td class="negative">-1.02%</td><td class="negative">-2.3%</td></tr>
+                                <tr><td>VIX波动率</td><td>25+</td><td class="positive">创2025年4月新高</td><td>-</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="sub-section">
+                    <div class="sub-title">A股市场</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>成交额</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>上证指数</td><td>4,122.68</td><td class="negative">-1.43%</td><td>1.43万亿</td></tr>
+                                <tr><td>深证成指</td><td>14,022.39</td><td class="negative">-3.07%</td><td>1.70万亿</td></tr>
+                                <tr><td>创业板指</td><td>3,209.48</td><td class="negative">-2.57%</td><td>7,505亿</td></tr>
+                                <tr><td>恒生指数</td><td>25,768.08</td><td class="negative">-1.12%</td><td>3,705亿港元</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="sub-section">
+                    <div class="sub-title">欧洲市场</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>指数</th><th>收盘</th><th>涨跌</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>德国DAX</td><td>24,205.28</td><td class="negative">-2.7%</td></tr>
+                                <tr><td>法国CAC40</td><td>8,277.48</td><td class="negative">-2.19%</td></tr>
+                                <tr><td>英国富时100</td><td>10,659.95</td><td class="negative">-1.28%</td></tr>
+                                <tr><td>欧洲斯托克50</td><td>-</td><td class="negative">-2.5%</td></tr>
+                                <tr><td>意大利富时MIB</td><td>-</td><td class="negative">-3.0%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="sub-section">
+                    <div class="sub-title">大宗商品</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>品种</th><th>价格</th><th>涨跌</th><th>备注</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>布伦特原油</td><td>$81.40</td><td class="positive">+4.71%</td><td>创四年来最大两日涨幅</td></tr>
+                                <tr><td>WTI原油</td><td>$74.56</td><td class="positive">+4.67%</td><td>三日累计涨14.34%</td></tr>
+                                <tr><td>现货黄金</td><td>$5,099.40</td><td class="negative">-3.98%</td><td>一度跌破$5,000</td></tr>
+                                <tr><td>现货白银</td><td>$82.47</td><td class="negative">-7.18%</td><td>-</td></tr>
+                                <tr><td>COMEX黄金</td><td>$5,099.40</td><td class="negative">-3.98%</td><td>-</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             
@@ -250,33 +313,38 @@
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">特朗普：美国海军将为油轮护航通过霍尔木兹海峡</div>
-                    <div class="summary">特朗普表示，如有必要，美国海军将开始为油轮护航通过霍尔木兹海峡。消息公布后美股跌幅收窄，原油价格回落。</div>
-                    <div class="meta">CNBC | 2026-03-04</div>
+                    <div class="title">A股黑色星期二：超4800只个股下跌，油气股逆势涨停</div>
+                    <div class="summary">A股三大指数集体收跌，深成指跌超3%，创业板指跌超2%。油气股逆势爆发掀涨停潮，洲际油气6天4板，"三桶油"两连板。半导体产业链持续走弱。</div>
+                    <div class="meta">新浪财经 | 2026-03-03</div>
                 </div>
                 
                 <div class="news-item">
-                    <div class="title">VIX飙升至2025年4月以来最高水平</div>
-                    <div class="summary">芝加哥期权交易所波动率指数(VIX)周二突破25点，跃升至2025年4月以来最高水平，反映市场对中东战争持续时间的担忧。</div>
-                    <div class="meta">新浪财经 | 2026-03-04</div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="title">黄金价格重挫，一度跌破5000美元/盎司</div>
-                    <div class="summary">国际贵金属价格齐跌，现货黄金一度跌破5000美元/盎司，现货白银、现货铂金一度跌超10%。截至收盘，伦敦金报5095美元/盎司，下跌4.25%。</div>
-                    <div class="meta">21世纪经济报道 | 2026-03-04</div>
+                    <div class="title">美联储卡什卡利：伊朗战争阴云笼罩货币政策前景</div>
+                    <div class="summary">明尼阿波利斯联储主席卡什卡利表示，伊朗冲突加剧了美国经济前景的不确定性。他原本预计2026年有空间降息一次，但现在必须观察冲击的持续时间和影响。</div>
+                    <div class="meta">财联社 / 财新网 | 2026-03-04</div>
                 </div>
                 
                 <div class="news-item">
                     <div class="title">中概股普跌，纳斯达克中国金龙指数跌3.34%</div>
-                    <div class="summary">中概股普遍下跌，纳斯达克中国金龙指数跌3.34%。个股方面，禾赛科技跌近9%，金山云跌超8%。</div>
+                    <div class="summary">中概股普遍下跌，纳斯达克中国金龙指数跌3.34%。个股方面，台积电跌4.27%，阿里巴巴跌4.88%，禾赛科技跌近9%，金山云跌超8%。</div>
                     <div class="meta">21世纪经济报道 | 2026-03-04</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">韩国股市创18个月最大日跌幅，KOSPI跌超7%</div>
+                    <div class="summary">受中东局势推升油价、全球风险偏好下滑等因素影响，韩国Kospi指数周二回调超7%，触发熔断机制。三星与SK海力士股价大跌约10%。</div>
+                    <div class="meta">新浪财经 | 2026-03-04</div>
                 </div>
             </div>
         </div>
         
         <!-- 时政板块 -->
         <div id="politics" class="content">
+            <div class="highlight-box">
+                <h4>🇨🇳 中国两会今日开幕</h4>
+                <p>全国政协十四届四次会议将于3月4日下午3时在北京人民大会堂开幕，3月11日上午闭幕，会期7天。十四届全国人大四次会议将于3月5日召开。今年为"十五五"开局之年，政府工作报告将提出2026年工作目标。</p>
+            </div>
+            
             <div class="section-box">
                 <h2 class="section-title politics">🇮🇷 伊朗局势</h2>
                 
@@ -312,6 +380,12 @@
                     <div class="title">特朗普：军事行动预计将持续四到五周</div>
                     <div class="summary">特朗普3月1日接受福克斯新闻采访时表示，美以军事行动预计将持续"四到五周"，美方伤亡预计还会上升。他称已造成48名伊朗领导人死亡。</div>
                     <div class="meta">财新网 | 2026-03-01</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">特朗普：美国海军将为油轮护航通过霍尔木兹海峡</div>
+                    <div class="summary">特朗普表示，如有必要，美国海军将开始为油轮护航通过霍尔木兹海峡，美国将为通行油轮提供保险。消息公布后美股跌幅收窄，原油价格回落。</div>
+                    <div class="meta">CNBC | 2026-03-04</div>
                 </div>
                 
                 <div class="news-item">
@@ -439,7 +513,7 @@
         <footer>
             <p>每日简报 | Daily Briefing | 2026年3月4日</p>
             <p>更新时间：每日 7:30 AM (UTC+8) | 周一至周五日报 | 周六周报 | 周日休刊</p>
-            <p style="margin-top:8px;">数据来源：Baltic Exchange、汇通财经、财联社、新浪财经、CNBC、财新网、新京报、36氪、TechCrunch</p>
+            <p style="margin-top:8px;">数据来源：Baltic Exchange、汇通财经、财联社、新浪财经、CNBC、财新网、新京报、新华社、36氪、TechCrunch、华尔街见闻</p>
         </footer>
     </div>
 </body>
