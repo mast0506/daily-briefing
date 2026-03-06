@@ -3,283 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 - 2026年3月5日</title>
+    <title>每日简报 - 2026年3月6日</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             min-height: 100vh;
-            padding: 20px;
+            color: #e0e0e0;
+            padding: 12px;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { text-align: center; padding: 20px 10px 15px; }
+        header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .header {
-            text-align: center;
-            color: white;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-        }
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        .header .date {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        .category {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .category:hover {
-            transform: translateY(-5px);
-        }
-        .category-header {
+        .date { font-size: 0.8rem; color: #a0a0c0; }
+        .nav-tabs {
             display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 15px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 3px 5px;
         }
-        .category-icon {
-            font-size: 2rem;
-            margin-right: 15px;
-        }
-        .category-title {
-            font-size: 1.4rem;
-            color: #333;
-            font-weight: 600;
-        }
-        .category-tag {
-            margin-left: auto;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .nav-tab {
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            cursor: pointer;
             font-weight: 500;
+            color: #8080a0;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
-        .tag-politics { background: #ffebee; color: #c62828; }
-        .tag-shipping { background: #e3f2fd; color: #1565c0; }
-        .tag-finance { background: #e8f5e9; color: #2e7d32; }
-        .tag-ai { background: #f3e5f5; color: #7b1fa2; }
-        .news-list {
-            list-style: none;
-        }
-        .news-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #f5f5f5;
-            display: flex;
-            align-items: flex-start;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .news-bullet {
-            color: #667eea;
-            margin-right: 12px;
-            font-weight: bold;
-        }
-        .news-content {
-            flex: 1;
-        }
-        .news-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-            line-height: 1.5;
-        }
-        .news-source {
-            font-size: 0.85rem;
-            color: #888;
-        }
-        .news-source a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        .news-source a:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            text-align: center;
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
-            opacity: 0.8;
-            font-size: 0.9rem;
+            border-color: transparent;
         }
-        @media (max-width: 600px) {
-            .header h1 { font-size: 1.8rem; }
-            .category { padding: 20px; }
-            .category-title { font-size: 1.2rem; }
+        .content { display: none; }
+        .content.active { display: block; }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
         }
+        @media (max-width: 768px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+        .card h4 { font-size: 0.65rem; color: #8080a0; margin-bottom: 6px; }
+        .card .value { font-size: 1.1rem; font-weight: bold; color: #fff; margin-bottom: 3px; }
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .section-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid;
+        }
+        .shipping { border-color: #3498db; color: #3498db; }
+        .finance { border-color: #e74c3c; color: #e74c3c; }
+        .politics { border-color: #9b59b6; color: #9b59b6; }
+        .ai { border-color: #27ae60; color: #27ae60; }
+        .table-wrapper { overflow-x: auto; margin-bottom: 12px; border-radius: 8px; background: rgba(0,0,0,0.15); }
+        table { width: 100%; border-collapse: collapse; min-width: 450px; font-size: 0.8rem; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: rgba(102, 126, 234, 0.15); color: #667eea; font-weight: 600; font-size: 0.75rem; }
+        .news-item {
+            background: rgba(255,255,255,0.02);
+            border-left: 2px solid #667eea;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+        }
+        .news-item .title { font-weight: 600; color: #fff; margin-bottom: 5px; font-size: 0.85rem; }
+        .news-item .summary { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; margin-bottom: 5px; }
+        .news-item .meta { font-size: 0.7rem; color: #667eea; }
+        .analysis { background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px; margin: 12px 0; font-size: 0.8rem; color: #b0b0c0; line-height: 1.6; }
+        .analysis strong { color: #fff; }
+        .sub-section { margin: 15px 0; }
+        .sub-title { font-size: 0.9rem; color: #a0a0c0; margin-bottom: 8px; border-left: 3px solid #667eea; padding-left: 8px; }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .highlight-box h4 { color: #667eea; margin-bottom: 6px; font-size: 0.85rem; }
+        .highlight-box p { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; }
+        footer { text-align: center; padding: 20px; color: #707090; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>📰 每日资讯简报</h1>
-            <div class="date">2026年3月5日 星期四</div>
+        <header>
+            <h1>📊 每日简报</h1>
+            <div class="date">2026年3月6日 星期五 | 第46期</div>
+        </header>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('shipping').classList.add('active');event.target.classList.add('active');">🚢 航运</div>
+            <div class="nav-tab" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('finance').classList.add('active');event.target.classList.add('active');">💰 财经</div>
+            <div class="nav-tab" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('politics').classList.add('active');event.target.classList.add('active');">🌍 时政</div>
+            <div class="nav-tab" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('ai').classList.add('active');event.target.classList.add('active');">🤖 AI</div>
         </div>
-
-        <!-- 时政新闻 -->
-        <div class="category">
-            <div class="category-header">
-                <span class="category-icon">🏛️</span>
-                <span class="category-title">时政要闻</span>
-                <span class="category-tag tag-politics">POLITICS</span>
+        
+        <!-- 航运板块 -->
+        <div id="shipping" class="content active">
+            <div class="cards">
+                <div class="card">
+                    <h4>BDI 干散货指数</h4>
+                    <div class="value">2,138</div>
+                    <div class="negative">↓ -4.25% (-95)</div>
+                </div>
+                <div class="card">
+                    <h4>BCI 海岬型</h4>
+                    <div class="value">3,050</div>
+                    <div class="negative">↓ -4.1%</div>
+                </div>
+                <div class="card">
+                    <h4>BPI 巴拿马型</h4>
+                    <div class="value">1,965</div>
+                    <div class="negative">↓ -1.0%</div>
+                </div>
+                <div class="card">
+                    <h4>BSI 超灵便型</h4>
+                    <div class="value">1,368</div>
+                    <div class="negative">↓ -0.5%</div>
+                </div>
             </div>
-            <ul class="news-list">
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">践行全过程人民民主 凝聚推进中国式现代化强大力量</div>
-                        <div class="news-source">来源：人民网</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">全国人大常委会法工委共设立60个基层立法联系点，带动省、市两级人大设立联系点7800多个</div>
-                        <div class="news-source">来源：人民网</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">2025年1400余名政协委员反映社情民意信息1.2万余篇</div>
-                        <div class="news-source">来源：人民网</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 航运新闻 -->
-        <div class="category">
-            <div class="category-header">
-                <span class="category-icon">🚢</span>
-                <span class="category-title">航运动态</span>
-                <span class="category-tag tag-shipping">SHIPPING</span>
+            
+            <div class="section-box">
+                <h2 class="section-title shipping">🚢 航运市场概览</h2>
+                
+                <div class="analysis">
+                    <strong>市场分析：</strong>据Baltic Exchange数据，波罗的海干散货指数(BDI)周四大幅下跌95点至2,138点，跌幅4.25%，创近期最大单日跌幅。各船型板块全线走弱：海岬型(BCI)跌4.1%，巴拿马型(BPI)跌1.0%，超灵便型(BSI)跌0.5%。BDI年初至今累计涨幅收窄至13.73%。中东冲突持续，霍尔木兹海峡通行风险仍支撑市场关注。
+                </div>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>指数</th><th>点位</th><th>日涨跌</th><th>年初至今</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BDI</td><td>2,138</td><td class="negative">-4.25%</td><td class="positive">+13.73%</td></tr>
+                            <tr><td>BCI (海岬型)</td><td>3,050</td><td class="negative">-4.1%</td><td class="positive">+17.8%</td></tr>
+                            <tr><td>BPI (巴拿马型)</td><td>1,965</td><td class="negative">-1.0%</td><td class="positive">+12.6%</td></tr>
+                            <tr><td>BSI (超灵便型)</td><td>1,368</td><td class="negative">-0.5%</td><td class="positive">+10.9%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <ul class="news-list">
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">特朗普指美军可护卫霍尔木兹海峡运油轮</div>
-                        <div class="news-source">来源：TVB新闻</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">法国拟派航母赴地中海，多国派包机接公民撤离中东</div>
-                        <div class="news-source">来源：TVB新闻</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">亚太区主要股市全线下挫，港股连跌三日收市跌逾500点</div>
-                        <div class="news-source">来源：TVB新闻</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 财经新闻 -->
-        <div class="category">
-            <div class="category-header">
-                <span class="category-icon">📈</span>
-                <span class="category-title">财经市场</span>
-                <span class="category-tag tag-finance">FINANCE</span>
+            
+            <div class="section-box">
+                <h2 class="section-title shipping">📰 行业新闻</h2>
+                
+                <div class="news-item">
+                    <div class="title">BDI大幅下跌4.25%，创近期最大单日跌幅</div>
+                    <div class="summary">波罗的海干散货指数周四下跌95点至2,138点，跌幅4.25%，为近期最大单日跌幅。各船型板块全线走弱，海岬型领跌。</div>
+                    <div class="meta">东方财富 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">中东供应扰动，铝价持续上涨</div>
+                    <div class="summary">3月5日，沪铝期货主力合约收报24815元/吨，上涨1.31%。继卡塔尔铝厂计划停产之后，巴林铝业也宣布公司遭遇不可抗力事件，相关货物无法通过霍尔木兹海峡运输。</div>
+                    <div class="meta">期货日报 | 2026-03-06</div>
+                </div>
             </div>
-            <ul class="news-list">
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">贵州茅台已累计回购57.25万股，支付总金额8.01亿元</div>
-                        <div class="news-source">来源：新浪财经</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">吉利李书福：新能源汽车行业不要内卷式竞争，需要内涵式发展</div>
-                        <div class="news-source">来源：新浪财经</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">深圳房地产市场：一线城市率先开始大幅降房价</div>
-                        <div class="news-source">来源：财经网</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">林俊旸卸任阿里通义千问负责人，对阿里可能不是坏事</div>
-                        <div class="news-source">来源：新浪财经</div>
-                    </div>
-                </li>
-            </ul>
         </div>
-
-        <!-- AI机器人新闻 -->
-        <div class="category">
-            <div class="category-header">
-                <span class="category-icon">🤖</span>
-                <span class="category-title">AI与机器人</span>
-                <span class="category-tag tag-ai">AI & ROBOTICS</span>
+        
+        <!-- 财经板块 -->
+        <div id="finance" class="content">
+            <div class="cards">
+                <div class="card">
+                    <h4>道琼斯</h4>
+                    <div class="value">48,023</div>
+                    <div class="negative">↓ -1.47% (-717)</div>
+                </div>
+                <div class="card">
+                    <h4>标普500</h4>
+                    <div class="value">6,823</div>
+                    <div class="negative">↓ -0.68%</div>
+                </div>
+                <div class="card">
+                    <h4>纳斯达克</h4>
+                    <div class="value">22,732</div>
+                    <div class="negative">↓ -0.33%</div>
+                </div>
+                <div class="card">
+                    <h4>上证指数</h4>
+                    <div class="value">4,109</div>
+                    <div class="positive">↑ +0.64%</div>
+                </div>
             </div>
-            <ul class="news-list">
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">2026年智能体AI展望：从实验室演示向生产环境跨越</div>
-                        <div class="news-source">来源：36氪</div>
+            
+            <div class="section-box">
+                <h2 class="section-title finance">📈 全球市场概览</h2>
+                
+                <div class="analysis">
+                    <strong>市场综述：</strong>美股周四再度下跌，道指跌1.47%，标普500跌0.68%，纳斯达克跌0.33%。美以伊战争担忧再度加剧，原油大涨，美油涨3%突破76美元/桶，全球债市出现新一轮抛售。A股方面，三大指数集体收涨，上证指数涨0.64%，深证成指涨1.23%，创业板指涨1.66%，超4000只个股上涨。
+                </div>
+                
+                <div class="sub-section">
+                    <div class="sub-title">美股市场</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>指数</th><th>收盘</th><th>涨跌</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>道琼斯</td><td>48,022.52</td><td class="negative">-1.47%</td></tr>
+                                <tr><td>标普500</td><td>6,822.85</td><td class="negative">-0.68%</td></tr>
+                                <tr><td>纳斯达克</td><td>22,731.56</td><td class="negative">-0.33%</td></tr>
+                                <tr><td>中概股指数</td><td>-</td><td class="negative">-1.4%</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">摩根大通部署的智能体已覆盖超过3万名员工</div>
-                        <div class="news-source">来源：36氪</div>
+                </div>
+                
+                <div class="sub-section">
+                    <div class="sub-title">A股市场</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>成交额</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>上证指数</td><td>4,108.57</td><td class="positive">+0.64%</td><td>1.068万亿</td></tr>
+                                <tr><td>深证成指</td><td>14,088.84</td><td class="positive">+1.23%</td><td>1.322万亿</td></tr>
+                                <tr><td>创业板指</td><td>3,216.94</td><td class="positive">+1.66%</td><td>6,089亿</td></tr>
+                                <tr><td>恒生指数</td><td>25,321.34</td><td class="positive">+0.28%</td><td>-</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">特斯拉Optimus VS 宇树：预设代码与端到端AI的技术代差对比</div>
-                        <div class="news-source">来源：哔哩哔哩</div>
+                </div>
+                
+                <div class="sub-section">
+                    <div class="sub-title">大宗商品</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>品种</th><th>价格</th><th>涨跌</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>WTI原油</td><td>$81.01</td><td class="positive">+8.51%</td></tr>
+                                <tr><td>布伦特原油</td><td>$85.41</td><td class="positive">+4.93%</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">特斯拉第三代人形机器人即将亮相</div>
-                        <div class="news-source">来源：哔哩哔哩</div>
-                    </div>
-                </li>
-                <li class="news-item">
-                    <span class="news-bullet">•</span>
-                    <div class="news-content">
-                        <div class="news-title">CES 2026现场：陪伴机器人开始从展示设备走向家庭成员</div>
-                        <div class="news-source">来源：36氪</div>
-                    </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title finance">📰 财经新闻</h2>
+                
+                <div class="news-item">
+                    <div class="title">美股再度下跌，道指跌近800点</div>
+                    <div class="summary">美股周四大幅下滑，道指跌788.72点，跌幅1.62%，纳指、标普500指数也下跌。美以伊战争推动油价上涨，美油涨3%突破76美元/桶。</div>
+                    <div class="meta">新浪财经 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">A股三大指数集体收涨，超4000只个股上涨</div>
+                    <div class="summary">A股三大指数今日集体收涨，深证成指、创业板指均涨超1%。两市个股涨多跌少，上涨个股超4000只；两市全天成交2.39万亿元。</div>
+                    <div class="meta">中国经济网 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">国际油价大涨，WTI原油涨超8%</div>
+                    <div class="summary">截至收盘，WTI原油期货4月合约收涨8.51%，报81.01美元/桶；布伦特原油期货5月合约涨4.93%，报85.41美元/桶。</div>
+                    <div class="meta">期货日报 | 2026-03-06</div>
+                </div>
+            </div>
         </div>
-
-        <div class="footer">
-            <p>📧 由 OpenClaw 每日简报系统自动生成</p>
-            <p>更新时间：2026年3月5日</p>
+        
+        <!-- 时政板块 -->
+        <div id="politics" class="content">
+            <div class="highlight-box">
+                <h4>🇨🇳 中国两会：十四届全国人大四次会议昨日开幕</h4>
+                <p>十四届全国人大四次会议3月5日上午在北京人民大会堂开幕，国务院总理李强作政府工作报告。今日两会进入第二天议程。</p>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title politics">🇮🇷 伊朗局势（冲突第7天）</h2>
+                
+                <div class="news-item">
+                    <div class="title">伊朗启动第21轮"真实承诺4"反击行动</div>
+                    <div class="summary">伊朗伊斯兰革命卫队当地时间6日宣布，第21轮"真实承诺4"反击行动已启动，该行动结合了导弹和无人机的联合打击，并发射了"海巴尔·谢坎"弹道导弹，袭击了位于特拉维夫市中心的目标。</div>
+                    <div class="meta">央视新闻 / 期货日报 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">伊朗称成功突破以色列7层防御系统</div>
+                    <div class="summary">伊朗伊斯兰革命卫队发布公告称，在"真实承诺-4"行动第19轮打击中使用了包括"霍拉姆沙赫尔-4"导弹在内的武器，成功突破以色列的7层防御系统并命中以境内目标。</div>
+                    <div class="meta">期货日报 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">伊朗称使用无人机击中美军"林肯"号航母</div>
+                    <div class="summary">伊朗武装部队表示，美国"亚伯拉罕·林肯"号航空母舰在接近伊朗水域边界340公里的阿曼海，被伊朗伊斯兰革命卫队海军无人机击中，该航母同其驱逐舰迅速撤离，迄今已远离该区域超过1000公里。</div>
+                    <div class="meta">央视新闻 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">伊朗：美以袭击已造成1045名伊朗人丧生</div>
+                    <div class="summary">据伊朗塔斯尼姆通讯社援引伊朗烈士和退伍军人事务基金会的统计数字，美国和以色列对伊朗的"侵略和军事攻击"已造成1045名伊朗人丧生。</div>
+                    <div class="meta">新华社 | 2026-03-06</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">以军称已对德黑兰发动第13轮空袭</div>
+                    <div class="summary">以色列国防军宣布，以色列空军已对伊朗首都德黑兰的目标发动新一轮空袭。这是自本轮冲突开始以来对德黑兰发动的第13轮空袭。</div>
+                    <div class="meta">央视新闻 | 2026-03-06</div>
+                </div>
+            </div>
         </div>
+        
+        <!-- AI板块 -->
+        <div id="ai" class="content">
+            <div class="cards">
+                <div class="card">
+                    <h4>千问负责人</h4>
+                    <div class="value">卸任</div>
+                    <div class="negative">林俊旸离职</div>
+                </div>
+                <div class="card">
+                    <h4>OpenAI</h4>
+                    <div class="value">GPT-5.3</div>
+                    <div class="positive">免费开放</div>
+                </div>
+                <div class="card">
+                    <h4>Meta</h4>
+                    <div class="value">AI购物</div>
+                    <div class="positive">测试中</div>
+                </div>
+                <div class="card">
+                    <h4>高通</h4>
+                    <div class="value">机器人</div>
+                    <div class="positive">两年内规模化</div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title ai">🤖 AI与机器人</h2>
+                
+                <div class="news-item">
+                    <div class="title">阿里巴巴千问90后核心负责人林俊旸卸任</div>
+                    <div class="summary">3月4日凌晨，林俊旸在X发文宣布卸任千问核心负责人。林俊旸在朋友圈发文称："抱歉各位朋友，今天不回复消息和电话了，我真的需要休息。"</div>
+                    <div class="meta">每日经济新闻 | 2026-03-05</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">OpenAI上线GPT-5.3即时版，全面免费开放</div>
+                    <div class="summary">2026年3月4日，OpenAI正式推出GPT-5.3即时版网站，即日起面向所有ChatGPT用户免费开放使用。</div>
+                    <div class="meta">千家网 | 2026-03-04</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">Meta加入AI购物大战，挑战ChatGPT和Gemini</div>
+                    <div class="summary">Meta正在其AI聊天机器人中测试购物功能，向部分美国用户推出。用户可请求产品推荐，聊天机器人以轮播图形式回复。</div>
+                    <div class="meta">彭博社 | 2026-03-04</div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="title">高通CEO：机器人技术有望两年内实现规模化</div>
+                    <div class="summary">高通CEO克里斯蒂诺·阿蒙表示，随着公司拓展智能手机之外的业务，未来两年内机器人技术将成为一个"更大的机遇"。</div>
+                    <div class="meta">千家网 | 2026-03-04</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>每日简报 | Daily Briefing | 2026年3月6日</p>
+            <p>更新时间：每日 7:30 AM (UTC+8) | 周一至周五日报 | 周六周报 | 周日休刊</p>
+            <p style="margin-top:8px;">数据来源：Baltic Exchange、东方财富、新浪财经、中国经济网、央视新闻、新华社、期货日报</p>
+        </footer>
     </div>
 </body>
 </html>
