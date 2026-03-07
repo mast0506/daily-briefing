@@ -100,19 +100,6 @@
         .news-item .title { font-weight: 600; color: #fff; margin-bottom: 5px; font-size: 0.85rem; }
         .news-item .summary { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; margin-bottom: 5px; }
         .news-item .meta { font-size: 0.7rem; color: #667eea; }
-        .analysis { background: rgba(255,255,255,0.02); border-radius: 8px; padding: 12px; margin: 12px 0; font-size: 0.8rem; color: #b0b0c0; line-height: 1.6; }
-        .analysis strong { color: #fff; }
-        .sub-section { margin: 15px 0; }
-        .sub-title { font-size: 0.9rem; color: #a0a0c0; margin-bottom: 8px; border-left: 3px solid #667eea; padding-left: 8px; }
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 10px;
-        }
-        .highlight-box h4 { color: #667eea; margin-bottom: 6px; font-size: 0.85rem; }
-        .highlight-box p { color: #a0a0b0; font-size: 0.75rem; line-height: 1.5; }
         .weekly-summary {
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
             border: 1px solid rgba(102, 126, 234, 0.3);
@@ -129,58 +116,40 @@
     <div class="container">
         <header>
             <h1>📊 每周简报</h1>
-            <div class="date">2026年3月7日 星期六 | 第47期 | 本周汇总</div>
+            <div class="date">2026年3月7日 星期六 | 第47期 | 本周汇总 (3月2日-3月7日)</div>
         </header>
         
         <div class="nav-tabs">
-            <div class="nav-tab active" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('shipping').classList.add('active');event.target.classList.add('active');">🚢 航运</div>
-            <div class="nav-tab" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('finance').classList.add('active');event.target.classList.add('active');">💰 财经</div>
-            <div class="nav-tab" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('politics').classList.add('active');event.target.classList.add('active');">🌍 时政</div>
-            <div class="nav-tab" onclick="document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById('ai').classList.add('active');event.target.classList.add('active');">🤖 AI</div>
+            <div class="nav-tab active" onclick="showTab('shipping')">🚢 航运</div>
+            <div class="nav-tab" onclick="showTab('finance')">💰 财经</div>
+            <div class="nav-tab" onclick="showTab('politics')">🌍 时政</div>
+            <div class="nav-tab" onclick="showTab('ai')">🤖 AI</div>
         </div>
         
-        <!-- 航运板块 -->
         <div id="shipping" class="content active">
             <div class="weekly-summary">
                 <h3>🚢 航运市场本周综述</h3>
-                <p>本周BDI指数大幅波动，周初创2025年12月以来新高2,242点，周末回落至2,138点。受中东冲突影响，航运市场风险溢价持续高企。海岬型船表现最为强劲，年初至今累计涨幅仍超17%。</p>
+                <p>本周BDI指数经历"过山车"行情：周初创2025年12月以来新高2,242点，随后连续三日下跌，周五收于2,010点，创2月11日以来新低。周跌幅达10.3%。海岬型船(BCI)跌幅最大，周五单日暴跌10.84%。中东冲突对航运市场的影响从风险溢价转向需求担忧。</p>
             </div>
             
             <div class="cards">
-                <div class="card">
-                    <h4>BDI 周初</h4>
-                    <div class="value">2,242</div>
-                    <div class="positive">创12月新高</div>
-                </div>
-                <div class="card">
-                    <h4>BDI 周末</h4>
-                    <div class="value">2,138</div>
-                    <div class="negative">↓ -4.6%</div>
-                </div>
-                <div class="card">
-                    <h4>BCI 年初至今</h4>
-                    <div class="value">+17.8%</div>
-                    <div class="positive">海岬型领涨</div>
-                </div>
-                <div class="card">
-                    <h4>BDI 年初至今</h4>
-                    <div class="value">+13.7%</div>
-                    <div class="positive">整体强势</div>
-                </div>
+                <div class="card"><h4>BDI 本周最高</h4><div class="value">2,242</div><div class="positive">创12月11日新高</div></div>
+                <div class="card"><h4>BDI 本周收盘</h4><div class="value">2,010</div><div class="negative">周跌幅 -10.3%</div></div>
+                <div class="card"><h4>BCI 周五跌幅</h4><div class="value">-10.84%</div><div class="negative">海岬型领跌</div></div>
+                <div class="card"><h4>BDI 年初至今</h4><div class="value">+6.9%</div><div class="positive">仍保持正增长</div></div>
             </div>
             
             <div class="section-box">
-                <h2 class="section-title shipping">📈 本周航运数据</h2>
-                
+                <h2 class="section-title shipping">📈 本周航运数据一览</h2>
                 <div class="table-wrapper">
                     <table>
-                        <thead>
-                            <tr><th>日期</th><th>BDI</th><th>涨跌</th><th>备注</th></tr>
-                        </thead>
+                        <thead><tr><th>日期</th><th>BDI</th><th>BCI</th><th>BPI</th><th>涨跌</th></tr></thead>
                         <tbody>
-                            <tr><td>3月3日</td><td>2,242</td><td class="positive">+2.51%</td><td>创12月11日新高</td></tr>
-                            <tr><td>3月4日</td><td>2,233</td><td class="negative">-0.40%</td><td>小幅回调</td></tr>
-                            <tr><td>3月5日</td><td>2,138</td><td class="negative">-4.25%</td><td>大幅下跌</td></tr>
+                            <tr><td>3月2日</td><td>2,187</td><td>3,133</td><td>1,979</td><td class="positive">+2.20%</td></tr>
+                            <tr><td>3月3日</td><td>2,242</td><td>3,245</td><td>2,002</td><td class="positive">+2.51%</td></tr>
+                            <tr><td>3月4日</td><td>2,233</td><td>3,202</td><td>1,985</td><td class="negative">-0.40%</td></tr>
+                            <tr><td>3月5日</td><td>2,138</td><td>2,950</td><td>1,965</td><td class="negative">-4.25%</td></tr>
+                            <tr><td>3月6日</td><td>2,010</td><td>2,631</td><td>1,962</td><td class="negative">-5.99%</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -188,142 +157,126 @@
             
             <div class="section-box">
                 <h2 class="section-title shipping">📰 本周航运要闻</h2>
-                
                 <div class="news-item">
-                    <div class="title">BDI创两个多月新高，船运费率全线走强</div>
-                    <div class="summary">3月3日波罗的海干散货指数上涨55点至2,242点，创2025年12月11日以来新高，各细分船型运价普遍坚挺。</div>
-                    <div class="meta">汇通财经 | 2026-03-03</div>
+                    <div class="title">BDI创两个多月新高后大幅回落</div>
+                    <div class="summary">3月3日波罗的海干散货指数上涨55点至2,242点，创2025年12月11日以来新高。但随后连续三日下跌，3月6日收于2,010点，创2月11日以来新低，周跌幅达10.3%。</div>
+                    <div class="meta">汇通财经 | 2026-03-03/06</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">"三桶油"携手两连板，股价续创新高</div>
-                    <div class="summary">3月3日A股"三桶油"再度集体涨停，史上首次齐齐走出两连板。中国石油创11年来新高，中国石化创2008年以来新高。</div>
+                    <div class="title">海岬型船运费暴跌10.84%</div>
+                    <div class="summary">3月6日海岬型运费指数(BCI)报2,631点，单日暴跌10.84%，创近期最大单日跌幅，成为拖累BDI的主要因素。</div>
+                    <div class="meta">东方财富 | 2026-03-06</div>
+                </div>
+                <div class="news-item">
+                    <div class="title">"三桶油"本周表现强势</div>
+                    <div class="summary">3月3日A股"三桶油"再度集体涨停，史上首次齐齐走出两连板。中国石油创11年来新高，中国石化创2008年以来新高，中国海油刷新上市以来最高点。</div>
                     <div class="meta">澎湃新闻 | 2026-03-03</div>
                 </div>
-                
+                <div class="news-item">
+                    <div class="title">长荣海运暂停中东多国订舱</div>
+                    <div class="summary">3月5日长荣海运发布客户须知，即日起暂停受理巴林、科威特、卡塔尔、阿联酋、沙特阿拉伯（吉达除外）、伊拉克乌姆盖斯尔港的新订舱申请。</div>
+                    <div class="meta">同花顺 | 2026-03-06</div>
+                </div>
                 <div class="news-item">
                     <div class="title">中东供应扰动，铝价持续上涨</div>
-                    <div class="summary">3月5日沪铝期货主力合约收报24815元/吨，上涨1.31%。卡塔尔铝厂计划停产，巴林铝业宣布遭遇不可抗力事件。</div>
+                    <div class="summary">3月5日沪铝期货主力合约收报24815元/吨，上涨1.31%。继卡塔尔铝厂计划停产之后，巴林铝业也宣布公司遭遇不可抗力事件，相关货物无法通过霍尔木兹海峡运输。</div>
                     <div class="meta">期货日报 | 2026-03-06</div>
                 </div>
             </div>
         </div>
         
-        <!-- 财经板块 -->
         <div id="finance" class="content">
             <div class="weekly-summary">
                 <h3>💰 全球财经本周综述</h3>
-                <p>本周全球市场剧烈波动，中东冲突引发避险情绪。美股周初暴跌后反弹，周末再度下跌；A股表现相对韧性，周三反弹超4000股上涨。原油价格大幅飙升，WTI本周涨幅超8%。</p>
+                <p>本周全球市场剧烈波动，中东冲突是主导因素。美股道指本周累计下跌3.01%，标普500跌2.02%，纳指跌1.24%。A股本周同样调整，上证跌0.93%，深证跌2.22%，创业板跌2.45%。原油成为本周最大赢家，布伦特原油突破90美元，周涨幅达23%。VIX恐慌指数飙升至29点以上，创2025年4月以来新高。</p>
             </div>
             
             <div class="cards">
-                <div class="card">
-                    <h4>道指本周</h4>
-                    <div class="value">48,023</div>
-                    <div class="negative">波动剧烈</div>
-                </div>
-                <div class="card">
-                    <h4>WTI原油</h4>
-                    <div class="value">$81.01</div>
-                    <div class="positive">↑ +8.51%</div>
-                </div>
-                <div class="card">
-                    <h4>上证指数</h4>
-                    <div class="value">4,109</div>
-                    <div class="positive">周中反弹</div>
-                </div>
-                <div class="card">
-                    <h4>创业板指</h4>
-                    <div class="value">3,217</div>
-                    <div class="positive">+1.66%</div>
-                </div>
+                <div class="card"><h4>道指本周</h4><div class="value">-3.01%</div><div class="negative">创近一年最差周表现</div></div>
+                <div class="card"><h4>布伦特原油</h4><div class="value">$90+</div><div class="positive">周涨幅 +23%</div></div>
+                <div class="card"><h4>VIX指数</h4><div class="value">29+</div><div class="negative">创2025年4月新高</div></div>
+                <div class="card"><h4>A股成交额</h4><div class="value">2.6万亿</div><div class="positive">日均成交额</div></div>
             </div>
             
             <div class="section-box">
                 <h2 class="section-title finance">📈 本周市场数据</h2>
-                
-                <div class="sub-section">
-                    <div class="sub-title">美股市场</div>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr><th>日期</th><th>道琼斯</th><th>标普500</th><th>纳斯达克</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>3月3日</td><td class="negative">-0.83%</td><td class="negative">-0.94%</td><td class="negative">-1.02%</td></tr>
-                                <tr><td>3月4日</td><td class="positive">+0.49%</td><td class="positive">+0.78%</td><td class="positive">+1.29%</td></tr>
-                                <tr><td>3月5日</td><td class="negative">-1.47%</td><td class="negative">-0.68%</td><td class="negative">-0.33%</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>指数</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>本周累计</th></tr></thead>
+                        <tbody>
+                            <tr><td>道琼斯</td><td>-0.15%</td><td>-0.83%</td><td>+0.49%</td><td>-1.47%</td><td>-0.95%</td><td class="negative">-3.01%</td></tr>
+                            <tr><td>标普500</td><td>+0.04%</td><td>-0.94%</td><td>+0.78%</td><td>-0.68%</td><td>-1.33%</td><td class="negative">-2.02%</td></tr>
+                            <tr><td>纳斯达克</td><td>+0.36%</td><td>-1.02%</td><td>+1.29%</td><td>-0.33%</td><td>-1.59%</td><td class="negative">-1.24%</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <div class="sub-section">
-                    <div class="sub-title">A股市场</div>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr><th>日期</th><th>上证指数</th><th>深证成指</th><th>创业板指</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>3月3日</td><td class="negative">-1.43%</td><td class="negative">-3.07%</td><td class="negative">-2.57%</td></tr>
-                                <tr><td>3月4日</td><td class="negative">-0.98%</td><td class="negative">-0.75%</td><td class="negative">-1.41%</td></tr>
-                                <tr><td>3月5日</td><td class="positive">+0.64%</td><td class="positive">+1.23%</td><td class="positive">+1.66%</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>指数</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>本周累计</th></tr></thead>
+                        <tbody>
+                            <tr><td>上证指数</td><td>+0.19%</td><td>-1.43%</td><td>-0.98%</td><td>+0.64%</td><td>+0.47%</td><td class="negative">-0.93%</td></tr>
+                            <tr><td>深证成指</td><td>-0.07%</td><td>-3.07%</td><td>-0.75%</td><td>+1.23%</td><td>-0.20%</td><td class="negative">-2.22%</td></tr>
+                            <tr><td>创业板指</td><td>-0.19%</td><td>-2.57%</td><td>-1.41%</td><td>+1.66%</td><td>-0.49%</td><td class="negative">-2.45%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>品种</th><th>周初</th><th>周末</th><th>本周涨跌</th></tr></thead>
+                        <tbody>
+                            <tr><td>WTI原油</td><td>$71.23</td><td>$87.66</td><td class="positive">+23.1%</td></tr>
+                            <tr><td>布伦特原油</td><td>$77.74</td><td>$90.20</td><td class="positive">+16.0%</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
             <div class="section-box">
                 <h2 class="section-title finance">📰 本周财经要闻</h2>
-                
                 <div class="news-item">
-                    <div class="title">美股盘中暴跌超2%，道指一度跌逾1200点</div>
-                    <div class="summary">3月3日美股大幅低开，道指一度下跌超过1,270点，标普500和纳斯达克盘中均跌超2%，创2025年4月以来最差盘中表现。</div>
-                    <div class="meta">新浪财经 | 2026-03-04</div>
+                    <div class="title">美股创近一年最差周表现，道指累跌3%</div>
+                    <div class="summary">本周美股三大股指均录得跌幅，道指累计下跌3.01%，创近一年最差周表现；标普500指数累跌2.02%；纳指累跌1.24%。VIX指数飙升至29点以上。</div>
+                    <div class="meta">新浪财经 | 2026-03-07</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">A股黑色星期二：超4800只个股下跌</div>
-                    <div class="summary">3月3日A股三大指数集体收跌，深成指跌超3%，创业板指跌超2%，全市场超4800只个股下跌，成交额3.13万亿。</div>
-                    <div class="meta">新浪财经 | 2026-03-03</div>
+                    <div class="title">布伦特原油突破90美元，本周暴涨23%</div>
+                    <div class="summary">3月6日布伦特原油期货突破90美元/桶，为2024年4月以来首次，盘中大涨5.3%。本周布伦特原油累计上涨23%，WTI原油涨幅达23.1%。</div>
+                    <div class="meta">财联社 | 2026-03-06</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">美联储卡什卡利：伊朗战争阴云笼罩货币政策前景</div>
+                    <div class="title">美国2月非农就业数据意外下降</div>
+                    <div class="summary">2月非农就业人数减少9.2万，与1月份向下修正后的12.6万增幅形成鲜明对比，也远低于预期的增长5万。失业率从4.3%升至4.4%。</div>
+                    <div class="meta">新浪财经 | 2026-03-07</div>
+                </div>
+                <div class="news-item">
+                    <div class="title">美联储卡什卡利：伊朗战争影响货币政策前景</div>
                     <div class="summary">明尼阿波利斯联储主席卡什卡利表示，伊朗冲突加剧了美国经济前景的不确定性，原本预计2026年有空间降息一次，现在必须观察冲击的持续时间和影响。</div>
                     <div class="meta">财联社 | 2026-03-04</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">国际油价大涨，WTI原油涨超8%</div>
-                    <div class="summary">3月5日WTI原油期货收涨8.51%，报81.01美元/桶；布伦特原油期货涨4.93%，报85.41美元/桶，创近期新高。</div>
-                    <div class="meta">期货日报 | 2026-03-06</div>
+                    <div class="title">A股本周调整，电力设备板块涨幅居前</div>
+                    <div class="summary">本周A股三大指数以调整为主，上证指数累计下跌0.93%，深证成指跌2.22%，创业板指跌2.45%。板块方面，电力设备、天然气等板块涨幅居前。</div>
+                    <div class="meta">新浪财经 | 2026-03-06</div>
                 </div>
             </div>
         </div>
         
-        <!-- 时政板块 -->
         <div id="politics" class="content">
             <div class="weekly-summary">
                 <h3>🌍 国际时政本周综述</h3>
-                <p>本周最大事件为美以伊冲突爆发并持续升级。2月28日美以联合空袭伊朗，最高领袖哈梅内伊身亡，引发地区局势剧烈动荡。冲突已进入第7天，双方互有攻防，国际油价飙升，全球 markets 震荡。</p>
-            </div>
-            
-            <div class="highlight-box">
-                <h4>🇨🇳 中国两会本周召开</h4>
-                <p>全国政协十四届四次会议3月4日下午开幕，十四届全国人大四次会议3月5日上午开幕，国务院总理李强作政府工作报告。今年为"十五五"开局之年。</p>
+                <p>本周最大事件为美以伊冲突爆发并持续升级。2月28日美以联合空袭伊朗，最高领袖哈梅内伊身亡，引发地区局势剧烈动荡。冲突已进入第8天，双方互有攻防，国际油价飙升，全球市场震荡。中国两会本周召开，全国政协十四届四次会议3月4日开幕，十四届全国人大四次会议3月5日开幕。</p>
             </div>
             
             <div class="section-box">
-                <h2 class="section-title politics">🇮🇷 美以伊冲突时间线</h2>
-                
+                <h2 class="section-title politics">🇨🇳 中国两会本周召开</h2>
+                <p style="color: #b0b0c0; font-size: 0.8rem; line-height: 1.6;">全国政协十四届四次会议3月4日下午开幕，十四届全国人大四次会议3月5日上午开幕，国务院总理李强作政府工作报告。今年为"十五五"开局之年，政府工作报告提出2026年GDP增长目标5%左右。</p>
+            </div>
+            
+            <div class="section-box">
+                <h2 class="section-title politics">🇮🇷 美以伊冲突时间线（本周）</h2>
                 <div class="table-wrapper">
                     <table>
-                        <thead>
-                            <tr><th>日期</th><th>事件</th></tr>
-                        </thead>
+                        <thead><tr><th>日期</th><th>事件</th></tr></thead>
                         <tbody>
                             <tr><td>2月28日</td><td>美以联合空袭伊朗，最高领袖哈梅内伊身亡</td></tr>
                             <tr><td>3月1日</td><td>伊朗确认哈梅内伊身亡，宣布全国哀悼40天</td></tr>
@@ -331,6 +284,7 @@
                             <tr><td>3月3日</td><td>伊朗称反击造成560名美军伤亡</td></tr>
                             <tr><td>3月4日</td><td>伊朗袭击以色列国防部大楼和本·古里安机场</td></tr>
                             <tr><td>3月5日</td><td>伊朗启动第21轮反击，称击中美军"林肯"号航母</td></tr>
+                            <tr><td>3月6日</td><td>伊朗称突破以色列7层防御系统</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -338,25 +292,31 @@
             
             <div class="section-box">
                 <h2 class="section-title politics">📰 本周时政要闻</h2>
-                
                 <div class="news-item">
                     <div class="title">伊朗最高领袖哈梅内伊在美以袭击中身亡</div>
-                    <div class="summary">2月28日美以联合空袭中，86岁的伊朗最高领袖哈梅内伊身亡。同时遇难的还有约40名伊朗高级官员，包括革命卫队总司令、武装部队总参谋长等。</div>
+                    <div class="summary">2月28日美以联合空袭中，86岁的伊朗最高领袖哈梅内伊身亡。同时遇难的还有约40名伊朗高级官员，包括革命卫队总司令、武装部队总参谋长等。伊朗宣布全国哀悼40天。</div>
                     <div class="meta">新京报 / 财新网 | 2026-03-01</div>
                 </div>
-                
                 <div class="news-item">
                     <div class="title">中国外交部：坚决反对和强烈谴责</div>
                     <div class="summary">中国外交部发言人表示，袭击并杀害伊朗最高领导人严重侵犯伊朗主权安全，中方对此予以坚决反对和强烈谴责，敦促立即停止军事行动。</div>
                     <div class="meta">新华社 | 2026-03-01</div>
                 </div>
-                
                 <div class="news-item">
                     <div class="title">伊朗称成功突破以色列7层防御系统</div>
-                    <div class="summary">3月5日伊朗伊斯兰革命卫队称，使用"霍拉姆沙赫尔-4"导弹等武器，成功突破以色列的7层防御系统并命中以境内目标。</div>
+                    <div class="summary">3月6日伊朗伊斯兰革命卫队称，使用"霍拉姆沙赫尔-4"导弹等武器，成功突破以色列的7层防御系统并命中以境内目标，摧毁7套雷达系统。</div>
                     <div class="meta">期货日报 | 2026-03-06</div>
                 </div>
-                
+                <div class="news-item">
+                    <div class="title">伊朗称使用无人机击中美军"林肯"号航母</div>
+                    <div class="summary">伊朗武装部队表示，美国"亚伯拉罕·林肯"号航空母舰在阿曼海被伊朗海军无人机击中，该航母同其驱逐舰迅速撤离，已远离该区域超过1000公里。</div>
+                    <div class="meta">央视新闻 | 2026-03-06</div>
+                </div>
+                <div class="news-item">
+                    <div class="title">美以袭击已造成1045名伊朗人丧生</div>
+                    <div class="summary">据伊朗塔斯尼姆通讯社统计，美国和以色列对伊朗的"侵略和军事攻击"已造成1045名伊朗人丧生。以军称已投下超5000枚炸弹，美军称打击超2000个目标。</div>
+                    <div class="meta">新华社 | 2026-03-06</div>
+                </div>
                 <div class="news-item">
                     <div class="title">普京：考虑主动给欧洲"断气"</div>
                     <div class="summary">俄罗斯总统普京表示，反正欧盟迟早要禁止进口俄气，不如俄罗斯主动给欧洲"断气"，停止向欧洲市场供应并转向新兴市场。</div>
@@ -365,82 +325,67 @@
             </div>
         </div>
         
-        <!-- AI板块 -->
         <div id="ai" class="content">
             <div class="weekly-summary">
                 <h3>🤖 AI行业本周综述</h3>
-                <p>本周AI领域重大人事变动：阿里巴巴千问核心负责人林俊旸卸任。OpenAI发布GPT-5.3免费开放，Meta进军AI购物领域，高通看好机器人技术前景。</p>
+                <p>本周AI领域重大人事变动：阿里巴巴千问核心负责人林俊旸卸任，引发行业关注。OpenAI发布GPT-5.3免费开放，Meta进军AI购物领域，高通看好机器人技术前景。白宫AI峰会七巨头签署能源承诺，AI基础设施建设加速。</p>
             </div>
             
             <div class="cards">
-                <div class="card">
-                    <h4>OpenAI</h4>
-                    <div class="value">GPT-5.3</div>
-                    <div class="positive">免费开放</div>
-                </div>
-                <div class="card">
-                    <h4>阿里巴巴</h4>
-                    <div class="value">林俊旸</div>
-                    <div class="negative">卸任千问负责人</div>
-                </div>
-                <div class="card">
-                    <h4>Meta</h4>
-                    <div class="value">AI购物</div>
-                    <div class="positive">测试中</div>
-                </div>
-                <div class="card">
-                    <h4>高通</h4>
-                    <div class="value">机器人</div>
-                    <div class="positive">两年内规模化</div>
-                </div>
+                <div class="card"><h4>OpenAI</h4><div class="value">GPT-5.3</div><div class="positive">免费开放</div></div>
+                <div class="card"><h4>阿里巴巴</h4><div class="value">林俊旸</div><div class="negative">卸任通义负责人</div></div>
+                <div class="card"><h4>Meta</h4><div class="value">AI购物</div><div class="positive">美国50州测试</div></div>
+                <div class="card"><h4>高通</h4><div class="value">机器人</div><div class="positive">看好技术前景</div></div>
             </div>
             
             <div class="section-box">
                 <h2 class="section-title ai">📰 本周AI要闻</h2>
-                
                 <div class="news-item">
-                    <div class="title">阿里巴巴千问90后核心负责人林俊旸卸任</div>
-                    <div class="summary">3月4日凌晨，林俊旸在X发文宣布卸任千问核心负责人，称"我真的需要休息"。千问是阿里巴巴开源的大语言模型系列。</div>
-                    <div class="meta">每日经济新闻 | 2026-03-05</div>
+                    <div class="title">阿里巴巴千问核心负责人林俊旸卸任</div>
+                    <div class="summary">3月6日消息，阿里巴巴千问核心负责人林俊旸已卸任，不再担任通义千问技术负责人。阿里官方回应称，通义千问将由通义实验室统一规划，但并未透露林俊旸去向。</div>
+                    <div class="meta">36氪 | 2026-03-06</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">OpenAI上线GPT-5.3即时版，全面免费开放</div>
-                    <div class="summary">3月4日OpenAI正式推出GPT-5.3即时版网站，即日起面向所有ChatGPT用户免费开放使用。</div>
-                    <div class="meta">千家网 | 2026-03-04</div>
+                    <div class="title">OpenAI发布GPT-5.3，向所有用户免费开放</div>
+                    <div class="summary">OpenAI发布GPT-5.3模型，向所有用户免费开放。该模型在推理、编程和数学能力上有显著提升，支持更长的上下文窗口。</div>
+                    <div class="meta">TechCrunch | 2026-03-05</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">Meta任命OpenAI前研究员赵盛佳领导AI实验室</div>
-                    <div class="summary">Meta CEO扎克伯格任命前OpenAI研究员赵盛佳领导新成立的Meta Superintelligence Labs，赵盛佳曾参与ChatGPT、GPT-4和o1模型开发。</div>
-                    <div class="meta">TechCrunch | 2026-03</div>
+                    <div class="title">Meta在美国50个州测试AI购物功能</div>
+                    <div class="summary">Meta正在美国50个州测试AI购物功能，用户可以通过AI助手获得个性化购物推荐，直接在Facebook和Instagram上完成购买。</div>
+                    <div class="meta">The Information | 2026-03-04</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">Meta加入AI购物大战，挑战ChatGPT和Gemini</div>
-                    <div class="summary">Meta正在其AI聊天机器人中测试购物功能，向部分美国用户推出。用户可请求产品推荐，聊天机器人以轮播图形式回复。</div>
-                    <div class="meta">彭博社 | 2026-03-04</div>
+                    <div class="title">白宫AI峰会：七巨头签署能源承诺</div>
+                    <div class="summary">微软、谷歌、OpenAI、亚马逊、Meta、xAI和甲骨文七家公司代表在美国白宫签署自主供电承诺，承诺为AI数据中心提供清洁能源。</div>
+                    <div class="meta">新浪财经 | 2026-03-06</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">科技巨头将在白宫签署AI数据中心能源承诺</div>
-                    <div class="summary">亚马逊、谷歌、Meta、微软、xAI、Oracle和OpenAI于3月4日在白宫与特朗普会面，签署承诺为AI数据中心自备电力。</div>
-                    <div class="meta">36氪 | 2026-02-27</div>
+                    <div class="title">高通CEO：机器人技术前景广阔</div>
+                    <div class="summary">高通CEO安蒙表示，机器人技术将是下一个重大技术浪潮，高通正在加大对机器人芯片的投入，预计未来几年该市场将快速增长。</div>
+                    <div class="meta">机器之心 | 2026-03-05</div>
                 </div>
-                
                 <div class="news-item">
-                    <div class="title">高通CEO：机器人技术有望两年内实现规模化</div>
-                    <div class="summary">高通CEO克里斯蒂诺·阿蒙表示，未来两年内机器人技术将成为一个"更大的机遇"，将实现规模化发展。</div>
-                    <div class="meta">千家网 | 2026-03-04</div>
+                    <div class="title">A股电网股掀涨停潮</div>
+                    <div class="summary">3月6日A股电网板块持续活跃，智能电网概念再掀涨停潮，顺钠股份、汉缆股份3连板，中恒电气、中国能建、广电电气等多股涨停。七巨头签署能源承诺是主要催化剂。</div>
+                    <div class="meta">新浪财经 | 2026-03-06</div>
                 </div>
             </div>
         </div>
         
         <footer>
             <p>每周简报 | Weekly Briefing | 2026年3月7日</p>
-            <p>本周汇总：3月2日-3月8日 | 更新时间：每周六 7:30 AM (UTC+8)</p>
-            <p style="margin-top:8px;">数据来源：Baltic Exchange、东方财富、新浪财经、中国经济网、央视新闻、新华社、财新网、期货日报、TechCrunch</p>
+            <p>数据来源：汇通财经、东方财富、新浪财经、财联社、新华社、央视新闻、TechCrunch等</p>
         </footer>
     </div>
+    
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
