@@ -3,235 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 - 2026年3月4日</title>
+    <title>每日资讯简报 - 2026年3月10日</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #38bdf8;
+            --accent2: #a78bfa;
+            --accent3: #34d399;
+            --accent4: #fb923c;
+            --accent5: #f472b6;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --border: #334155;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
             min-height: 100vh;
-            padding: 20px;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 40px 30px;
+        .container { max-width: 820px; margin: 0 auto; padding: 24px 16px 60px; }
+        header {
             text-align: center;
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
         }
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
         }
-        .header .date {
-            font-size: 1.1em;
-            opacity: 0.9;
+        header .date {
+            color: var(--muted);
+            font-size: 0.95rem;
         }
-        .content {
-            padding: 30px;
+        header .tagline {
+            color: var(--accent3);
+            font-size: 0.85rem;
+            margin-top: 4px;
         }
         .section {
-            margin-bottom: 35px;
-            border-left: 4px solid #667eea;
-            padding-left: 20px;
+            margin-bottom: 28px;
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
         }
-        .section:last-child {
-            margin-bottom: 0;
-        }
-        .section-title {
-            font-size: 1.5em;
-            color: #1e3c72;
-            margin-bottom: 15px;
+        .section:hover { transform: translateY(-2px); }
+        .section-header {
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
         }
         .section-icon {
-            font-size: 1.3em;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
         }
-        .news-list {
-            list-style: none;
+        .icon-politics { background: rgba(56,189,248,0.15); }
+        .icon-shipping { background: rgba(167,139,250,0.15); }
+        .icon-finance { background: rgba(52,211,153,0.15); }
+        .icon-ai { background: rgba(251,146,60,0.15); }
+        .icon-crypto { background: rgba(244,114,182,0.15); }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         .news-item {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #e9ecef;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(51,65,85,0.5);
         }
-        .news-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .news-title {
+        .news-item:last-child { border-bottom: none; }
+        .news-item h3 {
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 8px;
-            font-size: 1.05em;
+            margin-bottom: 4px;
+            color: #f1f5f9;
         }
-        .news-source {
-            color: #6c757d;
-            font-size: 0.85em;
-            margin-bottom: 8px;
-        }
-        .news-desc {
-            color: #495057;
+        .news-item p {
+            font-size: 0.88rem;
+            color: var(--muted);
             line-height: 1.6;
-            font-size: 0.95em;
-        }
-        .footer {
-            background: #f8f9fa;
-            padding: 20px 30px;
-            text-align: center;
-            border-top: 1px solid #dee2e6;
-            color: #6c757d;
-            font-size: 0.9em;
         }
         .tag {
             display: inline-block;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.75em;
-            margin-right: 5px;
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-right: 4px;
             font-weight: 500;
         }
-        .tag-politics { background: #e3f2fd; color: #1976d2; }
-        .tag-shipping { background: #e8f5e9; color: #388e3c; }
-        .tag-finance { background: #fff3e0; color: #f57c00; }
-        .tag-ai { background: #f3e5f5; color: #7b1fa2; }
+        .tag-hot { background: rgba(239,68,68,0.2); color: #fca5a5; }
+        .tag-up { background: rgba(52,211,153,0.2); color: #6ee7b7; }
+        .tag-down { background: rgba(239,68,68,0.2); color: #fca5a5; }
+        .tag-new { background: rgba(56,189,248,0.2); color: #7dd3fc; }
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .market-card {
+            background: rgba(15,23,42,0.6);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .market-card .label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+        .market-card .value {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .market-card .change {
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+        .up { color: var(--accent3); }
+        .down { color: #f87171; }
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
         @media (max-width: 600px) {
-            .header h1 { font-size: 1.8em; }
-            .content { padding: 20px; }
-            .section { padding-left: 15px; }
+            header h1 { font-size: 1.5rem; }
+            .section { padding: 18px; }
+            .market-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📰 每日资讯简报</h1>
-            <div class="date">2026年3月4日 | 星期三 | 新加坡时间</div>
+<div class="container">
+    <header>
+        <h1>📰 每日资讯简报</h1>
+        <div class="date">2026年3月10日 · 星期二</div>
+        <div class="tagline">☕ 早安，以下是今日全球要闻速览</div>
+    </header>
+
+    <!-- 时政要闻 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon icon-politics">🏛️</div>
+            <div class="section-title">时政要闻</div>
         </div>
-        
-        <div class="content">
-            <!-- 时政板块 -->
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">🏛️</span>
-                    时政要闻
-                </div>
-                <ul class="news-list">
-                    <li class="news-item">
-                        <div class="news-title">中美贸易谈判有望3月中旬举行</div>
-                        <div class="news-source">Reuters · 3小时前</div>
-                        <div class="news-desc">据彭博社报道，中美两国高级贸易谈判代表预计将于3月中旬会面，这表明尽管美国对伊朗发动袭击，特朗普总统与中国领导人的峰会计划仍在进行中。美国海军可能开始在霍尔木兹海峡为油轮护航。</div>
-                        <span class="tag tag-politics">国际关系</span>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-title">德国商界敦促新政府对华明确立场</div>
-                        <div class="news-source">BBC News</div>
-                        <div class="news-desc">德国商业团体敦促默茨向中国在竞争和出口管制问题上发出明确信号。与那国岛位于台湾与中国日益紧张关系的前线。</div>
-                        <span class="tag tag-politics">中欧关系</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 航运板块 -->
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">🚢</span>
-                    航运动态
-                </div>
-                <ul class="news-list">
-                    <li class="news-item">
-                        <div class="news-title">美国设立海上警戒区 红海局势持续影响航运</div>
-                        <div class="news-source">Journal of Commerce</div>
-                        <div class="news-desc">美国已建立海上警戒区，实际上将该地区列为航运禁区，同时航空公司已暂停客运和货运航班。也门民兵可能停止红海袭击的消息或大幅降低航运运费，但不确定性依然存在。</div>
-                        <span class="tag tag-shipping">地缘政治</span>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-title">美国集装箱进口出现十年来第二次月度下滑</div>
-                        <div class="news-source">FreightWaves</div>
-                        <div class="news-desc">根据Descartes数据，10月份美国集装箱进口出现了过去十年来第二次环比下滑。全球集装箱航运市场目前估值巨大，标准化集装箱配送使全球贸易能够以最少的开销运输几乎所有商品。</div>
-                        <span class="tag tag-shipping">市场数据</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 财经板块 -->
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">📈</span>
-                    财经股市
-                </div>
-                <ul class="news-list">
-                    <li class="news-item">
-                        <div class="news-title">中东冲突引发全球市场震荡</div>
-                        <div class="news-source">Yahoo Finance · Investing.com</div>
-                        <div class="news-desc">伊朗战争正在动摇市场每个角落，从黄金、石油到美元和科技股。美股周二大幅下挫，尽管已从盘中低点反弹。特朗普宣布美国海军将在霍尔木兹海峡为油轮护航，进一步加剧市场担忧。</div>
-                        <span class="tag tag-finance">全球市场</span>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-title">纽约联储主席：关税负担"压倒性"落在美国身上</div>
-                        <div class="news-source">CNBC · 3小时前</div>
-                        <div class="news-desc">纽约联储主席威廉姆斯表示，关税负担"压倒性"地落在美国身上。投资者关注均值回归交易策略，特别是在受打压的科技七巨头股票中，尤其是微软。</div>
-                        <span class="tag tag-finance">美联储</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- AI机器人板块 -->
-            <div class="section">
-                <div class="section-title">
-                    <span class="section-icon">🤖</span>
-                    AI与机器人
-                </div>
-                <ul class="news-list">
-                    <li class="news-item">
-                        <div class="news-title">Elon Musk宣布SpaceX与xAI合并</div>
-                        <div class="news-source">Crescendo AI</div>
-                        <div class="news-desc">Elon Musk宣布将其商业帝国进行标志性整合，SpaceX与人工智能企业xAI合并。此举旨在将xAI的"Grok"模型深度嵌入SpaceX运营，加速全自主航天器和机器人火星殖民地的开发。</div>
-                        <span class="tag tag-ai">重大合并</span>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-title">Google发布2025年度研究突破回顾</div>
-                        <div class="news-source">Google Blog · 2026年1月7日</div>
-                        <div class="news-desc">Google在2025年取得8大领域研究突破，包括Gemini机器人基础模型、更先进的Gemini Robotics 1.5，以及作为通用世界模型新前沿的Genie 3。Ironwood项目也取得重大进展。</div>
-                        <span class="tag tag-ai">技术突破</span>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-title">人形机器人灵活性和人机交互取得重大进展</div>
-                        <div class="news-source">Axios · MIT Technology Review</div>
-                        <div class="news-desc">2025年人形机器人在灵活性和人机交互方面的进步，意味着AI机器人未来有望清洁房屋、陪伴人类、在仓库工作或提供医疗护理。快速学习机器人入选MIT 2025年十大突破技术。</div>
-                        <span class="tag tag-ai">机器人</span>
-                    </li>
-                    <li class="news-item">
-                        <div class="news-title">Nvidia发布NitroGen：基于动作学习的AI突破</div>
-                        <div class="news-source">IntuitionLabs · 2025年12月21日</div>
-                        <div class="news-desc">Nvidia/斯坦福/加州理工联合开发的NitroGen是动作学习领域的突破。该模型在4万+小时人类游戏数据上训练，能够像人类玩家一样产生控制器指令来玩数千款不同类型的游戏。即使在未见过的游戏环境中，其任务成功率也比从头训练的模型高出约52%。</div>
-                        <span class="tag tag-ai">AI研究</span>
-                    </li>
-                </ul>
-            </div>
+        <div class="news-item">
+            <h3>🇨🇳 全国两会进入收官周 <span class="tag tag-hot">热点</span></h3>
+            <p>十四届全国人大四次会议本周将闭幕。2026年政府工作报告设定GDP增长目标为4.5%–5%，"十五五"开局之年强调"质的有效提升和量的合理增长"。本周将陆续发布2月CPI/PPI数据及1–2月进出口数据。</p>
         </div>
-        
-        <div class="footer">
-            <p>📧 每日资讯简报 | 自动生成的个人新闻聚合</p>
-            <p style="margin-top: 8px; font-size: 0.85em;">数据来源：Reuters, BBC, CNBC, Google, MIT Technology Review 等</p>
+        <div class="news-item">
+            <h3>🇨🇳 中国新五年规划全面拥抱AI</h3>
+            <p>据路透社报道，中国"十五五"规划蓝图明确提出在全经济领域积极采用人工智能，并在量子计算等前沿技术领域力争突破，推进科技自立自强。</p>
+        </div>
+        <div class="news-item">
+            <h3>🇨🇳🇺🇸 外交部：让2026年成为中美关系标志性年份</h3>
+            <p>外交部长在两会记者会上表示，两国元首高层交往议程已摆上桌面，中方态度积极开放，期望2026年成为中美关系走向健康稳定可持续发展的标志性年份。</p>
+        </div>
+        <div class="news-item">
+            <h3>🌍 霍尔木兹海峡局势持续搅动全球市场 <span class="tag tag-hot">关注</span></h3>
+            <p>约3,200艘船舶滞留波斯湾，花旗测算全球原油市场每日损失约700–1,100万桶供应。特朗普上周释放信号称伊朗战争将接近尾声，市场波动剧烈。</p>
         </div>
     </div>
+
+    <!-- 航运资讯 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon icon-shipping">🚢</div>
+            <div class="section-title">航运资讯</div>
+        </div>
+        <div class="news-item">
+            <h3>油轮市场：VLCC租金飙升至历史高位 <span class="tag tag-up">↑ 大涨</span></h3>
+            <p>受霍尔木兹海峡航运受阻影响，VLCC TD3C航线TCE报约20.9万美元/天，创2020年4月以来新高。交易商与船商纷纷避开波斯湾，国际海运遭遇"急性运营危机"。</p>
+        </div>
+        <div class="news-item">
+            <h3>A股航运板块强势上涨</h3>
+            <p>3月3日航运概念板块涨2.34%，国航远洋涨停30%，中远海发、龙洲股份涨停，中远海控涨9.91%。地缘局势推动板块景气度持续提升。</p>
+        </div>
+        <div class="news-item">
+            <h3>集装箱运力过剩：2026运价或下行25%</h3>
+            <p>据Xeneta预测，运力扩张快于需求增长，全年全球平均现货运价或下降约25%，长期合约运价下滑约10%。美国针对中国建造船舶征收港口费用的讨论增加隐性成本。</p>
+        </div>
+        <div class="news-item">
+            <h3>新造/二手船交易动态 <span class="tag tag-new">新订单</span></h3>
+            <p>• Performance Shipping签约2艘158,000 DWT苏伊士型油轮新造合同（上海外高桥造船）<br>
+               • DHT Holdings第2艘VLCC新造船交付，第3艘预计3月底交付<br>
+               • Uni-Asia十年来首次下达散货船新造订单<br>
+               • M/T P. Sophia以3,565万美元售出（二手成交）</p>
+        </div>
+    </div>
+
+    <!-- 全球财经 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon icon-finance">💹</div>
+            <div class="section-title">全球财经</div>
+        </div>
+        <div class="market-grid">
+            <div class="market-card">
+                <div class="label">道琼斯</div>
+                <div class="value">47,740</div>
+                <div class="change up">+239 (+0.50%)</div>
+            </div>
+            <div class="market-card">
+                <div class="label">标普500</div>
+                <div class="value">6,796</div>
+                <div class="change up">+0.83%</div>
+            </div>
+            <div class="market-card">
+                <div class="label">恒生指数</div>
+                <div class="value">收跌348点</div>
+                <div class="change down">AI股逆市受捧</div>
+            </div>
+            <div class="market-card">
+                <div class="label">国际油价</div>
+                <div class="value">$110+</div>
+                <div class="change down">暴涨22% 🔥</div>
+            </div>
+            <div class="market-card">
+                <div class="label">黄金</div>
+                <div class="value">$5,087</div>
+                <div class="change down">-$87</div>
+            </div>
+            <div class="market-card">
+                <div class="label">BTC</div>
+                <div class="value">$67,000</div>
+                <div class="change up">+0.6%</div>
+            </div>
+            <div class="market-card">
+                <div class="label">ETH</div>
+                <div class="value">$1,986</div>
+                <div class="change up">+1.7%</div>
+            </div>
+            <div class="market-card">
+                <div class="label">加密总市值</div>
+                <div class="value">$2.38T</div>
+                <div class="change down">-1%</div>
+            </div>
+        </div>
+        <div class="news-item" style="margin-top:16px;">
+            <h3>市场综述</h3>
+            <p>美股上周五在剧烈波动后收涨，特朗普释放伊朗战争接近尾声信号令油价盘中反转走低，带动市场回暖。道指此前经历近一年来最大周跌幅。国际油价突破110美元/桶，霍尔木兹海峡局势仍是核心驱动因素。私募信贷巨头（Blackstone、KKR、Apollo）年初至今跌幅达26–33%，滞涨担忧升温。</p>
+        </div>
+    </div>
+
+    <!-- AI与机器人 -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">AI与机器人</div>
+        </div>
+        <div class="news-item">
+            <h3>NVIDIA GTC 2026下周开幕（3/16–19）<span class="tag tag-hot">重磅</span></h3>
+            <p>ABB Robotics宣布与NVIDIA合作，将在GTC大会上展示基于NVIDIA Omniverse的工业级Physical AI机器人系统WORKR，无需编程即可部署。</p>
+        </div>
+        <div class="news-item">
+            <h3>Qualcomm CEO：机器人将成万亿美元机遇</h3>
+            <p>高通CEO Amon表示，"因为Physical AI的出现，机器人变得更加实用"，预计未来2年内机器人芯片业务将超过手机，成为更大的市场机遇。</p>
+        </div>
+        <div class="news-item">
+            <h3>Apptronik估值从$15M飙至$50亿 <span class="tag tag-up">↑</span></h3>
+            <p>人形机器人初创Apptronik获Google DeepMind战略合作，估值暴涨至50亿美元。CNBC专栏指出，$5B人形机器人投资揭示了关于风险、就业与经济未来的深层思考。</p>
+        </div>
+        <div class="news-item">
+            <h3>AI机器人行业预测：$3,750亿市场规模</h3>
+            <p>Motley Fool分析指出AI机器人产业将达3,750亿美元。制造自动化（焊接、喷涂、包装）和仓储物流机器人是当前最活跃赛道。AMC Robotics在东京安防展展示AI四足机器人。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>📡 数据来源：新华社 · 路透社 · CNBC · BBC · 新浪财经 · Investing.com · Splash247 等</p>
+        <p style="margin-top:4px;">由 OpenClaw AI 自动生成 · 仅供参考，不构成投资建议</p>
+    </footer>
+</div>
 </body>
 </html>
