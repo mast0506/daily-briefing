@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 - 2026年3月12日</title>
+    <title>每日资讯简报 - 2026年3月13日</title>
     <style>
         :root {
             --bg: #0f172a;
@@ -16,6 +16,8 @@
             --text: #e2e8f0;
             --muted: #94a3b8;
             --border: #334155;
+            --red: #ef4444;
+            --green: #22c55e;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -48,240 +50,308 @@
             border-radius: 16px;
             padding: 24px;
             border: 1px solid var(--border);
-            transition: transform 0.2s;
         }
-        .section:hover { transform: translateY(-2px); }
         .section-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border);
         }
-        .section-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-        .icon-politics { background: rgba(56,189,248,0.15); }
-        .icon-shipping { background: rgba(167,139,250,0.15); }
-        .icon-finance { background: rgba(52,211,153,0.15); }
-        .icon-ai { background: rgba(251,146,60,0.15); }
-        .icon-crypto { background: rgba(244,114,182,0.15); }
-        .section-title { font-size: 1.2rem; font-weight: 600; }
+        .section-icon { font-size: 1.5rem; }
+        .section-title { font-size: 1.15rem; font-weight: 600; }
+        .section-title.politics { color: var(--accent); }
+        .section-title.shipping { color: var(--accent2); }
+        .section-title.finance { color: var(--accent3); }
+        .section-title.ai { color: var(--accent4); }
+        .section-title.crypto { color: var(--accent5); }
         .news-item {
-            padding: 10px 0;
+            padding: 14px 0;
             border-bottom: 1px solid rgba(51,65,85,0.5);
         }
         .news-item:last-child { border-bottom: none; }
-        .news-item h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: #f1f5f9;
-        }
-        .news-item p {
-            font-size: 0.88rem;
-            color: var(--muted);
-            line-height: 1.6;
-        }
+        .news-item h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+        .news-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
         .tag {
             display: inline-block;
             font-size: 0.72rem;
             padding: 2px 8px;
-            border-radius: 20px;
-            margin-right: 4px;
+            border-radius: 99px;
             font-weight: 500;
+            margin-right: 6px;
+            margin-bottom: 4px;
         }
-        .tag-hot { background: rgba(239,68,68,0.2); color: #fca5a5; }
-        .tag-up { background: rgba(52,211,153,0.2); color: #6ee7b7; }
-        .tag-down { background: rgba(239,68,68,0.2); color: #fca5a5; }
-        .tag-new { background: rgba(56,189,248,0.2); color: #7dd3fc; }
-        .market-grid {
+        .tag-hot { background: rgba(239,68,68,0.15); color: var(--red); }
+        .tag-war { background: rgba(251,146,60,0.15); color: var(--accent4); }
+        .tag-trade { background: rgba(56,189,248,0.15); color: var(--accent); }
+        .tag-oil { background: rgba(167,139,250,0.15); color: var(--accent2); }
+        .tag-up { background: rgba(34,197,94,0.15); color: var(--green); }
+        .tag-down { background: rgba(239,68,68,0.15); color: var(--red); }
+        .data-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
             margin-top: 12px;
         }
-        .market-card {
+        .data-card {
             background: rgba(15,23,42,0.6);
-            border-radius: 10px;
-            padding: 14px;
-            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
             border: 1px solid var(--border);
         }
-        .market-card .label { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; }
-        .market-card .value { font-size: 1.15rem; font-weight: 700; }
-        .market-card .change { font-size: 0.8rem; margin-top: 2px; }
-        .up { color: var(--accent3); }
-        .down { color: #f87171; }
+        .data-card .label { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; }
+        .data-card .value { font-size: 1.2rem; font-weight: 700; }
+        .data-card .change { font-size: 0.82rem; margin-top: 2px; }
+        .up { color: var(--green); }
+        .down { color: var(--red); }
+        .flat { color: var(--muted); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            background: rgba(15,23,42,0.6);
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(51,65,85,0.3);
+        }
+        .overflow-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         footer {
             text-align: center;
-            padding: 24px 0;
+            padding: 32px 0;
             color: var(--muted);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             border-top: 1px solid var(--border);
             margin-top: 20px;
         }
-        @media (max-width: 600px) {
+        footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 640px) {
             header h1 { font-size: 1.5rem; }
             .section { padding: 18px; }
-            .market-grid { grid-template-columns: repeat(2, 1fr); }
+            .data-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <header>
-        <h1>📰 每日资讯简报</h1>
-        <div class="date">2026年3月12日 · 星期四</div>
-        <div class="tagline">☕ 早安，以下是今日全球要闻速览</div>
-    </header>
 
-    <!-- 时政要闻 -->
-    <div class="section">
-        <div class="section-header">
-            <div class="section-icon icon-politics">🏛️</div>
-            <div class="section-title">时政要闻</div>
+<header>
+    <h1>📰 每日资讯简报</h1>
+    <div class="date">2026年3月13日 星期五 · Friday, March 13</div>
+    <div class="tagline">AI 自动生成 · 数据截至北京时间 07:00</div>
+</header>
+
+<!-- ==================== 时政要闻 ==================== -->
+<div class="section">
+    <div class="section-header">
+        <span class="section-icon">🌍</span>
+        <span class="section-title politics">时政要闻</span>
+    </div>
+
+    <div class="news-item">
+        <h3>🔴 美伊冲突进入第13天，局势持续升级</h3>
+        <span class="tag tag-war">战争</span><span class="tag tag-hot">热点</span>
+        <p>美国对伊朗的军事行动进入第二周。伊朗无人机袭击阿曼石油储存设施，引发战事扩大担忧。特朗普称伊朗境内"几乎无可打击目标"，暗示行动接近尾声，但美以联军仍在持续轰炸。伊朗与黎巴嫩真主党展开联合作战。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>🚢 首艘中国籍船穿行霍尔木兹海峡</h3>
+        <span class="tag tag-hot">热点</span>
+        <p>3月11日凌晨，中国籍散货船"润晨2号"悬挂五星红旗成功穿越霍尔木兹海峡，为自3月1日海峡事实封锁后首艘通行的中国籍船舶，标志着中资航运在冲突背景下迈出复航关键一步。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>📋 美国启动对16国贸易调查</h3>
+        <span class="tag tag-trade">贸易</span>
+        <p>美国贸易代表格里尔宣布，特朗普政府将对包括中国在内的16个主要贸易伙伴工业"产能过剩"情况启动两项新贸易调查，可能导致新关税措施出台。中国外交部回应表示坚决反对。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>🛢️ 特朗普授权释放1.72亿桶战略石油储备</h3>
+        <span class="tag tag-oil">石油</span>
+        <p>美国能源部表示，特朗普已授权从战略石油储备中释放1.72亿桶石油，下周开始执行，交付周期约120天，且明年将新增2亿桶原油储备，旨在平抑因中东冲突导致的油价飙升。</p>
+    </div>
+</div>
+
+<!-- ==================== 航运资讯 ==================== -->
+<div class="section">
+    <div class="section-header">
+        <span class="section-icon">🚢</span>
+        <span class="section-title shipping">航运市场</span>
+    </div>
+
+    <div class="news-item">
+        <h3>航运指数概览</h3>
+        <p>霍尔木兹海峡与红海双重瓶颈持续推高运价。SCFI 3月初不跌反涨至1489点，BDI受地缘溢价支撑走高。油轮市场因中东战事升温。</p>
+    </div>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <div class="label">BDI 波罗的海干散货</div>
+            <div class="value up">~2,242</div>
+            <div class="change up">↑ 两月新高</div>
         </div>
-        <div class="news-item">
-            <h3>🛢️ 美伊冲突持续冲击全球能源供应链 <span class="tag tag-hot">热点</span></h3>
-            <p>美伊以战事持续冲击全球能源市场。国际油价呈"过山车"走势——3月9日美油布油创阶段性高点后，因美方释放政策信号及国际协调干预，10-11日连续两日跌幅均超10%。霍尔木兹海峡局势仍是全球市场核心风险因素。</p>
+        <div class="data-card">
+            <div class="label">BDTI 脏油轮指数</div>
+            <div class="value up">2,835</div>
+            <div class="change up">↑ 受战事提振</div>
         </div>
-        <div class="news-item">
-            <h3>🌍 IEA宣布释放4亿桶战略石油储备 <span class="tag tag-hot">重磅</span></h3>
-            <p>国际能源署(IEA)提议有史以来最大规模的战略石油储备释放——4亿桶。此举旨在平抑因霍尔木兹海峡紧张局势导致的油价飙升，消息公布后布伦特原油从$119.5高位回落至$88-90区间。</p>
+        <div class="data-card">
+            <div class="label">SCFI 集装箱运价</div>
+            <div class="value up">1,489</div>
+            <div class="change up">↑ 绕航溢价</div>
         </div>
-        <div class="news-item">
-            <h3>🇺🇸 美国2月CPI数据公布在即</h3>
-            <p>市场关注本周CPI通胀数据。CNBC指出油价飙升尚未完全反映在2月数据中，但已成为后续通胀的核心上行风险。联储政策路径不确定性加剧。</p>
-        </div>
-        <div class="news-item">
-            <h3>🇯🇵 大阪闹市区下水道施工管道隆起十几米高</h3>
-            <p>3月11日早晨，大阪市北区茶屋町下水道施工现场直径约5米管道隆起至地面十几米高，现场位于阪急大阪梅田站附近闹市区，所幸未发现人员受伤。</p>
+        <div class="data-card">
+            <div class="label">Handysize 日租金</div>
+            <div class="value">$12,766</div>
+            <div class="change up">↑ $58/天</div>
         </div>
     </div>
 
-    <!-- 航运资讯 -->
-    <div class="section">
-        <div class="section-header">
-            <div class="section-icon icon-shipping">🚢</div>
-            <div class="section-title">航运资讯</div>
+    <div class="news-item" style="margin-top:16px">
+        <h3>📊 市场动态</h3>
+        <p><strong>运力过剩隐忧：</strong>2026年新船交付潮持续，全年全球平均现货运价预计下降约25%，长协运价可能下滑约10%。但短期受红海/霍尔木兹海峡绕行影响，运价反弹明显。</p>
+        <p style="margin-top:8px"><strong>地缘冲击：</strong>霍尔木兹海峡事实封锁后，商船纷纷绕行好望角，远东至大西洋航线成本大幅上升。中国籍船率先复航成为标志性事件。船舶ETF（560710）3月9日跌3.66%，但份额逆势增加1.14亿份。</p>
+        <p style="margin-top:8px"><strong>政策关注：</strong>美国贸易代表拟对中国建造船舶征收港口费用，附加费项目可能持续增加。BBNJ公约即将生效，海洋环保监管趋严。</p>
+    </div>
+</div>
+
+<!-- ==================== 全球财经 ==================== -->
+<div class="section">
+    <div class="section-header">
+        <span class="section-icon">💹</span>
+        <span class="section-title finance">全球财经</span>
+    </div>
+
+    <div class="news-item">
+        <h3>📉 美股涨跌不一，中东局势持续施压</h3>
+        <p>3月12日收盘，道指跌0.61%（约300点），标普500跌0.08%，纳指微涨0.08%。投资者持续关注美伊战争局势及油价走势。英伟达推出开源模型Nemotron 3 Super，科技板块提供一定支撑。</p>
+    </div>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <div class="label">道琼斯工业</div>
+            <div class="value down">-0.61%</div>
+            <div class="change down">↓ 跌约300点</div>
         </div>
-        <div class="news-item">
-            <h3>BDI指数高位震荡，Capesize船型领涨 <span class="tag tag-up">↑ 活跃</span></h3>
-            <p>波罗的海干散货指数(BDI)3月初在2,010-2,233点区间波动。3月8日BDI升至2,187点，Capesize日租金报$24,910/天。High-Trend International表示BDI持续上行为航运盈利创造有利窗口。</p>
+        <div class="data-card">
+            <div class="label">纳斯达克</div>
+            <div class="value up">+0.08%</div>
+            <div class="change flat">→ 科技股撑盘</div>
         </div>
-        <div class="news-item">
-            <h3>集装箱运价：SCFI逆势上涨至1,489点</h3>
-            <p>上海出口集装箱运价指数(SCFI)3月初不跌反涨，冲上1,489.19点。地缘安全溢价成为主要推手——红海/霍尔木兹两大瓶颈压缩可用运力，"一舱难求"局面持续。</p>
+        <div class="data-card">
+            <div class="label">标普500</div>
+            <div class="value down">-0.08%</div>
+            <div class="change flat">→ 窄幅波动</div>
         </div>
-        <div class="news-item">
-            <h3>运力过剩隐忧：2026全年运价或下行25%</h3>
-            <p>据Xeneta预测，运力扩张快于需求增长，全球平均现货运价全年或下降约25%，长协运价下滑约10%。美国贸易代表针对中国建造船舶征收港口费用的讨论增加隐性成本，BBNJ公海条约即将生效加剧环保监管。</p>
-        </div>
-        <div class="news-item">
-            <h3>中国造船业：2026年完工量预计超6,000万载重吨 <span class="tag tag-new">数据</span></h3>
-            <p>中国船协发布数据：2025年全国造船完工量5,369万载重吨(+11.4%)。预计2026年完工量将超6,000万载重吨，全球造船完工量保持1.2亿载重吨水平，手持订单量维持3.5亿载重吨以上。保交船、安全生产压力持续增大。</p>
-        </div>
-        <div class="news-item">
-            <h3>智能船舶：海洋科技元年 <span class="tag tag-new">前沿</span></h3>
-            <p>欧卡智舶推出ORCA-APAS船舶智驾系统，覆盖辅助驾驶/高级辅助驾驶/无人自主航行三类方案。其智能游艇品牌将于2026年首发入市，定位"水上特斯拉"。</p>
+        <div class="data-card">
+            <div class="label">中概金龙指数</div>
+            <div class="value down">-0.77%</div>
+            <div class="change down">↓ 涨跌分化</div>
         </div>
     </div>
 
-    <!-- 全球财经 -->
-    <div class="section">
-        <div class="section-header">
-            <div class="section-icon icon-finance">💹</div>
-            <div class="section-title">全球财经</div>
+    <div class="news-item" style="margin-top:16px">
+        <h3>🛢️ 大宗商品</h3>
+    </div>
+    <div class="data-grid">
+        <div class="data-card">
+            <div class="label">布伦特原油</div>
+            <div class="value up">~$91-94</div>
+            <div class="change up">↑ 伊拉克油轮遇袭</div>
         </div>
-        <div class="market-grid">
-            <div class="market-card">
-                <div class="label">道琼斯</div>
-                <div class="value down">47,478</div>
-                <div class="change down">-0.6%</div>
-            </div>
-            <div class="market-card">
-                <div class="label">标普500</div>
-                <div class="value down">6,776</div>
-                <div class="change down">-0.08%</div>
-            </div>
-            <div class="market-card">
-                <div class="label">纳斯达克</div>
-                <div class="value up">22,716</div>
-                <div class="change up">+0.08%</div>
-            </div>
-            <div class="market-card">
-                <div class="label">布伦特原油</div>
-                <div class="value down">~$88</div>
-                <div class="change down">从$119高位回落</div>
-            </div>
-            <div class="market-card">
-                <div class="label">黄金</div>
-                <div class="value down">$5,172</div>
-                <div class="change down">-$7 (-0.13%)</div>
-            </div>
-            <div class="market-card">
-                <div class="label">BTC</div>
-                <div class="value up">$70,358</div>
-                <div class="change up">+0.95%</div>
-            </div>
-            <div class="market-card">
-                <div class="label">ETH</div>
-                <div class="value down">$2,053</div>
-                <div class="change down">承压 $1,900-2,100区间</div>
-            </div>
-            <div class="market-card">
-                <div class="label">VIX恐慌指数</div>
-                <div class="value down">24.23</div>
-                <div class="change up">-2.81%</div>
-            </div>
-        </div>
-        <div class="news-item" style="margin-top:16px;">
-            <h3>市场综述</h3>
-            <p>美股3月11日小幅收跌，道指-0.6%，标普微跌0.08%，纳指勉强翻红+0.08%。油价剧烈波动是主线——IEA宣布释放4亿桶战略储备后，布伦特从$119.5高位暴跌至$88附近。BTC在$66,000-70,000区间反弹至$70,358（距ATH $126,073回撤47%）。ETH在$2,053附近盘整。加密市场总市值约$1.39万亿，地缘不确定性持续压制风险偏好。</p>
+        <div class="data-card">
+            <div class="label">黄金 XAU/USD</div>
+            <div class="value up">$5,150-5,175</div>
+            <div class="change up">↑ 避险需求强劲</div>
         </div>
     </div>
 
-    <!-- AI与机器人 -->
-    <div class="section">
-        <div class="section-header">
-            <div class="section-icon icon-ai">🤖</div>
-            <div class="section-title">AI与机器人</div>
+    <div class="news-item" style="margin-top:16px">
+        <h3>₿ 加密货币</h3>
+    </div>
+    <div class="data-grid">
+        <div class="data-card">
+            <div class="label">Bitcoin (BTC)</div>
+            <div class="value">~$70,500</div>
+            <div class="change up">↑ 守住$70K关口</div>
         </div>
-        <div class="news-item">
-            <h3>Uber × Zoox：无人驾驶出租车正式接入网约车平台 <span class="tag tag-hot">重磅</span></h3>
-            <p>Uber与Amazon旗下Zoox签署多年合作协议，将Zoox专用无人驾驶出租车接入Uber平台，这是Zoox首次与第三方网约车服务合作，标志着Robotaxi商业化进入新阶段。</p>
-        </div>
-        <div class="news-item">
-            <h3>Tenstorrent发布TT-QuietBox 2：首款RISC-V AI工作站 <span class="tag tag-new">新品</span></h3>
-            <p>由Jim Keller领导的Tenstorrent发布TT-QuietBox™ 2 (Blackhole™)，全球首款基于RISC-V架构、全开源堆栈的AI工作站，可提供Teraflop级推理算力。</p>
-        </div>
-        <div class="news-item">
-            <h3>NVIDIA GTC 2026即将开幕（3/16-19）<span class="tag tag-hot">关注</span></h3>
-            <p>NVIDIA GTC 2026大会将于下周一开幕。黄仁勋将发表主题演讲。同期发布《2026 AI行业报告》，涵盖Agentic AI、Physical AI在制造、金融、零售、电信等领域的应用。Deloitte与NVIDIA合作将AI机器人引入制造业。</p>
-        </div>
-        <div class="news-item">
-            <h3>OpenAI硬件/机器人负责人因五角大楼合作辞职</h3>
-            <p>OpenAI机器人与硬件高管Caitlin Kalinowski在公司与五角大楼达成合作后辞职。此前TechCrunch报道《Pro-Human AI Declaration》发布与"五角大楼-Anthropic对峙"几乎同时发生，AI军事化引发行业深度反思。</p>
-        </div>
-        <div class="news-item">
-            <h3>AI机器人产业预测：$3,750亿市场</h3>
-            <p>Motley Fool分析指出AI机器人产业规模将达3,750亿美元。Fitell更名GMEX Robotics（NASDAQ: GMEX），3月12日正式启用新代码，加速转型AI驱动机器人。</p>
+        <div class="data-card">
+            <div class="label">Ethereum (ETH)</div>
+            <div class="value">~$2,023</div>
+            <div class="change flat">→ 预测涨至$2,115</div>
         </div>
     </div>
+    <div class="news-item" style="margin-top:12px">
+        <p><strong>市场焦点：</strong>BTC在伊朗战争引发的石油波动中展现韧性，多次守住$70,000心理关口。$350M加密清算潮后市场企稳。SEC与CFTC签署联合监管备忘录，加密监管走向协调。Robert Kiyosaki警告2026年股市崩盘风险，建议配置黄金、白银、BTC和ETH。</p>
+    </div>
+</div>
 
-    <footer>
-        <p>📡 数据来源：新华社 · 路透社 · CNBC · Yahoo Finance · 新浪财经 · Investopedia · HandyBulk · Splash247 等</p>
-        <p style="margin-top:4px;">由 OpenClaw AI 自动生成 · 仅供参考，不构成投资建议</p>
-    </footer>
+<!-- ==================== AI & 机器人 ==================== -->
+<div class="section">
+    <div class="section-header">
+        <span class="section-icon">🤖</span>
+        <span class="section-title ai">AI & 机器人</span>
+    </div>
+
+    <div class="news-item">
+        <h3>🏭 Rivian衍生公司Mind Robotics获$5亿A轮融资</h3>
+        <span class="tag tag-hot">热点</span>
+        <p>电动汽车制造商Rivian的衍生工业机器人实验室Mind Robotics完成$5亿A轮融资，由Accel和a16z联合领投，专注于AI驱动的工业机器人。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>🟢 NVIDIA GTC 2026即将开幕（3月16-19日）</h3>
+        <p>NVIDIA宣布多项重大机器人技术，GTC 2026大会将于下周举行。ABB Robotics已宣布整合NVIDIA Omniverse库至RobotStudio®，帮助制造商部署Physical AI。Palantir与NVIDIA联合推出主权AI操作系统。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>⚠️ OpenAI硬件负责人因五角大楼合作而辞职</h3>
+        <p>OpenAI机器人与硬件高管Caitlin Kalinowski在公司与五角大楼合作后辞职。此前Anthropic也曾与五角大楼发生对峙。TechCrunch发表"Pro-Human AI Declaration"路线图呼吁AI安全。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>🇯🇵 前Google研究员用AI变革日本机器人产业</h3>
+        <p>一家硅谷AI初创公司正将目光转向日本，试图证明AI能够重塑全球最大的工业机器人供应链之一。Bloomberg报道该公司正与多家日本工业巨头洽谈合作。</p>
+    </div>
+
+    <div class="news-item">
+        <h3>🇺🇦 乌克兰开放战场数据训练无人机AI</h3>
+        <p>乌克兰国防部长宣布，将向盟友开放战场数据，用于训练无人机AI软件，希望利用四年抵抗俄罗斯入侵积累的实战经验。</p>
+    </div>
+</div>
+
+<!-- ==================== 总结 ==================== -->
+<div class="section" style="background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(167,139,250,0.05));">
+    <div class="section-header">
+        <span class="section-icon">📌</span>
+        <span class="section-title" style="color: var(--text);">今日要点</span>
+    </div>
+    <div style="font-size: 0.9rem; line-height: 1.8;">
+        <p>🔸 <strong>地缘主线：</strong>美伊冲突进入第13天，霍尔木兹海峡虽部分恢复通行（中国船率先穿越），但供应链中断风险仍高。油价维持$90+高位。</p>
+        <p>🔸 <strong>避险资产走强：</strong>黄金突破$5,150/盎司，BTC守住$70K，资金持续涌入避险资产。</p>
+        <p>🔸 <strong>航运短期受益：</strong>BDI创两月新高，油轮指数飙升。但中期新船交付潮将带来下行压力。</p>
+        <p>🔸 <strong>AI机器人融资火热：</strong>Mind Robotics $5亿融资领跑，NVIDIA GTC大会下周开幕将有更多重磅消息。</p>
+        <p>🔸 <strong>贸易摩擦升级：</strong>美国对16国启动"产能过剩"调查，中美贸易紧张或再度加剧。</p>
+    </div>
+</div>
+
+<footer>
+    <p>📰 由 AI 自动生成 · 数据来源：新浪财经、CNBC、Reuters、CoinTelegraph、TechCrunch 等</p>
+    <p style="margin-top: 6px;">Powered by <a href="https://github.com/openclaw/openclaw">OpenClaw</a> · <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
+</footer>
+
 </div>
 </body>
 </html>
