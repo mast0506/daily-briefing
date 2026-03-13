@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 - 2026年3月13日</title>
+    <title>每日资讯简报 - 2026年3月14日</title>
     <style>
         :root {
             --bg: #0f172a;
@@ -28,329 +28,364 @@
             min-height: 100vh;
         }
         .container { max-width: 820px; margin: 0 auto; padding: 24px 16px 60px; }
-        header {
+        .header {
             text-align: center;
             padding: 40px 0 32px;
             border-bottom: 1px solid var(--border);
             margin-bottom: 32px;
         }
-        header h1 {
+        .header h1 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 800;
             background: linear-gradient(135deg, var(--accent), var(--accent2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 8px;
         }
-        header .date { color: var(--muted); font-size: 0.95rem; }
-        header .tagline { color: var(--accent3); font-size: 0.85rem; margin-top: 4px; }
-        .section {
-            margin-bottom: 28px;
-            background: var(--card);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid var(--border);
+        .header .date {
+            color: var(--muted);
+            font-size: 0.95rem;
         }
-        .section-header {
+        .alert-banner {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            border: 1px solid #dc2626;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .alert-banner .icon { font-size: 1.5rem; }
+        .alert-banner .text { font-size: 0.95rem; font-weight: 600; color: #fecaca; }
+        .section {
+            margin-bottom: 32px;
+        }
+        .section-title {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 18px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
         }
-        .section-icon { font-size: 1.5rem; }
-        .section-title { font-size: 1.15rem; font-weight: 600; }
-        .section-title.politics { color: var(--accent); }
-        .section-title.shipping { color: var(--accent2); }
-        .section-title.finance { color: var(--accent3); }
-        .section-title.ai { color: var(--accent4); }
-        .section-title.crypto { color: var(--accent5); }
-        .news-item {
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(51,65,85,0.5);
+        .section-title .icon { font-size: 1.3rem; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
         }
-        .news-item:last-child { border-bottom: none; }
-        .news-item h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
-        .news-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+        .card:hover { border-color: var(--accent); }
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
         .tag {
             display: inline-block;
             font-size: 0.72rem;
+            font-weight: 600;
             padding: 2px 8px;
-            border-radius: 99px;
-            font-weight: 500;
+            border-radius: 4px;
             margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        .tag-red { background: rgba(239,68,68,0.15); color: #fca5a5; }
+        .tag-blue { background: rgba(56,189,248,0.15); color: #7dd3fc; }
+        .tag-green { background: rgba(34,211,153,0.15); color: #6ee7b7; }
+        .tag-orange { background: rgba(251,146,60,0.15); color: #fdba74; }
+        .tag-purple { background: rgba(167,139,250,0.15); color: #c4b5fd; }
+        .tag-pink { background: rgba(244,114,182,0.15); color: #f9a8d4; }
+
+        /* Market data grid */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .market-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .market-item .label {
+            font-size: 0.78rem;
+            color: var(--muted);
             margin-bottom: 4px;
         }
-        .tag-hot { background: rgba(239,68,68,0.15); color: var(--red); }
-        .tag-war { background: rgba(251,146,60,0.15); color: var(--accent4); }
-        .tag-trade { background: rgba(56,189,248,0.15); color: var(--accent); }
-        .tag-oil { background: rgba(167,139,250,0.15); color: var(--accent2); }
-        .tag-up { background: rgba(34,197,94,0.15); color: var(--green); }
-        .tag-down { background: rgba(239,68,68,0.15); color: var(--red); }
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
+        .market-item .value {
+            font-size: 1.15rem;
+            font-weight: 700;
         }
-        .data-card {
-            background: rgba(15,23,42,0.6);
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid var(--border);
+        .market-item .change {
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-top: 2px;
         }
-        .data-card .label { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; }
-        .data-card .value { font-size: 1.2rem; font-weight: 700; }
-        .data-card .change { font-size: 0.82rem; margin-top: 2px; }
         .up { color: var(--green); }
         .down { color: var(--red); }
-        .flat { color: var(--muted); }
-        table {
+
+        /* Crypto table */
+        .crypto-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 12px;
-            font-size: 0.85rem;
         }
-        th {
+        .crypto-table th {
             text-align: left;
-            padding: 10px 12px;
-            background: rgba(15,23,42,0.6);
-            color: var(--muted);
-            font-weight: 500;
+            padding: 8px 12px;
             font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--muted);
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
         }
-        td {
+        .crypto-table td {
             padding: 10px 12px;
-            border-bottom: 1px solid rgba(51,65,85,0.3);
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border);
         }
-        .overflow-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        footer {
+        .crypto-table tr:last-child td { border-bottom: none; }
+        .crypto-name { font-weight: 600; }
+        .crypto-symbol { color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
+
+        .footer {
             text-align: center;
-            padding: 32px 0;
-            color: var(--muted);
-            font-size: 0.78rem;
+            padding: 32px 0 0;
             border-top: 1px solid var(--border);
-            margin-top: 20px;
+            color: var(--muted);
+            font-size: 0.82rem;
         }
-        footer a { color: var(--accent); text-decoration: none; }
-        @media (max-width: 640px) {
-            header h1 { font-size: 1.5rem; }
-            .section { padding: 18px; }
-            .data-grid { grid-template-columns: 1fr 1fr; }
+        .footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .market-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 <div class="container">
 
-<header>
-    <h1>📰 每日资讯简报</h1>
-    <div class="date">2026年3月13日 星期五 · Friday, March 13</div>
-    <div class="tagline">AI 自动生成 · 数据截至北京时间 07:00</div>
-</header>
-
-<!-- ==================== 时政要闻 ==================== -->
-<div class="section">
-    <div class="section-header">
-        <span class="section-icon">🌍</span>
-        <span class="section-title politics">时政要闻</span>
+    <!-- Header -->
+    <div class="header">
+        <h1>📰 每日资讯简报</h1>
+        <div class="date">2026年3月14日 · 星期六 · 新加坡时间 07:00</div>
     </div>
 
-    <div class="news-item">
-        <h3>🔴 美伊冲突进入第13天，局势持续升级</h3>
-        <span class="tag tag-war">战争</span><span class="tag tag-hot">热点</span>
-        <p>美国对伊朗的军事行动进入第二周。伊朗无人机袭击阿曼石油储存设施，引发战事扩大担忧。特朗普称伊朗境内"几乎无可打击目标"，暗示行动接近尾声，但美以联军仍在持续轰炸。伊朗与黎巴嫩真主党展开联合作战。</p>
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <span class="icon">🚨</span>
+        <span class="text">重大关注：美伊军事冲突持续升级，霍尔木兹海峡航运受阻，布伦特原油突破100美元/桶，全球市场剧烈震荡</span>
     </div>
 
-    <div class="news-item">
-        <h3>🚢 首艘中国籍船穿行霍尔木兹海峡</h3>
-        <span class="tag tag-hot">热点</span>
-        <p>3月11日凌晨，中国籍散货船"润晨2号"悬挂五星红旗成功穿越霍尔木兹海峡，为自3月1日海峡事实封锁后首艘通行的中国籍船舶，标志着中资航运在冲突背景下迈出复航关键一步。</p>
-    </div>
-
-    <div class="news-item">
-        <h3>📋 美国启动对16国贸易调查</h3>
-        <span class="tag tag-trade">贸易</span>
-        <p>美国贸易代表格里尔宣布，特朗普政府将对包括中国在内的16个主要贸易伙伴工业"产能过剩"情况启动两项新贸易调查，可能导致新关税措施出台。中国外交部回应表示坚决反对。</p>
-    </div>
-
-    <div class="news-item">
-        <h3>🛢️ 特朗普授权释放1.72亿桶战略石油储备</h3>
-        <span class="tag tag-oil">石油</span>
-        <p>美国能源部表示，特朗普已授权从战略石油储备中释放1.72亿桶石油，下周开始执行，交付周期约120天，且明年将新增2亿桶原油储备，旨在平抑因中东冲突导致的油价飙升。</p>
-    </div>
-</div>
-
-<!-- ==================== 航运资讯 ==================== -->
-<div class="section">
-    <div class="section-header">
-        <span class="section-icon">🚢</span>
-        <span class="section-title shipping">航运市场</span>
-    </div>
-
-    <div class="news-item">
-        <h3>航运指数概览</h3>
-        <p>霍尔木兹海峡与红海双重瓶颈持续推高运价。SCFI 3月初不跌反涨至1489点，BDI受地缘溢价支撑走高。油轮市场因中东战事升温。</p>
-    </div>
-
-    <div class="data-grid">
-        <div class="data-card">
-            <div class="label">BDI 波罗的海干散货</div>
-            <div class="value up">~2,242</div>
-            <div class="change up">↑ 两月新高</div>
+    <!-- Section 1: 时政要闻 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">🌏</span> 时政要闻
         </div>
-        <div class="data-card">
-            <div class="label">BDTI 脏油轮指数</div>
-            <div class="value up">2,835</div>
-            <div class="change up">↑ 受战事提振</div>
+
+        <div class="card">
+            <h3>美伊冲突全面升级 · 霍尔木兹海峡成全球焦点</h3>
+            <span class="tag tag-red">战争</span><span class="tag tag-red">中东</span>
+            <p>美国对伊朗发动大规模空袭，伊朗以"真实承诺IV"行动回应，向波斯湾多个美军基地发射导弹。伊朗新任最高领袖穆杰塔巴誓言继续封锁霍尔木兹海峡，威胁全球五分之一石油运输。英美油轮在波斯湾遭袭，多国报告船只受到攻击影响。花旗集团已关闭阿联酋分支机构并撤离员工。</p>
         </div>
-        <div class="data-card">
-            <div class="label">SCFI 集装箱运价</div>
-            <div class="value up">1,489</div>
-            <div class="change up">↑ 绕航溢价</div>
+
+        <div class="card">
+            <h3>十四届全国人大四次会议在京闭幕</h3>
+            <span class="tag tag-blue">两会</span><span class="tag tag-blue">中国</span>
+            <p>会议批准政府工作报告，高度评价"十四五"经济社会发展成就，同意报告提出的"十五五"时期主要目标与2026年工作部署。批准2026年国民经济和社会发展计划，中信证券认为2026年将是消费行业景气拐点确立的关键之年。</p>
         </div>
-        <div class="data-card">
-            <div class="label">Handysize 日租金</div>
-            <div class="value">$12,766</div>
-            <div class="change up">↑ $58/天</div>
+
+        <div class="card">
+            <h3>全球多国受中东局势波及</h3>
+            <span class="tag tag-red">地缘政治</span>
+            <p>巴林启动空袭警报，美国第五舰队总部成为目标。阿联酋成功拦截多枚伊朗导弹但仍有平民伤亡。卡塔尔拦截一枚导弹，科威特传出爆炸。美防长称伊朗已失去防空系统、空军和海军，导弹发射量下降90%。</p>
         </div>
     </div>
 
-    <div class="news-item" style="margin-top:16px">
-        <h3>📊 市场动态</h3>
-        <p><strong>运力过剩隐忧：</strong>2026年新船交付潮持续，全年全球平均现货运价预计下降约25%，长协运价可能下滑约10%。但短期受红海/霍尔木兹海峡绕行影响，运价反弹明显。</p>
-        <p style="margin-top:8px"><strong>地缘冲击：</strong>霍尔木兹海峡事实封锁后，商船纷纷绕行好望角，远东至大西洋航线成本大幅上升。中国籍船率先复航成为标志性事件。船舶ETF（560710）3月9日跌3.66%，但份额逆势增加1.14亿份。</p>
-        <p style="margin-top:8px"><strong>政策关注：</strong>美国贸易代表拟对中国建造船舶征收港口费用，附加费项目可能持续增加。BBNJ公约即将生效，海洋环保监管趋严。</p>
-    </div>
-</div>
+    <!-- Section 2: 航运资讯 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">🚢</span> 航运资讯
+        </div>
 
-<!-- ==================== 全球财经 ==================== -->
-<div class="section">
-    <div class="section-header">
-        <span class="section-icon">💹</span>
-        <span class="section-title finance">全球财经</span>
-    </div>
+        <div class="market-grid">
+            <div class="market-item">
+                <div class="label">BDI 波罗的海干散货指数</div>
+                <div class="value">1,923</div>
+                <div class="change down">▼ 13 pts</div>
+            </div>
+            <div class="market-item">
+                <div class="label">SCFI 集装箱运价指数</div>
+                <div class="value">波动上行</div>
+                <div class="change up">地缘溢价</div>
+            </div>
+            <div class="market-item">
+                <div class="label">油轮运价</div>
+                <div class="value">飙升</div>
+                <div class="change up">战争险暂停</div>
+            </div>
+        </div>
 
-    <div class="news-item">
-        <h3>📉 美股涨跌不一，中东局势持续施压</h3>
-        <p>3月12日收盘，道指跌0.61%（约300点），标普500跌0.08%，纳指微涨0.08%。投资者持续关注美伊战争局势及油价走势。英伟达推出开源模型Nemotron 3 Super，科技板块提供一定支撑。</p>
-    </div>
+        <div class="card">
+            <h3>霍尔木兹海峡航运几近停摆</h3>
+            <span class="tag tag-red">高危</span><span class="tag tag-orange">航运</span>
+            <p>国际油轮交通监测系统数据显示，霍尔木兹海峡周边海域油轮航速普遍降至零，大量船只停航避险。多家国际保险商已取消该区域战争险，进一步抑制船只通行。泰国、日本、马耳他等国籍货船和油轮报告在波斯湾海域受袭。伊朗革命卫队袭击了悬挂马绍尔群岛旗的美国"萨菲西亚"号油轮。</p>
+        </div>
 
-    <div class="data-grid">
-        <div class="data-card">
-            <div class="label">道琼斯工业</div>
-            <div class="value down">-0.61%</div>
-            <div class="change down">↓ 跌约300点</div>
+        <div class="card">
+            <h3>散货市场：BDI小幅回落至1,923点</h3>
+            <span class="tag tag-blue">干散货</span>
+            <p>BDI本周下跌13点至1,923点，主因好望角型船舶运价回调。巴拿马型和超灵便型仍有小幅增长。39K DWT灵便型新造船三年期租约以BHSI 120%成交。中金看好绿色甲醇航运燃料前景，能锁定海外客户的项目优先受益。</p>
         </div>
-        <div class="data-card">
-            <div class="label">纳斯达克</div>
-            <div class="value up">+0.08%</div>
-            <div class="change flat">→ 科技股撑盘</div>
-        </div>
-        <div class="data-card">
-            <div class="label">标普500</div>
-            <div class="value down">-0.08%</div>
-            <div class="change flat">→ 窄幅波动</div>
-        </div>
-        <div class="data-card">
-            <div class="label">中概金龙指数</div>
-            <div class="value down">-0.77%</div>
-            <div class="change down">↓ 涨跌分化</div>
-        </div>
-    </div>
 
-    <div class="news-item" style="margin-top:16px">
-        <h3>🛢️ 大宗商品</h3>
-    </div>
-    <div class="data-grid">
-        <div class="data-card">
-            <div class="label">布伦特原油</div>
-            <div class="value up">~$91-94</div>
-            <div class="change up">↑ 伊拉克油轮遇袭</div>
-        </div>
-        <div class="data-card">
-            <div class="label">黄金 XAU/USD</div>
-            <div class="value up">$5,150-5,175</div>
-            <div class="change up">↑ 避险需求强劲</div>
+        <div class="card">
+            <h3>集运市场：3月运价波动加剧</h3>
+            <span class="tag tag-orange">集装箱</span>
+            <p>年初运价因运力过剩和需求温和而偏软，但3月中东局势升级、红海航线绕行及停航效应叠加，主要航线运价出现明显反弹。新船交付潮构成中期下行压力，区域市场呈现东南亚升温、中东波动、拉美增长的分化格局。</p>
         </div>
     </div>
 
-    <div class="news-item" style="margin-top:16px">
-        <h3>₿ 加密货币</h3>
-    </div>
-    <div class="data-grid">
-        <div class="data-card">
-            <div class="label">Bitcoin (BTC)</div>
-            <div class="value">~$70,500</div>
-            <div class="change up">↑ 守住$70K关口</div>
+    <!-- Section 3: 全球财经 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">📊</span> 全球财经
         </div>
-        <div class="data-card">
-            <div class="label">Ethereum (ETH)</div>
-            <div class="value">~$2,023</div>
-            <div class="change flat">→ 预测涨至$2,115</div>
+
+        <div class="market-grid">
+            <div class="market-item">
+                <div class="label">道琼斯工业指数</div>
+                <div class="value" style="font-size:1rem;">跌破 47,000</div>
+                <div class="change down">▼ 1.56%</div>
+            </div>
+            <div class="market-item">
+                <div class="label">纳斯达克</div>
+                <div class="value down">大幅下跌</div>
+                <div class="change down">▼ 1.78%</div>
+            </div>
+            <div class="market-item">
+                <div class="label">标普500</div>
+                <div class="value down">年内新低</div>
+                <div class="change down">▼ 1.52%</div>
+            </div>
+            <div class="market-item">
+                <div class="label">布伦特原油</div>
+                <div class="value up">$100+/桶</div>
+                <div class="change up">▲ 9.2% 单日</div>
+            </div>
+            <div class="market-item">
+                <div class="label">WTI 原油</div>
+                <div class="value up">~$96/桶</div>
+                <div class="change up">▲ 大幅飙升</div>
+            </div>
+            <div class="market-item">
+                <div class="label">现货黄金</div>
+                <div class="value">$5,088/oz</div>
+                <div class="change down">日内冲高回落</div>
+            </div>
+            <div class="market-item">
+                <div class="label">现货白银</div>
+                <div class="value">$84/oz</div>
+                <div class="change up">▲ 先跌后涨</div>
+            </div>
+            <div class="market-item">
+                <div class="label">美元指数 DXY</div>
+                <div class="value up">突破 100</div>
+                <div class="change up">▲ 两月新高</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>美股三大指数集体重挫</h3>
+            <span class="tag tag-red">美股</span><span class="tag tag-orange">能源</span>
+            <p>道指下跌超700点跌破47,000创年内新低，纳指跌1.78%，标普500跌1.52%。半导体板块深夜重挫，英特尔跌超5%。油价飙升推动美元指数站上100关口，日元兑美元跌破159.45为2024年7月以来首次，韩元兑美元突破1500。欧洲主要股指普跌，德国DAX跌0.48%。</p>
+        </div>
+
+        <div class="card">
+            <h3>油价暴涨 · 特朗普政府紧急应对</h3>
+            <span class="tag tag-red">原油</span><span class="tag tag-blue">政策</span>
+            <p>布伦特原油自2022年8月以来首次突破100美元/桶，日涨幅9.2%为2020年以来最大。WTI原油一度突破98美元后回落至96美元附近。特朗普政府拟暂停《琼斯法案》以平抑油价，同时颁发许可证允许销售已装载的俄罗斯原油。美国能源部长称当前有4.15亿桶石油储备。伊朗威胁"全球应做好迎接200美元油价的准备"。</p>
+        </div>
+
+        <div class="card">
+            <h3>A股受地缘冲击 · 能源板块轮动</h3>
+            <span class="tag tag-blue">A股</span><span class="tag tag-green">能源</span>
+            <p>科创板市场波动加大，涨跌互现。能源板块轮动提速，中南文化5连板。大宗商品价格指数BPI报1,055点，较前日上升6点。黄金、白银、欧股、美股期货3月13日午后突变，市场避险情绪浓厚。</p>
+        </div>
+
+        <!-- Crypto sub-section -->
+        <div class="card" style="border-color: var(--accent2);">
+            <h3>🪙 加密货币：BTC逆势上涨至$72,300 展现避险属性</h3>
+            <span class="tag tag-purple">加密货币</span><span class="tag tag-green">避险</span>
+            <p>在全球股市暴跌、油价飙升之际，比特币逆势突破72,000美元，展现出"数字黄金"避险属性。市值约1.33万亿美元。期货未平仓合约激增5%至1,076亿美元。3月9日第2000万枚BTC被挖出，标志性里程碑。恐惧贪婪指数处于"极度恐惧"区间。</p>
+            <table class="crypto-table">
+                <thead>
+                    <tr><th>#</th><th>币种</th><th>价格</th><th>24h</th><th>7d</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td><span class="crypto-name">Bitcoin</span><span class="crypto-symbol">BTC</span></td><td>$72,300</td><td class="up">+2.48%</td><td class="up">+2.56%</td></tr>
+                    <tr><td>2</td><td><span class="crypto-name">Ethereum</span><span class="crypto-symbol">ETH</span></td><td>$2,125</td><td class="up">+2.60%</td><td class="up">+3.05%</td></tr>
+                    <tr><td>3</td><td><span class="crypto-name">BNB</span><span class="crypto-symbol">BNB</span></td><td>$667</td><td class="up">+2.24%</td><td class="up">+4.31%</td></tr>
+                    <tr><td>4</td><td><span class="crypto-name">XRP</span><span class="crypto-symbol">XRP</span></td><td>$1.42</td><td class="up">+2.57%</td><td class="up">+1.79%</td></tr>
+                    <tr><td>5</td><td><span class="crypto-name">Solana</span><span class="crypto-symbol">SOL</span></td><td>$90.14</td><td class="up">+3.82%</td><td class="up">+2.68%</td></tr>
+                    <tr><td>6</td><td><span class="crypto-name">Dogecoin</span><span class="crypto-symbol">DOGE</span></td><td>$0.0998</td><td class="up">+5.55%</td><td class="up">+6.76%</td></tr>
+                    <tr><td>7</td><td><span class="crypto-name">Cardano</span><span class="crypto-symbol">ADA</span></td><td>$0.274</td><td class="up">+4.52%</td><td class="up">+2.47%</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="news-item" style="margin-top:12px">
-        <p><strong>市场焦点：</strong>BTC在伊朗战争引发的石油波动中展现韧性，多次守住$70,000心理关口。$350M加密清算潮后市场企稳。SEC与CFTC签署联合监管备忘录，加密监管走向协调。Robert Kiyosaki警告2026年股市崩盘风险，建议配置黄金、白银、BTC和ETH。</p>
-    </div>
-</div>
 
-<!-- ==================== AI & 机器人 ==================== -->
-<div class="section">
-    <div class="section-header">
-        <span class="section-icon">🤖</span>
-        <span class="section-title ai">AI & 机器人</span>
+    <!-- Section 4: AI & 机器人 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon">🤖</span> AI · 机器人
+        </div>
+
+        <div class="card">
+            <h3>Sunday Robotics 估值11.5亿美元 · 打造家用人形机器人Memo</h3>
+            <span class="tag tag-purple">独角兽</span><span class="tag tag-pink">人形机器人</span>
+            <p>人形机器人公司Sunday达到11.5亿美元估值，目标构建名为"Memo"的家用人形机器人，可执行洗衣、收拾餐桌等家务。公司去年底刚从隐身模式亮相，已有1,000人排队等候。</p>
+        </div>
+
+        <div class="card">
+            <h3>Rivian衍生公司Mind Robotics融资5亿美元</h3>
+            <span class="tag tag-green">融资</span><span class="tag tag-blue">工业机器人</span>
+            <p>从电动汽车制造商Rivian剥离的工业机器人实验室Mind Robotics完成5亿美元A轮融资，由Accel和Andreessen Horowitz联合领投，专注AI驱动的工业机器人研发。</p>
+        </div>
+
+        <div class="card">
+            <h3>NVIDIA GTC 2026 下周开幕 · 重大机器人公告预期</h3>
+            <span class="tag tag-green">NVIDIA</span><span class="tag tag-purple">GTC</span>
+            <p>NVIDIA GTC 2026将于3月16-19日举行，预计黄仁勋将发布重大机器人技术公告。Palantir与NVIDIA合作推出主权AI操作系统。同时，前Google研究员创办的AI创业公司正在日本推动工业机器人供应链AI化改造。</p>
+        </div>
+
+        <div class="card">
+            <h3>OpenAI硬件负责人因五角大楼合作离职</h3>
+            <span class="tag tag-orange">OpenAI</span><span class="tag tag-red">争议</span>
+            <p>OpenAI机器人和硬件高管Caitlin Kalinowski在公司与五角大楼合作曝光后辞职。此前Anthropic也与五角大楼发生对峙事件，"亲人类AI宣言"同期发布，AI军事化应用引发行业广泛讨论。</p>
+        </div>
     </div>
 
-    <div class="news-item">
-        <h3>🏭 Rivian衍生公司Mind Robotics获$5亿A轮融资</h3>
-        <span class="tag tag-hot">热点</span>
-        <p>电动汽车制造商Rivian的衍生工业机器人实验室Mind Robotics完成$5亿A轮融资，由Accel和a16z联合领投，专注于AI驱动的工业机器人。</p>
+    <!-- Footer -->
+    <div class="footer">
+        <p>📡 由 OpenClaw AI 自动采编生成 · 数据来源：新华社、新浪财经、BBC、CoinDesk、TechCrunch 等</p>
+        <p style="margin-top: 6px;">⚠️ 本简报仅供参考，不构成投资建议 · <a href="https://github.com/norcalipa/daily-briefing">GitHub</a></p>
     </div>
-
-    <div class="news-item">
-        <h3>🟢 NVIDIA GTC 2026即将开幕（3月16-19日）</h3>
-        <p>NVIDIA宣布多项重大机器人技术，GTC 2026大会将于下周举行。ABB Robotics已宣布整合NVIDIA Omniverse库至RobotStudio®，帮助制造商部署Physical AI。Palantir与NVIDIA联合推出主权AI操作系统。</p>
-    </div>
-
-    <div class="news-item">
-        <h3>⚠️ OpenAI硬件负责人因五角大楼合作而辞职</h3>
-        <p>OpenAI机器人与硬件高管Caitlin Kalinowski在公司与五角大楼合作后辞职。此前Anthropic也曾与五角大楼发生对峙。TechCrunch发表"Pro-Human AI Declaration"路线图呼吁AI安全。</p>
-    </div>
-
-    <div class="news-item">
-        <h3>🇯🇵 前Google研究员用AI变革日本机器人产业</h3>
-        <p>一家硅谷AI初创公司正将目光转向日本，试图证明AI能够重塑全球最大的工业机器人供应链之一。Bloomberg报道该公司正与多家日本工业巨头洽谈合作。</p>
-    </div>
-
-    <div class="news-item">
-        <h3>🇺🇦 乌克兰开放战场数据训练无人机AI</h3>
-        <p>乌克兰国防部长宣布，将向盟友开放战场数据，用于训练无人机AI软件，希望利用四年抵抗俄罗斯入侵积累的实战经验。</p>
-    </div>
-</div>
-
-<!-- ==================== 总结 ==================== -->
-<div class="section" style="background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(167,139,250,0.05));">
-    <div class="section-header">
-        <span class="section-icon">📌</span>
-        <span class="section-title" style="color: var(--text);">今日要点</span>
-    </div>
-    <div style="font-size: 0.9rem; line-height: 1.8;">
-        <p>🔸 <strong>地缘主线：</strong>美伊冲突进入第13天，霍尔木兹海峡虽部分恢复通行（中国船率先穿越），但供应链中断风险仍高。油价维持$90+高位。</p>
-        <p>🔸 <strong>避险资产走强：</strong>黄金突破$5,150/盎司，BTC守住$70K，资金持续涌入避险资产。</p>
-        <p>🔸 <strong>航运短期受益：</strong>BDI创两月新高，油轮指数飙升。但中期新船交付潮将带来下行压力。</p>
-        <p>🔸 <strong>AI机器人融资火热：</strong>Mind Robotics $5亿融资领跑，NVIDIA GTC大会下周开幕将有更多重磅消息。</p>
-        <p>🔸 <strong>贸易摩擦升级：</strong>美国对16国启动"产能过剩"调查，中美贸易紧张或再度加剧。</p>
-    </div>
-</div>
-
-<footer>
-    <p>📰 由 AI 自动生成 · 数据来源：新浪财经、CNBC、Reuters、CoinTelegraph、TechCrunch 等</p>
-    <p style="margin-top: 6px;">Powered by <a href="https://github.com/openclaw/openclaw">OpenClaw</a> · <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
-</footer>
 
 </div>
 </body>
