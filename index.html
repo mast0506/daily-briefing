@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日资讯简报 | 2026年3月16日 星期一</title>
+<title>每日资讯简报 | 2026年3月19日 星期四</title>
 <style>
   :root {
     --bg: #0f172a; --card: #1e293b; --accent: #3b82f6; --accent2: #8b5cf6;
@@ -49,172 +49,194 @@
 
 <div class="header">
   <h1>📰 每日资讯简报</h1>
-  <div class="date">2026年3月16日 星期一 · 新加坡时间 07:00</div>
+  <div class="date">2026年3月19日 星期四 · 新加坡时间 07:00</div>
 </div>
 
+<!-- Alert Banner -->
 <div class="alert-banner">
-  <h3>🚨 重大事件：美以对伊朗军事行动持续 · 第15天</h3>
-  <p>美以对伊朗军事打击进入第15天。伊朗革命卫队发起"真实承诺-4"行动第49波攻势，攻击阿联酋、巴林、科威特美军基地。霍尔木兹海峡航运严重受阻，英美油轮遭伊朗攻击。国际原油价格冲上$120/桶，全球市场剧烈震荡。</p>
+  <h3>🚨 重大事件：美联储维持利率不变 · 中东战火升级</h3>
+  <p>FOMC以11-1投票维持利率3.5%-3.75%不变，鲍威尔称需维持"温和限制性"立场，市场急跌。以色列空袭伊朗天然气设施，伊朗报复打击卡塔尔能源枢纽，霍尔木兹海峡航运安全告急，油价飙升至$108/桶。</p>
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('politics')">🌏 时政</div>
-  <div class="tab" onclick="showTab('shipping')">🚢 航运</div>
-  <div class="tab" onclick="showTab('finance')">💰 财经</div>
-  <div class="tab" onclick="showTab('ai')">🤖 AI</div>
+  <div class="tab active" onclick="switchTab('politics')">🌍 时政要闻</div>
+  <div class="tab" onclick="switchTab('shipping')">🚢 航运市场</div>
+  <div class="tab" onclick="switchTab('finance')">💹 全球财经</div>
+  <div class="tab" onclick="switchTab('ai')">🤖 AI动态</div>
 </div>
 
-<!-- 时政 -->
+<!-- 时政要闻 -->
 <div id="politics" class="section active">
   <div class="card">
-    <h3>🔴 中东局势持续升级</h3>
+    <h3>🔥 中东局势持续升级</h3>
     <ul>
-      <li><strong>伊朗反击：</strong>革命卫队对波斯湾多个美军基地发射导弹，巴林第五舰队总部、卡塔尔、科威特、阿联酋均遭攻击</li>
-      <li><strong>美方空袭：</strong>美军攻击伊朗哈尔克岛石油设施，该岛为伊朗原油出口命脉</li>
-      <li><strong>高层伤亡：</strong>伊朗总参督察巴巴扬将军在冲突中阵亡</li>
-      <li><strong>油轮遇袭：</strong>英美油轮在波斯湾和霍尔木兹海峡遭伊朗攻击，航运保险费率飙升</li>
-      <li><strong>特朗普表态：</strong>拒绝伊朗求和，社交媒体发文称"伊朗已被彻底击败"</li>
+      <li><strong>以色列空袭伊朗：</strong>以军评估已成功击杀伊朗最高国家安全委员会秘书拉里贾尼及巴斯基民兵组织负责人，并空袭了伊朗海军里海总部，摧毁5艘导弹快艇</li>
+      <li><strong>伊朗报复反击：</strong>伊朗打击卡塔尔能源设施，袭击沙特目标；霍尔木兹海峡附近油轮遭不明弹体袭击，全球能源供应链面临严峻威胁</li>
+      <li><strong>真主党持续攻击：</strong>24小时内对以色列北部发动19次袭击，包括火箭、无人机和反坦克导弹攻击拉马特·大卫空军基地</li>
+      <li><strong>阿联酋重开空域：</strong>遭伊朗攻击后曾短暂关闭，迪拜机场已恢复运营</li>
     </ul>
-    <div class="source">来源: 人民网、新华社、卫星通讯社 · 3月14-15日</div>
+    <div class="source">来源: Reuters, The Guardian, ISW, Times of Israel</div>
   </div>
 
   <div class="card">
-    <h3>🌐 国际动态</h3>
+    <h3>🏛️ 美联储FOMC决议</h3>
     <ul>
-      <li><strong>联合国安理会：</strong>通过决议最强烈谴责伊朗对邻国袭击，就伊朗核计划展开辩论</li>
-      <li><strong>伊朗外交：</strong>外长阿拉格奇与法国外长通话，呼吁避免冲突升级</li>
-      <li><strong>日本能源危机：</strong>原油供应告急，油价逼近200日元/升，紧急启动国家石油储备</li>
-      <li><strong>韩国萨德：</strong>6辆萨德发射车从韩国全部撤出</li>
-      <li><strong>美国驻伊拉克使馆：</strong>巴格达使馆遭无人机袭击</li>
+      <li><strong>维持利率不变：</strong>FOMC以11-1投票将联邦基金利率维持在3.5%-3.75%区间</li>
+      <li><strong>点阵图预期：</strong>官员预期2026年和2027年各降息一次（25bp）</li>
+      <li><strong>鲍威尔发言：</strong>强调需维持"温和限制性"立场，并表示若继任者Kevin Warsh未在5月前确认，将以代理主席身份继续履职</li>
+      <li><strong>市场反应剧烈：</strong>S&P 500创2024年以来最差FOMC日表现，暴跌1.36%</li>
     </ul>
-    <div class="source">来源: 联合国新闻、新浪国际 · 3月13-15日</div>
+    <div class="source">来源: CNBC, Reuters, Bloomberg, Livemint</div>
+  </div>
+
+  <div class="card">
+    <h3>🇨🇳 中国经济</h3>
+    <ul>
+      <li>"十五五"规划开局，两会已定调中长期经济发展，将生物医药列为新兴支柱产业</li>
+      <li>港股通标的新增42只港股，其中生物医药板块占13席（超三成）</li>
+      <li>中东局势导致能源成本飙升，国内成品油价格预计继续上涨</li>
+    </ul>
+    <div class="source">来源: 新浪财经, Investing.com</div>
   </div>
 </div>
 
-<!-- 航运 -->
+<!-- 航运市场 -->
 <div id="shipping" class="section">
   <div class="card">
-    <h3>📊 航运指数一览 <span class="badge badge-orange">战时波动</span></h3>
+    <h3>📊 航运指数</h3>
     <table>
-      <tr><th>指数</th><th>最新值</th><th>变动</th><th>趋势</th></tr>
-      <tr><td>BDI 波罗的海干散货</td><td><strong>2,066</strong></td><td class="up">+56</td><td>📈 持续上行</td></tr>
-      <tr><td>BHSI 灵便型</td><td>831</td><td class="down">-2</td><td>📉 小幅回落</td></tr>
-      <tr><td>灵便型日租金</td><td>$14,967/天</td><td class="down">-$35</td><td>📉 微跌</td></tr>
+      <tr><th>指数</th><th>数值</th><th>变动</th><th>趋势</th></tr>
+      <tr class="highlight-row"><td><strong>BDI 波罗的海干散货</strong></td><td>1,762</td><td>+1</td><td><span class="badge badge-green">持稳</span></td></tr>
+      <tr><td>BDI 趋势</td><td colspan="3">持续上行周期，干散货企业盈利增长环境有利</td></tr>
     </table>
-    <div class="source">来源: HandyBulk · 3月13日</div>
+    <div class="source">数据日期: 2026-03-18 · 来源: Baltic Exchange, HandyBulk</div>
   </div>
 
   <div class="card">
-    <h3>⚠️ 霍尔木兹海峡危机</h3>
+    <h3>🛢️ 油轮市场 <span class="badge badge-red">地缘风险</span></h3>
     <ul>
-      <li><strong>油轮遇袭：</strong>伊朗攻击波斯湾英美油轮，霍尔木兹海峡航运严重受阻</li>
-      <li><strong>保险飙升：</strong>战争险费率大幅攀升，航运成本急剧增加</li>
-      <li><strong>绕行加剧：</strong>部分油轮被迫绕行好望角，运输周期延长2-3周</li>
-      <li><strong>产能受限：</strong>中东油田面临关停压力，管道和储油设施接近极限</li>
+      <li><strong>VLCC (TD3C 中东→中国)：</strong>TCE约$326,198/天 (WS348.89)，较上周WS466.67大幅回落</li>
+      <li><strong>霍尔木兹海峡：</strong>受以伊冲突影响，航运安全严峻，富查伊拉附近油轮遭袭</li>
+      <li><strong>燃油成本：</strong>布伦特原油飙升至$108.78/桶，船舶运输成本大幅走高</li>
     </ul>
-    <div class="source">来源: Reuters、The Guardian · 3月12-15日</div>
+    <div class="source">来源: Baltic Exchange, Fortune, Reuters</div>
   </div>
 
   <div class="card">
-    <h3>🚢 集运与散货市场</h3>
+    <h3>📦 集运 & 散货</h3>
     <ul>
-      <li><strong>集运市场：</strong>节后复工复产带动货量回升，亚洲出口航线运价上涨；霍尔木兹紧张局势增添不确定性</li>
-      <li><strong>散货市场：</strong>整体需求偏弱，"船多货少"格局延续，矿石/钢材/砂石运价下跌，仅煤炭航线受复工需求小幅上涨</li>
-      <li><strong>新造船市场：</strong>红海危机叠加老旧船舶更替推动订单潮，新船价格指数维持高位</li>
-      <li><strong>单壳淘汰：</strong>MARPOL 公约要求全球单壳油轮 2026 年内全部淘汰</li>
-      <li><strong>珠江航运：</strong>综合运价指数小幅下跌，燃油成本上升推高运输成本</li>
+      <li><strong>集运市场：</strong>节后复工带动货量小幅回升，内河/外贸航线运价指数上涨</li>
+      <li><strong>散货市场：</strong>"船多货少"延续，矿石/钢材/砂石运价下跌，仅煤炭因复工需求小幅上涨</li>
+      <li><strong>珠江航运综合运价指数：</strong>小幅下跌</li>
+      <li><strong>Handysize：</strong>亚洲市场偏淡，39K DWT澳洲至华北约$15,500/天</li>
     </ul>
-    <div class="source">来源: 珠江航务局、Global Trade · 3月6-13日</div>
+    <div class="source">来源: 珠江航务局, HandyBulk</div>
   </div>
 </div>
 
-<!-- 财经 -->
+<!-- 全球财经 -->
 <div id="finance" class="section">
   <div class="card">
-    <h3>📉 全球股市 <span class="badge badge-red">地缘风险承压</span></h3>
+    <h3>📉 全球股市 <span class="badge badge-red">FOMC冲击</span></h3>
     <table>
-      <tr><th>市场</th><th>指数</th><th>涨跌</th></tr>
-      <tr><td>🇺🇸 S&P 500</td><td>创2026年新低</td><td class="down">▼ 受伊朗战争+油价冲击</td></tr>
-      <tr><td>🇺🇸 Nasdaq</td><td>科技股承压</td><td class="down">▼ 1.0%+（上周五盘中）</td></tr>
-      <tr><td>🇨🇳 上证指数</td><td>~4,133</td><td class="down">▼ 缩量回调</td></tr>
-      <tr><td>🇨🇳 深证成指</td><td>~14,465</td><td class="down">▼ 跌幅较大</td></tr>
-      <tr><td>🇨🇳 创业板指</td><td>—</td><td class="down">▼ 1.67%（3月12日）</td></tr>
+      <tr><th>指数</th><th>收盘</th><th>涨跌</th></tr>
+      <tr><td>🇺🇸 S&P 500</td><td>6,624.70</td><td class="down">-1.36%</td></tr>
+      <tr><td>🇺🇸 纳斯达克</td><td>22,152.42</td><td class="down">-1.46%</td></tr>
+      <tr><td>🇺🇸 道琼斯</td><td>—</td><td class="down">-0.85%</td></tr>
+      <tr><td>🇺🇸 Russell 2000</td><td>—</td><td class="down">-0.72%</td></tr>
     </table>
-    <p style="margin-top:8px; font-size:0.85rem;">S&P 500 曾于1月28日首次突破7,000点，后因中东战争迅速回落至年内新低。日本因原油危机紧急启动国家储备。</p>
-    <div class="source">来源: Economic Times、新浪财经 · 3月13-15日</div>
+    <p style="margin-top:10px; font-size:0.85rem; color:var(--muted);">📌 S&P 500创近4个月新低，年内已跌约3%。纳斯达克100较2月高点25,500点回撤约14.1%。<br>📌 BofA全球基金经理调查：机构最超配新兴市场（2021年2月以来最高）和大宗商品（2022年4月以来最高），低配美元。</p>
+    <div class="source">来源: CNBC, Reuters, Bloomberg, Yahoo Finance</div>
   </div>
 
   <div class="card">
-    <h3>🛢️ 大宗商品</h3>
+    <h3>🏆 大宗商品</h3>
     <table>
       <tr><th>品种</th><th>价格</th><th>趋势</th></tr>
-      <tr><td>🛢️ 布伦特原油</td><td><strong>~$120/桶</strong></td><td class="up">📈 霍尔木兹海峡危机推动，创2022年以来新高</td></tr>
-      <tr><td>🥇 黄金</td><td><strong>~$5,023/盎司</strong></td><td class="up">📈 避险需求爆发，中东战火驱动</td></tr>
+      <tr class="highlight-row"><td>🛢️ 布伦特原油</td><td><strong>$108.78/桶</strong></td><td class="up">↑ 中东局势推升</td></tr>
+      <tr><td>🥇 黄金 (XAUUSD)</td><td><strong>~$5,000/盎司</strong></td><td><span class="badge badge-orange">$5,000关口拉锯</span></td></tr>
     </table>
-    <p style="margin-top:8px; font-size:0.85rem;">原油：伊朗油轮遇袭、哈尔克岛设施被炸，供应中断恐慌主导市场。黄金：避险情绪推动金价维持5000美元上方运行。</p>
-    <div class="source">来源: Reuters、Long Forecast · 3月12-15日</div>
+    <p style="margin-top:10px; font-size:0.85rem; color:var(--muted);">📌 油价：中东战事导致霍尔木兹海峡航运受阻，Brent从年初$72飙升超50%至$108+<br>📌 黄金：在$4,996-$5,015之间波动，FOMC后短线承压，但地缘避险需求仍强劲</p>
+    <div class="source">来源: Fortune, FX Leaders, Yahoo Finance</div>
   </div>
 
   <div class="card">
-    <h3>₿ 加密货币 <span class="badge badge-orange">极度恐惧</span></h3>
+    <h3>₿ 加密货币 <span class="badge badge-green">监管里程碑</span></h3>
     <table>
-      <tr><th>币种</th><th>价格</th><th>24h</th><th>备注</th></tr>
-      <tr><td>₿ BTC</td><td><strong>$70,763</strong></td><td class="up">+0.67%</td><td>市值 $1.4T</td></tr>
-      <tr><td>Ξ ETH</td><td><strong>$2,108</strong></td><td class="up">+1.60%</td><td>市值 $254B</td></tr>
-      <tr><td>◎ SOL</td><td>—</td><td class="up">+1.39%</td><td>—</td></tr>
+      <tr><th>币种</th><th>价格</th><th>24h涨跌</th></tr>
+      <tr class="highlight-row"><td>BTC/USDT</td><td><strong>$74,200</strong></td><td class="up">+4.5%</td></tr>
+      <tr><td>ETH/USDT</td><td><strong>$2,340</strong></td><td class="up">+8.4%</td></tr>
+      <tr><td>XRP/USDT</td><td>$1.57</td><td class="up">+8.8%</td></tr>
+      <tr><td>SOL/USDT</td><td>$95.68</td><td class="up">+4.1%</td></tr>
+      <tr><td>总市值</td><td><strong>$2.65T</strong></td><td class="up">+3.6%</td></tr>
     </table>
-    <p style="margin-top:8px; font-size:0.85rem;">恐惧贪婪指数：<strong>16/100（极度恐惧）</strong>，已连续38天处于极度恐惧区间，为2022年Terra/Luna以来最长。BTC ETF资金流入回暖，BTC主导率56.8%，总加密市值$2.49T。</p>
-    <div class="source">来源: CoinCodex、Changelly · 3月15日</div>
+    <p style="margin-top:10px; font-size:0.85rem; color:var(--muted);">
+      🔥 <strong>历史性监管突破：</strong>SEC与CFTC联合发布最终规则，正式将16种加密资产分类为「数字商品」，包括BTC、ETH、SOL、XRP、LINK、ADA、AVAX、DOT、XLM、DOGE等<br>
+      📌 MSTR +大涨，COIN +3.4% 至$210.23，加密股全线走强<br>
+      📌 Aster与WLFI合作推出USD1计价永续合约 (BTC/ETH/SOL)
+    </p>
+    <div class="source">来源: Capital Street FX, CoinGape, Coinpedia, Genfinity</div>
+  </div>
+
+  <div class="card">
+    <h3>🇨🇳 A股 & 港股 (3月18日)</h3>
+    <ul>
+      <li><strong>A股盘前：</strong>隔夜外围偏暖，美股三大指数曾收涨，北向资金情绪积极</li>
+      <li><strong>AI概念活跃：</strong>英伟达分销商中电港涨停（+10%，24.64元），市值187亿元</li>
+      <li><strong>港股通扩容：</strong>42只港股获南向资金"入场券"，生物医药占13席</li>
+      <li><strong>中概股承压：</strong>纳斯达克金龙指数收跌0.73%，腾讯音乐暴跌24.65%</li>
+      <li>⚠️ 今日关注：FOMC结果公布（北京时间凌晨2点已出），或影响北向资金流向</li>
+    </ul>
+    <div class="source">来源: 新浪财经, Investing.com</div>
   </div>
 </div>
 
-<!-- AI -->
+<!-- AI动态 -->
 <div id="ai" class="section">
   <div class="card">
-    <h3>🎮 NVIDIA GTC 2026 今日开幕 <span class="badge badge-blue">重磅</span></h3>
+    <h3>🟢 NVIDIA GTC 2026 大会 <span class="badge badge-blue">进行中·第3天</span></h3>
     <ul>
-      <li><strong>时间：</strong>3月16-19日，圣何塞 SAP Center</li>
-      <li><strong>黄仁勋主题演讲：</strong>今日（3月16日）上午11点PT，来自190个国家的参会者</li>
-      <li><strong>预期发布：</strong>新一代GPU、企业AI Agent开源平台 NemoClaw、机器人平台、数据中心技术</li>
-      <li><strong>合作展示：</strong>ABB Robotics × NVIDIA Omniverse 工业级物理AI，WORKR展示无需编程即可部署的AI机器人</li>
+      <li><strong>Vera CPU：</strong>黄仁勋发布专为Agentic AI和物理AI设计的全新处理器</li>
+      <li><strong>Vera Rubin Space-1：</strong>太空数据中心概念，正在与合作伙伴开发中</li>
+      <li><strong>NemoClaw：</strong>开源AI Agent平台，名字灵感来自OpenClaw，可运行自主AI代理</li>
+      <li><strong>DLSS 5：</strong>神经渲染技术，预计今秋推出</li>
+      <li><strong>Disney Olaf机器人：</strong>在Newton物理仿真器中训练的雪宝机器人登台亮相，被黄仁勋调侃"我以为你会更高"</li>
+      <li><strong>展示110台机器人：</strong>展现"物理AI"愿景</li>
+      <li><strong>Nemotron 4联盟：</strong>Black Forest Labs、Perplexity、Mistral、Cursor加入</li>
     </ul>
-    <div class="source">来源: NVIDIA Blog、TechCrunch、Yahoo Finance · 3月12-16日</div>
+    <div class="source">来源: CNET, Tom's Hardware, The Neuron Daily, Analytics Insight</div>
   </div>
 
   <div class="card">
-    <h3>🤖 机器人融资与产业</h3>
-    <ul>
-      <li><strong>Mind Robotics：</strong>Rivian分拆的工业机器人实验室完成$5亿A轮融资（Accel + a16z 联合领投）</li>
-      <li><strong>Uber联合创始人：</strong>Kalanick创办 Atoms 公司，押注专用机器人赛道</li>
-      <li><strong>日本机器人AI化：</strong>前Google研究员创建AI初创公司，将AI引入日本工业机器人供应链</li>
-    </ul>
-    <div class="source">来源: TechCrunch、Reuters、Bloomberg · 3月9-13日</div>
+    <h3>🤖 机器人产业融资热潮</h3>
+    <table>
+      <tr><th>公司</th><th>融资</th><th>领域</th></tr>
+      <tr class="highlight-row"><td><strong>Mind Robotics</strong> (Rivian分拆)</td><td>$500M (A轮)</td><td>工业AI机器人</td></tr>
+      <tr><td><strong>RoboForce</strong></td><td>$52M</td><td>通用物理AI机器人</td></tr>
+      <tr><td><strong>Gecko Robotics</strong></td><td>$71M (美海军合同)</td><td>军舰维修机器人</td></tr>
+    </table>
+    <p style="margin-top:10px; font-size:0.85rem; color:var(--muted);">📌 Mind Robotics由Accel和A16Z共同领投，专注工厂AI机器人<br>📌 RoboForce覆盖太阳能、采矿、制造、物流等场景<br>📌 ABB与NVIDIA宣布突破工业机器人"仿真到现实"差距</p>
+    <div class="source">来源: TechCrunch, CNBC, Robotics & Automation News</div>
   </div>
 
   <div class="card">
-    <h3>🧠 AI行业动态</h3>
-    <ul>
-      <li><strong>Morgan Stanley预警：</strong>2026上半年将出现"大规模AI突破"，多数行业尚未做好准备</li>
-      <li><strong>OpenAI人事变动：</strong>机器人与硬件负责人 Caitlin Kalinowski 因五角大楼合作争议辞职</li>
-      <li><strong>美国商务部：</strong>撤回AI芯片出口管制计划草案</li>
-      <li><strong>欧盟：</strong>迈出禁止AI生成儿童性虐待图像的第一步</li>
-      <li><strong>GDC 2026：</strong>AI成为本届游戏开发者大会最热话题，求职者激增、外包趋势加剧</li>
-    </ul>
-    <div class="source">来源: Fortune、Reuters、LLM-Stats · 3月10-15日</div>
+    <h3>🌐 OpenClaw 热度</h3>
+    <p>据《纽约时报》3月17日报道，OpenClaw在中国掀起热潮——深圳出现排队安装的长龙，同时也引发政府对AI Agent能力边界的关注与审视。</p>
+    <div class="source">来源: The New York Times, 2026-03-17</div>
   </div>
 </div>
 
 <div class="footer">
-  <p>📡 数据采集时间：2026-03-16 07:00 SGT</p>
-  <p>Powered by OpenClaw · github.com/mast0506/daily-report</p>
+  <p>📡 由 OpenClaw AI 自动生成 · 数据截止 2026-03-19 07:00 SGT</p>
+  <p style="margin-top:4px;">⚠️ 本简报仅供参考，不构成投资建议</p>
 </div>
 
 </div>
 
 <script>
-function showTab(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+function switchTab(id) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   event.target.classList.add('active');
 }
