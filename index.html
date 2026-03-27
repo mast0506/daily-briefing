@@ -3,141 +3,173 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>每日资讯简报 | 2026年3月27日 星期五</title>
+<title>每日资讯简报 | 2026年3月28日 星期六</title>
 <style>
-  :root { --bg:#0f172a; --card:#1e293b; --accent:#3b82f6; --accent2:#8b5cf6; --green:#22c55e; --red:#ef4444; --orange:#f59e0b; --text:#e2e8f0; --muted:#94a3b8; --border:#334155; }
+  :root { --bg:#0b1220; --card:#121c2f; --card2:#17233a; --accent:#4f8cff; --accent2:#8b5cf6; --green:#22c55e; --red:#ef4444; --orange:#f59e0b; --text:#e6edf7; --muted:#9fb1cc; --border:#26344f; }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,'SF Pro','Helvetica Neue',sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
-  .container { max-width: 960px; margin: 0 auto; padding: 16px; }
-  .header { text-align:center; padding:24px 0; border-bottom:1px solid var(--border); margin-bottom:18px; }
-  .header h1 { font-size:1.75rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .header .date { color:var(--muted); font-size:.92rem; margin-top:6px; }
-  .alert-banner { background:linear-gradient(135deg,#7f1d1d,#991b1b); border-radius:12px; padding:14px 16px; margin-bottom:16px; border:1px solid #dc2626; }
-  .alert-banner h3 { color:#fecaca; font-size:.96rem; margin-bottom:3px; }
-  .alert-banner p { color:#fee2e2; font-size:.86rem; }
+  body { font-family:-apple-system,'SF Pro SC','PingFang SC','Helvetica Neue',sans-serif; background:linear-gradient(180deg,#0b1220,#0f1a2c 45%,#101b2d); color:var(--text); line-height:1.7; }
+  .container { max-width: 1024px; margin: 0 auto; padding: 18px; }
+  .header { text-align:center; padding:28px 0 20px; border-bottom:1px solid var(--border); margin-bottom:18px; }
+  .header h1 { font-size:1.85rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .header .date { color:var(--muted); font-size:.93rem; margin-top:7px; }
+  .alert-banner { background:linear-gradient(135deg,#40210b,#5e2d0f); border-radius:12px; padding:14px 16px; margin-bottom:16px; border:1px solid #9a5a1d; }
+  .alert-banner h3 { color:#ffd7a8; font-size:.98rem; margin-bottom:5px; }
+  .alert-banner p { color:#ffe8c8; font-size:.88rem; }
   .tabs { display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px; }
-  .tab { padding:8px 16px; border-radius:20px; background:var(--card); color:var(--muted); cursor:pointer; white-space:nowrap; font-size:.85rem; border:1px solid var(--border); }
+  .tab { padding:9px 16px; border-radius:20px; background:var(--card); color:var(--muted); cursor:pointer; white-space:nowrap; font-size:.85rem; border:1px solid var(--border); }
   .tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-  .section { display:none; animation:fadeIn .28s; }
+  .section { display:none; animation:fadeIn .25s; }
   .section.active { display:block; }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
-  .card { background:var(--card); border-radius:12px; padding:16px; margin-bottom:12px; border:1px solid var(--border); }
-  .card h3 { font-size:1rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-  .card p, .card li { font-size:.9rem; color:var(--muted); line-height:1.75; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+  .card { background:linear-gradient(180deg,var(--card),var(--card2)); border-radius:13px; padding:16px; margin-bottom:12px; border:1px solid var(--border); box-shadow:0 4px 20px rgba(0,0,0,.15); }
+  .card h3 { font-size:1.02rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .card p, .card li { font-size:.91rem; color:var(--muted); line-height:1.75; }
   .card ul { padding-left:18px; }
   .badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:.75rem; font-weight:600; }
-  .badge-red { background:rgba(239,68,68,.15); color:var(--red); }
-  .badge-green { background:rgba(34,197,94,.15); color:var(--green); }
-  .badge-orange { background:rgba(245,158,11,.15); color:var(--orange); }
-  .badge-blue { background:rgba(59,130,246,.15); color:var(--accent); }
+  .badge-red { background:rgba(239,68,68,.18); color:#ff8b8b; }
+  .badge-green { background:rgba(34,197,94,.15); color:#7bf0ac; }
+  .badge-orange { background:rgba(245,158,11,.2); color:#ffd089; }
+  .badge-blue { background:rgba(79,140,255,.2); color:#9ec0ff; }
   table { width:100%; border-collapse:collapse; font-size:.85rem; }
-  th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
-  th { color:var(--muted); font-weight:500; font-size:.79rem; text-transform:uppercase; }
-  .source { font-size:.73rem; color:var(--muted); margin-top:8px; opacity:.86; }
-  .footer { text-align:center; padding:20px 0; color:var(--muted); font-size:.76rem; border-top:1px solid var(--border); margin-top:18px; }
+  th, td { padding:9px 10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.3px; }
+  .source { font-size:.74rem; color:var(--muted); margin-top:8px; opacity:.88; }
+  .footer { text-align:center; padding:20px 0; color:var(--muted); font-size:.77rem; border-top:1px solid var(--border); margin-top:18px; }
+  a { color:#9ec0ff; text-decoration:none; }
+  a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
     <h1>📰 每日资讯简报（深度版）</h1>
-    <div class="date">2026年3月27日 星期五 · 新加坡时间 07:00</div>
+    <div class="date">2026年3月28日 星期六 · 新加坡时间 07:00</div>
   </div>
 
   <div class="alert-banner">
-    <h3>🚨 今日主线：谈判预期反复，市场从“单边避险”转入“事件驱动高波动”</h3>
-    <p>中东局势仍是全球资产定价核心变量，航运与能源风险溢价维持高位，AI机器人继续加速走向现实场景。</p>
+    <h3>⚠️ 今日主线：地缘冲突扰动仍在，风险资产与运价继续“消息驱动”</h3>
+    <p>中东谈判与霍尔木兹通行预期反复，能源/航运风险溢价高位波动；AI机器人赛道持续向产业落地推进。</p>
   </div>
 
   <div class="tabs">
-    <div class="tab active" onclick="showTab('politics', this)">🌏 时政</div>
-    <div class="tab" onclick="showTab('shipping', this)">🚢 航运</div>
-    <div class="tab" onclick="showTab('finance', this)">💰 财经</div>
+    <div class="tab active" onclick="showTab('politics', this)">🌏 时政要闻</div>
+    <div class="tab" onclick="showTab('shipping', this)">🚢 航运资讯</div>
+    <div class="tab" onclick="showTab('finance', this)">💰 全球财经</div>
     <div class="tab" onclick="showTab('ai', this)">🤖 AI/机器人</div>
   </div>
 
   <div id="politics" class="section active">
     <div class="card">
-      <h3>🔴 中东局势：接触在继续，但停火预期仍不稳 <span class="badge badge-red">高敏感期</span></h3>
+      <h3>🔴 中东谈判窗口延长，但“停火-升级”双向风险并存 <span class="badge badge-red">高敏感期</span></h3>
       <ul>
-        <li><strong>谈判信号：</strong>美方持续释放推动停火与降温信号，但伊朗方面公开表态仍称相关方案“单边且不公平”。</li>
-        <li><strong>航道叙事：</strong>伊朗公开称“非敌对船舶”可通过霍尔木兹海峡，市场把其视作“缓和信号”而非风险消除。</li>
-        <li><strong>全球影响：</strong>地缘事件已由地区安全议题外溢至能源、航运保险、通胀与利率预期链条。</li>
+        <li><strong>最新进展：</strong>美方将对伊朗能源设施行动期限再延后10天，释放“继续谈判”信号；同时强调冲突可能还会持续“数周”。</li>
+        <li><strong>关键变量：</strong>霍尔木兹海峡通行与“有限放行”消息，成为能源价格与运价日内波动的核心触发器。</li>
+        <li><strong>外溢影响：</strong>地缘冲突已从军事层面外溢至通胀预期、能源贸易流、航运保险成本与全球风险资产定价。</li>
       </ul>
-      <div class="source">来源：Reuters（3/26）、Al Jazeera（3/25）</div>
+      <div class="source">来源：Reuters（2026-03-26/27）、AP Live（2026-03-27）、BBC World</div>
+    </div>
+
+    <div class="card">
+      <h3>🧭 政策与联盟层面：G7与多方外交协调加速</h3>
+      <ul>
+        <li>G7外长层面持续沟通中东局势与航运安全议题，欧洲盟友与美国在“降级冲突、防止外溢”上保持高频协调。</li>
+        <li>亚洲国家对能源进口安全与航线稳定表态更趋谨慎，地缘风险正向“经济安全”议题转化。</li>
+      </ul>
+      <div class="source">来源：Reuters World/Asia-Pacific（2026-03-27）</div>
     </div>
   </div>
 
   <div id="shipping" class="section">
     <div class="card">
-      <h3>📊 干散货：BDI连涨两日，海岬型继续领跑 <span class="badge badge-orange">结构分化</span></h3>
-      <ul>
-        <li><strong>指数方向：</strong>路透口径显示，BDI在3/26实现连续第二个交易日上涨，主要由Capesize板块推动。</li>
-        <li><strong>周度租金：</strong>Baltic Exchange Week 12显示，Capesize Timecharter Average（C5TC）周环比上涨 <strong>817美元/天</strong>。</li>
-        <li><strong>关键航线：</strong>C3（巴西-中国）重返 <strong>30美元/吨以上</strong>，体现长航线对矿石货盘更敏感。</li>
-      </ul>
-      <div class="source">来源：Reuters（经TradingView转引，3/26）、Baltic Exchange Week 12（3/26）</div>
+      <h3>📊 干散货：BDI维持高波动，Capesize相对强、Panamax/Supramax分化 <span class="badge badge-orange">结构分化</span></h3>
+      <table>
+        <tr><th>指标</th><th>最新线索</th><th>简评</th></tr>
+        <tr><td>BDI</td><td>市场跟踪口径显示指数在3月下旬维持高位震荡</td><td>受地缘与货盘预期双重影响，方向切换快</td></tr>
+        <tr><td>Capesize</td><td>多源口径显示近日报价一度处于2,700-2,900点区间</td><td>铁矿长航线支撑较强，但回撤也更剧烈</td></tr>
+        <tr><td>Panamax</td><td>参考口径在1,670点附近波动</td><td>粮食/煤炭需求边际改善，弹性中等</td></tr>
+        <tr><td>Supramax</td><td>参考口径在1,260-1,420点区间</td><td>区域贸易与短航线需求决定短期韧性</td></tr>
+      </table>
+      <div class="source">来源：TradingEconomics汇总口径、Hellenic Shipping News（3月下旬）</div>
     </div>
 
     <div class="card">
-      <h3>🛠 新造船与二手船：油轮新单活跃，二手散货交易仍有成交</h3>
+      <h3>🛠 新造船：油轮与多船型订单仍活跃</h3>
       <ul>
-        <li><strong>新造船：</strong>Bruton披露与CIMC Raffles签署 <strong>4艘VLCC</strong> 新造合同，计划于2028年分批交付。</li>
-        <li><strong>LNG/油轮：</strong>韩国媒体披露，Hanwha Ocean斩获约 <strong>9.8亿美元</strong>、共5艘LNG/原油船订单。</li>
-        <li><strong>二手船（S&P）：</strong>市场成交包括Panamax <strong>BARWON</strong>（约2600万美元）、Ultramax <strong>JIN RUI</strong>（约2400万美元）、Supramax <strong>HONY FUTURE</strong>（低位1400万美元区间）。</li>
+        <li><strong>油轮新单：</strong>行业媒体显示，2026年以来油轮新造订单继续增加，交付期进一步后移至2028年前后。</li>
+        <li><strong>产能结构：</strong>中国船厂在当前订单簿中的份额维持高位，韩国船厂在高附加值船型保持竞争力。</li>
+        <li><strong>周期信号：</strong>机构观点认为2026-2027或是订船周期低位区间，随后传统船型订单可能再抬头。</li>
       </ul>
-      <div class="source">来源：Reuters/TradingView（Bruton, 3/20）；Seoul Economic Daily（3/25）；xclusiv S&P Report（3/23）</div>
+      <div class="source">来源：Hellenic Shipping News、Seatrade Maritime、BIMCO</div>
+    </div>
+
+    <div class="card">
+      <h3>🔁 二手船（S&amp;P）：成交活跃度仍在，细分船型估值差异扩大</h3>
+      <ul>
+        <li><strong>散货船：</strong>周报显示现代Panamax估值偏强，部分交易价格继续高于历史均值带。</li>
+        <li><strong>集装箱船：</strong>有2,600TEU级别资产打包成交案例，显示班轮公司对可用运力仍有补充需求。</li>
+        <li><strong>交易逻辑：</strong>船东在“高运价不确定 + 未来环保改造成本”之间权衡，促使买卖双方在船龄与规格上更挑剔。</li>
+      </ul>
+      <div class="source">来源：Weekly Vessel Valuations Report（2026-03-24/03）</div>
     </div>
   </div>
 
   <div id="finance" class="section">
     <div class="card">
-      <h3>🌍 全球财经：股债与商品同现高波动，风险偏好反复</h3>
+      <h3>🌍 资产价格快照：股市承压，油价与避险资产高波动</h3>
       <table>
-        <tr><th>资产</th><th>最新信号</th><th>解读</th></tr>
-        <tr><td>全球股市</td><td>3/25修复、3/26再度回落</td><td>地缘 headline 驱动，方向切换快</td></tr>
-        <tr><td>🛢 原油</td><td>路透提及油价上冲至约 <strong>$108</strong></td><td>反映霍尔木兹与中东供应担忧</td></tr>
-        <tr><td>🥇 现货黄金</td><td>约 <strong>$4,391/盎司</strong>（路透3/26）</td><td>高位波动，避险与流动性交易并行</td></tr>
-        <tr><td>₿ BTC</td><td>约 <strong>$69,400</strong>（盘中一度跌破7万）</td><td>高beta属性强化，受宏观风险偏好牵引</td></tr>
-        <tr><td>Ξ ETH</td><td>向 <strong>$2,000</strong> 一线回落</td><td>跟随风险资产回撤，波动高于BTC</td></tr>
+        <tr><th>资产</th><th>最新线索（3/27附近）</th><th>解读</th></tr>
+        <tr><td>美股（S&amp;P/Nasdaq）</td><td>阶段性回撤加剧，周线承压</td><td>地缘冲突与通胀担忧压制估值</td></tr>
+        <tr><td>🛢 Brent</td><td>Reuters口径：一度至 <strong>$112.57/桶</strong></td><td>霍尔木兹风险溢价重定价</td></tr>
+        <tr><td>🥇 现货黄金</td><td>Reuters口径：约 <strong>$4,384/盎司</strong>（3/26盘中）</td><td>避险需求仍在，但波动显著</td></tr>
+        <tr><td>₿ BTC</td><td>多源口径：约 <strong>$69,000-72,000</strong></td><td>风险偏好变化下维持高beta属性</td></tr>
+        <tr><td>Ξ ETH</td><td>多源口径：约 <strong>$2,000-2,150</strong></td><td>随风险资产同步震荡</td></tr>
       </table>
-      <div class="source">来源：Reuters Global Markets（3/25-3/26）；CoinDesk（3/26）；Fortune crypto price（3/26）</div>
+      <div class="source">来源：Reuters Global Markets/Energy/Metals（3/26-3/27）、Fortune/市场快照</div>
     </div>
 
     <div class="card">
-      <h3>📌 资金面观察：从“押方向”到“做波动”</h3>
+      <h3>📌 宏观观察：市场交易从“押方向”转向“做波动” <span class="badge badge-green">风控优先</span></h3>
       <ul>
-        <li><strong>大类资产联动：</strong>油价冲高+权益走弱+加密回撤，体现典型risk-off再定价。</li>
-        <li><strong>衍生品：</strong>CoinDesk口径显示，crypto期货总未平仓回落、资金费率走弱，短线空头占优。</li>
-        <li><strong>策略提示：</strong>当前阶段更适合“仓位与回撤管理优先”，而非单一方向高杠杆博弈。</li>
+        <li><strong>跨资产联动：</strong>油价上冲 + 股市回撤 + 加密震荡，说明资金仍以事件驱动交易为主。</li>
+        <li><strong>通胀再定价：</strong>能源价格上行可能再次抬升输入型通胀预期，影响主要央行降息路径。</li>
+        <li><strong>短期策略：</strong>更重视仓位管理、对冲与止损纪律，避免单一方向高杠杆暴露。</li>
       </ul>
     </div>
   </div>
 
   <div id="ai" class="section">
     <div class="card">
-      <h3>🤖 机器人进入主流舞台：Figure AI白宫亮相 <span class="badge badge-blue">事件级曝光</span></h3>
+      <h3>🤖 产业合作加速：Google DeepMind 与机器人公司合作扩围 <span class="badge badge-blue">产业落地</span></h3>
       <ul>
-        <li><strong>公开场景：</strong>Figure 3在白宫教育科技活动亮相，被多家媒体称为“白宫首个 humanoid robot guest”。</li>
-        <li><strong>产业意义：</strong>机器人竞争从实验室走向国家级公开场景，品牌与政策关注度显著提升。</li>
-        <li><strong>竞对格局：</strong>Figure与Tesla、Boston Dynamics同台竞争，背后是美国与亚洲产业链的加速赛跑。</li>
+        <li>Google与Agile Robots合作消息落地，延续其与Apptronik、Boston Dynamics等企业的生态布局。</li>
+        <li>头部模型厂商正在把“通用大模型能力”下沉到机器人感知、规划与执行闭环。</li>
       </ul>
-      <div class="source">来源：CNBC（3/26）</div>
+      <div class="source">来源：CNBC / TechCrunch（2026-03-24）</div>
     </div>
 
     <div class="card">
-      <h3>🧠 NVIDIA GTC 2026：Physical AI叙事继续强化</h3>
+      <h3>🧠 NVIDIA Physical AI主线延续：从模型到仿真到部署</h3>
       <ul>
-        <li><strong>主轴延续：</strong>GTC 2026继续把“Physical AI + 机器人 + 工业落地”作为重点板块。</li>
-        <li><strong>生态信号：</strong>从模型到部署，竞争点不再只是参数规模，而是端到端落地效率与数据闭环能力。</li>
+        <li>NVIDIA发布多项机器人/物理AI相关模型与框架，强调训练-仿真-部署的一体化工具链。</li>
+        <li>Humanoid与工业机器人厂商密集接入，显示“机器人基础模型平台化”趋势增强。</li>
+        <li>产业焦点正从“谁模型更大”转向“谁更快跑通真实场景ROI”。</li>
       </ul>
-      <div class="source">来源：NVIDIA Blog（GTC 2026 live updates）</div>
+      <div class="source">来源：NVIDIA Newsroom（GTC 2026）</div>
+    </div>
+
+    <div class="card">
+      <h3>🏭 企业侧信号：汽车与制造巨头加码“人形+工厂”路线</h3>
+      <ul>
+        <li>现代汽车集团在CES 2026披露人本机器人战略，推进制造、物流与服务场景结合。</li>
+        <li>全球产业链博弈从“硬件堆料”升级为“硬件+模型+数据+应用”的系统战。</li>
+      </ul>
+      <div class="source">来源：Hyundai Newsroom（2026-01）</div>
     </div>
   </div>
 
   <div class="footer">
-    <p>📡 数据采集时间：2026-03-27 07:00 SGT</p>
-    <p>🌐 发布地址：https://mast0506.github.io/daily-briefing/</p>
+    <p>📡 数据采集时间：2026-03-28 07:00 SGT</p>
+    <p>🌐 发布地址：<a href="https://mast0506.github.io/daily-briefing/" target="_blank">https://mast0506.github.io/daily-briefing/</a></p>
     <p>Powered by OpenClaw · github.com/mast0506/daily-briefing</p>
   </div>
 </div>
