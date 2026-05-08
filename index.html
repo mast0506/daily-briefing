@@ -3,619 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日简报 Daily Briefing - 2026年5月8日</title>
+    <title>每日资讯简报 - 2026年5月9日</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 40px 20px; text-align: center; border-radius: 12px; margin-bottom: 30px; }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header .date { font-size: 1.2em; opacity: 0.9; }
-        header .tagline { font-size: 0.95em; margin-top: 10px; opacity: 0.8; }
-        .section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .section h2 { color: #1e3a5f; font-size: 1.6em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #2d5a87; display: flex; align-items: center; gap: 10px; }
-        .section h3 { color: #2d5a87; font-size: 1.2em; margin: 20px 0 12px 0; }
-        .section h4 { color: #444; font-size: 1.05em; margin: 15px 0 8px 0; }
-        .news-item { background: #f8f9fa; border-left: 4px solid #2d5a87; padding: 12px 15px; margin-bottom: 12px; border-radius: 0 8px 8px 0; }
-        .news-item .title { font-weight: 600; color: #1e3a5f; margin-bottom: 4px; }
-        .news-item .meta { font-size: 0.85em; color: #666; margin-bottom: 6px; }
-        .news-item .summary { font-size: 0.95em; color: #444; }
-        .data-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.95em; }
-        .data-table th { background: #1e3a5f; color: white; padding: 10px; text-align: left; }
-        .data-table td { padding: 10px; border-bottom: 1px solid #e0e0e0; }
-        .data-table tr:nth-child(even) { background: #f8f9fa; }
-        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
-        .positive { color: #28a745; font-weight: 600; }
-        .negative { color: #dc3545; font-weight: 600; }
-        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 600; margin-left: 8px; }
-        .badge-blue { background: #e3f2fd; color: #1976d2; }
-        .badge-green { background: #e8f5e9; color: #388e3c; }
-        .badge-red { background: #ffebee; color: #d32f2f; }
-        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .metric-card { background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center; }
-        .metric-card .value { font-size: 1.5em; font-weight: 700; color: #1e3a5f; }
-        .metric-card .label { font-size: 0.85em; color: #666; margin-top: 5px; }
-        footer { text-align: center; padding: 30px; color: #666; font-size: 0.9em; }
-        .source-tag { font-size: 0.8em; color: #888; font-style: italic; }
-        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #1a2a3a 0%, #2d4a5f 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        header .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+        header .date {
+            font-size: 1.1rem;
+            margin-top: 12px;
+            opacity: 0.9;
+        }
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eef2f7;
+        }
+        .section-icon {
+            font-size: 1.6rem;
+            margin-right: 12px;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a2a3a;
+        }
+        .news-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+        .news-desc {
+            color: #5a6a7a;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+        .news-source {
+            display: inline-block;
+            font-size: 0.78rem;
+            color: #8a96a5;
+            margin-top: 6px;
+            background: #f5f7fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-left: 4px solid #ffa000;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .highlight-box.info {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left-color: #1976d2;
+        }
+        .highlight-box.success {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left-color: #388e3c;
+        }
+        .highlight-box.danger {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-left-color: #c62828;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .metric-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 1px solid #e8ecf1;
+        }
+        .metric-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a2a3a;
+        }
+        .metric-value.up {
+            color: #388e3c;
+        }
+        .metric-value.down {
+            color: #c62828;
+        }
+        .metric-label {
+            font-size: 0.85rem;
+            color: #7a8a9a;
+            margin-top: 4px;
+        }
+        .metric-change {
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #8a96a5;
+            font-size: 0.85rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-top: 4px;
+        }
+        .tag-red { background: #ffebee; color: #c62828; }
+        .tag-green { background: #e8f5e9; color: #2e7d32; }
+        .tag-blue { background: #e3f2fd; color: #1565c0; }
+        .tag-orange { background: #fff3e0; color: #e65100; }
+        .tag-purple { background: #f3e5f5; color: #6a1b9a; }
+        @media (max-width: 640px) {
+            header h1 { font-size: 1.4rem; }
+            .section { padding: 18px; }
+            .metric-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
-<div class="container">
+    <div class="container">
+        <header>
+            <h1>📰 每日资讯简报</h1>
+            <div class="subtitle">Global Daily Briefing | 全球视野 · 深度洞察</div>
+            <div class="date">2026年5月9日 · 星期六 · 新加坡时间 07:00</div>
+        </header>
 
-<header>
-    <h1>📰 每日简报 Daily Briefing</h1>
-    <div class="date">2026年5月8日 星期五 | Friday, May 8, 2026</div>
-    <div class="tagline">Asia/Shanghai 07:28 AM | 覆盖航运、财经、时政、AI/机器人四大板块</div>
-</header>
+        <!-- 时政要闻 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🌍</span>
+                <span class="section-title">时政要闻</span>
+            </div>
 
-<!-- ==================== 航运板块 ==================== -->
-<div class="section">
-    <h2>🚢 航运板块 Shipping</h2>
+            <div class="highlight-box danger">
+                <strong>⚠️ 中东局势持续紧张：</strong>美国与伊朗冲突仍在持续，霍尔木兹海峡处于不稳定对峙状态，经济成本不断攀升。美国总统特朗普在国内面临政治反弹。美伊双方已交换新的结束战争提案。
+            </div>
 
-    <h3>📊 Baltic Exchange 干散货运价指数</h3>
-    <div class="two-col">
-        <div class="metric-card">
-            <div class="value">3,034</div>
-            <div class="label">BDI (Baltic Dry Index)<br><span class="positive">+1.44%</span> | May 7, 2026</div>
+            <div class="news-item">
+                <div class="news-title">美伊冲突：霍尔木兹海峡对峙升级，经济代价 mounting</div>
+                <div class="news-desc">冲突已演变为霍尔木兹海峡的波动对峙，经济成本攀升，特朗普面临国内政治压力。PBS报道显示，越来越多的美国人不赞成特朗普对伊朗战争的处理方式。</div>
+                <span class="news-source">PBS News / Business Standard</span>
+                <span class="tag tag-red">地缘政治</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">以哈战争：加沙最致命空袭一周年，幸存者寻回亲人遗骸</div>
+                <div class="news-desc">以色列对加沙的一次空袭摧毁了一个大家庭，一年半后幸存者仍在寻找亲人的遗骸。这是加沙战争中最致命的以色列袭击之一。</div>
+                <span class="news-source">NPR</span>
+                <span class="tag tag-red">冲突</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">德国局势：约5000名美军计划撤离德国</div>
+                <div class="news-desc">据报道约5000名美军将从德国撤出，可能包括Vilseck的斯特赖克旅。德国情报机构私下警告伊朗关联团体可能发动混合袭击，但政界公开淡化风险。</div>
+                <span class="news-source">Deutsche Welle</span>
+                <span class="tag tag-blue">欧洲</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">特朗普遇刺未遂案：DHS报告指美伊冲突或有关联</div>
+                <div class="news-desc">美国国土安全部报告暗示，美伊冲突可能影响Cole Allen涉嫌在白宫晚宴上暗杀特朗普的动机，FBI正在审查其社交媒体并扩大指控范围。</div>
+                <span class="news-source">MoneyControl</span>
+                <span class="tag tag-orange">美国国内</span>
+            </div>
         </div>
-        <div class="metric-card">
-            <div class="value">+41.84%</div>
-            <div class="label">BDI 月度涨幅<br>同比去年 <span class="positive">+130.55%</span></div>
+
+        <!-- 航运资讯 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🚢</span>
+                <span class="section-title">航运资讯</span>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">2,978</div>
+                    <div class="metric-label">BDI 波罗的海干散货指数</div>
+                    <div class="metric-change down">▼ 1.85% (较前日)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value up">+37.81%</div>
+                    <div class="metric-label">月度涨幅</div>
+                    <div class="metric-change">近一个月表现</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value up">+129.25%</div>
+                    <div class="metric-label">同比涨幅</div>
+                    <div class="metric-change">较去年同期</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value up">+9.1%</div>
+                    <div class="metric-label">周涨幅</div>
+                    <div class="metric-change">本周累计</div>
+                </div>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value down">4,955</div>
+                    <div class="metric-label">Capesize 海岬型</div>
+                    <div class="metric-change down">▼ 3.6%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value up">2,233</div>
+                    <div class="metric-label">Panamax 巴拿马型</div>
+                    <div class="metric-change up">▲ 1.7% · 逾两年新高</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value up">1,522</div>
+                    <div class="metric-label">Supramax 超灵便型</div>
+                    <div class="metric-change up">▲ 0.1%</div>
+                </div>
+            </div>
+
+            <div class="highlight-box info">
+                <strong>📊 市场展望：</strong>Trading Economics模型预测BDI本季度末预计交易于<strong>2,803点</strong>，12个月后预计交易于<strong>3,206点</strong>。波罗的海交易所自2022年起开始发布月度新造船价格评估，涵盖从Newcastlemax到Handysize、VLCC到MR以及LPG和LNG运输船。
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">BDI终结五连涨，回调至2,978点</div>
+                <div class="news-desc">波罗的海干散货指数在周五结束五连涨，下跌约1.9%至2,978点。尽管单日回调，但本周仍累计上涨9.1%，月度涨幅高达37.81%，显示出干散货航运市场的强劲复苏势头。</div>
+                <span class="news-source">Trading Economics / Baltic Exchange</span>
+                <span class="tag tag-blue">干散货</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Panamax指数创逾两年新高</div>
+                <div class="news-desc">巴拿马型船指数上涨1.7%至2,233点，创下两年多以来的新高。该船型通常运输6-7万吨的煤炭或谷物，反映了全球农产品和能源运输需求的旺盛。</div>
+                <span class="news-source">Baltic Exchange</span>
+                <span class="tag tag-green">船型租金</span>
+            </div>
         </div>
-    </div>
-    <table class="data-table">
-        <tr><th>指数</th><th>最新点位</th><th>日涨跌</th><th>走势摘要</th><th>数据来源</th></tr>
-        <tr><td><strong>BDI</strong> (Baltic Dry Index)</td><td>3,034</td><td class="positive">+43 (+1.44%)</td><td>持续上升，5月7日创近期新高</td><td>TradingEconomics / Baltic Exchange</td></tr>
-        <tr><td><strong>BCI</strong> (Capesize)</td><td>~5,000+</td><td class="positive">+120 (+2.8%)</td><td>Atlantic basin带动，突破5,000点大关</td><td>TradeWinds May 6</td></tr>
-        <tr><td><strong>BPI</strong> (Panamax)</td><td>~2,002</td><td class="positive">+10 (+0.5%)</td><td>温和上涨</td><td>近期市场数据</td></tr>
-        <tr><td><strong>BSI</strong> (Supramax)</td><td>~1,520</td><td class="negative">-5 (-0.3%)</td><td>小幅回落</td><td>近期市场数据</td></tr>
-        <tr><td><strong>BCTI</strong> (成品油轮)</td><td>~858–2,026</td><td class="negative">波动较大</td><td>4月BCTI曾报2,026(+3.1% WoW)，近期分化</td><td>中邮交运周报 / Baltic Exchange</td></tr>
-        <tr><td><strong>BDTI</strong> (原油油轮)</td><td>~1,267–3,583</td><td>分化</td><td>VLCC TCE受中东局势影响剧烈波动</td><td>行业周报</td></tr>
-    </table>
-    <p class="source-tag">数据来源: Baltic Exchange, TradingEconomics, TradeWinds, 中邮证券交运周报</p>
 
-    <h3>⛴️ 各船型日租金 TCE / Time Charter Rates (USD/Day)</h3>
-    <table class="data-table">
-        <tr><th>船型</th><th>即期租金 TCE</th><th>1年期期租</th><th>市场动态</th></tr>
-        <tr><td><strong>Capesize (180K DWT)</strong></td><td>$36,828–$40,371 (BCI 182 5TC)</td><td>$30,000</td><td>Pacific miner活动增加，C5向$14推进；Atlantic后半周改善</td></tr>
-        <tr><td><strong>Panamax / Kamsarmax</strong></td><td>$15,386–$26,292 (航线差异)</td><td>$19,000–$20,500</td><td>Far East期租活跃，Atlantic RV $15,386</td></tr>
-        <tr><td><strong>Supramax</strong></td><td>$17,096–$25,193</td><td>$17,000</td><td>US Gulf/China航线表现强劲</td></tr>
-        <tr><td><strong>Handysize (38K)</strong></td><td>~$7,500–$13,500</td><td>$13,500</td><td>Continent/ECSA即期约$7,500</td></tr>
-        <tr><td><strong>VLCC (270K DWT)</strong></td><td>TD3C: WS408.13 → TCE $407,437/天<br>TD15 (WAF-China): TCE ~$100,600</td><td>—</td><td>中东局势导致极端波动；5月1日TD3C TCE高达$407K，后随美伊和谈回落</td></tr>
-        <tr><td><strong>Suezmax (130K DWT)</strong></td><td>TD20: WS212.22 → TCE ~$92,250<br>TD6 (Black Sea): WS248.89 → TCE ~$145,000</td><td>—</td><td>Black Sea因CPC出货强劲；West Africa承压</td></tr>
-        <tr><td><strong>Aframax / MR</strong></td><td>MR2: 平均$30.3M (二手价参考)</td><td>—</td><td>成品油轮二手船价Q1显著上涨</td></tr>
-        <tr><td><strong>Newcastlemax (208K)</strong></td><td>Q1 2026平均 $30,673</td><td>$41,500</td><td>长期期租需求稳健</td></tr>
-    </table>
-    <p class="source-tag">数据来源: Baltic Exchange Weekly Report (May 1), HandyBulk (May 7), CMB.TECH Q4 2025 Results</p>
+        <!-- 全球财经 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📈</span>
+                <span class="section-title">全球财经</span>
+            </div>
 
-    <h3>🔧 新造船订单 Newbuilding Orders</h3>
-    <div class="news-item">
-        <div class="title">CU Lines下单4艘6,400TEU集装箱船 @ 黄埔文冲</div>
-        <div class="meta">日期: 2026年5月4日–7日 | 来源: New-Ships / PortNews</div>
-        <div class="summary">中联航运(CU Lines)与CSSC黄埔文冲造船厂签约建造4艘6,400TEU集装箱船，由MARIC设计，船长240米，型宽42.8米，配备1,150个冷藏箱位及节能装置（扭曲舵、舵球、节能导管、轴带发电机）。预计2028–2029年交付。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">全球集装箱船订单簿创历史新高</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: TradeWinds</div>
-        <div class="summary">随着各大班轮公司争夺市场份额，集装箱船订单簿膨胀至历史最高水平。MSC、CMA CGM、COSCO等持续大规模订造LNG双燃料及甲醇双燃料船。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">韩华海洋(Hanwha Ocean)获3艘VLAC订单</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: TradeWinds</div>
-        <div class="summary">韩国船厂韩华海洋赢得3艘超大型氨运输船(VLAC)订单，反映替代燃料船舶需求持续增长。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Emarat Maritime在恒力重工增订VLAC</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: TradeWinds</div>
-        <div class="summary">Emarat Maritime将其在恒力重工的VLAC新造船订单翻倍，具体数量未披露。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Procopiou家族新企业首单油轮新造船</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">希腊船王家族新成立的航运企业下单建造首批油轮，标志其重返新造船市场。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">船舶经纪Xclusiv: Q1 2026新造船投资约$11.5B</div>
-        <div class="meta">日期: 2026年4月8日 | 来源: Hellenic Shipping News / Xclusiv</div>
-        <div class="summary">2026年第一季度录得351笔二手及新造交易，总投资约115亿美元。其中油轮市场164笔交易约78亿美元，VLCC占主导：52艘成交，均价$8,100万，2016年建8艘包销价达$10,420万/艘。Suezmax 19笔均价$6,320万。</div>
-    </div>
+            <div class="highlight-box success">
+                <strong>🥇 黄金2025年飙升近65%，创1979年石油危机以来最佳表现：</strong>黄金作为终极避险港湾，在2025年飙升接近65%，美元承压。市场在地缘政治不确定性中寻找安全资产。
+            </div>
 
-    <h3>🔄 二手船交易 Secondhand Ship Sales</h3>
-    <div class="news-item">
-        <div class="title">Hafnia确认出售10艘老龄油轮</div>
-        <div class="meta">日期: 2026年2月–5月 | 来源: Ship Universe / TradeWinds</div>
-        <div class="summary">Hafnia确认向外部买家出售10艘老龄油轮（4艘LR1、2艘MR、4艘Handy），作为船队更新的一部分。二手油轮市场流动性充足，10年船龄VLCC基准价约$1亿以上。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Teekay Tankers高价出售17年船龄Suezmax</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">Teekay Tankers正为其一艘17年船龄的Suezmax油轮寻求高价出售，反映老旧船只在当前市场仍有可观价值。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">8年船龄油轮售价超过中国新造船价格</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: TradeWinds</div>
-        <div class="summary">市场出现8年船龄油轮售价高于同类中国新造船价格的罕见现象，凸显二手船市场过热。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Navios Maritime Partners向Sinokor出售VLCC</div>
-        <div class="meta">日期: 2026年5月4日 | 来源: TradeWinds</div>
-        <div class="summary">Navios Maritime Partners加入希腊船东向韩国Sinokor出售VLCC的行列，希腊船东是所有船级中最活跃的卖家。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Pan Ocean完成从SK Shipping收购10艘VLCC</div>
-        <div class="meta">日期: 2026年5月4日 | 来源: TradeWinds</div>
-        <div class="summary">韩国Pan Ocean完成从SK Shipping收购10艘VLCC的大规模交易，价格尚未最终确定。</div>
-    </div>
+            <div class="news-item">
+                <div class="news-title">美股：周中强劲反弹后走平，投资者寄望和谈重启</div>
+                <div class="news-desc">在经历周中强劲反弹后，美股早盘走平。投资者在一系列数据和财报发布中保持谨慎，同时寄望和平谈判能够恢复。油价和收益率双双回落。</div>
+                <span class="news-source">Charles Schwab / Market Update</span>
+                <span class="tag tag-blue">美股</span>
+            </div>
 
-    <h3>📰 航运行业新闻 Shipping News</h3>
-    <div class="news-item">
-        <div class="title">特朗普暂停霍尔木兹海峡护航计划，美伊启动和谈</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds / 新华社</div>
-        <div class="summary">特朗普总统暂停代号"Project Freedom"的霍尔木兹海峡军事护航行动，因美伊和平谈判出现进展。此前伊朗战争导致油轮市场剧烈波动，Scorpio Tankers等公司在海峡封锁期间日租金几乎翻倍。中国敦促伊朗保障海峡安全通行，外交部称战争"非法"。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">伊朗设立"波斯湾海峡管理局"征收通行费</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">伊朗宣布成立"波斯湾海峡管理局"，计划对通过该水域的船只征收通行费，引发国际航运界强烈关注。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">DHT为两艘VLCC锁定高额长期租约</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">油轮公司DHT为其两艘VLCC谈成高额长期租约，利润较去年翻了三倍以上，受益于中东局势溢价。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Norden利润下降，伊朗战争拖累散货业务</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">丹麦航运公司Norden报告利润下滑，首席执行官担心霍尔木兹海峡若长期中断将严重冲击散货及油轮业务。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">MSC与Rheinmetall联合竞标罗马尼亚破产船厂</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">全球最大集装箱航运公司MSC与德国军工集团Rheinmetall联手，竞标罗马尼亚一家破产船厂，MSC寻求垂直整合造船能力。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">CMA CGM船舶在伊朗附近遭袭，特朗普叫停护航</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">法国达飞轮船一艘集装箱船在伊朗附近海域遭袭，同一天特朗普宣布暂停军事护航行动，市场解读为和谈信号。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">John Fredriksen支持的DOF与Petrobras签署$20亿新造船及租约</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">挪威船王John Fredriksen支持的DOF集团完成与巴西国油Petrobras价值20亿美元的海工新造船及长期租约交易。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Trafigura、Frontline、CMB.Tech获$3亿数字化燃油交易融资</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">大宗商品巨头Trafigura联合Frontline和CMB.Tech获得3亿美元融资，用于推进船用燃油贸易数字化平台建设。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Clarksons: "十年动荡"改变航运吨海里格局</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: TradeWinds</div>
-        <div class="summary">克拉克森研究指出，过去十年的地缘政治动荡（红海、巴拿马运河、霍尔木兹海峡）根本性改变了全球航运吨海里需求结构，船队增长跟不上贸易路线重构。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">CDB金融租赁拍卖4艘Ultramax散货船</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds</div>
-        <div class="summary">国银金租(CDB Financial Leasing)将拍卖4艘Ultramax散货船，反映中国租赁公司持续退出航运资产的策略。</div>
-    </div>
-</div>
+            <div class="news-item">
+                <div class="news-title">原油与美债收益率双双回落</div>
+                <div class="news-desc">随着市场对地缘政治风险的定价调整，原油价格和国债收益率均出现回落。投资者关注美伊和谈进展对能源市场的潜在影响。</div>
+                <span class="news-source">CNBC / Schwab</span>
+                <span class="tag tag-orange">大宗商品</span>
+            </div>
 
-<!-- ==================== 财经板块 ==================== -->
-<div class="section">
-    <h2>💰 财经板块 Finance</h2>
+            <div class="news-item">
+                <div class="news-title">加密货币市场动态</div>
+                <div class="news-desc">BTC和ETH等主流加密货币随全球市场波动。在地缘政治不确定性期间，加密资产与传统风险资产的相关性仍然较高。投资者密切关注监管发展和机构资金流向。</div>
+                <span class="news-source">Yahoo Finance / Markets Insider</span>
+                <span class="tag tag-purple">加密货币</span>
+            </div>
 
-    <h3>🌍 全球市场概览 Global Market Overview</h3>
-    <div class="two-col">
-        <div class="metric-card">
-            <div class="value">4,180</div>
-            <div class="label">上证指数 SHCOMP<br><span class="positive">+0.11%</span> | May 6</div>
+            <div class="news-item">
+                <div class="news-title">全球股市指数一览</div>
+                <div class="news-desc">道琼斯期货、纳斯达克期货和标普500期货等全球主要股指期货提供盘前指引。欧洲、亚太及中国市场指数实时变动，反映全球经济复苏的不平衡性。</div>
+                <span class="news-source">Investing.com / FT Markets</span>
+                <span class="tag tag-green">全球市场</span>
+            </div>
         </div>
-        <div class="metric-card">
-            <div class="value">25,326</div>
-            <div class="label">纳斯达克 Nasdaq<br><span class="positive">+1.03%</span> | May 3</div>
-        </div>
-        <div class="metric-card">
-            <div class="value">7,259</div>
-            <div class="label">标普500 S&P 500<br><span class="positive">+0.81%</span> | May 3</div>
-        </div>
-        <div class="metric-card">
-            <div class="value">49,298</div>
-            <div class="label">道琼斯 Dow Jones<br><span class="positive">+0.73%</span> | May 3</div>
-        </div>
-        <div class="metric-card">
-            <div class="value">25,899</div>
-            <div class="label">恒生指数 Hang Seng<br><span class="negative">-0.76%</span> | May 5</div>
-        </div>
-        <div class="metric-card">
-            <div class="value">61,328</div>
-            <div class="label">日经225 Nikkei 225<br><span class="positive">+0.96%</span> | Futures</div>
-        </div>
-    </div>
 
-    <h3>📈 股票市场详细数据 Stock Markets Detail</h3>
-    <table class="data-table">
-        <tr><th>市场/指数</th><th>最新点位</th><th>涨跌</th><th>评论</th></tr>
-        <tr><td>上证指数 (SHCOMP)</td><td>4,180.09</td><td class="positive">+4.64 (+0.11%)</td><td>处于中期上升通道，InvestTech评级"买入"</td></tr>
-        <tr><td>深证成指</td><td>15,107.55</td><td class="negative">-13.37 (-0.09%)</td><td>小幅调整</td></tr>
-        <tr><td>富时中国A50</td><td>15,654.59</td><td class="negative">-12.30 (-0.08%)</td><td>基本持平</td></tr>
-        <tr><td>标普500 (S&P 500)</td><td>7,259.23</td><td class="positive">+58.48 (+0.81%)</td><td>2025年全年上涨约16–17%，连涨第三年</td></tr>
-        <tr><td>纳斯达克 (Nasdaq)</td><td>25,326.13</td><td class="positive">+258.32 (+1.03%)</td><td>2025年全年上涨约20%，科技股领涨</td></tr>
-        <tr><td>道琼斯 (Dow)</td><td>49,298.25</td><td class="positive">+356.35 (+0.73%)</td><td>金融及工业板块稳健</td></tr>
-        <tr><td>罗素2000 (小盘)</td><td>2,844.43</td><td class="positive">+48.43 (+1.73%)</td><td>小盘股强劲反弹</td></tr>
-        <tr><td>VIX恐慌指数</td><td>17.38</td><td class="negative">-0.91 (-4.98%)</td><td>波动性下降，市场情绪改善</td></tr>
-        <tr><td>德国DAX</td><td>24,609.0</td><td class="positive">+0.50%</td><td>欧洲经济温和复苏</td></tr>
-    </table>
-    <p class="source-tag">数据来源: Investing.com, MarketWatch, Barron's, TradingNews (Jan 2026 Year-End Review)</p>
+        <!-- AI机器人动态 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🤖</span>
+                <span class="section-title">AI机器人动态</span>
+            </div>
 
-    <h3>🛢️ 大宗商品 Commodities</h3>
-    <table class="data-table">
-        <tr><th>商品</th><th>价格</th><th>涨跌</th><th>合约/说明</th></tr>
-        <tr><td><strong>黄金 Gold</strong></td><td>$4,612.56/oz</td><td class="positive">+0.96%</td><td>2026年6月期货 | 避险情绪支撑</td></tr>
-        <tr><td><strong>WTI原油</strong></td><td>$101.26/bbl</td><td class="negative">-0.99%</td><td>2026年6月期货 | 美伊和谈缓和供应担忧</td></tr>
-        <tr><td><strong>布伦特原油</strong></td><td>~$107/bbl</td><td>—</td><td>中东局势溢价仍存</td></tr>
-        <tr><td><strong>白银 Silver</strong></td><td>$74.33/oz</td><td class="positive">+1.01%</td><td>2026年7月期货</td></tr>
-        <tr><td><strong>铜 Copper</strong></td><td>~$9,500–10,000/t</td><td>稳定</td><td>LME现货 | 新能源需求支撑</td></tr>
-        <tr><td><strong>铝 Aluminum</strong></td><td>>$3,000/t</td><td class="positive">上涨</td><td>2026年初突破$3,000，创2022年以来新高</td></tr>
-        <tr><td><strong>天然气 Natural Gas</strong></td><td>$2.773/MMBtu</td><td class="negative">-0.22%</td><td>2026年6月期货</td></tr>
-        <tr><td><strong>大豆 Soybeans</strong></td><td>$1,213.00</td><td class="positive">+0.23%</td><td>2026年7月期货</td></tr>
-        <tr><td><strong>小麦 Wheat</strong></td><td>$626.60</td><td class="negative">-0.30%</td><td>2026年7月期货</td></tr>
-    </table>
-    <p class="source-tag">数据来源: Investing.com期货行情, TradingNews, Sina Finance</p>
+            <div class="highlight-box">
+                <strong>🇨🇳 中国战略：</strong>中国政府将具身智能（EAI）列为国家优先发展事项，纳入2026-2030年第15个五年规划的重点"新产业赛道"，启动重大国家级发展计划。
+            </div>
 
-    <h3>₿ 加密货币 Cryptocurrency</h3>
-    <div class="two-col">
-        <div class="metric-card">
-            <div class="value">~$82,000–$84,000</div>
-            <div class="label">比特币 BTC<br><span class="positive">温和上涨</span></div>
+            <div class="news-item">
+                <div class="news-title">Meta重磅入局：收购Assured Robot Intelligence，押注人形机器人</div>
+                <div class="news-desc">Meta Platforms收购机器人AI初创公司Assured Robot Intelligence（ARI），作为其构建人形技术的重大举措。据报道，Meta正在规划类似"机器人版Android"的通用操作系统，供各制造商使用。</div>
+                <span class="news-source">Bloomberg / TechCrunch / Engadget</span>
+                <span class="tag tag-blue">Meta</span>
+                <span class="tag tag-purple">人形机器人</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">NVIDIA发布Cosmos 3：世界基础模型加速机器人智能</div>
+                <div class="news-desc">NVIDIA宣布推出Cosmos 3，这是首个统一合成世界生成、视觉推理和动作模拟的世界基础模型，旨在加速复杂环境下通用机器人智能的发展。</div>
+                <span class="news-source">NVIDIA Newsroom</span>
+                <span class="tag tag-green">NVIDIA</span>
+                <span class="tag tag-orange">AI模型</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Sanctuary AI整合触觉传感器技术，获摩根士丹利认可</div>
+                <div class="news-desc">Sanctuary AI宣布整合新型触觉传感器技术，为通用目的机器人开发物理AI。该公司被摩根士丹利研究部门认定为人形机器人领域的领导者。</div>
+                <span class="news-source">Sanctuary AI / Morgan Stanley</span>
+                <span class="tag tag-blue">传感器</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Boston Dynamics Atlas在Hyundai工厂学习作业</div>
+                <div class="news-desc">Boston Dynamics邀请CBS《60分钟》栏目观摩其人形机器人Atlas在Hyundai工厂学习工作过程。工程师和计算机科学家正在开发具有人类外观和行为的AI驱动机器人。</div>
+                <span class="news-source">CBS News / 60 Minutes</span>
+                <span class="tag tag-purple">Boston Dynamics</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">Apptronik获9.35亿美元融资，从研发转向大规模商业化</div>
+                <div class="news-desc">Apptronik聘请Waymo资深高管Daniel Chu担任首席产品官，领导其9.35亿美元过渡计划，从人形机器人研发阶段转向大规模市场商业化。</div>
+                <span class="news-source">The Robot Report</span>
+                <span class="tag tag-green">融资</span>
+                <span class="tag tag-orange">商业化</span>
+            </div>
         </div>
-        <div class="metric-card">
-            <div class="value">~$2,400–$2,500</div>
-            <div class="label">以太坊 ETH<br><span class="positive">+1.22%</span></div>
+
+        <!-- 市场日历 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📅</span>
+                <span class="section-title">本周要点回顾</span>
+            </div>
+            <div class="news-item">
+                <div class="news-desc">
+                    • <strong>地缘政治：</strong>美伊冲突持续，霍尔木兹海峡风险溢价维持高位<br>
+                    • <strong>航运：</strong>BDI周涨9.1%，月度大涨37.81%，干散货市场强劲复苏<br>
+                    • <strong>黄金：</strong>2025年累计涨幅近65%，避险需求旺盛<br>
+                    • <strong>AI机器人：</strong>Meta/NVIDIA/Sanctuary等巨头密集布局人形机器人<br>
+                    • <strong>宏观：</strong>美股周中反弹后走平，原油和收益率回落
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>每日资讯简报 · Daily Briefing</p>
+            <p>数据来源: Reuters, Bloomberg, Baltic Exchange, Trading Economics, CNBC, PBS, NPR, DW 等</p>
+            <p style="margin-top:8px;">生成时间: 2026-05-09 07:00 (SGT) | 仅供资讯参考，不构成投资建议</p>
         </div>
     </div>
-    <div class="news-item">
-        <div class="title">Bitcoin技术形态指向牛市，Fundstrat看好</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: MarketWatch / Fundstrat</div>
-        <div class="summary">Fundstrat联合创始人Tom Lee指出，比特币出现不寻常的技术形态，暗示新一轮加密货币牛市可能正在形成。BTC自2026年初以来维持在$80K以上区间。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">XRP ETF相关产品上涨</div>
-        <div class="meta">日期: 2026年初 | 来源: TradingNews</div>
-        <div class="summary">XRPI报$11.54，XRPR报$16.35，XRP-USD约$1.99。市场瞄准$5–$8周期目标。</div>
-    </div>
-
-    <h3>📰 全球财经新闻 Financial News</h3>
-    <div class="news-item">
-        <div class="title">美联储: Kevin Warsh未披露财富引发$1亿谜团</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: MarketWatch / Opinion</div>
-        <div class="summary">美联储副主席候选人Kevin Warsh未充分披露的财富状况引发市场对其独立性的担忧，估计未公开资产达1亿美元。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">加州CD产品利率突破4%</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: MarketWatch</div>
-        <div class="summary">两家CD产品提供4%以上年化收益率，为当前市场最高评级之一，反映美联储高利率环境持续。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">挪威央行5月外汇交易: 每日净卖出NOK 2.24亿</div>
-        <div class="meta">日期: 2026年4月30日 | 来源: Norges Bank</div>
-        <div class="summary">挪威央行5月将代表政府每日卖出1亿NOK外汇，同时为股息和利息转账每日卖出1.24亿NOK，总计每日净卖出2.24亿NOK。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">全球能源价格或大涨24% — 世界银行</div>
-        <div class="meta">日期: 2026年4月28日 | 来源: 央视新闻 / 世界银行</div>
-        <div class="summary">世界银行预测，若中东战事引发的严重供应中断能在5月结束，2026年全球能源价格仍将大涨24%。若供应中断持续，涨幅可能更大。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">阿联酋5月1日起退出欧佩克及"欧佩克+"</div>
-        <div class="meta">日期: 2026年4月29日 | 来源: 财新 / 央视新闻</div>
-        <div class="summary">阿联酋宣布自2026年5月1日起退出石油输出国组织(OPEC)及"欧佩克+"机制，标志着海湾产油国策略分化加剧。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">帝亚吉欧Q3销量超预期，非洲与拉美成增长引擎</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: 新浪财经</div>
-        <div class="summary">全球最大烈酒制造商帝亚吉欧Q3有机净销售额意外增长0.3%（预期降2.3%）。非洲增长17.1%，拉美及加勒比增长16.2%，而北美下降9.4%。</div>
-    </div>
-
-    <h3>💡 投资机会分析 Investment Opportunities</h3>
-    <div class="news-item">
-        <div class="title">机会卡 #1: 航运股 — 油轮与散货双轮驱动</div>
-        <div class="summary">BDI突破3,000点创近年新高，VLCC TCE因中东局势一度突破$400K/天。DHT、Scorpio Tankers、Norden等公司利润暴增。建议关注：Frontline (FRO)、DHT Holdings (DHT)、Genco Shipping (GNK)。<br><span class="source-tag">风险: 美伊和谈若成功，油轮溢价快速消退</span></div>
-    </div>
-    <div class="news-item">
-        <div class="title">机会卡 #2: 半导体/AI硬件 — NVIDIA生态持续扩张</div>
-        <div class="summary">NVIDIA与OpenAI签署$1,000亿级10GW AI基础设施合作协议，NVDA股价2025年涨约40%，市值约$4.5万亿。TPU 8挑战Blackwell，但CUDA生态仍护城河深厚。建议关注：NVIDIA (NVDA)、AMD、TSM、Micron (MU)。<br><span class="source-tag">数据: TradingNews 2026 Outlook</span></div>
-    </div>
-    <div class="news-item">
-        <div class="title">机会卡 #3: 黄金/贵金属 — 避险+通胀双重逻辑</div>
-        <div class="summary">金价突破$4,600/oz，2025年创1979年以来最佳年度表现。中东地缘风险+美联储高利率环境+央行购金支撑长期价格。白银同步走强至$74+/oz。<br><span class="source-tag">数据来源: Investing.com, TradingNews</span></div>
-    </div>
-    <div class="news-item">
-        <div class="title">机会卡 #4: 中国A股 — 估值修复+外资回流</div>
-        <div class="summary">上证指数4,180点处于52周区间上沿(3,327–4,197)，外资持续流入。AI、机器人、新能源等赛道政策支持力度大。关注：AI芯片(寒武纪、海光)、人形机器人(优必选)、互联网巨头(阿里、腾讯)。<br><span class="source-tag">风险: 中美关系、国内消费复苏力度</span></div>
-    </div>
-    <div class="news-item">
-        <div class="title">机会卡 #5: 非洲/拉美新兴市场 — 零关税红利</div>
-        <div class="summary">中国5月1日起对53个非洲建交国全面实施零关税，滴滴重启巴西外卖业务，美的计划在沙特、伊拉克、土耳其等地增设销售分公司。新兴市场消费及基础设施需求旺盛。<br><span class="source-tag">来源: 新华社, 36氪出海</span></div>
-    </div>
-</div>
-
-<!-- ==================== 时政板块 ==================== -->
-<div class="section">
-    <h2>🏛️ 时政板块 Politics</h2>
-
-    <h3>🇨🇳 中国要闻 China News</h3>
-    <div class="news-item">
-        <div class="title">习近平春季外交季：多场元首会晤，提升中非命运共同体</div>
-        <div class="meta">日期: 2026年4–5月 | 来源: 新华社 / 大洋网</div>
-        <div class="summary">4月21日，习近平在人民大会堂欢迎莫桑比克总统查波，双方签署20余项合作文件，将中莫关系提升至"新时代中莫命运共同体"。查波是今年首位访华的非洲国家元首。此前，习近平分别于2月4日同俄罗斯总统普京视频会晤、同美国总统特朗普通电话。4月14日会见阿联酋阿布扎比王储哈立德时，就中东和平提出4点主张：坚持和平共处、国家主权、国际法治、统筹发展和安全。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">中国5月1日起对53个非洲建交国全面实施零关税</div>
-        <div class="meta">日期: 2026年5月1日生效 | 来源: 新华社 / 商务部</div>
-        <div class="summary">5月1日零时起，中国对所有53个非洲建交国实施100%税目产品零关税，成为全球首个对所有非洲建交国及所有建交最不发达国家实施单方面全面零关税的主要经济体。首票货物为24吨南非苹果，经深圳湾口岸入境。20个非最不发达国家（包括南非、尼日利亚、埃及、肯尼亚等）首次享受此待遇，为期2年。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">第139届广交会闭幕，意向成交257亿美元</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: 新华社</div>
-        <div class="summary">第139届广交会展览总面积155万平方米，展位7.57万个，参展企业超3.2万家，均超往届。现场意向出口成交257亿美元。共建"一带一路"国家、东盟、中亚、拉美、非洲采购商占比显著提升，市场多元化趋势明显。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">北京无人机新规5月1日施行：全域管制、禁携入京</div>
-        <div class="meta">日期: 2026年5月1日 | 来源: 央视新闻 / 财新</div>
-        <div class="summary">北京市全面禁售无人机，外地无人机不得入京，全域实行空域管制。警方提示市民严格遵守新规，违者将依法追责。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">中欧班列二连浩特口岸全面推广"铁路快通"</div>
-        <div class="meta">日期: 2026年4月 | 来源: 央视新闻</div>
-        <div class="summary">铁路部门与海关协作，在二连浩特口岸全面推广"铁路快通"模式，通关时间压缩至30分钟左右，助力中国(内蒙古)自贸试验区建设。</div>
-    </div>
-
-    <h3>🇺🇸 美国要闻 US News</h3>
-    <div class="news-item">
-        <div class="title">特朗普暂停霍尔木兹海峡军事护航，美伊启动和谈</div>
-        <div class="meta">日期: 2026年5月6日 | 来源: TradeWinds / 新华社</div>
-        <div class="summary">特朗普宣布暂停代号"Project Freedom"的霍尔木兹海峡军事护航行动，因美伊和平谈判出现进展。此前美军曾对伊朗发动军事打击，导致多艘商船遭袭、全球油轮市场剧烈动荡。特朗普称暂停行动是为了"巨大的军事成功"后的谈判窗口。国会民主党人则对移民执法资金及特朗普外交政策持续施压。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">美国国会通过2026财年国防授权法案(NDAA)，总额$9,010亿</div>
-        <div class="meta">日期: 2025年12月–2026年1月 | 来源: The Debrief / Reuters</div>
-        <div class="summary">NDAA授权约$9,010亿国防支出，较白宫请求多$80亿。法案核心包括：采购改革、加速武器交付、支持"Golden Dome"国土导弹防御计划、废除1991及2002年AUMF、向乌克兰提供$4亿安全援助。同时保留对国防部长Hegseth旅行预算的冻结条款（直至其提供未编辑的南方司令部舰艇撞击视频）。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">美国政府2026年1月底再次部分停摆</div>
-        <div class="meta">日期: 2026年1月31日 | 来源: DMarketForces</div>
-        <div class="summary">因国会未能及时通过2026财年预算，美国政府约3/4联邦机构进入部分停摆。谈判破裂主因是明尼阿波利斯两名抗议者被联邦移民执法人员枪杀后，民主党人拒绝支持国土安全部资金。参议院通过临时拨款方案，但众议院共和党人拒绝接受。这是特朗普第二任期内第二次停摆。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">特朗普对35个伊朗相关实体及个人实施新制裁</div>
-        <div class="meta">日期: 2026年4月28日 | 来源: 央视新闻 / 美国财政部</div>
-        <div class="summary">美国宣布对35个伊朗相关实体及个人实施制裁，指其协助规避制裁并为伊朗提供资金支持。财政部长贝森特警告，任何参与伊朗"影子银行"体系的机构都将面临严厉后果。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">美国会寻求2026年增加海军及空军舰队</div>
-        <div class="meta">日期: 2026年 | 来源: Reuters / AOL News</div>
-        <div class="summary">众议院拨款委员会国防小组发布的2026财年采购法案草案，计划比五角大楼请求多采购1架F-35，并投资舰艇及导弹防御。计划采购69架F-35（$85亿）、15架KC-46（$27亿）、3架F-15EX（$3.45亿），B-21项目$38亿。海军舰艇28艘，包括2艘Virginia级核潜艇（$62亿）。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">美国共和党警告：若2026年中期选举失利，民主党将弹劾特朗普</div>
-        <div class="meta">日期: 2025年12月 | 来源: TASS / 众议院议长Mike Johnson</div>
-        <div class="summary">众议院议长Mike Johnson在Turning Point USA活动上警告，若共和党在2026年中期选举中失去众议院多数，民主党将启动对特朗普的弹劾程序。民主党众议员Al Green已于12月提交弹劾决议。</div>
-    </div>
-
-    <h3>🇪🇺 欧洲要闻 Europe News</h3>
-    <div class="news-item">
-        <div class="title">欧洲政治共同体第八次峰会在亚美尼亚埃里温举行</div>
-        <div class="meta">日期: 2026年5月4日 | 来源: 欧盟理事会</div>
-        <div class="summary">欧洲政治共同体(EPC)第八次峰会在亚美尼亚埃里温召开，主题为"Building the Future: Unity and Stability in Europe"。48位国家元首和政府首脑受邀，加拿大总理Mark Carney首次以嘉宾身份参与（非欧洲国家首次参会）。峰会讨论民主韧性、互联互通、经济和能源安全。同日举行首次EU-Armenia双边峰会。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">欧盟ESG评级新规披露标准7月生效</div>
-        <div class="meta">日期: 2026年5月 | 来源: Sidley Austin</div>
-        <div class="summary">欧盟委员会通过四项ESG评级活动法规的授权条例，包括披露标准、业务分离、收费及罚款程序。披露和分离标准将于2026年7月2日生效，ESMA将直接监管系统性重要ESG评级机构。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">英国FCA最终确定基金代币化规则，"D2F"直接交易模式生效</div>
-        <div class="meta">日期: 2026年4月30日 | 来源: FCA / Sidley</div>
-        <div class="summary">英国金融行为监管局(FCA)发布PS26/7政策声明，最终确定基金代币化规则及"direct to fund"(D2F)直接交易模式，允许投资者与基金直接交易，支持原子结算。该规则即时生效。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">瑞典逮捕被扣油轮的中国籍船长</div>
-        <div class="meta">日期: 2026年5月5日 | 来源: TradeWinds</div>
-        <div class="summary">瑞典当局逮捕了一艘被扣油轮的中国籍船长，该船因涉嫌破坏波罗的海海底电缆而被 detention。事件引发中欧航运及法律关注。</div>
-    </div>
-
-    <h3>🌏 全球其他 Middle East, Asia-Pacific, Africa, Latin America</h3>
-    <div class="news-item">
-        <div class="title">伊朗外交部：期待美伊谈判迅速达成结果并不现实</div>
-        <div class="meta">日期: 2026年5月1日 | 来源: 伊朗媒体 / 新华社</div>
-        <div class="summary">伊朗外交部发言人巴加埃表示，期待伊朗和美国谈判迅速达成结果并不现实。伊朗司法总监埃杰伊4月28日表示，应依法没收敌方境内外合作者的财产。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">美军多艘舰船接连发生火灾</div>
-        <div class="meta">日期: 2026年4月30日 | 来源: 中国新闻网 / CCTV</div>
-        <div class="summary">美国海军第七舰队"希金斯"号导弹驱逐舰在亚洲发生重大火灾，电力和推进系统瘫痪。此前"艾森豪威尔"号航母4月发生"小火灾"致8人受伤；"福特"号航母主洗衣房区域也发生火灾。据悉"福特"号及其打击群将在未来几天离开中东。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">世界银行预测2026年全球能源价格大涨24%</div>
-        <div class="meta">日期: 2026年4月28日 | 来源: 央视新闻 / 世界银行</div>
-        <div class="summary">世界银行预测，若中东战事供应中断在5月结束，2026年全球能源价格仍将大涨24%。若供应中断持续，涨幅更高。能源价格上涨将加剧全球通胀压力。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">滴滴重启巴西外卖业务，计划2030年前在墨西哥引入10万辆国产电动车</div>
-        <div class="meta">日期: 2026年4月 | 来源: 36氪出海</div>
-        <div class="summary">滴滴宣布以"99 Food"品牌重启巴西外卖业务。国际业务已覆盖拉美、亚太、非洲14国。计划在2030年前在墨西哥引入10万辆国产电动车，并通过"99出行"建设1万个公共充电桩。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">土耳其推出人形机器人Canikman</div>
-        <div class="meta">日期: 2026年 | 来源: 行业报道</div>
-        <div class="summary">土耳其加入全球人形机器人竞赛，推出本国研发的人形机器人Canikman，显示新兴市场在AI及机器人领域的积极布局。</div>
-    </div>
-
-    <h3>🔍 深度分析 In-Depth Analysis</h3>
-    <div class="news-item">
-        <div class="title">霍尔木兹海峡危机的赢家与输家</div>
-        <div class="summary"><strong>赢家:</strong> 油轮船东（DHT、Scorpio Tankers、Frontline等日租金暴涨）；美国军工及国防承包商（NDAA $9,010亿预算，Golden Dome导弹防御$25亿+）；替代能源及核能供应商。<br><strong>输家:</strong> 全球消费者（能源价格上涨24%）；依赖中东原油的亚洲经济体（中日韩印）；全球供应链（绕行增加吨海里成本）；中东地区航空及旅游业。<br><strong>变数:</strong> 美伊和谈若能达成，油轮溢价将迅速蒸发，但结构性供应链重构（绕航、保险成本上升）将长期存在。Clarksons指出"十年动荡"已永久性改变航运吨海里需求。</div>
-    </div>
-</div>
-
-<!-- ==================== AI/机器人板块 ==================== -->
-<div class="section">
-    <h2>🤖 AI / 机器人板块 AI & Robotics</h2>
-
-    <h3>🏔️ 硅谷前沿 Silicon Valley Frontiers</h3>
-    <div class="news-item">
-        <div class="title">OpenAI发布GPT-5.5 "Spud"，微软-OpenAI开始"解耦"</div>
-        <div class="meta">日期: 2026年5月 | 来源: TechDG / 行业分析</div>
-        <div class="summary">OpenAI在5月推出GPT-5.5代号"Spud"，具备更强的agentic推理能力，但仅限ChatGPT Plus及Enterprise订阅用户。同期，微软与OpenAI的独家云合作开始松动：新部署可路由至AWS或GCP，Azure保留优先定价。此举让企业在多云AI SLA谈判中获得更大筹码。Anthropic的Claude Mythos则仅限Project Glasswing基础设施合作伙伴使用。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">NVIDIA与OpenAI签署$1,000亿级战略合作，部署10GW AI基础设施</div>
-        <div class="meta">日期: 2025年9月–2026年部署 | 来源: NVIDIA News / Yahoo Finance</div>
-        <div class="summary">NVIDIA与OpenAI签署意向书，部署至少10吉瓦(GW)的NVIDIA AI系统，相当于数百万颗GPU。NVIDIA计划随每GW上线逐步投资高达$1,000亿。首个GW将于2026年下半年基于NVIDIA Vera Rubin平台上线。NVIDIA CEO黄仁勋称此合作为"AI基础设施的下一个飞跃"。OpenAI CEO Sam Altman表示"计算基础设施将是未来经济的基础"。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Google TPU 8挑战NVIDIA Blackwell，NVIDIA收购Groq技术</div>
-        <div class="meta">日期: 2026年 | 来源: TechDG / Analytics Insight</div>
-        <div class="summary">Google推出TPU 8，在功耗效率及推理成本上优于NVIDIA Blackwell，但Blackwell在原始训练吞吐量、CUDA生态及开发者工具上仍领先。NVIDIA在GTC 2026上展示集成Groq技术的AI处理器，专门优化OpenAI工作负载的推理效率。NVIDIA此前以$200亿从Groq获取推理芯片技术授权。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">NVIDIA报告$5,000亿AI芯片预订（不含OpenAI协议）</div>
-        <div class="meta">日期: 2026年 | 来源: Gloria Terminal / NVIDIA</div>
-        <div class="summary">NVIDIA宣布截至2026年的AI芯片预订额已达$5,000亿美元，此数字不包含与OpenAI的10GW合作协议，显示AI算力需求极其旺盛。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">印度推出AI强制标签规则</div>
-        <div class="meta">日期: 2026年5月 | 来源: TechDG</div>
-        <div class="summary">印度发布AI内容强制标签规则草案，要求平台对AI生成内容进行持续标注。若应用或网站面向印度用户，需遵守该规则。全球平台正构建通用水印管道以避免区域碎片化。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">Google I/O 2026前瞻：Project Astra 2、Gemini 3.1、Android 16</div>
-        <div class="meta">日期: 2026年5月 | 来源: TechDG</div>
-        <div class="summary">预计Google将在I/O 2026发布Project Astra 2多模态AI、Gemini 3.1企业API、Android 16深度AI集成、TPU 8云定价及端侧模型优化工具。Google将强调跨平台兼容性、低延迟及隐私优先AI。</div>
-    </div>
-
-    <h3>🇨🇳 中国动态 China AI & Robotics</h3>
-    <div class="news-item">
-        <div class="title">字节跳动2026年持续加码AI，CEO梁汝波定调"勇攀高峰"</div>
-        <div class="meta">日期: 2026年1月29日 | 来源: 财新网</div>
-        <div class="summary">字节跳动召开全员会，CEO梁汝波分享2026年度关键词"勇攀高峰"。他表示AI至少是PC+Web级别的高峰，短期高峰是"豆包/Dola助手应用"。公司计划持续加大AI基础设施投资。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">阿里发布新一代AI芯片"真武810E"</div>
-        <div class="meta">日期: 2026年1月29日 | 来源: 财新网</div>
-        <div class="summary">阿里巴巴旗下平头哥半导体官网更新"真武810E"AI训练推理一体芯片（即此前央视意外出镜的PPU芯片）。性能介于NVIDIA A800和H20之间，已在阿里云多个万卡集群部署。该芯片定位于NVIDIA中国特供版的竞品。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">2026年春晚现多个人形机器人，宇树/智元/银河通用/魔法原子亮相</div>
-        <div class="meta">日期: 2026年1月29日 | 来源: 财新网</div>
-        <div class="summary">央视马年春晚将现多个人形机器人，宇树科技、银河通用、松延动力、魔法原子与央视合作。魔法原子联合创始人顾诗韬表示，机器人公司需兼顾长期"技术摸高"（进工厂）与短期落地（巡检、4S店导购、陪伴机器狗）。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">智元 vs 宇树：人形机器人出货量全球第一之争</div>
-        <div class="meta">日期: 2026年1月 | 来源: 财新 / Omdia</div>
-        <div class="summary">智元机器人引用Omdia报告称2025年出货量超5,100台，全球市场份额39%，居全球第一。宇树科技随即发布"澄清声明"，称2025年实际出货量超5,500台，自己才是全球第一。智元2026年销售目标2–3万台，租赁业务预计数倍增长。优必选2025年达1,000台出货，2026年目标1万台。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">中国具身智能第一梯队成形：智平方、智元、优必选、宇树、银河通用</div>
-        <div class="meta">日期: 2026年2月 | 来源: 同花顺 / 行业测评</div>
-        <div class="summary">2026年中国人形机器人十强测评显示第一梯队为智平方（半导体千台订单）、智元（B端量产标杆）、优必选（Walker S汽车产线）、宇树（出货总量领先）、银河通用（仿真技术路线）。小米预告2026年机器人业务将有新进展，目标实现自研芯片、OS、AI大模型"大会师"。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">阿里、京东、百度押注具身智能，多家AI公司递表港交所</div>
-        <div class="meta">日期: 2026年4月–5月 | 来源: 网易新闻 / 36氪</div>
-        <div class="summary">4月2日，锐明技术、安擎计算机、上海易景等多家AI及智能硬件公司递表港交所。宇树科技被抽中2026年第二批IPO现场检查。自变量机器人4月完成近20亿元B轮融资，获阿里、字节、美团、小米四家大厂同时押注。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">字节跳动推出AI智能体耳机Ola Friend</div>
-        <div class="meta">日期: 2026年 | 来源: Sina / AI行业分析</div>
-        <div class="summary">字节跳动推出搭载豆包大模型的AI智能体耳机Ola Friend，支持日常随问随答、个性化导游、聊天情感陪伴等体验。智谱推出AutoGLM智能体家族，支持抖音、微博、饿了么、京东、拼多多等主流APP跨终端操作。百度推出金融智能体"智金"。</div>
-    </div>
-
-    <h3>🌏 新加坡/东南亚视角 Singapore / Southeast Asia</h3>
-    <div class="news-item">
-        <div class="title">新加坡海峡时报指数期货上涨，MSCI新加坡指数稳健</div>
-        <div class="meta">日期: 2026年5月 | 来源: Investing.com</div>
-        <div class="summary">新加坡MSCI指数期货2026年5月合约报443.80，微涨0.02%。新加坡作为亚太AI及数据中心枢纽，持续受益于全球AI基础设施投资浪潮。ByteDance计划$230亿AI基础设施投入中，东南亚数据中心为重要组成部分。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">东南亚机器人市场：新加坡、印尼、越南成新兴热点</div>
-        <div class="meta">日期: 2026年 | 来源: 行业分析</div>
-        <div class="summary">东南亚制造业升级推动工业机器人需求，新加坡在医疗机器人及无人机监管方面走在前列。印尼港口自动化、越南电子制造业自动化为区域主要增长点。中国机器人企业（优必选、智元）积极拓展东南亚市场。</div>
-    </div>
-
-    <h3>🔬 技术突破 Technology Breakthroughs</h3>
-    <div class="news-item">
-        <div class="title">大模型: GPT-5.5、Gemini 3.1、Claude Mythos三足鼎立</div>
-        <div class="summary">2026年5月， frontier model格局进一步分化。OpenAI GPT-5.5聚焦agentic能力；Google Gemini 3.1强化多模态及企业API；Anthropic Claude Mythos定位高安全性部署。中国方面，字节豆包、百度文心、阿里通义、智谱AutoGLM等持续迭代，Moonshot、DeepSeek等创业公司刷新技术上限。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">人形机器人: 2026年出货目标数万级别</div>
-        <div class="summary">智元2026年目标2–3万台，优必选目标1万台，宇树预计保持5,000+台。全球人形机器人市场预计2035年销量超1,000万台、市场规模$2,600亿。Figure AI、Agility Robotics、Apptronik等美国企业获巨额融资，Apptronik 2月获$5.2亿Series A（Google、Mercedes-Benz参投）。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">自动驾驶: Wayve $1.2B融资，AI Driver无需高精地图</div>
-        <div class="meta">日期: 2026年2–4月 | 来源: Fifth Level Consulting</div>
-        <div class="summary">英国自动驾驶公司Wayve完成$12亿Series D（Eclipse、Balderton、软银Vision Fund 2领投），NVIDIA、Microsoft、Uber、Mercedes-Benz、Nissan、Stellantis参投。Wayve的AI Driver仅需摄像头数据，无需城市特定高精地图，已在500+城市测试。Nissan计划2027年起在量产车中集成Wayve系统，提供L2+"脱手"驾驶。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">AI芯片: NVIDIA Vera Rubin vs Google TPU 8 vs 阿里真武810E</div>
-        <div class="summary">2026年下半年NVIDIA Vera Rubin平台将首次大规模部署（OpenAI 10GW项目）。Google TPU 8在推理成本效率上挑战NVIDIA。中国阿里平头哥"真武810E"、华为昇腾、寒武纪、燧原科技在国产替代路线稳步推进。NVIDIA以$200亿获取Groq推理技术，显示其对推理市场的高度重视。</div>
-    </div>
-
-    <h3>💵 投资动态 Investment & Funding</h3>
-    <table class="data-table">
-        <tr><th>公司</th><th>轮次/金额</th><th>投资方</th><th>领域</th><th>日期</th></tr>
-        <tr><td><strong>Saronic</strong> (自主水面舰艇)</td><td>Series D / $17.5亿</td><td>Kleiner Perkins</td><td>国防/海事机器人</td><td>2026年3月</td></tr>
-        <tr><td><strong>Shield AI</strong> (无人机AI驾驶)</td><td>Series G / $20亿</td><td>Advent, JPMorgan, Blackstone</td><td>国防AI</td><td>2026年3月</td></tr>
-        <tr><td><strong>Wayve</strong> (自动驾驶)</td><td>Series D / $12亿+</td><td>Eclipse, SoftBank, NVIDIA, Uber</td><td>自动驾驶</td><td>2026年2月</td></tr>
-        <tr><td><strong>Apptronik</strong> (人形机器人Apollo)</td><td>Series A / $5.2亿</td><td>Google, Mercedes-Benz, B Capital, QIA</td><td>人形机器人</td><td>2026年2月</td></tr>
-        <tr><td><strong>Mind Robotics</strong> (工业AI机器人)</td><td>Series A / $5亿</td><td>Accel, a16z</td><td>工业机器人</td><td>2026年3月</td></tr>
-        <tr><td><strong>Reliable Robotics</strong> (自主飞行)</td><td>Growth / $1.6亿</td><td>—</td><td>航空机器人</td><td>2026年4月</td></tr>
-        <tr><td><strong>自变量机器人</strong> (中国)</td><td>Series B / ~20亿元</td><td>阿里、字节、美团、小米</td><td>具身智能</td><td>2026年4月</td></tr>
-        <tr><td><strong>Sereact</strong> (物流AI机器人)</td><td>Series B / $1.1亿</td><td>Headline, Creandum</td><td>仓储机器人</td><td>2026年4月</td></tr>
-        <tr><td><strong>Bedrock Robotics</strong> (建筑机器人)</td><td>Series B / $2.7亿</td><td>CapitalG, 8VC, Eclipse, NVentures</td><td>基建机器人</td><td>2026年2月</td></tr>
-    </table>
-    <p class="source-tag">数据来源: NewMarketPitch, Fifth Level Consulting, Crunchbase, 36氪, 财新</p>
-
-    <h3>📈 相关公司股价 Related Stock Prices</h3>
-    <table class="data-table">
-        <tr><th>代码</th><th>公司</th><th>参考价格/区间</th><th>近期动态</th></tr>
-        <tr><td>NVDA</td><td>NVIDIA</td><td>~$186–$190 (2025年底)</td><td>2025年涨约40%，市值约$4.5万亿。与OpenAI签署$100B 10GW合作协议。</td></tr>
-        <tr><td>TSLA</td><td>Tesla</td><td>期权区间 $295–$490</td><td>2026年5月期权显示市场对股价波动预期较大。Meta入局人形机器人直接竞争。</td></tr>
-        <tr><td>优必选 (HK:9880)</td><td>UBTECH</td><td>港股上市</td><td>2025年出货1,000台，2026年目标1万台。Walker S2汽车工厂交付增长。</td></tr>
-        <tr><td>小米 (HK:1810)</td><td>Xiaomi</td><td>港股</td><td>预告2026年机器人业务新进展，目标自研芯片+OS+大模型终端"大会师"。</td></tr>
-        <tr><td>GOOG</td><td>Alphabet</td><td>>$310 (2025年底)</td><td>2025年涨约65%，Magnificent Seven中表现最佳。TPU 8挑战NVIDIA。</td></tr>
-        <tr><td>META</td><td>Meta Platforms</td><td>—</td><td>收购ARI进军人形机器人，与Tesla、Amazon直接竞争。</td></tr>
-        <tr><td>MSFT</td><td>Microsoft</td><td>—</td><td>与OpenAI独家合作松动，Azure仍保留优先定价。多云策略成趋势。</td></tr>
-    </table>
-
-    <h3>💡 投资分析 Investment Analysis</h3>
-    <div class="news-item">
-        <div class="title">AI基础设施: 算力军备竞赛进入"千兆瓦时代"</div>
-        <div class="summary">NVIDIA-OpenAI 10GW合作标志AI基础设施从"数据中心"向"能源级"跃迁。$1,000亿投资规模超越许多国家的年度GDP。Vera Rubin平台2026下半年上线，将定义下一代训练及推理标准。<br><strong>投资主线:</strong> (1) GPU/芯片设计: NVDA、AMD、TSM； (2) 数据中心电力及冷却: 核电、液冷； (3) 光通信及网络: InfiniBand、光模块； (4) 国产替代: 华为昇腾、阿里平头哥、寒武纪。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">人形机器人: 从"炫技"到"进厂"的关键一年</div>
-        <div class="summary">2026年是人形机器人从 demo 走向 factory floor 的转折年。智元2–3万台、优必选1万台的目标若实现，将标志着该品类首次达到商业意义上的"规模化"。但风险在于：实际交付能力、工厂场景ROI、及技术稳定性。<br><strong>投资主线:</strong> (1) 整机厂: 优必选(港股)、Figure AI(未上市)、Apptronik； (2) 核心零部件: 谐波减速器、力矩传感器、灵巧手； (3) AI模型: 具身智能大模型公司； (4) 代工/制造: 富士康、比亚迪电子。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">自动驾驶: Wayve的"无地图"路线或改变行业格局</div>
-        <div class="summary">Wayve的AI Driver仅需摄像头、无需高精地图，可在500+城市直接运行。若Nissan 2027年量产L2+成功，将证明纯视觉+端到端AI路线可行，颠覆现有激光雷达+高精地图生态。<br><strong>投资主线:</strong> (1) 软件平台: Wayve(未上市)、Mobileye； (2) 芯片: NVIDIA、Qualcomm； (3) 出行平台: Uber、滴滴； (4) 传统车企转型: Nissan、Mercedes-Benz。</div>
-    </div>
-    <div class="news-item">
-        <div class="title">机器人融资热潮: 2026年Q1–Q2创新纪录</div>
-        <div class="summary">Saronic $17.5亿、Shield AI $20亿、Wayve $12亿等巨额融资显示：defense + autonomous systems 是资本最密集赛道。2026年4月15日前自动驾驶融资已达$214亿，同比增长262%。<br><strong>投资主线:</strong> (1) 国防机器人: Saronic、Shield AI、Anduril； (2) 工业自动化: Mind Robotics、Sereact； (3) 医疗机器人: Wearable Robotics、Distalmotion； (4) 物流机器人: A&K Robotics、Mytra。</div>
-    </div>
-</div>
-
-<footer>
-    <p>📅 生成时间: 2026年5月8日 07:28 AM (Asia/Shanghai)</p>
-    <p>🔄 每日更新 | 数据来源: Baltic Exchange, TradeWinds, Clarksons, Investing.com, MarketWatch, Reuters, BBC, 新华社, 财新网, TechCrunch, The Information, 机器之心, 36氪</p>
-    <p>⚠️ 免责声明: 本简报仅供参考，不构成投资建议。市场有风险，投资需谨慎。</p>
-    <p>🔗 GitHub Pages: <a href="https://mast0506.github.io/daily-briefing/" target="_blank">https://mast0506.github.io/daily-briefing/</a></p>
-</footer>
-
-</div>
 </body>
 </html>
