@@ -1,490 +1,388 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日资讯简报 | Daily Briefing — 2026年5月5日</title>
-<style>
-:root {
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --text: #1a1a2e;
-  --muted: #5a5a6e;
-  --accent: #2563eb;
-  --accent2: #059669;
-  --accent3: #dc2626;
-  --border: #e2e8f0;
-  --shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  padding: 20px;
-}
-.container { max-width: 900px; margin: 0 auto; }
-.header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  color: white;
-  padding: 40px 30px;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-.header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
-.header .subtitle { font-size: 1rem; opacity: 0.8; margin-bottom: 16px; }
-.header .meta {
-  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
-  font-size: 0.85rem; opacity: 0.7; margin-top: 12px;
-}
-.header .meta span { display: flex; align-items: center; gap: 6px; }
-.toc {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-}
-.toc h2 { font-size: 1.1rem; margin-bottom: 16px; color: var(--accent); }
-.toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
-.toc li a { color: var(--text); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; transition: all 0.2s; }
-.toc li a:hover { background: var(--bg); color: var(--accent); }
-.toc .emoji { font-size: 1.2rem; width: 24px; text-align: center; }
-.section {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-}
-.section h2 {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--border);
-  display: flex; align-items: center; gap: 10px;
-}
-.section h2 .section-emoji { font-size: 1.4rem; }
-.news-item {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-}
-.news-item:last-child { border-bottom: none; }
-.news-item .title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-.news-item .summary {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-.news-item .source {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  margin-top: 6px;
-}
-.highlight-box {
-  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-  border-left: 4px solid var(--accent);
-  padding: 16px 20px;
-  border-radius: 8px;
-  margin: 16px 0;
-}
-.highlight-box.urgent { background: linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%); border-left-color: var(--accent3); }
-.highlight-box.info { background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%); border-left-color: #0284c7; }
-.highlight-box.gold { background: linear-gradient(135deg, #fffbeb 0%, #fefce8 100%); border-left-color: #d97706; }
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
-  margin-top: 16px;
-}
-.stat-card {
-  background: var(--bg);
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-  border: 1px solid var(--border);
-}
-.stat-card .label { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
-.stat-card .value { font-size: 1.4rem; font-weight: 700; color: var(--text); }
-.stat-card .change { font-size: 0.8rem; margin-top: 4px; }
-.change.up { color: var(--accent2); }
-.change.down { color: var(--accent3); }
-.change.neutral { color: var(--muted); }
-.tag {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-right: 6px;
-  margin-top: 4px;
-}
-.tag.hot { background: #fef2f2; color: #dc2626; }
-.tag.info { background: #eff6ff; color: #2563eb; }
-.tag.green { background: #f0fdf4; color: #059669; }
-.footer {
-  text-align: center;
-  padding: 24px;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.footer a { color: var(--accent); text-decoration: none; }
-@media (max-width: 600px) {
-  .header h1 { font-size: 1.4rem; }
-  .section { padding: 20px; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日资讯简报 | Daily Briefing - 2026年5月18日</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f5;
+            --card-bg: #ffffff;
+            --text-primary: #18181b;
+            --text-secondary: #52525b;
+            --accent: #2563eb;
+            --accent-light: #dbeafe;
+            --border: #e4e4e7;
+            --positive: #16a34a;
+            --negative: #dc2626;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0 32px;
+            border-bottom: 3px solid var(--accent);
+            margin-bottom: 32px;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        header .meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        header .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--accent-light);
+        }
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .section h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 18px 0 10px;
+            color: var(--accent);
+        }
+        .news-item {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+        .news-summary {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+        .tag-hot { background: #fef2f2; color: #dc2626; }
+        .tag-market { background: #eff6ff; color: #2563eb; }
+        .tag-policy { background: #f0fdf4; color: #16a34a; }
+        .tag-tech { background: #faf5ff; color: #9333ea; }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .data-card {
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .data-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .data-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .data-change {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .positive { color: var(--positive); }
+        .negative { color: var(--negative); }
+        .highlight-box {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #eff6ff 100%);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 16px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .source-list {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+        .source-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+    <div class="container">
+        <header>
+            <h1>📰 每日资讯简报</h1>
+            <p class="meta">Daily Briefing | Monday, May 18, 2026</p>
+            <p class="meta">新加坡时间 07:00 | Asia/Singapore</p>
+            <span class="badge">第 1 期</span>
+        </header>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>📰 每日资讯简报</h1>
-  <div class="subtitle">Daily Briefing — 全球要闻与市场动态</div>
-  <div class="meta">
-    <span>📅 2026年5月5日 星期二</span>
-    <span>🕐 新加坡时间 07:00</span>
-    <span>🌍 数据截止: 2026-05-04</span>
-  </div>
-</div>
+        <!-- 时政要闻 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🌍</div>
+                <h2>时政要闻 · World Affairs</h2>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🇺🇸 特朗普下令从德国撤军5000人， Bavarian小镇经济受冲击</div>
+                <div class="news-summary">美国总统唐纳德·特朗普近期下令从德国撤出至少5000名美军，这一决定 Bavarian 小镇数十年来一直驻有美军，如今可能失去其主要收入来源，引发了当地经济震荡。 <span class="tag tag-hot">热点</span></div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🇨🇳 特朗普访华未能在伊朗、台湾及AI议题上取得突破</div>
+                <div class="news-summary">特朗普于5月15日结束访华行程，双方未能在伊朗协议、台湾问题及AI合作等关键议题上达成实质性突破。特朗普坚称"什么都没有改变"，同时承认可能不会批准对台重大军售。 <span class="tag tag-policy">外交</span></div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🚨 WHO宣布刚果和乌干达埃博拉疫情为全球卫生紧急事件</div>
+                <div class="news-summary">世界卫生组织（WHO）正式宣布刚果民主共和国和乌干达爆发的埃博拉疫情为"全球卫生紧急事件"，呼吁国际社会加强疫情防控和资源调配。 <span class="tag tag-hot">紧急</span></div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🇮🇷 阿联酋核设施遭无人机袭击，美伊战争信号升温</div>
+                <div class="news-summary">阿联酋一座核电站遭无人机袭击，与此同时，美国和伊朗均释放信号表示已准备好恢复战争状态。中东地区紧张局势持续升级，能源市场密切关注事态发展。 <span class="tag tag-hot">冲突</span></div>
+            </div>
 
-<!-- TOC -->
-<div class="toc">
-  <h2>📋 目录导航</h2>
-  <ul>
-    <li><a href="#politics"><span class="emoji">🏛️</span> 时政要闻</a></li>
-    <li><a href="#shipping"><span class="emoji">🚢</span> 航运资讯</a></li>
-    <li><a href="#finance"><span class="emoji">📈</span> 全球财经</a></li>
-    <li><a href="#crypto"><span class="emoji">₿</span> 加密市场</a></li>
-    <li><a href="#ai"><span class="emoji">🤖</span> AI与机器人</a></li>
-  </ul>
-</div>
+            <div class="highlight-box">
+                <strong>市场影响：</strong>地缘政治风险升温推动避险资产需求，黄金及美元可能获得支撑；中东局势对油价构成上行压力。
+            </div>
+        </div>
 
-<!-- POLITICS -->
-<div class="section" id="politics">
-  <h2><span class="section-emoji">🏛️</span> 时政要闻</h2>
+        <!-- 航运资讯 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🚢</div>
+                <h2>航运资讯 · Shipping Intelligence</h2>
+            </div>
+            
+            <h3>📊 干散货市场动态</h3>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">好望角型 C5 (西澳-中国)</div>
+                    <div class="data-value">$15.50</div>
+                    <div class="data-change positive">↑ 周内走高至high $15s</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">好望角型 C3 (巴西/西非-中国)</div>
+                    <div class="data-value">$36.50</div>
+                    <div class="data-change positive">↑ 从low $36s升至high $37s</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">巴拿马型 P5TC 指数</div>
+                    <div class="data-value">$22,691</div>
+                    <div class="data-change positive">↑ 周初 $20,548 → 周五 $22,691</div>
+                </div>
+            </div>
+            
+            <h3>📋 市场要点</h3>
+            <div class="news-item">
+                <div class="news-title">好望角型市场：南大西洋和西非至中国航线领涨</div>
+                <div class="news-summary">C3航线（南美/西非至中国）本周出现一波集中租船活动，迅速吸收了6月上旬可用的运力，推动费率从low $36s攀升至high $37s峰值。太平洋C5航线受矿商持续需求支撑，保持在high $15s水平。</div>
+            </div>
+            <div class="news-item">
+                <div class="news-title">巴拿马型市场：P5TC指数升至$22,691，粮运需求强劲</div>
+                <div class="news-summary">巴拿马型市场保持强劲上升势头，P5TC指数一周上涨超10%。大西洋航线受南美和北美的持续粮食出口支撑，同时矿砂需求逐步改善。太平洋航线受印尼和澳大利亚矿砂流以及北太平洋粮食需求改善支撑。</div>
+            </div>
+            <div class="news-item">
+                <div class="news-title">运力收紧成为主旋律</div>
+                <div class="news-summary">两大船型市场共同特征是"运力收紧"——好望角型6月上旬可用船只减少，巴拿马型即期运力同样趋紧。船东议价能力增强，租家阻力在中旬后重新出现但未能扭转上涨趋势。</div>
+            </div>
+        </div>
 
-  <div class="highlight-box urgent">
-    <strong>🔴 特朗普即将访华:</strong> 美国总统特朗普将于5月14日访问中国，这是他自2017年以来首次踏上北京。此次访问正值中美关系敏感时期，台湾问题始终是双方最重要也最敏感的议题。
-    <div class="source">来源: BBC News 中文</div>
-  </div>
+        <!-- 全球财经 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">📈</div>
+                <h2>全球财经 · Global Markets</h2>
+            </div>
+            
+            <h3>🗽 美股市场</h3>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">S&P 500 (US500)</div>
+                    <div class="data-value">7,409</div>
+                    <div class="data-change">5月17日收盘持平</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">历史最高</div>
+                    <div class="data-value">7,517</div>
+                    <div class="data-change positive">2026年5月创下的历史高点</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">纳斯达克期货</div>
+                    <div class="data-value">29,260</div>
+                    <div class="data-change negative">↓ 周五下跌1.5%</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">道琼斯期货</div>
+                    <div class="data-value">49,531</div>
+                    <div class="data-change negative">↓ 周五下跌1.1%</div>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <strong>周五回调：</strong>美股周五遭遇抛售，S&P 500跌1.2%，纳斯达克跌1.5%，道指跌1.1%。科技板块获利回吐，能源价格上涨引发通胀担忧，市场担忧利率将维持高位。
+            </div>
+            
+            <h3>📊 美国宏观经济</h3>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">通胀率 (CPI)</div>
+                    <div class="data-value">3.80%</div>
+                    <div class="data-change negative">↑ 前值3.30% (2026年4月)</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">联邦基金利率</div>
+                    <div class="data-value">3.75%</div>
+                    <div class="data-change">维持不变</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">失业率</div>
+                    <div class="data-value">4.30%</div>
+                    <div class="data-change">维持不变</div>
+                </div>
+            </div>
+            
+            <h3>₿ 加密货币</h3>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">Bitcoin (BTC)</div>
+                    <div class="data-value">$78,031</div>
+                    <div class="data-change positive">↑ 24h +0.62%</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">Ethereum (ETH)</div>
+                    <div class="data-value">$2,182</div>
+                    <div class="data-change negative">↓ 近期回调</div>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="news-title">CLARITY Act 通过参议院银行委员会</div>
+                <div class="news-summary">美国加密监管迎来里程碑——CLARITY Act（加密货币监管清晰度法案）顺利通过参议院银行委员会，为数字资产建立更明确的联邦监管框架，行业普遍视为利好。</div>
+            </div>
+        </div>
 
-  <div class="highlight-box urgent">
-    <strong>🔴 美伊冲突升级:</strong> 自2月战争爆发以来，伊朗已大幅限制霍尔木兹海峡航运流量；美国亦对伊朗港口实施海上封锁。伊朗威胁如自身基础设施遭袭，将打击美以在中东全部基础设施。精神航空因燃料价格飙升宣布暂停所有航班营运，结束了长达46年的运作。
-    <div class="source">来源: BBC News 中文 / Wikipedia</div>
-  </div>
+        <!-- AI机器人动态 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">🤖</div>
+                <h2>AI机器人动态 · AI & Robotics</h2>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🇨🇳 中国成立人形机器人与具身智能标准化技术委员会</div>
+                <div class="news-summary">2025年12月26日，工业和信息化部正式成立"人形机器人与具身智慧标准化技术委员会"，将负责制定人形机器人与具身智能在基础共性、关键技术、部组件、整机与系统、应用、安全等领域的行业标准。这是中国在该领域迈向规范化和产业化的关键一步。 <span class="tag tag-policy">政策</span></div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🦾 宇树科技发布全球首款量产载人变形机甲GD01，售价390万元起</div>
+                <div class="news-summary">宇树科技（Unitree）正式发布全球首款量产版载人变形机甲GD01，起售价390万元人民币。该产品标志着消费级/商用级载人机甲从概念走向现实，引发国内外科技圈热议，被称为"机甲时代到来"。 <span class="tag tag-tech">新品</span></div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">🔬 首形科技发布Origin F1仿生机器人新皮肤</div>
+                <div class="news-summary">首形科技（U航）发布Origin F1仿生机器人新皮肤，进一步模糊了仿生机器人与人类外观的边界。创始人U航为哥伦比亚大学机器人学与人工智能博士，公司持续在仿生外观和交互体验上取得突破。</div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">📈 人形机器人行业：2025年价值验证、资本热潮与十字路口</div>
+                <div class="news-summary">根据灼识咨询数据，人形机器人行业正处于价值验证的关键阶段。2025年行业经历资本热潮后，如今面临"十字路口"——从技术展示走向实际应用场景的落地。标准化委员会的成立为行业发展指明更清晰方向。</div>
+            </div>
+            
+            <div class="highlight-box">
+                <strong>投资视角：</strong>人形机器人赛道正从"概念验证"进入"量产前夜"，中国标准化提速+海外Figure/Optimus/Tesla Robotaxi多线并进，产业链上游（执行器、传感器、AI芯片）值得持续跟踪。
+            </div>
+        </div>
 
-  <div class="news-item">
-    <div class="title">🇨🇳 中国商务部阻断美国对5家涉伊朗石油中国企业制裁</div>
-    <div class="summary">5月2日，中国商务部发布禁令，阻断美国以参与涉伊朗石油交易为由，对恒力石化（大连）炼化有限公司、山东寿光鲁清石化有限公司、山东金诚石化集团有限公司、河北鑫海化工集团有限公司、山东胜星化工有限公司等5家企业采取的列入"特别指定国民清单"（SDN清单）、实施冻结资产和禁止交易等制裁措施。</div>
-    <div class="source">来源: 中国商务部 / 新华社</div>
-  </div>
+        <!-- 一日一句 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">💡</div>
+                <h2>一日一句 · Quote of the Day</h2>
+            </div>
+            <blockquote style="font-style: italic; color: var(--text-secondary); padding: 16px; border-left: 4px solid var(--accent); background: var(--bg-color); border-radius: 0 12px 12px 0;">
+                "The ultimate resource for the humanoid robot industry." — <span style="font-weight: 600; color: var(--text-primary);">humanoid.guide</span>
+            </blockquote>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary);">
+                2026年的机器人行业正如2007年的智能手机——技术已经ready，只差一个iPhone时刻。
+            </p>
+        </div>
 
-  <div class="news-item">
-    <div class="title">🇮🇷 伊朗称美国已回应和平提案，特朗普称"不可接受"</div>
-    <div class="summary">伊朗称美国已回应德黑兰最新的和平提案。但美国总统特朗普周日对以色列公共广播公司"KAN"表示，该提案对他而言不可接受。特朗普宣布启动"自由计划"（Project Freedom），若行动受干扰"将不得不以武力处理"。</div>
-    <div class="source">来源: BBC News 中文</div>
-  </div>
-
-  <div class="news-item">
-    <div class="title">🇨🇳🇦🇸 中国—东盟灾害管理合作项目启动</div>
-    <div class="summary">2026年是"中国—东盟建立全面战略伙伴关系5周年"主题年。中国—东盟灾害管理合作项目启动实施，旨在为东盟开展人力资源培训，提供应急指挥与研判技术支持，分享中国灾害预警与应对经验，提升区域协同防灾减灾能力。</div>
-    <div class="source">来源: 人民网</div>
-  </div>
-
-  <div class="news-item">
-    <div class="title">🇨🇳 多国学员实地了解中国式现代化实践经验</div>
-    <div class="summary">北京大学"东方奖学金"治国理政研修班学员代表团到访上海，多角度、立体化了解中国式现代化在经济社会发展、城市治理与科创成果方面的实践经验。</div>
-    <div class="source">来源: 人民网</div>
-  </div>
-</div>
-
-<!-- SHIPPING -->
-<div class="section" id="shipping">
-  <h2><span class="section-emoji">🚢</span> 航运资讯</h2>
-
-  <div class="highlight-box urgent">
-    <strong>🚨 霍尔木兹海峡航运受阻:</strong> 受美伊冲突影响，霍尔木兹海峡航运流量大幅下降超过90%。附近水域已记录大量安全事件。中东航线大规模改道使全球海运运力更加紧张，燃油成本同步攀升。
-    <div class="source">来源: C.H.Robinson / BBC News</div>
-  </div>
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">克拉克森新造船价格指数</div>
-      <div class="value" style="color:#2563eb">183.41</div>
-      <div class="change up">↗ 连续4周回升</div>
+        <footer>
+            <p>📰 每日资讯简报 | Daily Briefing</p>
+            <p>数据来源：AP News, CNN, Trading Economics, OKX, Coinbase, Baltic Exchange, Business Times, 36kr</p>
+            <p class="source-list">自动生成于 2026-05-18 07:00 (SGT) | 仅供资讯参考，不构成投资建议</p>
+            <p style="margin-top: 12px;">
+                <a href="https://mast0506.github.io/daily-briefing/" style="color: var(--accent); text-decoration: none; font-weight: 600;">🔗 在线查看：mast0506.github.io/daily-briefing/</a>
+            </p>
+        </footer>
     </div>
-    <div class="stat-card">
-      <div class="label">Q1全球新接订单</div>
-      <div class="value" style="color:#059669">0.57亿DWT</div>
-      <div class="change up">↗ +105% YoY</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Q1油轮新接订单</div>
-      <div class="value" style="color:#059669">0.33亿DWT</div>
-      <div class="change up">↗ +509% YoY</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">全球汽车海运贸易</div>
-      <div class="value">稳健增长</div>
-      <div class="change up">↗ 中国为主要制造国</div>
-    </div>
-  </div>
-
-  <div style="margin-top:20px;">
-    <div class="news-item">
-      <div class="title">🏗️ 新造船市场迎来高景气周期</div>
-      <div class="summary">2026年Q1新造船市场迎来高景气。克拉克森数据显示，全球新接订单0.57亿DWT，同比+105%。油轮受益于下游油运运力紧张表现尤为突出，新接订单0.33亿DWT，同比+509%。船价方面，克拉克森周度新造船价格指数近四周连续回升，由3月27日的182.08上行至4月24日的183.41。分析指出，随着需求再释放，船厂订单排产更加饱满，议价能力增强。</div>
-      <div class="source">来源: 华泰证券 / 克拉克森</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🌊 中东航线改道，海运运力持续紧张</div>
-      <div class="summary">四月份海运市场呈现熟悉面貌——运价稳定、需求适中。但潜在网络条件表明运行环境更加受限。当前形势受三大力量影响：冲突导致的路线改道、燃油成本上涨以及运输公司持谨慎态度。长距离航线需求增加及供应链重构推动下，主要航线舱位利用率维持在理想水平。</div>
-      <div class="source">来源: C.H.Robinson</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🚗 全球汽车海运贸易量稳健增长</div>
-      <div class="summary">中国是新能源汽车制造主要国家，全球海运汽车贸易量稳健增长。尽管新造船运力陆续交付，但在长距离航线需求增加及供应链重构推动下，主要航线舱位利用率始终维持在理想水平。同时全球汽车船队老龄化严重，随着绿色化进程加快，老旧运力淘汰提速。</div>
-      <div class="source">来源: 财信证券 / 新浪财经</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">📜 环保法规趋严加速老旧船舶出清</div>
-      <div class="summary">本轮造船周期核心驱动力仍来自存量船队更新替换需求。环保法规趋严进一步加速老旧船舶出清。考虑到供给端全球活跃船厂数量持续收缩，产能偏紧态势下排期不断拉长，供需紧平衡格局下造船量价有望持续改善。</div>
-      <div class="source">来源: 华泰证券 / 慧博投研</div>
-    </div>
-  </div>
-</div>
-
-<!-- FINANCE -->
-<div class="section" id="finance">
-  <h2><span class="section-emoji">📈</span> 全球财经</h2>
-
-  <div class="highlight-box urgent">
-    <strong>🛢️ 中东冲突推升油价:</strong> 市场担忧霍尔木兹海峡航运持续受阻，国际油价大涨。WTI原油收于$106.88/桶（+6.95%），布伦特收于$118.03/桶（+6.08%），均创阶段性高位。阿联酋退出OPEC增添不确定性。
-    <div class="source">来源: 财闻网 / Reuters</div>
-  </div>
-
-  <div class="highlight-box">
-    <strong>📊 美股财报季强劲:</strong> S&P 500 Q1盈利增长达27.1%（含已披露及预估），半导体指数在23个交易日中录得22个上涨日、15个盘中历史新高。但5月4日道指大跌557点，中东局势引发避险情绪升温。
-    <div class="source">来源: CNBC / Schwab / Trading Economics</div>
-  </div>
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">道琼斯</div>
-      <div class="value">48,941.90</div>
-      <div class="change down">↘ -1.13% (-557点)</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">标普 500</div>
-      <div class="value">7,200.75</div>
-      <div class="change down">↘ -0.41%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">纳斯达克</div>
-      <div class="value">25,067.80</div>
-      <div class="change down">↘ -0.19%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">半导体指数(SOX)</div>
-      <div class="value" style="color:#059669">15次新高</div>
-      <div class="change up">↗ 23日22涨</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">WTI原油</div>
-      <div class="value" style="color:#dc2626">$106.88</div>
-      <div class="change up">↗ +6.95%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">布伦特原油</div>
-      <div class="value" style="color:#dc2626">$118.03</div>
-      <div class="change up">↗ +6.08%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">黄金</div>
-      <div class="value" style="color:#059669">$4,561.50</div>
-      <div class="change down">↘ -1.02%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">白银</div>
-      <div class="value">$72.09</div>
-      <div class="change down">↘ -2.25%</div>
-    </div>
-  </div>
-
-  <div style="margin-top:20px;">
-    <div class="news-item">
-      <div class="title">🇺🇸 美股5月4日回调，道指大跌超500点</div>
-      <div class="summary">受中东冲突升级（UAE拦截伊朗导弹）影响，美股5月4日全线收跌。道指暴跌557.37点（-1.13%）至48,941.90；标普500跌0.41%至7,200.75；纳指跌0.19%至25,067.80。Home Depot领跌（-3.50%），Nike跌2.95%，Boeing跌2.64%。10年期美债收益率升至4.438%。</div>
-      <div class="source">来源: CNBC / TheStreet / Trading Economics</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🇺🇸 美联储维持基准利率不变，市场关注降息节奏</div>
-      <div class="summary">美联储维持基准利率不变的消息对国际金银价格产生压制。黄金期货报$4,561.50/盎司（-1.02%），白银$72.088/盎司（-2.25%）。市场关注后续降息路径是否受通胀和地缘冲突影响而延迟。</div>
-      <div class="source">来源: 财闻网 / 央视财经</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🇨🇳 A股5月展望：中小盘成长风格占优</div>
-      <div class="summary">华金策略指出，5月中小盘成长风格可能相对占优。经济基本面继续回升：4月新出口订单PMI回升至50.3（前值49.1），显示外需改善；"五一"消费旺季刺激、低基数、地产企稳和收入预期回升驱动消费增速企稳。建议逢低配置科技成长、部分周期和消费等行业。</div>
-      <div class="source">来源: 华金策略 / 新浪财经</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🎯 A股五月重点赛道：五大主线成资金抱团方向</div>
-      <div class="summary">2026年5月A股处于"十五五"规划开局、经济弱复苏与产业政策密集落地叠加期。市场风格延续"结构为王、景气优先"。AI算力、算电协同、新能源锂电、商业航天、半导体国产替代五大主线成为资金核心抱团方向。券商推荐能源新旧能源（油、油运、煤炭、锂电、风光、储能）、有色金属（铝、铜、金）、内需结构性机会（旅游、调味发酵品、啤酒、医药商业、医美）。</div>
-      <div class="source">来源: 国金证券 / 财信证券 / 新浪财经</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">📈 半导体指数23个交易日中22涨，15次创历史新高</div>
-      <div class="summary">PHLX半导体指数(^SOX)在最近的23个交易日中录得22个上涨日，并创下15个2026年盘中历史新高。半导体板块在AI算力需求驱动下持续走强，成为美股市场最强主线之一。</div>
-      <div class="source">来源: Yahoo Finance / Schwab</div>
-    </div>
-  </div>
-</div>
-
-<!-- CRYPTO -->
-<div class="section" id="crypto">
-  <h2><span class="section-emoji">₿</span> 加密市场</h2>
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">Bitcoin (BTC)</div>
-      <div class="value" style="color:#2563eb">~$79,000</div>
-      <div class="change up">↗ 突破$80,500后回调</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Ethereum (ETH)</div>
-      <div class="value">$2,340</div>
-      <div class="change up">↗ +0.45%</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">BTC市值</div>
-      <div class="value">$1.57T</div>
-      <div class="change neutral">全球加密市场龙头</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">BTC 24h交易量</div>
-      <div class="value">$211亿</div>
-      <div class="change neutral">流动性充裕</div>
-    </div>
-  </div>
-
-  <div style="margin-top:20px;">
-    <div class="news-item">
-      <div class="title">📈 BTC突破$80,000后冲击$84,000</div>
-      <div class="summary">比特币延续上行趋势，一度突破$80,500并向$84,000迈进。多头正试图主导市场。BTC 5月4日开盘$78,543.43（较周日$78,656.73跌0.1%），随后回升。Bitmine宣布持有518万ETH（$131亿），重塑加密资产负债表格局。</div>
-      <div class="source">来源: Yahoo Finance / MEXC / The Block</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🪙 ETH维持$2,300上方，生态活跃度回升</div>
-      <div class="summary">以太坊在$2,300-$2,340区间盘整，5月4日开盘$2,322.49（较周日$2,316.21涨0.3%）。市场对Layer 2扩容和以太坊ETF资金流入保持关注。</div>
-      <div class="source">来源: Yahoo Finance / The Block</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🚀 市场分析：BTC能否在5月触及$100,000？</div>
-      <div class="summary">分析师关注BTC能否在当前突破基础上持续上行。$80,000已成为关键心理关口和短期支撑位。若地缘政治紧张局势持续，加密资产作为"数字黄金"的避险需求或进一步支撑价格。</div>
-      <div class="source">来源: CoinPedia / CoinDesk</div>
-    </div>
-  </div>
-</div>
-
-<!-- AI & ROBOTICS -->
-<div class="section" id="ai">
-  <h2><span class="section-emoji">🤖</span> AI与机器人动态</h2>
-
-  <div class="highlight-box info">
-    <strong>🏗️ 十五五规划定调:</strong> "十五五"规划已将机器人列为新兴产业，具身智能列为未来产业。人形机器人正从工业场景加速"走出实验室"，向家庭场景渗透。
-    <div class="source">来源: 晨启Tech / 搜狐网</div>
-  </div>
-
-  <div class="highlight-box">
-    <strong>🤖 Meta入局具身智能:</strong> 5月3日，Meta完成对机器人AI初创公司Assured Robot Intelligence（ARI）全资收购，正式切入人形机器人与具身智能领域。
-    <div class="source">来源: 中关村在线 / 17173</div>
-  </div>
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">KAI机器人自由度</div>
-      <div class="value" style="color:#2563eb">115</div>
-      <div class="change up">↗ 全球最高</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">KAI身高/体重</div>
-      <div class="value">173cm / 70kg</div>
-      <div class="change neutral">类人比例</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">触觉传感点</div>
-      <div class="value" style="color:#059669">18,000</div>
-      <div class="change up">↗ 全身覆盖</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Meta收购标的</div>
-      <div class="value">ARI</div>
-      <div class="change up">↗ 具身智能</div>
-    </div>
-  </div>
-
-  <div style="margin-top:20px;">
-    <div class="news-item">
-      <div class="title">🦾 超维动力发布全球最高自由度人形机器人KAI</div>
-      <div class="summary">超维动力发布KAI机器人，拥有115个自由度，身高173厘米、体重70公斤，全身覆盖18,000个触觉传感点。这是目前全球自由度最高的人形机器人之一，标志着触觉感知在具身智能领域取得重大突破。</div>
-      <div class="source">来源: 17173 / 中关村在线</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🤖 Meta全资收购ARI，强化人形机器人底层技术</div>
-      <div class="summary">5月3日，Meta完成对机器人AI初创公司Assured Robot Intelligence（ARI）的全资收购。此次动作延续Meta以战略并购拓展技术边界的策略，正式切入人形机器人与具身智能赛道，意图构建人形机器人的"智能大脑"。</div>
-      <div class="source">来源: 中关村在线 / 17173</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🇨🇳🇺🇸 中美人形机器人产业暗斗加剧</div>
-      <div class="summary">分析人士指出，中美两国在人形机器人产业展开激烈竞争。中国通过具身智能雄心勃勃地改造机器人产业，推动从工业机械臂向通用人形机器人的跨越。VLA（Vision-Language-Action）模型驱动全身协同控制取得新突破。特斯拉、NVIDIA等美国巨头则在"数字工作负载自动化"和"实体世界AI"层面持续加码。</div>
-      <div class="source">来源: 巫师财经 / MERICS / CleanTechnica</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🚗 特斯拉人形机器人蓝图：年产100万台的逻辑</div>
-      <div class="summary">马斯克此前声称将年产100万台人形机器人。分析指出特斯拉正构建"数字工作负载自动化"和"实体世界AI"的双重智能层——覆盖自动驾驶车辆和人形机器人。TSLA股价受AI交易带动保持强势。</div>
-      <div class="source">来源: CleanTechnica / Yahoo Finance</div>
-    </div>
-
-    <div class="news-item">
-      <div class="title">🌐 2026年AI不知不觉走到新拐点</div>
-      <div class="summary">AI领域在进入2026年中叶时充满突破性发展。从重塑行业的AI进步，到暴露数百万用户的安全漏洞，技术领域正经历关键时刻。多家主要参与者推出新功能和服务，Sora式视频生成、AI安全威胁、自动化未来成为核心议题。预测市场正演变为$2400亿规模产业，由零售用户高频交易驱动。</div>
-      <div class="source">来源: 搜狐 / 36氪 / Coaio</div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <p>📰 <strong>Daily Briefing</strong> — 每日精选全球时政、航运、财经与科技动态</p>
-  <p>⏰ 生成时间: 2026-05-05 07:00 SGT | 数据来源: Reuters, CNBC, BBC, Bloomberg, 华泰证券, 克拉克森, CoinDesk 等</p>
-  <p>🔗 <a href="https://mast0506.github.io/daily-briefing/">在线版本: mast0506.github.io/daily-briefing/</a></p>
-  <p style="margin-top:12px; font-size:0.75rem; color:#94a3b8;">本简报由AI自动整理生成，仅供参考，不构成投资建议。</p>
-</div>
-
-</div>
 </body>
 </html>
