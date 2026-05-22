@@ -1,551 +1,357 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 | Daily Briefing — 2026年5月22日</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f4f4f0;
-      --card: #ffffff;
-      --ink: #1a1a1a;
-      --ink-secondary: #4a4a4a;
-      --ink-muted: #8a8a8a;
-      --accent: #c0392b;
-      --accent-light: #fef2f2;
-      --border: #e5e5e0;
-      --border-light: #f0f0ec;
-      --positive: #27ae60;
-      --negative: #c0392b;
-      --neutral: #7f8c8d;
-      --shadow: 0 2px 8px rgba(0,0,0,0.06);
-      --shadow-hover: 0 8px 24px rgba(0,0,0,0.10);
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background: var(--bg);
-      font-family: 'Inter', 'Noto Serif SC', -apple-system, sans-serif;
-      color: var(--ink);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
-    header {
-      text-align: center;
-      padding: 48px 24px 36px;
-      border-bottom: 3px double var(--border);
-      margin-bottom: 40px;
-      position: relative;
-    }
-    header::before, header::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 2px;
-      background: var(--accent);
-    }
-    header::before { top: 20px; }
-    header::after { bottom: 16px; width: 40px; height: 1px; }
-    .masthead {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 2.6rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-    .tagline {
-      font-size: 0.85rem;
-      color: var(--ink-muted);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .meta-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      font-size: 0.8rem;
-      color: var(--ink-muted);
-    }
-    .meta-line span { display: flex; align-items: center; gap: 6px; }
-    .meta-line .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯简报 | 2026年5月23日</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #161b22;
+    --border: #2a3040;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f0883e;
+    --accent4: #d29922;
+    --danger: #f85149;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 28px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header .date {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+  header .badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title .icon { font-size: 1.3rem; }
 
-    .quick-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-    .quick-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: all 0.2s;
-    }
-    .quick-chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-    .quick-chip .label {
-      font-size: 0.7rem;
-      color: var(--ink-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
-    }
-    .quick-chip .value {
-      font-size: 1.15rem;
-      font-weight: 700;
-      font-family: 'Inter', sans-serif;
-    }
-    .quick-chip .sub {
-      font-size: 0.75rem;
-      margin-top: 2px;
-    }
-    .up { color: var(--positive); }
-    .down { color: var(--negative); }
-    .flat { color: var(--neutral); }
+  /* Politics */
+  .politics .section-title { color: var(--danger); }
+  /* Shipping */
+  .shipping .section-title { color: var(--accent4); }
+  /* Finance */
+  .finance .section-title { color: var(--accent2); }
+  /* AI */
+  .ai .section-title { color: var(--accent3); }
 
-    .section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px 30px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow);
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .section-icon {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-    .section-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .section-badge {
-      margin-left: auto;
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: var(--border-light);
-      color: var(--ink-muted);
-      font-weight: 500;
-    }
+  .news-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-item .headline {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .news-item .desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .news-item .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 1px 8px;
+    border-radius: 4px;
+    background: rgba(88,166,255,0.1);
+    color: var(--accent);
+    margin-top: 6px;
+  }
 
-    .news-grid { display: grid; gap: 16px; }
-    .news-item {
-      display: flex;
-      gap: 16px;
-      padding: 16px;
-      border-radius: 10px;
-      border-left: 3px solid transparent;
-      background: var(--border-light);
-      transition: all 0.2s;
-    }
-    .news-item:hover {
-      background: #f8f8f6;
-      border-left-color: var(--accent);
-      transform: translateX(2px);
-    }
-    .news-rank {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.35;
-      min-width: 28px;
-      text-align: center;
-      line-height: 1;
-    }
-    .news-body { flex: 1; }
-    .news-headline {
-      font-weight: 600;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .news-summary {
-      font-size: 0.85rem;
-      color: var(--ink-secondary);
-      line-height: 1.6;
-    }
-    .news-source {
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .news-source .tag {
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 500;
-      font-size: 0.7rem;
-    }
+  .highlight-box {
+    background: rgba(88,166,255,0.06);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .highlight-box.warn {
+    background: rgba(242,129,56,0.06);
+    border-left-color: var(--accent3);
+  }
+  .highlight-box.danger {
+    background: rgba(248,81,73,0.06);
+    border-left-color: var(--danger);
+  }
+  .highlight-box.success {
+    background: rgba(63,185,80,0.06);
+    border-left-color: var(--accent2);
+  }
 
-    .data-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 8px;
-    }
-    .data-card {
-      background: var(--border-light);
-      border-radius: 10px;
-      padding: 18px;
-      border: 1px solid var(--border);
-    }
-    .data-card .label {
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-    .data-card .figure {
-      font-size: 1.4rem;
-      font-weight: 700;
-      font-family: 'Inter', sans-serif;
-      color: var(--ink);
-    }
-    .data-card .change {
-      font-size: 0.85rem;
-      margin-top: 4px;
-      font-weight: 500;
-    }
-    .data-card .note {
-      font-size: 0.8rem;
-      color: var(--ink-muted);
-      margin-top: 8px;
-      line-height: 1.5;
-    }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .stat-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .stat-card .value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-card .value.up { color: var(--accent2); }
+  .stat-card .value.down { color: var(--danger); }
+  .stat-card .label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
 
-    .quote-block {
-      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-      border-left: 4px solid var(--accent);
-      padding: 20px 24px;
-      border-radius: 0 10px 10px 0;
-      margin: 16px 0;
-      font-style: italic;
-      color: var(--ink-secondary);
-    }
-    .quote-block cite {
-      display: block;
-      margin-top: 10px;
-      font-size: 0.8rem;
-      font-style: normal;
-      color: var(--ink-muted);
-    }
+  .source-bar {
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .source-bar a {
+    color: var(--accent);
+    text-decoration: none;
+  }
 
-    .footer {
-      text-align: center;
-      padding: 32px 20px;
-      margin-top: 20px;
-      border-top: 1px solid var(--border);
-      color: var(--ink-muted);
-      font-size: 0.8rem;
-    }
-    .footer .brand {
-      font-family: 'Noto Serif SC', serif;
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-
-    @media (max-width: 640px) {
-      .masthead { font-size: 1.8rem; }
-      .section { padding: 20px 18px; }
-      .news-item { flex-direction: column; gap: 8px; }
-      .quick-bar { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+  @media (max-width: 520px) {
+    header h1 { font-size: 1.4rem; }
+    .section { padding: 16px; }
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="masthead">每日资讯简报</div>
-      <div class="tagline">Daily Briefing</div>
-      <div class="meta-line">
-        <span><span class="dot"></span> 2026年5月22日 星期五</span>
-        <span>🌍 新加坡时间 07:00</span>
-        <span>📰 第 42 期</span>
-      </div>
-    </header>
+<div class="container">
+  <header>
+    <h1>每日资讯简报</h1>
+    <div class="date">2026年5月23日 · 星期六 · 新加坡时间</div>
+    <div class="badge">GPT-5.3 智能生成 · 每日更新</div>
+  </header>
 
-    <div class="quick-bar">
-      <div class="quick-chip">
-        <div class="label">S&amp;P 500</div>
-        <div class="value">7,456</div>
-        <div class="sub flat">— 0.2%</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">Dow Jones</div>
-        <div class="value">50,279</div>
-        <div class="sub up">+0.54%</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">Nasdaq</div>
-        <div class="value">26,361</div>
-        <div class="sub up">+0.34%</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">Bitcoin</div>
-        <div class="value">$77,070</div>
-        <div class="sub down">−0.74%</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">Ethereum</div>
-        <div class="value">$2,127</div>
-        <div class="sub down">−0.36%</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">BDI指数</div>
-        <div class="value">3,054</div>
-        <div class="sub down">−1.2%</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">原油 WTI</div>
-        <div class="value">$101.1</div>
-        <div class="sub up">+$2.86</div>
-      </div>
-      <div class="quick-chip">
-        <div class="label">黄金</div>
-        <div class="value">$4,512</div>
-        <div class="sub down">−$20</div>
-      </div>
+  <!-- 时政要闻 -->
+  <div class="section politics">
+    <div class="section-title"><span class="icon">🌍</span> 时政要闻</div>
+
+    <div class="highlight-box">
+      <strong>美伊和平谈判进展</strong>：巴基斯坦陆军参谋长阿西姆·穆尼尔（Asim Munir）抵达德黑兰进行第二次访问，美国国务卿卢比奥暗示谈判取得进展。伊朗方面警告，若特朗普恢复攻击，战争将蔓延至中东以外地区。
     </div>
 
-    <!-- 时政要闻 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#fef2f2;">🌐</div>
-        <div class="section-title">时政要闻</div>
-        <div class="section-badge">World Affairs</div>
-      </div>
-      <div class="news-grid">
-        <div class="news-item">
-          <div class="news-rank">1</div>
-          <div class="news-body">
-            <div class="news-headline">伊朗威胁战争将扩散至中东以外，特朗普或恢复攻击</div>
-            <div class="news-summary">伊朗警告若特朗普政府恢复军事打击，战争将蔓延出中东地区。以色列与黎巴嫩冲突持续，尽管存在停火协议，以军攻击已造成至少22人死亡。中东局势再度升温，国际油价随之波动。</div>
-            <div class="news-source"><span class="tag">地缘冲突</span> Reuters / AP News / Democracy Now!</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">2</div>
-          <div class="news-body">
-            <div class="news-headline">玻利维亚总统深陷危机，政治首都被抗议者围困</div>
-            <div class="news-summary">玻利维亚总统Rodrigo Paz在上任不到六个月后面临严重危机，大规模抗议和道路封锁使政治首都陷入围困。拉丁美洲政治不确定性上升，引发地区稳定担忧。</div>
-            <div class="news-source"><span class="tag">拉美政局</span> NPR / AP News</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">3</div>
-          <div class="news-body">
-            <div class="news-headline">刚果埃博拉疫情恶化，居民焚烧治疗中心表达愤怒</div>
-            <div class="news-summary">刚果民主共和国埃博拉疫情持续扩散，当地民众对WHO疫情应对措施不满，焚烧埃博拉治疗中心以示抗议。公共卫生危机叠加社会动荡，疫情防控面临严峻挑战。</div>
-            <div class="news-source"><span class="tag">公共卫生</span> AP News</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">4</div>
-          <div class="news-body">
-            <div class="news-headline">美国DHS威胁暂停"庇护城市"机场国际旅行</div>
-            <div class="news-summary">美国国土安全部重申，可能暂停部分位于"庇护城市"的机场的国际航班运营。此举引发移民政策与州权争议，航空业和旅游业或受波及。</div>
-            <div class="news-source"><span class="tag">美国政策</span> Reuters</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">5</div>
-          <div class="news-body">
-            <div class="news-headline">欧盟警告俄罗斯威胁波罗的海国家"不可接受"</div>
-            <div class="news-summary">欧盟委员会主席冯德莱恩强硬表态，称俄罗斯对波罗的海国家的威胁"不可接受"且危及整个欧盟。立陶宛外长感谢欧盟的"团结信息"，北约东翼安全议题再度升温。</div>
-            <div class="news-source"><span class="tag">欧洲安全</span> The Guardian</div>
-          </div>
-        </div>
-      </div>
+    <div class="news-item">
+      <div class="headline">🇺🇸 Kevin Warsh 宣誓就任美联储主席</div>
+      <div class="desc">Warsh 在关键时刻接任美联储主席一职，市场关注其货币政策走向及对利率路径的影响。</div>
     </div>
 
-    <!-- 航运资讯 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#f0f9ff;">⚓</div>
-        <div class="section-title">航运资讯</div>
-        <div class="section-badge">Maritime</div>
-      </div>
-      <div class="data-row">
-        <div class="data-card">
-          <div class="label">BDI 波罗的海干散货指数</div>
-          <div class="figure">3,054</div>
-          <div class="change down">−1.2%（连续第三日下跌）</div>
-          <div class="note">Capesize、Panamax、Supramax三大板块全线走弱，创逾一周新低</div>
-        </div>
-        <div class="data-card">
-          <div class="label">二手船交易</div>
-          <div class="figure">$50.4M</div>
-          <div class="change up">Ultramax姐妹船整体成交</div>
-          <div class="note">"Huayang Rose"与"Huayang Lily"（64K/2016年中国造）售予中国买家</div>
-        </div>
-        <div class="data-card">
-          <div class="label">干散货市场展望</div>
-          <div class="figure">强于预期</div>
-          <div class="change up">2026年初开局良好</div>
-          <div class="note">即期与一年期租船费率双双改善，全球订单量低位支撑中期运费</div>
-        </div>
-      </div>
-      <div class="quote-block" style="margin-top:16px;">
-        "干散货市场2026年开局强于预期，即期和一年期租船费率改善，市场基本面受健康贸易流量支撑。全球订单量低、船队增长有限，将为中期运费提供支撑。"
-        <cite>— EuroDry (NASDAQ: EDRY) 管理层财报声明</cite>
-      </div>
+    <div class="news-item">
+      <div class="headline">📉 美国消费者信心降至历史新低</div>
+      <div class="desc">受高油价和生活成本上升影响，美国5月消费者信心指数终值创下历史最低纪录，零售支出持续承压。</div>
     </div>
 
-    <!-- 全球财经 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#f0fdf4;">📈</div>
-        <div class="section-title">全球财经</div>
-        <div class="section-badge">Markets</div>
-      </div>
-      <div class="data-row">
-        <div class="data-card">
-          <div class="label">道琼斯工业指数</div>
-          <div class="figure">50,279.17</div>
-          <div class="change up">+269.82 (+0.54%)</div>
-          <div class="note">受中东和平希望推动，美债收益率回落</div>
-        </div>
-        <div class="data-card">
-          <div class="label">标普 500</div>
-          <div class="figure">7,455.85</div>
-          <div class="change up">+22.88 (+0.31%)</div>
-          <div class="note">盘中一度因油价上涨承压，尾盘收复失地</div>
-        </div>
-        <div class="data-card">
-          <div class="label">纳斯达克综合指数</div>
-          <div class="figure">26,360.76</div>
-          <div class="change up">+90.40 (+0.34%)</div>
-          <div class="note">英伟达财报超预期但指引未达最高预期，股价持平</div>
-        </div>
-        <div class="data-card">
-          <div class="label">WTI 原油</div>
-          <div class="figure">$101.14</div>
-          <div class="change up">+$2.86</div>
-          <div class="note">伊朗战争持续，油价维持高位；石油行业展现韧性</div>
-        </div>
-        <div class="data-card">
-          <div class="label">黄金现货</div>
-          <div class="figure">$4,512</div>
-          <div class="change down">−$20</div>
-          <div class="note">避险情绪略有缓和，金价小幅回调</div>
-        </div>
-        <div class="data-card">
-          <div class="label">特斯拉 TSLA</div>
-          <div class="figure">$406–418</div>
-          <div class="change flat">区间内波动</div>
-          <div class="note">Robotaxi网络推进，Optimus量产延迟影响供应链预期</div>
-        </div>
-      </div>
-      <div style="margin-top:20px;">
-        <div class="news-item" style="border-left-color: var(--positive);">
-          <div class="news-rank">₿</div>
-          <div class="news-body">
-            <div class="news-headline">加密货币市场趋稳，期权市场博弈波动率突破</div>
-            <div class="news-summary">比特币维持在$77,000附近，以太坊约$2,127。Deribit比特币期权未平仓量已超贝莱德IBIT，交易员在$75K最大痛点与$80K看涨期权间布局。HYPE连续五日上涨引领加密反弹。</div>
-            <div class="news-source"><span class="tag">加密</span> CoinDesk / The Block / OKX</div>
-          </div>
-        </div>
-      </div>
+    <div class="news-item">
+      <div class="headline">🏠 房贷利率创9个月新高</div>
+      <div class="desc">美国房贷利率攀升至9个月以来最高水平，住房市场买卖双方博弈加剧。</div>
     </div>
 
-    <!-- AI机器人 -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#faf5ff;">🤖</div>
-        <div class="section-title">AI与机器人动态</div>
-        <div class="section-badge">AI & Robotics</div>
-      </div>
-      <div class="news-grid">
-        <div class="news-item">
-          <div class="news-rank">1</div>
-          <div class="news-body">
-            <div class="news-headline">Figure AI发布第三代人形机器人Figure 03</div>
-            <div class="news-summary">美国Figure AI正式发布Figure 03人形机器人，专为Helix AI系统、家庭场景及规模化全球部署设计。该公司已与宝马等制造商合作测试产线应用，剑指通用人形机器人商业化。</div>
-            <div class="news-source"><span class="tag">人形机器人</span> Future Technology Hub / 多家科技媒体</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">2</div>
-          <div class="news-body">
-            <div class="news-headline">Google I/O 2026：AI从"回答"时代进入"行动"时代</div>
-            <div class="news-summary">Google年度开发者大会揭示战略转向：AI不再只是回答问题，而是主动执行任务。Project Astra多模态助手、Gemini深度集成Android及自动化代理（Agent）能力成为核心亮点。</div>
-            <div class="news-source"><span class="tag">大模型</span> Google I/O 2026 / 科技媒体综合报道</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">3</div>
-          <div class="news-body">
-            <div class="news-headline">仿生机器人皮肤技术突破：Origin F1解锁真实触感</div>
-            <div class="news-summary">首形科技发布Origin F1仿生机器人新皮肤系统，集成高精度触觉传感器与柔性材料，使机器人能够感知温度、压力与纹理。这一突破被认为将加速人形机器人在护理、服务等场景落地。</div>
-            <div class="news-source"><span class="tag">硬件突破</span> Bilibili / 首形科技官方</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">4</div>
-          <div class="news-body">
-            <div class="news-headline">台湾供应链因特斯拉Optimus延迟转向中国机器人制造商</div>
-            <div class="news-summary">特斯拉Optimus量产时间表延迟，导致台湾人形机器人零部件供应商重新评估短期需求，部分厂商转向中国机器人制造商寻求新订单。行业格局正在重塑。</div>
-            <div class="news-source"><span class="tag">产业链</span> Humanoid.guide / 供应链分析报告</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-rank">5</div>
-          <div class="news-body">
-            <div class="news-headline">36氪发布2026年AI发展17个预测：泡沫不会破，但神话会碎</div>
-            <div class="news-summary">报告认为2026年是AI从"实验室"转向"生意场"的关键年。投资者将从"不惜代价追求增长"转向严格要求切实回报，资金从投机性科技股撤出，AI商业化落地成为核心考核指标。</div>
-            <div class="news-source"><span class="tag">行业趋势</span> 36氪</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="brand">每日资讯简报 · Daily Briefing</div>
-      <p>数据截至 2026年5月22日 07:00 (SGT) | 来源：Reuters, AP News, CoinDesk, The Block, Hellenic Shipping News, 36氪等</p>
-      <p style="margin-top:8px; font-size:0.75rem;">⚠️ 本简报仅供信息参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+    <div class="news-item">
+      <div class="headline">🇮🇱🇱🇧 以色列-黎巴嫩局势紧张</div>
+      <div class="desc">尽管存在停火协议，以色列对黎巴嫩的袭击造成至少22人死亡，中东局势持续动荡。</div>
     </div>
   </div>
+
+  <!-- 航运资讯 -->
+  <div class="section shipping">
+    <div class="section-title"><span class="icon">⚓</span> 航运资讯</div>
+
+    <div class="highlight-box success">
+      <strong>BDI 波罗的海干散货指数</strong>：5月22日报 <strong>2,991点</strong>，较前一日上涨0.91%。月度涨幅11.90%，同比暴涨123.21%。预测本季度末3,215点，12个月后3,701点。
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="value">2,991</div>
+        <div class="label">BDI 指数 (5/22)</div>
+      </div>
+      <div class="stat-card">
+        <div class="value up">+0.91%</div>
+        <div class="label">日涨幅</div>
+      </div>
+      <div class="stat-card">
+        <div class="value up">+11.90%</div>
+        <div class="label">月度涨幅</div>
+      </div>
+      <div class="stat-card">
+        <div class="value up">+123%</div>
+        <div class="label">同比涨幅</div>
+      </div>
+    </div>
+
+    <div class="news-item" style="margin-top:14px;">
+      <div class="headline">🚢 分船型租金动态</div>
+      <div class="desc">Capesize指数连续四日下跌至3,005点（-1.6%），为5月11日以来最低；Supramax指数逆势上涨0.3%至1,571点。Handysize一艘39K DWT船舶以122% BHSI水平锁定三年期租约。</div>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🏗️ 新造船与二手船市场</div>
+      <div class="desc">干散货航运市场持续强劲，BDI较去年同期翻倍，反映全球大宗商品海运需求旺盛。新造船订单受高运价激励保持活跃，二手船价格维持高位。</div>
+    </div>
+  </div>
+
+  <!-- 全球财经 -->
+  <div class="section finance">
+    <div class="section-title"><span class="icon">📈</span> 全球财经</div>
+
+    <div class="highlight-box">
+      <strong>黄金</strong>：2025年飙升66%至创纪录的4,410美元/盎司。2026年预测目标5,500美元（Seeking Alpha）。<br>
+      <strong>加密货币</strong>：BTC目标$100K，ETH $3,500，XRP $2.35（Mitrade预测）。
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="value">$4,410</div>
+        <div class="label">黄金纪录 (2025)</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">$5,500</div>
+        <div class="label">黄金预测 (2026)</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">$100K</div>
+        <div class="label">BTC 目标价</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">$3,500</div>
+        <div class="label">ETH 目标价</div>
+      </div>
+    </div>
+
+    <div class="news-item" style="margin-top:14px;">
+      <div class="headline">🇺🇸 美股宏观</div>
+      <div class="desc">新美联储主席Warsh上任；消费者信心历史新低；国会通过住房可负担性法案（软化机构投资者禁令）。Target和Walmart消费数据显示"报复性消费"回归。</div>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🛢️ 大宗商品</div>
+      <div class="desc">高油价持续推升通胀预期，能源板块波动加剧。全球供应链重构背景下，实物资产避险需求支撑黄金和工业金属。</div>
+    </div>
+  </div>
+
+  <!-- AI & 机器人 -->
+  <div class="section ai">
+    <div class="section-title"><span class="icon">🤖</span> AI & 人形机器人动态</div>
+
+    <div class="highlight-box warn">
+      <strong>行业里程碑</strong>：2025年全球人形机器人出货量突破 <strong>13,000台</strong>，中国占据~90%市场份额。2026年市场规模预测$4-8B，CAGR 40%+。高盛预测2035年达$380亿。
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🏆 Honor "Lightning" 北京半马夺冠</div>
+      <div class="desc">4月19日，荣耀/美猴王团队全自主人形机器人"Lightning"以50:26完成北京亦庄半程马拉松，比人类世界纪录快近7分钟，展现耐力、平衡和导航能力的巨大飞跃。</div>
+      <span class="tag"> autonomous</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🚗 Figure 03 实现24/7自主运行</div>
+      <div class="desc">Figure AI发布Figure 03无人监督连续运行演示，搭载Helix-02全身AI。已完成BMW 11个月部署（30,000+辆车，90,000+零件），BotQ工厂年产能目标12,000台。</div>
+      <span class="tag"> 工厂部署</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">⚡ Tesla Optimus Gen 3 夏季量产</div>
+      <div class="desc">特斯拉Fremont工厂产线改造进行中，Gen 3低产量生产目标2026年夏季，高产量扩展计划2027年。目标售价$20,000-$30,000。</div>
+      <span class="tag"> 量产</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🏭 Boston Dynamics Atlas 产能全满</div>
+      <div class="desc">全电动Atlas生产版2026年全部预订完毕，首批交付Hyundai机器人元工厂和Google DeepMind。与DeepMind合作整合Gemini机器人基础模型。工厂目标年产能30,000台。</div>
+      <span class="tag"> 商业化</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">✈️ JAL 部署Unitree人形机器人</div>
+      <div class="desc">日本航空与GMO AI & Robotics合作，2026年5月起在成田机场试用两台Unitree人形平台（单价约$15,400），负责行李装载、集装箱运输和飞机相关作业。</div>
+      <span class="tag"> 服务业</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">📦 Figure AI 完成8小时轮班演示</div>
+      <div class="desc">Figure AI人形机器人团队完成完整8小时轮班，在人类性能水平下自主分拣包裹，证明可连续24小时作业能力。</div>
+      <span class="tag"> 物流</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🇨🇳 Unitree 出货量领跑全球</div>
+      <div class="desc">Unitree 2025年出货5,500+台，2026年目标10,000-20,000台。AgiBot约5,100台，UBTech约1,000台。中国企业在人形机器人量产方面占据绝对主导。</div>
+      <span class="tag"> 中国</span>
+    </div>
+
+    <div class="news-item">
+      <div class="headline">🏠 1X NEO 开启家用预购</div>
+      <div class="desc">挪威初创公司1X开放NEO家用机器人预购，定价透明，确认2026年交付。专注安全的人机协作和家务辅助任务。</div>
+      <span class="tag"> 消费级</span>
+    </div>
+  </div>
+
+  <div class="source-bar">
+    数据来源：Trading Economics、Baltic Exchange、CNN Markets、Humanoid.Press、The Economist、Livemint、Seeking Alpha 等<br>
+    生成时间：2026-05-23 07:00 SGT · 
+    <a href="https://github.com/mast0506/daily-briefing" target="_blank">GitHub Repo</a>
+  </div>
+</div>
 </body>
 </html>
