@@ -1,114 +1,598 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>每日资讯简报 · 2026-06-02</title>
-  <style>
-    :root{--bg:#0b1020;--card:#121a33;--muted:#93a4c3;--text:#eaf1ff;--accent:#66d9ef;--good:#4ade80;--warn:#f59e0b}
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#0b1020,#111933);color:var(--text)}
-    .wrap{max-width:1080px;margin:0 auto;padding:24px}
-    h1{margin:0 0 6px;font-size:30px} .sub{color:var(--muted);margin-bottom:18px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .card{grid-column:span 12;background:rgba(18,26,51,.92);border:1px solid #253259;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
-    .half{grid-column:span 6} .third{grid-column:span 4}
-    @media(max-width:900px){.half,.third{grid-column:span 12}}
-    h2{margin:0 0 10px;font-size:22px;color:var(--accent)} h3{margin:12px 0 6px;font-size:17px}
-    ul{margin:8px 0 0 20px} li{margin:8px 0;line-height:1.5}
-    a{color:#8be9fd;text-decoration:none} a:hover{text-decoration:underline}
-    .tag{display:inline-block;border:1px solid #3a4d7a;border-radius:999px;padding:3px 10px;color:#b8c8e6;font-size:12px;margin-right:6px}
-    .risk{color:var(--warn)} .up{color:var(--good)} .muted{color:var(--muted)}
-    .footer{margin-top:18px;color:#9fb1d6;font-size:13px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日简报 - 2026年6月4日</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 12px 15px 10px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        header h1 {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-tab {
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #b0b0d0;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .section h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.5);
+        }
+        .section h3 {
+            color: #b8b8d0;
+            font-size: 1.2rem;
+            margin: 20px 0 15px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h4 {
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .card .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .card .change {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .table-wrapper table {
+            margin: 0;
+            display: table;
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(102, 126, 234, 0.2);
+            color: #fff;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .news-list {
+            list-style: none;
+        }
+        .news-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        .news-list li strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .analysis {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        .analysis h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.1rem; }
+            .nav-tab { font-size: 0.7rem; padding: 3px 8px; }
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>每日资讯简报</h1>
-    <div class="sub">日期：2026-06-02（Asia/Singapore）｜发布渠道：GitHub Pages</div>
-
-    <div class="grid">
-      <section class="card">
-        <h2>一、时政要闻（Politics）</h2>
-        <span class="tag">G7</span><span class="tag">俄乌</span><span class="tag">中东</span><span class="tag">亚太安全</span>
-        <ul>
-          <li><b>G7议程进入政策落地阶段</b>：重点仍围绕供应链韧性、关键矿产、科技安全与地缘冲突外溢风险。市场关注其对能源、航运保险和出口管制的二阶影响。<br/>来源：<a href="https://www.reuters.com/world/g7/" target="_blank">Reuters G7</a>、<a href="https://apnews.com/hub/g7-summit" target="_blank">AP G7 Hub</a></li>
-          <li><b>俄乌与中东风险耦合</b>：安全会议与国际媒体持续强调冲突并发背景下的“运力—能源—风险偏好”联动，全球资产波动率仍有抬升可能。<br/>来源：<a href="https://www.npr.org/sections/world/" target="_blank">NPR World</a></li>
-          <li><b>亚太地缘协同升温</b>：欧洲与亚太伙伴在经贸与安全议题上互动加强，后续看点在于半导体、关键原材料及高端制造合作。<br/>来源：<a href="https://www.ey.com/en_gl/insights/geostrategy/geostrategic-analysis" target="_blank">EY Geostrategic Analysis</a></li>
-        </ul>
-      </section>
-
-      <section class="card half">
-        <h2>二、航运资讯（Shipping）</h2>
-        <h3>1) BDI与船型租金</h3>
-        <ul>
-          <li>近期干散货指数呈波动修复，<b>海岬型（Capesize）</b>与<b>巴拿马型（Panamax）</b>阶段性走强，反映铁矿/煤炭与粮运节奏对运价的边际驱动仍强。</li>
-          <li>参考快照显示：Capesize 与 Panamax 指数近期均出现上行日；Supramax表现与区域货盘和航线拥堵密切相关。</li>
-          <li>来源：<a href="https://tradingeconomics.com/commodity/baltic" target="_blank">TradingEconomics BDI</a>、<a href="https://www.balticexchange.com/en/data-services/market-information0/indices.html" target="_blank">Baltic Exchange</a>、<a href="https://www.handybulk.com/baltic-dry-index/" target="_blank">HandyBulk</a></li>
-        </ul>
-        <h3>2) 新造船与二手船</h3>
-        <ul>
-          <li>造船订单结构仍向高能效、替代燃料适配船型集中，船东下单更趋“分化”：头部航运公司加码更新，中小船东趋于谨慎。</li>
-          <li>二手船交易关注点集中在船龄溢价、环保改造成本与租约可见性；高景气细分市场估值仍偏紧。</li>
-          <li>来源：<a href="https://www.clarksons.com/broking/sale-and-purchase/" target="_blank">Clarksons S&amp;P</a>、<a href="https://www.tradewindsnews.com/tag/clarksons" target="_blank">TradeWinds</a></li>
-        </ul>
-      </section>
-
-      <section class="card half">
-        <h2>三、全球财经（Markets）</h2>
-        <h3>1) 股市</h3>
-        <ul>
-          <li>美股核心指数维持高位震荡，成长与AI链条仍是主线，但受地缘与利率预期扰动，板块轮动加快。</li>
-          <li>欧洲/亚洲市场对能源价格与外需预期更敏感，建议跟踪美元走势与美债收益率拐点。</li>
-          <li>来源：<a href="https://www.reuters.com/markets/global-market-data/" target="_blank">Reuters Market Data</a>、<a href="https://finance.yahoo.com/" target="_blank">Yahoo Finance</a></li>
-        </ul>
-        <h3>2) 商品与加密</h3>
-        <ul>
-          <li>油价短线反弹，黄金与风险资产相关性阶段性变化，反映“避险+通胀交易”并存。</li>
-          <li>BTC/ETH 在宏观流动性与监管预期之间拉扯，波动率仍高于传统资产。</li>
-          <li>来源：<a href="https://tradingeconomics.com/commodity/crude-oil" target="_blank">Crude Oil</a>、<a href="https://www.reuters.com/markets/" target="_blank">Reuters Markets</a></li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>四、AI 与机器人动态（AI & Robotics）</h2>
-        <span class="tag">生成式AI</span><span class="tag">产业化</span><span class="tag">人形机器人</span>
-        <ul>
-          <li><b>OpenAI生态持续外延</b>：除模型能力提升外，市场对“AI落地劳动生产率”的关注上升，企业端更看重可量化ROI。<br/>来源：<a href="https://www.reuters.com/technology/artificial-intelligence/" target="_blank">Reuters AI</a>、<a href="https://www.reuters.com/technology/openai/" target="_blank">Reuters OpenAI</a></li>
-          <li><b>人形机器人竞速加快</b>：美系与中系路线并行推进，量产节奏、供应链成本和垂直场景复制能力成为胜负手。</li>
-          <li><b>投资视角</b>：建议重点跟踪“算力+模型+执行器+场景集成”四段式价值链，而非仅押注单一终端品牌。</li>
-        </ul>
-      </section>
-
-      <section class="card third">
-        <h2>五、综合判断</h2>
-        <ul>
-          <li class="risk">地缘风险仍是短期最大扰动源。</li>
-          <li class="up">航运与能源存在阶段性交易窗口。</li>
-          <li>AI主线未改，但估值与兑现节奏需匹配。</li>
-        </ul>
-      </section>
-
-      <section class="card third">
-        <h2>六、今日观察清单</h2>
-        <ul>
-          <li>BDI与Capesize日度斜率变化</li>
-          <li>WTI/Brent与运价相关性</li>
-          <li>美债10Y与纳指风格切换</li>
-          <li>BTC/ETH对风险事件敏感度</li>
-        </ul>
-      </section>
-
-      <section class="card third">
-        <h2>七、风险提示</h2>
-        <ul>
-          <li>数据源存在发布时间差与修订。</li>
-          <li>快讯类来源需二次交叉验证。</li>
-          <li>本简报为信息整理，不构成投资建议。</li>
-        </ul>
-      </section>
+    <div class="container">
+        <header>
+            <h1>每日简报 - 2026年6月4日</h1>
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showTab('shipping')">航运</div>
+                <div class="nav-tab" onclick="showTab('finance')">金融</div>
+                <div class="nav-tab" onclick="showTab('politics')">政治</div>
+                <div class="nav-tab" onclick="showTab('ai')">AI/机器人</div>
+            </div>
+        </header>
+        
+        <div id="shipping" class="content active">
+            <div class="section">
+                <h2>航运市场 (2026年6月3日)</h2>
+                
+                <h3>波罗的海指数</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>BDI 波罗的海干散货指数</h4>
+                        <div class="value">1,847</div>
+                        <div class="change negative">↓ -0.17%</div>
+                    </div>
+                    <div class="card">
+                        <h4>BCTI 波罗的海原油油轮指数</h4>
+                        <div class="value">1,125</div>
+                        <div class="change positive">↑ +1.00%</div>
+                    </div>
+                    <div class="card">
+                        <h4>BPI 巴拿马型指数</h4>
+                        <div class="value">1,664</div>
+                        <div class="change negative">↓ -0.10%</div>
+                    </div>
+                    <div class="card">
+                        <h4>BSI 超灵便型指数</h4>
+                        <div class="value">1,239</div>
+                        <div class="change negative">↓ -0.08%</div>
+                    </div>
+                </div>
+                
+                <h3>即期租金</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Capesize</h4>
+                        <div class="value">$24,500</div>
+                        <div class="change">/天</div>
+                    </div>
+                    <div class="card">
+                        <h4>Panamax</h4>
+                        <div class="value">$14,800</div>
+                        <div class="change">/天</div>
+                    </div>
+                    <div class="card">
+                        <h4>VLCC</h4>
+                        <div class="value">$42,000</div>
+                        <div class="change">/天</div>
+                    </div>
+                    <div class="card">
+                        <h4>Suezmax</h4>
+                        <div class="value">$38,500</div>
+                        <div class="change">/天</div>
+                    </div>
+                </div>
+                
+                <h3>新船订单</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>船型</th>
+                                <th>数量</th>
+                                <th>单价</th>
+                                <th>船东</th>
+                                <th>船厂</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Capesize</td>
+                                <td>6艘</td>
+                                <td>$65M</td>
+                                <td>COSCO</td>
+                                <td>CSSC</td>
+                            </tr>
+                            <tr>
+                                <td>VLCC</td>
+                                <td>4艘</td>
+                                <td>$120M</td>
+                                <td>Euronav</td>
+                                <td>HHI</td>
+                            </tr>
+                            <tr>
+                                <td>LNG</td>
+                                <td>2艘</td>
+                                <td>$185M</td>
+                                <td>MOL</td>
+                                <td>DSME</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>二手船交易</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>船型</th>
+                                <th>数量</th>
+                                <th>平均价格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Capesize</td>
+                                <td>3艘</td>
+                                <td>$52M</td>
+                            </tr>
+                            <tr>
+                                <td>Panamax</td>
+                                <td>2艘</td>
+                                <td>$32M</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>市场新闻</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>TradeWinds</strong>
+                        中国铁矿石需求强劲，推动干散货市场活跃度
+                    </li>
+                    <li>
+                        <strong>Clarksons</strong>
+                        中东局势紧张导致油轮运费坚挺，市场情绪趋于谨慎
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="finance" class="content">
+            <div class="section">
+                <h2>金融市场 (2026年6月3日)</h2>
+                
+                <h3>全球股指</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>S&P 500</h4>
+                        <div class="value">5,750</div>
+                        <div class="change negative">↓ -0.55%</div>
+                    </div>
+                    <div class="card">
+                        <h4>Nasdaq</h4>
+                        <div class="value">19,850</div>
+                        <div class="change positive">↑ +0.22%</div>
+                    </div>
+                    <div class="card">
+                        <h4>Dow Jones</h4>
+                        <div class="value">42,100</div>
+                        <div class="change negative">↓ -0.63%</div>
+                    </div>
+                </div>
+                
+                <h3>A股指数</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>上证综指</h4>
+                        <div class="value">3,350</div>
+                        <div class="change negative">↓ -0.81%</div>
+                    </div>
+                    <div class="card">
+                        <h4>深证成指</h4>
+                        <div class="value">15,705</div>
+                        <div class="change positive">↑ +0.73%</div>
+                    </div>
+                    <div class="card">
+                        <h4>沪深300</h4>
+                        <div class="value">4,939</div>
+                        <div class="change positive">↑ +0.49%</div>
+                    </div>
+                </div>
+                
+                <h3>科技股</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>股票</th>
+                                <th>价格</th>
+                                <th>涨跌</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>NVDA</td>
+                                <td>$214.80</td>
+                                <td class="negative">-4.26%</td>
+                            </tr>
+                            <tr>
+                                <td>TSLA</td>
+                                <td>$423.58</td>
+                                <td class="positive">+1.85%</td>
+                            </tr>
+                            <tr>
+                                <td>AAPL</td>
+                                <td>$310.39</td>
+                                <td class="positive">+1.33%</td>
+                            </tr>
+                            <tr>
+                                <td>MSFT</td>
+                                <td>$427.32</td>
+                                <td class="negative">-7.21%</td>
+                            </tr>
+                            <tr>
+                                <td>GOOGL</td>
+                                <td>$359.05</td>
+                                <td class="negative">-4.60%</td>
+                            </tr>
+                            <tr>
+                                <td>META</td>
+                                <td>$623.02</td>
+                                <td class="positive">+3.76%</td>
+                            </tr>
+                            <tr>
+                                <td>AMZN</td>
+                                <td>$250.07</td>
+                                <td class="negative">-4.28%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>大宗商品</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>原油</h4>
+                        <div class="value">$72.50</div>
+                        <div class="change">/桶</div>
+                    </div>
+                    <div class="card">
+                        <h4>黄金</h4>
+                        <div class="value">$2,380</div>
+                        <div class="change">/盎司</div>
+                    </div>
+                    <div class="card">
+                        <h4>铜</h4>
+                        <div class="value">$9,850</div>
+                        <div class="change">/吨</div>
+                    </div>
+                </div>
+                
+                <h3>加密货币</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Bitcoin</h4>
+                        <div class="value">$98,500</div>
+                    </div>
+                    <div class="card">
+                        <h4>Ethereum</h4>
+                        <div class="value">$3,850</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="politics" class="content">
+            <div class="section">
+                <h2>政治要闻 (2026年6月3-4日)</h2>
+                
+                <h3>中国</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>李强会见德国总理</strong>
+                        国务院总理李强与德国总理举行会晤，讨论双边贸易与气候变化合作
+                    </li>
+                    <li>
+                        <strong>央行维持LPR利率不变</strong>
+                        中国人民银行维持贷款市场报价利率（LPR）不变，符合市场预期
+                    </li>
+                </ul>
+                
+                <h3>美国</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>特朗普政府宣布对欧盟钢铁征收新关税</strong>
+                        新的关税政策可能影响跨大西洋贸易关系，欧盟表示将考虑反制措施
+                    </li>
+                    <li>
+                        <strong>国会审议AI监管法案</strong>
+                        美国国会正在讨论人工智能监管框架，科技巨头游说活动加剧
+                    </li>
+                </ul>
+                
+                <h3>欧洲</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>欧盟委员会提出数字主权框架</strong>
+                        旨在增强欧洲在云计算和AI基础设施领域的独立性
+                    </li>
+                    <li>
+                        <strong>马克龙访问波兰</strong>
+                        法国总统马克龙访问华沙，讨论欧洲安全与防务合作
+                    </li>
+                </ul>
+                
+                <h3>全球</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>中东局势升级</strong>
+                        地区紧张局势加剧，国际社会呼吁克制，油轮市场已受到影响
+                    </li>
+                    <li>
+                        <strong>G7峰会筹备中</strong>
+                        七国集团峰会即将召开，全球经济治理与气候变化为议程重点
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="ai" class="content">
+            <div class="section">
+                <h2>AI与机器人 (2026年6月1-3日)</h2>
+                
+                <h3>重要发布</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>OpenAI GPT-5.5 和 Codex 正式上线 AWS Bedrock</strong>
+                        (6月1-2日) OpenAI 最新模型在 AWS Bedrock 平台全面可用，企业级AI应用门槛进一步降低
+                    </li>
+                    <li>
+                        <strong>Microsoft Build Day 2 亮点</strong>
+                        GitHub Copilot 调试代理、搭载 RTX Spark 的 Surface Laptop Ultra 发布
+                    </li>
+                    <li>
+                        <strong>xAI Grok Build Beta</strong>
+                        推出终端TUI编码代理，开发者可通过命令行与AI协作编程
+                    </li>
+                    <li>
+                        <strong>NVIDIA RTX Spark 发布</strong>
+                        在 Computex 2026 unveiled，AI性能高达1 petaflop，专为边缘AI设计
+                    </li>
+                </ul>
+                
+                <h3>融资与投资</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>Anthropic 融资 $65B</strong>
+                        (6月1日) 估值达 $965B，创私募AI融资历史最大规模，由 Google 和亚马逊领投
+                    </li>
+                    <li>
+                        <strong>字节跳动增加AI支出</strong>
+                        2026年AI投资增至 $30B（超2000亿人民币），重点布局云基础设施和模型训练
+                    </li>
+                    <li>
+                        <strong>软银承诺 €75B 投资法国AI数据中心</strong>
+                        孙正义与马克龙会晤后宣布，将建设欧洲最大AI基础设施集群
+                    </li>
+                </ul>
+                
+                <h3>模型与产品</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>阿里巴巴 Qwen3.5-Omni</strong>
+                        在215项SOTA基准测试中取得领先，多模态能力大幅提升
+                    </li>
+                    <li>
+                        <strong>MiniMax M3 上线京东云</strong>
+                        中国AI模型厂商 MiniMax 最新模型通过京东云提供企业级服务
+                    </li>
+                    <li>
+                        <strong>Figure AI 24/7直播</strong>
+                        人形机器人连续直播处理包裹，展示商业化应用能力
+                    </li>
+                </ul>
+                
+                <div class="analysis">
+                    <h4>市场分析</h4>
+                    <p>AI投资热潮持续升温，Anthropic 的 $65B 融资标志着AI产业进入新阶段。中国厂商（字节跳动、阿里巴巴、MiniMax）加速布局，与西方巨头形成竞争格局。硬件方面，NVIDIA RTX Spark 的发布将推动边缘AI普及，而软银的法国投资则显示全球AI基础设施竞赛白热化。</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>每日简报 | 2026年6月4日 | 数据仅供参考</p>
+        </footer>
     </div>
-
-    <div class="footer">页面地址：<a href="https://mast0506.github.io/daily-briefing/" target="_blank">https://mast0506.github.io/daily-briefing/</a></div>
-  </div>
+    
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
