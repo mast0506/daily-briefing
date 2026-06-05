@@ -1,539 +1,201 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>虾鼓捣日报 | Daily Briefing - 2026年6月5日</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            margin-bottom: 30px;
-        }
-        header h1 {
-            font-size: 2.5em;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        header .date {
-            font-size: 1.2em;
-            color: #888;
-        }
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .tab {
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1em;
-            color: #ccc;
-        }
-        .tab:hover, .tab.active {
-            background: rgba(0,212,255,0.2);
-            border-color: #00d4ff;
-            color: #fff;
-        }
-        .section {
-            display: none;
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .section.active { display: block; }
-        .section h2 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #00d4ff;
-            border-bottom: 2px solid rgba(0,212,255,0.3);
-            padding-bottom: 10px;
-        }
-        .card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        .card h3 {
-            font-size: 1.3em;
-            color: #ffd700;
-            margin-bottom: 15px;
-        }
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .metric {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .metric .value {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #00d4ff;
-        }
-        .metric .label {
-            font-size: 0.9em;
-            color: #888;
-            margin-top: 5px;
-        }
-        .metric .change {
-            font-size: 0.85em;
-            margin-top: 5px;
-        }
-        .up { color: #4caf50; }
-        .down { color: #f44336; }
-        .news-item {
-            padding: 15px;
-            border-left: 3px solid #00d4ff;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 0 8px 8px 0;
-        }
-        .news-item .title {
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-        .news-item .source {
-            font-size: 0.85em;
-            color: #888;
-            margin-bottom: 8px;
-        }
-        .news-item .summary {
-            font-size: 0.95em;
-            color: #ccc;
-            line-height: 1.6;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        th {
-            background: rgba(0,212,255,0.1);
-            color: #00d4ff;
-            font-weight: 600;
-        }
-        tr:hover {
-            background: rgba(255,255,255,0.02);
-        }
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 40px;
-        }
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin: 20px 0;
-        }
-        .highlight {
-            background: rgba(255,215,0,0.1);
-            border-left: 3px solid #ffd700;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        @media (max-width: 768px) {
-            .metric-grid { grid-template-columns: repeat(2, 1fr); }
-            header h1 { font-size: 1.8em; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Briefing — June 6, 2026</title>
+<style>
+:root{--bg:#0f1115;--card:#161920;--accent:#e8b84f;--text:#e0e0e0;--muted:#8b8f98;--border:#252a33;--green:#4ade80;--red:#f87171;--blue:#60a5fa;--purple:#c084fc;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;padding:20px}
+.container{max-width:960px;margin:0 auto}
+header{text-align:center;padding:40px 20px;border-bottom:2px solid var(--border);margin-bottom:30px}
+header h1{font-size:2.4rem;font-weight:700;color:var(--accent);letter-spacing:-0.5px;margin-bottom:8px}
+header .date{color:var(--muted);font-size:1.05rem;text-transform:uppercase;letter-spacing:2px}
+header .tagline{color:var(--muted);font-size:0.9rem;margin-top:8px;font-style:italic}
+.ticker{display:flex;gap:12px;overflow-x:auto;padding:15px 0;margin-bottom:25px;border-bottom:1px solid var(--border)}
+.ticker-item{flex:0 0 auto;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:140px;text-align:center}
+.ticker-item .label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.ticker-item .value{font-size:1.1rem;font-weight:700;margin-top:4px}
+.up{color:var(--green)}.down{color:var(--red)}.neutral{color:var(--blue)}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.3rem;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.1rem}
+.news-item{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.news-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.news-item h3{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.news-item p{color:var(--muted);font-size:0.9rem;margin-bottom:6px}
+.news-item .meta{font-size:0.8rem;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+.news-item .meta a{color:var(--blue);text-decoration:none}
+.news-item .meta a:hover{text-decoration:underline}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.market-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px}
+.market-card .name{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.market-card .price{font-size:1.2rem;font-weight:700;margin-top:4px}
+.market-card .change{font-size:0.85rem;margin-top:2px}
+.shipping-table{width:100%;border-collapse:collapse;font-size:0.9rem;margin-top:10px}
+.shipping-table th,.shipping-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.shipping-table th{color:var(--muted);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px}
+.shipping-table tr:hover{background:rgba(255,255,255,0.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;background:var(--border);color:var(--muted)}
+.badge-hot{background:rgba(248,113,113,0.15);color:var(--red)}
+.badge-bull{background:rgba(74,222,128,0.15);color:var(--green)}
+.badge-info{background:rgba(96,165,250,0.15);color:var(--blue)}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:0.8rem;border-top:1px solid var(--border);margin-top:20px}
+@media(max-width:600px){header h1{font-size:1.8rem}.section{padding:16px}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>虾鼓捣日报</h1>
-            <div class="date">Daily Briefing | 2026年6月5日 星期五</div>
-        </header>
+<div class="container">
 
-        <div class="tabs">
-            <div class="tab active" onclick="showSection('shipping')">🚢 航运</div>
-            <div class="tab" onclick="showSection('finance')">📈 财经</div>
-            <div class="tab" onclick="showSection('ai')">🤖 AI</div>
-            <div class="tab" onclick="showSection('politics')">🌍 时政</div>
-        </div>
+<header>
+<h1>📰 Daily Briefing</h1>
+<div class="date">Saturday, June 6, 2026</div>
+<div class="tagline">World news, markets, shipping & AI — distilled for decision-makers.</div>
+</header>
 
-        <!-- 航运板块 -->
-        <div id="shipping" class="section active">
-            <h2>🚢 航运板块</h2>
-            
-            <div class="card">
-                <h3>波罗的海指数</h3>
-                <div class="metric-grid">
-                    <div class="metric">
-                        <div class="value">3,037</div>
-                        <div class="label">BDI</div>
-                        <div class="change down">▼ -87 (-2.78%)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">5,040</div>
-                        <div class="label">BCI (Capesize)</div>
-                        <div class="change down">▼ -216 (-4.1%)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">2,254</div>
-                        <div class="label">BPI (Panamax)</div>
-                        <div class="change down">▼ -36</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">1,584</div>
-                        <div class="label">BSI (Supramax)</div>
-                        <div class="change up">▲ +1</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">900</div>
-                        <div class="label">BCTI (油轮)</div>
-                        <div class="change down">▼ -29</div>
-                    </div>
-                </div>
-                <p style="color:#888;font-size:0.9em;">数据日期：2026年6月4日 | 来源：Baltic Exchange / Pacific Basin</p>
-            </div>
+<div class="ticker">
+<div class="ticker-item"><div class="label">BDI</div><div class="value down">3,037</div></div>
+<div class="ticker-item"><div class="label">BTC</div><div class="value down">$61,934</div></div>
+<div class="ticker-item"><div class="label">ETH</div><div class="value down">$1,601</div></div>
+<div class="ticker-item"><div class="label">NASDAQ</div><div class="value down">25,709</div></div>
+<div class="ticker-item"><div class="label">S&P 500</div><div class="value down">—</div></div>
+</div>
 
-            <div class="card">
-                <h3>各船型日租金 (TCE)</h3>
-                <table>
-                    <tr><th>船型</th><th>航线</th><th>日租金 (USD)</th><th>变动</th></tr>
-                    <tr><td>Capesize</td><td>5TC</td><td>$16,400</td><td class="down">▼ -3.4%</td></tr>
-                    <tr><td>Capesize</td><td>FrontHaul</td><td>$67,000-$68,000</td><td class="down">▼ 下跌</td></tr>
-                    <tr><td>Panamax</td><td>5TC</td><td>$11,000-$13,000</td><td class="down">▼ 承压</td></tr>
-                    <tr><td>Supramax</td><td>BSI</td><td>$15,840</td><td class="up">▲ 微涨</td></tr>
-                    <tr><td>VLCC</td><td>中东-远东</td><td>$20,000-$30,000</td><td class="down">▼ 低位</td></tr>
-                    <tr><td>TARV</td><td>大西洋</td><td>~$42,000</td><td>持平</td></tr>
-                    <tr><td>Mid-sized</td><td>市场平均</td><td>~$35,000</td><td>持平</td></tr>
-                </table>
-            </div>
+<!-- WORLD NEWS -->
+<div class="section">
+<h2><span class="icon">🌍</span> World News & Politics</h2>
 
-            <div class="card">
-                <h3>新造船订单</h3>
-                <div class="news-item">
-                    <div class="title">Dynacom Tankers下单6艘VLCC</div>
-                    <div class="source">Splash247 / 2026年6月1日</div>
-                    <div class="summary">
-                        希腊船王George Procopiou旗下的Dynacom Tankers在中国船厂下单6艘VLCC新造船，每艘造价约1.41亿美元，预计2028-2029年交付。这是2026年最大VLCC订单之一，反映船东对大型油轮长期需求保持信心。中国船厂凭借价格优势（较韩国低10-15%）继续主导VLCC建造市场。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">中国船厂重新激活：280家活跃造船厂</div>
-                    <div class="source">Splash247 / 2026年3月31日</div>
-                    <div class="summary">
-                        中国船厂活动大幅回升，活跃船厂数量达到约280家。大量之前休眠的小型船厂重新启动，承接散货船和中小型集装箱船订单。行业担忧这波扩张可能导致过度产能，重演2008-2010年周期。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">船价动态</div>
-                    <div class="source">市场综合</div>
-                    <div class="summary">
-                        VLCC新造船价格约1.41亿美元/艘；Capesize新造船约8,500-9,000万美元；LR2型成品油轮约6,500万美元。中国船厂价格较韩国低10-15%，交船期缩短至2027-2028年。
-                    </div>
-                </div>
-            </div>
+<div class="news-item">
+<h3>Iran Demands $24 Billion in Frozen Assets for US Peace Deal</h3>
+<p>Iran says any peace agreement with the United States hinges on Washington releasing $24 billion in frozen Iranian assets. Senior military adviser Mohsen Rezaei warned that renewed conflict would push the U.S. into deeper military entanglement. The U.S. signaled willingness to ease sanctions only after the Strait of Hormuz reopens and Iranian concessions are verified.</p>
+<div class="meta">
+<span class="badge badge-hot">Middle East</span>
+<span>Source: <a href="https://www.livemint.com/news/world/total-world-latest-news-on-june-6-2026-live-updates-11780689208279.html" target="_blank">Livemint</a>, <a href="https://www.cnn.com/2026/05/24/middleeast/iran-us-proposed-deal-wwk-intl" target="_blank">CNN</a></span>
+</div>
+</div>
 
-            <div class="card">
-                <h3>二手船交易</h3>
-                <div class="news-item">
-                    <div class="title">二手船市场清淡</div>
-                    <div class="source">市场观察</div>
-                    <div class="summary">
-                        2026年6月初二手船交易活动有限，买家持观望态度。主要成交集中在5-10年船龄的Capesize和Panamax散货船。VLCC二手船价格因租金低迷而承压，买家议价空间增大。预计随着下半年租金季节性回升，交易量可能回暖。
-                    </div>
-                </div>
-            </div>
+<div class="news-item">
+<h3>Ukrainian Drones Strike St. Petersburg as Putin's 'Davos' Opens</h3>
+<p>Ukraine launched hundreds of long-range drones at Russian targets, hitting an oil terminal and a naval base in St. Petersburg — over 1,000 km from the front lines. The attack occurred hours before Putin's showcase economic forum began in the city. Russia vowed to strengthen air defenses after the embarrassing breach.</p>
+<div class="meta">
+<span class="badge badge-hot">Russia-Ukraine</span>
+<span>Source: <a href="https://www.npr.org/2026/06/03/nx-s1-5844793/ukrainian-drones-hit-st-petersburg" target="_blank">NPR</a>, <a href="https://www.reuters.com/world/europe/ukrainian-drones-strike-oil-terminal-st-petersburg-putins-davos-gets-under-way-2026-06-03/" target="_blank">Reuters</a></span>
+</div>
+</div>
 
-            <div class="card">
-                <h3>行业新闻</h3>
-                <div class="news-item">
-                    <div class="title">Strait of Hormuz：航运风险持续</div>
-                    <div class="source">Middle East Shipping Disruptions / 2026年</div>
-                    <div class="summary">
-                        霍尔木兹海峡航行风险仍是2026年航运市场最大变量。约1780万桶/日原油通过该海峡运输。中断已导致约5亿桶原油供应受影响。美国与伊朗在巴基斯坦斡旋下进行间接谈判，但伊朗表示浓缩铀问题不在谈判范围内。市场预计伊朗可能在一个月内恢复海峡通行，但存在高度不确定性。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">拆船市场：印度Mundra</div>
-                    <div class="source">拆船市场</div>
-                    <div class="summary">
-                        印度Mundra拆船厂继续活跃，主要拆解老旧散货船和油轮。孟加拉国和巴基斯坦拆船厂因环保和安全问题面临更多限制，印度因此获得更多拆船订单。拆船钢板价格稳定在约500-550美元/轻吨。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">FBX与BDI分化：两个时钟的航运市场</div>
-                    <div class="source">Fairway ETA / 2026年5月</div>
-                    <div class="summary">
-                        集装箱运价指数(FBX)与干散货运价指数(BDI)出现显著分化。集装箱市场受红海绕行和港口拥堵支撑，而散货市场受中国需求放缓和运力过剩拖累。这种分化表明航运各子板块正经历不同周期阶段。
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="news-item">
+<h3>Trump Administration Reverses Course Under Congressional Pressure</h3>
+<p>In a rare reversal, the Trump administration walked back a recent policy after facing intense pressure from lawmakers during House subcommittee hearings. Acting Attorney General Todd Blanche testified as the White House faced mounting scrutiny over several executive actions.</p>
+<div class="meta">
+<span class="badge badge-info">U.S. Politics</span>
+<span>Source: <a href="https://www.npr.org/sections/news" target="_blank">NPR</a></span>
+</div>
+</div>
+</div>
 
-        <!-- 财经板块 -->
-        <div id="finance" class="section">
-            <h2>📈 财经板块</h2>
-            
-            <div class="card">
-                <h3>全球市场概览</h3>
-                <div class="metric-grid">
-                    <div class="metric">
-                        <div class="value">—</div>
-                        <div class="label">上证指数</div>
-                        <div class="change">数据暂缺</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">—</div>
-                        <div class="label">纳斯达克</div>
-                        <div class="change">待更新</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">$4,467</div>
-                        <div class="label">黄金 (COMEX)</div>
-                        <div class="change up">▲ +30.5 (+0.69%)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">$88-90</div>
-                        <div class="label">WTI原油</div>
-                        <div class="change down">▼ 从$100+回落</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">$64,039</div>
-                        <div class="label">比特币</div>
-                        <div class="change down">▼ $64,038.92 (Jun 4)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="value">$1,778</div>
-                        <div class="label">以太坊</div>
-                        <div class="change">Jun 4</div>
-                    </div>
-                </div>
-                <p style="color:#888;font-size:0.9em;">数据日期：2026年6月4日 | 来源：Yahoo Finance / Trading Economics / Barchart</p>
-            </div>
+<!-- SHIPPING -->
+<div class="section">
+<h2><span class="icon">⚓</span> Shipping & Maritime</h2>
 
-            <div class="card">
-                <h3>美股个股</h3>
-                <table>
-                    <tr><th>股票</th><th>收盘价</th><th>变动</th><th>备注</th></tr>
-                    <tr><td>NVIDIA (NVDA)</td><td>$218.72</td><td class="down">▼ -1.84%</td><td>GB300持续放量</td></tr>
-                    <tr><td>Tesla (TSLA)</td><td>$418.76</td><td class="down">▼ -1.18%</td><td>自动驾驶进展</td></tr>
-                    <tr><td>AMD</td><td>—</td><td>—</td><td>Goldman目标$250</td></tr>
-                    <tr><td>Apple (AAPL)</td><td>$252.89</td><td>—</td><td>Wedbush看好至$270</td></tr>
-                </table>
-            </div>
+<table class="shipping-table">
+<thead>
+<tr><th>Index</th><th>Level</th><th>Change</th><th>Avg Daily Earnings</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Baltic Dry Index (BDI)</strong></td><td>3,037</td><td class="down">−87 pts</td><td>—</td></tr>
+<tr><td>Capesize (BCI)</td><td>5,040</td><td class="down">−213 pts</td><td class="down">$45,707 (−$1,934)</td></tr>
+<tr><td>Panamax (BPI)</td><td>2,254</td><td class="down">−36 pts</td><td class="down">$20,285 (−$322)</td></tr>
+<tr><td>Supramax (BSI)</td><td>1,584</td><td class="up">+1 pt</td><td class="up">$20,020 (+$14)</td></tr>
+<tr><td>Handysize (BHSI)</td><td>862</td><td class="up">+7 pts</td><td class="up">$15,505 (+$118)</td></tr>
+</tbody>
+</table>
 
-            <div class="card">
-                <h3>大宗商品</h3>
-                <div class="news-item">
-                    <div class="title">黄金：避险需求支撑</div>
-                    <div class="source">Trading Economics / 2026年6月4日</div>
-                    <div class="summary">
-                        黄金6月4日收于$4,467.20/盎司，单日上涨0.69%。但过去一个月下跌1.91%，较一年前仍高出33.30%。年初至今黄金表现稳健，但已从2026年1月历史高点$5,608回落。中东局势不确定性和美联储利率政策是主要驱动因素。市场预测本季度末金价约$4,575，12个月后约$4,943。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">原油：从$100+回落</div>
-                    <div class="source">24/7 Wall St / 2026年5月</div>
-                    <div class="summary">
-                        WTI原油从5月中旬$108高位回落至$88-90区间。5月27日报$88.48（-5.41美元），因市场预期伊朗将在一个月内恢复霍尔木兹海峡通行。但5月12日曾因CPI通胀数据高于预期（3.8%）和战争不确定性反弹至$101.53。全年波动区间：$56.66（2025年12月低点）至$111.54（2026年3月高点）。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">比特币：持续承压</div>
-                    <div class="source">Yahoo Finance / Fortune / 2026年6月4日</div>
-                    <div class="summary">
-                        比特币6月4日收于$64,038.92，较6月3日$66,694继续下跌。较一年前$105,428已下跌36.48%。年初至今表现：从2024年底$93,508持续下跌，2025年跌6.4%，2026年续跌。关键支撑位：0.786斐波那契回撤位$64,677。美联储利率政策、监管压力和地缘政治不确定性继续压制加密货币市场。
-                    </div>
-                </div>
-            </div>
+<div class="news-item" style="margin-top:18px">
+<h3>Market Commentary</h3>
+<p>The BDI has declined for four consecutive sessions, pulling back from recent highs. Capesize rates are feeling the most pressure as iron ore demand from China moderates. Smaller vessel segments (Supramax/Handysize) are holding firmer, supported by steady grain and minor bulk trades. Shipyards remain backlogged with the longest orderbook in history, which should prop up secondhand prices even as spot rates correct.</p>
+<div class="meta">
+<span class="badge badge-info">Freight</span>
+<span>Source: <a href="https://www.handybulk.com/baltic-dry-index/" target="_blank">HandyBulk</a>, <a href="https://tradingeconomics.com/commodity/baltic" target="_blank">TradingEconomics</a></span>
+</div>
+</div>
+</div>
 
-            <div class="card">
-                <h3>市场动态</h3>
-                <div class="news-item">
-                    <div class="title">S&P 500与Iran局势联动</div>
-                    <div class="source">24/7 Wall St / 2026年4-5月</div>
-                    <div class="summary">
-                        2026年4月15日S&P 500突破7,000点创52周新高（7,022.95），纳斯达克24,016，道指48,464。但5月因地缘政治不确定性和通胀担忧回落。5月27日道指涨88点（+0.16%），纳指涨262点（+0.87%），S&P 500涨25点（+0.33%），因传出伊朗将恢复海峡通行。5月19日S&P 500跌24点（-0.32%），纳指跌182点（-0.62%），油$108。市场与Iran局势高度相关。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">通胀与美联储</div>
-                    <div class="source">Bank of America / 2026年5月</div>
-                    <div class="summary">
-                        5月CPI同比增长3.8%，核心CPI 0.4%月率/2.8%年率，均高于美联储2%目标。Bank of America分析师预测美联储可能将降息推迟至2027年下半年，而非此前预期的2026年两次降息。高利率环境持续压制成长股和加密货币估值。
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- GLOBAL MARKETS -->
+<div class="section">
+<h2><span class="icon">📈</span> Global Markets</h2>
 
-        <!-- AI板块 -->
-        <div id="ai" class="section">
-            <h2>🤖 AI/机器人板块</h2>
-            
-            <div class="card">
-                <h3>AI市场热点</h3>
-                <div class="news-item">
-                    <div class="title">Agentic AI：下一个风口</div>
-                    <div class="source">AI Tools Recap / 2026年6月3日</div>
-                    <div class="summary">
-                        Agentic AI（自主代理AI）成为2026年AI领域最热门趋势。与ChatGPT等对话式AI不同，Agentic AI能自主规划、执行多步骤任务并调用工具。AMD CEO Lisa Su在5月将AI CPU市场预测上调至每年35%增长，2030年市场规模超$1,200亿。Goldman Sachs将AMD目标价从$240上调至$250。AI Agent被认为是继LLM之后的下一个平台级机会。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">Nvidia GB300持续放量</div>
-                    <div class="source">Susquehanna / Wells Fargo / 2026年5月</div>
-                    <div class="summary">
-                        Nvidia 5月20日财报预期乐观。Wells Fargo维持"增持"评级，目标价$315（从$265上调）。Susquehanna维持正面评级，目标价$275（从$250上调）。分析师预计GB300将在2026上半年持续放量，带动数据中心收入超预期。但Nvidia股价6月4日$218.72（-1.84%），受大盘拖累。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">Stablecoin监管法案推进</div>
-                    <div class="source">CNBC / 24/7 Wall St / 2026年5月</div>
-                    <div class="summary">
-                        美国《CLARITY Act》稳定币监管法案取得进展。5月5日报道称法案有望解决稳定币收益争议，对银行板块构成利好。Bank of America分析师Ebrahim Poonawala表示："该法案将缓解存款外流担忧，降低监管不确定性，允许银行在更受控条件下参与数字资产基础设施。"但法案因软件开发者保护条款和住房条款争议，可能无法在夏休前通过。
-                    </div>
-                </div>
-            </div>
+<div class="market-grid">
+<div class="market-card">
+<div class="name">Bitcoin (BTC)</div>
+<div class="price">$61,934</div>
+<div class="change down">−2.71% (−$1,724)</div>
+</div>
+<div class="market-card">
+<div class="name">Ethereum (ETH)</div>
+<div class="price">$1,601</div>
+<div class="change down">−9.4% (−$166)</div>
+</div>
+<div class="market-card">
+<div class="name">NASDAQ</div>
+<div class="price">25,709</div>
+<div class="change down">−4.18% (−1,122)</div>
+</div>
+<div class="market-card">
+<div class="name">Gold</div>
+<div class="price">~$3,350</div>
+<div class="change neutral">Sideways</div>
+</div>
+</div>
 
-            <div class="card">
-                <h3>AI投资趋势</h3>
-                <div class="highlight">
-                    Paul Tudor Jones（知名对冲基金经理）："AI的最新进展类似于1980年代微软早期软件主导地位和1990年代中期互联网商业化那样的变革性技术。这些都开启了持续4-5年的生产力奇迹和市场上涨。如果必须选一个阶段，我认为AI牛市还有一两年可跑。"
-                </div>
-                <table>
-                    <tr><th>AI相关资产</th><th>表现</th><th>趋势</th></tr>
-                    <tr><td>NVIDIA (NVDA)</td><td>$218.72</td><td class="down">▼ 短期回调</td></tr>
-                    <tr><td>AMD</td><td>目标$250</td><td class="up">▲ 上调</td></tr>
-                    <tr><td>ASML</td><td>—</td><td>受中国限制影响</td></tr>
-                    <tr><td>台积电 (TSM)</td><td>—</td><td>AI需求vs地缘风险</td></tr>
-                </table>
-            </div>
+<div class="news-item" style="margin-top:18px">
+<h3>Crypto Selloff Deepens; Tech Stocks Under Pressure</h3>
+<p>Bitcoin futures dropped another 2.5% early Friday, testing the $60,000 support zone. Ethereum is down nearly 10% over 24 hours, trading near $1,600. The selloff coincides with a broader risk-off move in equities: the NASDAQ Composite fell over 4%, with Marvell Technology plunging 16.7% after earnings. Crypto-adjacent stocks like Strategy (MSTR) and Coinbase (COIN) also slid.</p>
+<div class="meta">
+<span class="badge badge-hot">Risk Off</span>
+<span>Source: <a href="https://finance.yahoo.com/" target="_blank">Yahoo Finance</a>, <a href="https://www.schwab.com/learn/story/stock-market-update-open" target="_blank">Schwab</a></span>
+</div>
+</div>
+</div>
 
-            <div class="card">
-                <h3>AI政策与监管</h3>
-                <div class="news-item">
-                    <div class="title">美国限制Nvidia芯片出口中国</div>
-                    <div class="source">CounterPunch / 2026年2月</div>
-                    <div class="summary">
-                        特朗普政府继续限制Nvidia半导体芯片对华出口，引发中国以稀土出口管制报复。这导致美国、加拿大、中国之间形成新的贸易三角：加拿大与中国签署新贸易协议，欧盟与Mercosur达成自由贸易协定。科技脱钩与贸易重构并行，长期影响全球AI供应链格局。
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- AI & ROBOTICS -->
+<div class="section">
+<h2><span class="icon">🤖</span> AI & Robotics</h2>
 
-        <!-- 时政板块 -->
-        <div id="politics" class="section">
-            <h2>🌍 全球时政</h2>
-            
-            <div class="card">
-                <h3>美伊关系与霍尔木兹海峡</h3>
-                <div class="news-item">
-                    <div class="title">特朗普延长伊朗谈判期限</div>
-                    <div class="source">Trump Truth Social / 24/7 Wall St / 2026年3-4月</div>
-                    <div class="summary">
-                        特朗普3月27日通过Truth Social宣布，应巴基斯坦陆军元帅Asim Munir和总理Shehbaz Sharif请求，将打击伊朗的期限延长10天至4月6日。他表示："应伊朗政府请求，请将此声明作为代表，我将暂停摧毁能源设施期限10天。"但与此同时，伊朗扣押了两艘商船，使局势复杂化。4月22日，特朗普再次延长停火，称"伊朗政府严重分裂"，需要时间与代表达成统一提案。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">美国国内反对声浪</div>
-                    <div class="source">CBS / Reuters / CNN / 2026年3月</div>
-                    <div class="summary">
-                        多项民调显示多数美国人反对对伊朗动武。CNN民调：59%美国人不赞成伊朗打击，多数人认为长期冲突可能。Reuters/Ipsos：仅四分之一美国人支持打击伊朗。参议院就战争权力决议进行投票，限制特朗普对伊朗采取军事行动。Tucker Carlson等MAGA意见领袖公开反对，称其违反特朗普"不发动新战争"的竞选承诺。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">14点谅解备忘录</div>
-                    <div class="source">24/7 Wall St / 2026年5月7日</div>
-                    <div class="summary">
-                        5月7日传出一份一页纸14点谅解备忘录，可能结束战争并为更详细的核谈判建立框架。伊朗正在审查该提案。报道称美国和伊朗仅在巴基斯坦斡旋下进行间接谈判，伊朗坚称浓缩铀问题不在谈判桌上。市场一度因该消息反弹，S&P 500当日涨13点（+0.17%），纳指涨32点（+0.1%），油跌$4.86至$90.22。
-                    </div>
-                </div>
-            </div>
+<div class="news-item">
+<h3>NVIDIA Unveils New Physical AI Models & Robotics Infrastructure</h3>
+<p>NVIDIA announced new open models, frameworks, and AI infrastructure for physical AI at GTC Taipei 2026. The company unveiled next-generation robots for every industry from global partners, alongside Cosmos world foundation models to help robots understand the physical world before deployment. Toyota Research Institute is already customizing Cosmos for its own world models.</p>
+<div class="meta">
+<span class="badge badge-bull">Physical AI</span>
+<span>Source: <a href="https://nvidianews.nvidia.com/news/nvidia-releases-new-physical-ai-models-as-global-partners-unveil-next-generation-robots" target="_blank">NVIDIA Newsroom</a></span>
+</div>
+</div>
 
-            <div class="card">
-                <h3>中美贸易与全球贸易格局</h3>
-                <div class="news-item">
-                    <div class="title">美中欧贸易博弈升级</div>
-                    <div class="source">Export.org.uk / 2026年6月</div>
-                    <div class="summary">
-                        美国和中国对欧盟保护主义措施进行反击。特朗普政府试图控制Nvidia芯片对华出口，导致中国以稀土出口管制报复。这一连锁反应催生新的贸易联盟：欧盟与Mercosur（南美共同市场）达成自由贸易协定；中国分别与德国、法国、英国重启贸易谈判；加拿大与中国签署新贸易协议。特朗普对加拿大的关税威胁适得其反，推动加拿大加强与中国的贸易关系。
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="title">中国外交部表态</div>
-                    <div class="source">中国外交部 / 2026年6月1日</div>
-                    <div class="summary">
-                        中国外交部6月1日就国际贸易问题表态，强调反对单边主义和保护主义，支持多边贸易体系。中国表示愿意与各方通过对话解决贸易争端，同时坚决维护自身合法权益。中美贸易谈判仍在进行，但进展缓慢，双方围绕技术转让、市场准入和关税等核心问题分歧依旧。
-                    </div>
-                </div>
-            </div>
+<div class="news-item">
+<h3>Qualcomm Unveils Full Suite of Robotics Technologies</h3>
+<p>Qualcomm introduced a comprehensive suite of robotics technologies powering physical AI from household robots up to full-size humanoids. The platform integrates on-device AI processing with low-latency control systems, targeting the next wave of autonomous machines.</p>
+<div class="meta">
+<span class="badge badge-info">Robotics</span>
+<span>Source: <a href="https://www.qualcomm.com/news/releases/2026/01/qualcomm-introduces-a-full-suite-of-robotics-technologies-power" target="_blank">Qualcomm</a></span>
+</div>
+</div>
 
-            <div class="card">
-                <h3>美国国内政治</h3>
-                <div class="news-item">
-                    <div class="title">2026年中期选举前瞻</div>
-                    <div class="source">LSE US Politics / 2026年1月</div>
-                    <div class="summary">
-                        2026年11月将举行美国中期选举。特朗普政府面临多重挑战：Epstein文件处理引发争议，以色列-加沙政策在MAGA内部引发分歧，ICE暴力执法遭广泛反对。民调显示其外交政策（伊朗、委内瑞拉、格陵兰威胁）在国内不受欢迎。"一个美丽的大法案"将债务上限提高5万亿至41.1万亿美元，避免了2026年债务上限谈判，但政府支出争议仍在。国会必须在1月30日前通过预算避免停摆。
-                    </div>
-                </div>
-            </div>
+<div class="news-item">
+<h3>Scientists Create Microscopic Robots That Can "Think"</h3>
+<p>Researchers have built microscopic robots smaller than a grain of salt that can sense, decide, and move autonomously without external control. The breakthrough could enable medical applications such as targeted drug delivery inside the human body.</p>
+<div class="meta">
+<span class="badge badge-bull">Breakthrough</span>
+<span>Source: <a href="https://www.sciencedaily.com/news/computers_math/artificial_intelligence/" target="_blank">ScienceDaily</a></span>
+</div>
+</div>
+</div>
 
-            <div class="card">
-                <h3>欧洲与英国</h3>
-                <div class="news-item">
-                    <div class="title">英国国王访美</div>
-                    <div class="source">Town & Country / 2026年</div>
-                    <div class="summary">
-                        英国国王查尔斯三世和卡米拉王后对美国进行国事访问，反映美英特殊关系持续。但特朗普政府此前威胁要接管格陵兰（丹麦领土），并批评北约盟友，使跨大西洋关系复杂化。特朗普声称其母亲热爱英国王室，并考虑将白宫艾森豪威尔行政办公楼重新粉刷为白色，引发建筑保护争议。
-                    </div>
-                </div>
-            </div>
-        </div>
+<footer>
+<p>Daily Briefing — Generated on June 6, 2026 at 07:00 SGT</p>
+<p>Data sources: Yahoo Finance, Baltic Exchange, HandyBulk, Reuters, NPR, CNN, NVIDIA, Qualcomm</p>
+<p style="margin-top:8px"><a href="https://mast0506.github.io/daily-briefing/" style="color:var(--accent);text-decoration:none">🔗 mast0506.github.io/daily-briefing</a></p>
+</footer>
 
-        <div class="footer">
-            <p>虾鼓捣日报 | 由Kimi Claw自动生成</p>
-            <p>数据截至：2026年6月5日 07:30 GMT+8</p>
-            <p>⚠️ 本简报仅供信息参考，不构成投资建议</p>
-        </div>
-    </div>
-
-    <script>
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            event.target.classList.add('active');
-        }
-    </script>
+</div>
 </body>
 </html>
