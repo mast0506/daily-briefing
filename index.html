@@ -1,362 +1,598 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 | Daily Briefing</title>
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --card-bg: #141414;
-      --border: #2a2a2a;
-      --text: #e0e0e0;
-      --text-secondary: #999;
-      --accent: #00d4aa;
-      --accent-glow: rgba(0, 212, 170, 0.15);
-      --red: #ff4444;
-      --green: #00d4aa;
-      --gold: #ffd700;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-    header h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-    header .subtitle {
-      font-size: 1rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    header .date {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-top: 0.5rem;
-    }
-    .section {
-      margin-bottom: 2.5rem;
-    }
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text);
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      transition: border-color 0.2s;
-    }
-    .card:hover {
-      border-color: var(--accent);
-    }
-    .card h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      color: var(--text);
-    }
-    .card p {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .card a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin-top: 0.8rem;
-    }
-    .card a:hover { text-decoration: underline; }
-    .tag {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      margin-bottom: 0.6rem;
-    }
-    .tag-hot { background: rgba(255, 68, 68, 0.15); color: var(--red); }
-    .tag-up { background: rgba(0, 212, 170, 0.15); color: var(--green); }
-    .tag-down { background: rgba(255, 68, 68, 0.15); color: var(--red); }
-    .tag-neutral { background: rgba(255, 215, 0, 0.15); color: var(--gold); }
-    .data-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .data-item {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-    }
-    .data-item .label {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.4rem;
-    }
-    .data-item .value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .data-item .change {
-      font-size: 0.8rem;
-      margin-top: 0.3rem;
-    }
-    .up { color: var(--green); }
-    .down { color: var(--red); }
-    .footer {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-    .footer p {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-    .footer .url {
-      color: var(--accent);
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.6rem; }
-      .data-grid { grid-template-columns: repeat(2, 1fr); }
-      .container { padding: 1.5rem 1rem; }
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-    }
-    th, td {
-      padding: 0.6rem 0.8rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    th {
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 0.8rem;
-    }
-    td {
-      color: var(--text);
-    }
-    .highlight {
-      color: var(--accent);
-      font-weight: 600;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日简报 - 2026年6月8日-12日</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 12px 15px 10px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header h1 {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #b0b0d0;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+        
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .content {
+            display: none;
+        }
+        
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.5);
+        }
+        
+        .section h3 {
+            color: #b8b8d0;
+            font-size: 1.2rem;
+            margin: 20px 0 15px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h4 {
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .card .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .card .change {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .table-wrapper table {
+            margin: 0;
+            display: table;
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        th {
+            background: rgba(102, 126, 234, 0.2);
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+        }
+        
+        .news-list {
+            list-style: none;
+        }
+        
+        .news-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .news-list li strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .analysis {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .analysis h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.1rem;
+            }
+            
+            .nav-tab {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🌐 每日资讯简报</h1>
-      <p class="subtitle">Daily Briefing — Global Intelligence</p>
-      <p class="date">2026年6月12日 星期五 | 新加坡时间 7:00 AM</p>
-    </header>
-
-    <div class="section">
-      <h2 class="section-title">📰 时政要闻</h2>
-      <div class="card">
-        <span class="tag tag-hot">中东危机</span>
-        <h3>美伊冲突急剧升级：特朗普威胁接管伊朗油气，霍尔木兹海峡关闭</h3>
-        <p>美国总统特朗普公开誓言"今晚将严厉打击伊朗"，并威胁未来接管伊朗石油和天然气部门。伊朗方面拒绝交出浓缩铀，要求解除制裁作为谈判前提。伊朗声称已完全关闭霍尔木兹海峡——全球约20%石油运输的咽喉要道。此前6月7-8日，双方爆发了数月来最猛烈的相互打击，以色列-美国联合打击伊朗核设施，伊朗则以导弹和无人机反击美国在中东的使馆和军事设施。联合国警告核升级风险正在加剧。</p>
-        <a href="https://www.npr.org/2026/06/10/nx-s1-5853882/us-strike-iran-second-day-renewed-fire" target="_blank">NPR报道 →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-hot">全球健康</span>
-        <h3>美国实施强制性隔离：游轮汉坦病毒 + 埃博拉封锁</h3>
-        <p>美国疾控中心（CDC）对一艘爆发汉坦病毒的游轮实施强制隔离令，相关乘客已在内布拉斯加医学中心隔离。与此同时，特朗普政府宣布禁止感染埃博拉的美国公民回国接受治疗，引发医学界和人权组织的强烈批评。这两项决定标志着美国公共卫生政策转向更严格的边境控制模式。</p>
-        <a href="https://www.npr.org/sections/news" target="_blank">NPR详情 →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">地缘博弈</span>
-        <h3>美国将巴西两大犯罪集团列为恐怖组织，引发区域合规地震</h3>
-        <p>美国正式将巴西两大主要有组织犯罪集团（PCC和CV）列为外国恐怖组织。此举不仅是执法行动，更是地缘政治武器——将引发区域银行严重合规噩梦，并可能冲击美国-巴西双边关系。分析指出，该决定将在南美金融系统引发连锁反应，涉及反洗钱合规、跨境支付和贸易融资的广泛审查。</p>
-        <a href="https://www.geopoliticalmonitor.com/" target="_blank">Geopolitical Monitor →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">贸易摩擦</span>
-        <h3>欧洲应对中国产能过剩：从电动汽车蔓延至风电、光伏与半导体</h3>
-        <p>Lazard年度报告指出，2026年欧洲将面对中国多领域产能过剩的冲击。电动汽车仍是焦点，但政治关注正在扩大至风电组件、太阳能电池和成熟制程半导体。欧盟正在构建更广泛的贸易防御工具，预计年中将启动针对中国光伏和风电组件的贸易调查。</p>
-        <a href="https://www.lazard.com/research-insights/top-geopolitical-trends-in-2026/" target="_blank">Lazard报告 →</a>
-      </div>
+    <div class="container">
+        <header>
+            <h1>每日简报 - 2026年6月8日-12日</h1>
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showTab('shipping')">航运</div>
+                <div class="nav-tab" onclick="showTab('finance')">财经</div>
+                <div class="nav-tab" onclick="showTab('politics')">时政</div>
+                <div class="nav-tab" onclick="showTab('ai')">AI/机器人</div>
+            </div>
+        </header>
+        
+        <div id="shipping" class="content active">
+            <div class="section">
+                <h2>航运</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>BDI（6月12日）</h4>
+                        <div class="value">2,729</div>
+                        <div class="change negative">↓ 0.0%</div>
+                    </div>
+                    <div class="card">
+                        <h4>Capesize earnings</h4>
+                        <div class="value">$44,374</div>
+                        <div class="change positive">↑ Daily</div>
+                    </div>
+                    <div class="card">
+                        <h4>Panamax earnings</h4>
+                        <div class="value">$21,086</div>
+                        <div class="change positive">↑ Daily</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="bdiChart"></canvas>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>BDI</th>
+                                <th>BCI</th>
+                                <th>BPI</th>
+                                <th>BSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>6月8日</td>
+                                <td>2,916</td>
+                                <td>5,432</td>
+                                <td>2,513</td>
+                                <td>1,898</td>
+                            </tr>
+                            <tr>
+                                <td>6月9日</td>
+                                <td>2,818</td>
+                                <td>5,245</td>
+                                <td>2,487</td>
+                                <td>1,876</td>
+                            </tr>
+                            <tr>
+                                <td>6月10日</td>
+                                <td>2,771</td>
+                                <td>5,123</td>
+                                <td>2,456</td>
+                                <td>1,865</td>
+                            </tr>
+                            <tr>
+                                <td>6月11日</td>
+                                <td>2,729</td>
+                                <td>5,034</td>
+                                <td>2,432</td>
+                                <td>1,854</td>
+                            </tr>
+                            <tr>
+                                <td>6月12日</td>
+                                <td>2,729</td>
+                                <td>5,021</td>
+                                <td>2,428</td>
+                                <td>1,850</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>本周要闻</h3>
+                <ul class="news-list">
+                    <li><strong>新船订单</strong>Shishi Dingsheng在台州口岸船厂订购了2艘LR2型油轮。</li>
+                    <li><strong>二手船交易</strong>2026年二手油轮交易活跃，Hafnia确认了10艘船打包销售。</li>
+                    <li><strong>TradeWinds新闻</strong>Vertom和UAL合并，Fincantieri瞄准海军造船，香港寻求降低税收以重振海运业。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="finance" class="content">
+            <div class="section">
+                <h2>财经</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>S&P 500</h4>
+                        <div class="value">7,405.73</div>
+                        <div class="change positive">↑ 0.3%</div>
+                    </div>
+                    <div class="card">
+                        <h4>Nasdaq</h4>
+                        <div class="value">25,929.66</div>
+                        <div class="change positive">↑ 0.9%</div>
+                    </div>
+                    <div class="card">
+                        <h4>Bitcoin</h4>
+                        <div class="value">$63,564</div>
+                        <div class="change positive">↑ 6/8</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="stockChart"></canvas>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>NVDA</th>
+                                <th>TSLA</th>
+                                <th>Bitcoin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>6月8日</td>
+                                <td>$208.64</td>
+                                <td>-</td>
+                                <td>$63,563.66</td>
+                            </tr>
+                            <tr>
+                                <td>6月9日</td>
+                                <td>$208.19</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6月10日</td>
+                                <td>$200.42</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6月11日</td>
+                                <td>$204.87</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6月12日</td>
+                                <td>$205.19</td>
+                                <td>$405.75</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>本周要闻</h3>
+                <ul class="news-list">
+                    <li><strong>美国CPI和PPI</strong>5月CPI和PPI数据于6月10-11日发布。</li>
+                    <li><strong>美联储</strong>主席Warsh的首次FOMC决议将于6月17日公布。</li>
+                    <li><strong>港股</strong>智谱和MiniMax加入恒生科技指数后股价大幅下跌。</li>
+                    <li><strong>美股</strong>6月8日道指收跌，标普和纳指上涨。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="politics" class="content">
+            <div class="section">
+                <h2>时政</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>全球人权治理论坛</h4>
+                        <div class="value">6月11-12</div>
+                        <div class="change positive">北京</div>
+                    </div>
+                    <div class="card">
+                        <h4>G7峰会</h4>
+                        <div class="value">6月15-17</div>
+                        <div class="change positive">即将</div>
+                    </div>
+                </div>
+                <h3>本周要闻</h3>
+                <ul class="news-list">
+                    <li><strong>中国外交部</strong>发言人林坚6月8-12日举行记者会。</li>
+                    <li><strong>王毅</strong>出席6月10-11日在俄罗斯举行的金砖国家外长会议。</li>
+                    <li><strong>中国-中东欧合作</strong>持续推进。</li>
+                    <li><strong>伊朗-以色列冲突</strong>停止袭击，油价上涨。</li>
+                    <li><strong>欧盟</strong>对华贸易紧张，碳关税议题。</li>
+                    <li><strong>塞尔维亚</strong>总统武契奇计划辞职（6月12日）。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="ai" class="content">
+            <div class="section">
+                <h2>AI/机器人</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>SpaceX IPO</h4>
+                        <div class="value">$1.77T</div>
+                        <div class="change positive">史上最大</div>
+                    </div>
+                    <div class="card">
+                        <h4>Prometheus</h4>
+                        <div class="value">$120B</div>
+                        <div class="change positive">B轮</div>
+                    </div>
+                </div>
+                <h3>本周要闻</h3>
+                <ul class="news-list">
+                    <li><strong>SpaceX IPO</strong>6月12日，估值1.77万亿美元，募资7500亿美元，史上最大IPO（代码：SPCX）。</li>
+                    <li><strong>Bezos' Prometheus</strong>B轮1200亿美元，估值410亿美元。</li>
+                    <li><strong>OpenAI</strong>收购Ona强化Codex，与Visa合作AI代理支付。</li>
+                    <li><strong>Anthropic</strong>寻求>1GW美国数据中心容量，Alphabet财务支持。</li>
+                    <li><strong>G7峰会</strong>邀请AI领袖（Altman、Amodei、Hassabis）讨论AI监管。</li>
+                    <li><strong>AMD</strong>CEO Lisa Su重申AI局限性。</li>
+                    <li><strong>小米</strong>发布MiMo Code AI编程助手。</li>
+                    <li><strong>阿里</strong>发布Qwen3.7-Plus、Meoo CLI。</li>
+                    <li><strong>MiniMax</strong>M3发布，SWE-Bench Pro 59.0%超越GPT-5.5。</li>
+                    <li><strong>DeepSeek</strong>V4永久降价75%。</li>
+                    <li><strong>Meta</strong>战略转向：Llama维护模式，闭源Muse Spark。</li>
+                    <li><strong>字节跳动</strong>AI制药业务分拆。</li>
+                    <li><strong>智元</strong>发布"元生"生态开发计划，1亿元 funding。</li>
+                    <li><strong>科大讯飞</strong>发布SpaceMind智能空间Agent架构。</li>
+                    <li><strong>伯牙智能</strong>机器人灵巧手初创公司完成天使轮融资。</li>
+                    <li><strong>特斯拉上海工厂</strong>具备人形机器人制造能力。</li>
+                    <li><strong>人形机器人市场</strong>2025年智元5168台（全球39%份额），宇树32%，优必选7%。</li>
+                    <li><strong>Omdia报告</strong>2025年全球人形机器人销量同比增长4倍。</li>
+                    <li><strong>宇树</strong>IPO进行中，优必选2025年收入20亿元但净亏损7.89亿元。</li>
+                    <li><strong>工信部</strong>发布《"AI+信息通信"创新实施意见（2026-2028）》。</li>
+                    <li><strong>Microsoft Build 2026</strong>聚焦AI Agent开发栈。</li>
+                    <li><strong>Anthropic</strong>Claude Fable 5和Mythos 5发布。</li>
+                    <li><strong>AI编程工具</strong>趋势：成本优化、上下文管理。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 每日简报 | 数据仅供参考</p>
+        </footer>
     </div>
-
-    <div class="section">
-      <h2 class="section-title">⚓ 航运资讯</h2>
-      <div class="data-grid">
-        <div class="data-item">
-          <p class="label">BDI 波罗的海干散货指数</p>
-          <p class="value">2,818</p>
-          <p class="change down">-98 pts (-3.4%) · 8连跌</p>
-        </div>
-        <div class="data-item">
-          <p class="label">好望角型 BCI</p>
-          <p class="value">4,301</p>
-          <p class="change down">-3.2%</p>
-        </div>
-        <div class="data-item">
-          <p class="label">巴拿马型 BPI</p>
-          <p class="value">2,211</p>
-          <p class="change up">+0.3%</p>
-        </div>
-        <div class="data-item">
-          <p class="label">超灵便型 BSI</p>
-          <p class="value">~1,580</p>
-          <p class="change down">偏弱</p>
-        </div>
-      </div>
-      <div class="card">
-        <span class="tag tag-down">市场综述</span>
-        <h3>BDI创2026年新低，干散货市场持续承压</h3>
-        <p>波罗的海干散货指数（BDI）连续第8个交易日下跌，单日暴跌98点至2,818点，创下2026年以来最低水平。好望角型指数（BCI）领跌3.2%至4,301点，反映铁矿石和煤炭贸易需求疲软。巴拿马型（BPI）逆势微涨0.3%至2,211点，受益于谷物运输季节性需求。超灵便型市场偏弱。整体市场情绪受美伊局势和中国大宗商品进口节奏放缓双重压制。</p>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">船型租金</span>
-        <h3>各船型日租金速览</h3>
-        <table>
-          <tr><th>船型</th><th>大致日租金</th><th>走势</th><th>备注</th></tr>
-          <tr><td>Capesize</td><td>$21,000–23,000</td><td class="down">↓</td><td>铁矿石/煤炭需求偏弱</td></tr>
-          <tr><td>Panamax</td><td>$16,000–18,000</td><td class="up">→</td><td>谷物出口支撑</td></tr>
-          <tr><td>Supramax</td><td>$14,500–15,500</td><td class="down">↓</td><td>小宗散货市场平淡</td></tr>
-          <tr><td>Handysize</td><td>$12,000–13,500</td><td class="down">↓</td><td>区域贸易增量有限</td></tr>
-        </table>
-      </div>
-      <div class="card">
-        <span class="tag tag-up">新造船</span>
-        <h3>新造船市场：中国船厂继续主导，VLCC与双燃料订单活跃</h3>
-        <p>Baltic Exchange继续发布月度新造船价格评估，覆盖从Newcastlemax到Handysize、VLCC到MR、LPG/LNG运输船及1,900–15,000 TEU集装箱船。当前市场特征：①中国船厂在散货船和油轮领域保持价格和交付期优势；②双燃料（LNG/甲醇）订单占比持续上升，IMO 2025碳强度指标（CII）驱动船东更新决策；③韩国船厂聚焦高附加值LNG船和大型集装箱船；④批量订单趋向长期租约配套，降低船东即期市场风险。</p>
-        <a href="https://www.balticexchange.com/en/data-services/market-information0/indices.html" target="_blank">Baltic Exchange →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">二手船</span>
-        <h3>二手船与新造船博弈：油轮船东寻求平衡策略</h3>
-        <p>油轮新造船订单在2025年创15年来新高后，2026年订单活动明显放缓。船东当前面临关键决策：二手船可快速产生现金流（2-3个月交付），但燃油效率和合规性受限；新造船提供15-20年长期运营保障，但需等待2-3年交付。市场趋势显示，多数船队采取"组合策略"——收购5-10年船龄二手船满足当前需求，同时订购新造船锁定未来增长。VLCC和苏伊士型油轮仍是二手交易最活跃的细分船型。</p>
-        <a href="https://www.lloydslist.com/LL1153841/Tanker-sale-and-purchase-activity-subdued-as-newbuild-orders-tumble" target="_blank">Lloyd's List →</a>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">📈 全球财经</h2>
-      <div class="data-grid">
-        <div class="data-item">
-          <p class="label">黄金 XAU</p>
-          <p class="value">$4,201</p>
-          <p class="change up">+3.17% (1日)</p>
-        </div>
-        <div class="data-item">
-          <p class="label">比特币 BTC</p>
-          <p class="value">$62,797</p>
-          <p class="change neutral">+1.16%</p>
-        </div>
-        <div class="data-item">
-          <p class="label">以太坊 ETH</p>
-          <p class="value">$1,680</p>
-          <p class="change down">-14% (月内)</p>
-        </div>
-        <div class="data-item">
-          <p class="label">布伦特原油</p>
-          <p class="value">$97.44</p>
-          <p class="change up">供应风险↑</p>
-        </div>
-      </div>
-      <div class="card">
-        <span class="tag tag-up">美股反弹</span>
-        <h3>美股周四强势反弹：S&P 500 +1.8%，Nasdaq +2.5%</h3>
-        <p>6月11日（周四），美股三大指数大幅收高。标普500指数上涨1.8%，纳斯达克综合指数飙升2.5%，道琼斯工业指数暴涨930点。此次反弹发生在6月5日科技股暴跌（Nasdaq -4%）之后，市场认为短期超卖。然而，美伊冲突升级和油价飙升仍构成重大不确定性。道指约50,250，纳指约25,350，标普500历史上首次收于7,600点上方。</p>
-        <a href="https://tradingeconomics.com/united-states/stock-market" target="_blank">Trading Economics →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">亚太市场</span>
-        <h3>A股与港股：震荡整理，结构性分化</h3>
-        <p>A股三大指数近期集体收涨，上证指数约3,994点（+0.12%），深证成指+0.8%，创业板指+1.96%，科创50+1.59%。全市场成交额约2.99万亿元，较前日缩量2,726亿元。超3,000只个股上涨，结构性行情延续。港股恒生指数及恒生科技指数受美股反弹和科技股情绪带动小幅走高。市场关注美联储6月利率决议（预计维持利率不变）及中国5月经济数据发布。</p>
-        <a href="https://stock.10jqka.com.cn/fupan/" target="_blank">同花顺复盘 →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-hot">大宗商品</span>
-        <h3>黄金避险暴涨，原油或冲击$150？霍尔木兹危机引发恐慌</h3>
-        <p>黄金在6月11日暴涨3.17%至$4,201/盎司，月内虽回调10.91%，但同比仍涨24.07%。分析师警告，若霍尔木兹海峡封锁持续，恐慌性买盘和囤积行为可能推动油价突破2008年$150/桶的历史高点。布伦特原油当前约$97.44/桶，地缘风险溢价显著上升。通胀预期再度升温，美国20年和30年期国债收益率已回升至5%上方。</p>
-        <a href="https://tradingeconomics.com/commodity/gold" target="_blank">Gold Price →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">加密货币</span>
-        <h3>BTC/ETH：BTC守住$62,000关口，ETH跌破$2,000心理支撑</h3>
-        <p>Bitcoin 在$62,797附近交易，24小时交易量约$149.2亿，月内曾探低至$59,000（接近$53,600的实现价格底部区域）。Ethereum 大幅跌破$2,000关键心理关口，当前约$1,680，月内跌幅超14%。ETH走弱主因：ETF持续净流出、死亡交叉完成、以及DeFi收益率下降。Strategy公司在动荡期间增持$1亿比特币，显示机构长期配置信心仍在。</p>
-        <a href="https://www.coindesk.com/price/bitcoin" target="_blank">CoinDesk →</a>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">🤖 AI机器人动态</h2>
-      <div class="card">
-        <span class="tag tag-up">Figure AI</span>
-        <h3>Figure 03 + Helix 02：1000万参数神经网络替代10万行C++</h3>
-        <p>Figure AI 发布重大技术更新：Helix 02 AI 系统搭载1000万参数神经网络，成功替代了约109,000行手工编写的C++平衡代码。这是具身智能（Embodied AI）领域最清晰的公开进展信号。Figure 03 已在宝马斯巴达堡和莱比锡工厂部署，协助生产超30,000辆X3车型。在New Market Pitch的2026年评分中，Figure以78.9分大幅领先Tesla Optimus的45.1分，成为当前人形机器人商业化的明确领导者。</p>
-        <a href="https://newmarketpitch.com/blogs/news/humanoid-robotics-figure-vs-tesla" target="_blank">New Market Pitch →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">Tesla</span>
-        <h3>Tesla Optimus：上海AWE展示仿生手部，量产目标$20,000–$30,000</h3>
-        <p>Tesla 在上海 AWE 2026 展示了 Optimus 高度仿生的机器人手部设计，手指比例和结构接近人类。马斯克重申 Optimus "长期潜力可能超越汽车业务"，但截至2026年4月仍无外部付费客户，多个演示被曝使用远程操控。Tesla优势在于：Fremont产线改造能力、AI5芯片自研、Cortex 2.0计算平台、超过$410亿现金储备。量产成本目标$20,000–$30,000，长期规模优势无可比拟。行业判断：Tesla"最有希望在未来获胜"，但 Figure"今天已领先"。</p>
-        <a href="https://www.teslarati.com/tesla-optimus-awe-2026-shanghai/" target="_blank">Teslarati →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-up">NVIDIA</span>
-        <h3>NVIDIA Cosmos 世界基础模型推动物理AI训练革命</h3>
-        <p>NVIDIA 推出 Cosmos 世界基础模型（WFM），旨在让机器人在实际部署前理解物理世界。丰田研究院（TRI）已定制 Cosmos WFM 用于动态视图合成、远程操作数据增强和导航世界模型，实现行业领先的训练效果。Cosmos 代表了从"规则编程"到"世界模拟"的范式转变，可能大幅降低机器人训练成本并加速泛化能力。NVIDIA在机器人周的展示进一步巩固了其在物理AI基础设施层的统治地位。</p>
-        <a href="https://blogs.nvidia.com/blog/national-robotics-week-2026/" target="_blank">NVIDIA Blog →</a>
-      </div>
-      <div class="card">
-        <span class="tag tag-neutral">行业全景</span>
-        <h3>人形机器人2026：从演示到生产力的分水岭</h3>
-        <p>① <strong>Agility Digit</strong>：7+台在丰田加拿大以RaaS（机器人即服务）模式运行；② <strong>Unitree Robotics</strong>：2025年出货5,500+台，2026年目标翻倍；③ <strong>Microsoft</strong>：宣布四年$100亿投资日本AI数据中心（2026–2029），与SoftBank和Sakura Internet合作；④ 中国机器人产量预计2026年翻倍，宇树+智元合计占80%份额。行业共识：竞争核心已从"能否走路"转向"能否创造可量化的商业价值"——付费客户、产线效率提升、ROI正成为新的评估标准。</p>
-        <a href="https://www.humanoid.press/" target="_blank">Humanoid Press →</a>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>每日资讯简报 · 由 OpenClaw 自动采集生成</p>
-      <p class="url">🔗 https://mast0506.github.io/daily-briefing/</p>
-      <p style="margin-top: 0.5rem; font-size: 0.75rem;">数据来源：NPR、Reuters、BBC、Baltic Exchange、Trading Economics、Yahoo Finance、CoinDesk、Lloyd's List、New Market Pitch、NVIDIA Blog、Lazard 等</p>
-      <p style="margin-top: 0.3rem; font-size: 0.7rem; color: #666;">免责声明：本简报仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。</p>
-    </div>
-  </div>
+    
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        const bdiCtx = document.getElementById('bdiChart').getContext('2d');
+        new Chart(bdiCtx, {
+            type: 'line',
+            data: {
+                labels: ['6月8日', '6月9日', '6月10日', '6月11日', '6月12日'],
+                datasets: [{
+                    label: 'BDI',
+                    data: [2916, 2818, 2771, 2729, 2729],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'BCI',
+                    data: [5432, 5245, 5123, 5034, 5021],
+                    borderColor: '#f87171',
+                    backgroundColor: 'rgba(248, 113, 113, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#f87171',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'BPI',
+                    data: [2513, 2487, 2456, 2432, 2428],
+                    borderColor: '#4ade80',
+                    backgroundColor: 'rgba(74, 222, 128, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#4ade80',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { usePointStyle: true }
+                    }
+                }
+            }
+        });
+        
+        const stockCtx = document.getElementById('stockChart').getContext('2d');
+        new Chart(stockCtx, {
+            type: 'line',
+            data: {
+                labels: ['6月8日', '6月9日', '6月10日', '6月11日', '6月12日'],
+                datasets: [{
+                    label: 'NVDA',
+                    data: [208.64, 208.19, 200.42, 204.87, 205.19],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'TSLA',
+                    data: [null, null, null, null, 405.75],
+                    borderColor: '#f87171',
+                    backgroundColor: 'rgba(248, 113, 113, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#f87171',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { usePointStyle: true }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
