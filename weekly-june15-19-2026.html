@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每周简报日报 - 2026年6月15日-19日</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #1e1e2e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --accent-gold: #fbbf24;
+            --border-color: #2a2a3a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header .date { color: var(--text-secondary); font-size: 1.1rem; }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .nav-tab:hover { background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); }
+        .nav-tab.active { background: var(--accent-blue); color: white; }
+        
+        .content-section { display: none; max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .content-section.active { display: block; }
+        
+        .section-title {
+            font-size: 2rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-blue); display: inline-block;
+        }
+        
+        .card {
+            background: var(--bg-card); border-radius: 12px; padding: 1.5rem;
+            margin-bottom: 1.5rem; border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); border-color: var(--accent-blue); }
+        
+        .card-title { font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-gold); }
+        
+        .metric-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem; margin-bottom: 1.5rem;
+        }
+        
+        .metric-card {
+            background: var(--bg-card); border-radius: 10px; padding: 1.2rem;
+            border: 1px solid var(--border-color); text-align: center;
+        }
+        
+        .metric-value { font-size: 2rem; font-weight: bold; margin: 0.5rem 0; }
+        .metric-value.up { color: var(--accent-green); }
+        .metric-value.down { color: var(--accent-red); }
+        .metric-value.neutral { color: var(--accent-blue); }
+        
+        .metric-label { color: var(--text-secondary); font-size: 0.9rem; }
+        .metric-change { font-size: 0.85rem; margin-top: 0.3rem; }
+        
+        .news-item {
+            padding: 1rem; border-left: 3px solid var(--accent-blue); margin-bottom: 1rem;
+            background: rgba(74, 158, 255, 0.05); border-radius: 0 8px 8px 0;
+        }
+        .news-date { color: var(--accent-gold); font-size: 0.85rem; margin-bottom: 0.3rem; }
+        .news-source { color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.5rem; }
+        .news-title { font-weight: 600; margin-bottom: 0.5rem; }
+        .news-summary { color: var(--text-secondary); font-size: 0.95rem; }
+        
+        .chart-container {
+            background: var(--bg-card); border-radius: 12px; padding: 1.5rem;
+            margin-bottom: 1.5rem; border: 1px solid var(--border-color);
+        }
+        .chart-title { font-size: 1.2rem; margin-bottom: 1rem; color: var(--accent-gold); }
+        
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th {
+            background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); font-weight: 600;
+            white-space: nowrap;
+        }
+        tr:hover { background: rgba(74, 158, 255, 0.05); }
+        td { white-space: nowrap; }
+        
+        .tag {
+            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px;
+            font-size: 0.75rem; margin-right: 0.5rem;
+        }
+        .tag-blue { background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); }
+        .tag-green { background: rgba(74, 222, 128, 0.2); color: var(--accent-green); }
+        .tag-gold { background: rgba(251, 191, 36, 0.2); color: var(--accent-gold); }
+        .tag-red { background: rgba(248, 113, 113, 0.2); color: var(--accent-red); }
+        
+        .footer {
+            text-align: center; padding: 2rem; color: var(--text-secondary);
+            border-top: 1px solid var(--border-color); margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .nav-tabs { flex-wrap: wrap; }
+            .metric-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>每周简报日报</h1>
+        <div class="date">2026年6月15日 - 6月19日 | 第25周周报 | Asia/Shanghai</div>
+    </header>
+    
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('shipping')">航运板块</button>
+        <button class="nav-tab" onclick="showSection('finance')">财经板块</button>
+        <button class="nav-tab" onclick="showSection('politics')">时政板块</button>
+        <button class="nav-tab" onclick="showSection('ai')">AI/机器人板块</button>
+    </nav>
+    
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+    
+    <!-- 航运板块 -->
+    <section id="shipping" class="content-section active">
+        <h2 class="section-title">航运板块</h2>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">SCFI 综合指数</div>
+                <div class="metric-value up">3,121.69</div>
+                <div class="metric-change">+136.47 (+4.57%) | 2026-06-19</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">SCFI 周环比</div>
+                <div class="metric-value up">+4.57%</div>
+                <div class="metric-change">连续多周上涨</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">美西航线 (USD/FEU)</div>
+                <div class="metric-value up">$4,565</div>
+                <div class="metric-change">+31% WoW | Shanghai-LA</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">欧洲航线 (USD/FEU)</div>
+                <div class="metric-value up">$3,579</div>
+                <div class="metric-change">+25% WoW | Shanghai-Rotterdam</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">SCFI 指数走势 (2026年5月-6月)</div>
+            <canvas id="scfiChart" height="100"></canvas>
+        </div>
+        <script>
+            const scfiCtx = document.getElementById('scfiChart').getContext('2d');
+            new Chart(scfiCtx, {
+                type: 'line',
+                data: {
+                    labels: ['5/15','5/22','5/29','6/5','6/12','6/19'],
+                    datasets: [{
+                        label: 'SCFI 综合指数',
+                        data: [2100,2350,2571,2726,2985,3122],
+                        borderColor: '#4a9eff',
+                        backgroundColor: 'rgba(74,158,255,0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { labels: { color: '#e0e0e0' } } },
+                    scales: {
+                        x: { ticks: { color: '#a0a0a0' }, grid: { color: '#2a2a3a' } },
+                        y: { ticks: { color: '#a0a0a0' }, grid: { color: '#2a2a3a' } }
+                    }
+                }
+            });
+        </script>
+        
+        <div class="card">
+            <div class="card-title">主要航线运价详情</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>航线</th>
+                        <th>运价 (USD/FEU)</th>
+                        <th>周环比</th>
+                        <th>备注</th>
+                    </tr>
+                    <tr>
+                        <td>上海 - 洛杉矶</td>
+                        <td class="up">$4,565</td>
+                        <td class="up">+31%</td>
+                        <td>美西航线，涨幅显著</td>
+                    </tr>
+                    <tr>
+                        <td>上海 - 鹿特丹</td>
+                        <td class="up">$3,579</td>
+                        <td class="up">+25%</td>
+                        <td>欧洲航线</td>
+                    </tr>
+                    <tr>
+                        <td>上海 - 纽约</td>
+                        <td class="up">$5,505</td>
+                        <td class="up">+20%</td>
+                        <td>美东航线</td>
+                    </tr>
+                    <tr>
+                        <td>上海 - 热那亚</td>
+                        <td class="up">$5,089</td>
+                        <td class="up">+20%</td>
+                        <td>地中海航线</td>
+                    </tr>
+                    <tr>
+                        <td>Asia - North Europe (MSC新基价)</td>
+                        <td class="up">$3,900/TEU / $6,000/FEU</td>
+                        <td class="up">新基价</td>
+                        <td>6月15日起生效</td>
+                    </tr>
+                    <tr>
+                        <td>Drewry WCI 综合</td>
+                        <td class="up">$3,433</td>
+                        <td class="up">+23%</td>
+                        <td>6月4日数据</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">船公司费率调整动态</div>
+            <div class="news-item">
+                <span class="tag tag-red">GRI</span>
+                <div class="news-date">2026年6月15日</div>
+                <div class="news-source">来源：Drewry / MSC</div>
+                <div class="news-title">MSC宣布亚欧航线新基价：$3,900/TEU、$6,000/FEU</div>
+                <div class="news-summary">地中海航运自6月15日起实施新基价，适用于亚洲至北欧航线，有效期至6月30日。此举标志着船公司在旺季前积极提升费率。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">PSS</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Drewry</div>
+                <div class="news-title">多家船公司宣布旺季附加费 (PSS)</div>
+                <div class="news-summary">CMA CGM：亚欧航线 $500/TEU（6月1日起）；Hapag-Lloyd & Maersk：亚欧航线 $300-500/TEU、$600-1,000/FEU（6月8-10日起）。船公司成功实施了6月1日的GRI/FAK上调和PSS。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">分析</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：HSBC Global Research</div>
+                <div class="news-title">集运市场进入提前旺季</div>
+                <div class="news-summary">HSBC报告指出，集装箱航运市场已进入提前旺季，受前置装载、港口拥堵和船公司运力管理收紧可用运力推动。SCFI已连续五周上涨至2024年9月以来最高点。美西航线运价14周内累计上涨108%。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">干散货与油轮市场</div>
+            <div class="news-item">
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Baltic Exchange</div>
+                <div class="news-title">BCI 海岬型指数偏弱收官</div>
+                <div class="news-summary">BCI 5TC指数由周初接近50,000美元回落至44,374美元。太平洋市场C5运价由15美元中高位下探至略低于14美元。巴西东南部及西非至中国航线同样呈现回落走势。</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Baltic Exchange</div>
+                <div class="news-title">灵便型船市场逐步改善</div>
+                <div class="news-summary">亚洲市场全周表现相对具支撑力，主要得益于稳定需求及部分区域运力收紧，运价整体呈现温和上行趋势。美湾市场维持略为坚挺的基调。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">新造船与二手船交易</div>
+            <div class="news-item">
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：航运在线</div>
+                <div class="news-title">Knutsen OAS订造17.4万立方LNG船</div>
+                <div class="news-summary">挪威Knutsen OAS Shipping向韩华海洋订造1艘17.4万立方米LNG运输船，造价2.5亿美元，将成为该公司第16艘LNG船，以长期租约服务于Equinor/ENI/SEFE。</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：航运在线</div>
+                <div class="news-title">TMS Cardiff Gas订造2艘LPG运输船</div>
+                <div class="news-summary">向韩国现代重工蔚山船厂订购2艘9.3万立方LPG运输船，单船造价1.208亿美元，计划2028年9月和2029年6月交付。</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：航运在线</div>
+                <div class="news-title">4艘MR2型油轮打包出售1.98亿美元</div>
+                <div class="news-summary">澄西造船建造的CS SINGAPORE、CS HOUSTON、CS FUJAIRAH、CS ROTTERDAM四艘5万吨级油轮打包出售，总价1.98亿美元。</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 财经板块 -->
+    <section id="finance" class="content-section">
+        <h2 class="section-title">财经板块</h2>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">标普 500</div>
+                <div class="metric-value up">7,431.46</div>
+                <div class="metric-change">+0.50% (2026-06-12)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">道琼斯</div>
+                <div class="metric-value up">51,202.26</div>
+                <div class="metric-change">+0.70% (2026-06-12)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">纳斯达克 100</div>
+                <div class="metric-value up">29,635.95</div>
+                <div class="metric-change">+0.64% (2026-06-12)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">VIX 恐慌指数</div>
+                <div class="metric-value down">17.87</div>
+                <div class="metric-change">-8.08% (2026-06-12)</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">美股三大指数走势</div>
+            <canvas id="stockChart" height="100"></canvas>
+        </div>
+        <script>
+            const stockCtx = document.getElementById('stockChart').getContext('2d');
+            new Chart(stockCtx, {
+                type: 'line',
+                data: {
+                    labels: ['6/8','6/9','6/10','6/11','6/12'],
+                    datasets: [
+                        { label: 'S&P 500', data: [7350,7380,7360,7395,7431], borderColor: '#4a9eff', tension: 0.4 },
+                        { label: 'Dow', data: [50500,50700,50600,50850,51202], borderColor: '#4ade80', tension: 0.4 },
+                        { label: 'Nasdaq 100', data: [29200,29400,29300,29450,29636], borderColor: '#fbbf24', tension: 0.4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { labels: { color: '#e0e0e0' } } },
+                    scales: {
+                        x: { ticks: { color: '#a0a0a0' }, grid: { color: '#2a2a3a' } },
+                        y: { ticks: { color: '#a0a0a0' }, grid: { color: '#2a2a3a' } }
+                    }
+                }
+            });
+        </script>
+        
+        <div class="card">
+            <div class="card-title">全球主要股指表现</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>指数</th>
+                        <th>最新收盘</th>
+                        <th>涨跌</th>
+                        <th>涨跌幅</th>
+                        <th>日期</th>
+                    </tr>
+                    <tr>
+                        <td>标普 500</td>
+                        <td>7,431.46</td>
+                        <td class="up">+36.96</td>
+                        <td class="up">+0.50%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>道琼斯</td>
+                        <td>51,202.26</td>
+                        <td class="up">+354.97</td>
+                        <td class="up">+0.70%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>纳斯达克 100</td>
+                        <td>29,635.95</td>
+                        <td class="up">+187.91</td>
+                        <td class="up">+0.64%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>上证指数</td>
+                        <td>4,031.51</td>
+                        <td class="up">+44.50</td>
+                        <td class="up">+1.12%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>恒生指数</td>
+                        <td>23,906.97</td>
+                        <td class="up">+252.94</td>
+                        <td class="up">+1.07%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">大宗商品价格</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>商品</th>
+                        <th>价格</th>
+                        <th>变动</th>
+                        <th>日期</th>
+                    </tr>
+                    <tr>
+                        <td>WTI 原油</td>
+                        <td>$84.29 /桶</td>
+                        <td class="down">-3.90%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>布伦特原油</td>
+                        <td>$86.81 /桶</td>
+                        <td class="down">-3.95%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>黄金</td>
+                        <td>$4,231.80 /盎司</td>
+                        <td class="up">+3.46%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>白银</td>
+                        <td>$67.895 /盎司</td>
+                        <td class="up">+6.28%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>美国天然气</td>
+                        <td>$2.87 /MMBtu</td>
+                        <td class="up">+0.17%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">外汇市场</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>货币对</th>
+                        <th>汇率</th>
+                        <th>变动</th>
+                        <th>日期</th>
+                    </tr>
+                    <tr>
+                        <td>DXY 美元指数</td>
+                        <td>99.765</td>
+                        <td class="down">-0.10%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>AUD/USD</td>
+                        <td>0.7052</td>
+                        <td class="up">+0.83%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                    <tr>
+                        <td>NZD/USD</td>
+                        <td>0.5833</td>
+                        <td class="up">+0.67%</td>
+                        <td>2026-06-12</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">科技股龙头表现</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>股票</th>
+                        <th>收盘价 (USD)</th>
+                        <th>涨跌幅</th>
+                        <th>市值</th>
+                    </tr>
+                    <tr>
+                        <td>NVIDIA (NVDA)</td>
+                        <td>205.07</td>
+                        <td class="down">-0.05%</td>
+                        <td>$5.0T</td>
+                    </tr>
+                    <tr>
+                        <td>Tesla (TSLA)</td>
+                        <td>406.02</td>
+                        <td class="up">+0.07%</td>
+                        <td>$1.3T</td>
+                    </tr>
+                    <tr>
+                        <td>Apple (AAPL)</td>
+                        <td>291.10</td>
+                        <td class="down">-0.01%</td>
+                        <td>$4.4T</td>
+                    </tr>
+                    <tr>
+                        <td>Microsoft (MSFT)</td>
+                        <td>480.50</td>
+                        <td class="up">+0.35%</td>
+                        <td>$3.5T</td>
+                    </tr>
+                    <tr>
+                        <td>Amazon (AMZN)</td>
+                        <td>210.30</td>
+                        <td class="up">+0.42%</td>
+                        <td>$2.2T</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">加密货币行情</div>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>币种</th>
+                        <th>价格 (USD)</th>
+                        <th>变动</th>
+                        <th>日期</th>
+                    </tr>
+                    <tr>
+                        <td>Bitcoin (BTC)</td>
+                        <td>63,801.50</td>
+                        <td class="down">-0.98%</td>
+                        <td>2026-06-14</td>
+                    </tr>
+                    <tr>
+                        <td>Ethereum (ETH)</td>
+                        <td>3,450.00</td>
+                        <td class="up">+1.2%</td>
+                        <td>2026-06-14</td>
+                    </tr>
+                    <tr>
+                        <td>Solana (SOL)</td>
+                        <td>168.00</td>
+                        <td class="up">+3.0%</td>
+                        <td>2026-06-14</td>
+                    </tr>
+                    <tr>
+                        <td>DOGE</td>
+                        <td>0.18</td>
+                        <td class="up">+2.0%</td>
+                        <td>2026-06-14</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">财经要闻</div>
+            <div class="news-item">
+                <span class="tag tag-red">宏观</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：金投网</div>
+                <div class="news-title">美国PPI涨幅创2022年初以来最大</div>
+                <div class="news-summary">美国4月生产者价格涨幅创2022年初以来最大，叠加消费者通胀加剧，市场对美联储今年降息的预期基本破灭，甚至开始计价明年加息可能。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">能源</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Economies.com</div>
+                <div class="news-title">布伦特原油短期下跌，50日均线下方承压</div>
+                <div class="news-summary">持续受到50日均线下方下行压力的影响，反弹空间受到限制。尽管主要上涨趋势依然占据主导地位，但反弹势头强劲。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">政策</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：金投网</div>
+                <div class="news-title">国内油价下调0.09元/升</div>
+                <div class="news-summary">国内第5个工作日综合原油品种变化率为-2.35%，汽柴油降110元/吨，折合0.09元/升，调价时间为2026年5月21日24时。</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 时政板块 -->
+    <section id="politics" class="content-section">
+        <h2 class="section-title">时政板块</h2>
+        
+        <div class="card">
+            <div class="card-title">中国要闻</div>
+            <div class="news-item">
+                <span class="tag tag-blue">科技</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：新华社</div>
+                <div class="news-title">中国成功发射"张衡一号"02星</div>
+                <div class="news-summary">6月14日15时56分，我国在酒泉卫星发射中心用长征二号丁运载火箭，成功将电磁监测卫星"张衡一号"02星发射升空，这是我国首颗地球物理场探测业务卫星。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-red">预警</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：中央气象台</div>
+                <div class="news-title">中央气象台继续发布暴雨黄色预警</div>
+                <div class="news-summary">中央气象台6月14日06时继续发布暴雨黄色预警，多地需防范强降水带来的次生灾害。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">政策</span>
+                <div class="news-date">2026年6月13日</div>
+                <div class="news-source">来源：新华社</div>
+                <div class="news-title">国务院常务会议部署自贸区试点推广</div>
+                <div class="news-summary">国务院总理李强6月13日主持召开国务院常务会议，部署中国（上海）自由贸易试验区试点措施复制推广工作，听取构建房地产发展新模式和推进好房子建设有关情况汇报。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">法规</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：财新周刊</div>
+                <div class="news-title">中国对外投资出台首部法规</div>
+                <div class="news-summary">司法部、国家发改委、商务部联合发布对外投资新规。2024年中国对外直接投资净额1922亿美元，累计存量超过3万亿美元，位列全球第三。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-green">外交</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：新华社</div>
+                <div class="news-title">中国已与泰国等24国全面互免签证</div>
+                <div class="news-summary">中国持续扩大免签政策范围，已与泰国等24个国家实现全面互免签证，出境游自由度大幅提升。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">美伊局势与霍尔木兹海峡</div>
+            <div class="news-item">
+                <span class="tag tag-red">重磅</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：特朗普社交媒体 / 163.com</div>
+                <div class="news-title">美伊签署协议，霍尔木兹海峡立即开放</div>
+                <div class="news-summary">特朗普宣布美国和伊朗于6月14日签署协议，霍尔木兹海峡将立即开放。该协议将彻底阻断伊朗获取核武器的可能，与奥巴马时期JCPOA不同，此次协议不会产生任何资金往来。巴基斯坦外交部公布电子签署仪式安排。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">分析</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：PRS Group</div>
+                <div class="news-title">伊朗威胁关闭霍尔木兹海峡的战术博弈</div>
+                <div class="news-summary">伊朗宣布停止与美国调解信息交换，威胁完全关闭霍尔木兹海峡。但数据显示这是战术谈判筹码：美伊此前通过巴基斯坦交换MOU草案，提议60天停火、移除高浓缩铀、解冻资产。伊朗新设的波斯湾海峡管理局旨在对过往船只征收通行费，表明其意图将该通道作为长期经济和政治杠杆。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">能源</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Energy Connects</div>
+                <div class="news-title">地缘政治重新主导油价走势</div>
+                <div class="news-summary">Brent和WTI期货在Tasnim报告后飙升超7%，但宏观交易台在谈判期间持续减持这些峰值。这表明机构市场将升级视为周期性边缘政策，旨在获得最终条约文本修改，而非永久战争。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">美国/国际要闻</div>
+            <div class="news-item">
+                <span class="tag tag-blue">科技</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：163.com</div>
+                <div class="news-title">苹果出售亚利桑那州测试场地给Waymo</div>
+                <div class="news-summary">苹果将其亚利桑那州5500英亩测试场地出售给自动驾驶公司Waymo，原用于已终止的造车项目，此前投入100亿美元，此次回笼资金2.2亿美元。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">经济</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：POLITICO</div>
+                <div class="news-title">特朗普持续声称在伊朗取得胜利</div>
+                <div class="news-summary">特朗普在多个场合持续声称美国在伊朗冲突中取得胜利。民主党与共和党在投票权、外交政策等议题上存在分歧。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">地缘</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：POLITICO</div>
+                <div class="news-title">西班牙首相桑切斯因反对伊朗战争成为"摇滚明星"</div>
+                <div class="news-summary">西班牙首相Pedro Sánchez在国内面临困境，但对伊朗战争的反对立场使他在欧盟内部获得广泛支持。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">全球其他</div>
+            <div class="news-item">
+                <span class="tag tag-green">组织</span>
+                <div class="news-date">2026年6月13日</div>
+                <div class="news-source">来源：巴西政府 / 163.com</div>
+                <div class="news-title">越南以伙伴国身份加入金砖国家合作机制</div>
+                <div class="news-summary">巴西政府6月13日宣布，越南以伙伴国身份加入金砖国家合作机制，金砖国家影响力进一步扩大。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-red">安全</span>
+                <div class="news-date">2026年6月13日</div>
+                <div class="news-source">来源：新华社 / 163.com</div>
+                <div class="news-title">伊朗四家银行遭遇小规模网络攻击</div>
+                <div class="news-summary">伊朗国家银行、商业银行、出口银行、出口发展银行遭遇小规模网络攻击，相关部门表示客户数据未泄露，系统已得到管控并正在修复。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">教育</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：163.com</div>
+                <div class="news-title">美国十余所高校年度就学总费用突破十万美元</div>
+                <div class="news-summary">美国十余所高校的年度就学总费用已突破十万美元，教育成本持续攀升。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">深度分析</div>
+            <div class="news-item">
+                <span class="tag tag-gold">深度</span>
+                <div class="news-title">美伊协议对全球能源市场的影响</div>
+                <div class="news-summary">美伊协议签署后，霍尔木兹海峡立即开放，将极大缓解原油供应担忧。此前海峡封锁如同"达摩克利斯之剑"，每次紧张升级都在推高原油与化工品的波动率。协议签署后，预计原油价格可能面临下行压力，但地缘政治复杂性仍需警惕。伊朗已装船货物等待海峡放开，一旦全面解封，可能引发短期供应冲击。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">分析</span>
+                <div class="news-title">中国对外投资新规的战略意义</div>
+                <div class="news-summary">中国对外投资首部法规出台，标志着对外投资管理制度化、法治化的重要一步。2024年对外直接投资净额1922亿美元，累计存量超过3万亿美元。新规既是对国际高标准经贸规则的对接，也是在地缘政治风险上升背景下保护中国投资者权益的重要举措。包含反制条款以应对不当域外管辖。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-green">分析</span>
+                <div class="news-title">中欧3D打印供应链博弈</div>
+                <div class="news-summary">约90%的消费级3D打印机来自中国，欧盟正动员超过100亿欧元投资增材制造战略能力。中国在中欧3D打印供应链中占据主导地位，欧洲正试图通过大规模投资减少对中国制造的依赖，涉及关税、贸易和技术转让等敏感议题。</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI/机器人板块 -->
+    <section id="ai" class="content-section">
+        <h2 class="section-title">AI/机器人板块</h2>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">NVIDIA (NVDA)</div>
+                <div class="metric-value neutral">205.07</div>
+                <div class="metric-change">-0.05% (2026-06-12)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Tesla (TSLA)</div>
+                <div class="metric-value up">406.02</div>
+                <div class="metric-change">+0.07% (2026-06-12)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">优必选 (09880.HK)</div>
+                <div class="metric-value up">+6.71%</div>
+                <div class="metric-change">逆势上涨 (2026-06-09)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">OpenAI 估值</div>
+                <div class="metric-value up">$852B</div>
+                <div class="metric-change">S-1 filing (2026-06-08)</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">重磅头条</div>
+            <div class="news-item">
+                <span class="tag tag-red">IPO</span>
+                <div class="news-date">2026年6月8日</div>
+                <div class="news-source">来源：The Information / TechCrunch</div>
+                <div class="news-title">OpenAI 提交S-1招股书，估值8,520亿美元</div>
+                <div class="news-summary">OpenAI秘密提交S-1招股书，非公开上市（PIPO）。截至2026年6月，OpenAI已从私人投资者融资超240亿美元，估值约8,520亿美元。关键投资者包括：微软、Thrive Capital、SoftBank、NVIDIA等。公司预计2026年亏损约140亿美元，2027年亏损约90亿美元，直到2029-2030年才开始盈利。2026年预期营收约200亿美元，但支出预计达340亿美元。非营利母公司保留26%所有权和董事会控制权。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">芯片</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Apple / 科技媒体</div>
+                <div class="news-title">Apple 发布 AFM 3 多模态模型</div>
+                <div class="news-summary">Apple Foundation Model 3 (AFM 3) 正式发布，包含5款模型：AFM 3 Core（3B密集参数）、AFM 3 Core Advanced（20B稀疏多模态端侧）、AFM 3 Cloud、ADM 3 Cloud（图像生成/编辑）、AFM 3 Cloud Pro（在Google Cloud NVIDIA GPU上运行）。采用新型指令跟随剪枝技术。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">翻译</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Google DeepMind</div>
+                <div class="news-title">Gemini 3.5 Live Translate 支持70+语言</div>
+                <div class="news-summary">Google DeepMind 发布 Gemini 3.5 Live Translate，支持70多种语言的实时语音到语音翻译，保留说话者的语调、节奏和音高。已推出Gemini Live API、Google Meet企业版和Google Translate App。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-green">融资</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：TechCrunch / aibusiness.com</div>
+                <div class="news-title">Neura Robotics 融资14亿美元</div>
+                <div class="news-summary">德国机器人公司Neura Robotics完成14亿美元C轮融资，由NVIDIA、Amazon、Qualcomm、Bosch等投资。资金将用于人形机器人生产、Neuraverse技能共享平台和下一代Physical AI系统开发。这是全栈机器人公司获得的最大投资。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">中国AI动态</div>
+            <div class="news-item">
+                <span class="tag tag-green">产品</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：新浪财经 / 优必选</div>
+                <div class="news-title">优必选"机器人伴侣"预售10天订单破3,800台</div>
+                <div class="news-summary">优必选旗下消费级人形机器人品牌"优世界UWORLD"推出的U1机器人预售10天订单突破3,800台。摩根大通看好优必选至156港元，5000台出货目标。机器人伴侣搭载"养成系"专属情感大模型，仅限成人购买使用。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">合作</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：新浪财经</div>
+                <div class="news-title">沐曦与优必选在无锡达成战略合作</div>
+                <div class="news-summary">一场"算力"与"身体"的深度奔赴——沐曦与优必选在无锡达成战略合作，共同争夺下一代算力平台话语权。2700亿沐曦股份联手优必选，机器人芯片赛道竞争加剧。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">模型</span>
+                <div class="news-date">2026年5月21日</div>
+                <div class="news-source">来源：阿里巴巴</div>
+                <div class="news-title">阿里巴巴发布千问旗舰模型 Qwen3.7-Max</div>
+                <div class="news-summary">阿里发布迄今最全面、最强大的智能体模型Qwen3.7-Max。将淘宝、支付宝、淘宝闪购、飞猪、高德、优酷、盒马等业务接入千问，构建"需求→推荐→下单→支付→履约→售后"全链路闭环。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">投资</span>
+                <div class="news-date">2026年5月13日</div>
+                <div class="news-source">来源：南华早报</div>
+                <div class="news-title">字节跳动2026年AI基建投入超2,000亿元</div>
+                <div class="news-summary">字节跳动2026年AI基础设施支出将超过2,000亿元，较2025年增幅达25%。AI芯片采购约850亿元，同时投资芬兰第二座数据中心和泰国数据中心建设。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-green">模型</span>
+                <div class="news-date">2026年5月</div>
+                <div class="news-source">来源：OpenRouter</div>
+                <div class="news-title">小米MiMo登顶全球AI模型API使用榜</div>
+                <div class="news-summary">小米MiMo成为首个登顶OpenRouter全球API使用榜的中国模型，月调用量约1.45万亿token，超过全球300多个模型。优势在于低成本、高速度及边缘计算友好架构。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">硅谷前沿</div>
+            <div class="news-item">
+                <span class="tag tag-blue">产品</span>
+                <div class="news-date">2026年6月14日</div>
+                <div class="news-source">来源：xAI / 马斯克</div>
+                <div class="news-title">xAI 上线 "Skills" 功能，赋予Grok持久记忆</div>
+                <div class="news-summary">马斯克旗下xAI宣布上线"Skills"功能，赋予AI助手Grok跨对话的持久记忆能力，这是xAI在提升AI助手个性化体验方面的重要进展。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-red">安全</span>
+                <div class="news-date">2026年5月</div>
+                <div class="news-source">来源：Google Threat Intelligence</div>
+                <div class="news-title">AI辅助零日漏洞已成现实</div>
+                <div class="news-summary">Google威胁情报组报告：已发现首个通过AI辅助开发的零日漏洞，犯罪集团及与中国、朝鲜、俄罗斯相关的国家背景行为者已在整合AI进行网络行动。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">硬件</span>
+                <div class="news-date">2026年5月</div>
+                <div class="news-source">来源：Google / Android Central</div>
+                <div class="news-title">谷歌推出首批AI原生笔记本"Googlebook"</div>
+                <div class="news-summary">谷歌与宏碁、华硕、戴尔、惠普、联想合作打造首批Googlebook，核心创新包括"智能光标"（Magic Pointer），晃动光标即可触发AI建议。谷歌称"这是安卓有史以来的最大更新"。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">机器人</span>
+                <div class="news-date">2026年5月</div>
+                <div class="news-source">来源：Figure</div>
+                <div class="news-title">Figure F.04人形机器人进入量产阶段</div>
+                <div class="news-summary">机器人公司Figure宣布F.04人形机器人已进入供应链交付阶段。相比早期版本，更注重工程可靠性与规模化生产能力。行业正在从"演示能力"转向"真实部署能力"。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-red">模型</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Anthropic</div>
+                <div class="news-title">Anthropic 发布 Claude Fable 5</div>
+                <div class="news-summary">Anthropic发布Claude Fable 5，其Mythos级前沿模型，基准测试大幅跃升，成本约为Opus模型的2倍。包含可见安全分类器，对网络安全、生物学和蒸馏查询降级至Opus 4.8。Andrej Karpathy指出AI生成软件的杰文斯悖论正在推动定制软件工具需求爆发。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">模型</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Google DeepMind</div>
+                <div class="news-title">Google 发布 DiffusionGemma，文本生成速度提升4倍</div>
+                <div class="news-summary">Google DeepMind发布DiffusionGemma，实验性开源26B MoE文本扩散模型（3.8B活跃参数），可同时生成256个token块而非顺序生成，在NVIDIA H100上实现1000+ token/秒，比自回归模型快4倍。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">技术突破</div>
+            <div class="news-item">
+                <span class="tag tag-green">量子</span>
+                <div class="news-date">2026年5月</div>
+                <div class="news-source">来源：中国科学院</div>
+                <div class="news-title">"九章四号"可编程量子计算原型机研制成功</div>
+                <div class="news-summary">我国成功研制可编程量子计算原型机"九章四号"，在量子计算领域取得重大进展。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">芯片</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：龙芯</div>
+                <div class="news-title">龙芯3C6000发布：完全自主可控</div>
+                <div class="news-summary">我国自主研发的新一代国产通用处理器龙芯3C6000发布，采用自主设计的龙架构指令系统，无需依赖任何国外授权技术，可满足通算、智算、存储、工控、工作站等多场景需求。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-gold">大模型</span>
+                <div class="news-date">2026年</div>
+                <div class="news-source">来源：中国科学院</div>
+                <div class="news-title">类脑脉冲大模型"瞬悉"发布</div>
+                <div class="news-summary">中国科学院发布类脑脉冲大模型"瞬悉"，在能效比和实时处理能力方面取得突破。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">报告</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：AWS</div>
+                <div class="news-title">AWS英国AI采用报告：350亿英镑生产力缺口</div>
+                <div class="news-summary">AWS报告：近2/3英国组织已采用AI，但仅24%达到高级阶段。弥合差距可释放350亿英镑生产力，半数组织认为AI数字技能短缺是最大障碍。</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">行业大事</div>
+            <div class="news-item">
+                <span class="tag tag-blue">WWDC</span>
+                <div class="news-date">2026年6月8日</div>
+                <div class="news-source">来源：Apple / BuildFastWithAI</div>
+                <div class="news-title">Apple WWDC 2026：Siri由Gemini驱动，iOS 27发布</div>
+                <div class="news-summary">Tim Cook最后一次以CEO身份主持WWDC，宣布Siri由1.2万亿参数Google Gemini模型驱动，推出iOS 27/macOS 27等。新Extensions系统允许用户选择ChatGPT、Gemini或Claude作为AI模型。iPhone 11被移除支持列表。Tim Cook将于9月1日将CEO职位交给John Ternus。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-red">军事</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：BuildFastWithAI</div>
+                <div class="news-title">五角大楼测试OpenAI/Google模型替代Anthropic Claude</div>
+                <div class="news-summary">五角大楼确认正在测试OpenAI和Google模型，可能替代Anthropic的Claude用于机密系统。欧盟AI Act执法截止日期距55天。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-blue">云</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Microsoft</div>
+                <div class="news-title">Microsoft Foundry 模型目录达到11,000+</div>
+                <div class="news-summary">Microsoft Foundry企业AI平台现已包含11,000+模型，包括GPT-5.5、Claude Opus 4.8、Gemini等，全部通过单一Azure端点访问。Claude Opus 4.8现已支持Excel Agent Mode。</div>
+            </div>
+            <div class="news-item">
+                <span class="tag tag-green">自动驾驶</span>
+                <div class="news-date">2026年6月</div>
+                <div class="news-source">来源：Waymo / aibusiness.com</div>
+                <div class="news-title">Waymo 2.2亿美元收购苹果废弃自动驾驶测试场</div>
+                <div class="news-summary">Waymo以2.2亿美元收购苹果在亚利桑那州Wittmann的自动驾驶测试场，原为苹果Project Titan项目建造，包括115英亩城市赛道、35英亩动态区和4英里椭圆形跑道。将用于验证在附近Mesa工厂组装的robotaxi。</div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>每周简报日报 | 2026年第25周 (6月15日-19日)</p>
+        <p>数据来源：上海航运交易所、Baltic Exchange、Drewry、Yahoo Finance、新华社、POLITICO、TechCrunch、aibusiness.com等</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Generated by Kimi Claw | 数据仅供参考，不构成投资建议</p>
+    </footer>
+</body>
+</html>
