@@ -178,6 +178,42 @@
         .data-change.up { color: #4ecdc4; }
         .data-change.down { color: #ff6b6b; }
         
+        /* 表格样式 */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+        }
+        
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        th {
+            color: #888;
+            font-weight: 500;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            color: #c0c0c0;
+        }
+        
+        .table-route { color: #4ecdc4; font-weight: 500; }
+        .table-rate { color: #f0f0f0; font-weight: 600; }
+        .table-change.up { color: #4ecdc4; }
+        .table-change.down { color: #ff6b6b; }
+        
         /* 机器人列表 */
         .robot-grid {
             display: grid;
@@ -253,72 +289,8 @@
         <!-- 头部 -->
         <div class="header">
             <h1>📰 每日资讯简报</h1>
-            <div class="date">2026年7月1日 · 星期三 · 新加坡时间</div>
+            <div class="date">2026年7月1日 · 星期三 · 北京时间</div>
             <div class="edition">Daily Briefing · Edition #1</div>
-        </div>
-        
-        <!-- 时政要闻 -->
-        <div class="section politics">
-            <div class="section-title">
-                <span class="icon">🌍</span>
-                时政要闻
-            </div>
-            
-            <div class="news-item">
-                <div class="news-title">
-                    美伊停火协议脆弱性加剧，地区紧张局势升级
-                    <span class="tag tag-hot">热点</span>
-                </div>
-                <div class="news-summary">
-                    华盛顿与德黑兰之间的近期停火协议在最新敌对行动后显得更加脆弱，其中包括美国对伊朗军事目标的打击。地区局势持续紧张，和平前景不明。
-                </div>
-                <div class="news-meta">
-                    <span>📰 NPR / AP</span>
-                    <span>🕐 12小时前</span>
-                </div>
-            </div>
-            
-            <div class="news-item">
-                <div class="news-title">
-                    以色列防长称特朗普曾阻止以军消灭黎巴嫩真主党
-                    <span class="tag tag-hot">独家</span>
-                </div>
-                <div class="news-summary">
-                    以色列国防部长透露，特朗普曾阻止以色列对黎巴嫩真主党采取全面军事行动。这一消息揭示了美以在中东政策上的复杂博弈关系。
-                </div>
-                <div class="news-meta">
-                    <span>📰 Live Mint</span>
-                    <span>🕐 2小时前</span>
-                </div>
-            </div>
-            
-            <div class="news-item">
-                <div class="news-title">
-                    习近平与金正恩举行罕见峰会，呼吁加强"战略合作"
-                    <span class="tag tag-neutral">外交</span>
-                </div>
-                <div class="news-summary">
-                    中国国家主席习近平与朝鲜领导人金正恩举行罕见峰会，呼吁加强与朝鲜的"战略合作"。这是两国高层近期少有的公开互动，引发国际社会关注。
-                </div>
-                <div class="news-meta">
-                    <span>📰 CNN / SCMP</span>
-                    <span>🕐 14小时前</span>
-                </div>
-            </div>
-            
-            <div class="news-item">
-                <div class="news-title">
-                    中国吉利7月向加拿大出口首批莲花电动汽车
-                    <span class="tag tag-new">贸易</span>
-                </div>
-                <div class="news-summary">
-                    根据加中领导人达成的协议，中国吉利汽车将于7月开始向加拿大出口首批莲花（Lotus）电动汽车，标志着中国汽车品牌进一步拓展北美高端市场。
-                </div>
-                <div class="news-meta">
-                    <span>📰 Reuters 独家</span>
-                    <span>🕐 7小时前</span>
-                </div>
-            </div>
         </div>
         
         <!-- 航运资讯 -->
@@ -330,52 +302,105 @@
             
             <div class="data-grid">
                 <div class="data-card">
-                    <div class="data-label">BDI 波罗的海干散货指数</div>
-                    <div class="data-value">2,501</div>
-                    <div class="data-change up">▲ +0.44% 日环比</div>
+                    <div class="data-label">Drewry WCI 综合指数</div>
+                    <div class="data-value">$4,166</div>
+                    <div class="data-change up">▲ +5% 周环比</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">海岬型指数</div>
-                    <div class="data-value">3,548</div>
-                    <div class="data-change up">▲ +0.3%</div>
+                    <div class="data-label">集装箱运价指数</div>
+                    <div class="data-value">3,240</div>
+                    <div class="data-change up">▲ +25.97% 月度</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">巴拿马型指数</div>
-                    <div class="data-value">2,154</div>
-                    <div class="data-change up">▲ +1.4%</div>
+                    <div class="data-label">上海→纽约 40ft</div>
+                    <div class="data-value">$7,149</div>
+                    <div class="data-change up">▲ +6%</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">超灵便型指数</div>
-                    <div class="data-value">1,667</div>
-                    <div class="data-change down">▼ -0.1%</div>
+                    <div class="data-label">上海→洛杉矶 40ft</div>
+                    <div class="data-value">$5,750</div>
+                    <div class="data-change up">▲ +12%</div>
+                </div>
+            </div>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>航线</th>
+                            <th>运价 (USD/40ft)</th>
+                            <th>周变动</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table-route">上海 → 纽约</td>
+                            <td class="table-rate">$7,149</td>
+                            <td class="table-change up">+6%</td>
+                            <td>跨太平洋持续走强</td>
+                        </tr>
+                        <tr>
+                            <td class="table-route">上海 → 洛杉矶</td>
+                            <td class="table-rate">$5,750</td>
+                            <td class="table-change up">+12%</td>
+                            <td>运力紧张</td>
+                        </tr>
+                        <tr>
+                            <td class="table-route">上海 → 鹿特丹</td>
+                            <td class="table-rate">$4,392</td>
+                            <td class="table-change up">+1%</td>
+                            <td>亚欧航线稳定</td>
+                        </tr>
+                        <tr>
+                            <td class="table-route">上海 → 热那亚</td>
+                            <td class="table-rate">$5,759</td>
+                            <td class="table-change neutral">0%</td>
+                            <td>地中海航线持平</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    Drewry WCI 跳涨5%至$4,166，创2024年9月以来新高
+                    <span class="tag tag-up">跳涨</span>
+                </div>
+                <div class="news-summary">
+                    6月25日，Drewry世界集装箱运价指数（WCI）大涨5%至$4,166/40ft，主要受跨太平洋航线推动。上海至纽约航线涨6%至$7,149，上海至洛杉矶涨12%至$5,750。跨太平洋航线仅宣布4个空白航次，运力紧张，货主抢运潮持续。CMA CGM宣布7月1日起亚欧航线FAK涨至$6,300/40ft，并征收PSS附加费。Drewry预计运费将进一步上涨。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Drewry / Freightos</span>
+                    <span>🕐 6月25日</span>
                 </div>
             </div>
             
             <div class="news-item">
                 <div class="news-title">
-                    BDI结束六连跌，季涨25%但月跌22%
-                    <span class="tag tag-neutral">数据</span>
+                    旺季需求提前启动，亚欧航线已超过去年同期峰值
+                    <span class="tag tag-hot">旺季</span>
                 </div>
                 <div class="news-summary">
-                    波罗的海干散货指数在6月30日结束连续六日下跌，回升至2,501点。值得注意的是，BDI本季度累计上涨约25%，但月度下跌22%。同比去年同期仍高出71.54%，显示干散货航运市场整体处于高位震荡区间。历史最高值为2008年5月的11,793点。
+                    6月初GRIs和PSS推动亚欧航线日运费飙升$1,000-$1,800/FEU，已超过去年6-7月峰值。NRF和Hackett Associates预测，美进口量将在秋季前持续低于2025年水平，当前需求实为"提前拉货"而非真实增长。油轮约$500/FEU的燃油附加费将于7月进入定价，叠加霍尔木兹海峡不确定性，运价短期波动将加剧。
                 </div>
                 <div class="news-meta">
-                    <span>📰 Trading Economics / Baltic Exchange</span>
-                    <span>🕐 6月30日收盘</span>
+                    <span>📰 Xeneta / Freightos</span>
+                    <span>🕐 6月</span>
                 </div>
             </div>
             
             <div class="news-item">
                 <div class="news-title">
-                    干散货航运市场展望：地缘风险持续，Q2波动或延续
-                    <span class="tag tag-neutral">分析</span>
+                    美伊停火缓解霍尔木兹海峡风险，但条件仍脆弱
+                    <span class="tag tag-neutral">地缘</span>
                 </div>
                 <div class="news-summary">
-                    干散货航运市场显示出企稳迹象，但仍对商品需求敏感。当前地缘政治风险尚未解决，预计2026年第二季度运费波动将持续。Panamax型船期租市场日租金约$15,000-$25,000。油轮市场采用Worldscale标准化费率指数。
+                    美伊6月17日签署谅解备忘录（MOU）后，霍尔木兹海峡通行风险有所缓解。但伊朗官员仍暗示希望对该海峡保持长期控制。亚洲和欧洲主要港口拥堵继续限制船舶可用运力，货主应预期持续运力紧张和短期运价波动。
                 </div>
                 <div class="news-meta">
-                    <span>📰 Maritime Hub</span>
-                    <span>🕐 近期分析</span>
+                    <span>📰 Drewry / Critical Threats</span>
+                    <span>🕐 6月30日</span>
                 </div>
             </div>
         </div>
@@ -389,52 +414,66 @@
             
             <div class="data-grid">
                 <div class="data-card">
-                    <div class="data-label">道琼斯指数</div>
-                    <div class="data-value">52,319</div>
-                    <div class="data-change up">▲ +0.26% 纪录收盘</div>
+                    <div class="data-label">纳斯达克综合</div>
+                    <div class="data-value">~26,518</div>
+                    <div class="data-change up">▲ +1.91% (6/18)</div>
                 </div>
                 <div class="data-card">
                     <div class="data-label">标普 500</div>
-                    <div class="data-value">+0.79%</div>
-                    <div class="data-change up">▲ 六年来最佳季度</div>
+                    <div class="data-value">~7,500</div>
+                    <div class="data-change up">▲ +1.08% (6/18)</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">纳斯达克</div>
-                    <div class="data-value">+1.52%</div>
-                    <div class="data-change up">▲ 科技板块反弹</div>
+                    <div class="data-label">纳斯达克 YTD</div>
+                    <div class="data-value">+14.09%</div>
+                    <div class="data-change up">▲ 科技股领涨</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">比特币 BTC</div>
-                    <div class="data-value">~$60K</div>
-                    <div class="data-change down">▼ 区间震荡</div>
+                    <div class="data-label">标普 500 YTD</div>
+                    <div class="data-value">+9.57%</div>
+                    <div class="data-change up">▲ 2026年延续涨势</div>
                 </div>
             </div>
             
             <div class="news-item">
                 <div class="news-title">
-                    美股创六年来最佳季度，道指连创新高
+                    2026年美股持续走高，纳指YTD涨14%，标普500涨近10%
                     <span class="tag tag-up">利好</span>
                 </div>
                 <div class="news-summary">
-                    6月30日，道琼斯工业平均指数上涨136点（+0.26%）至52,319.20点，连续第二个交易日创纪录收盘，年初至今累计上涨8.85%。纳斯达克综合指数大涨1.52%，标普500指数上涨0.79%。二季度有望成为标普500和纳斯达克自2020年以来表现最佳的季度，尽管伊朗战争带来不确定性。
+                    截至6月18日，纳斯达克综合指数收于26,517.93（+1.91%），标普500收于7,500.58（+1.08%），年初至今纳斯达克累计上涨14.09%，标普500上涨9.57%。5月底数据显示，纳斯达克YTD +16%，标普500 YTD +11%，道指+6%。2026年成为美股连续第四年录得双位数涨幅。但需注意Shiller PE（CAPE）已超30，为155年来第二贵水平。
                 </div>
                 <div class="news-meta">
-                    <span>📰 TheStreet / Schwab</span>
-                    <span>🕐 6月30日</span>
+                    <span>📰 Yahoo Finance / Chase / Country Economy</span>
+                    <span>🕐 截至6月18日</span>
                 </div>
             </div>
             
             <div class="news-item">
                 <div class="news-title">
-                    比特币在$59,000-$60,000区间震荡，分析师警示下行风险
-                    <span class="tag tag-down">谨慎</span>
+                    Nvidia财报不及预期，股价盘后跌超2%
+                    <span class="tag tag-down">回调</span>
                 </div>
                 <div class="news-summary">
-                    比特币本周在$59,000至$60,000的狭窄区间内交易。CoinDesk分析指出，这种盘整模式类似于2024年的平静期，但此次是在下跌市场中形成于支撑位下方，若跌破可能打开通往$40,000的下行空间。以太坊报价约$1,588-$1,619，Solana $74.22，XRP $1.04。
+                    Nvidia最新财报显示数据中心收入未达预期，股价在财报发布后跌超2%。但S&P 500在财报前仍创下新高，显示市场对科技巨头的增长预期仍保持高度敏感。巴菲特已于1月1日正式将Berkshire Hathaway CEO一职交棒Greg Abel，市场关注其投资策略延续性。
                 </div>
                 <div class="news-meta">
-                    <span>📰 CoinDesk / Yahoo Finance</span>
+                    <span>📰 Yahoo Finance / Barrons</span>
                     <span>🕐 最新</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    特朗普施压美联储，试图罢免理事Lisa Cook
+                    <span class="tag tag-hot">政策</span>
+                </div>
+                <div class="news-summary">
+                    特朗普政府持续向美联储施压，试图罢免理事Lisa Cook，引发市场对央行独立性的担忧。美联储回应称将"遵守任何法院判决"。此举可能重塑央行权力平衡，市场关注后续法律进展。交易员预计央行本月维持利率不变，但3月会议分歧加大。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Yahoo Finance / TheStreet</span>
+                    <span>🕐 近期</span>
                 </div>
             </div>
             
@@ -444,11 +483,89 @@
                     <span class="tag tag-neutral">展望</span>
                 </div>
                 <div class="news-summary">
-                    各大机构对2026年金融市场展望显示，比特币目标价$100,000、以太坊$3,500、瑞波币$2.35备受关注。BlackRock投资研究所指出，新兴市场、高收益债和全球企业债市场年初至今表现活跃。黄金作为避险资产在中东局势紧张背景下受到关注。
+                    各大机构对2026年金融市场展望显示，比特币目标价$100,000、以太坊$3,500。BlackRock投资研究所指出新兴市场、高收益债和全球企业债年初至今表现活跃。黄金和白银在2025年创下1979年以来最佳年度表现后，2026年继续走高。铝价突破$3,000/吨，为2022年以来首次。
                 </div>
                 <div class="news-meta">
                     <span>📰 Mitrade / BlackRock</span>
                     <span>🕐 2026年展望</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 时政要闻 -->
+        <div class="section politics">
+            <div class="section-title">
+                <span class="icon">🌍</span>
+                时政要闻
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    美伊签署60天谅解备忘录，霍尔木兹海峡封锁解除
+                    <span class="tag tag-hot">地缘</span>
+                </div>
+                <div class="news-summary">
+                    6月17日，美国总统特朗普与伊朗总统Masoud Pezeshkian签署谅解备忘录（MOU），为结束2026年美伊冲突奠定框架。该协议包括停止黎巴嫩敌对行动、伊朗解除霍尔木兹海峡限制、美国减少区域军事存在、解除对伊制裁及经济重建承诺。双方设定60天内就伊朗核计划达成协议，伊朗重申不追求核武器。特朗普随即宣布解除对停靠伊朗港口船只的海军封锁。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Britannica / POLITICO</span>
+                    <span>🕐 6月17日签署</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    伊朗仍暗示欲长期控制霍尔木兹海峡，美国官员称谈判在"最后阶段"
+                    <span class="tag tag-neutral">博弈</span>
+                </div>
+                <div class="news-summary">
+                    6月30日，伊朗官员继续暗示希望长期控制霍尔木兹海峡，尽管遭到明显阻力。美国官员则称与伊朗的谈判处于"最后阶段"，可能在"两三天内"达成协议。美伊代表团将于7月初在卡塔尔多哈举行会谈，推进MOU后续谈判。但市场分析认为，永久和平条约在6月30日前达成的概率仅约5%。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Critical Threats / POLITICO / FutureSearch</span>
+                    <span>🕐 6月30日</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    美国最高法院允许特朗普终止超百万移民临时保护身份
+                    <span class="tag tag-hot">裁决</span>
+                </div>
+                <div class="news-summary">
+                    美国最高法院裁定，特朗普政府可终止超过一百万移民的临时保护身份（TPS）。该裁决可能对肉类加工等食品供应链行业造成劳动力短缺影响，这些行业依赖TPS持有者作为重要劳动力来源。美国商会已聘请Joshua Walker担任首席国际事务官，为11月B20峰会做准备。
+                </div>
+                <div class="news-meta">
+                    <span>📰 POLITICO</span>
+                    <span>🕐 6月29日</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    美国商品贸易逆差扩大，企业利用替代关税政策
+                    <span class="tag tag-neutral">贸易</span>
+                </div>
+                <div class="news-summary">
+                    随着企业利用特朗普政府转向的替代关税政策，美国商品贸易逆差正在扩大。IEEPA关税退款总额约$830亿（占已支付$1,660亿的一半）正在发放给尚未被海关清算的进口商。但特朗普政府表示可能挑战已清算条目的退款，要求进口商通过贸易法庭起诉政府才能获得退款。
+                </div>
+                <div class="news-meta">
+                    <span>📰 POLITICO / Freightos</span>
+                    <span>🕐 6月</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    欧盟7月对低价值进口征收3欧元费用，跨境电商面临新规
+                    <span class="tag tag-new">政策</span>
+                </div>
+                <div class="news-summary">
+                    欧盟将于7月对低价值进口商品征收每件3欧元的固定费用，11月再加征2欧元处理费。包裹承运商警告系统尚未准备好应对新的报告要求，若7月生效可能导致欧洲边境延误。此举虽不如美国取消800美元de minimis豁免影响大，但预计将一定程度上减少欧盟电商空运量。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Freightos</span>
+                    <span>🕐 7月生效</span>
                 </div>
             </div>
         </div>
@@ -462,53 +579,95 @@
             
             <div class="news-item">
                 <div class="news-title">
-                    2026年人形机器人从试点走向平台化竞争
+                    阿里发布Qwen-Robot Suite，宣称打造"机器人界Android"
+                    <span class="tag tag-new">重磅</span>
+                </div>
+                <div class="news-summary">
+                    6月16日，阿里通义实验室发布Qwen-Robot Suite，专为机器人设计的AI模型系列。Qwen-RobotNav实现视觉语言导航，Qwen-RobotManip为通用VLA模型（训练38,100小时机器人与人类视频），Qwen-RobotWorld为世界模型（860万视频-文本对训练）。阿里内部文件称此为"机器人Android时刻"，目标控制操作系统而非硬件。已在AgileX、Franka、Universal Robots、Unitree等硬件上测试。
+                </div>
+                <div class="news-meta">
+                    <span>📰 KIMKJ / 阿里通义</span>
+                    <span>🕐 6月16日</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    2026世界人工智能大会（WAIC）将于7月17-20日在上海举行
+                    <span class="tag tag-new">展会</span>
+                </div>
+                <div class="news-summary">
+                    中国国家发改委确认，2026世界人工智能大会将于7月17日至20日在上海举办，预计吸引500家企业和30万参观者。MWC上海已于6月24日开幕，包括人形机器人足球挑战赛和Formula E展示。国家发改委警告约150家中国人形机器人公司存在价格战和过度投资风险。
+                </div>
+                <div class="news-meta">
+                    <span>📰 KIMKJ / NDRC</span>
+                    <span>🕐 7月17-20日</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    美国商务部要求Anthropic全面封锁外国访问Fable 5和Mythos 5模型
+                    <span class="tag tag-hot">管制</span>
+                </div>
+                <div class="news-summary">
+                    美国商务部下令Anthropic全面禁止外国访问其Fable 5和Mythos 5模型。市场担忧此举可能加速华裔AI研究人员回流中国。与此同时，OpenAI在6月19日宣布其医疗AI模型在临床基准测试中表现优于医生，并正在开发可穿戴设备、健康应用和患者记录数据分析的个性化健康AI系统。Midjourney也推出医疗影像全身体扫描仪，60秒生成3D人体图谱。
+                </div>
+                <div class="news-meta">
+                    <span>📰 KIMKJ / Business Insider</span>
+                    <span>🕐 6月</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    2026年AI从" spectacle 走向基础设施"，Agentic AI成新趋势
                     <span class="tag tag-new">趋势</span>
                 </div>
                 <div class="news-summary">
-                    2026年成为人形机器人发展的里程碑之年。全球制造商正从实验室试点转向实际部署平台化竞争。中国推出了可变形、游泳、飞行、水上行走的软体人形机器人，Moya等产品模糊了机器人与人类的界限。业内分析指出，2026年是从"试点到平台"的关键转折年。
+                    2026年AI正从演示工具转变为商业基础设施。关键趋势包括：Agentic AI（可自主完成多步骤任务）、多模态智能（同时处理文本/图像/视频/音频）、AI在网络安全领域的应用加速。UC San Diego报告称AI气候模型运行速度提升约25倍，MycoBCP深度学习系统帮助检测结核病细胞变化。约半数员工已定期使用AI工具，生产力提升获广泛认可。
                 </div>
                 <div class="news-meta">
-                    <span>📰 KraneShares / NVIDIA Blog</span>
-                    <span>🕐 2026年更新</span>
+                    <span>📰 UC San Diego / OpenPR / NewsSpins</span>
+                    <span>🕐 2026年上半年</span>
                 </div>
             </div>
             
             <div class="robot-grid">
                 <div class="robot-card">
-                    <div class="robot-name">🚗 Tesla Optimus Gen 2</div>
-                    <div class="robot-info">通用型人形机器人，适用于工业制造与家庭自动化场景</div>
-                    <div class="robot-specs">身高1.73m · 体重57kg · 约$30,000</div>
+                    <div class="robot-name">🚗 Tesla Optimus</div>
+                    <div class="robot-info">2026年3月加速人形机器人Optimus在制造和物流领域的开发，目标自动化重复工业任务</div>
+                    <div class="robot-specs">Tesla, Inc.</div>
                 </div>
                 
                 <div class="robot-card">
-                    <div class="robot-name">🏠 1X NEO</div>
-                    <div class="robot-info">首款面向家庭消费者的通用型人形机器人，已开放预订，2026年交付</div>
-                    <div class="robot-specs">身高1.67m · 体重30kg · 续航4小时</div>
-                </div>
-                
-                <div class="robot-card">
-                    <div class="robot-name">🏭 Boston Dynamics Atlas</div>
+                    <div class="robot-name">🦿 Boston Dynamics Atlas</div>
                     <div class="robot-info">CES 2026发布全电动版，2026年产能已全部分配给现代和Google DeepMind</div>
-                    <div class="robot-specs">身高1.9m · 体重90kg · 续航4小时</div>
+                    <div class="robot-specs">电动版 · 身高1.9m · 续航4h</div>
                 </div>
                 
                 <div class="robot-card">
                     <div class="robot-name">🇨🇳 智元机器人 A2 Ultra</div>
                     <div class="robot-info">全球首款千台级商用化全尺寸人形机器人，已获中美欧安全认证</div>
-                    <div class="robot-specs">身高1.69m · 40自由度 · 续航3小时</div>
+                    <div class="robot-specs">身高1.69m · 40自由度 · 续航3h</div>
+                </div>
+                
+                <div class="robot-card">
+                    <div class="robot-name">🏠 1X NEO</div>
+                    <div class="robot-info">首款面向家庭消费者的通用型人形机器人，已开放预订，2026年交付</div>
+                    <div class="robot-specs">身高1.67m · 体重30kg · 续航4h</div>
                 </div>
                 
                 <div class="robot-card">
                     <div class="robot-name">🔬 Figure AI Figure 03</div>
                     <div class="robot-info">融合Helix AI多摄像头视觉系统，专注物流、制造和商业环境</div>
-                    <div class="robot-specs">身高1.72m · 负重20kg · 续航5小时</div>
+                    <div class="robot-specs">身高1.72m · 负重20kg · 续航5h</div>
                 </div>
                 
                 <div class="robot-card">
                     <div class="robot-name">⚡ Unitree 宇树 G1</div>
                     <div class="robot-info">敏捷型高性价比人形机器人，适合物流和服务行业快速部署</div>
-                    <div class="robot-specs">身高1.4m · 体重40-50kg · 续航2-3小时</div>
+                    <div class="robot-specs">身高1.4m · 体重40-50kg · 续航2-3h</div>
                 </div>
             </div>
         </div>
