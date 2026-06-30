@@ -3,409 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 | Daily Briefing - 2026年6月30日</title>
+    <title>每日资讯简报 | Daily Briefing - 2026年7月1日</title>
     <style>
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --highlight: #e94560;
-            --text: #eee;
-            --text-muted: #aaa;
-            --card-bg: rgba(255,255,255,0.05);
-            --border: rgba(255,255,255,0.1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
             line-height: 1.6;
             min-height: 100vh;
         }
-        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
-        header {
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部样式 */
+        .header {
             text-align: center;
             padding: 40px 20px;
-            border-bottom: 2px solid var(--highlight);
-            margin-bottom: 30px;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #fff, var(--highlight));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        header .date {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-        header .tagline {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            color: var(--highlight);
-            font-weight: 500;
-        }
-        .section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
             border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .section:hover {
-            transform: translateY(-2px);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2cbf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
         }
-        .section-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
+        
+        .header .date {
+            font-size: 1.1em;
+            color: #a0a0a0;
+            margin-bottom: 5px;
         }
+        
+        .header .edition {
+            font-size: 0.9em;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* 板块样式 */
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.4em;
             font-weight: 600;
-            color: #fff;
-        }
-        .news-list { list-style: none; }
-        .news-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
             display: flex;
+            align-items: center;
             gap: 10px;
-            align-items: flex-start;
         }
-        .news-list li:last-child { border-bottom: none; }
-        .news-bullet {
-            color: var(--highlight);
-            font-weight: bold;
-            min-width: 20px;
+        
+        .section-title .icon {
+            font-size: 1.3em;
         }
-        .news-text { flex: 1; }
-        .news-tag {
+        
+        /* 各板块颜色 */
+        .politics .section-title { color: #ff6b6b; border-color: #ff6b6b; }
+        .shipping .section-title { color: #4ecdc4; border-color: #4ecdc4; }
+        .finance .section-title { color: #ffe66d; border-color: #ffe66d; }
+        .ai .section-title { color: #a8e6cf; border-color: #a8e6cf; }
+        
+        /* 新闻条目 */
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-title {
+            font-size: 1.05em;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .news-summary {
+            font-size: 0.92em;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        .news-meta {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 8px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .tag {
             display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            margin-left: 8px;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
             font-weight: 500;
         }
-        .tag-urgent { background: rgba(233,69,96,0.2); color: var(--highlight); }
-        .tag-info { background: rgba(79,172,254,0.2); color: #4facfe; }
-        .tag-positive { background: rgba(67,233,123,0.2); color: #43e97b; }
-        .tag-negative { background: rgba(255,100,100,0.2); color: #ff6464; }
-
+        
+        .tag-hot { background: rgba(255,107,107,0.2); color: #ff6b6b; }
+        .tag-up { background: rgba(78,205,196,0.2); color: #4ecdc4; }
+        .tag-down { background: rgba(255,107,107,0.2); color: #ff6b6b; }
+        .tag-neutral { background: rgba(255,230,109,0.2); color: #ffe66d; }
+        .tag-new { background: rgba(168,230,207,0.2); color: #a8e6cf; }
+        
+        /* 数据面板 */
         .data-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 12px;
+            gap: 15px;
+            margin: 15px 0;
         }
+        
         .data-card {
-            background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            padding: 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 18px;
             text-align: center;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.05);
         }
+        
         .data-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 5px;
         }
+        
         .data-value {
-            font-size: 1.6rem;
+            font-size: 1.6em;
             font-weight: 700;
-            color: #fff;
+            color: #f0f0f0;
         }
+        
         .data-change {
-            font-size: 0.85rem;
-            margin-top: 4px;
-            font-weight: 500;
+            font-size: 0.85em;
+            margin-top: 5px;
         }
-        .up { color: #43e97b; }
-        .down { color: #ff6464; }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(233,69,96,0.15), rgba(15,52,96,0.3));
-            border-left: 4px solid var(--highlight);
-            padding: 16px;
-            border-radius: 0 12px 12px 0;
-            margin: 12px 0;
+        
+        .data-change.up { color: #4ecdc4; }
+        .data-change.down { color: #ff6b6b; }
+        
+        /* 机器人列表 */
+        .robot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
         }
-        .highlight-box p { margin: 0; }
-
+        
+        .robot-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .robot-name {
+            font-weight: 600;
+            color: #a8e6cf;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+        
+        .robot-info {
+            font-size: 0.88em;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+        
+        .robot-specs {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #888;
+        }
+        
+        /* 页脚 */
         .footer {
             text-align: center;
             padding: 30px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
-            margin-top: 20px;
+            color: #666;
+            font-size: 0.85em;
         }
-        .footer a { color: var(--highlight); text-decoration: none; }
-
+        
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        /* 响应式 */
         @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .section { padding: 16px; }
+            .header h1 { font-size: 1.8em; }
+            .section { padding: 18px; }
             .data-grid { grid-template-columns: 1fr 1fr; }
+            .robot-grid { grid-template-columns: 1fr; }
         }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <!-- 头部 -->
+        <div class="header">
             <h1>📰 每日资讯简报</h1>
-            <div class="date">Daily Briefing | 2026年6月30日 星期二</div>
-            <div class="tagline">全球视野 · 深度洞察 · 早上7:00 (SGT)</div>
-        </header>
-
-        <!-- 时政要闻 -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon" style="background: rgba(233,69,96,0.2);">🌍</div>
-                <div class="section-title">时政要闻</div>
-            </div>
-            <ul class="news-list">
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>中东局势持续紧张：</strong>以色列-伊朗战争仍在持续，世界聚焦于霍尔木兹海峡冲突。以色列军队上月在加沙地带夺取更多领土，死亡人数创今年新高。
-                        <span class="news-tag tag-urgent">热点</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>委内瑞拉遭遇双地震：</strong>超过500人死亡，数千人仍失踪。政府被指控将地震救援政治化，引发国际关注。
-                        <span class="news-tag tag-urgent">突发</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>霍尔木兹海峡航运受阻：</strong>联合国航运机构暂停海峡疏散行动，因有抛射物击中货船。全球能源供应链面临进一步压力。
-                        <span class="news-tag tag-negative">航运风险</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>以色列空袭黎巴嫩：</strong>内塔尼亚胡表示将继续占领政策，地区紧张局势升级。
-                        <span class="news-tag tag-info">地缘</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>全球能源脆弱性暴露：</strong>30次COP会议未能解决的问题，三个月的美以对伊战争做到了——世界对化石燃料的脆弱性彻底显现。
-                        <span class="news-tag tag-info">能源</span>
-                    </span>
-                </li>
-            </ul>
+            <div class="date">2026年7月1日 · 星期三 · 新加坡时间</div>
+            <div class="edition">Daily Briefing · Edition #1</div>
         </div>
-
-        <!-- 航运资讯 -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon" style="background: rgba(79,172,254,0.2);">🚢</div>
-                <div class="section-title">航运资讯</div>
+        
+        <!-- 时政要闻 -->
+        <div class="section politics">
+            <div class="section-title">
+                <span class="icon">🌍</span>
+                时政要闻
             </div>
-
+            
+            <div class="news-item">
+                <div class="news-title">
+                    美伊停火协议脆弱性加剧，地区紧张局势升级
+                    <span class="tag tag-hot">热点</span>
+                </div>
+                <div class="news-summary">
+                    华盛顿与德黑兰之间的近期停火协议在最新敌对行动后显得更加脆弱，其中包括美国对伊朗军事目标的打击。地区局势持续紧张，和平前景不明。
+                </div>
+                <div class="news-meta">
+                    <span>📰 NPR / AP</span>
+                    <span>🕐 12小时前</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    以色列防长称特朗普曾阻止以军消灭黎巴嫩真主党
+                    <span class="tag tag-hot">独家</span>
+                </div>
+                <div class="news-summary">
+                    以色列国防部长透露，特朗普曾阻止以色列对黎巴嫩真主党采取全面军事行动。这一消息揭示了美以在中东政策上的复杂博弈关系。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Live Mint</span>
+                    <span>🕐 2小时前</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    习近平与金正恩举行罕见峰会，呼吁加强"战略合作"
+                    <span class="tag tag-neutral">外交</span>
+                </div>
+                <div class="news-summary">
+                    中国国家主席习近平与朝鲜领导人金正恩举行罕见峰会，呼吁加强与朝鲜的"战略合作"。这是两国高层近期少有的公开互动，引发国际社会关注。
+                </div>
+                <div class="news-meta">
+                    <span>📰 CNN / SCMP</span>
+                    <span>🕐 14小时前</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    中国吉利7月向加拿大出口首批莲花电动汽车
+                    <span class="tag tag-new">贸易</span>
+                </div>
+                <div class="news-summary">
+                    根据加中领导人达成的协议，中国吉利汽车将于7月开始向加拿大出口首批莲花（Lotus）电动汽车，标志着中国汽车品牌进一步拓展北美高端市场。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Reuters 独家</span>
+                    <span>🕐 7小时前</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 航运资讯 -->
+        <div class="section shipping">
+            <div class="section-title">
+                <span class="icon">🚢</span>
+                航运资讯
+            </div>
+            
             <div class="data-grid">
                 <div class="data-card">
                     <div class="data-label">BDI 波罗的海干散货指数</div>
-                    <div class="data-value">2,490</div>
-                    <div class="data-change down">▼ -1.35% | 月跌22.72%</div>
+                    <div class="data-value">2,501</div>
+                    <div class="data-change up">▲ +0.44% 日环比</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Capesize 指数</div>
-                    <div class="data-value">3,538</div>
-                    <div class="data-change down">▼ -2.8%</div>
+                    <div class="data-label">海岬型指数</div>
+                    <div class="data-value">3,548</div>
+                    <div class="data-change up">▲ +0.3%</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Panamax 指数</div>
-                    <div class="data-value">2,124</div>
-                    <div class="data-change up">▲ +0.7%</div>
+                    <div class="data-label">巴拿马型指数</div>
+                    <div class="data-value">2,154</div>
+                    <div class="data-change up">▲ +1.4%</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Supramax 指数</div>
-                    <div class="data-value">1,668</div>
+                    <div class="data-label">超灵便型指数</div>
+                    <div class="data-value">1,667</div>
                     <div class="data-change down">▼ -0.1%</div>
                 </div>
             </div>
-
-            <div class="highlight-box" style="margin-top: 16px;">
-                <p><strong>📊 市场分析：</strong>BDI连续第六个交易日下跌，创4月15日以来新低。但同比仍高出67.23%，预计今年底将回升至2,527点，12个月后达2,932点。Panamax指数逆势上涨，反映谷物和煤炭运输需求相对稳定。</p>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    BDI结束六连跌，季涨25%但月跌22%
+                    <span class="tag tag-neutral">数据</span>
+                </div>
+                <div class="news-summary">
+                    波罗的海干散货指数在6月30日结束连续六日下跌，回升至2,501点。值得注意的是，BDI本季度累计上涨约25%，但月度下跌22%。同比去年同期仍高出71.54%，显示干散货航运市场整体处于高位震荡区间。历史最高值为2008年5月的11,793点。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Trading Economics / Baltic Exchange</span>
+                    <span>🕐 6月30日收盘</span>
+                </div>
             </div>
-
-            <ul class="news-list" style="margin-top: 12px;">
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>船型日收益（2025年均值）：</strong>Capesize $21,297/天 | Panamax $13,361/天 | Supramax $14,275/天 | Handysize $11,911/天
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>新造船市场：</strong>新造船价格达到16年来最高水平，主要受强劲订单驱动。中国和韩国船厂订单饱满，韩国船厂专注高附加值船舶。
-                        <span class="news-tag tag-positive">造船热</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>二手船市场：</strong>五年船龄船舶价格与新造船价格关系持续受关注。当两者价格趋同时，通常预示新造船订单将激增。
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>绿色航运：</strong>中国签署迄今最大单笔绿色甲醇采购协议（6,000吨），支持船用替代燃料扩张。
-                        <span class="news-tag tag-positive">绿色转型</span>
-                    </span>
-                </li>
-            </ul>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    干散货航运市场展望：地缘风险持续，Q2波动或延续
+                    <span class="tag tag-neutral">分析</span>
+                </div>
+                <div class="news-summary">
+                    干散货航运市场显示出企稳迹象，但仍对商品需求敏感。当前地缘政治风险尚未解决，预计2026年第二季度运费波动将持续。Panamax型船期租市场日租金约$15,000-$25,000。油轮市场采用Worldscale标准化费率指数。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Maritime Hub</span>
+                    <span>🕐 近期分析</span>
+                </div>
+            </div>
         </div>
-
+        
         <!-- 全球财经 -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon" style="background: rgba(67,233,123,0.2);">📈</div>
-                <div class="section-title">全球财经</div>
+        <div class="section finance">
+            <div class="section-title">
+                <span class="icon">📈</span>
+                全球财经
             </div>
-
+            
             <div class="data-grid">
                 <div class="data-card">
-                    <div class="data-label">S&P 500</div>
-                    <div class="data-value">7,440</div>
-                    <div class="data-change up">▲ +1.18%</div>
+                    <div class="data-label">道琼斯指数</div>
+                    <div class="data-value">52,319</div>
+                    <div class="data-change up">▲ +0.26% 纪录收盘</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Dow Jones</div>
-                    <div class="data-value">52,183</div>
-                    <div class="data-change up">▲ +0.59%</div>
+                    <div class="data-label">标普 500</div>
+                    <div class="data-value">+0.79%</div>
+                    <div class="data-change up">▲ 六年来最佳季度</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">Nasdaq</div>
-                    <div class="data-value">25,820</div>
-                    <div class="data-change up">▲ +2.07%</div>
+                    <div class="data-label">纳斯达克</div>
+                    <div class="data-value">+1.52%</div>
+                    <div class="data-change up">▲ 科技板块反弹</div>
                 </div>
                 <div class="data-card">
-                    <div class="data-label">VIX 恐慌指数</div>
-                    <div class="data-value">17.65</div>
-                    <div class="data-change down">▼ -4.13%</div>
+                    <div class="data-label">比特币 BTC</div>
+                    <div class="data-value">~$60K</div>
+                    <div class="data-change down">▼ 区间震荡</div>
                 </div>
             </div>
-
-            <div class="data-grid" style="margin-top: 16px;">
-                <div class="data-card">
-                    <div class="data-label">Bitcoin</div>
-                    <div class="data-value">$59,500</div>
-                    <div class="data-change down">▼ 跌至多年低点</div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    美股创六年来最佳季度，道指连创新高
+                    <span class="tag tag-up">利好</span>
                 </div>
-                <div class="data-card">
-                    <div class="data-label">Ethereum</div>
-                    <div class="data-value">$1,570</div>
-                    <div class="data-change down">▼ 持续下行</div>
+                <div class="news-summary">
+                    6月30日，道琼斯工业平均指数上涨136点（+0.26%）至52,319.20点，连续第二个交易日创纪录收盘，年初至今累计上涨8.85%。纳斯达克综合指数大涨1.52%，标普500指数上涨0.79%。二季度有望成为标普500和纳斯达克自2020年以来表现最佳的季度，尽管伊朗战争带来不确定性。
                 </div>
-                <div class="data-card">
-                    <div class="data-label">Brent 原油</div>
-                    <div class="data-value">$73</div>
-                    <div class="data-change up">▲ 从5个月低点反弹</div>
-                </div>
-                <div class="data-card">
-                    <div class="data-label">黄金</div>
-                    <div class="data-value">$4,050</div>
-                    <div class="data-change down">▼ -0.27%</div>
+                <div class="news-meta">
+                    <span>📰 TheStreet / Schwab</span>
+                    <span>🕐 6月30日</span>
                 </div>
             </div>
-
-            <div class="highlight-box" style="margin-top: 16px;">
-                <p><strong>💡 市场要点：</strong>周一科技股强势反弹，纳指大涨2%。但此前一周因AI科技股抛售，标普500周跌2%，纳指周跌4.6%。比特币ETF单日流出6.96亿美元，BTC跌破6万美元关口。中东局势紧张推升油价反弹，但通胀担忧抑制黄金涨势。</p>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    比特币在$59,000-$60,000区间震荡，分析师警示下行风险
+                    <span class="tag tag-down">谨慎</span>
+                </div>
+                <div class="news-summary">
+                    比特币本周在$59,000至$60,000的狭窄区间内交易。CoinDesk分析指出，这种盘整模式类似于2024年的平静期，但此次是在下跌市场中形成于支撑位下方，若跌破可能打开通往$40,000的下行空间。以太坊报价约$1,588-$1,619，Solana $74.22，XRP $1.04。
+                </div>
+                <div class="news-meta">
+                    <span>📰 CoinDesk / Yahoo Finance</span>
+                    <span>🕐 最新</span>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    机构展望2026：黄金、比特币、美元能否再创历史？
+                    <span class="tag tag-neutral">展望</span>
+                </div>
+                <div class="news-summary">
+                    各大机构对2026年金融市场展望显示，比特币目标价$100,000、以太坊$3,500、瑞波币$2.35备受关注。BlackRock投资研究所指出，新兴市场、高收益债和全球企业债市场年初至今表现活跃。黄金作为避险资产在中东局势紧张背景下受到关注。
+                </div>
+                <div class="news-meta">
+                    <span>📰 Mitrade / BlackRock</span>
+                    <span>🕐 2026年展望</span>
+                </div>
             </div>
         </div>
-
+        
         <!-- AI机器人动态 -->
-        <div class="section">
-            <div class="section-header">
-                <div class="section-icon" style="background: rgba(180,120,255,0.2);">🤖</div>
-                <div class="section-title">AI & 机器人动态</div>
+        <div class="section ai">
+            <div class="section-title">
+                <span class="icon">🤖</span>
+                AI机器人动态
             </div>
-
-            <ul class="news-list">
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>Figure AI量产加速：</strong>Figure AI在其BotQ工厂实现每小时1台机器人的生产速度。Figure 03搭载Helix 02 AI系统，运行1000万参数神经网络，替代了约109,000行手工C++平衡代码。
-                        <span class="news-tag tag-positive">量产突破</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>波士顿动力Atlas电动版：</strong>电动Atlas开始初步部署，标志着人形机器人从实验室走向实际应用场景。
-                        <span class="news-tag tag-positive">部署启动</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>Tesla Optimus持续扩展：</strong>Optimus Gen 2/3继续在工厂进行试点部署和生产规模扩大，马斯克称其长期潜力可能超过汽车业务。
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>Unitree Robotics出货强劲：</strong>2025年出货超过5,500台人形机器人，2026年目标更加激进。上海开设了亚洲首家具身智能体验店。
-                        <span class="news-tag tag-positive">出货5,500+</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>Agility Digit RaaS模式：</strong>在Toyota Canada已有7+台Digit机器人以机器人即服务(RaaS)模式活跃运行。
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>软银看好万亿市场：</strong>孙正义称物理AI和机器人是他看到的下一个万亿美元投资机会。CNBC报道人形机器人被视为下一个AI投资热点。
-                        <span class="news-tag tag-info">投资风口</span>
-                    </span>
-                </li>
-                <li>
-                    <span class="news-bullet">▸</span>
-                    <span class="news-text">
-                        <strong>行业挑战：</strong>Physical AI（帮助机器人在物理世界中实时感知、导航和交互的AI软件）被视为实现人形机器人广泛应用的关键技术，但仍面临成本、安全性和规模化 hurdles。
-                    </span>
-                </li>
-            </ul>
+            
+            <div class="news-item">
+                <div class="news-title">
+                    2026年人形机器人从试点走向平台化竞争
+                    <span class="tag tag-new">趋势</span>
+                </div>
+                <div class="news-summary">
+                    2026年成为人形机器人发展的里程碑之年。全球制造商正从实验室试点转向实际部署平台化竞争。中国推出了可变形、游泳、飞行、水上行走的软体人形机器人，Moya等产品模糊了机器人与人类的界限。业内分析指出，2026年是从"试点到平台"的关键转折年。
+                </div>
+                <div class="news-meta">
+                    <span>📰 KraneShares / NVIDIA Blog</span>
+                    <span>🕐 2026年更新</span>
+                </div>
+            </div>
+            
+            <div class="robot-grid">
+                <div class="robot-card">
+                    <div class="robot-name">🚗 Tesla Optimus Gen 2</div>
+                    <div class="robot-info">通用型人形机器人，适用于工业制造与家庭自动化场景</div>
+                    <div class="robot-specs">身高1.73m · 体重57kg · 约$30,000</div>
+                </div>
+                
+                <div class="robot-card">
+                    <div class="robot-name">🏠 1X NEO</div>
+                    <div class="robot-info">首款面向家庭消费者的通用型人形机器人，已开放预订，2026年交付</div>
+                    <div class="robot-specs">身高1.67m · 体重30kg · 续航4小时</div>
+                </div>
+                
+                <div class="robot-card">
+                    <div class="robot-name">🏭 Boston Dynamics Atlas</div>
+                    <div class="robot-info">CES 2026发布全电动版，2026年产能已全部分配给现代和Google DeepMind</div>
+                    <div class="robot-specs">身高1.9m · 体重90kg · 续航4小时</div>
+                </div>
+                
+                <div class="robot-card">
+                    <div class="robot-name">🇨🇳 智元机器人 A2 Ultra</div>
+                    <div class="robot-info">全球首款千台级商用化全尺寸人形机器人，已获中美欧安全认证</div>
+                    <div class="robot-specs">身高1.69m · 40自由度 · 续航3小时</div>
+                </div>
+                
+                <div class="robot-card">
+                    <div class="robot-name">🔬 Figure AI Figure 03</div>
+                    <div class="robot-info">融合Helix AI多摄像头视觉系统，专注物流、制造和商业环境</div>
+                    <div class="robot-specs">身高1.72m · 负重20kg · 续航5小时</div>
+                </div>
+                
+                <div class="robot-card">
+                    <div class="robot-name">⚡ Unitree 宇树 G1</div>
+                    <div class="robot-info">敏捷型高性价比人形机器人，适合物流和服务行业快速部署</div>
+                    <div class="robot-specs">身高1.4m · 体重40-50kg · 续航2-3小时</div>
+                </div>
+            </div>
         </div>
-
+        
+        <!-- 页脚 -->
         <div class="footer">
-            <p>📅 每日资讯简报 | Generated on 2026-06-30 07:00 SGT</p>
+            <p>📅 每日资讯简报 · Daily Briefing</p>
+            <p>🤖 由 AI 自动生成 · 数据截至 2026年7月1日</p>
             <p>🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
-            <p style="margin-top:8px; font-size: 0.8rem; opacity: 0.7;">数据来源：Baltic Exchange, Trading Economics, Yahoo Finance, CNN Markets, CoinMarketCap, NPR, AP News, Humanoid.press</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #444;">
+                免责声明：本简报信息来源于公开网络搜索，仅供参考，不构成投资建议。
+            </p>
         </div>
     </div>
 </body>
