@@ -1,343 +1,857 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 | 2026年7月16日</title>
-  <style>
-    :root {
-      --primary: #1a237e;
-      --secondary: #283593;
-      --accent: #ff6f00;
-      --bg: #f5f5f5;
-      --card-bg: #ffffff;
-      --text: #333333;
-      --text-light: #666666;
-      --border: #e0e0e0;
-      --success: #4caf50;
-      --danger: #f44336;
-      --warning: #ff9800;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-      padding: 40px 30px;
-      border-radius: 16px;
-      margin-bottom: 24px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
-    }
-    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
-    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
-    header .date { font-size: 0.95rem; opacity: 0.8; }
-    .badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-left: 8px;
-    }
-    .badge-live { background: #e8f5e9; color: #2e7d32; }
-    .badge-up { background: #e8f5e9; color: #2e7d32; }
-    .badge-down { background: #ffebee; color: #c62828; }
-    .badge-info { background: #e3f2fd; color: #1565c0; }
-    .section {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      border-left: 4px solid var(--primary);
-    }
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-title .icon { font-size: 1.5rem; }
-    .news-grid { display: grid; gap: 16px; }
-    .news-item {
-      padding: 16px;
-      background: #fafafa;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .news-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .news-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
-    .news-item p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
-    .news-item .source { font-size: 0.8rem; color: #999; margin-top: 8px; }
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
-      background: #fafafa;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      border: 1px solid var(--border);
-    }
-    .data-row .label { font-weight: 600; color: var(--text); }
-    .data-row .value { font-weight: 700; font-size: 1.1rem; }
-    .data-row .change { font-size: 0.85rem; margin-left: 8px; }
-    .positive { color: var(--success); }
-    .negative { color: var(--danger); }
-    .neutral { color: var(--warning); }
-    .highlight-box {
-      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-      border: 1px solid #ffcc80;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-    .highlight-box h4 { color: var(--accent); font-size: 1rem; margin-bottom: 8px; }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .stat-card {
-      background: #fafafa;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-    .stat-card .number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
-    .stat-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--text-light);
-      font-size: 0.85rem;
-    }
-    footer a { color: var(--secondary); text-decoration: none; }
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      background: #e8eaf6;
-      color: var(--primary);
-      margin-right: 6px;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.5rem; }
-      .section { padding: 20px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日简报 - 2026年7月15日</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            color: #a0a0c0;
+            font-size: 1rem;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: #a0a0c0;
+        }
+        
+        .nav-tab:hover {
+            background: rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            color: #764ba2;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .card h4 {
+            font-size: 0.85rem;
+            color: #a0a0c0;
+            margin-bottom: 8px;
+        }
+        
+        .card .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin: 8px 0;
+        }
+        
+        .card .change {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .neutral { color: #fbbf24; }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        th {
+            background: rgba(102, 126, 234, 0.2);
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .news-list li {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .news-list li strong {
+            color: #e0e0e0;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .news-list li .source {
+            color: #a0a0c0;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .highlight-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin: 3px;
+            color: #a0a0c0;
+        }
+        
+        .opportunity-card {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+        
+        .opportunity-card h4 {
+            color: #4ade80;
+            margin-bottom: 8px;
+        }
+        
+        .opportunity-card .risk {
+            color: #f87171;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #a0a0c0;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.5rem; }
+            .nav-tab { padding: 8px 16px; font-size: 0.8rem; }
+            .cards { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            .section { padding: 15px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>📰 每日资讯简报</h1>
-      <div class="subtitle">Daily Briefing — 全球视野，深度洞察</div>
-      <div class="date">2026年7月16日 星期四 | 新加坡时间 07:00 AM</div>
-    </header>
-
-    <!-- 时政要闻 -->
-    <section class="section">
-      <div class="section-title">
-        <span class="icon">🌍</span>
-        时政要闻
-        <span class="badge badge-live">LIVE</span>
-      </div>
-      <div class="news-grid">
-        <div class="news-item">
-          <h3>🇺🇸 美股市场温和收涨，芯片股反弹</h3>
-          <p>7月14日，S&P 500指数收涨0.38%至7,543.59点，纳斯达克综合指数上涨0.9%至26,107.01点。道琼斯工业平均指数微涨9.63点至52,508.27点。7月15日，道指延续涨势，连续4个交易日中第3次收涨。市场关注7月16日Netflix和台积电的财报以及美国6月零售销售数据。</p>
-          <div class="source">来源：CNBC / Yahoo Finance</div>
+    <div class="container">
+        <header>
+            <h1>每日简报日报</h1>
+            <div class="date">2026年7月15日 星期三 | Daily Briefing</div>
+        </header>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showTab('shipping')">航运板块</div>
+            <div class="nav-tab" onclick="showTab('finance')">财经板块</div>
+            <div class="nav-tab" onclick="showTab('politics')">时政板块</div>
+            <div class="nav-tab" onclick="showTab('ai')">AI/机器人</div>
         </div>
-        <div class="news-item">
-          <h3>🇨🇳 中美关系：台湾议题持续升温</h3>
-          <p>据《每日电讯报》7月15日报道，卫星图像显示中国正在建造美军舰、战斗机、海军基地及台湾总统府建筑的复制品模型，用于军事演练。美国众议院跨党派议员本周在国会山接待了台湾代表团。台湾立法机构通过法案，计划在2026至2033年间追加250亿美元国防支出。</p>
-          <div class="source">来源：The Telegraph / Reuters / CFR</div>
+        
+        <!-- 航运板块 -->
+        <div id="shipping" class="content active">
+            <div class="section">
+                <h2>波罗的海干散货指数 (BDI)</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>BDI 最新</h4>
+                        <div class="value">2,929</div>
+                        <div class="change negative">↓ -51.00 (-1.71%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>BDI 前日</h4>
+                        <div class="value">2,980</div>
+                        <div class="change positive">↑ +20.00 (+0.68%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>近3月涨幅</h4>
+                        <div class="value">+17.91%</div>
+                        <div class="change positive">↑ 持续上涨</div>
+                    </div>
+                    <div class="card">
+                        <h4>近6月涨幅</h4>
+                        <div class="value">+91.19%</div>
+                        <div class="change positive">↑ 强劲反弹</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="bdiChart"></canvas>
+                </div>
+                <p style="color: #a0a0c0; font-size: 0.85rem;">数据来源：东方财富网 | 更新时间：2026-07-15</p>
+            </div>
+            
+            <div class="section">
+                <h2>各船型日租金</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>船型</th>
+                                <th>航线/指标</th>
+                                <th>日租金 (美元)</th>
+                                <th>涨跌</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Capesize</td>
+                                <td>5TC 平均</td>
+                                <td>约 35,000-40,000</td>
+                                <td class="positive">↑ 高位运行</td>
+                                <td>铁矿石运输需求强劲</td>
+                            </tr>
+                            <tr>
+                                <td>Panamax</td>
+                                <td>4TC 平均</td>
+                                <td>约 18,000-22,000</td>
+                                <td class="positive">↑ 稳中有升</td>
+                                <td>粮食运输支撑</td>
+                            </tr>
+                            <tr>
+                                <td>VLCC</td>
+                                <td>TD3C (中东-中国)</td>
+                                <td>约 25,000-30,000</td>
+                                <td class="neutral">→ 震荡</td>
+                                <td>受中东局势影响</td>
+                            </tr>
+                            <tr>
+                                <td>Suezmax</td>
+                                <td>TD20 (西非-欧洲)</td>
+                                <td>约 20,000-25,000</td>
+                                <td class="neutral">→ 持平</td>
+                                <td>原油运输需求稳定</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #a0a0c0; font-size: 0.85rem;">数据来源：Clarksons, Baltic Exchange | 仅供参考</p>
+            </div>
+            
+            <div class="section">
+                <h2>新造船订单</h2>
+                <div class="highlight-box">
+                    <h4>近期重大订单</h4>
+                    <p><strong>EPS (Eastern Pacific Shipping) 13艘新船订单：</strong></p>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>7艘 6000TEU 集装箱船，下单于恒力重工，单船造价约 8000万美元</li>
+                        <li>6艘 7050车位 PCTC (汽车运输船)，下单于招商局金陵船厂（南京/威海各3艘），单船造价超 1亿美元</li>
+                        <li>所有船舶均锁定长期租约，已在中国船厂下单建造</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>MSC (地中海航运) 历史订单参考：</strong>MSC曾在2025年8月下单多艘大型集装箱船，持续扩张船队规模。</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>二手船交易</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>船型</th>
+                                <th>买方</th>
+                                <th>成交价</th>
+                                <th>交付期</th>
+                                <th>来源</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>未披露具体船型</td>
+                                <td>窦海峰</td>
+                                <td>23,455,000美元 (约1.83亿港元)</td>
+                                <td>2026-06-01 至 2026-07-15</td>
+                                <td>金辉集团(0137.HK)公告</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>航运行业新闻</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>2026世界人工智能大会人形机器人新品发布</strong>
+                        2026世界人工智能大会(WAIC)将于7月17日至20日在上海举行，宇树科技、智元机器人、优必选等头部企业将展出全球首款载人变形机甲、超高自由度灵巧手、量产型工业人形机器人等突破性产品。工信部预计2026年全年人形机器人整机产量有望突破10万台。
+                        <div class="source">来源：ZAKER新闻 | 2026-07-14</div>
+                    </li>
+                    <li>
+                        <strong>特朗普：霍尔木兹海峡对除伊朗外所有国家船只开放</strong>
+                        美国总统特朗普在Truth Social平台发文表示，霍尔木兹海峡对所有船只开放通行，但伊朗船只除外。全面封锁将仅影响驶往或离开伊朗港口、或装载任何伊朗相关货物的船只。
+                        <div class="source">来源：俄罗斯卫星通讯社 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>阿曼附近海域三艘利比里亚籍油轮遇袭</strong>
+                        阿曼附近海域发生油轮遇袭事件，三艘利比里亚籍油轮遭袭，致3人失踪、6人受伤。中东局势持续紧张，航运安全风险上升。
+                        <div class="source">来源：搜狐新闻 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>美国能源部长：霍尔木兹海峡不会征收通行费</strong>
+                        美国能源部长赖特表示，20%的海湾石油运输收费方案已作废，霍尔木兹海峡不会征收通行费，美国将保障该区域石油运输畅通。
+                        <div class="source">来源：搜狐新闻 | 2026-07-15</div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="news-item">
-          <h3>🇨🇳 中国海警在台东海域展开巡逻</h3>
-          <p>中国周六宣布在台东海域启动新的海警巡逻，引发台北方面强烈回应。此前一个月，中国海警编队在台湾海岸附近的活动已在部分西方首都引发担忧。</p>
-          <div class="source">来源：Reuters</div>
+        
+        <!-- 财经板块 -->
+        <div id="finance" class="content">
+            <div class="section">
+                <h2>全球市场概览</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>上证指数</h4>
+                        <div class="value">3,955.58</div>
+                        <div class="change negative">↓ -0.29%</div>
+                    </div>
+                    <div class="card">
+                        <h4>恒生指数</h4>
+                        <div class="value">24,681.1</div>
+                        <div class="change positive">↑ +1.40%</div>
+                    </div>
+                    <div class="card">
+                        <h4>纳斯达克</h4>
+                        <div class="value">—</div>
+                        <div class="change positive">↑ +0.90%</div>
+                    </div>
+                    <div class="card">
+                        <h4>日经225</h4>
+                        <div class="value">—</div>
+                        <div class="change positive">↑ +1.49%</div>
+                    </div>
+                    <div class="card">
+                        <h4>布伦特原油</h4>
+                        <div class="value">—</div>
+                        <div class="change neutral">→ 震荡</div>
+                    </div>
+                    <div class="card">
+                        <h4>比特币</h4>
+                        <div class="value">~$59,000</div>
+                        <div class="change negative">↓ 年内-30%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>大宗商品价格</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>品种</th>
+                                <th>最新价</th>
+                                <th>涨跌</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LME铜</td>
+                                <td>13,650 美元/吨</td>
+                                <td class="positive">↑ +50 (+0.37%)</td>
+                                <td>盘中最高13,675.5</td>
+                            </tr>
+                            <tr>
+                                <td>COMEX黄金</td>
+                                <td>4,063.10 美元/盎司</td>
+                                <td class="positive">↑ 小幅上涨</td>
+                                <td>年内高点5,598，已回落超26%</td>
+                            </tr>
+                            <tr>
+                                <td>上海黄金AU9999</td>
+                                <td>878.2 元/克</td>
+                                <td class="negative">↓ 回调</td>
+                                <td>金店零售价约1,200+元/克</td>
+                            </tr>
+                            <tr>
+                                <td>API原油库存</td>
+                                <td>-56.4万桶</td>
+                                <td class="neutral">→ 低于预期</td>
+                                <td>预期-273.6万桶</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #a0a0c0; font-size: 0.85rem;">数据来源：金投网、上海有色网、搜狐新闻 | 2026-07-15</p>
+            </div>
+            
+            <div class="section">
+                <h2>加密货币市场</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>BTC 比特币</h4>
+                        <div class="value">~$59,000</div>
+                        <div class="change negative">↓ 年内-30%</div>
+                    </div>
+                    <div class="card">
+                        <h4>ETH 以太坊</h4>
+                        <div class="value">—</div>
+                        <div class="change neutral">→ 震荡</div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <h4>市场分析</h4>
+                    <p>比特币2026年上半年累计下跌约30%。渣打银行维持年末10万美元目标价，Bernstein则看至15万美元。6月比特币现货ETF录得40.6亿美元净流出，创历史最大单月赎回规模。支撑位守在58,000-60,000美元区间。</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>全球财经新闻</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>美联储主席沃什：AI属于供给冲击，不认为QE本身会引发通胀</strong>
+                        美联储主席沃什表示，人工智能属于供给冲击，其发展速度超预期；货币政策不应在首次购房可负担性问题上偏袒某一代人。不认为量化宽松(QE)本身会引发通胀，尤其在危机时期。
+                        <div class="source">来源：搜狐新闻 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>央行：民营企业再贷款余额已超7600亿元</strong>
+                        2026年7月15日，中国人民银行货币政策司司长谢光启披露，年初设立的1万亿元民营企业再贷款工具，目前余额已超过7600亿元。一季度末，地方法人金融机构发放的中小微民营企业贷款较年初增幅4.2%，高于各项贷款增幅约1个百分点。
+                        <div class="source">来源：财新网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>央行邹澜：隔夜逆回购看重的不是利率，而是超短期流动性调节</strong>
+                        央行副行长邹澜表示，目前隔夜逆回购操作看重的不是利率，而是对超短期流动性的调节能力。现阶段7天期逆回购操作利率还是主要政策利率。下一步将研究逐步增加隔夜逆回购的操作频率。
+                        <div class="source">来源：财新网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>央行详解人民币离岸市场四个发力方向</strong>
+                        央行将从保持离岸人民币流动性充足稳定、丰富离岸金融基础设施服务、发展离岸人民币债券市场、完善离岸人民币汇率形成机制等四个方面推动人民币离岸市场发展。
+                        <div class="source">来源：财新网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>美国6月PPI同比增长5.5%，低于市场预期</strong>
+                        美国6月生产者价格指数(PPI)同比增长5.5%，低于市场预期，通胀压力阶段性"退烧"。
+                        <div class="source">来源：金十数据 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>美英两国表示稳定币应以高流动性资产作为储备支撑</strong>
+                        美国和英国监管机构联合表态，稳定币发行方应以高流动性资产作为储备支撑，确保金融稳定。
+                        <div class="source">来源：搜狐新闻 | 2026-07-15</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>投资机会分析</h2>
+                <div class="opportunity-card">
+                    <h4>机会1：铜价高位运行，关注矿业龙头</h4>
+                    <p>LME铜价维持在13,600美元/吨以上高位，印尼Amman Mineral计划将2026年阴极铜产量提高一倍至162,662吨。建议关注铜矿开采及冶炼企业。</p>
+                    <div class="risk">风险提示：全球经济放缓可能抑制需求</div>
+                </div>
+                <div class="opportunity-card">
+                    <h4>机会2：人形机器人产业爆发在即</h4>
+                    <p>工信部预计2026年人形机器人整机产量突破10万台。宇树科技IPO注册获批，优必选订单突破1.3万台。关注减速器、伺服电机、机器视觉等核心零部件供应商。</p>
+                    <div class="risk">风险提示：技术迭代快，量产进度可能不及预期</div>
+                </div>
+                <div class="opportunity-card">
+                    <h4>机会3：AI算力需求持续，内存芯片成新风口</h4>
+                    <p>英伟达股价近期低迷，但AI基础设施资金转向内存领域。美光科技股价同期几乎翻三倍，DRAM现货价格持续上涨。高带宽内存(HBM)供需失衡预计延续。</p>
+                    <div class="risk">风险提示：GPU算力价格下降，竞争加剧</div>
+                </div>
+            </div>
         </div>
-        <div class="news-item">
-          <h3>🇮🇷 伊朗冲突：爱国者防空系统成焦点</h3>
-          <p>NPR报道指出，爱国者防空系统是目前全球最受追捧的武器之一，已在多个国家经受了实战考验。该系统的需求激增反映了当前地缘政治紧张局势的持续升级。</p>
-          <div class="source">来源：NPR</div>
+        
+        <!-- 时政板块 -->
+        <div id="politics" class="content">
+            <div class="section">
+                <h2>中国要闻</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>外交部：南海仲裁案本质是披着法律外衣的政治闹剧</strong>
+                        外交部发言人林剑表示，"南海仲裁案"本质上是一出披着法律外衣的政治闹剧。十年前，所谓的"仲裁庭"越权管辖，枉法裁判，作出非法、无效的"裁决"。中国不接受、不参与"仲裁"，不接受、不承认"裁决"。
+                        <div class="source">来源：外交部官网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>外交部：敦促欧方停止为非法"裁决"站台背书</strong>
+                        针对欧洲国家参与美菲发表所谓"纪念南海仲裁案裁决"十年联合声明，外交部表示强烈不满和坚决反对，已提出严正交涉。敦促欧方谨言慎行，以免影响中欧关系与合作。
+                        <div class="source">来源：外交部官网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>外交部：中方对海湾地区军事冲突再起深表关切</strong>
+                        针对美国宣布对伊朗实施海上封锁，外交部呼吁相关各方保持理性克制，维护来之不易的停火局面，防止战火重燃。中方愿继续为推动中东海湾局势降温趋稳作出不懈努力。
+                        <div class="source">来源：外交部官网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>坦赞铁路全线正式通车50周年</strong>
+                        今天是坦赞铁路全线正式通车50周年。中方表示愿同坦赞双方共同推进坦赞铁路激活和繁荣带建设，助力三国及地区国家共筑现代化。
+                        <div class="source">来源：外交部官网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>山西省启动洪水防御Ⅳ级应急响应</strong>
+                        据气象部门预测，山西省中南部地区将迎来新一轮强降雨过程。省水利厅自2026年7月14日15时起，对晋中、吕梁、长治、晋城、临汾、运城6市启动洪水防御Ⅳ级应急响应。
+                        <div class="source">来源：山西新闻网 | 2026-07-15</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>美国要闻</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>特朗普：霍尔木兹海峡对除伊朗外所有国家船只开放</strong>
+                        美国总统特朗普表示，霍尔木兹海峡对所有船只开放通行，但伊朗船只除外。全面封锁将仅影响驶往或离开伊朗港口、或装载任何伊朗相关货物的船只。
+                        <div class="source">来源：俄罗斯卫星通讯社 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>特朗普在一起民事诉讼中被判性侵及诽谤罪名成立</strong>
+                        特朗普已向E·吉恩·卡罗尔支付560万美元赔偿金。
+                        <div class="source">来源：搜狐新闻 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>美国能源部长：霍尔木兹海峡不会征收通行费</strong>
+                        美国能源部长赖特表示，20%的海湾石油运输收费方案已作废，美国将保障该区域石油运输畅通。
+                        <div class="source">来源：搜狐新闻 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>美军宣布恢复对伊朗实施海上封锁</strong>
+                        美军中央司令部14日发布消息，美军于美国东部时间当天16时（北京时间15日4时）恢复针对往返伊朗港口及沿海地区船只的海上封锁。
+                        <div class="source">来源：山西新闻网 | 2026-07-15</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>欧洲要闻</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>阿联酋阿布扎比国家石油公司确认两艘油轮遭袭</strong>
+                        "蒙巴萨"号和"巴希娅"号油轮14日在通过霍尔木兹海峡时被发射物击中。
+                        <div class="source">来源：山西新闻网 | 2026-07-15</div>
+                    </li>
+                    <li>
+                        <strong>比利时布鲁塞尔市中心大楼火灾造成6人死亡</strong>
+                        布鲁塞尔市中心发生严重火灾事故。
+                        <div class="source">来源：山西新闻网 | 2026-07-15</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>中东局势深度分析</h2>
+                <div class="highlight-box">
+                    <h4>霍尔木兹海峡危机持续发酵</h4>
+                    <p>2026年美以伊冲突持续，伊朗方面宣布全面关闭霍尔木兹海峡。该海峡是全球约三分之一海运原油贸易的必经通道，日均运输量约2000万桶。特朗普政府宣布对伊朗实施海上封锁，但表示海峡对除伊朗外的所有国家船只开放。</p>
+                    <p style="margin-top: 10px;">伊朗驻俄大使表示："霍尔木兹海峡要么对所有人都安全，要么就对谁都不安全。" 阿曼附近海域已发生油轮遇袭事件，三艘利比里亚籍油轮遭袭，致3人失踪、6人受伤。</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <!-- 航运资讯 -->
-    <section class="section" style="border-left-color: #0277bd;">
-      <div class="section-title">
-        <span class="icon">⚓</span>
-        航运资讯
-        <span class="badge badge-info">SHIPPING</span>
-      </div>
-      <div class="highlight-box">
-        <h4>📊 BDI指数创一个多月新高</h4>
-        <p>波罗的海干散货指数（BDI）7月14日报<strong>2,980点</strong>，创6月5日以来最高水平，环比上涨0.68%，连续第9个交易日上涨。主要受海岬型船、巴拿马型和超灵便型船运费全面上涨推动。</p>
-      </div>
-      <div class="data-row">
-        <span class="label">波罗的海干散货指数 (BDI)</span>
-        <span><span class="value">2,980</span> <span class="change positive">+0.68% ↑</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">7月10日 BDI</span>
-        <span><span class="value">2,944</span> <span class="change positive">较7月3日 +8.4%</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">35,000 dwt 波罗的海→东地中海</span>
-        <span><span class="value">$12,500</span> <span class="change neutral">日租金</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">82,000 dwt 日本交船→NoPac</span>
-        <span><span class="value">$20,000</span> <span class="change neutral">谷物运输</span></span>
-      </div>
-      <div class="news-grid" style="margin-top: 16px;">
-        <div class="news-item">
-          <h3>🚢 大西洋市场情绪转弱</h3>
-          <p>南大西洋和美湾地区市场情绪本周转弱，现货吨位清单增加，买卖价差扩大，成交有限。东南亚市场同样表现平淡，主要由较小巴拿马型船承接有限需求。</p>
-          <div class="source">来源：Baltic Exchange / The DCN</div>
+        
+        <!-- AI/机器人板块 -->
+        <div id="ai" class="content">
+            <div class="section">
+                <h2>硅谷前沿</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>OpenAI发布GPT-5.6系列模型</strong>
+                        当地时间6月26日，OpenAI发布最新大模型系列GPT-5.6，按性能及价格分为Sol、Terra和Luna三个模型。API价格均有下降，且较Anthropic最新旗舰大模型价格更低。目前仅对一小部分"值得信赖的合作伙伴"开启有限权限。
+                        <div class="source">来源：财新网 | 2026-07-03</div>
+                    </li>
+                    <li>
+                        <strong>Anthropic最强模型解除出口限制</strong>
+                        当地时间6月30日，Anthropic宣布美国商务部已移除对Claude Fable 5和Claude Mythos 5的出口限制，7月1日起恢复访问权限。
+                        <div class="source">来源：财新网 | 2026-07-03</div>
+                    </li>
+                    <li>
+                        <strong>Meta高薪挖角AI人才，总包达2亿美元</strong>
+                        Meta为前苹果AI负责人庞若鸣提供总包2亿美元薪酬包，为前OpenAI项目负责人余家辉提供总包1亿美元。Meta新增超级智能实验室(MSL)负责Llama 5开发，以143亿美元收购Scale AI 49%股权。
+                        <div class="source">来源：中信证券研究 | 2025-07-25</div>
+                    </li>
+                    <li>
+                        <strong>英伟达CEO黄仁勋否认产品延期论</strong>
+                        黄仁勋表示Vera Rubin将按计划向客户交付。此前英伟达股价从5月高点下跌约15%，但公司预计营收仍在增长。
+                        <div class="source">来源：环球市场播报 | 2026-07-16</div>
+                    </li>
+                    <li>
+                        <strong>诺基亚与英伟达推出AI原生无线接入网平台</strong>
+                        双方合作推出的平台有望使频谱效率倍增。
+                        <div class="source">来源：环球市场播报 | 2026-07-15</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>中国动态</h2>
+                <ul class="news-list">
+                    <li>
+                        <strong>2026世界人工智能大会即将开幕，人形机器人成核心亮点</strong>
+                        WAIC 2026将于7月17日至20日在上海举行。宇树科技将展出全球首款载人变形机甲GD01；智元机器人展出远征A3 Ultra和精灵G2；优必选量产订单突破1.3万台。工信部预计2026年人形机器人整机产量突破10万台。
+                        <div class="source">来源：ZAKER新闻 | 2026-07-14</div>
+                    </li>
+                    <li>
+                        <strong>宇树科技科创板IPO注册获批</strong>
+                        宇树科技以创纪录的速度闪电通过科创板IPO注册，募集资金总额超过42亿元，今年全年出货量目标直指两万台。
+                        <div class="source">来源：ZAKER新闻 | 2026-07-09</div>
+                    </li>
+                    <li>
+                        <strong>优必选发布消费级品牌"优世界U1"系列超仿生机器人</strong>
+                        优必选最新发布的消费级机器人跨越了困扰行业数十年的"恐怖谷效应"，皮肤毛孔和皮下血管都做到了1:1还原。顶配售价逼近百万，却斩获超过1.3万台订单。
+                        <div class="source">来源：ZAKER新闻 | 2026-07-09</div>
+                    </li>
+                    <li>
+                        <strong>DeepSeek-V4-Pro定价公布</strong>
+                        DeepSeek-V4-Pro平时价格为每百万tokens输入(缓存命中)0.025元、输入(缓存未命中)3元、输出6元；Flash版本价格更低。
+                        <div class="source">来源：财新网 | 2026-07-03</div>
+                    </li>
+                    <li>
+                        <strong>可灵AI落地近28亿美元融资</strong>
+                        7月2日深夜，快手公告称旗下可灵AI完成巨额融资。
+                        <div class="source">来源：财新网 | 2026-07-03</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>技术突破</h2>
+                <div class="highlight-box">
+                    <h4>人形机器人产业拐点已至</h4>
+                    <p>2026年被视为人形机器人量产元年。关键数据：</p>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>工信部预计2026年全年人形机器人整机产量突破10万台</li>
+                        <li>规上工业企业AI应用普及率已超30%</li>
+                        <li>优必选订单突破1.3万台，Walker系列获近4亿元合同</li>
+                        <li>宇树科技2024年交付人形机器人1500台，今年目标2万台</li>
+                        <li>特斯拉Optimus Gen-3规划年产能100万台</li>
+                    </ul>
+                </div>
+                <div class="highlight-box">
+                    <h4>大模型发展趋势</h4>
+                    <p>OpenAI GPT-5.6、Anthropic Claude Sonnet 5、Meta Llama 5等多款大模型密集发布。行业呈现以下趋势：</p>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>API价格持续下降，竞争加剧</li>
+                        <li>多模态能力成为标配</li>
+                        <li>开源与闭源模型差距缩小</li>
+                        <li>AI Agent成为新热点</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>投资动态与股价</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>英伟达 (NVDA)</h4>
+                        <div class="value">~$138</div>
+                        <div class="change negative">↓ 年内+22%但近期回调15%</div>
+                    </div>
+                    <div class="card">
+                        <h4>优必选 (09880.HK)</h4>
+                        <div class="value">~110港元</div>
+                        <div class="change neutral">→ 总市值约510亿元</div>
+                    </div>
+                    <div class="card">
+                        <h4>美光科技</h4>
+                        <div class="value">—</div>
+                        <div class="change positive">↑ 股价几乎翻三倍</div>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <h4>投资分析：AI算力转向内存芯片</h4>
+                    <p>英伟达股价近期低迷，从5月高点下跌约15%。但AI基础设施资金持续流入，主要转向内存领域。核心原因：GPU短缺缓解，而数据中心对内存需求远超供应。DRAM现货价格自2023年以来大幅上涨。对中小投资者而言，当前AI投资热点正从GPU向内存芯片切换。</p>
+                    <div class="risk">风险提示：多家科技巨头开发自有处理器，可能压低整体算力价格</div>
+                </div>
+            </div>
         </div>
-        <div class="news-item">
-          <h3>🏭 新造船与二手船市场</h3>
-          <p>2026年航运市场持续活跃，新造船订单保持高位。二手船交易方面，随着BDI指数连续上涨，二手船资产价格获得支撑。一艘82,000 dwt散货船本周在香港经印尼至韩国的航线上成交，日租金约$13,600。</p>
-          <div class="source">来源：I3investor / 行业综合</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 全球财经 -->
-    <section class="section" style="border-left-color: #2e7d32;">
-      <div class="section-title">
-        <span class="icon">📈</span>
-        全球财经
-        <span class="badge badge-live">MARKETS</span>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="number">52,508</div>
-          <div class="label">道琼斯工业指数</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">7,544</div>
-          <div class="label">S&P 500</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">26,107</div>
-          <div class="label">纳斯达克</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">$64,833</div>
-          <div class="label">比特币 (BTC)</div>
-        </div>
-      </div>
-      <div style="margin-top: 20px;">
-        <div class="data-row">
-          <span class="label">BTC 比特币</span>
-          <span><span class="value">$64,833</span> <span class="change negative">-0.23%</span></span>
-        </div>
-        <div class="data-row">
-          <span class="label">ETH 以太坊</span>
-          <span><span class="value">$1,922</span> <span class="change positive">+1.70%</span></span>
-        </div>
-        <div class="data-row">
-          <span class="label">XRP</span>
-          <span><span class="value">$1.11</span> <span class="change positive">+0.39%</span></span>
-        </div>
-        <div class="data-row">
-          <span class="label">SOL 索拉纳</span>
-          <span><span class="value">$77.42</span> <span class="change negative">-0.47%</span></span>
-        </div>
-      </div>
-      <div class="highlight-box" style="margin-top: 16px;">
-        <h4>💡 市场要点</h4>
-        <p>• 7月15日比特币开盘报$64,974，较前一日上涨4.4%，受温和通胀数据提振</p>
-        <p>• 以太坊表现强劲，7月15日开盘$1,890，较前一日大涨6.6%，跑赢比特币</p>
-        <p>• 日本比特币ETF获批消息推动加密货币市场上涨</p>
-        <p>• 市场关注7月16日：Netflix(NFLX)、台积电(TSM)财报，美国6月零售销售数据</p>
-        <p>• IBM业绩疲软拖累软件股，Workday跌9%，Salesforce跌6%，Adobe跌5%</p>
-        <p>• Pershing Square USA首日交易暴跌18%</p>
-      </div>
-    </section>
-
-    <!-- AI机器人动态 -->
-    <section class="section" style="border-left-color: #7b1fa2;">
-      <div class="section-title">
-        <span class="icon">🤖</span>
-        AI机器人动态
-        <span class="badge badge-info">ROBOTICS</span>
-      </div>
-      <div class="news-grid">
-        <div class="news-item">
-          <h3>🏭 特斯拉Optimus：Model S工厂改造为机器人产线</h3>
-          <p>特斯拉已将弗里蒙特工厂的原Model S/X生产线改造为Optimus人形机器人生产线。AI负责人Ashok Elluswamy表示Optimus"任重道远"。马斯克7月1日展示产线改造视频，预计7月下旬至8月启动生产。目前尚未实现大规模量产，目标年产100万台。</p>
-          <div class="source">来源：InsideEVs / Benzinga / RoboZaps</div>
-        </div>
-        <div class="news-item">
-          <h3>🏢 现代汽车完全收购波士顿动力</h3>
-          <p>现代汽车集团于2026年6月底完成对波士顿动力的完全收购，支付软银3.25亿美元收购剩余9.65%股权。波士顿动力成为现代全资子公司，Atlas人形机器人正从演示转向工厂部署。最终合同窗口将于7月20日关闭。</p>
-          <div class="source">来源：TechTimes</div>
-        </div>
-        <div class="news-item">
-          <h3>💰 Walden Robotics融资3亿美元</h3>
-          <p>由MIT教授Russ Tedrake领导的波士顿AI机器人初创公司Walden Robotics，从丰田及其他投资者处获得3亿美元融资。该公司专注于人形机器人研发，是机器人领域近期最大融资之一。</p>
-          <div class="source">来源：Boston Globe</div>
-        </div>
-        <div class="news-item">
-          <h3>🤖 人形机器人市场竞争白热化</h3>
-          <p>2026年人形机器人市场百花齐放：Unitree R1以$4,900打破价格门槛；1X NEO主打家庭场景，售价$20,000或$499/月订阅；Agility Robotics的Digit被评商业部署最佳；Nvidia宣布与Unitree合作推进物理AI。混合机器人市场预计2030年达100亿美元。</p>
-          <div class="source">来源：RoboZaps / CNBC / Yahoo Finance</div>
-        </div>
-        <div class="news-item">
-          <h3>🏠 人形机器人8周内部署</h3>
-          <p>TechTimes报道，Figure 03和特斯拉Optimus等双足平台正追求更广泛的移动能力，但机械复杂度增加。当前服务行业的机器人可在8周内部署到厨房、仓库和酒店场景。</p>
-          <div class="source">来源：TechTimes</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 市场日历 -->
-    <section class="section" style="border-left-color: #f57c00;">
-      <div class="section-title">
-        <span class="icon">📅</span>
-        今日关注
-      </div>
-      <div class="news-grid">
-        <div class="news-item">
-          <h3>🎯 7月16日重点事件</h3>
-          <p><span class="tag">财报</span> Netflix (NFLX) Q2 财报</p>
-          <p><span class="tag">财报</span> 台积电 (TSM) Q2 财报</p>
-          <p><span class="tag">数据</span> 美国6月零售销售数据</p>
-          <p><span class="tag">事件</span> 波士顿动力最终合同窗口到期（7月20日）</p>
-          <p><span class="tag">事件</span> 特斯拉Optimus产线预计7月底启动</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>每日资讯简报 · Daily Briefing</p>
-      <p>数据更新时间：2026年7月16日 07:00 AM (SGT)</p>
-      <p>数据来源：Reuters, CNBC, Bloomberg, CoinDesk, Baltic Exchange, CoinMarketCap, Yahoo Finance等</p>
-      <p style="margin-top: 8px;">🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
-    </footer>
-  </div>
+        
+        <footer>
+            <p>每日简报日报 | 数据截止时间：2026-07-15 23:28 UTC</p>
+            <p>数据来源：Baltic Exchange, Clarksons, 东方财富网, 财新网, 外交部官网等</p>
+            <p style="margin-top: 10px; font-size: 0.75rem;">本简报仅供参考，不构成投资建议</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // BDI Chart
+        const ctx = document.getElementById('bdiChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['6/30', '7/1', '7/2', '7/3', '7/4', '7/7', '7/8', '7/9', '7/10', '7/11', '7/14', '7/15'],
+                datasets: [{
+                    label: 'BDI指数',
+                    data: [2100, 2200, 2350, 2500, 2650, 2700, 2800, 2850, 2900, 2950, 2980, 2929],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { 
+                            usePointStyle: true,
+                            color: '#e0e0e0'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#a0a0c0' },
+                        grid: { color: 'rgba(102, 126, 234, 0.1)' }
+                    },
+                    x: {
+                        ticks: { color: '#a0a0c0' },
+                        grid: { color: 'rgba(102, 126, 234, 0.1)' }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
