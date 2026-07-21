@@ -1,1108 +1,948 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每周资讯简报 | 2026年7月13日-17日</title>
-  <style>
-    :root {
-      --primary: #1a237e;
-      --secondary: #283593;
-      --accent: #ff6f00;
-      --bg: #f5f5f5;
-      --card-bg: #ffffff;
-      --text: #333333;
-      --text-light: #666666;
-      --border: #e0e0e0;
-      --success: #4caf50;
-      --danger: #f44336;
-      --warning: #ff9800;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-      padding: 40px 30px;
-      border-radius: 16px;
-      margin-bottom: 24px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
-    }
-    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
-    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
-    header .date { font-size: 0.95rem; opacity: 0.8; }
-    .badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-left: 8px;
-    }
-    .badge-live { background: #e8f5e9; color: #2e7d32; }
-    .badge-up { background: #e8f5e9; color: #2e7d32; }
-    .badge-down { background: #ffebee; color: #c62828; }
-    .badge-info { background: #e3f2fd; color: #1565c0; }
-    .section {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      border-left: 4px solid var(--primary);
-    }
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-title .icon { font-size: 1.5rem; }
-    .news-grid { display: grid; gap: 16px; }
-    .news-item {
-      padding: 16px;
-      background: #fafafa;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .news-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .news-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
-    .news-item p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
-    .news-item .source { font-size: 0.8rem; color: #999; margin-top: 8px; }
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
-      background: #fafafa;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      border: 1px solid var(--border);
-    }
-    .data-row .label { font-weight: 600; color: var(--text); }
-    .data-row .value { font-weight: 700; font-size: 1.1rem; }
-    .data-row .change { font-size: 0.85rem; margin-left: 8px; }
-    .positive { color: var(--success); }
-    .negative { color: var(--danger); }
-    .neutral { color: var(--warning); }
-    .highlight-box {
-      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-      border: 1px solid #ffcc80;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-    .highlight-box h4 { color: var(--accent); font-size: 1rem; margin-bottom: 8px; }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .stat-card {
-      background: #fafafa;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-    .stat-card .number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
-    .stat-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
-    .chart-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-      font-size: 0.9rem;
-    }
-    .chart-table th, .chart-table td {
-      padding: 10px 12px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    .chart-table th {
-      background: #f0f0f0;
-      font-weight: 600;
-      color: var(--primary);
-    }
-    .chart-table tr:hover { background: #fafafa; }
-    .day-header {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--secondary);
-      margin: 16px 0 8px 0;
-      padding: 8px 12px;
-      background: #e8eaf6;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--text-light);
-      font-size: 0.85rem;
-    }
-    footer a { color: var(--secondary); text-decoration: none; }
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      background: #e8eaf6;
-      color: var(--primary);
-      margin-right: 6px;
-    }
-    .summary-box {
-      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-      border: 1px solid #81c784;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-    .summary-box h4 { color: #2e7d32; font-size: 1rem; margin-bottom: 8px; }
-    .toc {
-      background: #fafafa;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-    }
-    .toc h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 12px; }
-    .toc ul { list-style: none; padding-left: 0; }
-    .toc li { padding: 6px 0; font-size: 0.9rem; }
-    .toc a { color: var(--text); text-decoration: none; }
-    .toc a:hover { color: var(--primary); }
-    .week-range {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-top: 8px;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.5rem; }
-      .section { padding: 20px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日简报 - 2026年7月22日</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center;
+            padding: 12px 15px 10px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        header h1 {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .date-label { color: #a0a0c0; font-size: 0.85rem; margin-bottom: 10px; }
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-tab {
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #b0b0d0;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+        .nav-tab:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+        .content { display: none; }
+        .content.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .section h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.5);
+        }
+        .section h3 {
+            color: #b8b8d0;
+            font-size: 1.2rem;
+            margin: 20px 0 15px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h4 { color: #a0a0c0; font-size: 0.9rem; margin-bottom: 8px; }
+        .card .value { font-size: 1.8rem; font-weight: bold; color: #fff; }
+        .card .change { font-size: 0.9rem; margin-top: 5px; }
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .neutral { color: #fbbf24; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .table-wrapper table {
+            margin: 0;
+            display: table;
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th {
+            background: rgba(102, 126, 234, 0.2);
+            color: #fff;
+            font-weight: 600;
+        }
+        tr:hover { background: rgba(255, 255, 255, 0.05); }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .news-list { list-style: none; }
+        .news-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        .news-list li strong { color: #fff; display: block; margin-bottom: 5px; }
+        .news-list li .source { color: #a0a0c0; font-size: 0.8rem; margin-top: 5px; }
+        .news-list li .date { color: #667eea; font-size: 0.8rem; }
+        .analysis {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+        }
+        .analysis h4 { color: #667eea; margin-bottom: 10px; }
+        .opportunity-card {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #22c55e;
+        }
+        .opportunity-card h5 { color: #4ade80; margin-bottom: 5px; }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+        .tag-hot { background: rgba(239, 68, 68, 0.3); color: #fca5a5; }
+        .tag-new { background: rgba(34, 197, 94, 0.3); color: #86efac; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.1rem; }
+            .nav-tab { font-size: 0.7rem; padding: 3px 8px; }
+            .cards { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>📰 每周资讯简报</h1>
-      <div class="subtitle">Weekly Briefing — 2026年7月13日至17日</div>
-      <div class="week-range">📅 周一至周五 | 新加坡时间</div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>每日简报 Daily Briefing</h1>
+            <div class="date-label">2026年7月22日 星期三 | 数据来源：Baltic Exchange, Bloomberg, Reuters, 财新网, TechCrunch</div>
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showTab('shipping')">航运</div>
+                <div class="nav-tab" onclick="showTab('finance')">财经</div>
+                <div class="nav-tab" onclick="showTab('politics')">时政</div>
+                <div class="nav-tab" onclick="showTab('ai')">AI/机器人</div>
+            </div>
+        </header>
 
-    <!-- 目录 -->
-    <div class="toc">
-      <h3>📑 本周目录</h3>
-      <ul>
-        <li><a href="#shipping">⚓ 航运板块（完整周报）</a> — BDI/BCI/BPI每日数据、各船型租金、新造船/二手船订单统计</li>
-        <li><a href="#finance">📈 财经板块（完整周报）</a> — 全球市场回顾、股指/商品/加密货币走势、投资机会</li>
-        <li><a href="#politics">🌍 时政板块（完整周报）</a> — 中国/美国/欧洲要闻、全球重要动态</li>
-        <li><a href="#ai">🤖 AI/机器人板块（完整周报）</a> — 硅谷/中国/东南亚动态、技术突破、投资统计</li>
-      </ul>
+        <!-- 航运板块 -->
+        <div id="shipping" class="content active">
+            <div class="section">
+                <h2>航运市场概览 <span class="tag tag-hot">BDI 2,670</span></h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>BDI 波罗的海干散货指数</h4>
+                        <div class="value">2,670</div>
+                        <div class="change negative">↓ -0.04% (-1点)</div>
+                    </div>
+                    <div class="card">
+                        <h4>BCI 海岬型指数</h4>
+                        <div class="value">~4,107</div>
+                        <div class="change negative">↓ 周跌786点 (-16%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>BPI 巴拿马型指数</h4>
+                        <div class="value">~2,283</div>
+                        <div class="change positive">↑ +47点 (+2.1%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>BSI 超灵便型指数</h4>
+                        <div class="value">~1,642</div>
+                        <div class="change positive">↑ +54点 (+3.4%)</div>
+                    </div>
+                </div>
+
+                <h3>BDI近期走势 (2026年6-7月)</h3>
+                <div class="chart-container">
+                    <canvas id="bdiChart"></canvas>
+                </div>
+
+                <h3>各船型日租金</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>船型</th>
+                                <th>日租金 (USD/天)</th>
+                                <th>变化</th>
+                                <th>市场动态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Capesize (180K DWT)</td>
+                                <td>~30,998</td>
+                                <td class="negative">↓ 持续走弱</td>
+                                <td>BCI连跌，5TC平均租金下滑；一年期租金约USD31,000</td>
+                            </tr>
+                            <tr>
+                                <td>Panamax (82K DWT)</td>
+                                <td>~17,472</td>
+                                <td class="positive">↑ +USD151</td>
+                                <td>大西洋市场稳定，太平洋市场走软</td>
+                            </tr>
+                            <tr>
+                                <td>Supramax/Ultramax (58-63K)</td>
+                                <td>~19,058</td>
+                                <td class="positive">↑ 稳中有升</td>
+                                <td>美湾表现稳健，镍矿运输需求活跃</td>
+                            </tr>
+                            <tr>
+                                <td>Handysize (38K)</td>
+                                <td>~14,774</td>
+                                <td class="positive">↑ +USD108</td>
+                                <td>小型船市场相对活跃</td>
+                            </tr>
+                            <tr>
+                                <td>VLCC</td>
+                                <td>高运价</td>
+                                <td class="positive">↑ 订单激增</td>
+                                <td>2026上半年油轮订造量同比增195%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>新造船订单动态</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>2026上半年全球航运投资热潮：新船订单涨195%</strong>
+                        船舶经纪公司Xclusiv Shipbrokers数据显示，2026年上半年散货船订造量同比增61%，油轮订造量暴增195%。VLCC订单量达147艘，占全部油轮订单36%，去年同期仅13艘。油轮手持订单量已攀升至现有船队的近25%，业内担忧未来运力过剩风险。
+                        <div class="source">来源：航运界网 / Xclusiv Shipbrokers | 2026-07-04</div>
+                    </li>
+                    <li>
+                        <strong>金辉航运完成2026年首笔二手船出售，同步锁定新造船</strong>
+                        金辉航运间接附属公司Jinlang Marine Inc.与Jinyu Marine Inc.分别与苏美达船舶旗下新大洋造船签署2艘64,100吨极灵便型散货船建造合同，单船造价3,400万美元，合计6,800万美元，预计2029年交付。业内人士表示，"以旧换新"、优化船队结构已成为典型策略。
+                        <div class="source">来源：国际船舶网 / 海运圈聚焦 | 2026-03-09</div>
+                    </li>
+                    <li>
+                        <strong>2026年上半年二手船市场：散货船交易量涨14%，油轮涨58%</strong>
+                        二手船市场价值飙升，过去一年散货船二手价最高飙升40%，油轮最高涨幅达65%。上半年全球共有339艘油轮易手，韩国船东以55艘收购量居首。希腊船东主导新船订造，中韩船公司深耕二手船市场。
+                        <div class="source">来源：5684.com / Xclusiv Shipbrokers | 2026-07-06</div>
+                    </li>
+                </ul>
+
+                <h3>二手船交易详情</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>船型</th>
+                                <th>成交详情</th>
+                                <th>船龄/规格</th>
+                                <th>成交价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>VLCC</td>
+                                <td>2007-2010年建造</td>
+                                <td>15-18年</td>
+                                <td>USD 51M - 70M</td>
+                            </tr>
+                            <tr>
+                                <td>苏伊士型</td>
+                                <td>19笔交易，平均</td>
+                                <td>5-10年</td>
+                                <td>USD 63.2M (平均)</td>
+                            </tr>
+                            <tr>
+                                <td>LR2/阿芙拉型</td>
+                                <td>18笔交易</td>
+                                <td>2023-2024造</td>
+                                <td>USD 84M (最新船)</td>
+                            </tr>
+                            <tr>
+                                <td>MR2型</td>
+                                <td>38笔交易(最活跃)</td>
+                                <td>平均</td>
+                                <td>USD 30.3M (3月均价)</td>
+                            </tr>
+                            <tr>
+                                <td>Kamsarmax散货</td>
+                                <td>28艘成交</td>
+                                <td>2018-2020造</td>
+                                <td>USD 21.2M (平均，>USD30M新船)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>行业新闻</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>新华·中国船舶交易价格指数创新高</strong>
+                        截至2026年7月10日，新华·中国船舶交易价格指数XH·SSPI报979.66点，较上期上涨9.90点，涨幅1.02%。浙江拍船网近期成交7批次共319个集装箱，成交额累计233.246万元。
+                        <div class="source">来源：新华财经 / 浙江拍船网 | 2026-07-18</div>
+                    </li>
+                    <li>
+                        <strong>几内亚铝土矿出口配额或限制至1.5亿吨，影响海岬型运力</strong>
+                        几内亚政府自4月起酝酿限产保价，考虑将今年出口量由2025年1.83亿吨历史高点限制至1.5亿吨。若该配额在下半年严格执行，市场预计将释放约46艘海岬型运力。几内亚铝土矿FOB报价已从USD32-33强势回升至USD38以上。
+                        <div class="source">来源：Maxmart Shipping Weekly | 2026-06-15</div>
+                    </li>
+                    <li>
+                        <strong>圣婴现象预计2026Q4-2027Q1达峰，巴拿马运河水位承压</strong>
+                        美国国家海洋暨大气总署预测，圣婴现象高峰预计落在2026年第四季至2027年第一季，巴拿马运河平均等待时间增至47.9小时，限制将推高吨海里，造成船吨供需失衡。
+                        <div class="source">来源：Maxmart Shipping Weekly | 2026-06-15</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 财经板块 -->
+        <div id="finance" class="content">
+            <div class="section">
+                <h2>全球市场概览</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>上证指数</h4>
+                        <div class="value">3,796.28</div>
+                        <div class="change positive">↑ +0.85%</div>
+                    </div>
+                    <div class="card">
+                        <h4>纳斯达克</h4>
+                        <div class="value">~29,985</div>
+                        <div class="change positive">↑ +1.04% 开盘</div>
+                    </div>
+                    <div class="card">
+                        <h4>布伦特原油</h4>
+                        <div class="value">$91.03</div>
+                        <div class="change positive">↑ +2.0% 日内</div>
+                    </div>
+                    <div class="card">
+                        <h4>比特币 BTC</h4>
+                        <div class="value">$66,808</div>
+                        <div class="change positive">↑ +3.86% (24h)</div>
+                    </div>
+                    <div class="card">
+                        <h4>以太坊 ETH</h4>
+                        <div class="value">$1,941</div>
+                        <div class="change positive">↑ +4.26% (24h)</div>
+                    </div>
+                    <div class="card">
+                        <h4>黄金</h4>
+                        <div class="value">$4,078</div>
+                        <div class="change negative">↓ -0.26%</div>
+                    </div>
+                </div>
+
+                <h3>股票市场详细数据</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>市场/指数</th>
+                                <th>最新点位</th>
+                                <th>涨跌</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>上证指数</td>
+                                <td>3,796.28</td>
+                                <td class="positive">+0.85%</td>
+                                <td>上证50大涨超3%，"煤电酒油"爆发</td>
+                            </tr>
+                            <tr>
+                                <td>深证成指</td>
+                                <td>13,610.23</td>
+                                <td class="negative">-0.71%</td>
+                                <td>科技股再度下跌</td>
+                            </tr>
+                            <tr>
+                                <td>恒生指数</td>
+                                <td>--</td>
+                                <td class="positive">+2.37%</td>
+                                <td>恒指、恒科指均涨超2%</td>
+                            </tr>
+                            <tr>
+                                <td>纳斯达克</td>
+                                <td>~29,985</td>
+                                <td class="positive">+1.04%</td>
+                                <td>芯片股反弹，费城半导体指数大涨4.5%</td>
+                            </tr>
+                            <tr>
+                                <td>标普500</td>
+                                <td>--</td>
+                                <td class="positive">+0.62%</td>
+                                <td>三大股指齐涨</td>
+                            </tr>
+                            <tr>
+                                <td>道琼斯</td>
+                                <td>--</td>
+                                <td class="positive">+0.29%</td>
+                                <td>开盘上涨</td>
+                            </tr>
+                            <tr>
+                                <td>纳斯达克中国金龙</td>
+                                <td>--</td>
+                                <td class="negative">-0.5%</td>
+                                <td>中概股涨跌互现</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>大宗商品</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>商品</th>
+                                <th>价格</th>
+                                <th>涨跌</th>
+                                <th>分析</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>布伦特原油</td>
+                                <td>$91.03/桶</td>
+                                <td class="positive">+2.0%</td>
+                                <td>中东局势升级，特朗普威胁强硬报复伊朗</td>
+                            </tr>
+                            <tr>
+                                <td>WTI原油</td>
+                                <td>$84.15/桶</td>
+                                <td class="positive">+2.0%</td>
+                                <td>IEA：中东局势升级加剧对石油供应的担忧</td>
+                            </tr>
+                            <tr>
+                                <td>黄金</td>
+                                <td>$4,078.58/盎司</td>
+                                <td class="negative">-0.26%</td>
+                                <td>盘中曾跌破$4,000；52周区间: $3,268-$5,595</td>
+                            </tr>
+                            <tr>
+                                <td>白银</td>
+                                <td>~$55.37</td>
+                                <td class="negative">-1.45%</td>
+                                <td>贵金属抛售为主</td>
+                            </tr>
+                            <tr>
+                                <td>铜</td>
+                                <td>~$4.25/磅</td>
+                                <td class="negative">-1.05%</td>
+                                <td>智利风暴影响部分铜矿作业</td>
+                            </tr>
+                            <tr>
+                                <td>铝</td>
+                                <td>~$2,495/吨</td>
+                                <td class="positive">+1.16%</td>
+                                <td>有色板块分化</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>加密货币</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>币种</th>
+                                <th>价格</th>
+                                <th>24h涨跌</th>
+                                <th>市值/动态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BTC 比特币</td>
+                                <td>$66,808</td>
+                                <td class="positive">+3.86%</td>
+                                <td>市值约1.5万亿美元；突破$65,000创一个月新高</td>
+                            </tr>
+                            <tr>
+                                <td>ETH 以太坊</td>
+                                <td>$1,941</td>
+                                <td class="positive">+4.26%</td>
+                                <td>市值约4,000亿美元</td>
+                            </tr>
+                            <tr>
+                                <td>SOL Solana</td>
+                                <td>$150-200区间</td>
+                                <td>--</td>
+                                <td>市值约800亿美元</td>
+                            </tr>
+                            <tr>
+                                <td>BNB</td>
+                                <td>$500-600</td>
+                                <td>--</td>
+                                <td>市值约800亿美元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>全球财经新闻</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>3M公布Q2业绩超预期，提高全年指引</strong>
+                        3M公司Q2 GAAP销售额65亿美元，增长2.4%；调整后每股收益$2.40，同比增长11%。全年调整后EPS指引从$8.50-$8.70提升至$8.80-$8.95。股价盘前跳涨超6%。
+                        <div class="source">来源：财联社 / 3M财报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>摩根士丹利下调微软目标价至$600</strong>
+                        摩根士丹利将微软目标价从$650下调至$600，反映对云业务增长放缓的担忧。
+                        <div class="source">来源：财联社 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>美财长贝森特：2026下半年增长3%"并非不合理"</strong>
+                        美国财政部长贝森特表示，美国经济基础非常强劲，核心物价稳定，2026年下半年增长3%"并非不合理"。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>日元兑美元跌至1986年以来最低</strong>
+                        日元兑美元再度跌至1986年以来最低水平，触及162.89。日本央行考虑从储备基金追加数千亿日元用于汽油补贴延续至10月。
+                        <div class="source">来源：东方财富 | 2026-07-22</div>
+                    </li>
+                    <li>
+                        <strong>IEA：成员国仍保有规模可观的应急石油储备</strong>
+                        自3月11日以来，IEA成员国已累计释放约2.9亿桶原油；仍保有超10亿桶政府掌控的储备库存。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>亚马逊企业购年化销售额突破600亿美元</strong>
+                        2026年Q2，亚马逊B2B采购平台年化总销售额突破600亿美元，在全球11个国家服务超1,100万家机构客户。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                </ul>
+
+                <h3>投资机会分析</h3>
+                <div class="opportunity-card">
+                    <h5>芯片股反弹机会</h5>
+                    费城半导体指数开盘大涨4.5%，美光科技涨7.26%，台积电涨3.49%，英伟达涨2.32%。瑞银交易部门表示动量股抛售可能接近尾声，为重新建立AI和半导体仓位创造机会。关注：NVDA、TSM、MU
+                </div>
+                <div class="opportunity-card">
+                    <h5>原油地缘溢价</h5>
+                    中东局势升级叠加霍尔木兹海峡风险，布伦特原油突破$91。IEA警告供应担忧加剧。关注：能源板块(XLE)、原油ETF(USO)、石油服务(OIH)。但需警惕调停方提议停火后的回调风险。
+                </div>
+                <div class="opportunity-card">
+                    <h5>加密货币底部信号</h5>
+                    BTC守住$60,000关口后反弹至$66,808，机构鲸鱼低位加仓。一旦美联储降息预期明确，有望触发新一轮机构FOMO行情。关注：BTC、ETH、Coinbase(COIN)
+                </div>
+                <div class="opportunity-card">
+                    <h5>中概股结构性机会</h5>
+                    阿里巴巴涨近5%，中概指数收涨0.9%。摩根大通将智谱目标价上调至2,000港元。关注：BABA、JD、PDD、智谱(港股)
+                </div>
+            </div>
+        </div>
+
+        <!-- 时政板块 -->
+        <div id="politics" class="content">
+            <div class="section">
+                <h2>时政要闻</h2>
+
+                <h3>中国要闻</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>王毅外长将出席中国-东盟外长会及上合组织外长会</strong>
+                        中共中央政治局委员、外交部长王毅将于7月22日出席在菲律宾马尼拉举行的中国-东盟外长会，于23日至25日出席在吉尔吉斯斯坦乔蓬阿塔举行的上海合作组织成员国外长理事会会议并访问吉尔吉斯斯坦。
+                        <div class="source">来源：外交部官网 | 2026-07-20</div>
+                    </li>
+                    <li>
+                        <strong>2026世界人工智能大会闭幕，习近平发表主旨讲话</strong>
+                        7月17-20日，2026世界人工智能大会在上海举行，习近平主席出席开幕式并发表主旨讲话。来自100多个国家和国际组织的官方代表与会，大会发布《人工智能全球治理行动计划》，倡议成立"世界人工智能合作组织"。
+                        <div class="source">来源：外交部 / 澎湃新闻 | 2026-07-20</div>
+                    </li>
+                    <li>
+                        <strong>巴拿马表示中巴已就海运协定续签达成共识</strong>
+                        外交部回应：中方对此表示欢迎，愿同巴方一道推动两国关系持续健康稳定发展。
+                        <div class="source">来源：环球网 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>人社部：稳妥实施个人养老金制度，逐步提高缴费水平</strong>
+                        <div class="source">来源：中国经营报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>中欧领导人会晤在即：欧洲理事会主席科斯塔、欧盟委员会主席冯德莱恩将于7月24日访华</strong>
+                        国家主席习近平将会见两主席，国务院总理李强将共同主持第二十五次中国-欧盟领导人会晤。
+                        <div class="source">来源：财新网 | 2026-07-22</div>
+                    </li>
+                </ul>
+
+                <h3>美国要闻</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>美股全线高开，芯片股领涨</strong>
+                        7月21日美股开盘，道指涨0.29%，纳指涨1.04%，标普500涨0.62%。存储芯片概念领涨，美光科技涨6.8%，海力士涨6.9%，闪迪涨超8%。半导体设备、晶圆代工板块走高。
+                        <div class="source">来源：财联社 / 东方财富 | 2026-07-22</div>
+                    </li>
+                    <li>
+                        <strong>OpenAI董事长Bret Taylor：未来企业或无需关注AI Token成本</strong>
+                        当地时间7月20日，OpenAI董事会主席表示，随着AI市场成熟，企业将转向按实际成果付费，而非管理Token成本。AI token计费问题源于市场尚未成熟。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>美国贸易代表：将继续与加拿大对口官员磋商</strong>
+                        美国贸易代表格里尔表示，将继续与加拿大对口官员进行磋商，并未切断谈判。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>3M提高全年业绩指引，股价大涨</strong>
+                        3M公布Q2业绩，调整后EPS $2.40，同比增长11%，提高全年指引。股价盘初涨超6%。
+                        <div class="source">来源：财联社 | 2026-07-21</div>
+                    </li>
+                </ul>
+
+                <h3>欧洲要闻</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>英欧将于7月22日举行第二次首脑会晤</strong>
+                        基尔·斯塔默在G7峰会确认，英欧第二次首脑会晤将讨论对乌援助、冬季准备与双边关系重启等议题。
+                        <div class="source">来源：Mezha.net | 2026-06-16</div>
+                    </li>
+                    <li>
+                        <strong>欧盟对俄新一轮制裁面临崩溃：成员国越来越不愿支持</strong>
+                        《金融时报》援引匿名欧盟外交官报道，欧盟国家因担心对本国企业造成影响，越来越不愿意支持对俄罗斯实施新一轮制裁。希腊反对对俄LNG制裁，认为将摧毁希腊Dynagas航运公司。"各成员国拒绝接受最新提案的程度已达到前所未有的水平。"
+                        <div class="source">来源：俄罗斯卫星通讯社 / 金融时报 | 2026-07-20</div>
+                    </li>
+                    <li>
+                        <strong>欧盟升级对华贸易限制，中企面临系统性制度重塑</strong>
+                        2026年7月1日，欧盟正式取消"小包免税"政策；此前京东收购德国零售商面临审查，Temu被罚款2亿欧元，SHEIN在法国被罚款2,249万欧元。高盛认为欧盟不太可能照搬美国全面关税做法，将重点降低对中国零部件依赖。
+                        <div class="source">来源：财新周刊 | 2026-07-17/18</div>
+                    </li>
+                    <li>
+                        <strong>欧盟一季度贸易顺差几乎减半</strong>
+                        据欧盟统计局数据，2026年Q1欧盟出口6,405亿欧元，环比减0.1%；进口6,278亿欧元，环比增1.7%。当季127亿欧元贸易顺差环比几乎减半。4月重回贸易逆差71亿欧元。
+                        <div class="source">来源：财新网 | 2026-07-17</div>
+                    </li>
+                </ul>
+
+                <h3>全球其他</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>科威特拉响防空警报，应对伊朗导弹和无人机袭击</strong>
+                        当地时间7月21日，科威特军方表示正在应对来自伊朗的导弹和无人机袭击。科威特电力部称境内多处发电及海水淡化厂20日遭袭并引发火灾。
+                        <div class="source">来源：央视新闻 / 财联社 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>以军空袭加沙造成至少12人死亡</strong>
+                        <div class="source">来源：财联社 | 2026-07-22</div>
+                    </li>
+                    <li>
+                        <strong>印度就商船遇袭召见俄外交官</strong>
+                        俄罗斯总统新闻秘书佩斯科夫表示，俄军正在并将继续对那些为乌克兰运输弹药、武器装备等物资的船只实施打击。俄方正在与印度保持接触并阐明立场。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>智利中部遭冬季风暴侵袭，铜矿作业受影响</strong>
+                        强烈冬季风暴造成多人死亡，智利国家铜业公司、安托法加斯塔和英美资源集团等已启动安全应急预案，港口船舶航行受限。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>日印高铁合作再生事端</strong>
+                        比原定投运时间落后3年的印度孟买-艾哈迈达巴德高铁项目再生事端，日本前高级官员公开指责印度"不守诚信"，印方予以否认。
+                        <div class="source">来源：新浪财经 | 2026-07-21</div>
+                    </li>
+                </ul>
+
+                <div class="analysis">
+                    <h4>深度分析：中东局势升级与全球影响</h4>
+                    <p>当前中东局势正处于高度紧张状态。科威特遭伊朗袭击、霍尔木兹海峡风险上升，直接推升原油价格突破$91。与此同时，欧盟对俄制裁内部分歧加剧，希腊等国因本国企业利益反对新制裁。这种地缘政治碎片化趋势——美国与伊朗对峙、欧盟内部对俄立场分化、英欧试图重启关系——正在重塑全球能源安全和贸易格局。</p>
+                    <p>对中国而言，中欧领导人即将举行的会晤将是关键节点。欧盟一方面在贸易上对华收紧（取消小包免税、罚款中国电商），另一方面又需要中国在气候变化、全球治理上的合作。这种"竞争与合作并存"的双轨策略将是未来中欧关系的主基调。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI/机器人板块 -->
+        <div id="ai" class="content">
+            <div class="section">
+                <h2>AI与机器人前沿</h2>
+
+                <h3>硅谷前沿</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>OpenAI发布GPT-5.6系列模型，分Sol/Terra/Luna三档</strong>
+                        当地时间6月26日，OpenAI发布GPT-5.6系列，按性能及价格分为Sol、Terra和Luna三个模型。API价格均有下降，较Anthropic Claude Fable 5及Claude Mythos 5更低。目前仅对部分"值得信赖的合作伙伴"开启有限权限，预计数周内全面开放。
+                        <div class="source">来源：财新网 / GPT周报 | 2026-07-03</div>
+                    </li>
+                    <li>
+                        <strong>OpenAI的AI Agent在ChatGPT Work推出后用户突破1000万</strong>
+                        <div class="source">来源：东方财富 | 2026-07-22</div>
+                    </li>
+                    <li>
+                        <strong>Meta出售闲置算力引存储芯片概念股暴跌</strong>
+                        7月2日，Meta计划出租自有闲置AI算力的消息引发投资者担忧AI产能过剩。当天三星电子盘间跌幅达8.43%、SK海力士跌幅超10%，韩国KOSPI指数下跌逾6%一度触发熔断。Meta股价先涨8.81%后跌4.9%。
+                        <div class="source">来源：财新网 / GPT周报 | 2026-07-03</div>
+                    </li>
+                    <li>
+                        <strong>扎克伯格承认Meta AI智能体研发不及预期</strong>
+                        路透社听到Meta内部全员会录音，扎克伯格称过去至少四个月AI智能体技术研发进展未达预期，新组织架构"至今尚未落地见效"。Meta全年资本开支提至650亿美元，5月刚裁掉8,000人。
+                        <div class="source">来源：36氪 / 路透社 | 2026-07-04</div>
+                    </li>
+                    <li>
+                        <strong>微软与Mistral扩大AI合作，签署数十亿美元欧洲AI基础设施协议</strong>
+                        7月21日，微软与法国AI初创公司Mistral AI宣布扩大战略合作，围绕欧洲AI基础设施建设达成价值数十亿美元的协议。
+                        <div class="source">来源：环球市场播报 | 2026-07-21</div>
+                    </li>
+                    <li>
+                        <strong>英伟达持有Nebius 9.3%被动股权，后者股价开盘涨7.8%</strong>
+                        算力租赁商Nebius股价因英伟达持股报告而上涨。
+                        <div class="source">来源：东方财富 | 2026-07-22</div>
+                    </li>
+                </ul>
+
+                <h3>中国动态</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>工信部：2026年中国人形机器人全年整机产量有望突破10万台</strong>
+                        在2026世界人工智能大会上，工信部宣布这一目标。实现路径包括：DF1000近存计算3D AI芯片突破、自研G02巨神大模型搭配纯视觉方案、京东发动60万人采集1000万小时真实场景数据。
+                        <div class="source">来源：新浪财经 / 2026WAIC | 2026-07-19</div>
+                    </li>
+                    <li>
+                        <strong>宇树与智元争夺"全球出货量第一"称号</strong>
+                        Omdia报告显示智元2025年出货5,100台占全球39%份额；宇树随后发布澄清声明，称2025年实际出货超5,500台才是全球第一。智元2026年销售目标2-3万台，优必选期待出货1万台。
+                        <div class="source">来源：财新周刊 | 2026-02-28</div>
+                    </li>
+                    <li>
+                        <strong>寒武纪市值首破万亿，成科创板首家万亿公司</strong>
+                        国产智算推理芯片在高并发推理场景市占率持续提升。寒武纪迅速推出MLU370-X8替代方案，使LLM训练效率提升40%，成本降低30%。
+                        <div class="source">来源：新浪科技 | 2026-07-02</div>
+                    </li>
+                    <li>
+                        <strong>阿里发布千问旗舰模型Qwen3.7-Max，内部全面禁用Claude</strong>
+                        阿里巴巴发布迄今最全面、最强大的智能体模型Qwen3.7-Max。阿里内部宣布7月10日起全面禁用Claude并卸载。
+                        <div class="source">来源：人人都是产品经理 / 晨启Tech | 2026-05-21/07-04</div>
+                    </li>
+                    <li>
+                        <strong>优必选推出消费级人形机器人品牌"优世界UWORLD"</strong>
+                        优必选在人形机器人领域战略性纵深拓展，推出消费级品牌。
+                        <div class="source">来源：人人都是产品经理 | 2026-05-21</div>
+                    </li>
+                    <li>
+                        <strong>智谱基石解禁首日涨13%，近七成投资者表态长期持有</strong>
+                        摩根大通将智谱目标价上调至2,000港元/股并重申"增持"。智谱在6月22日盘中股价一度触及2,980港元，市值突破万亿港元。
+                        <div class="source">来源：财新网 | 2026-07-08</div>
+                    </li>
+                    <li>
+                        <strong>中际旭创通过港交所上市聆讯</strong>
+                        中际旭创2026年Q1营收194.96亿元，同比增长192.12%；归母净利润57.35亿元，同比增长262.28%。但7月17日股价收跌12%，单日市值蒸发约1,500亿。
+                        <div class="source">来源：财新网 | 2026-07-17</div>
+                    </li>
+                </ul>
+
+                <h3>技术突破</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>领域</th>
+                                <th>突破</th>
+                                <th>详情</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>大模型</td>
+                                <td>GPT-5.6发布</td>
+                                <td>OpenAI三档定价策略，API价格全面下调</td>
+                            </tr>
+                            <tr>
+                                <td>大模型</td>
+                                <td>Anthropic最强模型解除出口限制</td>
+                                <td>Claude Fable 5和Mythos 5恢复访问，7月1日生效</td>
+                            </tr>
+                            <tr>
+                                <td>人形机器人</td>
+                                <td>量产目标10万台</td>
+                                <td>工信部宣布2026年全年整机产量目标</td>
+                            </tr>
+                            <tr>
+                                <td>AI芯片</td>
+                                <td>寒武纪MLU370-X8</td>
+                                <td>LLM训练效率提升40%，成本降低30%</td>
+                            </tr>
+                            <tr>
+                                <td>自动驾驶</td>
+                                <td>L3规范正式实施</td>
+                                <td>面向Robotaxi与无人配送车，加速商业化落地</td>
+                            </tr>
+                            <tr>
+                                <td>具身智能</td>
+                                <td>真机强化学习</td>
+                                <td>可实时纠正运动轨迹，模型在线训练优化</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>投资动态</h3>
+                <ul class="news-list">
+                    <li>
+                        <strong>快手可灵AI创下全球视频大模型公司最大额融资纪录</strong>
+                        可灵2025年全年营收约11亿元，2026年3月年化营收运行速率(ARR)约5亿美元。投后估值有望达180亿美元，接近快手市值。
+                        <div class="source">来源：财新网 / GPT周报 | 2026-07-03</div>
+                    </li>
+                    <li>
+                        <strong>Eric Trump旗下比特币矿企市值蒸发超6亿美元</strong>
+                        American Bitcoin Corp.市值从高点下跌约95%，累计损失超6亿美元，折射加密矿业整体困境。
+                        <div class="source">来源：新手村 / 加密日报 | 2026-07-18</div>
+                    </li>
+                </ul>
+
+                <h3>相关公司股价</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>NVIDIA (NVDA)</h4>
+                        <div class="value">$207.51</div>
+                        <div class="change positive">↑ +2.32%</div>
+                    </div>
+                    <div class="card">
+                        <h4>Tesla (TSLA)</h4>
+                        <div class="value">$378.89</div>
+                        <div class="change negative">↓ -0.51%</div>
+                    </div>
+                    <div class="card">
+                        <h4>优必选 (09880.HK)</h4>
+                        <div class="value">--</div>
+                        <div class="change neutral">2026年预期出货1万台</div>
+                    </div>
+                    <div class="card">
+                        <h4>智谱 (港股)</h4>
+                        <div class="value">~1,530 HKD</div>
+                        <div class="change negative">↓ 较峰值2,980回落</div>
+                    </div>
+                </div>
+
+                <div class="analysis">
+                    <h4>投资分析：AI基础设施泡沫vs真实需求</h4>
+                    <p>Meta出售闲置算力引发的存储芯片暴跌，暴露了AI基础设施投资的关键问题：当 hyperscaler 开始将算力对外出租时，是否意味着内部需求已饱和？</p>
+                    <p>然而，从另一角度看，OpenAI持续降价、GPT-5.6推出、各国政府加大AI投入（中国工信部10万台机器人目标、微软-Mistral数十亿美元协议），说明AI应用层需求仍在扩张。真正的分水岭在于：2026年下半年，哪些AI应用能产生足够的收入来消化当前的基础设施投资？</p>
+                    <p>人形机器人领域尤为值得关注。宇树与智元的出货量之争、优必选冲击万台产能、工信部10万台目标——这一赛道正从概念验证进入规模化前夜。但摩根士丹利警告，2026年人形机器人仍偏"营销与募资噱头"，真正的生产力释放尚需时日。</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>每日简报 Daily Briefing | 2026年7月22日 | 数据仅供参考，投资有风险</p>
+            <p style="font-size: 0.8rem; margin-top: 5px;">数据来源：Baltic Exchange, Eastmoney, 财新网, Reuters, TechCrunch, Xclusiv Shipbrokers, 外交部官网</p>
+        </footer>
     </div>
 
-    <!-- 航运板块 -->
-    <section class="section" id="shipping" style="border-left-color: #0277bd;">
-      <div class="section-title">
-        <span class="icon">⚓</span>
-        航运板块（完整周报）
-        <span class="badge badge-info">SHIPPING</span>
-      </div>
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
 
-      <div class="summary-box">
-        <h4>📊 本周航运市场要点</h4>
-        <p>• BDI指数本周初升至2980点（周二，创6月5日以来新高），随后回调至周五2752点</p>
-        <p>• 海岬型船运价指数强劲，C3航线巴西-中国铁矿石运价突破30美元/吨</p>
-        <p>• 巴拿马型船租金稳中有升，大西洋运力紧缺支撑运价</p>
-        <p>• 新造船市场：东太平洋航运（EPS）在中国船厂追加13艘新船订单</p>
-      </div>
-
-      <div class="day-header">📈 周度指数走势（BDI / BCI / BPI）</div>
-      <table class="chart-table">
-        <tr>
-          <th>日期</th>
-          <th>BDI 综合指数</th>
-          <th>BCI 海岬型</th>
-          <th>BPI 巴拿马型</th>
-          <th>BSI 超灵便型</th>
-          <th>日涨跌</th>
-        </tr>
-        <tr>
-          <td>2026-07-13 (一)</td>
-          <td><strong>2,960</strong></td>
-          <td>4,655</td>
-          <td>2,253</td>
-          <td>1,706</td>
-          <td class="positive">+0.54%</td>
-        </tr>
-        <tr>
-          <td>2026-07-14 (二)</td>
-          <td><strong>2,980</strong> <span class="positive">↑新高</span></td>
-          <td>4,743</td>
-          <td>2,253</td>
-          <td>1,706</td>
-          <td class="positive">+0.68%</td>
-        </tr>
-        <tr>
-          <td>2026-07-15 (三)</td>
-          <td><strong>2,929</strong></td>
-          <td>4,643</td>
-          <td>2,240</td>
-          <td>1,700</td>
-          <td class="negative">-1.71%</td>
-        </tr>
-        <tr>
-          <td>2026-07-16 (四)</td>
-          <td><strong>2,840</strong></td>
-          <td>4,500</td>
-          <td>2,220</td>
-          <td>1,690</td>
-          <td class="negative">-3.04%</td>
-        </tr>
-        <tr>
-          <td>2026-07-17 (五)</td>
-          <td><strong>2,752</strong></td>
-          <td>4,350</td>
-          <td>2,210</td>
-          <td>1,680</td>
-          <td class="negative">-3.10%</td>
-        </tr>
-      </table>
-      <p style="font-size:0.85rem;color:#999;margin-top:8px;">数据来源：Baltic Exchange / 东方财富数据中心</p>
-
-      <div class="day-header">💰 各船型租金周度变化</div>
-      <div class="data-row">
-        <span class="label">好望角型船 5TC 平均租金</span>
-        <span><span class="value">$37,181/天</span> <span class="change positive">周涨幅超$5,000</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">巴拿马型船 P5TC 平均租金</span>
-        <span><span class="value">$19,750/天</span> <span class="change neutral">基本持平</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">超灵便型船 平均租金</span>
-        <span><span class="value">$15,500/天</span> <span class="change neutral">小幅波动</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">灵便型船 平均租金</span>
-        <span><span class="value">$14,000/天</span> <span class="change neutral">持稳</span></span>
-      </div>
-      <p style="font-size:0.85rem;color:#999;margin-top:8px;">数据来源：Baltic Exchange / Clarksons</p>
-
-      <div class="day-header">🏭 新造船订单周度统计</div>
-      <div class="news-item">
-        <h3>东太平洋航运（EPS）追加13艘新船订单，全部锁定中国船厂</h3>
-        <p>据《贸易风》（TradeWinds）7月8日报道，以色列船王Idan Ofer旗下东太平洋航运（EPS）近期新增7艘6000TEU集装箱船与6艘7050车位汽车运输船（PCTC），新船全部由中国船厂承建。</p>
-        <p><strong>订单详情：</strong></p>
-        <p>• 集装箱船：7艘6000TEU常规燃料船，由恒力重工承建，单船造价约8000万美元，2027年交付3艘，2028年交付剩余12艘</p>
-        <p>• 汽车运输船：6艘LNG双燃料7050车位PCTC，招商局金陵船舶（南京/威海）各承建3艘，单船造价超1亿美元，2029年交付</p>
-        <p>• 至此，EPS在恒力重工的6000TEU系列订单总量已达15艘</p>
-        <p>• 上述订单均已锁定长期租约，潜在承租方包括达飞轮船、太平船务、马士基</p>
-        <div class="source">来源：TradeWinds / 维运网 | 2026-07-09</div>
-      </div>
-      <div class="news-item">
-        <h3>HD现代造船海洋签订4艘集装箱船建造合同</h3>
-        <p>7月8日，HD现代造船海洋宣布与一家大洋洲航运公司签订4艘集装箱船建造合同，订单总价值8348亿韩元（约6亿美元），每艘船造价约1.528亿美元。据推测，该型船规格可能在13000TEU左右。</p>
-        <div class="source">来源：行业综合 / 造船界 | 2026-07-08</div>
-      </div>
-
-      <div class="day-header">🚢 二手船交易周度统计</div>
-      <div class="news-item">
-        <h3>金辉航运完成2026年首笔二手船出售</h3>
-        <p>中国香港干散货船东金辉航运持续推进船队更新换代，以2345.5万美元出售旗下散货船"Jin Ping"轮（载重63,485吨，建于2014年），预计交付期为2026年6月1日至7月15日。</p>
-        <p>买方为香港乙铭船务有限公司，由窦海峰全资持有。所得款项将用于补充营运资金、偿还短期借款及优化资本结构。</p>
-        <div class="source">来源：航运在线资讯网 / 国际船舶网 | 2026-03-09（交易本周完成交付）</div>
-      </div>
-      <div class="news-item">
-        <h3>二手船市场整体活跃</h3>
-        <p>随着BDI指数连续上涨，二手船资产价格获得支撑。市场消息显示，一艘82,000 dwt散货船在香港经印尼至韩国航线上成交，日租金约$13,600。受IMO 2030年环保法规及碳强度指标（CII）收紧影响，2010-2018年间建造的中型船舶成为交易热点。</p>
-        <div class="source">来源：行业综合 / ShipsTrading | 2026-07月</div>
-      </div>
-
-      <div class="day-header">📰 本周重要行业新闻回顾</div>
-      <div class="news-item">
-        <h3>干散货全船型行情回暖，大西洋、太平洋运价同步拉升</h3>
-        <p>波罗的海交易所最新干散货运价指数数据显示，上周干散货各船型市场全线迎来修复行情。好望角船型反弹力度最强，两大洋铁矿石运价大幅冲高；巴拿马船型全域走强，远洋长航次租金亮眼；超灵便船大西洋内部分化、东南亚运力过剩承压。</p>
-        <p><strong>太平洋市场：</strong>C5航线运价自10美元/吨附近持续爬坡，周末收盘约12.30美元/吨。</p>
-        <p><strong>大西洋市场：</strong>C3航线运价站稳27美元/吨上方并不断冲高，多笔成交突破30美元/吨关口。</p>
-        <div class="source">来源：海运圈聚焦 / 搜狐 | 2026-07-08</div>
-      </div>
-      <div class="news-item">
-        <h3>国际航运中心排名：上海首次跃升至第二位</h3>
-        <p>据《新华·波罗的海国际航运中心发展指数报告》发布，上海首次跻身全球航运中心前三强，新加坡蝉联榜首，伦敦居第二位，香港、迪拜分列四、五位。亚洲航运中心保持强劲上升势头。</p>
-        <div class="source">来源：新华社 / 中国一带一路网 | 2026-07-11</div>
-      </div>
-      <div class="news-item">
-        <h3>波罗的海干散货指数全板块运价同步走高</h3>
-        <p>2026年7月1日波罗的海干散货指数(BDI)报2562点，创4天最高，环比涨2.44%，创2026年5月28日以来最大涨幅。好望角型运费指数(BCI)报3692点，涨4.06%；巴拿马型运费指数(BPI)报2177点，涨1.07%。</p>
-        <div class="source">来源：汇通财经 / 网易 | 2026-07-02</div>
-      </div>
-    </section>
-
-    <!-- 财经板块 -->
-    <section class="section" id="finance" style="border-left-color: #2e7d32;">
-      <div class="section-title">
-        <span class="icon">📈</span>
-        财经板块（完整周报）
-        <span class="badge badge-live">MARKETS</span>
-      </div>
-
-      <div class="summary-box">
-        <h4>💡 本周财经市场要点</h4>
-        <p>• A股市场：7月17日大幅调整，沪指跌3.05%失守3800点；科创50指数跌超7%</p>
-        <p>• 美股市场：7月13日道指跌0.26%，标普500跌0.79%，纳指跌1.55%</p>
-        <p>• 美联储7月FOMC会议将于7月29日召开，市场预计维持利率3.5-3.75%不变</p>
-        <p>• 地缘政治：中东局势紧张，美伊冲突升级，霍尔木兹海峡航运风险增加</p>
-      </div>
-
-      <div class="day-header">📊 全球市场周度回顾</div>
-      <table class="chart-table">
-        <tr>
-          <th>指数/资产</th>
-          <th>周一 7/13</th>
-          <th>周二 7/14</th>
-          <th>周三 7/15</th>
-          <th>周四 7/16</th>
-          <th>周五 7/17</th>
-        </tr>
-        <tr>
-          <td>上证指数</td>
-          <td>—</td>
-          <td>—</td>
-          <td>跌0.29%</td>
-          <td>—</td>
-          <td class="negative">跌3.05%（失守3800点）</td>
-        </tr>
-        <tr>
-          <td>深证成指</td>
-          <td>—</td>
-          <td>—</td>
-          <td>跌0.97%</td>
-          <td>—</td>
-          <td class="negative">跌5.4%</td>
-        </tr>
-        <tr>
-          <td>创业板指</td>
-          <td>—</td>
-          <td>—</td>
-          <td>跌1.21%</td>
-          <td>—</td>
-          <td class="negative">跌7.15%</td>
-        </tr>
-        <tr>
-          <td>道琼斯指数</td>
-          <td class="negative">跌0.26%</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td>标普500</td>
-          <td class="negative">跌0.79%</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td>纳斯达克</td>
-          <td class="negative">跌1.55%</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td>比特币 BTC</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>约$64,181</td>
-        </tr>
-        <tr>
-          <td>以太坊 ETH</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>约$1,878</td>
-        </tr>
-      </table>
-      <p style="font-size:0.85rem;color:#999;margin-top:8px;">数据来源：东方财富 / ChainCatcher / CoinMarketCap</p>
-
-      <div class="day-header">📈 A股市场详细数据</div>
-      <div class="news-item">
-        <h3>7月17日（周五）：A股大幅调整，沪指失守3800点</h3>
-        <p>• 上证指数跌3.05%，失守3800点</p>
-        <p>• 深证成指跌5.4%</p>
-        <p>• 创业板指跌7.15%</p>
-        <p>• 科创50指数跌超7%</p>
-        <p>• 板块方面：电力板块逆势走强；半导体板块领跌</p>
-        <div class="source">来源：东方财富网 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>7月15日（周三）：市场震荡调整</h3>
-        <p>• 沪指跌0.29%，深成指跌0.97%，创业板指跌1.21%</p>
-        <p>• 成交额接近2.6万亿</p>
-        <p>• 板块：医美、医疗服务、白酒、影视院线、游戏板块涨幅居前；半导体、电子板块领跌</p>
-        <p>• 创新药概念大涨</p>
-        <div class="source">来源：东方财富网 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>中际旭创通过港交所上市聆讯</h3>
-        <p>中际旭创（300308.SZ）通过港交所上市聆讯，考虑并购投资。2026年一季度营收194.96亿元，同比增长192.12%；归母净利润57.35亿元，同比增长262.28%；毛利率由2025年的41.5%提升至45.5%。</p>
-        <p>7月17日A股市值延续回调，收跌12%，单日市值蒸发约1500亿元，收报979.46元/股，较历史高位回落约30%。</p>
-        <div class="source">来源：财新网 | 2026-07-17</div>
-      </div>
-
-      <div class="day-header">📈 美股/港股详细数据</div>
-      <div class="news-item">
-        <h3>7月13日（周一）：美股收跌</h3>
-        <p>• 道琼斯指数收盘跌138.25点，跌幅0.26%，报52,498.76点</p>
-        <p>• 标普500指数收盘跌59.61点，跌幅0.79%，报7,515.78点</p>
-        <p>• 纳斯达克综合指数收盘跌408.43点，跌幅1.55%，报25,873.18点</p>
-        <div class="source">来源：ChainCatcher / Gate行情 | 2026-07-13</div>
-      </div>
-
-      <div class="day-header">⛽ 大宗商品周度走势</div>
-      <div class="data-row">
-        <span class="label">WTI 原油</span>
-        <span><span class="value">$68.5</span> <span class="change neutral">区间震荡</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">布伦特原油</span>
-        <span><span class="value">$72.3</span> <span class="change neutral">受地缘支撑</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">黄金</span>
-        <span><span class="value">$2,400</span> <span class="change positive">避险买盘</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">铁矿石</span>
-        <span><span class="value">$110/吨</span> <span class="change positive">钢厂补库</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">铜</span>
-        <span><span class="value">$9,800</span> <span class="change neutral">高位整理</span></span>
-      </div>
-      <p style="font-size:0.85rem;color:#999;margin-top:8px;">数据来源：行业综合 / Bloomberg</p>
-
-      <div class="day-header">₿ 加密货币周度表现</div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="number">$64,181</div>
-          <div class="label">比特币 (BTC)</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">$1,878</div>
-          <div class="label">以太坊 (ETH)</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">$75.86</div>
-          <div class="label">索拉纳 (SOL)</div>
-        </div>
-        <div class="stat-card">
-          <div class="number">$8.42</div>
-          <div class="label">Chainlink (LINK)</div>
-        </div>
-      </div>
-      <div class="highlight-box" style="margin-top: 16px;">
-        <h4>💡 加密货币市场要点</h4>
-        <p>• 7月15日美国通胀数据低于预期，全球股市反弹，加密货币同步走强，比特币一度逼近$65,000</p>
-        <p>• 以太坊表现优于比特币，ETH/BTC比率回升，受美国以太坊现货ETF持续资金流入支撑</p>
-        <p>• 7月16日数字资产保持坚挺，比特币围绕$64,000-64,500区间整理</p>
-      </div>
-
-      <div class="day-header">🏦 重要财经新闻回顾</div>
-      <div class="news-item">
-        <h3>美联储7月FOMC会议前瞻：市场预计维持利率不变</h3>
-        <p>美联储联邦公开市场委员会（FOMC）将于7月29日召开货币政策会议。市场普遍预计美联储将维持基准利率区间3.5%-3.75%不变。</p>
-        <p>6月会议纪要显示，官员对利率路径存在显著分歧，部分官员认为已具备加息理由。点阵图指向年内单次加息，但通胀上行风险暗示完整紧缩周期或将开启。</p>
-        <p>高盛预计美联储2026年全年按兵不动，下一次降息至少推迟到2027年6月。</p>
-        <div class="source">来源：汇通网 / 东方财富 / 高盛 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>美联储主席沃什重组央行核心运作</h3>
-        <p>美联储主席凯文·沃什已任命包括诺奖得主萨金特、前白宫经济顾问曼昆及沃尔玛前CEO麦克米伦等在内的十余名外部顾问，领导五个专项任务组重新审视央行核心运作。</p>
-        <p>6月17日首次FOMC会议，沃什将会议声明从300多字压缩到约130字，删除所有关于未来利率方向的暗示性表述，拒绝提交自己的点阵图预测。</p>
-        <div class="source">来源：财新网 / 东方财富 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>新西兰联储加息25个基点至2.50%</h3>
-        <p>新西兰联储7月8日宣布加息25个基点至2.50%，为2026年年内加息。韩国央行行长表示有必要在适当时机上调基准利率。</p>
-        <div class="source">来源：东方财富网 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>美国将向巴西实施25%新关税</h3>
-        <p>特朗普政府宣布对巴西部分进口商品实施25%新关税，从7月22日开始生效。涉及数千种巴西产品，但对咖啡、牛肉、橙汁等提供豁免。</p>
-        <p>巴西政府回应称美方关税不公平，带有明显政治动机，威胁将对美国产品采取对等措施。</p>
-        <div class="source">来源：财新网 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>英国钢铁公司正式被收归国有</h3>
-        <p>英国钢铁公司（British Steel）正式被英国政府收归国有，此前中国民营钢铁企业敬业集团对其持股100%。7月15日英国工业大臣签署《钢铁工业（国有化）法案》并获得国王批准。</p>
-        <p>英国政府表示未能与前所有者敬业集团达成协议。商务部回应称敬业收购后对英钢注入巨额资金，使公司经营得以维系。</p>
-        <div class="source">来源：财新网 | 2026-07-17</div>
-      </div>
-
-      <div class="day-header">📋 宏观数据汇总</div>
-      <div class="data-row">
-        <span class="label">中国6月CPI</span>
-        <span><span class="value">+0.5%</span> <span class="change neutral">同比</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">中国6月PPI</span>
-        <span><span class="value">-0.8%</span> <span class="change neutral">同比</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">美国6月CPI</span>
-        <span><span class="value">+3.5%</span> <span class="change neutral">同比</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">美国6月PPI</span>
-        <span><span class="value">+2.2%</span> <span class="change neutral">同比</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">中国6月M2</span>
-        <span><span class="value">+7.2%</span> <span class="change neutral">同比</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">美国初请失业金</span>
-        <span><span class="value">24.3万</span> <span class="change neutral">四周均值</span></span>
-      </div>
-
-      <div class="day-header">💡 投资机会总结</div>
-      <div class="news-item">
-        <h3>💰 本周投资要点</h3>
-        <p>• <strong>AI/光通信：</strong>中际旭创港股上市进程推进，一季度营收增长192%，但短期股价波动较大，需关注业绩兑现</p>
-        <p>• <strong>航运：</strong>BDI指数虽周中创新高，但后半周回调，短期关注铁矿石发运节奏及钢厂补库需求</p>
-        <p>• <strong>黄金：</strong>中东地缘风险支撑避险买盘，金价维持高位</p>
-        <p>• <strong>加密货币：</strong>比特币在$64,000附近整理，关注美联储政策预期及ETF资金流向</p>
-        <p>• <strong>港股：</strong>中际旭创等AI概念股波动加剧，港交所上半年IPO金额同比增长92%</p>
-      </div>
-
-      <div class="day-header">🔭 下周展望</div>
-      <div class="highlight-box">
-        <h4>📅 7月20日-24日重点关注</h4>
-        <p>• <strong>7月29日：</strong>美联储FOMC利率决议（市场预计维持3.5-3.75%不变）</p>
-        <p>• <strong>美股财报季：</strong>金融、科技板块财报密集发布</p>
-        <p>• <strong>美国6月零售销售数据：</strong>消费韧性检验</p>
-        <p>• <strong>中东局势：</strong>美伊冲突进展，霍尔木兹海峡航运风险</p>
-        <p>• <strong>A股：</strong>关注沪指3800点支撑及半导体板块走势</p>
-      </div>
-    </section>
-
-    <!-- 时政板块 -->
-    <section class="section" id="politics" style="border-left-color: #c62828;">
-      <div class="section-title">
-        <span class="icon">🌍</span>
-        时政板块（完整周报）
-        <span class="badge badge-live">POLITICS</span>
-      </div>
-
-      <div class="summary-box">
-        <h4>📰 本周时政要点</h4>
-        <p>• 习近平出席2026世界人工智能大会并发表主旨讲话，宣布中国支持全球AI发展重大举措</p>
-        <p>• 习近平在上海考察城市更新工作</p>
-        <p>• 美伊冲突升级：美国恢复对伊朗海上封锁，伊朗袭击美国在约旦和科威特的军事资产</p>
-        <p>• 英国钢铁公司被收归国有，中国敬业集团前持股</p>
-        <p>• 乌克兰撤换国防部长，政府重组</p>
-      </div>
-
-      <div class="day-header">🇨🇳 中国要闻周度回顾</div>
-      <div class="news-item">
-        <h3>习近平出席2026世界人工智能大会暨人工智能全球治理高级别会议开幕式并发表主旨讲话</h3>
-        <p>7月17日上午，国家主席习近平在上海世界会客厅出席2026世界人工智能大会暨人工智能全球治理高级别会议开幕式并发表主旨讲话，主题为"携手构建公正合理的全球人工智能治理体系"。习近平宣布中国支持全球人工智能发展重大举措。</p>
-        <p>本次大会于2026年7月17日至20日在上海举行，哈萨克斯坦总统托卡耶夫、柬埔寨首相洪玛奈等多国领导人出席。</p>
-        <div class="source">来源：新华社 / 生态环境部 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>习近平在上海考察：全面践行人民城市理念，高质量推进城市更新</h3>
-        <p>7月15日下午，习近平总书记深入上海市黄浦区，调研城市更新民生实事。他强调，高质量推进城市更新是城市现代化建设的重要抓手，要全面践行人民城市理念。</p>
-        <div class="source">来源：新华社 / 人民日报 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>习近平会见哈萨克斯坦总统托卡耶夫</h3>
-        <p>7月16日下午，国家主席习近平在上海西郊宾馆会见来华出席2026世界人工智能大会的哈萨克斯坦总统托卡耶夫。</p>
-        <div class="source">来源：新华社 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>李强同柬埔寨首相洪玛奈会谈</h3>
-        <p>7月16日，国务院总理李强同柬埔寨首相洪玛奈举行会谈，深化中柬全面战略合作伙伴关系。</p>
-        <div class="source">来源：国家发改委 / 新华社 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>李强主持召开经济形势专家和企业家座谈会</h3>
-        <p>7月13日，国务院总理李强主持召开经济形势专家和企业家座谈会，听取对当前经济形势和下一步经济工作的意见建议。</p>
-        <div class="source">来源：华图 / 时政早报 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>国家能源局印发《能源领域节能降碳行动计划(2026—2028年)》</h3>
-        <p>提出到2028年，非化石能源消费比重年均提升约1个百分点。</p>
-        <div class="source">来源：人民日报 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>中国2026年上半年经济一览</h3>
-        <p>中国日报发布《2026年上半年中国经济》信息图，展示国民经济主要指标。1-6月人工智能、人形机器人等前沿领域资本投资金额同比增长一倍多，算力等数字基础设施项目中标金额同比增长23%。</p>
-        <div class="source">来源：China Daily / 人民日报 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>《习近平谈治国理政》第五卷吉尔吉斯斯坦推介会在比什凯克举行</h3>
-        <div class="source">来源：新华社 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>中朝友好合作互助条约签署65周年</h3>
-        <p>习近平总书记与朝鲜劳动党总书记金正恩互致贺电，纪念《中朝友好合作互助条约》签署65周年。</p>
-        <div class="source">来源：CGTN / 新华社 | 2026-07-11</div>
-      </div>
-      <div class="news-item">
-        <h3>中国海警在台东海域开展巡逻</h3>
-        <p>中国海警编队近期在台东海域开展常态化巡逻。台湾立法机构此前通过法案，计划在2026至2033年间追加250亿美元国防支出。</p>
-        <div class="source">来源：Reuters / The Telegraph | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>全国夏粮产量首次突破3000亿斤</h3>
-        <div class="source">来源：央视新闻 | 2026-07-11</div>
-      </div>
-      <div class="news-item">
-        <h3>上半年国家铁路完成货物发送量20.15亿吨</h3>
-        <div class="source">来源：央视新闻 | 2026-07-08</div>
-      </div>
-      <div class="news-item">
-        <h3>6月末中国外储规模为34163亿美元</h3>
-        <div class="source">来源：央视新闻 | 2026-07-08</div>
-      </div>
-      <div class="news-item">
-        <h3>港交所上半年IPO金额同比增长92%</h3>
-        <div class="source">来源：央视新闻 | 2026-07-08</div>
-      </div>
-      <div class="news-item">
-        <h3>中国第16次北冰洋考察启航</h3>
-        <div class="source">来源：央视新闻 | 2026-07-03</div>
-      </div>
-
-      <div class="day-header">🇺🇸 美国要闻周度回顾</div>
-      <div class="news-item">
-        <h3>美伊冲突升级：美国恢复对伊朗海上封锁</h3>
-        <p>自7月14日起，美国已重新对伊朗港口和沿海地区实施海上封锁。美军中央司令部7月16日发布海军陆战队登临搜查商船的照片，表示已重新引导三艘船只，并使另一艘不遵守命令的船只失去航行能力。</p>
-        <p>伊朗军方7月16日表示，已对美国在约旦和科威特的军事资产发动袭击。科威特军方表示拦截了伊朗无人机，约旦军方击落8枚伊朗导弹。</p>
-        <p>伊朗军方发言人警告，如果特朗普兑现针对伊朗民用基础设施的新威胁，伊朗的回应将"比以往任何时候都更严厉、更广泛、更具破坏性"。</p>
-        <div class="source">来源：财新网 / CGTN | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>美国驻阿联酋使领馆取消领事预约</h3>
-        <p>鉴于地区安全局势，美国驻阿布扎比大使馆和驻迪拜总领事馆取消了7月13日至15日期间的所有领事预约。</p>
-        <div class="source">来源：CGTN / Reuters | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>美国将向巴西实施25%新关税</h3>
-        <p>特朗普政府宣布对巴西部分进口商品实施25%新关税，从7月22日开始生效。涉及数千种巴西产品，但对咖啡、牛肉、橙汁等提供豁免。</p>
-        <p>巴西政府回应称美方关税不公平，带有明显政治动机，威胁将对美国产品采取对等措施。</p>
-        <div class="source">来源：财新网 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>美联储6月会议纪要：官员对加息路径分歧显著</h3>
-        <p>美联储6月会议纪要显示，官员对利率路径存在显著分歧，部分官员认为已具备加息理由。点阵图指向年内单次加息，但通胀上行风险暗示完整紧缩周期或将开启。</p>
-        <div class="source">来源：东方财富网 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>美联储主席沃什任命十余名外部顾问重组央行核心运作</h3>
-        <p>沃什任命包括诺奖得主萨金特、前白宫经济顾问曼昆及沃尔玛前CEO麦克米伦等十余名外部顾问，领导五个专项任务组重新审视央行核心运作。</p>
-        <div class="source">来源：财新网 / 东方财富 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>高盛预计美联储2026年全年按兵不动</h3>
-        <p>高盛预计美联储将在2026年全年维持利率不变，下一次降息至少要推迟到2027年6月。</p>
-        <div class="source">来源：中华网 / 央视财经 | 2026-06-18</div>
-      </div>
-      <div class="news-item">
-        <h3>美国肯塔基州枪击事件造成2死3伤</h3>
-        <p>7月13日，美国肯塔基州列克星敦市发生枪击事件，造成两名女性死亡，另三人受伤，凶手被警方当场击毙。</p>
-        <div class="source">来源：央视新闻 | 2026-07-14</div>
-      </div>
-      <div class="news-item">
-        <h3>特朗普遭枪击一周年调查报告公布</h3>
-        <p>美国国会参议院发布调查报告，去年7月13日宾夕法尼亚州巴特勒市竞选集会上特朗普遭枪击源于"一连串本可避免的安全疏漏"，严厉批评特勤局"纪律涣散"。</p>
-        <div class="source">来源：央视新闻 | 2026-07-14</div>
-      </div>
-      <div class="news-item">
-        <h3>美国游戏演员结束持续11个月罢工</h3>
-        <p>7月9日，美国演员工会与动视、艺电、Take Two等多家游戏公司达成新协议。罢工核心在于AI技术的使用规范，新协议规定游戏公司若用AI复制演员形象和声音，须取得书面同意并支付报酬。</p>
-        <div class="source">来源：纽约时报 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>特斯拉正式进入印度市场</h3>
-        <p>特斯拉7月15日在印度孟买开设展厅，下月开始交付新车。印度对进口汽车征收约70%关税，特斯拉选择从上海工厂进口Model Y，印度售价超5.6万美元。</p>
-        <div class="source">来源：CNBC / 彭博 | 2026-07-15</div>
-      </div>
-
-      <div class="day-header">🇪🇺 欧洲要闻周度回顾</div>
-      <div class="news-item">
-        <h3>英国钢铁公司正式被收归国有</h3>
-        <p>英国钢铁公司（British Steel）正式被英国政府收归国有，此前中国民营钢铁企业敬业集团对其持股100%。7月15日英国工业大臣签署《钢铁工业（国有化）法案》并获得国王批准。</p>
-        <p>英国政府表示未能与前所有者敬业集团达成协议。商务部回应称敬业收购后对英钢注入巨额资金，使公司经营得以维系。</p>
-        <div class="source">来源：财新网 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>乌克兰撤换国防部长，政府重组</h3>
-        <p>7月15日，乌克兰总统泽连斯基解除国防部长米哈伊洛·费多罗夫职务。7月14日，乌克兰最高拉达批准了总理尤利娅·斯维里登科的辞呈。7月16日，最高拉达通过对新总理谢尔盖·科列茨基的任命。</p>
-        <p>费多罗夫与乌军总司令瑟尔斯基存在持续冲突，泽连斯基称不能允许国防部和总参谋部在交战国家里互相争斗。</p>
-        <div class="source">来源：财新网 | 2026-07-16/17</div>
-      </div>
-      <div class="news-item">
-        <h3>欧洲央行6月会议纪要：对未来利率指引应保持中立</h3>
-        <div class="source">来源：东方财富网 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>乌克兰多个城市爆发抗议集会</h3>
-        <p>7月16日，由于泽连斯基解雇费多罗夫的决定，乌克兰多个城市爆发抗议集会，要求将费多罗夫复职。7月17日，抗议进入第二天，有人喊出要求乌军总司令瑟尔斯基辞职的口号。</p>
-        <div class="source">来源：财新网 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>以军空袭叙利亚首都大马士革附近空军基地</h3>
-        <p>7月16日，以色列空袭叙利亚首都大马士革附近的梅泽空军基地，造成多人死亡、数十人受伤。以色列国防部长卡茨称对叙利亚政权"痛苦的打击开始"。</p>
-        <div class="source">来源：央视新闻 | 2026-07-16</div>
-      </div>
-
-      <div class="day-header">🌏 全球其他重要动态</div>
-      <div class="news-item">
-        <h3>2026世界杯：阿根廷、法国、西班牙、英格兰会师四强</h3>
-        <p>美加墨世界杯四强出炉，国际足联世界排名前四的球队会师半决赛。</p>
-        <div class="source">来源：央视新闻 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>中国选手郭涵煜夺得温网女双冠军</h3>
-        <p>7月12日，2026温网女双决赛，中国选手郭涵煜与法国选手姆拉德诺维奇的组合以2比0夺得冠军，这是郭涵煜职业生涯首个大满贯女双冠军。</p>
-        <div class="source">来源：央视新闻 | 2026-07-12</div>
-      </div>
-      <div class="news-item">
-        <h3>中国队成功卫冕RoboCup机器人世界杯冠军</h3>
-        <div class="source">来源：央视新闻 | 2026-07-07</div>
-      </div>
-      <div class="news-item">
-        <h3>长征十号乙首飞成功，我国运载火箭首次实现可控回收</h3>
-        <div class="source">来源：央视新闻 | 2026-07-10</div>
-      </div>
-      <div class="news-item">
-        <h3>超强台风"巴威"逼近台湾</h3>
-        <p>7月7日，超强台风"巴威"逼近台湾，预计周末影响最强烈。台风已致广西260多万人受灾。</p>
-        <div class="source">来源：央视新闻 / 浙江在线 | 2026-07-07/17</div>
-      </div>
-      <div class="news-item">
-        <h3>韩国医学生宣布无条件返校</h3>
-        <p>7月12日，大韩医科大学及医学研究生院学生协会宣布医科大学生将集体返校复课。</p>
-        <div class="source">来源：央视新闻 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>古巴再次全国大停电</h3>
-        <div class="source">来源：央视新闻 | 2026-07-07</div>
-      </div>
-      <div class="news-item">
-        <h3>巴勒斯坦加沙地带：以军军事行动已造成58026人死亡</h3>
-        <p>7月13日，巴勒斯坦加沙地带卫生部门声明，自2023年10月新一轮巴以冲突爆发以来，以色列军事行动已造成58026人死亡、138520人受伤。</p>
-        <div class="source">来源：央视新闻 | 2026-07-13</div>
-      </div>
-
-      <div class="day-header">📊 深度分析与展望</div>
-      <div class="highlight-box">
-        <h4>🌍 本周地缘政治分析</h4>
-        <p><strong>中东局势：</strong>美伊冲突显著升级，美国恢复海上封锁，伊朗袭击美国军事资产。霍尔木兹海峡航运风险加剧，油价受地缘溢价支撑。若冲突持续升级，全球能源供应链将面临重大考验。</p>
-        <p><strong>中美关系：</strong>中国成功举办世界人工智能大会，习近平宣布支持全球AI发展重大举措。但台海、南海议题仍存不确定性，美国对华科技限制未现松动。</p>
-        <p><strong>欧洲动荡：</strong>乌克兰政府重组，英国钢铁国有化，显示欧洲政治经济格局持续调整。以叙冲突再次升级，叙利亚政权面临更大压力。</p>
-      </div>
-    </section>
-
-    <!-- AI/机器人板块 -->
-    <section class="section" id="ai" style="border-left-color: #7b1fa2;">
-      <div class="section-title">
-        <span class="icon">🤖</span>
-        AI/机器人板块（完整周报）
-        <span class="badge badge-info">AI & ROBOTICS</span>
-      </div>
-
-      <div class="summary-box">
-        <h4>🤖 本周AI/机器人要点</h4>
-        <p>• 2026世界人工智能大会在上海举行，习近平出席并发表主旨讲话</p>
-        <p>• 国家发改委发布《人工智能合作发展行动计划》</p>
-        <p>• DeepSeek完成首轮融资，估值升至3508亿元</p>
-        <p>• 阿里千问将集成至国行苹果终端</p>
-        <p>• 腾讯混元Hy3上线一周调用量增长超68倍</p>
-      </div>
-
-      <div class="day-header">🇺🇸 硅谷前沿周度回顾</div>
-      <div class="news-item">
-        <h3>2026世界人工智能大会在上海举行</h3>
-        <p>7月17日至20日，2026世界人工智能大会暨人工智能全球治理高级别会议在中国上海举行。国家主席习近平出席开幕式并发表主旨讲话，宣布中国支持全球人工智能发展重大举措。</p>
-        <p>大会主席声明强调，将携手构建公正合理的全球人工智能治理体系。哈萨克斯坦总统托卡耶夫、柬埔寨首相洪玛奈等多国领导人出席。</p>
-        <div class="source">来源：新华社 / 生态环境部 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>DeepSeek首轮融资后估值升至3508亿元</h3>
-        <p>7月16日，箱包企业开润股份公告间接披露DeepSeek完成最新一轮融资。DeepSeek投后估值为3508.77亿元，对比其3000亿元投前估值，本轮融资规模约500亿元。</p>
-        <p>参投机构包括网易、京东、腾讯、宁德时代等12家机构。融资目的：一是稳定团队做股权激励，应对人才竞争；二是以更多资金投入技术突破。</p>
-        <div class="source">来源：财新网 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>国家发改委发布《人工智能合作发展行动计划》</h3>
-        <p>7月17日，国家发改委发布《人工智能合作发展行动计划》，包括八条内容，涵盖八大行动：优质数据供给、智能算力普惠、开源生态共享、人工智能深度赋能、数智人才共育、规则标准共建、安全治理协作和人工智能向善。</p>
-        <p>其中"开源生态共享"鼓励共建国际人工智能开源社区，推动通用大模型、基础算法、工具组件共享，支持各国基于开源模型开展本土化创新。</p>
-        <div class="source">来源：财新网 / 国家发改委 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>Apple智能等7款手机端侧模型完成备案，阿里千问将集成至国行苹果终端</h3>
-        <p>7月15日，国家网信办官网显示，7款手机端侧生成式AI服务完成备案，包括Apple智能、华为小艺AI大模型、OPPO AndesGPT大模型、vivo蓝心端侧大模型、小米澎湃AI、三星盖乐世AI和努比亚豆包手机大模型。</p>
-        <p>阿里巴巴确认，阿里千问将作为AI能力集成至Apple智能，为iOS、iPadOS、macOS和visionOS的中国用户提供智能服务。</p>
-        <div class="source">来源：财新网 / 国家网信办 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>OPPO与支付宝实现智能体跨端互联</h3>
-        <p>7月15日，AI版支付宝"阿宝"与OPPO系统智能体"小布助手"实现"跨端"互联，"小布"接入"阿宝"近200项民生及生活服务。首创端侧支付宝AHA协作链路，用户一句话即可调用出行、观影、餐饮、民生缴费等近200项服务。</p>
-        <div class="source">来源：财新网 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>腾讯元宝接入京东购物小程序</h3>
-        <p>7月15日，腾讯宣布元宝与京东AI Agent完成小程序生态打通。用户在元宝内搜索商品时，可通过AI给出的商品卡跳转到京东购物小程序。京东AI Agent是首个接入元宝的电商垂域合作伙伴。</p>
-        <div class="source">来源：财新网 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>腾讯混元Hy3上线一周调用量增长超68倍</h3>
-        <p>7月15日，腾讯披露，混元大模型Hy3在7月6日发布一周后，总调用量较上一代模型（Hy2）增长超68倍。全球最大API聚合平台OpenRouter显示，截至7月13日，Hy3在全球大模型调用量总榜上排名升至第一。</p>
-        <p>在Agent产品中，腾讯自研办公智能体WorkBuddy自选模型用户使用Hy3的占比达到60%。</p>
-        <div class="source">来源：财新网 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>阿里AI编程市场份额位列第一</h3>
-        <p>7月16日，据IDC发布的2025年中国AI编程市场份额报告，2025年中国AI编程市场规模为3.99亿元，预计2026年底增长至11.73亿元。2025年，阿里巴巴以47.6%的市场份额位列第一，智谱11.5%、商汤10.5%分列二、三。</p>
-        <div class="source">来源：财新网 / IDC | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>爱诗科技C轮融资29.8亿元，加注AI实时世界模型</h3>
-        <p>7月14日，爱诗科技宣布完成整体C轮融资，本轮累计融资29.8亿元人民币。主要用途之一是研发实时世界模型。公司称AI视频的长期方向是成为人与数字世界的新型交互界面。</p>
-        <div class="source">来源：财新网 | 2026-07-14</div>
-      </div>
-      <div class="news-item">
-        <h3>Walden Robotics：丰田背书，估值11亿美元</h3>
-        <p>由MIT教授Russ Tedrake领导的波士顿机器人初创公司Walden Robotics从丰田及其他投资者处获得约3亿美元融资，投后估值达11亿美元。该公司从丰田机器人研究实验室分拆，专注人形机器人研发。</p>
-        <div class="source">来源：Bloomberg / Boston Globe | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>现代汽车完全收购波士顿动力</h3>
-        <p>现代汽车集团完成从软银手中收购波士顿动力剩余股权，波士顿动力成为现代全资子公司。现代计划将Atlas人形机器人部署至美国工厂，加速制造自动化进程。</p>
-        <div class="source">来源：CBT News / TechTimes | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>特斯拉Optimus：量产线改造接近尾声</h3>
-        <p>特斯拉已将弗里蒙特工厂的原Model S/X生产线改造为Optimus人形机器人生产线。马斯克此前展示产线改造视频，预计7月下旬至8月启动量产。目标年产100万台。</p>
-        <div class="source">来源：RoboZaps / InsideEVs | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>全球初创企业上半年融资5100亿美元，AI占惊人份额</h3>
-        <p>Crunchbase数据显示，2026年上半年全球初创企业融资额达到5100亿美元，其中AI贡献了惊人份额。仅OpenAI和Anthropic两家公司就获得2170亿美元融资。</p>
-        <div class="source">来源：AI Assistant Store | 2026-07-03</div>
-      </div>
-      <div class="news-item">
-        <h3>MirendilAI融资2亿美元打造可自主加速AI研发的系统</h3>
-        <p>6月24日，MirendilAI完成2亿美元融资，由a16z与Kleiner Perkins领投，英伟达参与投资。20人创始团队全部来自Anthropic、xAI、DeepMind及OpenAI。</p>
-        <div class="source">来源：新浪财经 | 2026-06-24</div>
-      </div>
-
-      <div class="day-header">🇨🇳 中国动态周度回顾</div>
-      <div class="news-item">
-        <h3>中国AI治理：世界人工智能大会发布主席声明</h3>
-        <p>2026世界人工智能大会暨人工智能全球治理高级别会议发布主席声明，强调构建公正合理的全球人工智能治理体系，推动AI技术惠及各国人民。</p>
-        <div class="source">来源：新华社 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>成都打造综合性机器人产业生态</h3>
-        <p>成都市加快发展机器人产业生态，ROBO+智能机器人体验店集成零售与展示功能，集中呈现中国AI与机器人创新成果。</p>
-        <div class="source">来源：新华社 / Xinhua | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>中国AI投资：上半年资本投资金额同比增长一倍多</h3>
-        <p>1-6月，人工智能、人形机器人等前沿领域资本投资金额同比增长一倍多，算力等数字基础设施项目中标金额同比增长23%。</p>
-        <div class="source">来源：人民日报 | 2026-07-13</div>
-      </div>
-      <div class="news-item">
-        <h3>人形机器人市场：2025年32亿美元→2035年1228亿美元</h3>
-        <p>DataM Intelligence估计，全球人形机器人市场2025年约32.2亿美元，2035年有望达1228.3亿美元，2026-2035年CAGR约43.83%。执行器、传感器和电池为核心增长驱动力。</p>
-        <div class="source">来源：DataM Intelligence / Ohsem.me | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>成功卫冕！中国队夺得2026年RoboCup机器人世界杯冠军</h3>
-        <div class="source">来源：央视新闻 | 2026-07-07</div>
-      </div>
-      <div class="news-item">
-        <h3>软银、安川、英伟达合作展示可变形物体操作系统</h3>
-        <p>2026年7月，软银与安川电机及英伟达合作，利用AI数据中心GPU云平台展示可变形物体抓取操作系统，推动工业机器人在柔性制造场景中的应用。</p>
-        <div class="source">来源：OpenPR / 行业报告 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>三部门部署加快推进海水淡化产业高质量发展</h3>
-        <div class="source">来源：浙江在线 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>工业和信息化部将多措并举促进中小企业数智化转型</h3>
-        <div class="source">来源：浙江在线 | 2026-07-17</div>
-      </div>
-
-      <div class="day-header">🇸🇬 新加坡/东南亚视角</div>
-      <div class="news-item">
-        <h3>新加坡蝉联国际航运中心发展指数榜首</h3>
-        <p>据《新华·波罗的海国际航运中心发展指数报告》，新加坡蝉联全球航运中心榜首，上海首次跃升至第二位，伦敦居第三。</p>
-        <div class="source">来源：新华社 / 中国一带一路网 | 2026-07-11</div>
-      </div>
-      <div class="news-item">
-        <h3>东南亚AI市场：阿里云加速全球布局</h3>
-        <p>阿里云千问大模型将作为AI能力集成至Apple智能，覆盖中国用户。同时，东南亚地区数字基础设施投资持续增长，新加坡、马来西亚成为区域AI数据中心枢纽。</p>
-        <div class="source">来源：行业综合 | 2026-07-15</div>
-      </div>
-      <div class="news-item">
-        <h3>东南亚干散货市场：运力过剩压制运价</h3>
-        <p>超灵便型船东南亚市场运力过剩，运价承压。印尼煤炭出口及谷物运输路线调整使得超巴拿马型船和巴拿马型船需求保持强劲。</p>
-        <div class="source">来源：海运圈聚焦 / 行业综合 | 2026-07-08</div>
-      </div>
-
-      <div class="day-header">🔬 技术突破汇总</div>
-      <div class="news-item">
-        <h3>AI编程市场快速增长，阿里Qoder全球用户超500万</h3>
-        <p>阿里云的Qoder是国内诞生较早的编程工具之一，采用Harness架构，执行任务时可自动调用团队规范、历史决策、编码规范和技术栈知识。2025年中国AI编程市场规模3.99亿元，预计2026年底增长至11.73亿元。</p>
-        <div class="source">来源：IDC / 财新网 | 2026-07-16</div>
-      </div>
-      <div class="news-item">
-        <h3>人形机器人核心零部件：执行器、传感器、电池为增长驱动力</h3>
-        <p>DataM Intelligence报告指出，人形机器人市场核心增长驱动力包括：执行器（关节驱动）、传感器（环境感知）和电池（续航）。特斯拉Optimus、波士顿动力Atlas、现代机器人等加速量产。</p>
-        <div class="source">来源：DataM Intelligence | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>全球AI开源生态加速发展</h3>
-        <p>中国《人工智能合作发展行动计划》提出鼓励共建国际人工智能开源社区，推动通用大模型、基础算法、工具组件共享。麦肯锡报告揭示，78%的组织已在至少一项业务功能中部署人工智能，92%的高管计划在未来三年内增加相关投资。</p>
-        <div class="source">来源：麦肯锡 / 国家发改委 | 2026-07-17</div>
-      </div>
-      <div class="news-item">
-        <h3>AI视频：从生成片段到实时交互界面</h3>
-        <p>爱诗科技C轮融资29.8亿元，重点研发实时世界模型。公司认为AI视频的长期方向是成为人与数字世界的新型交互界面，而非仅生成更高质量的视频片段。</p>
-        <div class="source">来源：财新网 | 2026-07-14</div>
-      </div>
-
-      <div class="day-header">💰 投资动态周度统计</div>
-      <table class="chart-table">
-        <tr>
-          <th>公司</th>
-          <th>轮次</th>
-          <th>金额</th>
-          <th>估值</th>
-          <th>投资方</th>
-          <th>日期</th>
-        </tr>
-        <tr>
-          <td>DeepSeek</td>
-          <td>首轮融资</td>
-          <td>约500亿元</td>
-          <td>3508亿元</td>
-          <td>网易、京东、腾讯、宁德时代等12家</td>
-          <td>2026-07-16</td>
-        </tr>
-        <tr>
-          <td>爱诗科技</td>
-          <td>C轮</td>
-          <td>29.8亿元</td>
-          <td>—</td>
-          <td>未披露</td>
-          <td>2026-07-14</td>
-        </tr>
-        <tr>
-          <td>Walden Robotics</td>
-          <td>—</td>
-          <td>约3亿美元</td>
-          <td>11亿美元</td>
-          <td>丰田等</td>
-          <td>2026-07-17</td>
-        </tr>
-        <tr>
-          <td>MirendilAI</td>
-          <td>—</td>
-          <td>2亿美元</td>
-          <td>—</td>
-          <td>a16z、Kleiner Perkins、NVIDIA</td>
-          <td>2026-06-24</td>
-        </tr>
-        <tr>
-          <td>现代-波士顿动力</td>
-          <td>收购</td>
-          <td>剩余股权</td>
-          <td>—</td>
-          <td>现代汽车集团</td>
-          <td>2026-07-17</td>
-        </tr>
-      </table>
-      <p style="font-size:0.85rem;color:#999;margin-top:8px;">数据来源：财新网 / Crunchbase / Bloomberg</p>
-
-      <div class="day-header">📈 相关公司股价周度表现</div>
-      <div class="data-row">
-        <span class="label">中际旭创 (300308.SZ)</span>
-        <span><span class="value">979.46元</span> <span class="change negative">-12%（本周回调）</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">中际旭创 (港股聆讯后)</span>
-        <span><span class="value">聆讯通过</span> <span class="change positive">即将上市</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">阿里巴巴 (BABA)</span>
-        <span><span class="value">—</span> <span class="change neutral">AI编程市场第一</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">腾讯 (0700.HK)</span>
-        <span><span class="value">—</span> <span class="change positive">混元Hy3调用量全球第一</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">特斯拉 (TSLA)</span>
-        <span><span class="value">—</span> <span class="change neutral">Optimus量产线即将启动</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">现代汽车</span>
-        <span><span class="value">—</span> <span class="change positive">完全收购波士顿动力</span></span>
-      </div>
-      <div class="data-row">
-        <span class="label">英伟达 (NVDA)</span>
-        <span><span class="value">—</span> <span class="change neutral">参与MirendilAI投资</span></span>
-      </div>
-
-      <div class="day-header">🔭 下周趋势展望</div>
-      <div class="highlight-box">
-        <h4>📅 7月20日-24日AI/机器人领域重点关注</h4>
-        <p>• <strong>世界人工智能大会：</strong>7月17-20日上海举行，关注大会成果及国际合作倡议</p>
-        <p>• <strong>特斯拉Optimus：</strong>量产线预计7月底启动，关注首批量产进展</p>
-        <p>• <strong>波士顿动力：</strong>现代完全收购后，Atlas机器人部署美国工厂计划</p>
-        <p>• <strong>DeepSeek：</strong>500亿元融资后技术路线及商业化进展</p>
-        <p>• <strong>苹果AI：</strong>阿里千问集成国行终端，关注具体产品发布时间</p>
-        <p>• <strong>AI监管：</strong>中国《人工智能合作发展行动计划》后续配套政策</p>
-      </div>
-    </section>
-
-    <footer>
-      <p>每周资讯简报 · Weekly Briefing</p>
-      <p>数据更新时间：2026年7月18日 07:35 AM (SGT)</p>
-      <p>数据来源：Baltic Exchange, Clarksons, TradeWinds, Reuters, Bloomberg, CNBC, 财新网, 新华社, CGTN, 东方财富等</p>
-      <p style="margin-top: 8px;">🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
-    </footer>
-  </div>
+        // BDI走势图
+        const ctx = document.getElementById('bdiChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['6/30', '7/1', '7/2', '7/3', '7/6', '7/7', '7/8', '7/9', '7/10', '7/13', '7/14', '7/15', '7/16', '7/17', '7/20', '7/21'],
+                datasets: [{
+                    label: 'BDI',
+                    data: [2501, 2562, 2650, 2717, 2797, 2875, 2871, 2910, 2944, 2960, 2980, 2929, 2840, 2752, 2671, 2670],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.15)',
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#e0e0e0', usePointStyle: true }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#a0a0c0' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#a0a0c0' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
