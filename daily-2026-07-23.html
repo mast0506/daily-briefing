@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Briefing - July 23, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dark: '#0a0a0f',
+                        card: '#12121a',
+                        border: '#1e1e2e',
+                        accent: '#6366f1',
+                        'accent-glow': '#818cf8',
+                        muted: '#6b7280',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: #0a0a0f;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass {
+            background: rgba(18, 18, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+        }
+        .tab-active {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: #6366f1;
+            color: #818cf8;
+        }
+        .news-card {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        .news-card:hover {
+            border-left-color: #6366f1;
+            background: rgba(99, 102, 241, 0.03);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .metric-up { color: #34d399; }
+        .metric-down { color: #f87171; }
+        .tag {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .tag-shipping { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .tag-finance { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+        .tag-politics { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+        .tag-ai { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .source { font-size: 0.7rem; color: #6b7280; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #1e1e2e; border-radius: 3px; }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-newspaper text-white text-sm"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white">Daily Briefing</h1>
+                    <p class="text-xs text-gray-500">July 23, 2026 &middot; GMT+8</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 text-sm">
+                <span class="flex items-center gap-2"><i class="fas fa-clock text-indigo-400"></i> 07:35 AM</span>
+                <span class="flex items-center gap-2"><i class="fas fa-globe text-indigo-400"></i> Global</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Tab Navigation -->
+        <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+            <button onclick="showTab('shipping')" id="tab-shipping" class="tab-btn tab-active px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all">
+                <i class="fas fa-ship mr-2"></i>Shipping
+            </button>
+            <button onclick="showTab('finance')" id="tab-finance" class="tab-btn px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all hover:border-indigo-500/30">
+                <i class="fas fa-chart-line mr-2"></i>Finance
+            </button>
+            <button onclick="showTab('politics')" id="tab-politics" class="tab-btn px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all hover:border-indigo-500/30">
+                <i class="fas fa-landmark mr-2"></i>Politics
+            </button>
+            <button onclick="showTab('ai')" id="tab-ai" class="tab-btn px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all hover:border-indigo-500/30">
+                <i class="fas fa-robot mr-2"></i>AI / Robotics
+            </button>
+        </div>
+
+        <!-- Shipping Section -->
+        <div id="section-shipping" class="tab-content fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+                <div class="glass rounded-xl p-5 glow">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">BDI</span>
+                        <span class="tag tag-shipping">Dry Bulk</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white">~2,200</div>
+                    <div class="text-xs text-gray-500 mt-1">Baltic Dry Index</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">BDTI</span>
+                        <span class="tag tag-shipping">Dirty Tanker</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white">911</div>
+                    <div class="text-xs metric-up mt-1"><i class="fas fa-arrow-up mr-1"></i>vs 910 last week</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">BCTI</span>
+                        <span class="tag tag-shipping">Clean Tanker</span>
+                    </div>
+                    <div class="text-3xl font-bold text-white">717</div>
+                    <div class="text-xs metric-up mt-1"><i class="fas fa-arrow-up mr-1"></i>vs 666 last week</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+                <div class="glass rounded-xl p-5">
+                    <h3 class="text-sm font-semibold text-white mb-4">Dry Bulk Sub-indices</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                            <span class="text-sm">BCI (Capesize)</span>
+                            <span class="font-mono font-bold text-white">917</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                            <span class="text-sm">BPI (Panamax)</span>
+                            <span class="font-mono font-bold text-white">1,144</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                            <span class="text-sm">BSI (Supramax)</span>
+                            <span class="font-mono font-bold text-white">866</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <h3 class="text-sm font-semibold text-white mb-4">Tanker TCE Rates (USD/day)</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                            <span class="text-sm">VLCC (300K DWT)</span>
+                            <span class="font-mono font-bold metric-up">$41,250</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                            <span class="text-sm">Suezmax (150K DWT)</span>
+                            <span class="font-mono font-bold metric-up">$29,750</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                            <span class="text-sm">Aframax (110K DWT)</span>
+                            <span class="font-mono font-bold metric-up">$27,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass rounded-xl p-5 mb-4">
+                <h3 class="text-sm font-semibold text-white mb-4">Charter Rate Outlook Q3-Q4 2026</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="text-gray-500 border-b border-white/10">
+                                <th class="text-left py-2">Sector</th>
+                                <th class="text-right py-2">Spot Charter (Q2)</th>
+                                <th class="text-right py-2">TC 1-Year</th>
+                                <th class="text-right py-2">Signal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr><td class="py-2">VLCC (crude)</td><td class="text-right font-mono">$35-48K/day</td><td class="text-right font-mono">$42-50K/day</td><td class="text-right metric-up">Positive</td></tr>
+                            <tr><td class="py-2">MR Product Tanker</td><td class="text-right font-mono">$25-35K/day</td><td class="text-right font-mono">$28-36K/day</td><td class="text-right metric-up">Positive</td></tr>
+                            <tr><td class="py-2">LNG Carrier (TC)</td><td class="text-right font-mono">$65-110K/day</td><td class="text-right font-mono">$80K+/day</td><td class="text-right metric-up">Very Positive</td></tr>
+                            <tr><td class="py-2">Dry Bulk Capesize</td><td class="text-right font-mono">$28-45K/day</td><td class="text-right font-mono">$30-38K/day</td><td class="text-right metric-up">Improving</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Ukraine Escalates Maritime Campaign Against Russian "Shadow Fleet"</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Ukrainian forces struck eleven Russian "shadow fleet" tankers and support vessels in the Black Sea and Sea of Azov on July 16, 2026. This marks a significant escalation in Ukraine's maritime campaign to choke Russian oil exports and military supply lines. The attacks targeted vessels transporting sanctioned Russian crude.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>Ronin's Grips, Nexus of Nation</span>
+                                <span class="source">July 16-18, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Baltic Exchange Indices Show Mixed Signals</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">The Baltic Dirty Tanker Index (BDTI) held steady at 911 points, while the Clean Tanker Index (BCTI) rose to 717 from 666 the previous week. Dry bulk indices remain under pressure year-over-year, with BDI at 941 vs 1,866 a year ago, reflecting weaker commodity demand and fleet oversupply in some segments.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>Compass Maritime, Baltic Exchange</span>
+                                <span class="source">Week of July 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">OPEC+ Output Decision Key Catalyst for Q3 Tanker Rates</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">The key charter rate catalyst for Q3-Q4 2026 is the OPEC+ output decision. Adding +411,000 bbl/day as of June 2026 increases Middle East crude loadings, directly lifting VLCC and Suezmax spot demand. Product tanker rates (Aframax, MR) are supported by refinery margin recovery in Europe and Asia.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>MB Capital Strategies</span>
+                                <span class="source">June 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Dark Fleet Grows to 700+ Vessels, Raising Maritime Safety Concerns</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">The "dark fleet" serving sanctioned Russian and Iranian crude has grown to more than 700 vessels, with implications for maritime safety, insurance markets, and compliant-tonnage pricing. Average age is materially higher than the mainstream fleet, and vessel condition varies widely. Enforcement tightening through OFAC, UK Treasury and EU authorities continues.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>Offshore Industry UK</span>
+                                <span class="source">April 24, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Finance Section -->
+        <div id="section-finance" class="tab-content hidden fade-in">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="glass rounded-xl p-5 glow">
+                    <div class="text-xs text-gray-500 mb-1">NASDAQ</div>
+                    <div class="text-2xl font-bold text-white">22,631</div>
+                    <div class="text-xs metric-up mt-1"><i class="fas fa-arrow-up mr-1"></i>Extended gains</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="text-xs text-gray-500 mb-1">Gold</div>
+                    <div class="text-2xl font-bold text-white">$3,858</div>
+                    <div class="text-xs text-gray-500 mt-1">Safe haven demand</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="text-xs text-gray-500 mb-1">WTI Crude</div>
+                    <div class="text-2xl font-bold text-white">$63.58</div>
+                    <div class="text-xs metric-down mt-1"><i class="fas fa-arrow-down mr-1"></i>Under pressure</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="text-xs text-gray-500 mb-1">Brent</div>
+                    <div class="text-2xl font-bold text-white">$67.23</div>
+                    <div class="text-xs metric-down mt-1"><i class="fas fa-arrow-down mr-1"></i>OPEC+ supply</div>
+                </div>
+            </div>
+
+            <div class="glass rounded-xl p-5 mb-4">
+                <h3 class="text-sm font-semibold text-white mb-4">Tesla (TSLA) - July 2026 Price Action</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="text-gray-500 border-b border-white/10">
+                                <th class="text-left py-2">Date</th>
+                                <th class="text-right py-2">Open</th>
+                                <th class="text-right py-2">High</th>
+                                <th class="text-right py-2">Low</th>
+                                <th class="text-right py-2">Close</th>
+                                <th class="text-right py-2">Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr><td class="py-2">Jul 21</td><td class="text-right font-mono">$370.98</td><td class="text-right font-mono">$384.07</td><td class="text-right font-mono">$369.99</td><td class="text-right font-mono metric-up">$378.93</td><td class="text-right font-mono">31.1M</td></tr>
+                            <tr><td class="py-2">Jul 20</td><td class="text-right font-mono">$386.05</td><td class="text-right font-mono">$386.61</td><td class="text-right font-mono">$369.43</td><td class="text-right font-mono metric-down">$369.57</td><td class="text-right font-mono">33.8M</td></tr>
+                            <tr><td class="py-2">Jul 17</td><td class="text-right font-mono">$381.78</td><td class="text-right font-mono">$385.69</td><td class="text-right font-mono">$377.22</td><td class="text-right font-mono metric-up">$380.84</td><td class="text-right font-mono">31.3M</td></tr>
+                            <tr><td class="py-2">Jul 16</td><td class="text-right font-mono">$392.35</td><td class="text-right font-mono">$395.31</td><td class="text-right font-mono">$385.32</td><td class="text-right font-mono metric-down">$391.06</td><td class="text-right font-mono">29.3M</td></tr>
+                            <tr><td class="py-2">Jul 15</td><td class="text-right font-mono">$399.40</td><td class="text-right font-mono">$406.59</td><td class="text-right font-mono">$390.66</td><td class="text-right font-mono metric-down">$394.46</td><td class="text-right font-mono">31.5M</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3 p-3 bg-white/5 rounded-lg">
+                    <p class="text-sm text-gray-400"><strong class="text-white">Technical Signal (Jul 15):</strong> Strong Sell on daily timeframe. RSI 47.14 (Neutral), MACD -2.4 (Sell). TSLA trading below both 50-day MA (~$410) and 200-day MA (~$418). Near-term resistance $400-408; support $386-390. Down 10.1% for July month-to-date.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <div class="glass rounded-xl p-5">
+                    <h3 class="text-sm font-semibold text-white mb-3">NVIDIA (NVDA) - AI Infrastructure Leader</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between"><span class="text-gray-400">Price (Apr 17)</span><span class="font-mono font-bold text-white">$201.68</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Market Cap</span><span class="font-mono text-white">~$4.92T</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Q4 FY2026 Revenue</span><span class="font-mono metric-up">$68.13B (+73% YoY)</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Data Center Revenue</span><span class="font-mono metric-up">$62.3B (+75% YoY)</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Gross Margin</span><span class="font-mono text-white">~75%</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Forward P/E</span><span class="font-mono text-white">~28x</span></div>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <h3 class="text-sm font-semibold text-white mb-3">Commodities</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between"><span class="text-gray-400">Gold</span><span class="font-mono font-bold text-white">$3,858.60</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">WTI Crude</span><span class="font-mono metric-down">$63.58</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Brent Crude</span><span class="font-mono metric-down">$67.23</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Bunker (Rotterdam VLSFO)</span><span class="font-mono text-white">$541/ton</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Bunker (Singapore VLSFO)</span><span class="font-mono text-white">$570/ton</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Bunker (Fujairah VLSFO)</span><span class="font-mono text-white">$568.5/ton</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-green-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Nasdaq Rises to 22,631 as Tech Rally Continues</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">The Nasdaq Composite extended its gains, rising to 22,631 as technology stocks continue to lead market momentum. Intel fell 4% on weakness in the semiconductor sector, while broader tech names showed resilience amid continued AI infrastructure investment flows.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TradingNews.com</span>
+                                <span class="source">July 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-green-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">NVIDIA Market Cap Nears $5T on AI Demand Surge</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">NVIDIA continues to dominate AI infrastructure spending with Q4 FY2026 revenue of $68.13B (+73% YoY) and data center revenue of $62.3B (+75% YoY). Gross margins remain exceptionally high at ~75%. The company's market cap approaches $5 trillion as hyperscalers continue aggressive GPU procurement for AI training and inference workloads.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TECHi Analysis</span>
+                                <span class="source">April 29, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-green-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Tesla Q2 Earnings Report Due July 22 - Key Catalyst Ahead</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Tesla's Q2 2026 earnings report (scheduled July 22) is a key catalyst for the stock. TSLA has pulled back to ~$379 from a May high near $446, down 10.1% month-to-date. Key variables: delivery volumes, margin trends, Cybercab rollout updates, and FSD progress. Technical indicators show "Strong Sell" signal with price below both 50-day and 200-day MAs.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>StatMuse Money, J2T Analysis</span>
+                                <span class="source">July 21, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Politics Section -->
+        <div id="section-politics" class="tab-content hidden fade-in">
+            <div class="glass rounded-xl p-5 mb-4 border-l-4 border-red-500">
+                <h3 class="text-lg font-bold text-white mb-2">Russia-Ukraine War: July 2026 Update</h3>
+                <p class="text-sm text-gray-400">Conflict enters its 5th year with grinding attrition warfare, escalating maritime campaign, and strained Ukrainian air defenses.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+                <div class="glass rounded-xl p-5">
+                    <h3 class="text-sm font-semibold text-white mb-3">Battlefield Situation (July 11-18, 2026)</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-white/5 rounded-lg">
+                            <div class="text-white font-medium mb-1">Territorial Gains</div>
+                            <p class="text-gray-400">Russia netted ~31 sq mi (DeepState) or ~6 sq mi (ISW) between June 9 - July 7. Fighting concentrated around Sloviansk and Pokrovsk sectors.</p>
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-lg">
+                            <div class="text-white font-medium mb-1">Air Defense Crisis</div>
+                            <p class="text-gray-400">Ukraine intercepted only 14 of 54 Russian ballistic missiles in June. On July 6, Kyiv failed to intercept ANY of 23 missiles fired — tied to depleted Patriot interceptor stocks.</p>
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-lg">
+                            <div class="text-white font-medium mb-1">Maritime Campaign</div>
+                            <p class="text-gray-400">Ukrainian forces hit 11+ "shadow fleet" vessels on July 16 alone in Black Sea and Sea of Azov. Total of 13 tankers attacked according to some reports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <h3 class="text-sm font-semibold text-white mb-3">Political & Diplomatic Developments</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-white/5 rounded-lg">
+                            <div class="text-white font-medium mb-1">Kyiv Internal Friction</div>
+                            <p class="text-gray-400">Ousted Defense Minister Mykhailo Fedorov publicly criticized Commander-in-Chief Oleksandr Syrskyi, accusing him of mismanaging the drone campaign. Fedorov asked President Zelenskyy to remove Syrskyi; Zelenskyy declined.</p>
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-lg">
+                            <div class="text-white font-medium mb-1">US Peace Framework</div>
+                            <p class="text-gray-400">Trump administration's 20-point draft peace proposal remains on the table. Ukraine reportedly accepted broad proposal, but core territorial questions unresolved. Previous diplomacy stalled over similar sticking points.</p>
+                        </div>
+                        <div class="p-3 bg-white/5 rounded-lg">
+                            <div class="text-white font-medium mb-1">Russian Recruitment Slowdown</div>
+                            <p class="text-gray-400">ISW reports Russia is unable to replace frontline casualties due to slowdown in contract soldier recruitment. This could limit Russia's ability to sustain offensive operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Kyiv Leadership Crisis: Fedorov vs Syrskyi Dispute Goes Public</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">In a significant sign of wartime strain, ousted Ukrainian Defense Minister Mykhailo Fedorov publicly criticized Commander-in-Chief Oleksandr Syrskyi, accusing him of mismanaging the drone campaign and failing to modernize military procurement. Fedorov stated he had asked President Zelenskyy to remove Syrskyi; the President declined the request. The dispute signals deepening friction within Kyiv's command structure more than four years into the full-scale invasion.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>Kyiv Post, Ronin's Grips, Nexus of Nation</span>
+                                <span class="source">July 11-18, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Ukrainian Air Defense Near Collapse as Patriot Missiles Depleted</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Ukraine's air defense network is facing a critical shortage of Patriot interceptor missiles. In June 2026, Ukraine intercepted only 14 of 54 Russian ballistic missiles fired (26% success rate). On July 6, Kyiv failed to stop ANY of the 23 ballistic missiles that struck the city — a devastating failure tied to dwindling interceptor stocks. Russian strike-package upgrades have made interception harder, driving up civilian harm even as large-scale strike frequency dipped in June.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>AP News, Nexus of Nation, ISW</span>
+                                <span class="source">July 6-17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Ukraine's "Shadow Fleet" Campaign Chokes Russian Oil Exports</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Ukraine has escalated its maritime campaign against Russia's "shadow fleet" — the network of tankers transporting sanctioned Russian crude. On July 16 alone, Ukrainian Unmanned Systems Forces hit eleven shadow fleet vessels in the Black Sea and Sea of Azov, part of a broader push to choke Russian oil exports and military supply lines at sea. German AI-powered HX-2 drones are reportedly hunting targets deep behind Russian frontlines.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>United24 Media, Kyiv Post, Ground News</span>
+                                <span class="source">July 14-18, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">US-Brokered 20-Point Peace Framework Stalls on Territory Question</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">The Trump administration continues pushing a twenty-point draft peace proposal for a negotiated settlement. Ukraine reportedly accepted the broad framework after discussions, but core issues — particularly territorial questions and security guarantees — remain unresolved between the parties. The "Anchorage understandings" between Putin and Trump are described by Ukrainian officials as "certainly dead now." Whether the framework can translate into an actual ceasefire remains deeply uncertain.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>Axios, Anadolu Agency, Ronin's Grips</span>
+                                <span class="source">June-July 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Russia Struggling to Replace Frontline Casualties - ISW</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">According to the Institute for the Study of War (ISW), Russia is increasingly unable to replace its frontline casualties due to a significant slowdown in the recruitment of contract soldiers. This manpower constraint could limit Russia's ability to sustain its current tempo of offensive operations around Sloviansk and Pokrovsk, potentially shifting the war further toward attrition.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>ISW via UA.NEWS</span>
+                                <span class="source">July 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI / Robotics Section -->
+        <div id="section-ai" class="tab-content hidden fade-in">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="glass rounded-xl p-5 glow">
+                    <div class="text-xs text-gray-500 mb-1">Moonshot AI</div>
+                    <div class="text-lg font-bold text-white">K3 Released</div>
+                    <div class="text-xs text-purple-400 mt-1">Open frontier model</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="text-xs text-gray-500 mb-1">Walden Robotics</div>
+                    <div class="text-lg font-bold text-white">$300M</div>
+                    <div class="text-xs text-green-400 mt-1">New funding round</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="text-xs text-gray-500 mb-1">Figure AI</div>
+                    <div class="text-lg font-bold text-white">BMW Deal</div>
+                    <div class="text-xs text-purple-400 mt-1">Factory deployment</div>
+                </div>
+                <div class="glass rounded-xl p-5">
+                    <div class="text-xs text-gray-500 mb-1">Xiaomi</div>
+                    <div class="text-lg font-bold text-white">CyberOne</div>
+                    <div class="text-xs text-purple-400 mt-1">Humanoid robot</div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Moonshot AI Releases Open Frontier Model K3</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Moonshot AI (月之暗面) has released Kimi K3, its latest open frontier model. The release marks a significant milestone for the Chinese AI startup, which has been gaining prominence in the large language model space alongside competitors like ByteDance, Baidu, and Alibaba. K3 is positioned as an open-weight model competing with Western counterparts.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
+                                <span class="source">July 17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Apple Sues OpenAI Alleging Theft of Hardware Trade Secrets</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Apple has filed a lawsuit against OpenAI, alleging theft of hardware trade secrets. The legal action represents a significant escalation in the competitive tensions between the tech giants as they race to deploy AI capabilities across consumer devices. Details of the specific trade secrets remain under seal, but the case highlights the increasingly fierce IP battles in the AI sector.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
+                                <span class="source">July 17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Google Delays Gemini 3.5 Pro Broader Release by Several Months</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Google has delayed the broader release of its flagship Gemini 3.5 Pro model by several months, according to reports. The delay suggests ongoing technical challenges or competitive repositioning as Google faces pressure from OpenAI's GPT-5, Anthropic's Claude, and open-source alternatives. The postponement could impact enterprise customers awaiting the multimodal capabilities promised in 3.5 Pro.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
+                                <span class="source">July 17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Walden Robotics Raises $300 Million in New Funding Round</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Walden Robotics has secured $300 million in new funding, underscoring continued investor appetite for robotics and automation companies. The funding round reflects growing confidence in robotics applications across manufacturing, logistics, and service industries as labor costs rise and automation technology improves.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
+                                <span class="source">July 17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Figure AI Partners with BMW for Factory Robot Deployment</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Figure AI has announced a partnership with BMW to deploy humanoid robots in BMW manufacturing facilities. The collaboration represents one of the most significant real-world deployments of humanoid robotics in automotive manufacturing, potentially setting a template for broader industrial adoption of general-purpose robots.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
+                                <span class="source">July 17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card glass rounded-xl p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium mb-1">Xiaomi Showcases CyberOne Humanoid Robot</h4>
+                            <p class="text-sm text-gray-400 leading-relaxed">Xiaomi has showcased its CyberOne humanoid robot, representing the company's push into the robotics and AI hardware space. The demonstration highlights growing competition in the humanoid robot market among Chinese tech giants, with Xiaomi joining Baidu, Unitree, and other domestic players in developing humanoid platforms for consumer and industrial applications.</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
+                                <span class="source">July 17, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-4 py-6 text-center text-xs text-gray-600 border-t border-white/5">
+        <p>Daily Briefing &middot; Generated on July 23, 2026 &middot; Sources: Baltic Exchange, Reuters, AP News, ISW, TechStartups, TradingNews, StatMuse</p>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.add('border-white/10');
+            });
+            
+            // Show selected section
+            document.getElementById('section-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('tab-active');
+            document.getElementById('tab-' + tabName).classList.remove('border-white/10');
+        }
+    </script>
+</body>
+</html>

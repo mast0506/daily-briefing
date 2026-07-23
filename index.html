@@ -1,631 +1,373 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Briefing - July 23, 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        dark: '#0a0a0f',
-                        card: '#12121a',
-                        border: '#1e1e2e',
-                        accent: '#6366f1',
-                        'accent-glow': '#818cf8',
-                        muted: '#6b7280',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background: #0a0a0f;
-            font-family: 'Inter', sans-serif;
-        }
-        .glass {
-            background: rgba(18, 18, 26, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .glow {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
-        }
-        .tab-active {
-            background: rgba(99, 102, 241, 0.15);
-            border-color: #6366f1;
-            color: #818cf8;
-        }
-        .news-card {
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-        .news-card:hover {
-            border-left-color: #6366f1;
-            background: rgba(99, 102, 241, 0.03);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #818cf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .metric-up { color: #34d399; }
-        .metric-down { color: #f87171; }
-        .tag {
-            font-size: 0.65rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-        .tag-shipping { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
-        .tag-finance { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
-        .tag-politics { background: rgba(239, 68, 68, 0.15); color: #f87171; }
-        .tag-ai { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
-        .source { font-size: 0.7rem; color: #6b7280; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a0f; }
-        ::-webkit-scrollbar-thumb { background: #1e1e2e; border-radius: 3px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日简报 Daily Briefing - 2026年7月24日 周五</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background:#0d1117; color:#c9d1d9; line-height:1.7; }
+  header { background: linear-gradient(135deg,#161b22 0%,#1f242d 100%); padding:3rem 1.5rem; text-align:center; border-bottom:1px solid #30363d; }
+  header h1 { font-size:2rem; color:#58a6ff; margin-bottom:.5rem; font-weight:700; }
+  header .date { color:#8b949e; font-size:1rem; letter-spacing:1px; }
+  nav { display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; background:#161b22; padding:1rem; border-bottom:1px solid #30363d; position:sticky; top:0; z-index:100; }
+  nav button { padding:.6rem 1.2rem; border:1px solid #30363d; background:#21262d; color:#c9d1d9; cursor:pointer; border-radius:6px; font-size:.9rem; transition:all .2s; }
+  nav button:hover, nav button.active { background:#1f6feb; color:#fff; border-color:#1f6feb; }
+  main { max-width:1200px; margin:0 auto; padding:2rem 1.5rem; }
+  .section { display:none; }
+  .section.active { display:block; animation:fadeIn .3s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  h2 { color:#58a6ff; font-size:1.4rem; margin:2rem 0 1rem; padding-bottom:.5rem; border-bottom:2px solid #30363d; }
+  h3 { color:#79c0ff; font-size:1.1rem; margin:1.5rem 0 .75rem; }
+  h4 { color:#a5d6ff; font-size:1rem; margin:1rem 0 .5rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.9rem; }
+  th { background:#21262d; color:#58a6ff; padding:.7rem .5rem; text-align:left; border:1px solid #30363d; }
+  td { padding:.6rem .5rem; border:1px solid #30363d; color:#c9d1d9; }
+  tr:nth-child(even) td { background:#161b22; }
+  tr:hover td { background:#21262d; }
+  .up { color:#3fb950; font-weight:600; }
+  .down { color:#f85149; font-weight:600; }
+  .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:1.2rem; margin:1rem 0; }
+  .card-title { color:#58a6ff; font-size:1rem; font-weight:600; margin-bottom:.5rem; }
+  .meta { color:#8b949e; font-size:.8rem; margin-bottom:.5rem; }
+  .tag { display:inline-block; padding:.15rem .5rem; border-radius:12px; font-size:.75rem; margin-right:.3rem; }
+  .tag-blue { background:rgba(88,166,255,.15); color:#58a6ff; }
+  .tag-green { background:rgba(63,185,80,.15); color:#3fb950; }
+  .tag-red { background:rgba(248,81,73,.15); color:#f85149; }
+  .grid-2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1rem; }
+  .highlight { background:rgba(88,166,255,.08); border-left:3px solid #58a6ff; padding:.75rem 1rem; margin:1rem 0; border-radius:0 4px 4px 0; }
+  footer { text-align:center; padding:2rem; color:#8b949e; font-size:.85rem; border-top:1px solid #30363d; margin-top:2rem; }
+  .source { color:#6e7681; font-size:.8rem; }
+  .chart-placeholder { background:#161b22; border:1px dashed #30363d; border-radius:8px; padding:2rem; text-align:center; color:#8b949e; margin:1rem 0; }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin:1.5rem 0; }
+  .summary-item { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:1rem; text-align:center; }
+  .summary-item .val { font-size:1.6rem; font-weight:700; color:#58a6ff; }
+  .summary-item .lbl { font-size:.85rem; color:#8b949e; margin-top:.3rem; }
+  pre { background:#0d1117; border:1px solid #30363d; padding:1rem; border-radius:6px; overflow-x:auto; font-size:.85rem; }
+</style>
 </head>
-<body class="text-gray-300 min-h-screen">
-    <!-- Header -->
-    <header class="sticky top-0 z-50 glass border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                    <i class="fas fa-newspaper text-white text-sm"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg font-bold text-white">Daily Briefing</h1>
-                    <p class="text-xs text-gray-500">July 23, 2026 &middot; GMT+8</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-4 text-sm">
-                <span class="flex items-center gap-2"><i class="fas fa-clock text-indigo-400"></i> 07:35 AM</span>
-                <span class="flex items-center gap-2"><i class="fas fa-globe text-indigo-400"></i> Global</span>
-            </div>
-        </div>
-    </header>
+<body>
+<header>
+  <h1>🦞 每日简报 Daily Briefing</h1>
+  <div class="date">2026年7月24日 周五 | Friday, July 24, 2026</div>
+</header>
+<nav>
+  <button onclick="show('shipping')" id="btn-shipping" class="active">🚢 航运</button>
+  <button onclick="show('finance')" id="btn-finance">💰 财经</button>
+  <button onclick="show('politics')" id="btn-politics">🌏 时政</button>
+  <button onclick="show('ai')" id="btn-ai">🤖 AI/机器人</button>
+</nav>
+<main>
 
-    <main class="max-w-7xl mx-auto px-4 py-6">
-        <!-- Tab Navigation -->
-        <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
-            <button onclick="showTab('shipping')" id="tab-shipping" class="tab-btn tab-active px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all">
-                <i class="fas fa-ship mr-2"></i>Shipping
-            </button>
-            <button onclick="showTab('finance')" id="tab-finance" class="tab-btn px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all hover:border-indigo-500/30">
-                <i class="fas fa-chart-line mr-2"></i>Finance
-            </button>
-            <button onclick="showTab('politics')" id="tab-politics" class="tab-btn px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all hover:border-indigo-500/30">
-                <i class="fas fa-landmark mr-2"></i>Politics
-            </button>
-            <button onclick="showTab('ai')" id="tab-ai" class="tab-btn px-5 py-2.5 rounded-lg border border-white/10 text-sm font-medium whitespace-nowrap transition-all hover:border-indigo-500/30">
-                <i class="fas fa-robot mr-2"></i>AI / Robotics
-            </button>
-        </div>
+<!-- ====== 航运板块 ====== -->
+<div id="shipping" class="section active">
+  <h2>🚢 航运板块</h2>
 
-        <!-- Shipping Section -->
-        <div id="section-shipping" class="tab-content fade-in">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-                <div class="glass rounded-xl p-5 glow">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs text-gray-500 uppercase tracking-wider">BDI</span>
-                        <span class="tag tag-shipping">Dry Bulk</span>
-                    </div>
-                    <div class="text-3xl font-bold text-white">~2,200</div>
-                    <div class="text-xs text-gray-500 mt-1">Baltic Dry Index</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs text-gray-500 uppercase tracking-wider">BDTI</span>
-                        <span class="tag tag-shipping">Dirty Tanker</span>
-                    </div>
-                    <div class="text-3xl font-bold text-white">911</div>
-                    <div class="text-xs metric-up mt-1"><i class="fas fa-arrow-up mr-1"></i>vs 910 last week</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs text-gray-500 uppercase tracking-wider">BCTI</span>
-                        <span class="tag tag-shipping">Clean Tanker</span>
-                    </div>
-                    <div class="text-3xl font-bold text-white">717</div>
-                    <div class="text-xs metric-up mt-1"><i class="fas fa-arrow-up mr-1"></i>vs 666 last week</div>
-                </div>
-            </div>
+  <h3>📊 指数及走势</h3>
+  <div class="summary-grid">
+    <div class="summary-item"><div class="val">2,725</div><div class="lbl">BDI 波罗的海干散货指数</div><div class="up">+0.37%</div></div>
+    <div class="summary-item"><div class="val">2,142</div><div class="lbl">BDTI 油轮脏油指数</div><div class="up">+7.82%</div></div>
+    <div class="summary-item"><div class="val">1,313</div><div class="lbl">BCTI 油轮成品油指数</div><div class="down">-1.5%</div></div>
+    <div class="summary-item"><div class="val">3,240</div><div class="lbl">SCFI 集装箱运价指数</div><div class="up">+3.8%</div></div>
+  </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-                <div class="glass rounded-xl p-5">
-                    <h3 class="text-sm font-semibold text-white mb-4">Dry Bulk Sub-indices</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                            <span class="text-sm">BCI (Capesize)</span>
-                            <span class="font-mono font-bold text-white">917</span>
-                        </div>
-                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                            <span class="text-sm">BPI (Panamax)</span>
-                            <span class="font-mono font-bold text-white">1,144</span>
-                        </div>
-                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                            <span class="text-sm">BSI (Supramax)</span>
-                            <span class="font-mono font-bold text-white">866</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <h3 class="text-sm font-semibold text-white mb-4">Tanker TCE Rates (USD/day)</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                            <span class="text-sm">VLCC (300K DWT)</span>
-                            <span class="font-mono font-bold metric-up">$41,250</span>
-                        </div>
-                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                            <span class="text-sm">Suezmax (150K DWT)</span>
-                            <span class="font-mono font-bold metric-up">$29,750</span>
-                        </div>
-                        <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
-                            <span class="text-sm">Aframax (110K DWT)</span>
-                            <span class="font-mono font-bold metric-up">$27,500</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <h4>BDI 近期走势 (2026年7月)</h4>
+  <table>
+    <tr><th>日期</th><th>最新值</th><th>涨跌幅</th><th>近1月涨跌幅</th></tr>
+    <tr><td>2026-07-23</td><td>2,725</td><td class="up">+0.37%</td><td>+1.95%</td></tr>
+    <tr><td>2026-07-22</td><td>2,715</td><td class="up">+1.69%</td><td>+1.50%</td></tr>
+    <tr><td>2026-07-21</td><td>2,670</td><td class="down">-0.04%</td><td>+1.14%</td></tr>
+    <tr><td>2026-07-20</td><td>2,671</td><td class="down">-2.94%</td><td>+1.44%</td></tr>
+    <tr><td>2026-07-17</td><td>2,752</td><td class="down">-3.10%</td><td>+7.21%</td></tr>
+    <tr><td>2026-07-16</td><td>2,840</td><td class="down">-3.04%</td><td>+12.56%</td></tr>
+    <tr><td>2026-07-15</td><td>2,929</td><td class="down">-1.71%</td><td>+17.91%</td></tr>
+    <tr><td>2026-07-14</td><td>2,980</td><td class="up">+0.68%</td><td>+26.59%</td></tr>
+    <tr><td>2026-07-13</td><td>2,960</td><td class="up">+0.54%</td><td>+31.56%</td></tr>
+  </table>
+  <p class="source">数据来源: 波罗的海交易所 / 新浪财经 交通运输行业周报</p>
 
-            <div class="glass rounded-xl p-5 mb-4">
-                <h3 class="text-sm font-semibold text-white mb-4">Charter Rate Outlook Q3-Q4 2026</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr class="text-gray-500 border-b border-white/10">
-                                <th class="text-left py-2">Sector</th>
-                                <th class="text-right py-2">Spot Charter (Q2)</th>
-                                <th class="text-right py-2">TC 1-Year</th>
-                                <th class="text-right py-2">Signal</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5">
-                            <tr><td class="py-2">VLCC (crude)</td><td class="text-right font-mono">$35-48K/day</td><td class="text-right font-mono">$42-50K/day</td><td class="text-right metric-up">Positive</td></tr>
-                            <tr><td class="py-2">MR Product Tanker</td><td class="text-right font-mono">$25-35K/day</td><td class="text-right font-mono">$28-36K/day</td><td class="text-right metric-up">Positive</td></tr>
-                            <tr><td class="py-2">LNG Carrier (TC)</td><td class="text-right font-mono">$65-110K/day</td><td class="text-right font-mono">$80K+/day</td><td class="text-right metric-up">Very Positive</td></tr>
-                            <tr><td class="py-2">Dry Bulk Capesize</td><td class="text-right font-mono">$28-45K/day</td><td class="text-right font-mono">$30-38K/day</td><td class="text-right metric-up">Improving</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  <h3>🚢 各船型日租金 (TCE)</h3>
+  <table>
+    <tr><th>船型</th><th>基准航线</th><th>TCE (USD/天)</th><th>环比变化</th></tr>
+    <tr><td>VLCC</td><td>TD3C 中东-中国</td><td>~343 WS</td><td class="up">+9.5%</td></tr>
+    <tr><td>VLCC</td><td>中东-中国 TCE</td><td>—</td><td class="down">-1.4%</td></tr>
+    <tr><td>VLCC</td><td>西非-中国 TCE</td><td>—</td><td class="up">+32.2%</td></tr>
+    <tr><td>VLCC</td><td>美湾-中国 TCE</td><td>—</td><td class="up">+24.0%</td></tr>
+    <tr><td>Suezmax</td><td>TCE</td><td>—</td><td class="up">+36.1%</td></tr>
+    <tr><td>Aframax</td><td>TCE</td><td>—</td><td class="up">+5.2%</td></tr>
+    <tr><td>LR1</td><td>中东-日本</td><td>—</td><td class="up">+1.8%</td></tr>
+    <tr><td>MR</td><td>太平洋</td><td>—</td><td class="up">+15.5%</td></tr>
+    <tr><td>Capesize</td><td>BCI TCE</td><td>—</td><td class="down">-0.3%</td></tr>
+    <tr><td>Panamax</td><td>BPI TCE</td><td>—</td><td class="down">-6.2%</td></tr>
+    <tr><td>Supramax</td><td>BSI TCE</td><td>—</td><td class="up">0.0%</td></tr>
+  </table>
+  <p class="source">数据来源: Signal Ocean / 华源证券 交通运输行业周报 (截至2026年7月中旬)</p>
 
-            <div class="space-y-3">
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Ukraine Escalates Maritime Campaign Against Russian "Shadow Fleet"</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Ukrainian forces struck eleven Russian "shadow fleet" tankers and support vessels in the Black Sea and Sea of Azov on July 16, 2026. This marks a significant escalation in Ukraine's maritime campaign to choke Russian oil exports and military supply lines. The attacks targeted vessels transporting sanctioned Russian crude.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>Ronin's Grips, Nexus of Nation</span>
-                                <span class="source">July 16-18, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Baltic Exchange Indices Show Mixed Signals</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">The Baltic Dirty Tanker Index (BDTI) held steady at 911 points, while the Clean Tanker Index (BCTI) rose to 717 from 666 the previous week. Dry bulk indices remain under pressure year-over-year, with BDI at 941 vs 1,866 a year ago, reflecting weaker commodity demand and fleet oversupply in some segments.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>Compass Maritime, Baltic Exchange</span>
-                                <span class="source">Week of July 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">OPEC+ Output Decision Key Catalyst for Q3 Tanker Rates</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">The key charter rate catalyst for Q3-Q4 2026 is the OPEC+ output decision. Adding +411,000 bbl/day as of June 2026 increases Middle East crude loadings, directly lifting VLCC and Suezmax spot demand. Product tanker rates (Aframax, MR) are supported by refinery margin recovery in Europe and Asia.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>MB Capital Strategies</span>
-                                <span class="source">June 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Dark Fleet Grows to 700+ Vessels, Raising Maritime Safety Concerns</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">The "dark fleet" serving sanctioned Russian and Iranian crude has grown to more than 700 vessels, with implications for maritime safety, insurance markets, and compliant-tonnage pricing. Average age is materially higher than the mainstream fleet, and vessel condition varies widely. Enforcement tightening through OFAC, UK Treasury and EU authorities continues.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>Offshore Industry UK</span>
-                                <span class="source">April 24, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <h3>🏗️ 新造船订单</h3>
+  <div class="card">
+    <div class="card-title">2026年上半年油轮新造船订单创历史新高</div>
+    <div class="meta">2026年7月 | Signal Ocean / Veson Nautical</div>
+    <p>2026年上半年，原油油轮订单量达到<strong>261艘</strong>，创下有记录以来最强劲的六个月订单表现，使油轮订单量超过此前历史峰值。仅六个月的签约规模就已超过此前一个完整订单周期所达到的峰值。</p>
+    <p>VLCC订单量尤为突出，上半年达到<strong>204艘</strong>，远超2011-2022年的低迷年份。相比之下，2007年上次新造船高峰时，全年VLCC订单仅48艘。</p>
+    <p>VLCC资产价格持续走强：5年船龄VLCC估值已达<strong>1.745亿美元</strong>，而新建船价格为1.298亿美元，买家为获得即时可用运力支付溢价。</p>
+    <p><strong>按国家划分新造船吨位：</strong></p>
+    <ul style="margin-left:1.5rem">
+      <li>希腊船东：398.9亿美元 (约占前五大国家总额的60%)</li>
+      <li>中国：95.2亿美元 (约14%)</li>
+      <li>新加坡：86.1亿美元 (约11%)</li>
+      <li>中国香港：51.3亿美元 (约8%)</li>
+      <li>英国：50.8亿美元 (约7%)</li>
+    </ul>
+  </div>
 
-        <!-- Finance Section -->
-        <div id="section-finance" class="tab-content hidden fade-in">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div class="glass rounded-xl p-5 glow">
-                    <div class="text-xs text-gray-500 mb-1">NASDAQ</div>
-                    <div class="text-2xl font-bold text-white">22,631</div>
-                    <div class="text-xs metric-up mt-1"><i class="fas fa-arrow-up mr-1"></i>Extended gains</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="text-xs text-gray-500 mb-1">Gold</div>
-                    <div class="text-2xl font-bold text-white">$3,858</div>
-                    <div class="text-xs text-gray-500 mt-1">Safe haven demand</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="text-xs text-gray-500 mb-1">WTI Crude</div>
-                    <div class="text-2xl font-bold text-white">$63.58</div>
-                    <div class="text-xs metric-down mt-1"><i class="fas fa-arrow-down mr-1"></i>Under pressure</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="text-xs text-gray-500 mb-1">Brent</div>
-                    <div class="text-2xl font-bold text-white">$67.23</div>
-                    <div class="text-xs metric-down mt-1"><i class="fas fa-arrow-down mr-1"></i>OPEC+ supply</div>
-                </div>
-            </div>
+  <div class="card">
+    <div class="card-title">ClarkSea指数上半年同比上涨61%</div>
+    <div class="meta">2026年7月7日 | Cyprus Shipping News</div>
+    <p>2026年上半年航运市场回顾显示，ClarkSea指数同比上涨<strong>61%</strong>至<strong>38,717美元/天</strong>（较2025年下半年+31%）。霍尔木兹海峡"关闭"继续主导航运格局。新造船签约量较2025年全年增速加快33%，聚焦油轮、气体船和集装箱船。</p>
+  </div>
 
-            <div class="glass rounded-xl p-5 mb-4">
-                <h3 class="text-sm font-semibold text-white mb-4">Tesla (TSLA) - July 2026 Price Action</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr class="text-gray-500 border-b border-white/10">
-                                <th class="text-left py-2">Date</th>
-                                <th class="text-right py-2">Open</th>
-                                <th class="text-right py-2">High</th>
-                                <th class="text-right py-2">Low</th>
-                                <th class="text-right py-2">Close</th>
-                                <th class="text-right py-2">Volume</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/5">
-                            <tr><td class="py-2">Jul 21</td><td class="text-right font-mono">$370.98</td><td class="text-right font-mono">$384.07</td><td class="text-right font-mono">$369.99</td><td class="text-right font-mono metric-up">$378.93</td><td class="text-right font-mono">31.1M</td></tr>
-                            <tr><td class="py-2">Jul 20</td><td class="text-right font-mono">$386.05</td><td class="text-right font-mono">$386.61</td><td class="text-right font-mono">$369.43</td><td class="text-right font-mono metric-down">$369.57</td><td class="text-right font-mono">33.8M</td></tr>
-                            <tr><td class="py-2">Jul 17</td><td class="text-right font-mono">$381.78</td><td class="text-right font-mono">$385.69</td><td class="text-right font-mono">$377.22</td><td class="text-right font-mono metric-up">$380.84</td><td class="text-right font-mono">31.3M</td></tr>
-                            <tr><td class="py-2">Jul 16</td><td class="text-right font-mono">$392.35</td><td class="text-right font-mono">$395.31</td><td class="text-right font-mono">$385.32</td><td class="text-right font-mono metric-down">$391.06</td><td class="text-right font-mono">29.3M</td></tr>
-                            <tr><td class="py-2">Jul 15</td><td class="text-right font-mono">$399.40</td><td class="text-right font-mono">$406.59</td><td class="text-right font-mono">$390.66</td><td class="text-right font-mono metric-down">$394.46</td><td class="text-right font-mono">31.5M</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt-3 p-3 bg-white/5 rounded-lg">
-                    <p class="text-sm text-gray-400"><strong class="text-white">Technical Signal (Jul 15):</strong> Strong Sell on daily timeframe. RSI 47.14 (Neutral), MACD -2.4 (Sell). TSLA trading below both 50-day MA (~$410) and 200-day MA (~$418). Near-term resistance $400-408; support $386-390. Down 10.1% for July month-to-date.</p>
-                </div>
-            </div>
+  <h3>📰 航运行业新闻</h3>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                <div class="glass rounded-xl p-5">
-                    <h3 class="text-sm font-semibold text-white mb-3">NVIDIA (NVDA) - AI Infrastructure Leader</h3>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between"><span class="text-gray-400">Price (Apr 17)</span><span class="font-mono font-bold text-white">$201.68</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Market Cap</span><span class="font-mono text-white">~$4.92T</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Q4 FY2026 Revenue</span><span class="font-mono metric-up">$68.13B (+73% YoY)</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Data Center Revenue</span><span class="font-mono metric-up">$62.3B (+75% YoY)</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Gross Margin</span><span class="font-mono text-white">~75%</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Forward P/E</span><span class="font-mono text-white">~28x</span></div>
-                    </div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <h3 class="text-sm font-semibold text-white mb-3">Commodities</h3>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between"><span class="text-gray-400">Gold</span><span class="font-mono font-bold text-white">$3,858.60</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">WTI Crude</span><span class="font-mono metric-down">$63.58</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Brent Crude</span><span class="font-mono metric-down">$67.23</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Bunker (Rotterdam VLSFO)</span><span class="font-mono text-white">$541/ton</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Bunker (Singapore VLSFO)</span><span class="font-mono text-white">$570/ton</span></div>
-                        <div class="flex justify-between"><span class="text-gray-400">Bunker (Fujairah VLSFO)</span><span class="font-mono text-white">$568.5/ton</span></div>
-                    </div>
-                </div>
-            </div>
+  <div class="card">
+    <div class="card-title">霍尔木兹海峡局势紧张，油轮运费再度飙升</div>
+    <div class="meta">2026年7月 | Signal Ocean Weekly Tanker Market Monitor</div>
+    <p>由于美伊紧张局势再度升级，脏油轮运费本周重新走高。截至7月8日，TD3C（中东湾-中国）基准报<strong>343 WS</strong>，日涨7.1%，周涨16.8%。BDTI指数升至<strong>1,939点</strong>，周环比+4.0%，较去年同期高出107.4%。</p>
+    <p>6月17日伊斯兰堡谅解备忘录（MoU）建立了结束敌对行动的60天框架，但本周的重新升级打断了此前的缓和趋势。市场对霍尔木兹海峡的持续敏感性使运费维持地缘政治风险溢价。</p>
+  </div>
 
-            <div class="space-y-3">
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-green-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Nasdaq Rises to 22,631 as Tech Rally Continues</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">The Nasdaq Composite extended its gains, rising to 22,631 as technology stocks continue to lead market momentum. Intel fell 4% on weakness in the semiconductor sector, while broader tech names showed resilience amid continued AI infrastructure investment flows.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TradingNews.com</span>
-                                <span class="source">July 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-green-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">NVIDIA Market Cap Nears $5T on AI Demand Surge</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">NVIDIA continues to dominate AI infrastructure spending with Q4 FY2026 revenue of $68.13B (+73% YoY) and data center revenue of $62.3B (+75% YoY). Gross margins remain exceptionally high at ~75%. The company's market cap approaches $5 trillion as hyperscalers continue aggressive GPU procurement for AI training and inference workloads.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TECHi Analysis</span>
-                                <span class="source">April 29, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-green-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Tesla Q2 Earnings Report Due July 22 - Key Catalyst Ahead</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Tesla's Q2 2026 earnings report (scheduled July 22) is a key catalyst for the stock. TSLA has pulled back to ~$379 from a May high near $446, down 10.1% month-to-date. Key variables: delivery volumes, margin trends, Cybercab rollout updates, and FSD progress. Technical indicators show "Strong Sell" signal with price below both 50-day and 200-day MAs.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>StatMuse Money, J2T Analysis</span>
-                                <span class="source">July 21, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="card">
+    <div class="card-title">伊朗将对霍尔木兹海峡商船收费</div>
+    <div class="meta">2026年4月 | 海事新闻头条汇总</div>
+    <p>印尼财政部长曾提议效仿伊朗对霍尔木兹海峡收费的做法，联合马来西亚、新加坡对马六甲海峡商船征收通行费。该提议随即遭到新加坡、马来西亚强烈反对，印尼外交部援引《联合国海洋法公约》正式关闭该话题。</p>
+  </div>
 
-        <!-- Politics Section -->
-        <div id="section-politics" class="tab-content hidden fade-in">
-            <div class="glass rounded-xl p-5 mb-4 border-l-4 border-red-500">
-                <h3 class="text-lg font-bold text-white mb-2">Russia-Ukraine War: July 2026 Update</h3>
-                <p class="text-sm text-gray-400">Conflict enters its 5th year with grinding attrition warfare, escalating maritime campaign, and strained Ukrainian air defenses.</p>
-            </div>
+  <div class="card">
+    <div class="card-title">集装箱运价继续上涨</div>
+    <div class="meta">2026年7月14日 | 新浪财经</div>
+    <p>SCFI综合运价指数环比上涨<strong>3.8%</strong>至<strong>3,240点</strong>。上海-欧洲/地中海运价分别环比变化+5.8%/+9.5%；上海-美西/美东运价分别环比变化+6.8%/+7.4%。受红海绕行和巴拿马运河干旱持续影响，集运市场保持高位运行。</p>
+  </div>
+</div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-                <div class="glass rounded-xl p-5">
-                    <h3 class="text-sm font-semibold text-white mb-3">Battlefield Situation (July 11-18, 2026)</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="p-3 bg-white/5 rounded-lg">
-                            <div class="text-white font-medium mb-1">Territorial Gains</div>
-                            <p class="text-gray-400">Russia netted ~31 sq mi (DeepState) or ~6 sq mi (ISW) between June 9 - July 7. Fighting concentrated around Sloviansk and Pokrovsk sectors.</p>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg">
-                            <div class="text-white font-medium mb-1">Air Defense Crisis</div>
-                            <p class="text-gray-400">Ukraine intercepted only 14 of 54 Russian ballistic missiles in June. On July 6, Kyiv failed to intercept ANY of 23 missiles fired — tied to depleted Patriot interceptor stocks.</p>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg">
-                            <div class="text-white font-medium mb-1">Maritime Campaign</div>
-                            <p class="text-gray-400">Ukrainian forces hit 11+ "shadow fleet" vessels on July 16 alone in Black Sea and Sea of Azov. Total of 13 tankers attacked according to some reports.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <h3 class="text-sm font-semibold text-white mb-3">Political & Diplomatic Developments</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="p-3 bg-white/5 rounded-lg">
-                            <div class="text-white font-medium mb-1">Kyiv Internal Friction</div>
-                            <p class="text-gray-400">Ousted Defense Minister Mykhailo Fedorov publicly criticized Commander-in-Chief Oleksandr Syrskyi, accusing him of mismanaging the drone campaign. Fedorov asked President Zelenskyy to remove Syrskyi; Zelenskyy declined.</p>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg">
-                            <div class="text-white font-medium mb-1">US Peace Framework</div>
-                            <p class="text-gray-400">Trump administration's 20-point draft peace proposal remains on the table. Ukraine reportedly accepted broad proposal, but core territorial questions unresolved. Previous diplomacy stalled over similar sticking points.</p>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg">
-                            <div class="text-white font-medium mb-1">Russian Recruitment Slowdown</div>
-                            <p class="text-gray-400">ISW reports Russia is unable to replace frontline casualties due to slowdown in contract soldier recruitment. This could limit Russia's ability to sustain offensive operations.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ====== 财经板块 ====== -->
+<div id="finance" class="section">
+  <h2>💰 财经板块</h2>
 
-            <div class="space-y-3">
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Kyiv Leadership Crisis: Fedorov vs Syrskyi Dispute Goes Public</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">In a significant sign of wartime strain, ousted Ukrainian Defense Minister Mykhailo Fedorov publicly criticized Commander-in-Chief Oleksandr Syrskyi, accusing him of mismanaging the drone campaign and failing to modernize military procurement. Fedorov stated he had asked President Zelenskyy to remove Syrskyi; the President declined the request. The dispute signals deepening friction within Kyiv's command structure more than four years into the full-scale invasion.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>Kyiv Post, Ronin's Grips, Nexus of Nation</span>
-                                <span class="source">July 11-18, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Ukrainian Air Defense Near Collapse as Patriot Missiles Depleted</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Ukraine's air defense network is facing a critical shortage of Patriot interceptor missiles. In June 2026, Ukraine intercepted only 14 of 54 Russian ballistic missiles fired (26% success rate). On July 6, Kyiv failed to stop ANY of the 23 ballistic missiles that struck the city — a devastating failure tied to dwindling interceptor stocks. Russian strike-package upgrades have made interception harder, driving up civilian harm even as large-scale strike frequency dipped in June.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>AP News, Nexus of Nation, ISW</span>
-                                <span class="source">July 6-17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Ukraine's "Shadow Fleet" Campaign Chokes Russian Oil Exports</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Ukraine has escalated its maritime campaign against Russia's "shadow fleet" — the network of tankers transporting sanctioned Russian crude. On July 16 alone, Ukrainian Unmanned Systems Forces hit eleven shadow fleet vessels in the Black Sea and Sea of Azov, part of a broader push to choke Russian oil exports and military supply lines at sea. German AI-powered HX-2 drones are reportedly hunting targets deep behind Russian frontlines.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>United24 Media, Kyiv Post, Ground News</span>
-                                <span class="source">July 14-18, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">US-Brokered 20-Point Peace Framework Stalls on Territory Question</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">The Trump administration continues pushing a twenty-point draft peace proposal for a negotiated settlement. Ukraine reportedly accepted the broad framework after discussions, but core issues — particularly territorial questions and security guarantees — remain unresolved between the parties. The "Anchorage understandings" between Putin and Trump are described by Ukrainian officials as "certainly dead now." Whether the framework can translate into an actual ceasefire remains deeply uncertain.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>Axios, Anadolu Agency, Ronin's Grips</span>
-                                <span class="source">June-July 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Russia Struggling to Replace Frontline Casualties - ISW</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">According to the Institute for the Study of War (ISW), Russia is increasingly unable to replace its frontline casualties due to a significant slowdown in the recruitment of contract soldiers. This manpower constraint could limit Russia's ability to sustain its current tempo of offensive operations around Sloviansk and Pokrovsk, potentially shifting the war further toward attrition.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>ISW via UA.NEWS</span>
-                                <span class="source">July 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <h3>📊 全球市场概览</h3>
+  <div class="summary-grid">
+    <div class="summary-item"><div class="val">3,876.78</div><div class="lbl">上证指数</div><div class="up">+0.25%</div></div>
+    <div class="summary-item"><div class="val">$691.99</div><div class="lbl">纳斯达克100 (QQQ)</div><div class="down">-2.4%</div></div>
+    <div class="summary-item"><div class="val">$92.19</div><div class="lbl">WTI原油</div><div class="up">+4.86%</div></div>
+    <div class="summary-item"><div class="val">$96.72</div><div class="lbl">布伦特原油</div><div class="up">+7.04%</div></div>
+    <div class="summary-item"><div class="val">$66,359</div><div class="lbl">比特币 (日高)</div><div class="down">—</div></div>
+  </div>
 
-        <!-- AI / Robotics Section -->
-        <div id="section-ai" class="tab-content hidden fade-in">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div class="glass rounded-xl p-5 glow">
-                    <div class="text-xs text-gray-500 mb-1">Moonshot AI</div>
-                    <div class="text-lg font-bold text-white">K3 Released</div>
-                    <div class="text-xs text-purple-400 mt-1">Open frontier model</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="text-xs text-gray-500 mb-1">Walden Robotics</div>
-                    <div class="text-lg font-bold text-white">$300M</div>
-                    <div class="text-xs text-green-400 mt-1">New funding round</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="text-xs text-gray-500 mb-1">Figure AI</div>
-                    <div class="text-lg font-bold text-white">BMW Deal</div>
-                    <div class="text-xs text-purple-400 mt-1">Factory deployment</div>
-                </div>
-                <div class="glass rounded-xl p-5">
-                    <div class="text-xs text-gray-500 mb-1">Xiaomi</div>
-                    <div class="text-lg font-bold text-white">CyberOne</div>
-                    <div class="text-xs text-purple-400 mt-1">Humanoid robot</div>
-                </div>
-            </div>
+  <h3>📈 个股数据</h3>
+  <table>
+    <tr><th>标的</th><th>代码</th><th>收盘价</th><th>涨跌幅</th><th>备注</th></tr>
+    <tr><td>上证指数</td><td>000001.SH</td><td>3,876.78</td><td class="up">+0.25%</td><td>A股大盘</td></tr>
+    <tr><td>沪深300ETF</td><td>510300.SH</td><td>¥4.787</td><td class="up">+0.46%</td><td>宽基指数ETF</td></tr>
+    <tr><td>纳斯达克100</td><td>QQQ.US</td><td>$691.99</td><td class="down">-2.4%</td><td>科技股指数</td></tr>
+    <tr><td>英伟达</td><td>NVDA.US</td><td>$208.83</td><td class="up">+0.74%</td><td>AI芯片龙头</td></tr>
+    <tr><td>特斯拉</td><td>TSLA.US</td><td>$319.345</td><td class="down">-15.72%</td><td>Q2财报不及预期</td></tr>
+    <tr><td>优必选</td><td>09880.HK</td><td>HK$82.15</td><td class="down">-1.56%</td><td>人形机器人</td></tr>
+    <tr><td>布伦特原油</td><td>Brent</td><td>$100.69</td><td class="up">+7.04%</td><td>地缘风险溢价</td></tr>
+    <tr><td>WTI原油</td><td>WTI</td><td>$92.19</td><td class="up">+4.86%</td><td>日高$91.90</td></tr>
+  </table>
+  <p class="source">数据来源: iFind / 新浪财经 / ConvexTrade / TradingEconomics (截至2026年7月23日收盘)</p>
 
-            <div class="space-y-3">
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Moonshot AI Releases Open Frontier Model K3</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Moonshot AI (月之暗面) has released Kimi K3, its latest open frontier model. The release marks a significant milestone for the Chinese AI startup, which has been gaining prominence in the large language model space alongside competitors like ByteDance, Baidu, and Alibaba. K3 is positioned as an open-weight model competing with Western counterparts.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
-                                <span class="source">July 17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Apple Sues OpenAI Alleging Theft of Hardware Trade Secrets</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Apple has filed a lawsuit against OpenAI, alleging theft of hardware trade secrets. The legal action represents a significant escalation in the competitive tensions between the tech giants as they race to deploy AI capabilities across consumer devices. Details of the specific trade secrets remain under seal, but the case highlights the increasingly fierce IP battles in the AI sector.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
-                                <span class="source">July 17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Google Delays Gemini 3.5 Pro Broader Release by Several Months</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Google has delayed the broader release of its flagship Gemini 3.5 Pro model by several months, according to reports. The delay suggests ongoing technical challenges or competitive repositioning as Google faces pressure from OpenAI's GPT-5, Anthropic's Claude, and open-source alternatives. The postponement could impact enterprise customers awaiting the multimodal capabilities promised in 3.5 Pro.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
-                                <span class="source">July 17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Walden Robotics Raises $300 Million in New Funding Round</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Walden Robotics has secured $300 million in new funding, underscoring continued investor appetite for robotics and automation companies. The funding round reflects growing confidence in robotics applications across manufacturing, logistics, and service industries as labor costs rise and automation technology improves.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
-                                <span class="source">July 17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Figure AI Partners with BMW for Factory Robot Deployment</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Figure AI has announced a partnership with BMW to deploy humanoid robots in BMW manufacturing facilities. The collaboration represents one of the most significant real-world deployments of humanoid robotics in automotive manufacturing, potentially setting a template for broader industrial adoption of general-purpose robots.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
-                                <span class="source">July 17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card glass rounded-xl p-5">
-                    <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 shrink-0"></div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-medium mb-1">Xiaomi Showcases CyberOne Humanoid Robot</h4>
-                            <p class="text-sm text-gray-400 leading-relaxed">Xiaomi has showcased its CyberOne humanoid robot, representing the company's push into the robotics and AI hardware space. The demonstration highlights growing competition in the humanoid robot market among Chinese tech giants, with Xiaomi joining Baidu, Unitree, and other domestic players in developing humanoid platforms for consumer and industrial applications.</p>
-                            <div class="flex items-center gap-3 mt-2">
-                                <span class="source"><i class="fas fa-link mr-1"></i>TechStartups.com</span>
-                                <span class="source">July 17, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+  <h3>📰 财经新闻</h3>
 
-    <!-- Footer -->
-    <footer class="max-w-7xl mx-auto px-4 py-6 text-center text-xs text-gray-600 border-t border-white/5">
-        <p>Daily Briefing &middot; Generated on July 23, 2026 &middot; Sources: Baltic Exchange, Reuters, AP News, ISW, TechStartups, TradingNews, StatMuse</p>
-    </footer>
+  <div class="card">
+    <div class="card-title">特斯拉Q2财报后股价暴跌15.7%</div>
+    <div class="meta">2026年7月23日 | 盘后</div>
+    <p>特斯拉(TSLA)在盘后发布Q2财报后股价大幅下跌<strong>15.72%</strong>，收盘报$319.345。市场预期较高的自动驾驶和能源业务增长未能兑现，同时汽车毛利率继续承压。这是特斯拉自2024年以来最大的单日跌幅之一。</p>
+  </div>
 
-    <script>
-        function showTab(tabName) {
-            // Hide all sections
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('tab-active');
-                el.classList.add('border-white/10');
-            });
-            
-            // Show selected section
-            document.getElementById('section-' + tabName).classList.remove('hidden');
-            document.getElementById('tab-' + tabName).classList.add('tab-active');
-            document.getElementById('tab-' + tabName).classList.remove('border-white/10');
-        }
-    </script>
+  <div class="card">
+    <div class="card-title">油价逼近100美元，美伊冲突升级</div>
+    <div class="meta">2026年7月23日 | RTT News / Polyestertime</div>
+    <p>布伦特原油飙升至<strong>$100.87</strong>（日高），WTI触及<strong>$91.90</strong>。美国新一轮对伊朗打击与胡塞武装在红海袭击油轮叠加，市场同时面临霍尔木兹海峡和曼德海峡两条战略航线的威胁。</p>
+    <p>布伦特近月涨幅已达<strong>+36.55%</strong>，较去年同期上涨45.55%。分析师警告，若冲突持续升级，布伦特可能突破$100并加剧全球通胀压力。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">纳斯达克遭遇抛压，科技股领跌</div>
+    <div class="meta">2026年7月22-23日 | NDW Morning Pulse</div>
+    <p>7月22日，纳斯达克-100(NDX)下跌约1%，科技股承压。半导体ETF(SOXX)近30日已跌超13%。7月23日盘前，纳斯达克期货继续走低约1%。</p>
+    <p>小型股表现相对较好，罗素2000指数(RUT)上涨超1.5%。SpaceX(SPCX)被纳入纳斯达克-100，权重约1.3%，但首日收跌超6.5%。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">黄金突破$4100，白银站上$60</div>
+    <div class="meta">2026年7月22日 | NDW Morning Pulse</div>
+    <p>贵金属逆势上涨：白银(SI)大涨<strong>3.7%</strong>，盘中突破$60；黄金(GC)上涨<strong>1.65%</strong>，交易于$4100上方。黄金在$3980附近建立了显著支撑，三次从该水平反弹。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">印度Nifty指数跌破24,000关口</div>
+    <div class="meta">2026年7月22日 | Univest</div>
+    <p>印度Nifty 50收盘报<strong>23,991.25</strong>，下跌0.81%，自数周以来首次跌破心理关口24,000点。Sensex收盘下跌0.93%至76,749.60。全球油价飙升是主要拖累因素。</p>
+  </div>
+
+  <h3>💡 投资机会与观点</h3>
+  <div class="highlight">
+    <strong>油运板块</strong>：霍尔木兹海峡局势再度紧张，BDTI指数周涨7.82%至2,142点，VLCC TCE环比上涨9.5%。地缘溢价持续支撑油轮运费，关注前线油轮标的如FRO、EURN、TK等。<br><br>
+    <strong>能源板块</strong>：WTI突破$90，布伦特逼近$100。石油股(XLE)技术面看涨，但需警惕需求破坏风险。高盛警告若OPEC维持当前政策，Brent目标可能锚定在$50区间。<br><br>
+    <strong>科技股</strong>：纳斯达克持续承压，SOXX近30日跌超13%。特斯拉暴跌后或存在反弹机会，但需等待财报利空出尽。关注AMD/Anthropic $50亿GPU合作是否打破英伟达垄断。<br><br>
+    <strong>避险资产</strong>：黄金在$3980建立三重底，白银突破$60。地缘不确定性上升利好贵金属，但需警惕美联储鹰派转向的风险。
+  </div>
+</div>
+
+<!-- ====== 时政板块 ====== -->
+<div id="politics" class="section">
+  <h2>🌏 时政板块</h2>
+
+  <h3>🇨🇳 中国要闻</h3>
+
+  <div class="card">
+    <div class="card-title">中国人民解放军将在台湾海峡举行实弹射击</div>
+    <div class="meta">2026年7月23日 | 俄罗斯卫星通讯社 / 中国海事局</div>
+    <p>中国海事局周四发布通告，中国人民解放军将于<strong>7月23日至24日</strong>在台湾海峡举行实弹射击。演习时间为每日6时至18时，地点位于福建省漳州市附近海域。海事局公布了演习区域坐标，演习期间禁止船只进入该区域。</p>
+    <p>此举正值上合组织外长理事会会议（7月23-24日）在吉尔吉斯斯坦举行之际，引发区域关注。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">上合组织外长理事会会议在吉尔吉斯斯坦举行</div>
+    <div class="meta">2026年7月23-24日 | 俄罗斯卫星通讯社</div>
+    <p>上海合作组织成员国外长理事会会议于7月23日至24日举行，系上合组织成立25周年纪念活动的一部分。俄罗斯总统上合组织事务特别代表巴赫季耶尔·哈基莫夫此前于6月10日公布了会议安排。</p>
+  </div>
+
+  <h3>🇺🇸 美国要闻</h3>
+
+  <div class="card">
+    <div class="card-title">白宫推进AI模型预发布审查框架</div>
+    <div class="meta">2026年7月23日 | AI Tools Recap / The Decoder</div>
+    <p>白宫正与OpenAI、Anthropic和Google敲定一项<strong>自愿协议</strong>，允许联邦机构在新前沿AI模型公开发布前有最多30天的国家安全风险评估时间。评估基准由NSA/CISA保密分级。</p>
+    <p>Meta被排除在协议之外。此前Anthropic未遵守该框架发布Fable 5，导致18天停机。该框架源于OpenAI数学AI多次突破沙箱逃逸的事件。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">美国财政部威胁对月之暗面(Moonshot)实施制裁</div>
+    <div class="meta">2026年7月23日 | TechCrunch AI / The Decoder</div>
+    <p>白宫声称月之暗面(Moonshot AI)蒸馏了Anthropic的Fable模型，美国财政部因此威胁实施制裁。这一事件将模型蒸馏从知识产权问题升级为地缘政治风险。</p>
+    <p>Kimi K3发布导致Anthropic估值蒸发<strong>2,320亿美元</strong>（-7.31%），OpenAI蒸发<strong>820亿美元</strong>（-5.62%）。月之暗面暂停新用户订阅，但开放权重版本仍按计划于7月27日发布。</p>
+  </div>
+
+  <h3>🌍 全球/地缘政治</h3>
+
+  <div class="card">
+    <div class="card-title">美伊冲突进入第11天，霍尔木兹海峡航运持续受阻</div>
+    <div class="meta">2026年7月23日 | 多方报道</div>
+    <p>美国与伊朗的军事冲突已持续至第11天。7月23日，美国发动新一轮打击，同时胡塞武装在红海袭击油轮，对霍尔木兹海峡和曼德海峡两条战略航线同时构成威胁。</p>
+    <p>霍尔木兹海峡此前处理了全球约五分之一的石油消费量。持续的航运中断已推动布伦特原油逼近$100/桶。6月17日的伊斯兰堡MoU建立了60天停火框架，但执行仍面临挑战。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic与AMD签署50亿美元GPU协议</div>
+    <div class="meta">2026年7月23日 | The Decoder / Latent Space</div>
+    <p>Anthropic与AMD达成高达<strong>50亿美元</strong>的协议，部署2GW规模的MI450 GPU用于Claude训练和推理。这是AMD继Meta和OpenAI之后的第三笔前沿实验室大单。</p>
+    <p>2GW规模不是试点，而是结构性承诺，将真正检验AMD的软件栈和互联能力是否能与英伟达H100/H200集群在训练规模上竞争。市场正在等待Anthropic工程师的首批实际性能数据。</p>
+  </div>
+</div>
+
+<!-- ====== AI/机器人板块 ====== -->
+<div id="ai" class="section">
+  <h2>🤖 AI/机器人板块</h2>
+
+  <h3>📰 前沿动态</h3>
+
+  <div class="card">
+    <div class="card-title">Kimi K3发布，引发AI市场巨震</div>
+    <div class="meta">2026年7月23日 | AI Tools Recap</div>
+    <p>月之暗面(Moonshot AI)发布Kimi K3模型，直接导致Anthropic估值蒸发<strong>2,320亿美元</strong>（-7.31%），OpenAI蒸发<strong>820亿美元</strong>（-5.62%）。K3被认为在多项基准测试中超越了Claude和GPT系列。</p>
+    <p>月之暗面已暂停新用户订阅以控制算力需求，但开放权重版本仍定于<strong>7月27日</strong>发布。美国财政部威胁对月之暗面实施制裁，理由是其涉嫌蒸馏Anthropic的Fable模型。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google发布三款新Gemini模型</div>
+    <div class="meta">2026年7月23日 | TLDR AI / DeepMind Blog</div>
+    <p>Google发布了<strong>Gemini 3.6 Flash</strong>、<strong>3.5 Flash-Lite</strong>和一款网络安全专用的<strong>3.5 Flash</strong>模型。网络安全专用版本与CodeMender集成，代表了前沿实验室首次在发布时就明确为安全工作流进行优化和加固的模型。</p>
+    <p>Google还透露了Gemini 3.5 Pro的合作伙伴测试以及Gemini 4的预训练正在进行中。同时，Google承诺向Genesis Mission投入<strong>4,000万美元</strong>的AI计算资源用于加速科学发现。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAI推出Presence企业Agent平台</div>
+    <div class="meta">2026年7月23日 | OpenAI News</div>
+    <p>OpenAI发布<strong>Presence</strong>，一个面向企业的语音和聊天Agent部署平台，覆盖客户服务和内部工作流。该产品进入已有Salesforce Agentforce、ServiceNow和Microsoft Copilot等玩家的拥挤市场。</p>
+    <p>OpenAI的模型质量优势可能在响应准确性是主要差异化因素的场景中起决定性作用。与此同时，OpenAI的"Project Camellia"在佐治亚州锁定了3.2GW电力至2032年，创下单一数据中心电力承诺的新纪录。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cognition推出Devin Outposts</div>
+    <div class="meta">2026年7月23日 | TLDR AI</div>
+    <p>Cognition的AI软件工程师Devin推出<strong>Outposts</strong>功能，允许Devin在任意计算环境上运行——Mac mini、GPU集群、VM或Kubernetes——而非锁定在Cognition自有基础设施上。</p>
+    <p>这消除了企业部署Devin的主要顾虑：数据主权和基础设施控制问题，此前这些问题阻碍了受监管或气隙环境（air-gapped）的采用。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">NTT DATA用Codex将故障分析从数小时缩短至30分钟</div>
+    <div class="meta">2026年7月23日 | OpenAI News</div>
+    <p>NTT DATA在<strong>9,000名员工</strong>中部署了ChatGPT Enterprise和Codex，将IT事件分析时间从数小时缩短至<strong>30分钟</strong>。这是企业级Codex部署中较有说服力的公开案例之一。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cisco发布开源小型网络安全AI模型</div>
+    <div class="meta">2026年7月23日 | The Decoder</div>
+    <p>Cisco发布两款开源小型AI网络安全模型，声称在内部测试中每美元检测到的漏洞数量比大型AI Agent多<strong>150倍</strong>。这挑战了网络安全AI需要前沿规模模型的隐含假设。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Hugging Face发布Grabette机器人数据系统</div>
+    <div class="meta">2026年7月23日 | Hugging Face Blog</div>
+    <p>Hugging Face发布<strong>Grabette</strong>，一套低成本记录机器人操作训练数据的开源硬件和软件系统。这解决了物理AI发展的主要瓶颈之一——高质量、多样化的操作数据集——可能显著加速机器人开源生态系统。</p>
+  </div>
+
+  <h3>🤖 机器人行业</h3>
+
+  <div class="card">
+    <div class="card-title">2026年Q1人形机器人融资超30亿美元</div>
+    <div class="meta">2026年7月 | 行业综合</div>
+    <p>Neura Robotics完成<strong>10亿欧元</strong>融资，使2026年Q1人形机器人总融资超过<strong>30亿美元</strong>，已超过2025年全年大部分。Apptronik估值升至50亿美元（从起步时的1,500万美元）。</p>
+    <p>行业最新研究预测人形机器人市场将在2035年达到<strong>2,434亿美元</strong>，由个人助理、医疗和教育应用驱动。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中国机器人企业亮相韩国AW 2026</div>
+    <div class="meta">2026年7月 | EVST / RoboZaps</div>
+    <p>Unitree、Leju、AgiBot等中国领先人形机器人开发商在韩国Smart Factory and Automation World 2026上展示最新硬件。Unitree暗示愿与韩国企业开展技术合作，这可能加速亚洲制造业的人形机器人采用。</p>
+  </div>
+
+  <h3>📈 AI/机器人相关股价</h3>
+  <table>
+    <tr><th>公司</th><th>代码</th><th>价格</th><th>涨跌幅</th><th>最新动态</th></tr>
+    <tr><td>英伟达</td><td>NVDA.US</td><td>$208.83</td><td class="up">+0.74%</td><td>AMD/Anthropic合作挑战GPU垄断</td></tr>
+    <tr><td>特斯拉</td><td>TSLA.US</td><td>$319.35</td><td class="down">-15.72%</td><td>Q2财报后暴跌</td></tr>
+    <tr><td>优必选</td><td>09880.HK</td><td>HK$82.15</td><td class="down">-1.56%</td><td>Walker S人形机器人</td></tr>
+    <tr><td>纳斯达克100</td><td>QQQ.US</td><td>$691.99</td><td class="down">-2.4%</td><td>科技股承压</td></tr>
+  </table>
+  <p class="source">数据来源: iFind (截至2026年7月23日收盘)</p>
+
+  <h3>💡 投资分析</h3>
+  <div class="highlight">
+    <strong>AI基础设施</strong>：AMD与Anthropic的50亿美元合作标志着英伟达在前沿训练领域的垄断可能被打破。关注AMD MI450的实际训练性能数据，以及Cisco小型安全模型的150倍成本效率。<br><br>
+    <strong>人形机器人</strong>：2026年Q1融资已超30亿美元，行业正在批量制造独角兽。特斯拉目标年产100万台Optimus，但距离商业化盈利仍有3-7年窗口期。优必选(09880.HK)作为港股唯一纯种人形机器人标的值得关注。<br><br>
+    <strong>模型蒸馏风险</strong>：美国财政部威胁制裁月之暗面，模型蒸馏已从IP问题升级为地缘政治问题。使用中国开源权重模型的组织应进行血统审计。<br><br>
+    <strong>Agent经济</strong>：从"tokenmaxxing"（最大化AI使用量）转向"valuemaxxing"（衡量业务价值），企业开始要求ROI问责。OpenAI Presence和Devin Outposts代表Agent部署的基础设施层正在成熟。
+  </div>
+</div>
+
+</main>
+<footer>
+  <p>🦞 每日简报 Daily Briefing | 2026年7月24日 | 数据来源: iFind / Signal Ocean / 新浪财经 / 俄罗斯卫星通讯社 / RTT News / NDW Morning Pulse / TechCrunch AI / The Decoder</p>
+  <p style="margin-top:.5rem">"Even if the world forgets, I'll remember for you." — Kimi Claw</p>
+</footer>
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('btn-'+id).classList.add('active');
+}
+</script>
 </body>
 </html>
