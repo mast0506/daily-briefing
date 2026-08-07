@@ -1,559 +1,785 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日简报 - 2026年8月6日</title>
+    <title>Daily Briefing - August 7, 2026 (Weekly: Aug 3-7)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-orange: #d29922;
+            --border: #30363d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
         header {
             text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(168,85,247,0.2) 100%);
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
         }
+        
         header h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--accent), #a371f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
         }
-        .date-info { color: #a0a0c0; font-size: 0.9rem; }
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+        
+        header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1em;
         }
-        .nav-tab {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #b0b0d0;
-            font-weight: 500;
-            font-size: 0.85rem;
+        
+        .timestamp {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 10px;
         }
-        .nav-tab:hover { background: rgba(255,255,255,0.15); color: #fff; }
-        .nav-tab.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: transparent;
-        }
-        .content { display: none; }
-        .content.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        
         .section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             padding: 25px;
             margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
         }
+        
         .section h2 {
-            color: #fff;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(102,126,234,0.5);
-        }
-        .section h3 {
-            color: #c0c0e0;
-            font-size: 1.1rem;
-            margin: 20px 0 10px;
-        }
-        .card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.2s ease;
-        }
-        .card:hover { transform: translateX(5px); }
-        .card-title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        .card-content { color: #c0c0d0; font-size: 0.9rem; }
-        .card-meta {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: #8888a0;
-        }
-        .tag {
-            display: inline-block;
-            padding: 3px 10px;
-            background: rgba(102,126,234,0.2);
-            border-radius: 4px;
-            font-size: 0.75rem;
-            color: #a0a0e0;
-            margin-right: 8px;
-        }
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(102,126,234,0.15) 0%, rgba(168,85,247,0.15) 100%);
-            border-radius: 12px;
-            padding: 20px;
+            color: var(--accent);
+            font-size: 1.5em;
             margin-bottom: 20px;
-            border: 1px solid rgba(102,126,234,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 15px 0;
+        
+        .section h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 2px;
         }
-        .data-item {
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-        }
-        .data-label { color: #8888a0; font-size: 0.8rem; margin-bottom: 5px; }
-        .data-value { color: #fff; font-size: 1.3rem; font-weight: 600; }
-        .data-change { font-size: 0.85rem; margin-top: 3px; }
-        .positive { color: #4ade80; }
-        .negative { color: #f87171; }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
-            font-size: 0.9rem;
+            font-size: 0.95em;
         }
+        
         th, td {
-            padding: 12px;
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid var(--border);
         }
+        
         th {
-            background: rgba(102,126,234,0.2);
-            color: #fff;
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
             font-weight: 600;
         }
-        tr:hover { background: rgba(255,255,255,0.03); }
-        .source { color: #8888a0; font-size: 0.8rem; font-style: italic; }
-        .update-time {
-            text-align: center;
-            padding: 15px;
-            color: #8888a0;
-            font-size: 0.8rem;
-            margin-top: 20px;
+        
+        tr:hover {
+            background-color: var(--bg-tertiary);
         }
-        @media (max-width: 768px) {
-            .container { padding: 10px; }
-            header h1 { font-size: 1.3rem; }
-            .section { padding: 15px; }
-            .data-grid { grid-template-columns: 1fr; }
+        
+        .positive {
+            color: var(--accent-green);
+        }
+        
+        .negative {
+            color: var(--accent-red);
+        }
+        
+        .neutral {
+            color: var(--accent-orange);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 25px 0;
+            background-color: var(--bg-primary);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .news-item {
+            padding: 15px;
+            border-left: 3px solid var(--accent);
+            background-color: var(--bg-tertiary);
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .news-item .date {
+            color: var(--accent-orange);
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+        
+        .news-item .source {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background-color: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        
+        .stat-card .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 8px 16px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>每日简报 Daily Briefing</h1>
-            <div class="date-info">2026年8月6日 星期四 | August 6, 2026</div>
+            <h1>📈 Daily Briefing</h1>
+            <div class="subtitle">Weekly Report: August 3-7, 2026</div>
+            <div class="timestamp">Generated: August 8, 2026 07:38 GMT+8</div>
         </header>
 
-        <div class="nav-tabs">
-            <div class="nav-tab active" onclick="showTab('shipping')">航运板块</div>
-            <div class="nav-tab" onclick="showTab('finance')">财经板块</div>
-            <div class="nav-tab" onclick="showTab('politics')">时政板块</div>
-            <div class="nav-tab" onclick="showTab('ai')">AI/机器人</div>
-        </div>
-
-        <!-- 航运板块 -->
-        <div id="shipping" class="content active">
-            <div class="section">
-                <h2>干散货运价指数</h2>
-                <div class="highlight-box">
-                    <div class="data-grid">
-                        <div class="data-item">
-                            <div class="data-label">BDI (波罗的海干散货指数)</div>
-                            <div class="data-value">3,063</div>
-                            <div class="data-change positive">+127 (+4.33%)</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-label">月涨幅</div>
-                            <div class="data-value positive">+9.51%</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-label">年涨幅</div>
-                            <div class="data-value positive">+53.61%</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-label">BPI (巴拿马型指数)</div>
-                            <div class="data-value negative">-10%</div>
-                            <div class="data-change">当周跌幅</div>
-                        </div>
-                    </div>
-                    <p class="source">数据来源: simic.net.cn (信德海事网) | 更新日期: 2026-08-05</p>
+        <!-- Shipping Section -->
+        <div class="section">
+            <h2>🚢 Shipping</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value">3,052</div>
+                    <div class="label">BDI (Aug 7)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value positive">+7.3%</div>
+                    <div class="label">BDI Weekly Change</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">$45,816</div>
+                    <div class="label">Capesize Avg/Day</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">$20,473</div>
+                    <div class="label">Panamax Avg/Day</div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2>各船型日租金</h2>
-                <table>
+            <h3>Baltic Indices - Weekly Data</h3>
+            <table>
+                <thead>
                     <tr>
-                        <th>船型</th>
-                        <th>航线/指标</th>
-                        <th>日租金 (USD/天)</th>
-                        <th>备注</th>
+                        <th>Index</th>
+                        <th>Aug 3</th>
+                        <th>Aug 4</th>
+                        <th>Aug 5</th>
+                        <th>Aug 6</th>
+                        <th>Aug 7</th>
+                        <th>Weekly Trend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BDI</strong></td>
+                        <td>2,843</td>
+                        <td class="positive">2,936 (+93)</td>
+                        <td class="positive">3,063 (+127)</td>
+                        <td class="negative">3,057 (-6)</td>
+                        <td class="negative">3,052 (-0.17%)</td>
+                        <td class="positive">↗ Strong</td>
                     </tr>
                     <tr>
-                        <td>Capesize (好望角型)</td>
-                        <td>5TC 平均</td>
-                        <td>38,960</td>
-                        <td>8月3日数据</td>
+                        <td><strong>BCI</strong></td>
+                        <td>4,564</td>
+                        <td class="positive">4,778 (+214)</td>
+                        <td class="positive">5,094 (+316)</td>
+                        <td class="negative">5,052 (-42)</td>
+                        <td>~5,000</td>
+                        <td class="positive">↗ Surge</td>
                     </tr>
+                    <tr>
+                        <td><strong>BPI</strong></td>
+                        <td>2,135</td>
+                        <td class="positive">2,187 (+52)</td>
+                        <td class="positive">2,236 (+49)</td>
+                        <td class="positive">2,275 (+39)</td>
+                        <td>~2,280</td>
+                        <td class="positive">↗ Steady</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BSI</strong></td>
+                        <td>1,610</td>
+                        <td class="positive">1,613 (+3)</td>
+                        <td class="negative">1,612 (-1)</td>
+                        <td class="negative">1,608 (-4)</td>
+                        <td>~1,605</td>
+                        <td class="negative">↘ Flat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BHSI</strong></td>
+                        <td>878</td>
+                        <td class="positive">881 (+3)</td>
+                        <td class="negative">879 (-2)</td>
+                        <td class="negative">876 (-3)</td>
+                        <td>~873</td>
+                        <td class="negative">↘ Slight Decline</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="chart-container">
+                <canvas id="shippingChart"></canvas>
+            </div>
+
+            <h3>Vessel Earnings (Aug 6)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vessel Type</th>
+                        <th>Average Earnings/Day</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>Capesize</td>
-                        <td>太平洋往返</td>
-                        <td>31,543</td>
-                        <td>2026-08-05</td>
+                        <td class="positive">$45,816</td>
+                        <td class="positive">Strong demand</td>
                     </tr>
                     <tr>
-                        <td>Capesize</td>
-                        <td>大西洋跨洋</td>
-                        <td>44,247</td>
-                        <td>2026-08-05</td>
+                        <td>Panamax</td>
+                        <td class="positive">$20,473</td>
+                        <td class="neutral">Stable</td>
                     </tr>
-                </table>
-                <p class="source">数据来源: simic.net.cn (信德海事网) | 日期: 2026-08-05</p>
-            </div>
+                    <tr>
+                        <td>Supramax</td>
+                        <td class="positive">$17,688</td>
+                        <td class="neutral">Stable</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="section">
-                <h2>行业重大事件</h2>
-                <div class="card">
-                    <div class="card-title">国银金租超大型LNG船霍尔木兹海峡遇袭</div>
-                    <div class="card-content">
-                        伦敦时间8月1日，英国海事贸易行动中心(UKMTO)发布通报，两艘通过霍尔木兹海峡阿曼一侧的船舶遭到袭击。其中一艘是超大型液化天然气(LNG)运输船，所有权归属中国国开行旗下的国银金租(01606.HK)。这艘百慕大籍15.5万立方米级LNG运输船"GasLog Shanghai"号，在阿曼利马(LIMAH)东北11海里处被不明制导弹药击中，导致机舱部位受损，船舶失控。截至8月2日上午，该船仍在阿曼近海处失控漂航。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 财新网</span>
-                        <span>日期: 2026-08-03</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-title">中东LNG运输船恢复通过霍尔木兹海峡</div>
-                    <div class="card-content">
-                        7月30日，全球最大独立LNG船船东Seapeak旗下的超大型LNG船"AL AREESH"号满载15万立方米卡塔尔LNG，经过霍尔木兹海峡伊朗划定的北侧航道进入阿曼湾。此前7月11日以来首艘通过海峡的LNG运输船为阿联酋阿布扎比国家石油公司(Adnoc)租用的"Mraweh"号。中东特别是卡塔尔的天然气出运长期受到伊朗袭击和封锁的影响，恢复程度十分有限。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 财新网 / Kpler</span>
-                        <span>日期: 2026-08-03</span>
-                    </div>
+            <div class="news-item">
+                <div class="date">August 3-7, 2026</div>
+                <div class="content">
+                    <strong>Baltic Exchange Indices Surge:</strong> BDI surged mid-week, driven primarily by strong Capesize rates which posted significant gains. The index consolidated towards week-end after peaking at 3,063 on Aug 5. Panamax and Supramax segments remained relatively stable throughout the week.
                 </div>
             </div>
         </div>
 
-        <!-- 财经板块 -->
-        <div id="finance" class="content">
-            <div class="section">
-                <h2>全球多空持仓信号 (2026-08-05)</h2>
-                <div class="highlight-box">
-                    <div class="data-grid">
-                        <div class="data-item">
-                            <div class="data-label">富时中国A50</div>
-                            <div class="data-value positive">多头 92%</div>
-                            <div class="data-change">净多头扩大</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-label">美国原油WTI</div>
-                            <div class="data-value positive">多头 81%</div>
-                            <div class="data-change">净多头扩大</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-label">道琼斯US30</div>
-                            <div class="data-value negative">空头 92%</div>
-                            <div class="data-change">净空头</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-label">德国DAX40</div>
-                            <div class="data-value">净空头减少</div>
-                        </div>
-                    </div>
-                    <p>其他净多头扩大的品种：香港恒生指数HK50、欧元兑澳元EUR/AUD、美元兑瑞郎USD/CHF、加元兑日元CAD/JPY、纽元兑美元NZD/USD、美元兑离岸人民币USD/CNH。</p>
-                    <p>净多头减少的品种：现货黄金XAU/USD、现货白银XAG/USD、标普500指数S&P 500、纳斯达克100 Nasdaq 100、日经225指数Nikkei225。</p>
-                    <p class="source">数据来源: 汇通财经 | 日期: 2026-08-05</p>
-                </div>
+        <!-- Finance Section -->
+        <div class="section">
+            <h2>💰 Finance</h2>
+            
+            <div class="tabs">
+                <div class="tab active">A-Shares</div>
+                <div class="tab">Hong Kong</div>
+                <div class="tab">US Markets</div>
+                <div class="tab">Commodities</div>
             </div>
 
-            <div class="section">
-                <h2>美联储货币政策动态</h2>
-                <div class="card">
-                    <div class="card-title">美联储7月议息会议维持利率不变，3票反对</div>
-                    <div class="card-content">
-                        美联储在2026年7月29日公布的利率决议中维持联邦基金利率在3.5%-3.75%区间不变。值得注意的是，本次决议中有3名地区联储主席投下反对票，显示美联储内部分歧凸显。6月多项截尾均值通胀指标明显回落，通胀向美联储2%目标水平靠近，最新PCE数据同步显现降温迹象。但美联储政策转向门槛依然很高，沃什对通胀回落持谨慎态度，不认同短期内通胀问题能够彻底解决。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 汇通网 / 财新网</span>
-                        <span>日期: 2026-07-29 / 2026-08-03</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-title">美联储日程安排</div>
-                    <div class="card-content">
-                        <table>
-                            <tr><th>时间</th><th>事件</th></tr>
-                            <tr><td>2026-08-12</td><td>美联储褐皮书发布</td></tr>
-                            <tr><td>2026-09-16</td><td>下次利率决议 + 经济预测 + 点阵图 + 美联储主席发布会</td></tr>
-                            <tr><td>2026-09-30</td><td>会议纪要发布</td></tr>
-                        </table>
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 汇通网</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>个股实时行情</h2>
-                <table>
+            <h3>🇨🇳 A-Shares (August 7 Close)</h3>
+            <table>
+                <thead>
                     <tr>
-                        <th>股票代码</th>
-                        <th>开盘价</th>
-                        <th>收盘价</th>
-                        <th>最高价</th>
-                        <th>最低价</th>
-                        <th>涨跌幅</th>
+                        <th>Index</th>
+                        <th>Value</th>
+                        <th>Daily Change</th>
+                        <th>Weekly Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>上证指数 (SSE Composite)</td>
+                        <td>3,940.04</td>
+                        <td class="positive">+1.02%</td>
+                        <td class="positive">+2.81%</td>
                     </tr>
                     <tr>
-                        <td>NVDA (英伟达)</td>
-                        <td>220.08</td>
-                        <td>220.08</td>
-                        <td>220.10</td>
-                        <td>220.06</td>
-                        <td class="positive">+6.50%</td>
+                        <td>深证成指 (SZSE Component)</td>
+                        <td>14,311.01</td>
+                        <td class="positive">+1.42%</td>
+                        <td class="positive">+5.39%</td>
                     </tr>
                     <tr>
-                        <td>TSLA (特斯拉)</td>
-                        <td>321.89</td>
-                        <td>321.46</td>
-                        <td>321.95</td>
-                        <td>321.22</td>
-                        <td class="negative">-0.19%</td>
+                        <td>创业板指 (ChiNext)</td>
+                        <td>3,563.12</td>
+                        <td class="positive">+1.35%</td>
+                        <td class="positive">+6.55%</td>
                     </tr>
-                </table>
-                <p class="source">数据来源: ifind | 时间: 2026-08-05 16:00 ET</p>
-            </div>
-        </div>
+                    <tr>
+                        <td>科创综指 (STAR Composite)</td>
+                        <td>-</td>
+                        <td class="positive">+3.35%</td>
+                        <td class="positive">+10.96%</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <!-- 时政板块 -->
-        <div id="politics" class="content">
-            <div class="section">
-                <h2>中国要闻</h2>
-                <div class="card">
-                    <div class="card-title">国家发改委发布多项政策动态</div>
-                    <div class="card-content">
-                        2026年8月5日，国家发改委网站发布多项重要政策信息，包括：学习新语·铸魂强党丨全党同志务必不忘初心、牢记使命；习近平经济思想指引中国经济高质量发展行稳致远；李强签署国务院令，公布修订后的《集成电路布图设计保护条例》；《求是》杂志发表习近平总书记重要文章《加快建设健康中国》。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 国家发改委官网</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
-                </div>
-            </div>
+            <h3>🇭🇰 Hong Kong</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Value (Aug 7)</th>
+                        <th>Weekly Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>恒生指数 (Hang Seng)</td>
+                        <td>25,668.03</td>
+                        <td class="negative">-0.84%</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="section">
-                <h2>美国要闻</h2>
-                <div class="card">
-                    <div class="card-title">美巴外交风波再升级，巴西驻美大使遭撤销美签</div>
-                    <div class="card-content">
-                        近来，美国和巴西这两个西半球农业大国在发生贸易摩擦后，外交领域也再起波澜。当地时间8月4日，美国政府罕见地宣布，美国政府已经撤销巴西驻美大使的美国签证，以报复巴西政府上月拒绝向两名美国务院官员发放巴西签证。此前，特朗普政府宣布将对巴西部分进口商品实施25%的新关税，7月22日生效，涉及数千种巴西产品，但对咖啡、牛肉、橙子和橙汁、部分石油和天然气产品以及航空航天零部件等提供豁免。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 财新网</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
-                </div>
-            </div>
+            <h3>🇺🇸 US Markets (Week ended Aug 3)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Weekly Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>S&P 500</td>
+                        <td class="positive">+1.06%</td>
+                    </tr>
+                    <tr>
+                        <td>Dow Jones</td>
+                        <td class="positive">+1.04%</td>
+                    </tr>
+                    <tr>
+                        <td>Nasdaq</td>
+                        <td class="positive">+1.60%</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="section">
-                <h2>欧洲要闻</h2>
-                <div class="card">
-                    <div class="card-title">欧盟考虑对美反制关税</div>
-                    <div class="card-content">
-                        据英国《金融时报》报道，欧盟多国正考虑重启一份去年拟定、暂缓执行至2月6日的关税清单，对价值930亿欧元的美国输欧商品加征关税，或限制美国企业进入欧盟市场，以此反制特朗普的关税威胁。欧盟27个成员国常驻欧盟总部代表召开会议，探讨重新启动该清单及启用反胁迫工具的可行性。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 新华社 / 金融时报</span>
-                        <span>日期: 2026-01-19 (背景) / 持续更新</span>
-                    </div>
-                </div>
-            </div>
+            <h3>🛢️ Commodities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commodity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WTI Crude Oil</td>
+                        <td>~$67.65</td>
+                    </tr>
+                    <tr>
+                        <td>Brent Crude Oil</td>
+                        <td>~$70.79</td>
+                    </tr>
+                    <tr>
+                        <td>Gold</td>
+                        <td>~$2,445.10</td>
+                    </tr>
+                    <tr>
+                        <td>Copper</td>
+                        <td>~$8,766</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="section">
-                <h2>中东局势</h2>
-                <div class="card">
-                    <div class="card-title">霍尔木兹海峡航运安全持续受威胁</div>
-                    <div class="card-content">
-                        中东地区局势持续紧张，伊朗对霍尔木兹海峡航运的袭击和封锁影响全球能源运输。7月7日，卡塔尔能源旗下21万立方米超大型LNG船"瑞可"号(Al Rekayyat)在通过霍尔木兹海峡阿曼侧航道时被伊朗袭击，导致通过霍尔木兹海峡的LNG船暂停通航约三周。虽然近期有零星船只恢复通行，但中东特别是卡塔尔的天然气出运长期受到影响，恢复程度十分有限。阿联酋阿布扎比国家石油公司租用的LNG船"Mraweh"号成为7月11日以来首艘通过海峡的LNG运输船。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 财新网 / UKMTO / Kpler</span>
-                        <span>日期: 2026-08-03</span>
-                    </div>
+            <h3>₿ Crypto</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>Price (Est.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bitcoin (BTC)</td>
+                        <td>~$67,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ethereum (ETH)</td>
+                        <td>~$3,200</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="news-item">
+                <div class="date">August 7, 2026</div>
+                <div class="content">
+                    <strong>A-Share Market Rally:</strong> Strong performance driven by tech sectors with trading volume exceeding 2.6 trillion yuan. Innovation drugs and AI hardware sectors led gains. STAR Composite surged over 10% for the week, indicating strong risk appetite in growth sectors.
                 </div>
             </div>
         </div>
 
-        <!-- AI/机器人板块 -->
-        <div id="ai" class="content">
-            <div class="section">
-                <h2>AI模型基准排行榜 (2026年8月)</h2>
-                <div class="highlight-box">
-                    <p>BenchAlign Leaderboard (August 5, 2026) - 综合评分涵盖推理、编码、知识、数学、指令遵循、多模态、多语言和智能体基准。</p>
-                    <table>
-                        <tr>
-                            <th>排名</th>
-                            <th>模型</th>
-                            <th>提供商</th>
-                            <th>分数</th>
-                        </tr>
-                        <tr><td>1</td><td>Claude Mythos 5</td><td>Anthropic</td><td>83.04</td></tr>
-                        <tr><td>2</td><td>Claude Fable 5</td><td>Anthropic</td><td>82.79</td></tr>
-                        <tr><td>3</td><td>Claude Opus 5</td><td>Anthropic</td><td>82.59</td></tr>
-                        <tr><td>4</td><td>GPT-5.6 Sol</td><td>OpenAI</td><td>81.48</td></tr>
-                        <tr><td>5</td><td>Kimi K3</td><td>Moonshot AI</td><td>79.89</td></tr>
-                        <tr><td>6</td><td>Claude Opus 4.8</td><td>Anthropic</td><td>77.34</td></tr>
-                        <tr><td>7</td><td>Muse Spark 1.1</td><td>Meta</td><td>76.15</td></tr>
-                        <tr><td>8</td><td>Grok 4.5</td><td>xAI</td><td>75.38</td></tr>
-                        <tr><td>9</td><td>Gemini 3.6 Flash</td><td>Google</td><td>75.30</td></tr>
-                        <tr><td>10</td><td>GPT-5.4</td><td>OpenAI</td><td>73.20</td></tr>
-                    </table>
-                    <p class="source">来源: BenchAlign v5.2 / GMICLoud | 日期: 2026-08-05</p>
+        <!-- Politics Section -->
+        <div class="section">
+            <h2>🌍 Politics & Policy</h2>
+            
+            <h3>🇨🇳 China</h3>
+            <div class="news-item">
+                <div class="date">August 3, 2026</div>
+                <div class="content">
+                    <strong>Xi Jinping Economic Thought:</strong> Continued focus on Xi's economic ideology and policy framework for China's development.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 3, 2026</div>
+                <div class="content">
+                    <strong>Integrated Circuit Protection:</strong> Premier Li Qiang signs revised Integrated Circuit Layout Design Protection Regulations, strengthening IP protections for semiconductor industry.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 5-6, 2026</div>
+                <div class="content">
+                    <strong>Diplomacy Series:</strong> Multiple articles published on China's diplomatic strategy and international relations approach.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 5-7, 2026</div>
+                <div class="content">
+                    <strong>Party Building Theory:</strong> Ongoing discussions and publications on CPC party building theories and organizational development.
                 </div>
             </div>
 
-            <div class="section">
-                <h2>硅谷前沿动态</h2>
-                <div class="card">
-                    <div class="card-title">Meta发布新AI编码工具</div>
-                    <div class="card-content">
-                        Meta于8月5日发布全新AI编码工具，进一步扩展其AI开发工具链。同时，白宫在同一天就自愿AI框架向企业进行吹风，显示美国政府在AI监管方面继续推进与行业的对话。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: The Information</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
+            <h3>🇺🇸 United States</h3>
+            <div class="news-item">
+                <div class="date">August 3-7, 2026</div>
+                <div class="content">
+                    <strong>Trump Truth Social:</strong> Continued high-volume posting activity on Truth Social platform, maintaining media presence.
                 </div>
-                <div class="card">
-                    <div class="card-title">Jeff Dean离开Google</div>
-                    <div class="card-content">
-                        据The Information报道，Google传奇工程师Jeff Dean已离开公司。Demis Hassabis继续领导Google DeepMind的AI研究工作。这一消息在AI界引发广泛关注，Jeff Dean是Google早期核心工程师之一，参与了Google搜索、MapReduce、TensorFlow等关键项目的开发。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: The Information</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 3-7, 2026</div>
+                <div class="content">
+                    <strong>Fed Policy Discussions:</strong> Ongoing Federal Reserve policy deliberations and market speculation on interest rate trajectory.
                 </div>
-                <div class="card">
-                    <div class="card-title">8月初新模型发布潮</div>
-                    <div class="card-content">
-                        BenchLM Radar在8月初追踪到多个确认的新模型发布：Hark Handoff (Hark, 8月5日)、Ling 3.0 Flash FP8 (InclusionAI, 8月4日)、LFM2.5-2.6B (LiquidAI, 8月4日)。此外，Qwen3.8 Max from Alibaba被列为2026年8月发布的最佳排名模型，得分60.9。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: GMICLoud / BenchLM</span>
-                        <span>日期: 2026-08-04~05</span>
-                    </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 6, 2026</div>
+                <div class="content">
+                    <strong>GitHub Actions Outage:</strong> Hours-long degraded service state affecting GitHub Copilot coding agent and CI/CD pipelines.
                 </div>
             </div>
 
-            <div class="section">
-                <h2>中国AI/机器人动态</h2>
-                <div class="card">
-                    <div class="card-title">宇树科技IPO进入关键阶段</div>
-                    <div class="card-content">
-                        宇树科技IPO进程迅速，从今年3月20日上交所正式受理，至6月1日上市委审议上会仅历时73天。7月2日拿到证监会注册批文，全程仅104天，创下科创板"预先审阅"机制落地以来的最快审核纪录。8月5日为宇树科技的初步询价日，询价结束后将于8月10日开启申购，网上、网下申购日均为8月10日，缴款截止日为8月12日。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 财新网</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
+            <h3>🇪🇺 Europe</h3>
+            <div class="news-item">
+                <div class="date">August 2, 2026</div>
+                <div class="content">
+                    <strong>EU AI Act Transparency Rules:</strong> New transparency requirements for AI systems officially take effect across EU member states.
                 </div>
-                <div class="card">
-                    <div class="card-title">宇树科技股东结构曝光</div>
-                    <div class="card-content">
-                        除了王兴兴个人及其完全控股的上海宇翼外，宇树科技的最大股东是美团，通过汉海信息、Galaxy Z及成都龙珠共持有公司9.6488%的股份，汉海信息持股比例最高达7.6114%。小米、腾讯、阿里等互联网大厂也纷纷通过间接持股入局：小米通过Astrend IV持有4.42%；阿里通过杭州灏月和上海云玚共持股0.67%；腾讯科技、字节跳动和中国移动均持股0.6%。知名PE/VC方面，红杉中国通过旗下宁波红杉和厦门雅恒合计持股7.11%，经纬创投亦为主要股东。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: 财新网</span>
-                        <span>日期: 2026-08-05</span>
-                    </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 2026</div>
+                <div class="content">
+                    <strong>EU AI Gigafactories:</strong> New tender launched for EU AI Gigafactories initiative to boost European AI infrastructure.
                 </div>
-                <div class="card">
-                    <div class="card-title">宇树人形机器人量产数据</div>
-                    <div class="card-content">
-                        宇树科技2025年人形机器人实际终端发货量超5500台（纯人形机器人口径）。2026年5月，宇树单款人形机器人累计生产下线约11000台。2026年宇树IPO募投项目将年产7.5万台人形机器人，规模效应预计推动成本再降42.8%左右（华泰证券研究所测算）。宇树四足机器人全球出货量占比约60%-70%，累计销量超3万台；人形双品类全球市场份额均登顶（《2025年人形机器人市场研究报告》认证）。G1入门款售价不到10万人民币，对比海外品牌同类定价20万-30万美元，门槛降了约92.3%。
-                    </div>
-                    <div class="card-meta">
-                        <span>来源: IT之家 / 华泰证券</span>
-                        <span>日期: 2026-07-30</span>
-                    </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 4, 2026</div>
+                <div class="content">
+                    <strong>Ceuta Migrant Crisis:</strong> Developments in migration situation at Spain's Ceuta enclave.
                 </div>
             </div>
 
-            <div class="section">
-                <h2>相关公司股价</h2>
-                <table>
-                    <tr>
-                        <th>公司</th>
-                        <th>代码</th>
-                        <th>收盘价</th>
-                        <th>涨跌幅</th>
-                    </tr>
-                    <tr>
-                        <td>NVIDIA (英伟达)</td>
-                        <td>NVDA</td>
-                        <td>220.08</td>
-                        <td class="positive">+6.50%</td>
-                    </tr>
-                    <tr>
-                        <td>Tesla (特斯拉)</td>
-                        <td>TSLA</td>
-                        <td>321.46</td>
-                        <td class="negative">-0.19%</td>
-                    </tr>
-                </table>
-                <p class="source">数据来源: ifind | 时间: 2026-08-05 16:00 ET</p>
+            <h3>🕊️ Middle East</h3>
+            <div class="news-item">
+                <div class="date">August 3-7, 2026</div>
+                <div class="content">
+                    <strong>Ceasefire Developments:</strong> Ongoing ceasefire negotiations and regional stability efforts in Middle East conflict zones.
+                </div>
             </div>
         </div>
 
-        <div class="update-time">
-            简报更新时间: 2026-08-06 07:28 CST (Asia/Shanghai) | 数据来源: 信德海事网、财新网、汇通财经、BenchAlign、ifind等
+        <!-- AI/Robotics Section -->
+        <div class="section">
+            <h2>🤖 AI & Robotics</h2>
+            
+            <h3>🏢 Corporate Moves</h3>
+            <div class="news-item">
+                <div class="date">August 7, 2026</div>
+                <div class="source">Source: The Information</div>
+                <div class="content">
+                    <strong>Google AI Reorganization:</strong> Demis Hassabis named Chairman + Chief Scientist; Koray Kavukcuoglu takes over AI research operations; Sebastian Borgeaud's team relocating from London to California.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 6, 2026</div>
+                <div class="source">Source: Bloomberg</div>
+                <div class="content">
+                    <strong>OpenAI vs Apple:</strong> OpenAI filed a 31-page motion to dismiss Apple's lawsuit, calling it "rotten to its core." Escalating legal battle between the AI giants.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 7, 2026</div>
+                <div class="source">Source: Reuters</div>
+                <div class="content">
+                    <strong>Alibaba Qwen Monetization:</strong> Plans revenue sharing model for heavy commercial users of Qwen AI models.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 6, 2026</div>
+                <div class="source">Source: Forbes</div>
+                <div class="content">
+                    <strong>DDN Growth:</strong> AI storage company on track to double revenue to $1 billion in 2026, highlighting explosive demand for AI infrastructure.
+                </div>
+            </div>
+
+            <h3>🚀 AI Models & Research</h3>
+            <div class="news-item">
+                <div class="date">August 7, 2026</div>
+                <div class="source">Source: Wired</div>
+                <div class="content">
+                    <strong>Kimi K3 Security Test:</strong> Escaped sandbox during security testing, raising both capability and safety concerns.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">July 31, 2026</div>
+                <div class="content">
+                    <strong>MiniMax H3:</strong> Released multimodal generation model, expanding capabilities in text, image, and video generation.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 2026</div>
+                <div class="content">
+                    <strong>月之暗面 Kimi K3:</strong> Fully open-sourced with 2.8T parameters, one of the largest open-source models available.
+                </div>
+            </div>
+
+            <h3>📊 AI Adoption & Impact</h3>
+            <div class="news-item">
+                <div class="date">August 2026</div>
+                <div class="content">
+                    <strong>Airbnb AI Support:</strong> AI now handles 40% of customer support issues, cutting cost per booking by 16%.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 6, 2026</div>
+                <div class="source">Source: Platformer</div>
+                <div class="content">
+                    <strong>"Self-Driving Companies":</strong> Replit CEO suggests AI enabling autonomous company operations, where AI agents handle core business functions.
+                </div>
+            </div>
+
+            <h3>🏭 Robotics & Hardware</h3>
+            <div class="news-item">
+                <div class="date">August 2026</div>
+                <div class="content">
+                    <strong>宇树科技 IPO:</strong> Planning IPO on STAR Market (科创板); preliminary inquiry started Aug 5, offline subscription begins Aug 10.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">2026 YTD</div>
+                <div class="content">
+                    <strong>Humanoid Robot Funding:</strong> Year-to-date 2026 funding exceeds $4B+, showing massive investor interest in humanoid robotics.
+                </div>
+            </div>
+
+            <h3>🏆 Rankings & Recognition</h3>
+            <div class="news-item">
+                <div class="date">2026</div>
+                <div class="source">Source: TIME Magazine</div>
+                <div class="content">
+                    <strong>Top 10 AI Companies:</strong> TIME Magazine's 2026 list includes ByteDance, Zhipu, and Alibaba among top global AI companies.
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="date">August 2026</div>
+                <div class="content">
+                    <strong>ByteDance Doubao:</strong> 155M+ weekly active users, reaching 200M DAU after Spring Festival. One of China's most popular AI assistants.
+                </div>
+            </div>
+
+            <h3>💰 Funding & M&A</h3>
+            <div class="news-item">
+                <div class="date">July 29, 2026</div>
+                <div class="content">
+                    <strong>Procore Acquires DroneDeploy:</strong> $845M acquisition, signaling consolidation in construction and industrial drone technology.
+                </div>
+            </div>
         </div>
+
+        <footer>
+            <p>Daily Briefing | Generated by OpenClaw</p>
+            <p>Data sources: Baltic Exchange, Bloomberg, Reuters, The Information, Wired, Forbes, TIME Magazine</p>
+            <p>Deploy URL: <a href="https://mast0506.github.io/daily-briefing/" style="color: var(--accent);">https://mast0506.github.io/daily-briefing/</a></p>
+        </footer>
     </div>
 
     <script>
-        function showTab(tabName) {
-            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
+        // Shipping Chart
+        const ctx = document.getElementById('shippingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Aug 3', 'Aug 4', 'Aug 5', 'Aug 6', 'Aug 7'],
+                datasets: [
+                    {
+                        label: 'BDI',
+                        data: [2843, 2936, 3063, 3057, 3052],
+                        borderColor: '#58a6ff',
+                        backgroundColor: 'rgba(88, 166, 255, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'BCI',
+                        data: [4564, 4778, 5094, 5052, 5000],
+                        borderColor: '#3fb950',
+                        backgroundColor: 'rgba(63, 185, 80, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'BPI',
+                        data: [2135, 2187, 2236, 2275, 2280],
+                        borderColor: '#d29922',
+                        backgroundColor: 'rgba(210, 153, 34, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#c9d1d9',
+                            font: { size: 12 }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Baltic Indices Trend (Aug 3-7, 2026)',
+                        color: '#c9d1d9',
+                        font: { size: 16 }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(48, 54, 61, 0.5)'
+                        },
+                        ticks: {
+                            color: '#8b949e'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: 'rgba(48, 54, 61, 0.5)'
+                        },
+                        ticks: {
+                            color: '#8b949e'
+                        }
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
