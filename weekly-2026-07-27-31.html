@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每周简报 - 2026年7月27日-31日</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #1e1e2e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --accent-gold: #fbbf24;
+            --accent-purple: #a78bfa;
+            --border-color: #2a2a3a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; background: linear-gradient(90deg, #4a9eff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header .subtitle { color: var(--text-secondary); font-size: 1.1em; }
+        header .date { color: var(--accent-gold); font-size: 0.95em; margin-top: 8px; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
+        .tab {
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+        .tab:hover { background: #2a2a4a; color: var(--text-primary); }
+        .tab.active { background: linear-gradient(135deg, #4a9eff, #3b82f6); color: white; border-color: transparent; }
+        .section { display: none; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card h2 { color: var(--accent-blue); font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+        .card h3 { color: var(--accent-gold); font-size: 1.1em; margin: 16px 0 10px; }
+        .card h4 { color: var(--accent-purple); font-size: 1em; margin: 12px 0 8px; }
+        .highlight-box {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e1e3a 100%);
+            border-left: 4px solid var(--accent-blue);
+            padding: 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+        .news-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-left: 3px solid var(--accent-blue);
+        }
+        .news-item .news-date { color: var(--accent-gold); font-size: 0.85em; font-weight: 600; }
+        .news-item .news-source { color: var(--text-secondary); font-size: 0.8em; }
+        .news-item .news-title { color: var(--text-primary); font-weight: 600; margin: 4px 0; }
+        .news-item .news-content { color: var(--text-secondary); font-size: 0.92em; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .data-table th { background: rgba(74,158,255,0.15); color: var(--accent-blue); padding: 10px; text-align: left; font-size: 0.9em; border-bottom: 1px solid var(--border-color); }
+        .data-table td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9em; }
+        .data-table tr:hover { background: rgba(255,255,255,0.02); }
+        .up { color: var(--accent-green); }
+        .down { color: var(--accent-red); }
+        .chart-container { position: relative; height: 320px; margin: 20px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .stat-box .stat-value { font-size: 1.5em; font-weight: 700; }
+        .stat-box .stat-label { font-size: 0.8em; color: var(--text-secondary); margin-top: 4px; }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        .tag-blue { background: rgba(74,158,255,0.2); color: #4a9eff; }
+        .tag-green { background: rgba(74,222,128,0.2); color: #4ade80; }
+        .tag-red { background: rgba(248,113,113,0.2); color: #f87171; }
+        .tag-gold { background: rgba(251,191,36,0.2); color: #fbbf24; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .tabs { justify-content: flex-start; overflow-x: auto; } }
+        footer { text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.85em; border-top: 1px solid var(--border-color); margin-top: 40px; }
+        .summary-box { background: linear-gradient(135deg, #1a3a2e 0%, #1a1a2e 100%); border-left: 4px solid var(--accent-green); padding: 16px; border-radius: 8px; margin: 12px 0; }
+        .warning-box { background: linear-gradient(135deg, #3a1a1a 0%, #1a1a2e 100%); border-left: 4px solid var(--accent-red); padding: 16px; border-radius: 8px; margin: 12px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 每周简报 Weekly Briefing</h1>
+            <div class="subtitle">航运 · 财经 · 时政 · AI/机器人</div>
+            <div class="date">2026年7月27日 — 7月31日 | Week of July 27-31, 2026</div>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="showSection('shipping')">🚢 航运板块</div>
+            <div class="tab" onclick="showSection('finance')">💰 财经板块</div>
+            <div class="tab" onclick="showSection('politics')">🌍 时政板块</div>
+            <div class="tab" onclick="showSection('ai')">🤖 AI/机器人板块</div>
+        </div>
+
+        <!-- ==================== SHIPPING SECTION ==================== -->
+        <div id="shipping" class="section active">
+            <div class="card">
+                <h2>📈 波罗的海干散货指数周度走势</h2>
+                <div class="chart-container">
+                    <canvas id="bdiChart"></canvas>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">2,732</div>
+                        <div class="stat-label">周五 BDI 收盘</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value down">-0.4%</div>
+                        <div class="stat-label">周度涨跌</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value up">+9.2%</div>
+                        <div class="stat-label">7月累计涨幅</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">4,296</div>
+                        <div class="stat-label">周五 BCI 收盘</div>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <tr><th>日期</th><th>BDI</th><th>日涨跌</th><th>BCI (好望角型)</th><th>BPI (巴拿马型)</th><th>Supramax</th></tr>
+                    <tr><td>7月27日 (周一)</td><td>2,696</td><td class="down">-47 (-1.7%)</td><td>4,200 (-2.0%)</td><td>1,999 (-1.2%)</td><td>1,670 (-1.4%)</td></tr>
+                    <tr><td>7月28日 (周二)</td><td>2,664</td><td class="down">-32 (-1.2%)</td><td>~4,110</td><td>~1,975</td><td>—</td></tr>
+                    <tr><td>7月29日 (周三)</td><td>~2,631</td><td class="down">-33 (-1.2%)</td><td>~4,050</td><td>~1,960</td><td>—</td></tr>
+                    <tr><td>7月30日 (周四)</td><td>2,673</td><td class="up">+41 (+1.6%)</td><td>4,167 (+2.5%)</td><td>2,040 (+2.3%)</td><td>1,610 (-1.1%)</td></tr>
+                    <tr><td>7月31日 (周五)</td><td>2,732</td><td class="up">+59 (+2.2%)</td><td>4,296 (+3.1%)</td><td>2,087 (+2.3%)</td><td>1,609</td></tr>
+                </table>
+                <p style="color:var(--text-secondary);font-size:0.85em;margin-top:8px;">数据来源：Baltic Exchange, Hellenic Shipping News</p>
+            </div>
+
+            <div class="card">
+                <h2>⛴️ 各船型租金周度变化</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>干散货船型</h3>
+                        <table class="data-table">
+                            <tr><th>船型</th><th>日租金 (USD)</th><th>周度趋势</th></tr>
+                            <tr><td>Capesize 好望角型</td><td>$37,795</td><td class="up">稳定偏强</td></tr>
+                            <tr><td>Panamax 巴拿马型</td><td>$18,730</td><td class="up">改善</td></tr>
+                            <tr><td>Supramax</td><td>—</td><td class="down">承压</td></tr>
+                            <tr><td>Handysize</td><td>—</td><td>小幅波动</td></tr>
+                        </table>
+                        <p style="color:var(--text-secondary);font-size:0.85em;">数据来源：Affinity Shipping Research, 2026年7月31日</p>
+                    </div>
+                    <div>
+                        <h3>油轮市场</h3>
+                        <div class="warning-box">
+                            <strong>⚠️ 油轮市场受地缘政治严重影响</strong><br>
+                            由于霍尔木兹海峡关闭及红海胡塞武装袭击，油轮二手交易本周几乎停滞。卖家维持价格预期，买家因高度不确定性持观望态度。
+                        </div>
+                        <p>VLCC和苏伊士型油轮租金维持高位，但交易量极低。部分船东开始绕行好望角，增加吨海里需求。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🏗️ 新造船订单周度统计</h2>
+                <div class="summary-box">
+                    <strong>📌 2026年上半年创历史最高半年度造船订单纪录：129.1百万DWT</strong><br>
+                    干散货船队2026年预计增长2%，但2025年订单量下降41%。VLCC新造船合同达到创纪录的6000万DWT（234艘），其中151艘为VLCC。
+                </div>
+                <h4>本周新造船市场要点</h4>
+                <ul style="color:var(--text-secondary);margin-left:20px;">
+                    <li>原油轮新造船活动因订单簿饱和略有放缓</li>
+                    <li>集装箱船兴趣上升，班轮公司因收益增加而寻求订造更多船舶</li>
+                    <li>希腊船东2026年已下单141艘油轮，占全球总量的1/3，同比增长近4倍</li>
+                    <li>中国船厂继续占据油轮订单主导地位，占已订造运力的82%</li>
+                    <li>恒力造船快速扩张，在手订单388艘，2026年预计交付1080万DWT</li>
+                </ul>
+                <h4>2026年至今油轮订单统计 (按船型)</h4>
+                <table class="data-table">
+                    <tr><th>船型</th><th>订单数量</th><th>占比</th></tr>
+                    <tr><td>VLCC 超大型油轮</td><td>151艘</td><td>79%</td></tr>
+                    <tr><td>Suezmax 苏伊士型</td><td>100艘</td><td>—</td></tr>
+                    <tr><td>Aframax 阿芙拉型</td><td>46艘</td><td>—</td></tr>
+                    <tr><td>Handy Tanker</td><td>77艘</td><td>—</td></tr>
+                    <tr><td>Panamax</td><td>3艘</td><td>最少</td></tr>
+                </table>
+                <p style="color:var(--text-secondary);font-size:0.85em;">数据来源：BIMCO, Affinity Shipping, Veson Nautical</p>
+            </div>
+
+            <div class="card">
+                <h2>🔄 二手船交易周度统计</h2>
+                <div class="two-col">
+                    <div>
+                        <h4>油轮二手市场</h4>
+                        <div class="warning-box">
+                            <strong>本周油轮二手交易几乎停滞</strong><br>
+                            由于霍尔木兹海峡局势恶化，本周无油轮二手船成交记录。卖家维持价格预期，买家因高度不确定性而保持观望。
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:0.9em;">
+                            不过，2026年至今VLCC二手销售激增：96艘成交，去年同期仅52艘。Sinokor是主要买家。<br>
+                             notable deal: Suezmax MT 'GH HOLIDAY' 约USD 81M (上周成交)
+                        </p>
+                    </div>
+                    <div>
+                        <h4>干散货二手市场</h4>
+                        <p style="color:var(--text-secondary);font-size:0.9em;">
+                            干散货二手市场活动放缓，夏季淡季交易有限，但资产价值保持韧性。<br><br>
+                            <strong>近期 notable 成交：</strong>
+                        </p>
+                        <ul style="color:var(--text-secondary);font-size:0.9em;margin-left:16px;">
+                            <li>Capesize MV 'AASHNA' — USD 37.5M</li>
+                            <li>Ultramax (现代日本造) — USD 30.75M</li>
+                        </ul>
+                        <p style="color:var(--text-secondary);font-size:0.85em;margin-top:8px;">买家对新型ECO节能散货船保持兴趣。</p>
+                    </div>
+                </div>
+                <p style="color:var(--text-secondary);font-size:0.85em;">数据来源：Affinity S&P Report, TradeWinds</p>
+            </div>
+
+            <div class="card">
+                <h2>📰 本周重要行业新闻回顾</h2>
+                <div class="news-item">
+                    <div class="news-date">7月31日</div>
+                    <div class="news-source">Hellenic Shipping News / Baltic Exchange</div>
+                    <div class="news-title">波罗的海干散货指数周五反弹2.2%至2,732点</div>
+                    <div class="news-content">
+                        BDI周五上涨2.2%至2,732点，为7月27日以来最高水平。好望角型指数上涨3.1%至4,296点，巴拿马型上涨2.3%至2,087点。7月全月BDI累计上涨9.2%。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月30日</div>
+                    <div class="news-source">Hellenic Shipping News</div>
+                    <div class="news-title">BDI周四回升1.6%，结束三连跌</div>
+                    <div class="news-content">
+                        波罗的海干散货指数周四上涨1.6%至2,673点，从连续三个交易日的下跌中恢复。好望角型指数上涨2.5%至4,167点，但Supramax下跌1.1%至1,610点。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月28日</div>
+                    <div class="news-source">Hellenic Shipping News</div>
+                    <div class="news-title">BDI跌至2,664点，巴拿马型指数创八周新低</div>
+                    <div class="news-content">
+                        波罗的海干散货指数周二下跌1.2%至2,664点。好望角型指数跌至4,200点（自7月23日以来最低），巴拿马型指数跌至1,999点（八周最弱水平），因大西洋运力收紧。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月27日</div>
+                    <div class="news-source">Affinity Shipping</div>
+                    <div class="news-title">Affinity发布宏观专题：伊朗停火、美国关税与LNG市场不确定性</div>
+                    <div class="news-content">
+                        报告指出霍尔木兹海峡的脆弱停火、美国重新实施关税对全球贸易和石油需求的影响，以及卡塔尔中断和欧洲储气担忧驱动的LNG市场持续不确定性。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月31日</div>
+                    <div class="news-source">Affinity Shipping</div>
+                    <div class="news-title">Affinity干散货周报：好望角型市场稳定于USD 37,795</div>
+                    <div class="news-content">
+                        好望角型市场稳定在USD 37,795，巴拿马型改善至USD 18,730，因大西洋运力收紧。Supramax和Handysize面临运力增加的压力。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月31日</div>
+                    <div class="news-source">BIMCO / Safety4Sea</div>
+                    <div class="news-title">BIMCO：2026年原油轮新造船合同创历史纪录达6000万DWT</div>
+                    <div class="news-content">
+                        2026年至今原油轮新造船合同已达6000万DWT（234艘），VLCC订单151艘，已是全年历史最高水平。高运费和老旧船队更换需求共同推动订造活动。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月27日</div>
+                    <div class="news-source">Straits.live / gCaptain</div>
+                    <div class="news-title">霍尔木兹海峡状态：每日通行量仅10艘，危机压力指数处于极端区间</div>
+                    <div class="news-content">
+                        霍尔木兹海峡仍处于事实关闭状态。PortWatch记录7月19日仅15次通行（基准88次/日），7月12日仅10次。Brent原油约$91.66。537艘船在区域抛锚或停航。美国首次在作战中部署无人水面舰艇打击伊朗海军基础设施。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月28日</div>
+                    <div class="news-source">Hormuz Strait Monitor / IRGC</div>
+                    <div class="news-title">IRGC攻击三艘油轮，结束四天停火</div>
+                    <div class="news-content">
+                        伊朗革命卫队海军宣布在霍尔木兹海峡"瞄准并阻止"三艘油轮，结束了7月25日开始的四天停火。IRGC称这些船只"尽管受到警告仍继续在不安全和非法航线上航行"。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月23日</div>
+                    <div class="news-source">US News / AP</div>
+                    <div class="news-title">美军对伊朗发动第13夜打击，胡塞武装袭击红海沙特油轮</div>
+                    <div class="news-content">
+                        美军宣布对伊朗进行第13夜打击，针对关键军事和商业地点。此前也门胡塞武装称袭击了两艘红海沙特油轮。国际原油突破100美元/桶。特朗普威胁如果胡塞继续袭击将施加"重大军事惩罚"。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== FINANCE SECTION ==================== -->
+        <div id="finance" class="section">
+            <div class="card">
+                <h2>📊 全球市场周度回顾</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value up">+1.1%</div>
+                        <div class="stat-label">S&P 500 周涨跌</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value up">+1.2%</div>
+                        <div class="stat-label">道琼斯 周涨跌</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value up">+1.6%</div>
+                        <div class="stat-label">纳斯达克 周涨跌</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value up">+0.72%</div>
+                        <div class="stat-label">上证指数 周五</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="sp500Chart"></canvas>
+                </div>
+                <h3>主要股指每日表现</h3>
+                <table class="data-table">
+                    <tr><th>日期</th><th>S&P 500</th><th>道琼斯</th><th>纳斯达克</th><th>关键事件</th></tr>
+                    <tr><td>7/27 (周一)</td><td>微涨</td><td class="up">+0.5%</td><td class="down">-0.2%</td><td> oil plunged 7-9%</td></tr>
+                    <tr><td>7/28 (周二)</td><td>平收 7,428.78</td><td class="up">+1.03% (52,747)</td><td class="down">-0.98%</td><td> Dow/Nasdaq 大幅分化</td></tr>
+                    <tr><td>7/29 (周三)</td><td class="down">-1.5%</td><td class="down">-2.2% (-1,152pts)</td><td class="down">-1.7%</td><td>Fed决议后市场大跌</td></tr>
+                    <tr><td>7/30 (周四)</td><td class="up">+1.7%</td><td class="up">+1.2% (+614)</td><td class="up">+2.8%</td><td>科技股强劲反弹</td></tr>
+                    <tr><td>7/31 (周五)</td><td class="up">+0.78% (7,495.33)</td><td class="up">+0.66% (52,550.67)</td><td class="up">+1.02% (25,378.57)</td><td>Amazon +15%, Apple -8%</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>💹 股票市场周度表现</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>美股核心数据</h3>
+                        <table class="data-table">
+                            <tr><th>指数</th><th>周初</th><th>周末</th><th>周涨跌</th></tr>
+                            <tr><td>S&P 500</td><td>7,412</td><td>7,495.33</td><td class="up">+1.1%</td></tr>
+                            <tr><td>Dow Jones</td><td>51,947</td><td>52,550.67</td><td class="up">+1.2%</td></tr>
+                            <tr><td>Nasdaq</td><td>24,976</td><td>25,378.57</td><td class="up">+1.6%</td></tr>
+                            <tr><td>Russell 2000</td><td>2,930</td><td>—</td><td>—</td></tr>
+                        </table>
+                        <p style="color:var(--text-secondary);font-size:0.85em;">数据来源：Sterling Capital Weekly Recap, Barron's, Schwab</p>
+                    </div>
+                    <div>
+                        <h3>A股市场</h3>
+                        <table class="data-table">
+                            <tr><th>指数</th><th>收盘</th><th>日涨跌</th></tr>
+                            <tr><td>上证指数 (000001.SH)</td><td>3,832.26</td><td class="up">+0.72%</td></tr>
+                            <tr><td>成交额</td><td>¥1.19万亿</td><td>—</td></tr>
+                            <tr><td>换手率</td><td>1.21%</td><td>—</td></tr>
+                        </table>
+                        <p style="color:var(--text-secondary);font-size:0.85em;">数据来源：ifind, 2026-07-31 15:00:00</p>
+                        <div class="highlight-box" style="margin-top:12px;">
+                            <strong>港股</strong><br>
+                            恒生指数本周随全球市场波动，受美联储决议和中概股业绩影响较大。
+                        </div>
+                    </div>
+                </div>
+                <h3>个股亮点</h3>
+                <table class="data-table">
+                    <tr><th>公司</th><th>代码</th><th>周度表现</th><th>驱动因素</th></tr>
+                    <tr><td>Amazon</td><td>AMZN</td><td class="up">+15.5%</td><td>财报超预期，AWS云业务强劲</td></tr>
+                    <tr><td>Alphabet</td><td>GOOGL</td><td class="up">+6.5%</td><td>搜索广告稳健，AI整合进展</td></tr>
+                    <tr><td>Nvidia</td><td>NVDA</td><td class="up">+2.6%</td><td>与OpenAI洽谈2500亿美元融资</td></tr>
+                    <tr><td>Apple</td><td>AAPL</td><td class="down">-8.3%</td><td>财报后下跌，iPhone销售担忧</td></tr>
+                    <tr><td>Microsoft</td><td>MSFT</td><td class="up">+3-6%</td><td>Azure云业务增长，AI投资</td></tr>
+                    <tr><td>Meta</td><td>META</td><td>波动</td><td>拟推出云计算业务</td></tr>
+                    <tr><td>Tesla</td><td>TSLA</td><td>—</td><td>消费者 discretionary 板块承压</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>🛢️ 大宗商品周度走势</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">$85.23</div>
+                        <div class="stat-label">WTI 原油 (周五开盘)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">~$85</div>
+                        <div class="stat-label">Brent 原油 (周末)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">$4,090</div>
+                        <div class="stat-label">黄金 (盎司)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">4.75%</div>
+                        <div class="stat-label">10年期美债收益率</div>
+                    </div>
+                </div>
+                <h4>原油市场详细走势</h4>
+                <table class="data-table">
+                    <tr><th>日期</th><th>Brent</th><th>WTI</th><th>关键事件</th></tr>
+                    <tr><td>7/27 (周一)</td><td class="down">$85.87 (-11.3%)</td><td class="down">$82.30 (-7.8%)</td><td>美伊停火希望，单日最大跌幅</td></tr>
+                    <tr><td>7/28 (周二)</td><td>反弹</td><td>反弹</td><td>IRGC攻击油轮，停火结束</td></tr>
+                    <tr><td>7/29-30</td><td>波动</td><td>波动</td><td>美联储决议，地缘政治紧张</td></tr>
+                    <tr><td>7/31 (周五)</td><td>~$85</td><td class="up">$85.23 (+1.96%)</td><td>美伊冲突持续</td></tr>
+                </table>
+                <div class="highlight-box">
+                    <strong>⚡ 重要：布伦特原油周一单日暴跌11.3%至$85.87</strong>，为4月8日以来最大单日跌幅，因美伊停火希望。但随后IRGC攻击油轮使停火破裂，油价重新反弹。
+                </div>
+                <h4>其他大宗商品</h4>
+                <ul style="color:var(--text-secondary);margin-left:20px;">
+                    <li><strong>黄金：</strong>~$4,090/盎司，避险需求支撑</li>
+                    <li><strong>铜：</strong>受中国GDP放缓影响承压</li>
+                    <li><strong>天然气：</strong>欧洲储气担忧，QatarEnergy宣布不可抗力</li>
+                    <li><strong>铁矿石：</strong>跟随BDI波动</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>₿ 加密货币周度表现</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">$63,623</div>
+                        <div class="stat-label">比特币 (7/31)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value down">-1.72%</div>
+                        <div class="stat-label">比特币 日内</div>
+                    </div>
+                </div>
+                <p style="color:var(--text-secondary);">
+                    比特币本周在$63,000-$65,000区间震荡。周一因美伊缓和一度上涨，但随后地缘政治紧张使价格回落。以太坊维持在$2,100附近。整体加密货币市场情绪受宏观因素影响较大。
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>🏛️ 重要财经新闻回顾</h2>
+                <div class="news-item">
+                    <div class="news-date">7月29-30日</div>
+                    <div class="news-source">Barron's / Federal Reserve</div>
+                    <div class="news-title">美联储维持利率不变，但市场因主席讲话暴跌</div>
+                    <div class="news-content">
+                        美联储将基准利率维持在3.50%-3.75%区间，连续第四次按兵不动。但会议出现3张反对票。主席Kevin Warsh在新闻发布会上态度强硬，推后市场首次降息预期从9月推迟至12月。道琼斯周三暴跌1,152点(-2.2%)，S&P 500跌1.5%，纳斯达克跌1.7%。10年期美债收益率跳升至4.62%。Interactive Brokers首席策略师Steve Sosnick表示："市场质疑Warsh关于通胀的强硬言论是否只是空话。"
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月29日</div>
+                    <div class="news-source">CME FedWatch / Investopedia</div>
+                    <div class="news-title">市场定价9月加息概率升至82%</div>
+                    <div class="news-content">
+                        根据CME FedWatch工具，交易员定价9月至少加息25个基点的概率升至82%（一周前为64%）。美联储6月点阵图显示19名成员中有9人支持在2026年底前加息。通胀预测上调至3.6%。10年期国债收益率一度触及4.72%（2025年1月以来最高）。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月30日</div>
+                    <div class="news-source">Barron's / Corporate Earnings</div>
+                    <div class="news-title">科技巨头财报密集发布，Amazon暴涨15%</div>
+                    <div class="news-content">
+                        周三盘后：Microsoft和Meta发布财报。周四：Amazon财报远超预期，股价暴涨约15%。Apple财报后下跌约8%。Nvidia周中因与OpenAI洽谈2500亿美元融资而波动。Alphabet上周财报强劲但股价因AI资本支出指引上升而下跌。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月31日</div>
+                    <div class="news-source">Schwab / Bank of Japan</div>
+                    <div class="news-title">日本央行维持利率1%不变</div>
+                    <div class="news-content">
+                        日本央行如预期维持政策利率在1%不变。美国GDP数据显示经济增长放缓。密歇根大学消费者信心指数7月终值约54.4，维持低位。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月27日</div>
+                    <div class="news-source">Investopedia / Goldman Sachs</div>
+                    <div class="news-title">美国家庭财富从未如此依赖股市</div>
+                    <div class="news-content">
+                        Goldman Sachs报告显示，美国、澳大利亚和瑞典家庭持有的股票占金融资产比例全球最高。美联储数据显示，股票占美国家庭总资产的32%，为1950年代初有记录以来最高，超过dot-com时期的27%峰值。Americans aren't choosing this shift—stocks have simply risen faster than everything else.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📉 宏观数据汇总</h2>
+                <table class="data-table">
+                    <tr><th>指标</th><th>数值</th><th>趋势</th><th>影响</th></tr>
+                    <tr><td>美联储基准利率</td><td>3.50%-3.75%</td><td>维持不变</td><td>9月或加息</td></tr>
+                    <tr><td>10年期美债收益率</td><td>~4.75%</td><td class="up">上升</td><td>压制成长股</td></tr>
+                    <tr><td>30年期美债收益率</td><td>~5.14%</td><td class="up"> steepening</td><td>曲线陡峭化</td></tr>
+                    <tr><td>美国GDP (Q2)</td><td>放缓</td><td class="down">减速</td><td>经济担忧</td></tr>
+                    <tr><td>PCE通胀</td><td>3.6%</td><td class="up">上升</td><td>通胀压力</td></tr>
+                    <tr><td>初请失业金</td><td>1969年以来最低</td><td class="up">强劲</td><td>劳动力市场紧</td></tr>
+                    <tr><td>消费者信心</td><td>~54.4</td><td class="down">疲弱</td><td>消费担忧</td></tr>
+                    <tr><td>美元指数</td><td>~100</td><td>波动</td><td>—</td></tr>
+                    <tr><td>VIX波动率</td><td>~16.5</td><td class="down">回落</td><td>恐慌缓解</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>💡 投资机会总结</h2>
+                <div class="news-item">
+                    <div class="news-title">🔹 能源板块：地缘政治溢价持续</div>
+                    <div class="news-content">
+                        霍尔木兹海峡关闭使原油维持高溢价。能源股（Chevron, ExxonMobil）因油价波动而震荡，但长期供应中断风险支撑估值。建议关注具有非中东供应来源的能源公司。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">🔹 AI基础设施：短期回调，长期看好</div>
+                    <div class="news-content">
+                        科技股本周剧烈波动（Nasdaq周三跌1.7%，周四涨2.8%）。AI资本支出担忧（Alphabet负自由现金流）与强劲需求并存。Nvidia与OpenAI的2500亿美元数据中心合作凸显长期需求。建议逢低布局优质AI基础设施股（NVDA, AMD, AVGO）。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">🔹 防御性板块：公用事业和医疗保健</div>
+                    <div class="news-content">
+                        公用事业（+2.5%）和医疗保健（+0.8%）上周表现强劲。在利率不确定性和地缘政治风险下，防御性板块提供避风港。高股息股票相对S&P 500表现突出，相对回报高于100日均线。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">🔹 小盘股：Russell 2000相对便宜</div>
+                    <div class="news-content">
+                        Russell 2000 YTD +18.1%，跑赢大盘。小盘股估值相对Nasdaq和S&P 500不高，提供了分散大型科技股集中风险的机会。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">🔹 黄金：避险需求支撑</div>
+                    <div class="news-content">
+                        黄金在$4,090/盎司附近，受益于地缘政治不确定性和通胀担忧。若美联储维持鹰派立场，实际利率上升可能对黄金构成压力；但若地缘政治恶化，黄金有进一步上涨空间。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">🔹 中国A股：政策预期</div>
+                    <div class="news-content">
+                        中国Q2 GDP增长放缓至4.3%，引发政策干预预期。上证指数在3,800点附近整固。若后续出台刺激政策，A股可能迎来反弹窗口。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🔮 下周展望</h2>
+                <ul style="color:var(--text-secondary);margin-left:20px;">
+                    <li><strong>美联储：</strong>9月会议是否加息将是关键。当前市场定价82%概率加息25基点。关注8月非农就业和CPI数据。</li>
+                    <li><strong>地缘政治：</strong>霍尔木兹海峡局势仍是最大变量。若美伊冲突升级，油价可能突破$100；若缓和，油价回落。</li>
+                    <li><strong>科技股：</strong>AI财报季接近尾声，关注AI资本支出是否能转化为收入。Microsoft Azure和Amazon AWS的增长是焦点。</li>
+                    <li><strong>利率敏感板块：</strong>房地产、公用事业将受利率预期变化影响。</li>
+                    <li><strong>中国：</strong>关注是否有刺激政策出台以应对GDP放缓。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==================== POLITICS SECTION ==================== -->
+        <div id="politics" class="section">
+            <div class="card">
+                <h2>🇨🇳 中国要闻周度回顾</h2>
+                <div class="news-item">
+                    <div class="news-date">7月下旬</div>
+                    <div class="news-source">Affinity Geopolitical Review</div>
+                    <div class="news-title">中国Q2 GDP增长放缓至4.3%，引发干预预期</div>
+                    <div class="news-content">
+                        中国第二季度GDP增长放缓至4.3%，低于预期，引发市场对中国政府可能出台刺激政策的猜测。制造业PMI数据也受到关注。南海地区紧张局势升级。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">Reuters / 多家媒体</div>
+                    <div class="news-title">南海紧张局势升级</div>
+                    <div class="news-content">
+                        南海地区紧张局势持续升级，中国与其他声索国之间的海上摩擦增加。美国在该地区的军事存在也引发关注。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">机器之心 / 36氪</div>
+                    <div class="news-title">中国AI与机器人产业持续推进</div>
+                    <div class="news-content">
+                        宇树科技(Unitree) G1人形机器人开始量产。百度、阿里、字节跳动在大模型和AI应用方面持续投入。中国在AI芯片和机器人领域的自主创新受到关注。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🇺🇸 美国要闻周度回顾</h2>
+                <div class="news-item">
+                    <div class="news-date">7月27日-31日</div>
+                    <div class="news-source">AP / US News / Reuters</div>
+                    <div class="news-title">美伊冲突：霍尔木兹海峡事实关闭</div>
+                    <div class="news-content">
+                        <strong>本周核心事件。</strong>霍尔木兹海峡自7月初以来事实关闭，通行量从战前每天88-130艘降至仅10艘左右。7月27日布伦特原油单日暴跌11.3%至$85.87（因停火希望），但7月28日IRGC攻击三艘油轮使停火破裂。美军持续对伊朗进行第13+夜打击。特朗普威胁若胡塞武装继续袭击红海船只将对伊朗实施"重大军事惩罚"。美国首次在作战中部署无人水面舰艇。美国放弃对霍尔木兹征收20%通行费计划，改为对伊朗实施全面封锁。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月29日</div>
+                    <div class="news-source">Federal Reserve</div>
+                    <div class="news-title">美联储维持利率不变，主席Warsh新闻发布会引发市场动荡</div>
+                    <div class="news-content">
+                        美联储将利率维持在3.50%-3.75%，但主席Kevin Warsh在新闻发布会上的强硬表态令市场失望。他推后降息预期至12月，并拒绝提供明确的前瞻指引。道琼斯当日暴跌1,152点。Sevens Report Research的Tom Essaye评论："你引入了市场的根本性改变...人们试图不亏钱。"
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">Reuters / 多家媒体</div>
+                    <div class="news-title">特朗普重新实施关税，威胁对加拿大加征25%关税</div>
+                    <div class="news-content">
+                        特朗普政府对主要贸易伙伴重新实施高达12.5%的关税。此外，特朗普威胁对加拿大铀、钢铁和药品加征25%关税，除非加拿大"解决边境问题"。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">多家媒体</div>
+                    <div class="news-title">特别检察官调查特朗普</div>
+                    <div class="news-content">
+                        特别检察官继续调查特朗普相关行动，政治不确定性增加。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">US News / AP</div>
+                    <div class="news-title">胡塞武装袭击红海沙特油轮</div>
+                    <div class="news-content">
+                        也门胡塞武装宣布袭击两艘红海沙特油轮，可能扩大伊朗战争范围。两艘运载沙特原油的油轮在胡塞警告后掉头。特朗普称胡塞是伊朗的"代理人/傀儡"。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🇪🇺 欧洲要闻周度回顾</h2>
+                <div class="news-item">
+                    <div class="news-date">7月下旬</div>
+                    <div class="news-source">wforex.com / ECB</div>
+                    <div class="news-title">英国央行决议临近，欧元区GDP和通胀数据受关注</div>
+                    <div class="news-content">
+                        本周英国央行将公布利率决议。欧元区GDP和通胀数据也是焦点。欧洲面临能源供应不确定性，因卡塔尔LNG出口中断和霍尔木兹海峡关闭。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">EuroOilWatch</div>
+                    <div class="news-title">欧洲能源安全面临挑战</div>
+                    <div class="news-content">
+                        欧洲天然气价格升至四个月高点，因LNG货物流动放缓。卡塔尔能源公司3月初宣布LNG出口不可抗力。欧洲储气设施填充进度受关注。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🌏 全球其他重要动态</h2>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">eagleintelmari.com</div>
+                    <div class="news-title">新加坡推出10亿新元援助计划应对战争影响</div>
+                    <div class="news-content">
+                        新加坡政府宣布总值10亿新元（约7.78亿美元）的一揽子援助计划，帮助家庭和企业应对伊朗战争的经济影响。措施包括加强对低收入家庭和小企业的支持。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">Eagle Intelligence</div>
+                    <div class="news-title">Dynacom油轮在霍尔木兹海峡遭袭起火</div>
+                    <div class="news-content">
+                        过去一周确认的项目袭击导致至少一艘Dynacom管理的油轮在霍尔木兹海峡起火，引发船员疏散和油轮交通明显放缓。LNG货物流入浮动储存增加。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">Reuters / 多家媒体</div>
+                    <div class="news-title">俄罗斯-乌克兰：黑海袭击影响粮食贸易</div>
+                    <div class="news-content">
+                        黑海地区紧张局势持续，乌克兰对俄罗斯船只的袭击增加，导致粮食市场波动。俄罗斯谷物出口面临不确定性。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">7月</div>
+                    <div class="news-source">Hormuz Strait Monitor</div>
+                    <div class="news-title">印度海员在霍尔木兹海峡导弹事件中伤亡</div>
+                    <div class="news-content">
+                        一名印度海员在霍尔木兹海峡导弹事件中丧生，至少10人受伤。阿联酋两艘油轮在阿曼领水遭伊朗巡航导弹袭击。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🔍 深度分析与展望</h2>
+                <div class="highlight-box">
+                    <strong>🎯 霍尔木兹海峡危机：全球贸易的系统性冲击</strong><br><br>
+                    这不是普通的航运中断，而是对全球贸易赖以运转的基础设施的系统性强击。霍尔木兹海峡（全球20%石油贸易）和红海/曼德海峡（30%全球集装箱贸易）的双重封锁，使好望角航线成为亚欧贸易的主要动脉，增加3,500-4,000海里和10-14天航程。<br><br>
+                    若胡塞武装同时关闭红海（伊朗已发出威胁），全球航运将面临两大能源运输走廊同时关闭的灾难性局面。Wells Fargo投资研究所警告："在海峡状态改变之前，油价、预期通胀和利率偏向上行，股价波动将持续。"
+                </div>
+                <div class="highlight-box">
+                    <strong>🎯 美联储政策转折点</strong><br><br>
+                    Kevin Warsh的首次新闻发布会缺乏市场期待的明确指引，反而引入"不降息甚至可能加息"的信号。这与市场此前对9月降息的定价形成剧烈冲突。更值得关注的是，Warsh将AI基础设施投资视为比能源冲击更持久的通胀来源，这意味着即使地缘政治缓和，美联储也可能因AI投资热潮而维持紧缩。<br><br>
+                    30年期国债收益率升至5.14%，收益率曲线陡峭化，反映市场对长期通胀的担忧。家庭财富32%集中于股票的历史高位，使股市波动对消费支出产生直接财富效应。
+                </div>
+                <div class="highlight-box">
+                    <strong>🎯 中国经济的十字路口</strong><br><br>
+                    Q2 GDP放缓至4.3%加大了中国政府推出刺激政策的压力。同时南海紧张局势和中美科技竞争加剧，使外部环境更加复杂。中国如何在稳增长和防风险之间取得平衡，将是下半年关键看点。
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== AI/ROBOTICS SECTION ==================== -->
+        <div id="ai" class="section">
+            <div class="card">
+                <h2>🚀 硅谷前沿周度回顾</h2>
+
+                <h3>OpenAI</h3>
+                <div class="news-item">
+                    <div class="news-title">Agents SDK重大更新 + 新Responses API</div>
+                    <div class="news-content">
+                        OpenAI发布Responses API，支持单次调用超过100,000次工具调用。Codex CLI代理现在可以编写PR（Pull Request）。o3模型登顶LiveBench排行榜。GPT-4o图像生成功能在实际应用中得到广泛测试。OpenAI for Countries计划提供2000亿美元计算资源支持各国AI发展。
+                    </div>
+                </div>
+
+                <h3>Google</h3>
+                <div class="news-item">
+                    <div class="news-title">Gemini Live大幅扩展</div>
+                    <div class="news-content">
+                        Gemini Live新增摄像头支持，扩展至45种语言，深度研究(Deep Research)覆盖100个国家。Google向所有Gemini用户免费提供深度研究功能。推出媒体素养项目，与Common Sense Media合作。
+                    </div>
+                </div>
+
+                <h3>Meta</h3>
+                <div class="news-item">
+                    <div class="news-title">Llama 4训练中，FAIR十周年</div>
+                    <div class="news-content">
+                        Meta确认Llama 4正在训练中。FAIR（Facebook AI Research）迎来十周年纪念。Llama系列月下载量达6亿次。推出AI Studio，无需编码即可创建聊天机器人。Meta reportedly计划推出云计算业务，出售过剩算力或AI模型访问权限。
+                    </div>
+                </div>
+
+                <h3>NVIDIA</h3>
+                <div class="news-item">
+                    <div class="news-title">营收运行率达1000亿美元，毛利率62%</div>
+                    <div class="news-content">
+                        NVIDIA宣布年化营收运行率达到1000亿美元，毛利率62%。发布Cosmos世界基础模型。推出DGX Spark个人AI超级计算机（售价3000美元）。发布AI代理蓝图，与40家生态系统合作伙伴合作。与OpenAI洽谈为俄亥俄州大型数据中心项目提供2500亿美元融资担保（据华尔街日报）。
+                    </div>
+                </div>
+
+                <h3>Anthropic</h3>
+                <div class="news-item">
+                    <div class="news-title">Claude推出研究模式</div>
+                    <div class="news-content">
+                        Anthropic为Claude添加深度研究模式（Research Mode），支持更深入的分析和推理能力，增强在复杂任务上的表现。
+                    </div>
+                </div>
+
+                <h3>其他公司</h3>
+                <div class="news-item">
+                    <div class="news-title">Replit Agent 2发布</div>
+                    <div class="news-content">Replit发布Agent 2，号称最准确的编程代理。支持将移动应用直接发布到应用商店。</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">xAI Grok视觉功能登陆iOS</div>
+                    <div class="news-content">xAI为Grok添加iOS视觉功能，用户可以通过摄像头与AI交互。</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">Mistral Le Chat达10亿用户</div>
+                    <div class="news-content">Mistral AI的Le Chat应用达到10亿用户，服务企业客户超过100万家。</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🇨🇳 中国动态周度回顾</h2>
+                <div class="news-item">
+                    <div class="news-title">宇树科技(Unitree) G1人形机器人量产</div>
+                    <div class="news-content">
+                        宇树科技G1人形机器人进入大规模生产阶段，标志着中国在人形机器人商业化方面取得重要进展。Unitree以四足机器闻名，现正式进军人形机器人市场。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">百度、阿里、字节跳动大模型竞争加剧</div>
+                    <div class="news-content">
+                        中国科技巨头在大模型和AI应用方面持续投入。百度文心、阿里通义千问、字节豆包等模型在功能和市场推广上展开激烈竞争。受美国芯片出口限制影响，中国AI公司加速自主研发和国产替代。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">中国AI芯片自主化进程</div>
+                    <div class="news-content">
+                        在美国芯片出口管制背景下，中国AI芯片公司（华为昇腾、寒武纪等）获得更多关注和投资。但高端GPU仍然短缺，制约大模型训练能力。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🇸🇬 新加坡/东南亚视角</h2>
+                <div class="news-item">
+                    <div class="news-title">新加坡推出10亿新元战时经济援助计划</div>
+                    <div class="news-content">
+                        新加坡政府宣布总值10亿新元（约7.78亿美元）的一揽子计划，帮助家庭和企业应对伊朗战争的经济影响，包括能源价格上涨和供应链中断。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">东南亚AI生态发展</div>
+                    <div class="news-content">
+                        东南亚国家在AI应用和数字化转型方面加速推进。新加坡作为区域科技中心，在AI治理、金融科技和智慧城市方面保持领先。马来西亚、印尼和越南也在积极吸引AI投资。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🔬 技术突破汇总</h2>
+                <table class="data-table">
+                    <tr><th>技术/产品</th><th>公司</th><th>突破内容</th></tr>
+                    <tr><td>Responses API</td><td>OpenAI</td><td>支持100,000+工具调用</td></tr>
+                    <tr><td>Codex CLI Agent</td><td>OpenAI</td><td>可自动编写PR</td></tr>
+                    <tr><td>GPT-4o图像生成</td><td>OpenAI</td><td>实际部署测试</td></tr>
+                    <tr><td>Gemini Live摄像头</td><td>Google</td><td>视觉+语音多模态</td></tr>
+                    <tr><td>Deep Research免费</td><td>Google</td><td>覆盖100国</td></tr>
+                    <tr><td>Cosmos WFM</td><td>NVIDIA</td><td>世界基础模型</td></tr>
+                    <tr><td>DGX Spark</td><td>NVIDIA</td><td>$3000个人AI超算</td></tr>
+                    <tr><td>AI Agent Blueprint</td><td>NVIDIA</td><td>40家合作伙伴</td></tr>
+                    <tr><td>Research Mode</td><td>Anthropic</td><td>深度分析模式</td></tr>
+                    <tr><td>Agent 2</td><td>Replit</td><td>最准确编程代理</td></tr>
+                    <tr><td>AI Studio</td><td>Meta</td><td>无代码聊天机器人</td></tr>
+                    <tr><td>Diffusion Sound Model</td><td>Bespoke Labs</td><td>5秒样本生成音乐</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>💰 投资动态周度统计</h2>
+                <div class="summary-box">
+                    <strong>AI立法动态：</strong>美国各州共有791项AI相关法案正在审议中，显示监管环境快速演变。
+                </div>
+                <div class="news-item">
+                    <div class="news-title">NVIDIA 1000亿美元营收运行率</div>
+                    <div class="news-content">
+                        NVIDIA年化营收达到1000亿美元里程碑，毛利率62%。公司继续通过股票发行和债务融资AI数据中心建设，引发投资者对投资回报率的担忧。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">OpenAI 2500亿美元数据中心融资</div>
+                    <div class="news-content">
+                        据华尔街日报报道，OpenAI与NVIDIA洽谈为俄亥俄州大型数据中心项目提供2500亿美元融资担保。这是迄今为止最大的单一AI基础设施项目之一。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">Character.ai安全争议</div>
+                    <div class="news-content">
+                        Character.ai面临青少年自杀诉讼，引发AI心理健康和安全监管讨论。Google此前曾考虑收购该公司。
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">AI芯片投资持续火热</div>
+                    <div class="news-content">
+                        尽管市场对AI泡沫有担忧，各大科技公司Q2资本支出指引普遍上调。Alphabet因提高AI资本支出指引而导致股价下跌，尽管财报本身强劲。Microsoft、Meta、Amazon均维持或增加AI投资计划。
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📈 相关公司股价周度表现</h2>
+                <table class="data-table">
+                    <tr><th>公司</th><th>代码</th><th>周度表现</th><th>关键事件</th></tr>
+                    <tr><td>NVIDIA</td><td>NVDA</td><td class="up">+2.6%</td><td>数据中心合作消息</td></tr>
+                    <tr><td>Alphabet</td><td>GOOGL</td><td class="up">+6.5%</td><td>搜索广告稳健</td></tr>
+                    <tr><td>Amazon</td><td>AMZN</td><td class="up">+15.5%</td><td>财报远超预期</td></tr>
+                    <tr><td>Apple</td><td>AAPL</td><td class="down">-8.3%</td><td>财报后下跌</td></tr>
+                    <tr><td>Microsoft</td><td>MSFT</td><td class="up">+3-6%</td><td>Azure增长</td></tr>
+                    <tr><td>Meta</td><td>META</td><td>波动</td><td>云计算计划</td></tr>
+                    <tr><td>半导体ETF (SOXX)</td><td>SOXX</td><td class="down">-2%</td><td>芯片股承压</td></tr>
+                    <tr><td>存储ETF (DRAM)</td><td>DRAM</td><td class="down">-1.5%</td><td>存储芯片疲软</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>🔮 下周趋势展望</h2>
+                <div class="highlight-box">
+                    <strong>1. AI资本支出vs回报的持续博弈</strong><br>
+                    科技巨头的AI投资是否能转化为实际收入将成为焦点。Azure、AWS和Google Cloud的AI相关收入增长是关键指标。若增速放缓，可能引发AI板块进一步调整。
+                </div>
+                <div class="highlight-box">
+                    <strong>2. 大模型竞争白热化</strong><br>
+                    OpenAI o3登顶LiveBench显示模型能力仍在快速提升。Google Gemini、Meta Llama 4和Anthropic Claude之间的竞争将更加激烈。多模态能力（视觉+语音）将成为差异化重点。
+                </div>
+                <div class="highlight-box">
+                    <strong>3. AI监管加速</strong><br>
+                    美国各州791项AI法案的推进，加上Character.ai诉讼，将推动AI安全和心理健康监管。欧盟AI法案的实施也将对全球AI公司产生影响。
+                </div>
+                <div class="highlight-box">
+                    <strong>4. 机器人商业化突破</strong><br>
+                    Unitree G1量产标志着人形机器人从实验室走向工厂。关注Figure AI、Tesla Optimus和Boston Dynamics的后续进展。2026年可能被视为"人形机器人商用元年"。
+                </div>
+                <div class="highlight-box">
+                    <strong>5. 芯片供应链安全</strong><br>
+                    美国对中国芯片出口管制的持续收紧将加速中国AI芯片自主化。同时，全球对AI芯片的需求（特别是用于推理的边缘AI芯片）将继续增长。
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>每周简报 Weekly Briefing | 数据来源：Baltic Exchange, Hellenic Shipping News, Affinity Shipping, BIMCO, Barron's, Investopedia, Schwab, Federal Reserve, AP, Reuters, BBC, TechCrunch, The Information, 机器之心, 36氪</p>
+            <p>生成时间：2026年8月1日 | Generated by Kimi Claw 🦞</p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // BDI Chart
+        const bdiCtx = document.getElementById('bdiChart').getContext('2d');
+        new Chart(bdiCtx, {
+            type: 'line',
+            data: {
+                labels: ['7/27', '7/28', '7/29', '7/30', '7/31'],
+                datasets: [
+                    {
+                        label: 'BDI',
+                        data: [2696, 2664, 2631, 2673, 2732],
+                        borderColor: '#4a9eff',
+                        backgroundColor: 'rgba(74,158,255,0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'BCI (Capesize)',
+                        data: [4200, 4110, 4050, 4167, 4296],
+                        borderColor: '#fbbf24',
+                        backgroundColor: 'rgba(251,191,36,0.05)',
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 3
+                    },
+                    {
+                        label: 'BPI (Panamax)',
+                        data: [1999, 1975, 1960, 2040, 2087],
+                        borderColor: '#4ade80',
+                        backgroundColor: 'rgba(74,222,128,0.05)',
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#a0a0a0' } }
+                },
+                scales: {
+                    x: { ticks: { color: '#a0a0a0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#a0a0a0' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+
+        // S&P 500 Chart
+        const spCtx = document.getElementById('sp500Chart').getContext('2d');
+        new Chart(spCtx, {
+            type: 'bar',
+            data: {
+                labels: ['7/27', '7/28', '7/29', '7/30', '7/31'],
+                datasets: [
+                    {
+                        label: 'S&P 500 日涨跌 %',
+                        data: [0.1, 0.0, -1.5, 1.7, 0.78],
+                        backgroundColor: [
+                            'rgba(74,222,128,0.6)',
+                            'rgba(160,160,160,0.3)',
+                            'rgba(248,113,113,0.6)',
+                            'rgba(74,222,128,0.6)',
+                            'rgba(74,222,128,0.6)'
+                        ],
+                        borderColor: [
+                            '#4ade80',
+                            '#a0a0a0',
+                            '#f87171',
+                            '#4ade80',
+                            '#4ade80'
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#a0a0a0' } }
+                },
+                scales: {
+                    x: { ticks: { color: '#a0a0a0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#a0a0a0' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
