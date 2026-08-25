@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年7月17日</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #ff6f00;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --danger: #f44336;
+      --warning: #ff9800;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
+    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
+    header .date { font-size: 0.95rem; opacity: 0.8; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+    .badge-live { background: #e8f5e9; color: #2e7d32; }
+    .badge-up { background: #e8f5e9; color: #2e7d32; }
+    .badge-down { background: #ffebee; color: #c62828; }
+    .badge-info { background: #e3f2fd; color: #1565c0; }
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 1.5rem; }
+    .news-grid { display: grid; gap: 16px; }
+    .news-item {
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .news-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .news-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+    .news-item p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+    .news-item .source { font-size: 0.8rem; color: #999; margin-top: 8px; }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: #fafafa;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+    }
+    .data-row .label { font-weight: 600; color: var(--text); }
+    .data-row .value { font-weight: 700; font-size: 1.1rem; }
+    .data-row .change { font-size: 0.85rem; margin-left: 8px; }
+    .positive { color: var(--success); }
+    .negative { color: var(--danger); }
+    .neutral { color: var(--warning); }
+    .highlight-box {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border: 1px solid #ffcc80;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .highlight-box h4 { color: var(--accent); font-size: 1rem; margin-bottom: 8px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .stat-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-card .number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+    .stat-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      background: #e8eaf6;
+      color: var(--primary);
+      margin-right: 6px;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 20px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📰 每日资讯简报</h1>
+      <div class="subtitle">Daily Briefing — 全球视野，深度洞察</div>
+      <div class="date">2026年7月17日 星期五 | 新加坡时间 07:00 AM</div>
+    </header>
+
+    <!-- 时政要闻 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="icon">🌍</span>
+        时政要闻
+        <span class="badge badge-live">LIVE</span>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🇨🇳🇰🇵 中朝友好合作互助条约签署65周年</h3>
+          <p>习近平总书记与朝鲜劳动党总书记金正恩互致贺电，纪念《中朝友好合作互助条约》签署65周年。双方强调将继承传统友谊，推动两国关系在新时期继续发展。该条约被视为东北亚安全格局的重要框架。</p>
+          <div class="source">来源：CGTN / 新华社</div>
+        </div>
+        <div class="news-item">
+          <h3>🇺🇸 中东紧张局势升级：美国驻阿联酋使领馆取消预约</h3>
+          <p>鉴于地区安全局势，美国驻阿布扎比大使馆和驻迪拜总领事馆取消了7月13日至15日期间的所有领事预约。与此同时，霍尔木兹海峡周边航运风险持续受到市场关注，地缘政治风险溢价仍是能源与航运市场的重要变量。</p>
+          <div class="source">来源：CGTN / Reuters</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳 中国海警在台东海域开展巡逻</h3>
+          <p>中国海警编队近期在台东海域开展常态化巡逻，引发台北及西方主要国家关注。台湾立法机构此前通过法案，计划在2026至2033年间追加250亿美元国防支出。台海议题继续成为区域安全焦点。</p>
+          <div class="source">来源：Reuters / The Telegraph</div>
+        </div>
+        <div class="news-item">
+          <h3>📊 中国2026年上半年经济一览</h3>
+          <p>中国日报发布《2026年上半年中国经济》信息图，展示国民经济主要指标。国务院新闻办公室持续发布政策解读，涵盖稳增长、扩内需、对外开放及民生保障等重点方向。</p>
+          <div class="source">来源：China Daily / 国务院新闻办公室</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 航运资讯 -->
+    <section class="section" style="border-left-color: #0277bd;">
+      <div class="section-title">
+        <span class="icon">⚓</span>
+        航运资讯
+        <span class="badge badge-info">SHIPPING</span>
+      </div>
+      <div class="highlight-box">
+        <h4>📊 BDI指数创一个多月新高，周涨幅约8.4%</h4>
+        <p>波罗的海干散货指数（BDI）连续上行，最高触及<strong>2,980点</strong>（7月14日），创6月5日以来最高水平。周度累计涨幅约8.4%，海岬型、巴拿马型及超灵便型船运费普涨，显示干散货市场短期需求改善。</p>
+      </div>
+      <div class="data-row">
+        <span class="label">波罗的海干散货指数 (BDI)</span>
+        <span><span class="value">2,980</span> <span class="change positive">创6月5日以来新高 ↑</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">海岬型船指数 (Capesize)</span>
+        <span><span class="value">4,655</span> <span class="change positive">+1.9%</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">巴拿马型船指数 (Panamax)</span>
+        <span><span class="value">2,253</span> <span class="change neutral">基本持平</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">超灵便型船指数 (Supramax)</span>
+        <span><span class="value">1,706</span> <span class="change positive">+0.4%</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">35,000 dwt 波罗的海→东地中海</span>
+        <span><span class="value">$12,500</span> <span class="change neutral">日租金</span></span>
+      </div>
+      <div class="news-grid" style="margin-top: 16px;">
+        <div class="news-item">
+          <h3>🌊 大西洋及东南亚市场情绪分化</h3>
+          <p>南大西洋和美湾地区现货吨位增加，买卖价差扩大，成交相对有限；东南亚市场同样表现平淡，较小巴拿马型船承接有限需求。整体来看，BDI指数受大西洋去程及太平洋地区部分需求支撑。</p>
+          <div class="source">来源：Baltic Exchange / The DCN</div>
+        </div>
+        <div class="news-item">
+          <h3>🏭 新造船与二手船市场</h3>
+          <p>2026年航运市场持续活跃，新造船订单保持高位。二手船交易方面，随着BDI连续上涨，二手船资产价格获得支撑。市场消息称，一艘82,000 dwt散货船在香港经印尼至韩国航线上成交，日租金约$13,600。</p>
+          <div class="source">来源：I3investor / 行业综合</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 全球财经 -->
+    <section class="section" style="border-left-color: #2e7d32;">
+      <div class="section-title">
+        <span class="icon">📈</span>
+        全球财经
+        <span class="badge badge-live">MARKETS</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="number">$64,181</div>
+          <div class="label">比特币 (BTC)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">$1,878</div>
+          <div class="label">以太坊 (ETH)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">$64,560</div>
+          <div class="label">BTC (Saxo)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">$1,918</div>
+          <div class="label">ETH (Saxo)</div>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <div class="data-row">
+          <span class="label">BTC 比特币</span>
+          <span><span class="value">$64,181</span> <span class="change positive">+0.11%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">ETH 以太坊</span>
+          <span><span class="value">$1,878.63</span> <span class="change positive">+0.21%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">SOL 索拉纳</span>
+          <span><span class="value">$75.86</span> <span class="change positive">+0.06%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">LINK</span>
+          <span><span class="value">$8.42</span> <span class="change positive">+0.06%</span></span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 16px;">
+        <h4>💡 市场要点</h4>
+        <p>• 7月15日美国通胀数据低于预期，全球股市反弹，加密货币同步走强，比特币一度逼近$65,000</p>
+        <p>• 以太坊表现优于比特币，ETH/BTC比率回升，受美国以太坊现货ETF持续资金流入支撑</p>
+        <p>• 7月16日数字资产保持坚挺，比特币围绕$64,000-64,500区间整理</p>
+        <p>• 市场关注今日：美国6月零售销售数据、企业财报季及中东地缘政治风险</p>
+        <p>• 国际油价受地缘风险溢价支撑，能源市场波动率维持高位</p>
+      </div>
+    </section>
+
+    <!-- AI机器人动态 -->
+    <section class="section" style="border-left-color: #7b1fa2;">
+      <div class="section-title">
+        <span class="icon">🤖</span>
+        AI机器人动态
+        <span class="badge badge-info">ROBOTICS</span>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>💰 Walden Robotics：丰田背书，估值11亿美元</h3>
+          <p>由MIT教授Russ Tedrake领导的波士顿机器人初创公司Walden Robotics从丰田及其他投资者处获得约3亿美元融资，投后估值达11亿美元。该公司从丰田机器人研究实验室分拆，专注人形机器人研发。</p>
+          <div class="source">来源：Bloomberg / Boston Globe</div>
+        </div>
+        <div class="news-item">
+          <h3>🏭 现代汽车完全收购波士顿动力</h3>
+          <p>现代汽车集团完成从软银手中收购波士顿动力剩余股权，波士顿动力成为现代全资子公司。现代计划将Atlas人形机器人部署至美国工厂，加速制造自动化进程。</p>
+          <div class="source">来源：CBT News / TechTimes</div>
+        </div>
+        <div class="news-item">
+          <h3>🏭 特斯拉Optimus：量产线改造接近尾声</h3>
+          <p>特斯拉已将弗里蒙特工厂的原Model S/X生产线改造为Optimus人形机器人生产线。马斯克此前展示产线改造视频，预计7月下旬至8月启动量产。目标年产100万台，但大规模量产仍需时日。</p>
+          <div class="source">来源：RoboZaps / InsideEVs / Benzinga</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳 成都打造综合性机器人产业生态</h3>
+          <p>成都市加快发展机器人产业生态，ROBO+智能机器人体验店集成零售与展示功能，集中呈现中国AI与机器人创新成果，向公众普及最新机器人技术。</p>
+          <div class="source">来源：新华社 / Xinhua</div>
+        </div>
+        <div class="news-item">
+          <h3>📈 人形机器人市场：2025年32亿美元→2035年1228亿美元</h3>
+          <p>DataM Intelligence估计，全球人形机器人市场2025年约32.2亿美元，2035年有望达1228.3亿美元，2026-2035年复合年增长率（CAGR）约43.83%。执行器、传感器和电池被视为核心增长驱动力。</p>
+          <div class="source">来源：DataM Intelligence / Ohsem.me</div>
+        </div>
+        <div class="news-item">
+          <h3>🤝 软银、安川、英伟达合作展示可变形物体操作系统</h3>
+          <p>2026年7月，软银与安川电机及英伟达合作，利用AI数据中心GPU云平台展示可变形物体抓取操作系统，推动工业机器人在柔性制造场景中的应用。</p>
+          <div class="source">来源：OpenPR / 行业报告</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 市场日历 -->
+    <section class="section" style="border-left-color: #f57c00;">
+      <div class="section-title">
+        <span class="icon">📅</span>
+        今日关注
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🎯 7月17日重点事件</h3>
+          <p><span class="tag">数据</span> 美国6月零售销售数据</p>
+          <p><span class="tag">数据</span> 美国7月密歇根大学消费者信心指数</p>
+          <p><span class="tag">财报</span> 美股财报季持续（金融、科技板块）</p>
+          <p><span class="tag">事件</span> 特斯拉Optimus量产线预计7月底启动</p>
+          <p><span class="tag">事件</span> 波士顿动力最终合同窗口7月20日关闭</p>
+          <p><span class="tag">地缘</span> 中东霍尔木兹海峡航运风险</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>每日资讯简报 · Daily Briefing</p>
+      <p>数据更新时间：2026年7月17日 07:00 AM (SGT)</p>
+      <p>数据来源：Reuters, Bloomberg, CNBC, The Block, Baltic Exchange, Saxo, CoinMarketCap, Xinhua, CGTN等</p>
+      <p style="margin-top: 8px;">🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年8月24日</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #ff6f00;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --danger: #f44336;
+      --warning: #ff9800;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
+    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
+    header .date { font-size: 0.95rem; opacity: 0.8; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+    .badge-live { background: #e8f5e9; color: #2e7d32; }
+    .badge-up { background: #e8f5e9; color: #2e7d32; }
+    .badge-down { background: #ffebee; color: #c62828; }
+    .badge-info { background: #e3f2fd; color: #1565c0; }
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 1.5rem; }
+    .news-grid { display: grid; gap: 16px; }
+    .news-item {
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .news-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .news-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+    .news-item p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+    .news-item .source { font-size: 0.8rem; color: #999; margin-top: 8px; }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: #fafafa;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+    }
+    .data-row .label { font-weight: 600; color: var(--text); }
+    .data-row .value { font-weight: 700; font-size: 1.1rem; }
+    .data-row .change { font-size: 0.85rem; margin-left: 8px; }
+    .positive { color: var(--success); }
+    .negative { color: var(--danger); }
+    .neutral { color: var(--warning); }
+    .highlight-box {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border: 1px solid #ffcc80;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .highlight-box h4 { color: var(--accent); font-size: 1rem; margin-bottom: 8px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .stat-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-card .number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+    .stat-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      background: #e8eaf6;
+      color: var(--primary);
+      margin-right: 6px;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 20px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📰 每日资讯简报</h1>
+      <div class="subtitle">Daily Briefing — 全球视野，深度洞察</div>
+      <div class="date">2026年8月24日 星期一 | 新加坡时间 07:00 AM</div>
+      <div style="margin-top: 12px; padding: 10px 20px; background: rgba(255,255,255,0.15); border-radius: 8px; display: inline-block;">
+        <a href="weekly-2026-08-17-21.html" style="color: #fff; text-decoration: none; font-weight: 600;">📋 查看本周周报（8月17日-21日）</a>
+      </div>
+    </header>
+
+    <!-- 时政要闻 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="icon">🌍</span>
+        时政要闻
+        <span class="badge badge-live">LIVE</span>
+      </div>
+      <div class="highlight-box">
+        <h4>🌏 北京世界机器人运动会开幕，中美欧地缘政治持续重塑全球秩序</h4>
+        <p>本周全球政治焦点呈现“科技+地缘”双主线：中国借<strong>世界人形机器人运动会</strong>展示科技软实力；美国国内围绕特朗普政策的法律战与移民议程持续发酵；欧洲在多极化趋势下重新审视对美安全依赖；中美高层互动（习近平计划9月底访美）为双边关系提供短暂缓冲，但关税、芯片与南海争议仍是结构性摩擦点。</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🇨🇳🤖 北京世界人形机器人运动会：科技软实力与大国竞争新舞台</h3>
+          <p>8月19日至24日，2026世界机器人大会暨世界人形机器人运动会在北京举行。逾300家企业展出人形机器人，Unitree上市首日股价暴涨近6倍，Galbot机器人在开幕式上完成与人类选手的100+回合自主网球对拉。赛事被视为中国展示具身智能产业链与吸引全球注意力的“科技外交”窗口，也标志着机器人成为中美技术竞争的新前沿。</p>
+          <div class="source">来源：France 24 / Reuters / Bangkok Post</div>
+        </div>
+        <div class="news-item">
+          <h3>🇺🇸🇨🇳 习近平计划9月底访美，特朗普政府推进 helipad 工程</h3>
+          <p>白宫正在加速南草坪直升机坪建设，以迎接中国国家主席习近平计划于9月下旬的访美行程。与此同时，特朗普政府对中国无人机实施更严格的城市飞行限制，并持续就关税、芯片出口与产能过剩问题对华施压。中美在高层接触与结构性对抗之间保持微妙平衡。</p>
+          <div class="source">来源：BBC / South China Morning Post / Reuters</div>
+        </div>
+        <div class="news-item">
+          <h3>🇺🇸 特朗普政策引发多州法律反击</h3>
+          <p>包括纽约州总检察长Letitia James、康涅狄格州总检察长William Tong在内的多州联盟成功暂时阻止特朗普政府获取各州驾照数据。此外，美国多州已就新一波覆盖99.4%进口商品的301关税提起诉讼，加拿大总理卡尼称特朗普的关税行动是“误判”。</p>
+          <div class="source">来源：Westfair Communications / BBC / Reuters</div>
+        </div>
+        <div class="news-item">
+          <h3>🇺🇸 特朗普政府加大对高等教育与移民审查力度</h3>
+          <p>U.S. News追踪显示，特朗普第二任期持续推动高校DEI禁令、签证撤销与资金削减；OpenAI因PERM招聘程序与美国司法部达成和解。Boundless Immigration周报指出，USCIS将自9月起启用新版I-485表格，并可在不提供补件通知的情况下直接拒绝不完整申请，移民政策进一步收紧。</p>
+          <div class="source">来源：U.S. News / Boundless Immigration</div>
+        </div>
+        <div class="news-item">
+          <h3>🇪🇺🇺🇸 欧洲民意转向：美国可信度下降，多极秩序加速</h3>
+          <p>YouGov在7国（美、英、法、德、波、加、澳）的最新调查显示，随着特朗普政府减少全球事务参与，公众对美国的信任与联盟承诺出现分歧，多数受访者认为世界正走向多极秩序。分析人士警告，美国若快速从欧洲撤军，可能为中国影响力渗透创造条件。</p>
+          <div class="source">来源：YouGov / Defense Priorities</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳🇵🇭 中菲外长会晤：呼吁避免南海“误判”</h3>
+          <p>中国外长王毅与菲律宾外长马纳洛在东盟系列会议期间会晤，双方同意通过对话管控分歧，避免南海局势升级。菲律宾总统秘书Lazaro与中国外长举行会谈，强调防止海上意外冲突的重要性。</p>
+          <div class="source">来源：Understanding War Institute / GMA Network</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳 中国载人登月任务因发射条件推迟</h3>
+          <p>中国航天部门宣布，一次载人登月相关发射因“不满足发射条件”而推迟，具体原因正在调查中。北京近年来投入巨资推进航天计划，目标在2030年前实现载人登月，与美国Artemis计划形成登月竞赛。</p>
+          <div class="source">来源：NDTV / Xinhua</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 航运资讯 -->
+    <section class="section" style="border-left-color: #0277bd;">
+      <div class="section-title">
+        <span class="icon">⚓</span>
+        航运资讯
+        <span class="badge badge-info">SHIPPING</span>
+      </div>
+      <div class="highlight-box">
+        <h4>📉 BDI高位回调，集装箱运价与期租脱节，油轮二手船溢价创纪录</h4>
+        <p>8月中旬以来，波罗的海干散货指数（BDI）自<strong>3,089点</strong>回落至<strong>2,650–2,860点</strong>区间，海岬型与巴拿马型领跌，超灵便型相对抗跌。集装箱市场出现“运价下行、期租仍处疫后高位”的结构性背离；油轮市场因地缘风险，5岁VLCC二手价已高于新造船价，转售溢价高达21–35%，反映船东对即时运力的迫切需求。</p>
+      </div>
+      <div class="data-row">
+        <span class="label">波罗的海干散货指数 (BDI)</span>
+        <span><span class="value">约 2,700</span> <span class="change negative">自8月7日 3,089 回调</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">海岬型船指数 (BCI)</span>
+        <span><span class="value">偏弱</span> <span class="change negative">铁矿石货盘支撑有限</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">巴拿马型船指数 (BPI)</span>
+        <span><span class="value">承压</span> <span class="change negative">粮食/煤炭需求偏软</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">超灵便型船指数 (BSI)</span>
+        <span><span class="value">相对坚挺</span> <span class="change positive">表现优于大市</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">好望角型即期日租金（估算）</span>
+        <span><span class="value">约 $32,000/日</span> <span class="change negative">随BCI回落</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">巴拿马型即期日租金（估算）</span>
+        <span><span class="value">约 $19,000/日</span> <span class="change negative">需求不振</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">集装箱船1年期租（4,250 TEU）</span>
+        <span><span class="value">约 $63,000/日</span> <span class="change positive">较Q1显著上涨</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">克拉克森新造船价格指数</span>
+        <span><span class="value">185+</span> <span class="change positive">船厂订单饱满支撑高价</span></span>
+      </div>
+      <div class="news-grid" style="margin-top: 16px;">
+        <div class="news-item">
+          <h3>🛢️ 油轮二手船价格倒挂：5岁VLCC贵过新船</h3>
+          <p>Signal Ocean与Compass Maritime数据显示，当前5年船龄VLCC二手价已高于新船合同价（约$1.29亿），部分转售溢价达21–35%（约$1.745亿）。Suezmax新船与5岁船同价约$8,800万，转售溢价22%。霍尔木兹风险使船东偏好即时可用运力，推升二手船溢价。</p>
+          <div class="source">来源：Compass Maritime / Seatrade Maritime / Signal Ocean</div>
+        </div>
+        <div class="news-item">
+          <h3>📦 集装箱：运价与期租的“剪刀差”持续扩大</h3>
+          <p>Drewry指出，即期运价近月回落，但集装箱船期租价格仍比2019年高出约200%。长约锁定、环保法规与双燃料船“绿色溢价”支撑租船市场。Drewry预计2026年全球运价将下降约16%，但期租在部分船型上仍可能小幅上涨后才会逐步回落。</p>
+          <div class="source">来源：Drewry / Container News</div>
+        </div>
+        <div class="news-item">
+          <h3>🏗️ 中国新船订单占全球81%，但7月订单节奏放缓</h3>
+          <p>Clarksons 8月12日数据：7月全球新船订单3.57百万CGT（137艘），环比降56%、同比降22%；中国订单占全球81%。集装箱船仅交付12艘、新接订单25艘，船厂产能紧张与高价抑制下单。2026–2028年干散货新船交付中，Capesize 226艘、Panamax/Kamsarmax 374艘、Supramax 457艘。</p>
+          <div class="source">来源：Clarksons Research / Compass Maritime</div>
+        </div>
+        <div class="news-item">
+          <h3>🚢 船东动态：Diana Shipping锁定Capesize与Panamax长租</h3>
+          <p>Diana Shipping宣布其17.4万DWT海岬型船Semirio以$21,650/日续租至2027年初，7.5万DWT巴拿马型船Maera以$11,750/日租至2026年底。两船最低租期预计贡献约$1,093万美元毛收入，显示船东在高价区间积极锁定现金流。</p>
+          <div class="source">来源：Baird Maritime / Shipping Telegraph</div>
+        </div>
+        <div class="news-item">
+          <h3>⚠️ 地缘与环保仍是航运最大变量</h3>
+          <p>美伊冲突使霍尔木兹油轮航行受限；胡塞对红海/沙特港口威胁未消。CMA CGM、MSC、Hapag-Lloyd等宣布9月起征收巴拿马运河附加费，亚洲至美湾/美东航线成本继续上行。IMO与EU ETS环保法规进一步推高节能船型溢价。</p>
+          <div class="source">来源：Lloyd's List / ICIS / Container News</div>
+        </div>
+        <div class="news-item">
+          <h3>📊 干散货中长期展望：供给约束支撑资产价格</h3>
+          <p>尽管BDI自高位回落，但fleet growth受绿色法规与船台瓶颈限制，二手散货船价格仍处多年高位。Xclusiv数据显示，10年船龄Capesize价值过去一个月上涨6%，较五年前上涨约140%。若需求增长无法匹配2026年底新增运力，可能出现阶段性供给过剩。</p>
+          <div class="source">来源：Xclusiv Shipbrokers / Lloyd's List</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 全球财经 -->
+    <section class="section" style="border-left-color: #2e7d32;">
+      <div class="section-title">
+        <span class="icon">📈</span>
+        全球财经
+        <span class="badge badge-live">MARKETS</span>
+      </div>
+      <div class="highlight-box">
+        <h4>📊 美股高位震荡，加密弱势整理，油价维持地缘溢价</h4>
+        <p>8月以来美股三大指数在历史高位附近震荡，科技股业绩分化（Broadcom财报拖累芯片股，Palantir AI业务超预期暴涨）。加密货币整体承压，BTC在<strong>$62,000–$67,000</strong>区间波动，ETH回落至<strong>$1,700–$1,900</strong>。原油因中东供应风险维持高位，黄金在<strong>$4,500/盎司</strong>附近整固，长端美债收益率与美联储政策预期仍是市场核心变量。</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="number">53,277</div>
+          <div class="label">道琼斯（8月7日收盘，+0.98%）</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">7,674</div>
+          <div class="label">标普500（8月7日收盘，+0.43%）</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">26,180</div>
+          <div class="label">纳斯达克（8月7日收盘，+0.43%）</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">+0.76%</div>
+          <div class="label">恒生指数（前期）</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">-0.33%</div>
+          <div class="label">日经225（前期）</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">+0.24%</div>
+          <div class="label">上证指数（前期）</div>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <div class="data-row">
+          <span class="label">BTC 比特币</span>
+          <span><span class="value">约 $64,000–$67,000</span> <span class="change negative">自高位回调约28%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">ETH 以太坊</span>
+          <span><span class="value">约 $1,700–$1,900</span> <span class="change negative">今年以来跌幅较大</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">WTI 原油</span>
+          <span><span class="value">约 $86</span> <span class="change positive">霍尔木兹溢价支撑</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">Brent 原油</span>
+          <span><span class="value">约 $94–$96</span> <span class="change positive">5日涨超7%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">黄金 (现货/Comex参考)</span>
+          <span><span class="value">约 $4,500/oz</span> <span class="change positive">避险需求支撑</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">铜</span>
+          <span><span class="value">偏弱</span> <span class="change negative">工业需求预期谨慎</span></span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 16px;">
+        <h4>💡 市场要点</h4>
+        <p>• <strong>美股业绩分化：</strong> Broadcom财报不及AI芯片预期，盘后大跌拖累半导体板块；Palantir因AIP业务强劲暴涨近30%，显示AI应用层与硬件层估值分化加剧。</p>
+        <p>• <strong>通胀与美联储：</strong> 美国7月PPI环比持平，CPI同比+3.4%左右，市场押注9月降息概率在35%–55%区间摇摆；10年期美债收益率维持在4.5%–5%区间，30年期逼近5.2%–5.3%。</p>
+        <p>• <strong>加密货币：</strong> BTC自1月高点$126,000回调约28%–40%，ETH、Solana、XRP跌幅更大。现货BTC ETF资金阶段性回流，但机构情绪仍偏谨慎，市场关注美国加密立法（CLARITY Act）进展。</p>
+        <p>• <strong>原油：</strong> 霍尔木兹与红海风险支撑Brent；OPEC+计划9月增产18.8万桶/日完成自愿减产退出，但保留后续调整空间，供需紧平衡格局未改。</p>
+        <p>• <strong>亚洲市场：</strong> 韩元、日元受美元长端收益率波动影响；印度股市在国内财报与海外风险间拉锯；中概/港股受中美关系与内地政策预期影响震荡。</p>
+        <p>• <strong>科技并购：</strong> Google以约$24亿美元挖角Windsurf（原Codeium）核心团队，OpenAI收购Windsurf的计划受挫，AI编程助手竞争白热化。</p>
+      </div>
+    </section>
+
+    <!-- AI机器人动态 -->
+    <section class="section" style="border-left-color: #7b1fa2;">
+      <div class="section-title">
+        <span class="icon">🤖</span>
+        AI机器人动态
+        <span class="badge badge-info">ROBOTICS</span>
+      </div>
+      <div class="highlight-box">
+        <h4>🔥 北京世界机器人大会：人形机器人从“秀肌肉”迈向产业化</h4>
+        <p>8月19日至24日，<strong>2026世界机器人大会</strong>在北京举行，同期举办世界人形机器人运动会。Unitree上市首日股价暴涨近6倍，Galbot机器人完成全球首场自主人形机器人网球对拉并创下100+回合纪录，ACE Robotics CEO预测<strong>“机器人大脑的ChatGPT时刻”将在2027年底到来</strong>。中国企业在硬件成本、量产规模上加速领先，美国则在芯片、大模型与仿真训练生态上保持优势，全球人形机器人产业进入“中美双轨竞赛”关键阶段。</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🎾 全球首场自主人形机器人网球赛：Galbot 100+回合对拉创纪录</h3>
+          <p>在第二届世界人形机器人运动会开幕式上，Galbot人形机器人与人类运动员进行了全球首场实时自主人形机器人网球赛，完成超过100次连续自主对拉，展示了实时物理智能与运动控制能力的新高度。</p>
+          <div class="source">来源：PR Newswire / Thailand Business News</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳 Unitree上市首日暴涨近6倍，中国机器人产业链引发全球关注</h3>
+          <p>杭州宇树科技（Unitree）作为中国人形机器人代表企业，在IPO首日股价大涨近6倍。其R1人形机器人起售价39,900元人民币（约$5,900），高端H1售价$90,000，凭借低成本与高性能成为市场焦点。</p>
+          <div class="source">来源：France 24 / Reuters</div>
+        </div>
+        <div class="news-item">
+          <h3>🧠 ACE Robotics CEO：机器人大脑将在2027年底迎来“ChatGPT时刻”</h3>
+          <p>商汤科技联合创始人、ACE Robotics董事长王晓刚在世界机器人大会期间表示，借助世界模型与环境数据采集，人形机器人的“大脑”有望在2027年底实现类似ChatGPT的爆发式突破，推动具身智能从演示走向通用任务执行。</p>
+          <div class="source">来源：Reuters / Asharq Al Awsat</div>
+        </div>
+        <div class="news-item">
+          <h3>🏭 中国企业加速落地：傅利叶、星尘、乐聚、逐际、智元</h3>
+          <p>傅利叶智能展示GR-3“护理机器人”，瞄准陪伴、公共服务与养老；星尘智能Astribot S1可完成叠衣、炒菜、整理物品等复杂任务；乐聚机器人Kuavo 5-W、逐际动力Luna、智元机器人等均在具身智能与场景落地上取得进展。 backed by Alibaba与JD.com。</p>
+          <div class="source">来源：Reuters / 36Kr / MERICS</div>
+        </div>
+        <div class="news-item">
+          <h3>🇯🇵 三菱汽车引入人形机器人进入工厂</h3>
+          <p>三菱汽车宣布与东京大学衍生初创公司Highlanders合作，在其工厂部署AI驱动的人形机器人，目标达到与资深员工相当的技能水平。日本制造业加入人形机器人落地竞赛。</p>
+          <div class="source">来源：The Asahi Shimbun</div>
+        </div>
+        <div class="news-item">
+          <h3>🇺🇸 OpenAI重启机器人团队，Nvidia推进“物理AI”基础设施</h3>
+          <p>OpenAI正招聘人形机器人系统专家，组建算法团队让机器人在真实环境中自主学习，被视为其通向AGI战略的重要一环。Nvidia陆续推出Spectrum-X以太网网络平台与CPU+GPU融合架构Vera Rubin，巩固其在AI工厂与机器人训练基础设施中的核心地位。</p>
+          <div class="source">来源：Computerworld / NetworkWorld / AIMultiple</div>
+        </div>
+        <div class="news-item">
+          <h3>🤝 Google DeepMind × Apptronik：Robot Park训练场</h3>
+          <p>Apptronik在德州奥斯汀开设近9万平方英尺的Robot Park，Apollo 2机器人集群持续执行真实生产任务，为Google DeepMind的Gemini Robotics模型提供训练数据，形成“数据—模型—部署”闭环。</p>
+          <div class="source">来源：TechTimes / Apptronik</div>
+        </div>
+        <div class="news-item">
+          <h3>🇺🇸 FCC“外国机器人”监管引发争议</h3>
+          <p>美国FCC出台针对外国制造机器人的监管措施，被部分智库解读为事实上的进口限制，旨在为本土机器人制造业创造确定性。批评者担忧成本上升与供应链断裂风险。</p>
+          <div class="source">来源：Foundation for American Innovation</div>
+        </div>
+        <div class="news-item">
+          <h3>📈 AGI时间表：专家预测持续分化</h3>
+          <p>Eric Schmidt预计AGI将在3–5年内出现；马斯克认为2026年前将出现超越人类最聪明个体的AI；英伟达CEO黄仁勋将全面超越人类的时点放在2029年前后。学术界多数受访者认为单纯扩大当前规模不太可能实现AGI。</p>
+          <div class="source">来源：AIMultiple / AAAI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 市场日历 -->
+    <section class="section" style="border-left-color: #f57c00;">
+      <div class="section-title">
+        <span class="icon">📅</span>
+        今日关注
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🎯 8月24日重点事件与观察</h3>
+          <p><span class="tag">机器人</span> 2026世界机器人大会/人形机器人运动会（北京，8月19–24日）进入收官日，关注赛事结果、Unitree上市后续与产业订单落地。</p>
+          <p><span class="tag">地缘</span> 美伊局势与霍尔木兹海峡航运安全动态，影响油轮保费、原油与干散货航线。</p>
+          <p><span class="tag">宏观</span> 美联储7月会议纪要后续解读与长端美债收益率走势；美国初请失业金与制造业PMI数据。</p>
+          <p><span class="tag">加密</span> BTC能否守住$62,000支撑，ETH能否守住$1,700支撑，关注现货ETF资金流向与CLARITY Act进展。</p>
+          <p><span class="tag">航运</span> BDI在2,650–2,800点区间整固，关注铁矿石货盘与巴拿马型粮食需求。</p>
+          <p><span class="tag">贸易</span> 美国新关税法律诉讼进展、中欧贸易磋商、习近平9月访美预期。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>每日资讯简报 · Daily Briefing</p>
+      <p>数据更新时间：2026年8月24日 07:00 AM (SGT)</p>
+      <p>数据来源：Reuters, Bloomberg, CNBC, Baltic Exchange, Clarksons Research, Signal Ocean, Compass Maritime, Drewry, CoinGecko, SoSoValue, Yahoo Finance, AP News, The New York Times, BBC, 新华社, 中国商务部, Al Jazeera, ICIS, Lloyd's List, 36Kr, France 24, YouGov, Defense Priorities, U.S. News, Boundless Immigration等</p>
+      <p style="margin-top: 8px;">🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
+    </footer>
+  </div>
+</body>
+</html>

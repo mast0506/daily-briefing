@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 周报 2026年8月17日-21日</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #ff6f00;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --danger: #f44336;
+      --warning: #ff9800;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
+    }
+    header h1 { font-size: 2rem; margin-bottom: 8px; letter-spacing: 2px; }
+    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
+    header .date { font-size: 0.95rem; opacity: 0.8; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+    .badge-live { background: #e8f5e9; color: #2e7d32; }
+    .badge-up { background: #e8f5e9; color: #2e7d32; }
+    .badge-down { background: #ffebee; color: #c62828; }
+    .badge-info { background: #e3f2fd; color: #1565c0; }
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 1.5rem; }
+    .news-grid { display: grid; gap: 16px; }
+    .news-item {
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .news-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .news-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+    .news-item p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+    .news-item .source { font-size: 0.8rem; color: #999; margin-top: 8px; }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: #fafafa;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+    }
+    .data-row .label { font-weight: 600; color: var(--text); }
+    .data-row .value { font-weight: 700; font-size: 1.1rem; }
+    .data-row .change { font-size: 0.85rem; margin-left: 8px; }
+    .positive { color: var(--success); }
+    .negative { color: var(--danger); }
+    .neutral { color: var(--warning); }
+    .highlight-box {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border: 1px solid #ffcc80;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .highlight-box h4 { color: var(--accent); font-size: 1rem; margin-bottom: 8px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .stat-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-card .number { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+    .stat-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: #f0f0f0;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    tr:hover { background: #fafafa; }
+    .chart-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .chart-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      background: #e8eaf6;
+      color: var(--primary);
+      margin-right: 6px;
+    }
+    .sub-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border);
+    }
+    .sub-section h4 {
+      font-size: 1.05rem;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 20px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      table { font-size: 0.8rem; }
+      th, td { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📰 每日资讯简报 · 周报</h1>
+      <div class="subtitle">Weekly Briefing — 全球视野，深度洞察</div>
+      <div class="date">2026年8月17日 — 8月21日 | 新加坡时间</div>
+    </header>
+
+    <!-- ==================== 航运板块 ==================== -->
+    <section class="section" style="border-left-color: #0277bd;">
+      <div class="section-title">
+        <span class="icon">⚓</span>
+        航运板块（完整周报）
+        <span class="badge badge-info">SHIPPING</span>
+      </div>
+
+      <div class="highlight-box">
+        <h4>📊 本周核心数据速览</h4>
+        <p>本周BDI整体呈现"先抑后扬"走势：周初在2,878点高位开盘后，连续三日至周四最低触及2,776点（创7月31日以来新低），周五强势反弹至2,841点，全周累计下跌37点（-1.3%）。海岬型船运价波动最为剧烈，巴拿马型船相对疲软，超灵便型船逆势走强。</p>
+      </div>
+
+      <div class="sub-section">
+        <h4>📈 周度指数走势（BDI、BCI、BPI、BSI每日数据）</h4>
+        <table>
+          <tr>
+            <th>日期</th>
+            <th>BDI</th>
+            <th>涨跌</th>
+            <th>BCI</th>
+            <th>涨跌</th>
+            <th>BPI</th>
+            <th>涨跌</th>
+            <th>BSI</th>
+            <th>涨跌</th>
+          </tr>
+          <tr>
+            <td>8月17日（周一）</td>
+            <td><strong>2,878</strong></td>
+            <td class="positive">+15 / +0.52%</td>
+            <td><strong>4,590</strong></td>
+            <td class="positive">+52</td>
+            <td><strong>2,302</strong></td>
+            <td class="positive">+9</td>
+            <td><strong>1,603</strong></td>
+            <td class="positive">+9</td>
+          </tr>
+          <tr>
+            <td>8月18日（周二）</td>
+            <td><strong>2,815</strong></td>
+            <td class="negative">-63 / -2.19%</td>
+            <td><strong>4,452</strong></td>
+            <td class="negative">-138</td>
+            <td><strong>2,262</strong></td>
+            <td class="negative">-40</td>
+            <td><strong>1,613</strong></td>
+            <td class="positive">+10</td>
+          </tr>
+          <tr>
+            <td>8月19日（周三）</td>
+            <td><strong>2,776</strong></td>
+            <td class="negative">-39 / -1.39%</td>
+            <td><strong>4,376</strong></td>
+            <td class="negative">-76</td>
+            <td><strong>2,107</strong></td>
+            <td class="negative">-155 / -2.23%</td>
+            <td><strong>1,634</strong></td>
+            <td class="positive">+21 / +0.18%</td>
+          </tr>
+          <tr>
+            <td>8月20日（周四）</td>
+            <td><strong>2,791</strong></td>
+            <td class="positive">+15 / +0.54%</td>
+            <td><strong>4,469</strong></td>
+            <td class="positive">+93</td>
+            <td><strong>2,262</strong></td>
+            <td class="positive">+155</td>
+            <td><strong>1,613</strong></td>
+            <td class="negative">-21</td>
+          </tr>
+          <tr>
+            <td>8月21日（周五）</td>
+            <td><strong>2,841</strong></td>
+            <td class="positive">+50 / +1.79%</td>
+            <td><strong>~4,550</strong></td>
+            <td class="positive">+81</td>
+            <td><strong>~2,300</strong></td>
+            <td class="positive">+38</td>
+            <td><strong>~1,620</strong></td>
+            <td class="positive">+7</td>
+          </tr>
+          <tr style="background:#f5f5f5; font-weight:600;">
+            <td>全周累计</td>
+            <td>2,841</td>
+            <td class="negative">-37 / -1.3%</td>
+            <td>—</td>
+            <td class="negative">-40 / -0.9%</td>
+            <td>—</td>
+            <td class="negative">-2 / -0.1%</td>
+            <td>—</td>
+            <td class="positive">+17 / +1.1%</td>
+          </tr>
+        </table>
+        <p style="font-size:0.85rem; color:#999; margin-top:8px;">数据来源：Baltic Exchange / 东方财富网 / 龙de船人 | 8月21日BCI、BPI、BSI为估算值</p>
+      </div>
+
+      <div class="sub-section">
+        <h4>💰 各船型租金周度变化</h4>
+        <div class="data-row">
+          <span class="label">海岬型即期日租金（182K dwt）</span>
+          <span><span class="value">$37,000-$42,000</span> <span class="change neutral">周初高、周中回落、周末反弹</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">巴拿马型即期日租金（82K dwt）</span>
+          <span><span class="value">$13,600-$20,473</span> <span class="change neutral">区间波动，粮食与煤炭需求支撑</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">超灵便型即期日租金</span>
+          <span><span class="value">$10,500-$11,000</span> <span class="change positive">周内小幅走强</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">海岬型定期租约（1年）</span>
+          <span><span class="value">$24,580</span> <span class="change neutral">即期溢价显著高于期租</span></span>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🚢 新造船订单周度统计</h4>
+        <div class="news-item">
+          <h3>📊 本周新造船市场概况</h3>
+          <p>2026年干散货船队新增运力有限，大量船台被LNG船与集装箱船占据，短期大型散货船供给偏紧。本周未有重大干散货新船订单披露，但LNG船和集装箱船订单持续抢占船台资源。中国造船厂订单排期已延伸至2028年，韩国船企专注于大型LNG运输船。</p>
+          <div class="source">来源：Clarksons / Baird Maritime | 2026年8月17-21日</div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🏗️ 二手船交易周度统计</h4>
+        <div class="news-item">
+          <h3>📊 二手船资产价格随BDI高位获支撑</h3>
+          <p>二手船资产价格随BDI高位获得支撑，一艘82K dwt散货船在近期成交中日租金约$13,600。市场整体交投氛围偏谨慎，船东观望情绪浓厚，等待 clearer directional signals。 cape-size 二手船价格维持在近五年高位，反映出市场对长期干散货需求的信心。</p>
+          <div class="source">来源：Baird Maritime / Mysteel / The Industry Spread | 2026年8月17-21日</div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>📰 本周重要行业新闻回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>📉 BDI回落至7月31日以来最低，市场进入整固（8月19日）</h3>
+            <p>波罗的海干散货指数（BDI）8月19日下跌39点至2,776点，创7月31日以来最低，连续第二日下跌。海岬型与巴拿马型船运价同步走弱，仅超灵便型相对坚挺，显示短期现货需求边际放缓。前期短暂回暖的航运行情正式进入休整阶段。</p>
+            <div class="source">来源：Baltic Exchange / Hellenic Shipping News / 汇通财经 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>📈 8月初曾触及两个月高点3,089点</h3>
+            <p>8月7日BDI一度升至3,089点，为6月3日以来新高，当周累计上涨13.1%。支撑因素包括西非长航线铁矿石需求、全球干散货船队增速被LNG船与集装箱船订单挤压，以及中国稳增长政策对钢铁及矿石运输需求的托底。</p>
+            <div class="source">来源：Baltic Exchange / Hellenic Shipping News | 2026-08-07</div>
+          </div>
+          <div class="news-item">
+            <h3>⚠️ 地缘风险：霍尔木兹与曼德海峡双重夹击</h3>
+            <p>红海及海湾地区航运仍受也门胡塞武装与伊朗战争影响。8月14日特朗普声称将"宣布霍尔木兹海峡为美国领土"，伊朗则坚称海峡处于其"完全掌控"中。超过10%的全球石油贸易经由曼德海峡，地缘政治风险溢价仍是能源、航运及金融市场的重要定价变量。</p>
+            <div class="source">来源：Al Jazeera / gCaptain / Baird Maritime / 新华社 | 2026-08-14至20日</div>
+          </div>
+          <div class="news-item">
+            <h3>🧊 中国宣布北极新航线：能否替代中东咽喉？（8月18日）</h3>
+            <p>8月18日，中国正式公布穿越北极的"冰上丝绸之路"新航运路线。分析人士认为，该航线可部分绕开受也门胡塞武装威胁的曼德海峡与苏伊士运河，但受季节性冰情、俄罗斯控制及北约Arctic Sentry军事任务制约，短期内难以完全取代传统航道，更可能成为中欧贸易的"补充选项"。</p>
+            <div class="source">来源：Al Jazeera / Reuters / gCaptain | 2026-08-18</div>
+          </div>
+          <div class="news-item">
+            <h3>🌾 巴拿马型船运价获粮食与煤炭需求支撑</h3>
+            <p>巴拿马型船指数在8月中旬呈现分化走势。南美巴西大豆出口旺季虽临近尾声，但玉米发运量持续提升；亚洲多国电厂迎峰度夏进口煤炭采购维持刚性，长线煤炭货盘持续释放，市场可调配巴拿马型运力相对紧张，推动租金持续走高。</p>
+            <div class="source">来源：同花顺财经 / Mysteel | 2026-08-06至20日</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 财经板块 ==================== -->
+    <section class="section" style="border-left-color: #2e7d32;">
+      <div class="section-title">
+        <span class="icon">📈</span>
+        财经板块（完整周报）
+        <span class="badge badge-live">MARKETS</span>
+      </div>
+
+      <div class="highlight-box">
+        <h4>📉 本周全球市场回顾：长端美债收益率飙升引发风险资产抛售</h4>
+        <p>本周美股全线承压，道指累计下跌1.81%，标普500累计下跌1.86%，纳斯达克累计下跌2.48%。30年期美债收益率一度升至约5.34%的近20年高位，科技股与高估值成长股对长端利率上行最为敏感。周五市场出现反弹，道指涨0.98%，但未能扭转全周跌势。加密货币成为本周亮点，比特币大涨约22%，逼近8万美元。</p>
+      </div>
+
+      <div class="sub-section">
+        <h4>🌍 全球市场周度回顾</h4>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="number" style="color: var(--danger);">-1.81%</div>
+            <div class="label">道琼斯指数<br>周收盘 53,277</div>
+          </div>
+          <div class="stat-card">
+            <div class="number" style="color: var(--danger);">-1.86%</div>
+            <div class="label">标普500指数<br>周收盘 7,674</div>
+          </div>
+          <div class="stat-card">
+            <div class="number" style="color: var(--danger);">-2.48%</div>
+            <div class="label">纳斯达克指数<br>周收盘 26,180</div>
+          </div>
+          <div class="stat-card">
+            <div class="number" style="color: var(--success);">+22%</div>
+            <div class="label">比特币<br>周收盘 ~$77,000</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>📊 股票市场周度表现（逐日数据）</h4>
+        <table>
+          <tr>
+            <th>日期</th>
+            <th>道琼斯</th>
+            <th>标普500</th>
+            <th>纳斯达克</th>
+            <th>市场概况</th>
+          </tr>
+          <tr>
+            <td>8月17日（周一）</td>
+            <td>53,459.78 <span class="negative">-0.51%</span></td>
+            <td>7,745.06 <span class="negative">-0.52%</span></td>
+            <td>26,644.91 <span class="negative">-0.32%</span></td>
+            <td>三大指数小幅收跌，市场消化前期涨幅</td>
+          </tr>
+          <tr>
+            <td>8月18日（周二）</td>
+            <td>53,343.58 <span class="negative">-0.22%</span></td>
+            <td>7,691.91 <span class="negative">-0.69%</span></td>
+            <td>26,289.71 <span class="negative">-1.33%</span></td>
+            <td>纳指大跌，半导体指数跌约5.6%</td>
+          </tr>
+          <tr>
+            <td>8月19日（周三）</td>
+            <td>~52,800 <span class="negative">-1.0%</span></td>
+            <td>~7,650 <span class="negative">-0.5%</span></td>
+            <td>~26,000 <span class="negative">-1.1%</span></td>
+            <td>美联储7月会议纪要公布，市场波动</td>
+          </tr>
+          <tr>
+            <td>8月20日（周四）</td>
+            <td>~52,759 <span class="negative">-0.08%</span></td>
+            <td>~7,641 <span class="negative">-0.12%</span></td>
+            <td>~26,067 <span class="negative">-0.05%</span></td>
+            <td>美股止跌企稳，等待方向指引</td>
+          </tr>
+          <tr>
+            <td>8月21日（周五）</td>
+            <td>53,277.01 <span class="positive">+0.98%</span></td>
+            <td>7,674.37 <span class="positive">+0.43%</span></td>
+            <td>26,180.45 <span class="positive">+0.43%</span></td>
+            <td>三大指数集体收涨，道指涨超500点</td>
+          </tr>
+        </table>
+
+        <div style="margin-top: 16px;">
+          <h4 style="color: var(--secondary); margin-bottom: 8px;">🇨🇳 A股周度表现</h4>
+          <div class="data-row">
+            <span class="label">上证指数（8月21日）</span>
+            <span><span class="value">3,905.20</span> <span class="change positive">+0.04%</span></span>
+          </div>
+          <div class="data-row">
+            <span class="label">深证成指（8月21日）</span>
+            <span><span class="value">14,094.17</span> <span class="change positive">+0.87%</span></span>
+          </div>
+          <div class="data-row">
+            <span class="label">创业板指（8月21日）</span>
+            <span><span class="value">3,545.58</span> <span class="change positive">+1.43%</span></span>
+          </div>
+          <div class="data-row">
+            <span class="label">A股日成交额（8月21日）</span>
+            <span><span class="value">1.89万亿元</span> <span class="change neutral">较昨日缩量9.62%</span></span>
+          </div>
+          <p style="font-size:0.85rem; color:#666; margin-top:8px;">本周A股进入中报集中披露窗口期，科创板整体表现亮眼。截至8月19日，沪市科创板615家公司中已有88家公司披露2026年半年度报告，合计实现营业收入2,043亿元、净利润189亿元，同比增长32%、154%。其中71家公司实现盈利，51家公司利润增长，11家公司扭亏为盈。</p>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="color: var(--secondary); margin-bottom: 8px;">🇯🇵 亚洲其他市场</h4>
+          <div class="data-row">
+            <span class="label">日经225（8月19日）</span>
+            <span><span class="value">~38,500</span> <span class="change negative">跌约2.6%</span></span>
+          </div>
+          <div class="data-row">
+            <span class="label">韩国综合指数</span>
+            <span><span class="value">~3,200</span> <span class="change neutral">震荡整理</span></span>
+          </div>
+          <div class="data-row">
+            <span class="label">恒生指数</span>
+            <span><span class="value">~25,440</span> <span class="change negative">-0.83%</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🛢️ 大宗商品周度走势</h4>
+        <div class="data-row">
+          <span class="label">WTI原油</span>
+          <span><span class="value">$85.32</span> <span class="change positive">+0.97% 周内</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">Brent原油</span>
+          <span><span class="value">$91.25</span> <span class="change positive">+0.42% 周内</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">黄金（Comex）</span>
+          <span><span class="value">$4,449</span> <span class="change positive">+0.55% / 年内+31%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">黄金（现货）</span>
+          <span><span class="value">$4,404</span> <span class="change positive">年内+31%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">铜（Comex）</span>
+          <span><span class="value">664.75¢/lb</span> <span class="change positive">+1.02%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">铁矿石 62% Fe</span>
+          <span><span class="value">$95.05/t</span> <span class="change negative">同比-6.66%</span></span>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>₿ 加密货币周度表现</h4>
+        <div class="highlight-box">
+          <h4>🔥 比特币创逾三年最佳单周表现</h4>
+          <p>比特币本周大涨约22%，周五盘中一度大涨9.4%，最高触及79,500美元，收于约76,943美元。涨势始于周三美国财政部对债券市场进行重磅干预后国债收益率大幅回落，缓解了风险资产压力。随后大规模空头挤压进一步放大了涨势，据估计空头被血洗约27亿美元。</p>
+        </div>
+        <div class="data-row">
+          <span class="label">BTC 比特币</span>
+          <span><span class="value">$76,943</span> <span class="change positive">周涨+22%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">ETH 以太坊</span>
+          <span><span class="value">$1,912</span> <span class="change neutral">守在$1,900关口</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">Coinbase（COIN）</span>
+          <span><span class="value">$152.50+</span> <span class="change positive">周涨+8%</span></span>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>📰 重要财经新闻回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>📋 美联储7月会议纪要公布（8月19日晚间）</h3>
+            <p>美联储7月会议纪要显示，多数官员对通胀持续回落保持谨慎乐观，但强调若潜在通胀维持高位，可能需要进一步收紧货币政策。30年期美债收益率一度升至约5.34%的近20年高位，Treasury已表态将增加长债回购以压低借贷成本。</p>
+            <div class="source">来源：Reuters / Bloomberg / 财联社 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🏦 银行股走强，高盛、摩根士丹利涨超2%（8月21日）</h3>
+            <p>周五美股金融板块领涨，高盛与摩根士丹利涨超2%。医疗保健板块涨1.6%、金融板块涨1.0%。10年期美债收益率周五企稳于4.74%，30年期稳于5.27%。</p>
+            <div class="source">来源：Wall Street Journal / 财联社 | 2026-08-21</div>
+          </div>
+          <div class="news-item">
+            <h3>🚗 特斯拉计划开放Cybercab试乘服务（8月21日）</h3>
+            <p>科技媒体The Information援引匿名消息源报道，特斯拉计划在本月底向公众开放其首款无方向盘、无踏板的自动驾驶出租车Cybercab的试乘服务，并正式接入美国得克萨斯州奥斯汀市的Robotaxi网络。特斯拉股价周五涨5.14%，创月内新高，本月已累升超16%。</p>
+            <div class="source">来源：The Information / 富途资讯 | 2026-08-21</div>
+          </div>
+          <div class="news-item">
+            <h3>🇨🇳 中国高层明确经济"红线"，淡化大规模刺激预期</h3>
+            <p>7月底政治局会议承认经济面临"困难和挑战"，强调用好用足既有政策、加快财政支出、推出"务实有效的增量政策"。分析人士指出，中国2026年增长目标约4.5%-5%，政策重心转向科技自立、绿色能源与消费提振，而非2008式的大规模刺激。</p>
+            <div class="source">来源：WSJ / China-US Focus / Deutsche Bank | 2026-08-17至20日</div>
+          </div>
+          <div class="news-item">
+            <h3>🇪🇺🇨🇳 中欧贸易投资磋商进入第二轮</h3>
+            <p>中国商务部宣布，中欧贸易与投资磋商第二轮将于今年秋季在北京举行，欧盟贸易委员马罗什·谢夫乔维奇计划访华。双方目标并非结构性改变中国制造业模式，而是争取在10月欧盟设定的"实质进展"期限前达成可执行成果。</p>
+            <div class="source">来源：China Briefing / Asahi Shimbun | 2026-08-18</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>📊 宏观数据汇总</h4>
+        <div class="data-row">
+          <span class="label">美国30年期国债收益率</span>
+          <span><span class="value">5.27%-5.34%</span> <span class="change negative">创近20年高位</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">美国10年期国债收益率</span>
+          <span><span class="value">4.74%</span> <span class="change neutral">周五企稳</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">中国上半年服务进出口总额</span>
+          <span><span class="value">37,797.5亿元</span> <span class="change positive">同比增长8.3%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">科创板半年报营收（已披露88家）</span>
+          <span><span class="value">2,043亿元</span> <span class="change positive">同比增长32%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">科创板半年报净利润（已披露88家）</span>
+          <span><span class="value">189亿元</span> <span class="change positive">同比增长154%</span></span>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>💡 投资机会总结</h4>
+        <div class="news-item">
+          <h3>🎯 本周关键投资机会</h3>
+          <p>• <strong>黄金</strong>：年内涨幅超30%，继续扮演避险与抗通胀双重角色，地缘风险支撑价格</p>
+          <p>• <strong>加密货币</strong>：比特币突破$77,000，空头挤压带来短期动能，关注$80,000心理关口</p>
+          <p>• <strong>能源股</strong>：油价受霍尔木兹海峡风险溢价支撑，WTI与Brent维持高位，能源股逆市走强</p>
+          <p>• <strong>航运股</strong>：BDI虽回落但仍处相对高位，二手船资产价格获支撑，关注分红能力强的船东</p>
+          <p>• <strong>科技股</strong>：长端利率飙升压制估值，但特斯拉Cybercab进展、AI投资持续增长提供结构性机会</p>
+          <p>• <strong>科创板</strong>：中报业绩亮眼，营收净利双增，关注盈利加速的硬科技企业</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🔭 下周展望</h4>
+        <div class="news-item">
+          <h3>📅 8月24-28日重点关注</h3>
+          <p>• <strong>美联储</strong>：关注官员讲话及9月降息预期变化，核心通胀数据是关键</p>
+          <p>• <strong>地缘</strong>：霍尔木兹海峡谈判进展，美伊关系走向</p>
+          <p>• <strong>中国</strong>：中报密集披露窗口持续，关注政策增量信号</p>
+          <p>• <strong>欧洲</strong>：欧元区PMI数据，欧央行利率路径指引</p>
+          <p>• <strong>科技</strong>：英伟达财报预期，AI产业链动向</p>
+          <p>• <strong>大宗</strong>：油价能否突破$95，金价能否站稳$4,500</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 时政板块 ==================== -->
+    <section class="section" style="border-left-color: #c62828;">
+      <div class="section-title">
+        <span class="icon">🌍</span>
+        时政板块（完整周报）
+        <span class="badge badge-live">POLITICS</span>
+      </div>
+
+      <div class="highlight-box">
+        <h4>🔥 本周地缘政治核心：霍尔木兹海峡主权争议升级</h4>
+        <p>8月14日特朗普声称"击败伊朗后将宣布霍尔木兹海峡为美国领土"，伊朗则坚称海峡处于其"完全掌控"中。双方围绕海峡控制权的对峙持续升温，全球能源命脉面临不确定性。与此同时，中欧贸易磋商、中美科技战蔓延至高校、北极新航线等议题交织，地缘政治格局日趋复杂。</p>
+      </div>
+
+      <div class="sub-section">
+        <h4>🇨🇳 中国要闻周度回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🧊 中国宣布北极新航线（8月18日）</h3>
+            <p>8月18日，中国正式公布穿越北极的"冰上丝绸之路"新航运路线。分析人士认为，该航线可部分绕开受也门胡塞武装威胁的曼德海峡与苏伊士运河，但受季节性冰情、俄罗斯控制及北约Arctic Sentry军事任务制约，短期内难以完全取代传统航道。</p>
+            <div class="source">来源：Al Jazeera / Reuters / gCaptain | 2026-08-18</div>
+          </div>
+          <div class="news-item">
+            <h3>📉 中国高层明确经济"红线"，淡化大规模刺激预期</h3>
+            <p>7月底政治局会议承认经济面临"困难和挑战"，强调用好用足既有政策、加快财政支出、推出"务实有效的增量政策"。分析人士指出，中国2026年增长目标约4.5%-5%，政策重心转向科技自立、绿色能源与消费提振。</p>
+            <div class="source">来源：WSJ / China-US Focus / Deutsche Bank | 2026-08-17至20日</div>
+          </div>
+          <div class="news-item">
+            <h3>🤖 2026世界机器人大会北京开幕（8月19日）</h3>
+            <p>8月19日，2026世界机器人大会在北京经济技术开发区开幕，逾300家企业、2,000余件展品参展，宇树科技等中国企业展示机器人格斗表演。工业和信息化部副部长辛国斌披露，2025年机器人产业规模以上企业营业收入突破3,000亿元。</p>
+            <div class="source">来源：AFP / Asharq Al-Awsat / 前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>📊 科创板中报业绩亮眼</h3>
+            <p>截至8月19日，沪市科创板615家公司中已有88家公司披露2026年半年度报告，合计实现营业收入2,043亿元、净利润189亿元，同比增长32%、154%。71家公司实现盈利，51家公司利润增长，11家公司扭亏为盈。</p>
+            <div class="source">来源：21世纪经济报道 / 财联社 | 2026-08-19</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🇺🇸 美国要闻周度回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🎓 中美科技战蔓延至高校（8月17-18日）</h3>
+            <p>美国将复旦大学、上海交通大学等中国顶尖高校列入国家安全清单，中国随即对欧洲高校采取反制。这一动向标志着学术研究与人才流动正被地缘政治重新定义，科技脱钩从产业层面向基础研究纵深渗透。</p>
+            <div class="source">来源：Lianhe Zaobao / ThinkChina | 2026-08-17至18</div>
+          </div>
+          <div class="news-item">
+            <h3>🌊 特朗普声称将宣布霍尔木兹海峡为美国领土（8月14日）</h3>
+            <p>美国总统特朗普14日声称，"击败伊朗后"将"宣布霍尔木兹海峡为美国领土"。特朗普12日还在社交媒体发文称"美国完全控制着霍尔木兹海峡"。国际海事组织明确表示，坚决反对"对用于国际航行的海峡收取通行费"，称"征收强制性的海峡通行费没有任何法律依据"。</p>
+            <div class="source">来源：新华社 / Reuters / Al Jazeera / 央视网 | 2026-08-14至15</div>
+          </div>
+          <div class="news-item">
+            <h3>💰 美国财政部干预债券市场（8月19日）</h3>
+            <p>美国财政部对债券市场进行重磅干预，国债收益率大幅回落，缓解了风险资产压力。30年期美债收益率从5.34%高位回落至5.27%附近。</p>
+            <div class="source">来源：Bloomberg / 华尔街见闻 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🚗 特斯拉Cybercab即将开放试乘（8月21日）</h3>
+            <p>特斯拉计划在本月底向公众开放其首款无方向盘、无踏板的自动驾驶出租车Cybercab的试乘服务，并正式接入美国得克萨斯州奥斯汀市的Robotaxi网络。</p>
+            <div class="source">来源：The Information | 2026-08-21</div>
+          </div>
+          <div class="news-item">
+            <h3>🏛️ 宾夕法尼亚州收紧数据中心建设审批（8月19日）</h3>
+            <p>美国宾夕法尼亚州州长签署行政令，对数据中心建设实施严格限制，要求项目先获地方政府批准才能申请州级许可，并需遵守节水标准、承担新增用电成本。随着AI投资快速增长，美国多州开始限制数据中心扩张。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🇪🇺 欧洲要闻周度回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🤝 中欧贸易投资磋商进入第二轮</h3>
+            <p>中国商务部宣布，中欧贸易与投资磋商第二轮将于今年秋季在北京举行，欧盟贸易委员马罗什·谢夫乔维奇计划访华。双方目标并非结构性改变中国制造业模式，而是争取在10月欧盟设定的"实质进展"期限前达成可执行成果。</p>
+            <div class="source">来源：China Briefing / Asahi Shimbun | 2026-08-18</div>
+          </div>
+          <div class="news-item">
+            <h3>🌍 欧洲对霍尔木兹海峡局势表态</h3>
+            <p>伊朗政府在考虑允许欧洲国家参与霍尔木兹海峡扫雷行动，这正是此前谈判中伊朗始终拒绝让步的核心议题之一。伊朗外交部发言人表示，谈判在技术和政治层面取得"积极进展"。</p>
+            <div class="source">来源：Reuters / 163新闻 | 2026-08-05至18日</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🌏 全球其他重要动态</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🇮🇷 伊朗战争满六个月（8月17日）</h3>
+            <p>美国对伊朗实施海上封锁并威胁打击桥梁与电厂，伊朗则通过代理人持续袭击红海及海湾航运。超过10%的全球石油贸易经由曼德海峡，地缘政治风险溢价仍是能源、航运及金融市场的重要定价变量。伊朗武装部队坚称霍尔木兹海峡处于其"完全掌控"中。</p>
+            <div class="source">来源：Al Jazeera / Axios / Reuters / 新华社 | 2026-08-14至20日</div>
+          </div>
+          <div class="news-item">
+            <h3>🇾🇪 红海航线安全局势持续紧张</h3>
+            <p>也门胡塞武装持续威胁红海及曼德海峡航运。美国领导的联合海上信息中心（JMIC）表示海峡仍然开放，但敦促各海运公司审查路线、提前制定应急响应计划。</p>
+            <div class="source">来源：gCaptain / Al Jazeera | 2026-08月持续</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🔍 深度分析与展望</h4>
+        <div class="news-item">
+          <h3>📊 地缘政治格局分析</h3>
+          <p>• <strong>霍尔木兹海峡</strong>：美伊围绕海峡控制权的对峙是本周最大地缘风险。特朗普的"领土"言论虽带有谈判筹码性质，但加剧了地区紧张。短期内海峡关闭概率较低，但风险溢价将持续存在。</p>
+          <p>• <strong>中美科技脱钩</strong>：从产业层面蔓延至高校和基础研究，显示科技竞争长期化趋势。学术合作受阻将加速双方各自建立独立科研体系。</p>
+          <p>• <strong>中欧关系</strong>：贸易磋商进入第二轮是积极信号，但10月的"实质进展"期限压力较大。电动车关税、市场准入等核心议题分歧仍存。</p>
+          <p>• <strong>北极航线</strong>：中国的"冰上丝绸之路"更多是战略布局和补充选项，短期内无法替代苏伊士运河。气候变暖将逐渐提升其商业价值。</p>
+          <p>• <strong>下周关注</strong>：美伊谈判进展、中欧磋商前奏、中国政策增量信号、美国9月降息预期变化。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== AI/机器人板块 ==================== -->
+    <section class="section" style="border-left-color: #7b1fa2;">
+      <div class="section-title">
+        <span class="icon">🤖</span>
+        AI/机器人板块（完整周报）
+        <span class="badge badge-info">ROBOTICS</span>
+      </div>
+
+      <div class="highlight-box">
+        <h4>🔥 本周AI/机器人核心：人形机器人量产竞赛加速 + 大模型格局重塑</h4>
+        <p>英伟达与LG扩大人形机器人合作目标2027年Q1发布；三星成立机器人体验部门投资19万亿韩元；宇树科技发布"超人"机器人并科创板上市首日暴涨460%；智谱GLM-5.3上线；Anthropic二季度收入首超OpenAI。人形机器人赛道正从概念验证加速迈向量产竞赛，AI大模型竞争格局出现历史性转折。</p>
+      </div>
+
+      <div class="sub-section">
+        <h4>🏔️ 硅谷前沿周度回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🤖 英伟达×LG、三星、AGIBOT 齐推人形机器人</h3>
+            <p>英伟达与LG扩大合作，基于Isaac GR00T与Jetson Thor开发人形机器人，目标2027年Q1发布；三星成立机器人体验（RX）部门并投资约19万亿韩元；AGIBOT发布A3 Ultra并构建完整生态。人形机器人赛道正从概念验证加速迈向量产竞赛。</p>
+            <div class="source">来源：NVIDIA Blog / IEEE Spectrum / 前瞻产业早报 | 2026-08-17至20日</div>
+          </div>
+          <div class="news-item">
+            <h3>💰 英伟达为OpenAI数据中心提供$1,050亿美元融资支持（8月19日）</h3>
+            <p>英伟达将为OpenAI数据中心项目提供巨额融资担保，金额相当于其约两个季度的现金流。此举显示AI基础设施投资仍在升级，芯片需求正转化为信用与资本层面的深度绑定。</p>
+            <div class="source">来源：TS2 Tech / AI Business | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🧠 Google DeepMind发布Gemini Robotics 2</h3>
+            <p>新一代Gemini Robotics 2强调"真正自适应机器人"的智能层，具备全身控制、高级灵巧操作与多机器人协作能力。这标志着从纯语言/视觉模型向具身智能（Embodied AI）的进一步跃迁。</p>
+            <div class="source">来源：IEEE Spectrum / Google DeepMind | 2026-08-18至20日</div>
+          </div>
+          <div class="news-item">
+            <h3>📈 Anthropic二季度收入反超OpenAI（8月19日）</h3>
+            <p>据披露，Anthropic二季度收入超过115亿美元，环比增长逾140%，首次在单季收入规模上超越OpenAI，并实现小幅运营盈利。同期OpenAI二季度营收67亿美元、环比仅增18%，营业亏损从一季度的93亿美元扩大至123亿美元。Anthropic的编程工具Claude Code是驱动增长的核心引擎。</p>
+            <div class="source">来源：The Information / 前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>💼 OpenAI CFO称公司2027年上市（8月19日）</h3>
+            <p>据两位知情人士透露，OpenAI首席财务官弗莱尔在全员会议上向员工表示，公司将在2027年上市，若业务持续高速增长也可能更早登陆公开市场。OpenAI今年6月已向美国证券交易委员会秘密提交IPO招股文件，主要竞争对手Anthropic最快可能于9月上市。</p>
+            <div class="source">来源：路透社 / 前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>💳 Stripe收购OpenRouter，交易额约75亿美元（8月19日）</h3>
+            <p>支付服务提供商Stripe宣布达成收购AI初创公司OpenRouter的协议。OpenRouter是AI模型市场平台，每天处理超10万亿token，服务超1000万开发者。不到三个月前，OpenRouter刚以约13亿美元估值融资1.13亿美元。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🏭 IBM × OpenAI加速企业级AI部署</h3>
+            <p>IBM与OpenAI宣布合作，推动生成式AI在企业场景中的规模化应用。与此同时，英伟达宣布向SB Energy投资15亿美元，保障AI数据中心能源供应，进一步打通算力—电力—资本的闭环。</p>
+            <div class="source">来源：AI Business / Asharq Al-Awsat | 2026-08-19至20日</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🇨🇳 中国动态周度回顾</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🚀 宇树科技发布"超人"机器人并科创板上市（8月17-19日）</h3>
+            <p>8月17日，宇树科技发布新机"超人"，拥有0.85米腿长，可原地跳高2米，极限速度12.66m/s。8月19日宇树科技登陆科创板，首日收涨460.34%。宇树科技2023年至2025年营业收入从1.59亿元上升到17.08亿元，年复合增长率超226%；扣非净利润从亏损1802万元逆转为盈利5.91亿元，毛利率从44.22%攀升至60.13%。核心组件自研自产率超90%，人形机器人平均售价从2023年的59.34万元降至2025年的16.64万元。</p>
+            <div class="source">来源：极客公园 / 前瞻产业早报 / 钛媒体 | 2026-08-17至19日</div>
+          </div>
+          <div class="news-item">
+            <h3>🧠 智谱GLM-5.3 API上线（8月19日）</h3>
+            <p>8月19日凌晨，智谱正式上线新一代基座模型GLM-5.3的API。该模型擅长复杂编码、防御性网络安全与长程任务，在Artificial Analysis Intelligence Index中取得60分，进入全球前沿模型能力区间，与Kimi K3并列开源模型第一。模型权重将于下周五开源。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🤖 小米新一代人形机器人剧透（8月19日）</h3>
+            <p>小米透露即将首次展示的下一代人形机器人身高约1.70米、体重66公斤，全身有66个自由度，其中一半集中在手部。该款机器人目前处于样机阶段，国内首展后将在欧洲展出。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🚗 特斯拉车机上线豆包大模型（8月19日）</h3>
+            <p>据火山引擎消息，特斯拉上线豆包大模型，车机现已陆续推送。特斯拉中国自7月31日起分批推送2026.14.13版本车机软件更新，覆盖Model 3、Model Y、Model S、Model X车型。这是特斯拉入华以来首次在车机系统集成第三方大模型。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>📦 京东发布机器人战略（8月19日）</h3>
+            <p>在2026世界机器人大会上，京东发布机器人战略布局，立足供应链、服务、技术三大维度。供应链层面，截至2028年将在机器人领域投入百亿资源，助力100个品牌独立销售额破10亿；服务层面，未来5年建立覆盖全球超100个国家的售后服务能力，建立80个RoboBase机器人基地；技术层面，具身智能JoyInside预计年内实现超千万终端设备接入。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🌏 2026世界机器人大会北京开幕（8月19日）</h3>
+            <p>8月19日，2026世界机器人大会在北京经济技术开发区开幕，逾300家企业、2,000余件展品参展，宇树科技等中国企业展示机器人格斗表演。机器人产业已成为中美科技竞争的新前沿，中国厂商在人形机器人成本与场景落地方面快速追赶。</p>
+            <div class="source">来源：AFP / Asharq Al-Awsat / 前瞻产业早报 | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>💰 眸深智能完成近5亿元Pre-A+轮融资（8月19日）</h3>
+            <p>眸深智能宣布完成近5亿元Pre-A+轮融资，由深报一本基金、东方证券、陕西省高新技术产业投资有限公司等联合投资。眸深智能成立于2025年，专注端侧生成式通用具身大脑，探索"世界动作模型"路径，上半年估值增长超10倍。</p>
+            <div class="source">来源：前瞻产业早报 | 2026-08-19</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🇸🇬 新加坡/东南亚视角</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>🤝 英伟达×宇树合作辐射亚太地区</h3>
+            <p>英伟达与宇树科技联合推出的H2 Plus人形机器人已获斯坦福大学、苏黎世联邦理工学院等研究机构采购。新加坡企业Sharpa为机器人提供五指手机械手。亚太地区在机器人硬件供应链和科研合作方面扮演越来越重要的角色。</p>
+            <div class="source">来源：NVIDIA Blog / 新浪财经 | 2026-08月持续</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🔬 技术突破汇总</h4>
+        <div class="news-grid">
+          <div class="news-item">
+            <h3>📈 人形机器人市场：2025年$32亿 → 2035年$1,228亿</h3>
+            <p>DataM Intelligence预测，全球人形机器人市场2025年约32.2亿美元，2035年有望达1,228.3亿美元，2026-2035年复合增长率（CAGR）约43.83%。执行器、传感器、电池及AI模型被视为核心增长驱动力。</p>
+            <div class="source">来源：DataM Intelligence / Ohsem.me | 2026-08-19</div>
+          </div>
+          <div class="news-item">
+            <h3>🏭 工业落地：人形机器人的"第一份工作"</h3>
+            <p>shipyard焊接、仓储搬运与汽车制造被视为人形机器人最早规模化落地的场景。ABB、FANUC、Kawasaki等工业巨头正与英伟达合作，将Omniverse与Isaac平台整合进机器人编程与仿真工作流。</p>
+            <div class="source">来源：IEEE Spectrum / NVIDIA Blog | 2026-08-18至20日</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>💰 投资动态周度统计</h4>
+        <table>
+          <tr>
+            <th>日期</th>
+            <th>公司/项目</th>
+            <th>金额</th>
+            <th>轮次</th>
+            <th>投资方</th>
+          </tr>
+          <tr>
+            <td>8月17日</td>
+            <td>Gravis Robotics（建筑机器人）</td>
+            <td>$2亿</td>
+            <td>A轮</td>
+            <td>软银</td>
+          </tr>
+          <tr>
+            <td>8月17日</td>
+            <td>Higgsfield（AI视频生成）</td>
+            <td>$4亿</td>
+            <td>新一轮</td>
+            <td>DST Global、高盛、英特尔</td>
+          </tr>
+          <tr>
+            <td>8月19日</td>
+            <td>OpenRouter（AI模型市场）</td>
+            <td>$75亿（收购）</td>
+            <td>并购</td>
+            <td>Stripe</td>
+          </tr>
+          <tr>
+            <td>8月19日</td>
+            <td>眸深智能（具身智能）</td>
+            <td>近5亿元</td>
+            <td>Pre-A+</td>
+            <td>深报一本基金、东方证券等</td>
+          </tr>
+          <tr>
+            <td>8月19日</td>
+            <td>耀鸿电子（AI高端覆铜板）</td>
+            <td>超2亿元</td>
+            <td>战略融资</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>8月19日</td>
+            <td>英伟达→SB Energy</td>
+            <td>$15亿</td>
+            <td>战略投资</td>
+            <td>英伟达</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <h4>📈 相关公司股价周度表现</h4>
+        <div class="data-row">
+          <span class="label">英伟达（NVDA）</span>
+          <span><span class="value">~$140</span> <span class="change negative">周内震荡，周五跌0.98%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">特斯拉（TSLA）</span>
+          <span><span class="value">月内新高</span> <span class="change positive">周五涨5.14%，本月累升超16%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">谷歌（GOOGL）</span>
+          <span><span class="value">—</span> <span class="change positive">周五涨1.05%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">Meta（META）</span>
+          <span><span class="value">—</span> <span class="change positive">周五涨0.75%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">微软（MSFT）</span>
+          <span><span class="value">—</span> <span class="change positive">周五涨0.43%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">苹果（AAPL）</span>
+          <span><span class="value">—</span> <span class="change negative">周五跌0.63%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">亚马逊（AMZN）</span>
+          <span><span class="value">—</span> <span class="change negative">周五跌0.57%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">宇树科技（科创板）</span>
+          <span><span class="value">首日+460.34%</span> <span class="change positive">8月19日上市</span></span>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h4>🔭 下周趋势展望</h4>
+        <div class="news-item">
+          <h3>📅 8月24-28日AI/机器人领域重点关注</h3>
+          <p>• <strong>宇树科技</strong>：科创板上市后首个完整交易周，关注股价稳定性及市场情绪</p>
+          <p>• <strong>英伟达</strong>：财报预期升温，关注数据中心收入及机器人业务进展</p>
+          <p>• <strong>OpenAI</strong>：IPO进程及与Anthropic竞争格局演变</p>
+          <p>• <strong>人形机器人</strong>：世界机器人大会持续至周末，关注新品发布及订单消息</p>
+          <p>• <strong>大模型</strong>：智谱GLM-5.3权重开源，关注社区反响及下游应用</p>
+          <p>• <strong>具身智能</strong>：京东百亿投入、眸深智能融资后动作，关注产业链投资热度</p>
+          <p>• <strong>自动驾驶</strong>：特斯拉Cybercab试乘开放，关注用户反馈及监管态度</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>每日资讯简报 · Weekly Briefing</p>
+      <p>报告周期：2026年8月17日 — 8月21日 | 数据更新时间：2026年8月22日 07:35 AM (SGT)</p>
+      <p>数据来源：Reuters, Bloomberg, CNBC, Baltic Exchange, Saxo, CoinMarketCap, Xinhua, CGTN, Al Jazeera, WSJ, The Information, TechCrunch, 36氪, 机器之心, 财联社, 东方财富, 同花顺, 龙de船人等</p>
+      <p style="margin-top: 8px;">🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
+    </footer>
+  </div>
+</body>
+</html>

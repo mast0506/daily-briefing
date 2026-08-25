@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年8月20日</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #ff6f00;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --danger: #f44336;
+      --warning: #ff9800;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
+    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
+    header .date { font-size: 0.95rem; opacity: 0.8; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+    .badge-live { background: #e8f5e9; color: #2e7d32; }
+    .badge-up { background: #e8f5e9; color: #2e7d32; }
+    .badge-down { background: #ffebee; color: #c62828; }
+    .badge-info { background: #e3f2fd; color: #1565c0; }
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 1.5rem; }
+    .news-grid { display: grid; gap: 16px; }
+    .news-item {
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .news-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .news-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+    .news-item p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+    .news-item .source { font-size: 0.8rem; color: #999; margin-top: 8px; }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: #fafafa;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+    }
+    .data-row .label { font-weight: 600; color: var(--text); }
+    .data-row .value { font-weight: 700; font-size: 1.1rem; }
+    .data-row .change { font-size: 0.85rem; margin-left: 8px; }
+    .positive { color: var(--success); }
+    .negative { color: var(--danger); }
+    .neutral { color: var(--warning); }
+    .highlight-box {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border: 1px solid #ffcc80;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .highlight-box h4 { color: var(--accent); font-size: 1rem; margin-bottom: 8px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .stat-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-card .number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+    .stat-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--secondary); text-decoration: none; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      background: #e8eaf6;
+      color: var(--primary);
+      margin-right: 6px;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 20px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📰 每日资讯简报</h1>
+      <div class="subtitle">Daily Briefing — 全球视野，深度洞察</div>
+      <div class="date">2026年8月20日 星期四 | 新加坡时间 07:00 AM</div>
+    </header>
+
+    <!-- 时政要闻 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="icon">🌍</span>
+        时政要闻
+        <span class="badge badge-live">LIVE</span>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🇨🇳🇺🇸 中美科技战蔓延至高校：复旦、上海交大成美国国家安全清单新目标</h3>
+          <p>美国将复旦大学、上海交通大学等中国顶尖高校列入国家安全清单，中国随即对欧洲高校采取反制。这一动向标志着学术研究与人才流动正被地缘政治重新定义，科技脱钩从产业层面向基础研究纵深渗透。</p>
+          <div class="source">来源：Lianhe Zaobao / ThinkChina</div>
+        </div>
+        <div class="news-item">
+          <h3>🧊 中国宣布北极新航线：能否替代中东咽喉？</h3>
+          <p>8月18日，中国正式公布穿越北极的“冰上丝绸之路”新航运路线。分析人士认为，该航线可部分绕开受也门胡塞武装威胁的曼德海峡与苏伊士运河，但受季节性冰情、俄罗斯控制及北约 Arctic Sentry 军事任务制约，短期内难以完全取代传统航道。</p>
+          <div class="source">来源：Al Jazeera / Reuters</div>
+        </div>
+        <div class="news-item">
+          <h3>🇪🇺🇨🇳 中欧贸易投资磋商进入第二轮</h3>
+          <p>中国商务部宣布，中欧贸易与投资磋商第二轮将于今年秋季在北京举行，欧盟贸易委员马罗什·谢夫乔维奇计划访华。双方目标并非结构性改变中国制造业模式，而是争取在10月欧盟设定的“实质进展”期限前达成可执行成果。</p>
+          <div class="source">来源：China Briefing / Asahi Shimbun</div>
+        </div>
+        <div class="news-item">
+          <h3>🇮🇷 伊朗战争满六个月：霍尔木兹海峡仍是全球能源命脉最大变量</h3>
+          <p>美国对伊朗实施海上封锁并威胁打击桥梁与电厂，伊朗则通过代理人持续袭击红海及海湾航运。超过10%的全球石油贸易经由曼德海峡，地缘政治风险溢价仍是能源、航运及金融市场的重要定价变量。</p>
+          <div class="source">来源：Al Jazeera / Axios / Reuters</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳 中国高层明确经济“红线”，淡化大规模刺激预期</h3>
+          <p>7月底政治局会议承认经济面临“困难和挑战”，强调用好用足既有政策、加快财政支出、推出“务实有效的增量政策”。分析人士指出，中国2026年增长目标约4.5%-5%，政策重心转向科技自立、绿色能源与消费提振，而非2008式的大规模刺激。</p>
+          <div class="source">来源：WSJ / China-US Focus / Deutsche Bank</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 航运资讯 -->
+    <section class="section" style="border-left-color: #0277bd;">
+      <div class="section-title">
+        <span class="icon">⚓</span>
+        航运资讯
+        <span class="badge badge-info">SHIPPING</span>
+      </div>
+      <div class="highlight-box">
+        <h4>📉 BDI回落至7月31日以来最低，市场进入整固</h4>
+        <p>波罗的海干散货指数（BDI）8月19日下跌<strong>63点（2.2%）</strong>至<strong>2,815点</strong>，创7月31日以来最低，结束此前两日连涨。海岬型与巴拿马型船运价同步走弱，仅超灵便型相对坚挺，显示短期现货需求边际放缓。</p>
+      </div>
+      <div class="data-row">
+        <span class="label">波罗的海干散货指数 (BDI)</span>
+        <span><span class="value">2,815</span> <span class="change negative">-63 pts / -2.2% ↓</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">海岬型船指数 (BCI)</span>
+        <span><span class="value">4,469</span> <span class="change negative">-5.2%</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">巴拿马型船指数 (BPI)</span>
+        <span><span class="value">2,262</span> <span class="change negative">-1.7%</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">超灵便型船指数 (BSI)</span>
+        <span><span class="value">1,613</span> <span class="change positive">+0.6%</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">海岬型即期日租金（182K dwt）</span>
+        <span><span class="value">$42,000</span> <span class="change neutral">远高于定期租约 $24,580</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">铁矿石 62% Fe</span>
+        <span><span class="value">$95.05/t</span> <span class="change negative">同比 -6.66%</span></span>
+      </div>
+      <div class="data-row">
+        <span class="label">WTI 原油 / Brent 原油</span>
+        <span><span class="value">$85.32 / $91.25</span> <span class="change positive">地缘溢价支撑</span></span>
+      </div>
+      <div class="news-grid" style="margin-top: 16px;">
+        <div class="news-item">
+          <h3>📊 近期走势回顾：8月初曾触及两个月高点</h3>
+          <p>8月7日BDI一度升至3,089点，为6月3日以来新高，当周累计上涨13.1%。支撑因素包括西非长航线铁矿石需求、全球干散货船队增速被LNG船与集装箱船订单挤压，以及中国稳增长政策对钢铁及矿石运输需求的托底。</p>
+          <div class="source">来源：Baltic Exchange / Hellenic Shipping News</div>
+        </div>
+        <div class="news-item">
+          <h3>🚢 新造船与二手船市场</h3>
+          <p>2026年干散货船队新增运力有限，大量船台被LNG船与集装箱船占据，短期大型散货船供给偏紧。二手船资产价格随BDI高位获得支撑，一艘82K dwt散货船在近期成交中日租金约$13,600。</p>
+          <div class="source">来源：Baird Maritime / Mysteel / The Industry Spread</div>
+        </div>
+        <div class="news-item">
+          <h3>⚠️ 地缘风险：霍尔木兹与曼德海峡双重夹击</h3>
+          <p>红海及海湾地区航运仍受也门胡塞武装与伊朗战争影响。与此同时，北极航线虽被热炒，但受气候、军事与地缘控制因素制约，更可能成为中欧贸易的“补充选项”而非苏伊士替代者。</p>
+          <div class="source">来源：Al Jazeera / gCaptain / Baird Maritime</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 全球财经 -->
+    <section class="section" style="border-left-color: #2e7d32;">
+      <div class="section-title">
+        <span class="icon">📈</span>
+        全球财经
+        <span class="badge badge-live">MARKETS</span>
+      </div>
+      <div class="highlight-box">
+        <h4>📉 美股三连阴：科技股与工业股承压</h4>
+        <p>8月18日（周二）美股全线收跌：道指跌0.2%，标普500跌0.7%，纳斯达克跌1.3%。30年期美债收益率一度升至约5.34%的近20年高位，半导体指数（PHLX）大跌约5.6%，市场对通胀、利率及中东局势的担忧升温。</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="number">53,343</div>
+          <div class="label">道琼斯 (-0.2%)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">7,692</div>
+          <div class="label">标普500 (-0.7%)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">26,290</div>
+          <div class="label">纳斯达克 (-1.3%)</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">5.34%</div>
+          <div class="label">30年期美债收益率</div>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <div class="data-row">
+          <span class="label">BTC 比特币</span>
+          <span><span class="value">$64,150</span> <span class="change neutral">$62K-$64K区间整理</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">ETH 以太坊</span>
+          <span><span class="value">$1,912</span> <span class="change neutral">守在 $1,900 心理关口</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">黄金 (Comex)</span>
+          <span><span class="value">$4,449</span> <span class="change positive">+0.55%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">黄金 (现货)</span>
+          <span><span class="value">$4,404</span> <span class="change positive">同比 +31%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">WTI 原油</span>
+          <span><span class="value">$85.32</span> <span class="change positive">+0.97%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">Brent 原油</span>
+          <span><span class="value">$91.25</span> <span class="change positive">+0.42%</span></span>
+        </div>
+        <div class="data-row">
+          <span class="label">铜 (Comex)</span>
+          <span><span class="value">664.75¢/lb</span> <span class="change positive">+1.02%</span></span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 16px;">
+        <h4>💡 市场要点</h4>
+        <p>• 8月18日美股收跌，科技股与高估值成长股对长端利率上行最为敏感</p>
+        <p>• 30年期美债收益率创近20年新高， Treasury 已表态将增加长债回购以压低借贷成本</p>
+        <p>• 油价受霍尔木兹海峡风险溢价支撑，WTI 与 Brent 维持高位，能源股逆市走强</p>
+        <p>• 黄金年内涨幅超30%，继续扮演避险与抗通胀双重角色</p>
+        <p>• 加密货币震荡整理，BTC 在 $62K-$64K、ETH 在 $1,900 附近等待美联储会议纪要指引</p>
+        <p>• 亚洲市场8月19日低开，日经225跌约2.6%，半导体板块领跌</p>
+      </div>
+    </section>
+
+    <!-- AI机器人动态 -->
+    <section class="section" style="border-left-color: #7b1fa2;">
+      <div class="section-title">
+        <span class="icon">🤖</span>
+        AI机器人动态
+        <span class="badge badge-info">ROBOTICS</span>
+      </div>
+      <div class="highlight-box">
+        <h4>🔥 英伟达×LG、三星、AGIBOT 齐推人形机器人</h4>
+        <p>英伟达与LG扩大合作，基于 Isaac GR00T 与 Jetson Thor 开发人形机器人，目标2027年Q1发布；三星成立机器人体验（RX）部门并投资约19万亿韩元；AGIBOT 发布 A3 Ultra 并构建完整生态。人形机器人赛道正从概念验证加速迈向量产竞赛。</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🤝 英伟达为 OpenAI 数据中心提供 $1,050 亿美元融资支持</h3>
+          <p>英伟达将为 OpenAI 数据中心项目提供巨额融资担保，金额相当于其约两个季度的现金流。此举显示 AI 基础设施投资仍在升级，芯片需求正转化为信用与资本层面的深度绑定。</p>
+          <div class="source">来源：TS2 Tech / AI Business</div>
+        </div>
+        <div class="news-item">
+          <h3>🧠 Google DeepMind 发布 Gemini Robotics 2</h3>
+          <p>新一代 Gemini Robotics 2 强调“真正自适应机器人”的智能层，具备全身控制、高级灵巧操作与多机器人协作能力。这标志着从纯语言/视觉模型向具身智能（Embodied AI）的进一步跃迁。</p>
+          <div class="source">来源：IEEE Spectrum / Google DeepMind</div>
+        </div>
+        <div class="news-item">
+          <h3>🇨🇳 2026世界机器人大会北京开幕</h3>
+          <p>8月19日，2026世界机器人大会在北京开幕，逾300家企业、2,000余件展品参展，宇树科技等中国企业展示机器人格斗表演。机器人产业已成为中美科技竞争的新前沿，中国厂商在人形机器人成本与场景落地方面快速追赶。</p>
+          <div class="source">来源：AFP / Asharq Al-Awsat</div>
+        </div>
+        <div class="news-item">
+          <h3>📈 人形机器人市场：2025年$32亿 → 2035年$1,228亿</h3>
+          <p>DataM Intelligence 预测，全球人形机器人市场2025年约32.2亿美元，2035年有望达1,228.3亿美元，2026-2035年复合增长率（CAGR）约43.83%。执行器、传感器、电池及AI模型被视为核心增长驱动力。</p>
+          <div class="source">来源：DataM Intelligence / Ohsem.me</div>
+        </div>
+        <div class="news-item">
+          <h3>🏭 工业落地：人形机器人的“第一份工作”在哪？</h3>
+          <p> shipyard 焊接、仓储搬运与汽车制造被视为人形机器人最早规模化落地的场景。ABB、FANUC、Kawasaki 等工业巨头正与英伟达合作，将 Omniverse 与 Isaac 平台整合进机器人编程与仿真工作流。</p>
+          <div class="source">来源：IEEE Spectrum / NVIDIA Blog</div>
+        </div>
+        <div class="news-item">
+          <h3>💼 IBM × OpenAI 加速企业级 AI 部署</h3>
+          <p>IBM 与 OpenAI 宣布合作，推动生成式 AI 在企业场景中的规模化应用。与此同时，英伟达宣布向 SB Energy 投资15亿美元，保障 AI 数据中心能源供应，进一步打通算力—电力—资本的闭环。</p>
+          <div class="source">来源：AI Business / Asharq Al-Awsat</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 市场日历 -->
+    <section class="section" style="border-left-color: #f57c00;">
+      <div class="section-title">
+        <span class="icon">📅</span>
+        今日关注
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <h3>🎯 8月20日重点事件</h3>
+          <p><span class="tag">数据</span> 美联储7月会议纪要（8月19日晚间公布）</p>
+          <p><span class="tag">地缘</span> 霍尔木兹海峡与红海航运安全动态</p>
+          <p><span class="tag">科技</span> 英伟达、LG、三星人形机器人进展</p>
+          <p><span class="tag">事件</span> 2026世界机器人大会（北京，持续至周末）</p>
+          <p><span class="tag">宏观</span> 中国政策增量预期与中欧贸易磋商安排</p>
+          <p><span class="tag">大宗</span> 油价、金价对美债收益率与美元走势的反应</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>每日资讯简报 · Daily Briefing</p>
+      <p>数据更新时间：2026年8月20日 07:00 AM (SGT)</p>
+      <p>数据来源：Reuters, Bloomberg, CNBC, The Block, Baltic Exchange, Saxo, CoinMarketCap, Xinhua, CGTN, Al Jazeera, Zacks, WSJ等</p>
+      <p style="margin-top: 8px;">🔗 <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a></p>
+    </footer>
+  </div>
+</body>
+</html>
