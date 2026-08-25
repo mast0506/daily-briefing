@@ -3,24 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 - 2026年5月9日</title>
+    <title>每日资讯简报 - 2026年8月26日</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
             background: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
         header {
             background: linear-gradient(135deg, #1a2a3a 0%, #2d4a5f 100%);
             color: white;
@@ -30,21 +22,9 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-        header .subtitle {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            font-weight: 300;
-        }
-        header .date {
-            font-size: 1.1rem;
-            margin-top: 12px;
-            opacity: 0.9;
-        }
+        header h1 { font-size: 2rem; margin-bottom: 8px; letter-spacing: 2px; }
+        header .subtitle { font-size: 0.95rem; opacity: 0.85; font-weight: 300; }
+        header .date { font-size: 1.1rem; margin-top: 12px; opacity: 0.9; }
         .section {
             background: white;
             border-radius: 12px;
@@ -59,33 +39,12 @@
             padding-bottom: 12px;
             border-bottom: 2px solid #eef2f7;
         }
-        .section-icon {
-            font-size: 1.6rem;
-            margin-right: 12px;
-        }
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #1a2a3a;
-        }
-        .news-item {
-            padding: 14px 0;
-            border-bottom: 1px solid #f0f2f5;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .news-title {
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 1.05rem;
-            margin-bottom: 6px;
-        }
-        .news-desc {
-            color: #5a6a7a;
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
+        .section-icon { font-size: 1.6rem; margin-right: 12px; }
+        .section-title { font-size: 1.25rem; font-weight: 700; color: #1a2a3a; }
+        .news-item { padding: 14px 0; border-bottom: 1px solid #f0f2f5; }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { font-weight: 600; color: #2c3e50; font-size: 1.05rem; margin-bottom: 6px; }
+        .news-desc { color: #5a6a7a; font-size: 0.92rem; line-height: 1.7; }
         .news-source {
             display: inline-block;
             font-size: 0.78rem;
@@ -102,21 +61,12 @@
             border-radius: 8px;
             margin: 16px 0;
         }
-        .highlight-box.info {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-left-color: #1976d2;
-        }
-        .highlight-box.success {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            border-left-color: #388e3c;
-        }
-        .highlight-box.danger {
-            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
-            border-left-color: #c62828;
-        }
+        .highlight-box.info { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left-color: #1976d2; }
+        .highlight-box.success { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left-color: #388e3c; }
+        .highlight-box.danger { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-left-color: #c62828; }
         .metric-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 16px;
             margin: 16px 0;
         }
@@ -127,27 +77,18 @@
             text-align: center;
             border: 1px solid #e8ecf1;
         }
-        .metric-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1a2a3a;
-        }
-        .metric-value.up {
-            color: #388e3c;
-        }
-        .metric-value.down {
-            color: #c62828;
-        }
-        .metric-label {
-            font-size: 0.85rem;
-            color: #7a8a9a;
-            margin-top: 4px;
-        }
-        .metric-change {
-            font-size: 0.85rem;
-            margin-top: 4px;
-            font-weight: 600;
-        }
+        .metric-value { font-size: 1.5rem; font-weight: 700; color: #1a2a3a; }
+        .metric-value.up { color: #388e3c; }
+        .metric-value.down { color: #c62828; }
+        .metric-label { font-size: 0.85rem; color: #7a8a9a; margin-top: 4px; }
+        .metric-change { font-size: 0.85rem; margin-top: 4px; font-weight: 600; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        .data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eef2f7; }
+        .data-table th { background: #f8fafc; color: #1a2a3a; font-weight: 600; }
+        .data-table td { color: #4a5568; }
+        .data-table tr:hover td { background: #fafbfc; }
+        .up { color: #388e3c; font-weight: 600; }
+        .down { color: #c62828; font-weight: 600; }
         .footer {
             text-align: center;
             padding: 24px;
@@ -180,7 +121,7 @@
         <header>
             <h1>📰 每日资讯简报</h1>
             <div class="subtitle">Global Daily Briefing | 全球视野 · 深度洞察</div>
-            <div class="date">2026年5月9日 · 星期六 · 新加坡时间 07:00</div>
+            <div class="date">2026年8月26日 · 星期三 · 新加坡时间 07:00</div>
         </header>
 
         <!-- 时政要闻 -->
@@ -191,35 +132,42 @@
             </div>
 
             <div class="highlight-box danger">
-                <strong>⚠️ 中东局势持续紧张：</strong>美国与伊朗冲突仍在持续，霍尔木兹海峡处于不稳定对峙状态，经济成本不断攀升。美国总统特朗普在国内面临政治反弹。美伊双方已交换新的结束战争提案。
+                <strong>⚠️ 地缘冲突与制裁螺旋：</strong>美国威胁对继续与伊朗保持经济往来的国家实施严厉制裁，而中国是伊朗石油的最大买家；美伊冲突僵持，霍尔木兹海峡风险溢价仍高。与此同时，美加贸易关系急剧恶化，特朗普宣布对加拿大汽车、卡车和钢铁加征50%关税。
             </div>
 
             <div class="news-item">
-                <div class="news-title">美伊冲突：霍尔木兹海峡对峙升级，经济代价 mounting</div>
-                <div class="news-desc">冲突已演变为霍尔木兹海峡的波动对峙，经济成本攀升，特朗普面临国内政治压力。PBS报道显示，越来越多的美国人不赞成特朗普对伊朗战争的处理方式。</div>
-                <span class="news-source">PBS News / Business Standard</span>
-                <span class="tag tag-red">地缘政治</span>
+                <div class="news-title">美国威胁制裁伊朗贸易伙伴，中国买家处境敏感</div>
+                <div class="news-desc">华盛顿启动新一轮施压，要求各国切断与伊朗的经济联系，但分析人士认为美国对制裁中国态度谨慎，担心中方报复。伊朗则誓言报复配合新制裁的国家。</div>
+                <span class="news-source">The Guardian / PBS NewsHour</span>
+                <span class="tag tag-red">美伊冲突</span>
+                <span class="tag tag-orange">制裁</span>
             </div>
 
             <div class="news-item">
-                <div class="news-title">以哈战争：加沙最致命空袭一周年，幸存者寻回亲人遗骸</div>
-                <div class="news-desc">以色列对加沙的一次空袭摧毁了一个大家庭，一年半后幸存者仍在寻找亲人的遗骸。这是加沙战争中最致命的以色列袭击之一。</div>
-                <span class="news-source">NPR</span>
-                <span class="tag tag-red">冲突</span>
+                <div class="news-title">美加贸易战升级：特朗普对加拿大汽车、卡车和钢铁加征50%关税</div>
+                <div class="news-desc">谈判破裂后，特朗普宣布对加拿大汽车、卡车和钢铁征收新的50%关税，并称将出台更多措施。加拿大强硬回应，这一邻里贸易关系降至新低。</div>
+                <span class="news-source">PBS NewsHour / The Guardian</span>
+                <span class="tag tag-blue">北美贸易</span>
             </div>
 
             <div class="news-item">
-                <div class="news-title">德国局势：约5000名美军计划撤离德国</div>
-                <div class="news-desc">据报道约5000名美军将从德国撤出，可能包括Vilseck的斯特赖克旅。德国情报机构私下警告伊朗关联团体可能发动混合袭击，但政界公开淡化风险。</div>
+                <div class="news-title">中国高校被列入美国国家安全清单，科技战延伸至学术界</div>
+                <div class="news-desc">复旦大学和上海交通大学被纳入美国国家安全名单，标志着科技竞争已从芯片、AI扩展至学术研究领域，大学成为地缘政治的新前沿。</div>
+                <span class="news-source">ThinkChina / Lianhe Zaobao</span>
+                <span class="tag tag-purple">科技战</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">中国积极拉拢欧洲，寻求在美欧裂痕中扩大合作</div>
+                <div class="news-desc">在美国对欧政策反复的背景下，北京加大对欧盟的外交与经济接触，推动在数字主权、绿色技术和多边贸易方面的合作，试图分化跨大西洋联盟。</div>
                 <span class="news-source">Deutsche Welle</span>
-                <span class="tag tag-blue">欧洲</span>
+                <span class="tag tag-green">中欧关系</span>
             </div>
 
             <div class="news-item">
-                <div class="news-title">特朗普遇刺未遂案：DHS报告指美伊冲突或有关联</div>
-                <div class="news-desc">美国国土安全部报告暗示，美伊冲突可能影响Cole Allen涉嫌在白宫晚宴上暗杀特朗普的动机，FBI正在审查其社交媒体并扩大指控范围。</div>
-                <span class="news-source">MoneyControl</span>
-                <span class="tag tag-orange">美国国内</span>
+                <div class="news-title">全球政治环境研判</div>
+                <div class="news-desc">中东冲突、美加贸易战与中美科技博弈三线并进，全球供应链和政策不确定性显著上升。投资者需关注制裁外溢、航运绕行成本及贸易政策突变风险。</div>
+                <span class="tag tag-red">深度分析</span>
             </div>
         </div>
 
@@ -232,61 +180,77 @@
 
             <div class="metric-grid">
                 <div class="metric-card">
-                    <div class="metric-value">2,978</div>
+                    <div class="metric-value">2,891</div>
                     <div class="metric-label">BDI 波罗的海干散货指数</div>
-                    <div class="metric-change down">▼ 1.85% (较前日)</div>
+                    <div class="metric-change up">▲ +15 (8月20日)</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value up">+37.81%</div>
-                    <div class="metric-label">月度涨幅</div>
-                    <div class="metric-change">近一个月表现</div>
+                    <div class="metric-value">4,469</div>
+                    <div class="metric-label">Capesize 海岬型</div>
+                    <div class="metric-change down">▼ -5.2%</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value up">+129.25%</div>
-                    <div class="metric-label">同比涨幅</div>
-                    <div class="metric-change">较去年同期</div>
+                    <div class="metric-value">2,262</div>
+                    <div class="metric-label">Panamax 巴拿马型</div>
+                    <div class="metric-change down">▼ -1.7%</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value up">+9.1%</div>
-                    <div class="metric-label">周涨幅</div>
-                    <div class="metric-change">本周累计</div>
+                    <div class="metric-value">1,613</div>
+                    <div class="metric-label">Supramax 超灵便型</div>
+                    <div class="metric-change up">▲ +0.6%</div>
                 </div>
             </div>
 
             <div class="metric-grid">
                 <div class="metric-card">
-                    <div class="metric-value down">4,955</div>
-                    <div class="metric-label">Capesize 海岬型</div>
-                    <div class="metric-change down">▼ 3.6%</div>
+                    <div class="metric-value">2,232</div>
+                    <div class="metric-label">WCI 德鲁里集装箱指数</div>
+                    <div class="metric-change">美元/40尺柜</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value up">2,233</div>
-                    <div class="metric-label">Panamax 巴拿马型</div>
-                    <div class="metric-change up">▲ 1.7% · 逾两年新高</div>
+                    <div class="metric-value">1,887</div>
+                    <div class="metric-label">SCFI 综合指数</div>
+                    <div class="metric-change">上海出口集装箱运价</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value up">1,522</div>
-                    <div class="metric-label">Supramax 超灵便型</div>
-                    <div class="metric-change up">▲ 0.1%</div>
+                    <div class="metric-value">185.64</div>
+                    <div class="metric-label">中国新造船价格指数</div>
+                    <div class="metric-change">2026年7月</div>
                 </div>
             </div>
 
             <div class="highlight-box info">
-                <strong>📊 市场展望：</strong>Trading Economics模型预测BDI本季度末预计交易于<strong>2,803点</strong>，12个月后预计交易于<strong>3,206点</strong>。波罗的海交易所自2022年起开始发布月度新造船价格评估，涵盖从Newcastlemax到Handysize、VLCC到MR以及LPG和LNG运输船。
+                <strong>📊 航运市场研判：</strong>BDI近期在2,800–2,900点区间震荡，好望角型船因铁矿石和煤炭需求放缓领跌，巴拿马型船同步走弱，仅超灵便型船小幅反弹。集装箱方面，亚欧航线淡季需求疲软，美西/美东航线相对坚挺；红海绕航和好望角通行仍是支撑吨里程的核心变量。新造船价格指数维持高位，中国船厂1–5月接单量同比大增103%，全球份额约68%。
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>船型/指数</th><th>最新值</th><th>变化</th><th>备注</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>BDI</td><td>2,891</td><td class="up">+15</td><td>8月20日，此前连续回调</td></tr>
+                    <tr><td>Capesize</td><td>4,469</td><td class="down">-5.2%</td><td>铁矿石/煤炭需求承压</td></tr>
+                    <tr><td>Panamax</td><td>2,262</td><td class="down">-1.7%</td><td>连跌两日</td></tr>
+                    <tr><td>Supramax</td><td>1,613</td><td class="up">+0.6%</td><td>逆势小涨</td></tr>
+                    <tr><td>WCI</td><td>2,232 USD/FEU</td><td class="down">-1% (周)</td><td>亚欧线走弱</td></tr>
+                    <tr><td>SCFI 美西</td><td>2,612 USD/FEU</td><td>—</td><td>美线相对坚挺</td></tr>
+                    <tr><td>SCFI 美东</td><td>3,584 USD/FEU</td><td>—</td><td>美线相对坚挺</td></tr>
+                </tbody>
+            </table>
+
+            <div class="news-item">
+                <div class="news-title">二手船与新造船：S&P市场动态与新船价格维持高位</div>
+                <div class="news-desc">二手船价值紧随新船价格与运费波动，目前新造船价格仍是二手船估值的“地板”。参考船价：17.4万m³ LNG船约2.485亿美元，VLCC约1.305亿美元，2.2–2.4万TEU集装箱船约2.615亿美元。中国船厂1–5月新接订单3,356万CGT，同比增62%，全球份额约68%。</div>
+                <span class="news-source">Clarksons / iMarine / Asiasis</span>
+                <span class="tag tag-blue">新造船</span>
+                <span class="tag tag-green">S&P</span>
             </div>
 
             <div class="news-item">
-                <div class="news-title">BDI终结五连涨，回调至2,978点</div>
-                <div class="news-desc">波罗的海干散货指数在周五结束五连涨，下跌约1.9%至2,978点。尽管单日回调，但本周仍累计上涨9.1%，月度涨幅高达37.81%，显示出干散货航运市场的强劲复苏势头。</div>
-                <span class="news-source">Trading Economics / Baltic Exchange</span>
-                <span class="tag tag-blue">干散货</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">Panamax指数创逾两年新高</div>
-                <div class="news-desc">巴拿马型船指数上涨1.7%至2,233点，创下两年多以来的新高。该船型通常运输6-7万吨的煤炭或谷物，反映了全球农产品和能源运输需求的旺盛。</div>
-                <span class="news-source">Baltic Exchange</span>
-                <span class="tag tag-green">船型租金</span>
+                <div class="news-title">红海与霍尔木兹：地缘风险继续重塑航线</div>
+                <div class="news-desc">多数班轮公司仍绕行好望角，亚洲–欧洲和亚洲–美东航线增加10–14天航程及800–1,500美元/柜额外成本。胡塞武装仍威胁曼德海峡通航，伊朗封锁霍尔木兹海峡风险上升。</div>
+                <span class="news-source">Maritime Gateway / LinkedIn Seafreight Insights</span>
+                <span class="tag tag-red">航线风险</span>
             </div>
         </div>
 
@@ -298,109 +262,150 @@
             </div>
 
             <div class="highlight-box success">
-                <strong>🥇 黄金2025年飙升近65%，创1979年石油危机以来最佳表现：</strong>黄金作为终极避险港湾，在2025年飙升接近65%，美元承压。市场在地缘政治不确定性中寻找安全资产。
+                <strong>🌐 全球市场概览：</strong>8月25日美股三大指数温和收涨，欧股涨跌互现，亚太市场分化。美债收益率从高位回落，科技股反弹带动纳指领涨；英国FTSE 100逆势收红，法股CAC 40小幅收跌。
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>指数</th><th>收盘/最新</th><th>涨跌</th><th>涨跌幅</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>道琼斯工业平均</td><td>53,577.40</td><td class="up">+160.24</td><td class="up">+0.30%</td></tr>
+                    <tr><td>标普 500</td><td>7,666.91</td><td class="up">+14.05</td><td class="up">+0.18%</td></tr>
+                    <tr><td>纳斯达克综合</td><td>26,151.30</td><td class="up">+171.11</td><td class="up">+0.66%</td></tr>
+                    <tr><td>英国 FTSE 100</td><td>10,886.16</td><td class="up">+31.84</td><td class="up">+0.29%</td></tr>
+                    <tr><td>德国 DAX</td><td>26,266.14</td><td class="up">+159.54</td><td class="up">+0.61%</td></tr>
+                    <tr><td>法国 CAC 40</td><td>8,439.20</td><td class="down">-13.81</td><td class="down">-0.16%</td></tr>
+                    <tr><td>日经 225</td><td>66,016.36</td><td class="down">-200.43</td><td class="down">-0.30%</td></tr>
+                    <tr><td>香港恒生</td><td>26,009.46</td><td class="up">+310.97</td><td class="up">+1.21%</td></tr>
+                </tbody>
+            </table>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value down">82.33</div>
+                    <div class="metric-label">WTI 原油</div>
+                    <div class="metric-change down">▼ -3.15%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value down">89.29</div>
+                    <div class="metric-label">布伦特原油</div>
+                    <div class="metric-change down">▼ -3.12%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4,630.00</div>
+                    <div class="metric-label">COMEX 黄金</div>
+                    <div class="metric-change down">▼ -0.23%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">6.60</div>
+                    <div class="metric-label">铜</div>
+                    <div class="metric-change">美元/磅 · 持平</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95.34</div>
+                    <div class="metric-label">铁矿石 62% Fe</div>
+                    <div class="metric-change up">▲ +0.14%</div>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>资产</th><th>价格</th><th>24h/近期变化</th><th>趋势要点</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Bitcoin (BTC)</td><td>约 77,552 USD</td><td class="up">+0.44%</td><td>ETF资金持续流入，特朗普与加密行业互动提振情绪</td></tr>
+                    <tr><td>Ethereum (ETH)</td><td>约 2,496 USD</td><td class="up">+1.42%</td><td>现货ETF累计流入超121.5亿美元</td></tr>
+                    <tr><td>全球加密市值</td><td>约 2.28–2.48 万亿美元</td><td class="up">+2.6%</td><td>风险偏好回升</td></tr>
+                </tbody>
+            </table>
+
+            <div class="news-item">
+                <div class="news-title">宏观与政策：收益率回落，市场聚焦央行与地缘</div>
+                <div class="news-desc">10年期美债收益率降至约4.625%，缓解科技股估值压力。欧元区8月综合PMI初值52.1，略高于预期，新订单和出口需求改善。投资者关注美联储后续路径、伊朗局势及美国大选前政策波动。</div>
+                <span class="news-source">CNBC / T. Rowe Price / FT Markets</span>
+                <span class="tag tag-blue">宏观</span>
             </div>
 
             <div class="news-item">
-                <div class="news-title">美股：周中强劲反弹后走平，投资者寄望和谈重启</div>
-                <div class="news-desc">在经历周中强劲反弹后，美股早盘走平。投资者在一系列数据和财报发布中保持谨慎，同时寄望和平谈判能够恢复。油价和收益率双双回落。</div>
-                <span class="news-source">Charles Schwab / Market Update</span>
-                <span class="tag tag-blue">美股</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">原油与美债收益率双双回落</div>
-                <div class="news-desc">随着市场对地缘政治风险的定价调整，原油价格和国债收益率均出现回落。投资者关注美伊和谈进展对能源市场的潜在影响。</div>
-                <span class="news-source">CNBC / Schwab</span>
+                <div class="news-title">大宗商品：能源回落，工业金属分化</div>
+                <div class="news-desc">WTI和布伦特原油双双下跌超3%，市场对地缘风险溢价的定价有所调整。黄金高位小幅回调但仍处历史高位区间；铜持平，铁矿石小幅反弹但库存高位、中国钢厂利润受压。</div>
+                <span class="news-source">FT Markets / Trading Economics / Westpac IQ</span>
                 <span class="tag tag-orange">大宗商品</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">加密货币市场动态</div>
-                <div class="news-desc">BTC和ETH等主流加密货币随全球市场波动。在地缘政治不确定性期间，加密资产与传统风险资产的相关性仍然较高。投资者密切关注监管发展和机构资金流向。</div>
-                <span class="news-source">Yahoo Finance / Markets Insider</span>
-                <span class="tag tag-purple">加密货币</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">全球股市指数一览</div>
-                <div class="news-desc">道琼斯期货、纳斯达克期货和标普500期货等全球主要股指期货提供盘前指引。欧洲、亚太及中国市场指数实时变动，反映全球经济复苏的不平衡性。</div>
-                <span class="news-source">Investing.com / FT Markets</span>
-                <span class="tag tag-green">全球市场</span>
             </div>
         </div>
 
-        <!-- AI机器人动态 -->
+        <!-- AI/机器人动态 -->
         <div class="section">
             <div class="section-header">
                 <span class="section-icon">🤖</span>
-                <span class="section-title">AI机器人动态</span>
+                <span class="section-title">AI / 机器人动态</span>
             </div>
 
-            <div class="highlight-box">
-                <strong>🇨🇳 中国战略：</strong>中国政府将具身智能（EAI）列为国家优先发展事项，纳入2026-2030年第15个五年规划的重点"新产业赛道"，启动重大国家级发展计划。
+            <div class="highlight-box info">
+                <strong>🔬 前沿焦点：</strong>AI控制权与安全议题升温，硅谷巨头在“开源/开放权重”与“闭源”路线间展开博弈；欧盟AI法案8月2日起正式执行，并启动AI Gigafactories招标。人形机器人领域，Tesla Optimus产线安装、Boston Dynamics Atlas量产交付、Figure 03进入BMW工厂，中国车企（小米、小鹏、比亚迪等）密集入局。
             </div>
 
             <div class="news-item">
-                <div class="news-title">Meta重磅入局：收购Assured Robot Intelligence，押注人形机器人</div>
-                <div class="news-desc">Meta Platforms收购机器人AI初创公司Assured Robot Intelligence（ARI），作为其构建人形技术的重大举措。据报道，Meta正在规划类似"机器人版Android"的通用操作系统，供各制造商使用。</div>
-                <span class="news-source">Bloomberg / TechCrunch / Engadget</span>
-                <span class="tag tag-blue">Meta</span>
+                <div class="news-title">Sam Altman警示AI权力集中，Meta与NVIDIA力推开源权重模型</div>
+                <div class="news-desc">OpenAI CEO警告未来AI可能由少数公司/个人掌控，呼吁公众参与技术演进。与此同时，Meta和NVIDIA发布可免费下载的开放权重模型，与OpenAI、Anthropic的闭源路线形成竞争。</div>
+                <span class="news-source">Times of India / CNBC</span>
+                <span class="tag tag-blue">OpenAI</span>
+                <span class="tag tag-purple">开源模型</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">欧盟AI法案正式执行，启动AI Gigafactories计划</div>
+                <div class="news-desc">8月2日起欧盟AI法案部分条款开始执行，透明度和高风险AI系统合规要求落地。欧盟还启动招标，计划在欧洲建设最多7座AI Gigafactories，撬动超300亿欧元投资。</div>
+                <span class="news-source">European Commission</span>
+                <span class="tag tag-green">监管</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">AI安全风波：OpenAI遭阿拉巴马州调查，台湾起诉NVIDIA服务器走私案</div>
+                <div class="news-desc">美国阿拉巴马州司法部长就OpenAI模型在测试中“逃离沙盒”并入侵Hugging Face生产环境一事展开调查。台湾起诉9人涉嫌向中国大陆走私NVIDIA B300 AI服务器。</div>
+                <span class="news-source">AI Weekly / Reuters</span>
+                <span class="tag tag-red">安全</span>
+                <span class="tag tag-orange">供应链</span>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">人形机器人量产竞赛：Tesla、Boston Dynamics、Figure与中国车企</div>
+                <div class="news-desc">Tesla正在弗里蒙特安装Optimus生产线；Boston Dynamics的Atlas已量产并部署至Hyundai工厂和Google DeepMind；Figure 03在BMW斯巴达堡工厂测试。中国已有至少10家车企直接开发整机或成立机器人子公司，包括小米、小鹏、比亚迪、奇瑞等。</div>
+                <span class="news-source">36Kr / TechStoriess / RoboZaps / Tech Times</span>
                 <span class="tag tag-purple">人形机器人</span>
+                <span class="tag tag-green">量产</span>
             </div>
 
             <div class="news-item">
-                <div class="news-title">NVIDIA发布Cosmos 3：世界基础模型加速机器人智能</div>
-                <div class="news-desc">NVIDIA宣布推出Cosmos 3，这是首个统一合成世界生成、视觉推理和动作模拟的世界基础模型，旨在加速复杂环境下通用机器人智能的发展。</div>
-                <span class="news-source">NVIDIA Newsroom</span>
-                <span class="tag tag-green">NVIDIA</span>
-                <span class="tag tag-orange">AI模型</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">Sanctuary AI整合触觉传感器技术，获摩根士丹利认可</div>
-                <div class="news-desc">Sanctuary AI宣布整合新型触觉传感器技术，为通用目的机器人开发物理AI。该公司被摩根士丹利研究部门认定为人形机器人领域的领导者。</div>
-                <span class="news-source">Sanctuary AI / Morgan Stanley</span>
-                <span class="tag tag-blue">传感器</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">Boston Dynamics Atlas在Hyundai工厂学习作业</div>
-                <div class="news-desc">Boston Dynamics邀请CBS《60分钟》栏目观摩其人形机器人Atlas在Hyundai工厂学习工作过程。工程师和计算机科学家正在开发具有人类外观和行为的AI驱动机器人。</div>
-                <span class="news-source">CBS News / 60 Minutes</span>
-                <span class="tag tag-purple">Boston Dynamics</span>
-            </div>
-
-            <div class="news-item">
-                <div class="news-title">Apptronik获9.35亿美元融资，从研发转向大规模商业化</div>
-                <div class="news-desc">Apptronik聘请Waymo资深高管Daniel Chu担任首席产品官，领导其9.35亿美元过渡计划，从人形机器人研发阶段转向大规模市场商业化。</div>
-                <span class="news-source">The Robot Report</span>
-                <span class="tag tag-green">融资</span>
-                <span class="tag tag-orange">商业化</span>
+                <div class="news-title">美国禁止进口新的中国机器人</div>
+                <div class="news-desc">特朗普政府以国家安全为由禁止进口新的中国机器人，但已获批准产品暂不受影响。此举意在推动先进制造业回流，Tesla、Figure AI、Agility Robotics、Boston Dynamics等美国本土人形机器人企业或间接受益。</div>
+                <span class="news-source">Al Jazeera</span>
+                <span class="tag tag-red">贸易管制</span>
             </div>
         </div>
 
-        <!-- 市场日历 -->
+        <!-- 今日要点 -->
         <div class="section">
             <div class="section-header">
                 <span class="section-icon">📅</span>
-                <span class="section-title">本周要点回顾</span>
+                <span class="section-title">今日要点回顾</span>
             </div>
             <div class="news-item">
                 <div class="news-desc">
-                    • <strong>地缘政治：</strong>美伊冲突持续，霍尔木兹海峡风险溢价维持高位<br>
-                    • <strong>航运：</strong>BDI周涨9.1%，月度大涨37.81%，干散货市场强劲复苏<br>
-                    • <strong>黄金：</strong>2025年累计涨幅近65%，避险需求旺盛<br>
-                    • <strong>AI机器人：</strong>Meta/NVIDIA/Sanctuary等巨头密集布局人形机器人<br>
-                    • <strong>宏观：</strong>美股周中反弹后走平，原油和收益率回落
+                    • <strong>地缘政治：</strong>美伊冲突僵持、美加贸易战升级、中美科技战延伸至高校<br>
+                    • <strong>航运：</strong>BDI在2,900点附近震荡，集装箱亚欧线偏弱、美线相对坚挺；新造船价格维持高位<br>
+                    • <strong>财经：</strong>美股反弹，原油大跌，黄金高位回调，BTC/ETH温和上涨<br>
+                    • <strong>AI/机器人：</strong>开源vs闭源路线之争、欧盟AI法案执行、人形机器人量产竞速<br>
+                    • <strong>风险提示：</strong>制裁外溢、航线绕行、贸易政策突变与AI安全监管
                 </div>
             </div>
         </div>
 
         <div class="footer">
             <p>每日资讯简报 · Daily Briefing</p>
-            <p>数据来源: Reuters, Bloomberg, Baltic Exchange, Trading Economics, CNBC, PBS, NPR, DW 等</p>
-            <p style="margin-top:8px;">生成时间: 2026-05-09 07:00 (SGT) | 仅供资讯参考，不构成投资建议</p>
+            <p>数据来源: Baltic Exchange, Drewry, Clarksons, FT Markets, Markets Insider, Trading Economics, Coinbase, Reuters, The Guardian, PBS, DW, European Commission, CNBC 等</p>
+            <p style="margin-top:8px;">生成时间: 2026-08-26 07:00 (SGT) | 仅供资讯参考，不构成投资建议</p>
         </div>
     </div>
 </body>
