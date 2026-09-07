@@ -1,919 +1,352 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Briefing - September 7, 2026</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: #e0e0e0;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 30px;
-        }
-        header h1 {
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        header .subtitle {
-            color: #a0a0c0;
-            font-size: 1rem;
-        }
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .nav-tab {
-            padding: 12px 24px;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        .nav-tab:hover, .nav-tab.active {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-color: transparent;
-            transform: translateY(-2px);
-        }
-        .content {
-            display: none;
-        }
-        .content.active {
-            display: block;
-        }
-        .section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section h3 {
-            font-size: 1.2rem;
-            margin: 20px 0 15px;
-            color: #a0a0c0;
-            border-left: 3px solid #667eea;
-            padding-left: 10px;
-        }
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-3px);
-        }
-        .card h4 {
-            font-size: 0.85rem;
-            color: #a0a0c0;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .card .value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #fff;
-            margin: 10px 0;
-        }
-        .card .change {
-            font-size: 0.9rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            display: inline-block;
-        }
-        .positive { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
-        .negative { background: rgba(248, 113, 113, 0.2); color: #f87171; }
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 20px 0;
-            -webkit-overflow-scrolling: touch;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        th {
-            background: rgba(102, 126, 234, 0.2);
-            color: #fff;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        tr:hover {
-            background: rgba(255,255,255,0.03);
-        }
-        .news-list {
-            list-style: none;
-        }
-        .news-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .news-list li:last-child {
-            border-bottom: none;
-        }
-        .news-list strong {
-            color: #fff;
-            font-size: 1rem;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .news-meta {
-            color: #888;
-            font-size: 0.8rem;
-            margin-bottom: 8px;
-        }
-        .news-source {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.3);
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-right: 8px;
-        }
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin: 20px 0;
-        }
-        .highlight-box {
-            background: rgba(102, 126, 234, 0.1);
-            border-left: 4px solid #667eea;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .highlight-box h4 {
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-        .analysis-text {
-            color: #c0c0c0;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-        .analysis-text p {
-            margin-bottom: 12px;
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 50px;
-        }
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.5rem; }
-            .cards { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-            .nav-tabs { gap: 5px; }
-            .nav-tab { padding: 8px 16px; font-size: 0.85rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年9月8日</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #ff6f00;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --danger: #f44336;
+      --warning: #ff9800;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
+    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
+    header .date { font-size: 0.95rem; opacity: 0.8; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+    .badge-live { background: #e8f5e9; color: #2e7d32; }
+    .badge-up { background: #e8f5e9; color: #2e7d32; }
+    .badge-down { background: #ffebee; color: #c62828; }
+    .badge-info { background: #e3f2fd; color: #1565c0; }
+    .badge-warn { background: #fff3e0; color: #e65100; }
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon { font-size: 1.5rem; }
+    .index-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+    .index-card {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .index-card .name { font-size: 0.85rem; color: var(--text-light); margin-bottom: 6px; }
+    .index-card .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+    .index-card .change { font-size: 0.85rem; font-weight: 600; margin-top: 4px; }
+    .up { color: var(--success); }
+    .down { color: var(--danger); }
+    .news-grid { display: grid; gap: 16px; }
+    .news-item {
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .news-item h3 { font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; }
+    .news-item p { font-size: 0.9rem; color: var(--text-light); }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.9rem; }
+    th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: #fafafa; }
+    .highlight-box {
+      background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 18px;
+      border-left: 4px solid var(--accent);
+    }
+    .highlight-box h4 { color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
+    .highlight-box p, .highlight-box li { font-size: 0.9rem; color: var(--text); }
+    .highlight-box ul { margin-left: 20px; margin-top: 6px; }
+    .warn-box {
+      background: #fff8e1;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      border-left: 4px solid var(--warning);
+      font-size: 0.9rem;
+    }
+    .tag {
+      display: inline-block; background: var(--primary); color: #fff;
+      font-size: 0.72rem; padding: 2px 10px; border-radius: 12px; margin-right: 6px;
+    }
+    .tag-accent { background: var(--accent); }
+    footer { text-align: center; padding: 24px; color: var(--text-light); font-size: 0.85rem; }
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.6rem; }
+      .section { padding: 18px; }
+      table { font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🦞 Daily Briefing</h1>
-            <div class="subtitle">September 7, 2026 | Monday | Asia/Shanghai</div>
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #888;">
-                Generated by Kimi Claw | Data cutoff: 2026-09-07 07:28 CST
-            </div>
-        </header>
+<div class="container">
 
-        <div class="nav-tabs">
-            <div class="nav-tab active" onclick="showTab('shipping')">🚢 Shipping</div>
-            <div class="nav-tab" onclick="showTab('finance')">💰 Finance</div>
-            <div class="nav-tab" onclick="showTab('politics')">🌍 Politics</div>
-            <div class="nav-tab" onclick="showTab('ai')">🤖 AI & Robotics</div>
-        </div>
+<header>
+  <h1>📋 每日资讯简报</h1>
+  <div class="subtitle">航运 · 财经 · 时政 · AI与机器人 — 全维度深度分析</div>
+  <div class="date">2026年9月8日 星期二 · 新加坡时间 07:30 发布</div>
+</header>
 
-        <!-- Shipping Section -->
-        <div id="shipping" class="content active">
-            <div class="section">
-                <h2>🚢 Shipping Market Overview</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h4>ClarkSea Index</h4>
-                        <div class="value">$45,749</div>
-                        <div class="change positive">↑ 5% WoW</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">5-month high | +59% YTD YoY</div>
-                    </div>
-                    <div class="card">
-                        <h4>Capesize TCE</h4>
-                        <div class="value">$20,010</div>
-                        <div class="change positive">↑ Daily</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">FDI Index - Sep 4</div>
-                    </div>
-                    <div class="card">
-                        <h4>Panamax TCE</h4>
-                        <div class="value">$17,344</div>
-                        <div class="change positive">↑ Daily</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">FDI Index - Sep 4</div>
-                    </div>
-                    <div class="card">
-                        <h4>VLCC Spot</h4>
-                        <div class="value">$200K+</div>
-                        <div class="change positive">↑ Strong Gains</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Near early March peaks</div>
-                    </div>
-                </div>
+<!-- ============ 🚢 航运板块 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">🚢</span> 航运市场深度</div>
 
-                <h3>📊 Market Indices</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Index</th>
-                                <th>Latest Value</th>
-                                <th>Change</th>
-                                <th>Date</th>
-                                <th>Source</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>ClarkSea Index</strong></td>
-                                <td>$45,749/day</td>
-                                <td class="positive">+5% WoW</td>
-                                <td>Sep 4, 2026</td>
-                                <td>Clarksons Research</td>
-                            </tr>
-                            <tr>
-                                <td><strong>FDI (Far East Dry Index)</strong></td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>Sep 4, 2026</td>
-                                <td>Shanghai Shipping Exchange</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Capesize TC Average</strong></td>
-                                <td>$20,010/day</td>
-                                <td>—</td>
-                                <td>Sep 4, 2026</td>
-                                <td>Shanghai Shipping Exchange</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Panamax TC Average</strong></td>
-                                <td>$17,344/day</td>
-                                <td>—</td>
-                                <td>Sep 4, 2026</td>
-                                <td>Shanghai Shipping Exchange</td>
-                            </tr>
-                            <tr>
-                                <td><strong>VLCC Spot Earnings</strong></td>
-                                <td>>$200,000/day</td>
-                                <td class="positive">Rising</td>
-                                <td>Aug 21, 2026</td>
-                                <td>Clarksons Research</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>📈 Dry Bulk Market: Late Summer Heat</h3>
-                <div class="highlight-box">
-                    <h4>Clarksons Analysis - September 4, 2026</h4>
-                    <p class="analysis-text">
-                        In June, Clarksons reported on bulker markets that, while 'upstaged' by tankers and containerships, were enjoying the summer sun, with earnings hitting multi-year highs. Now, after further gains in recent weeks, the sector is seeing notable strength, with indicators hitting fresh multi-year highs across earnings, asset prices, newbuild orders and more.
-                    </p>
-                </div>
-
-                <h3>🛢️ Middle East Conflict: Shipping Impact</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>Increased Crude Flows from Gulf Region</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Clarksons Research</span> September 4, 2026
-                        </div>
-                        <div class="analysis-text">
-                            Increased crude volumes continue to leave the Gulf region, boosting total Middle East crude flows to >12m bpd (versus 18m bpd pre-conflict) though the impact of further vessel attacks (including 2 VLCCs on 31st August) remains uncertain; energy shipping markets remain elevated, with VLCC rates seeing further strong gains - rates in the West are now close to early March peaks.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Red Sea Disruption: September Update</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Clarksons Research</span> September 2, 2026
-                        </div>
-                        <div class="analysis-text">
-                            Vessel activity trends in the Red Sea have been in focus in recent months as owners and operators weigh up the competing pressures of conflict in the MEG, the Houthi threat in the Red Sea, shifting trade patterns, tight shipping markets and other disruption; Red Sea transits generally remain well below typical levels, with visible tanker activity in the Gulf of Aden falling back while containership transits have increased materially following moves by a number of major liners.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Strait of Hormuz Transit Update</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Clarksons Research</span> August 7, 2026
-                        </div>
-                        <div class="analysis-text">
-                            Transit trends in both the Strait of Hormuz and Red Sea remain disrupted, with crossings into the Red Sea falling by a further third this week while VLCC Bab el-Mandeb transits are down 80% versus Q2.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>📋 SMM Hamburg: Strong Order Flow, Shifting Agenda</h3>
-                <div class="highlight-box">
-                    <h4>September 2026 Shipbuilding Outlook</h4>
-                    <p class="analysis-text">
-                        Next week, 50,000 industry participants will gather at the biannual SMM trade fair in Hamburg, a key event for yards and suppliers. Trends since the last SMM show orderbook +33%, with global output nearing previous peak. Key discussion themes include: geopolitics, order "boom" duration, yard capacity, fleet renewal, and "net zero".
-                    </p>
-                </div>
-
-                <h3>🚛 North America Freight Market Update</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>C.H. Robinson September Freight Report</strong>
-                        <div class="news-meta">
-                            <span class="news-source">C.H. Robinson</span> September 3, 2026
-                        </div>
-                        <div class="analysis-text">
-                            September U.S. imports did not show a traditional peak season, but ocean shipping remains vulnerable to disruptions. Typhoon congestion, blank sailings, canal restrictions and carrier network changes limited recovery options for some trade lanes. Spot prices have eased, leading to slightly lower 2026 forecasts. 2027 forecasts have been released for dry van, reefer and flatbed spot rates.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>📉 Historical BDI Trend (2025-2026)</h3>
-                <div class="chart-container">
-                    <canvas id="bdiChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Finance Section -->
-        <div id="finance" class="content">
-            <div class="section">
-                <h2>💰 Global Finance</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h4>上证指数</h4>
-                        <div class="value">3,930.12</div>
-                        <div class="change negative">↓ 0.30%</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Sep 6, 2026</div>
-                    </div>
-                    <div class="card">
-                        <h4>纳斯达克</h4>
-                        <div class="value">26,506.99</div>
-                        <div class="change negative">↓ 0.29%</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Sep 6, 2026</div>
-                    </div>
-                    <div class="card">
-                        <h4>标普500</h4>
-                        <div class="value">7,718.60</div>
-                        <div class="change negative">↓ 0.38%</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Sep 6, 2026</div>
-                    </div>
-                    <div class="card">
-                        <h4>恒生指数</h4>
-                        <div class="value">25,650.87</div>
-                        <div class="change positive">↑ 1.74%</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Sep 6, 2026</div>
-                    </div>
-                </div>
-
-                <h3>📊 Stock Market Details</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Index/Stock</th>
-                                <th>Close</th>
-                                <th>Change</th>
-                                <th>Change %</th>
-                                <th>Volume</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>上证指数</strong></td>
-                                <td>3,930.12</td>
-                                <td class="negative">-11.62</td>
-                                <td class="negative">-0.30%</td>
-                                <td>4.02B</td>
-                                <td>Sep 6, 2026</td>
-                            </tr>
-                            <tr>
-                                <td><strong>深证成指</strong></td>
-                                <td>12,086.37</td>
-                                <td class="negative">-43.72</td>
-                                <td class="negative">-0.36%</td>
-                                <td>5.64B</td>
-                                <td>Sep 6, 2026</td>
-                            </tr>
-                            <tr>
-                                <td><strong>纳斯达克</strong></td>
-                                <td>26,506.99</td>
-                                <td class="negative">-77.67</td>
-                                <td class="negative">-0.29%</td>
-                                <td>—</td>
-                                <td>Sep 6, 2026</td>
-                            </tr>
-                            <tr>
-                                <td><strong>标普500</strong></td>
-                                <td>7,718.60</td>
-                                <td class="negative">-29.56</td>
-                                <td class="negative">-0.38%</td>
-                                <td>—</td>
-                                <td>Sep 6, 2026</td>
-                            </tr>
-                            <tr>
-                                <td><strong>恒生指数</strong></td>
-                                <td>25,650.87</td>
-                                <td class="positive">+438.52</td>
-                                <td class="positive">+1.74%</td>
-                                <td>—</td>
-                                <td>Sep 6, 2026</td>
-                            </tr>
-                            <tr>
-                                <td><strong>NVIDIA (NVDA)</strong></td>
-                                <td>$230.17</td>
-                                <td class="negative">-0.04%</td>
-                                <td class="negative">-0.04%</td>
-                                <td>146.6M</td>
-                                <td>Sep 4, 2026</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tesla (TSLA)</strong></td>
-                                <td>$354.08</td>
-                                <td class="positive">+0.02%</td>
-                                <td class="positive">+0.02%</td>
-                                <td>5.78M</td>
-                                <td>Sep 4, 2026</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>🏦 China Market Analysis</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>Morgan Stanley Cuts China Stock Targets</strong>
-                        <div class="news-meta">
-                            <span class="news-source">财新网 (Caixin)</span> September 4, 2026
-                        </div>
-                        <div class="analysis-text">
-                            Morgan Stanley lowered its 2027 June base-case targets for Hong Kong and mainland China major indices. The bank noted China's macro growth, liquidity, and capital flows are weakening, with rising regulatory uncertainty. Key points:
-                            <br><br>
-                            • Q3 China real GDP growth may fall below 4.5%, increasing probability of autumn policy fine-tuning
-                            • Policy likely to focus on accelerating existing fiscal fund deployment and supply-side priorities, rather than large-scale demand stimulus
-                            • Southbound capital inflow via Stock Connect: ~$48B YTD, only 39% of same period last year
-                            • Hong Kong IPO + placement financing scale exceeds southbound capital, creating tight liquidity
-                            <br><br>
-                            Meanwhile, Citigroup upgraded China stocks to "overweight" while Morgan Stanley suggested adding Hong Kong positions.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>🚗 Auto Export: Entering Deep Waters</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>China Auto Exports Face Rising Barriers</strong>
-                        <div class="news-meta">
-                            <span class="news-source">财新周刊 (Caixin Weekly)</span> September 5, 2026
-                        </div>
-                        <div class="analysis-text">
-                            China's auto export boom is facing headwinds as multiple markets tighten policies:
-                            <br><br>
-                            <strong>Mexico:</strong> As China's largest auto export destination (600K+ vehicles in 2025), Mexico raised import tariffs on light vehicles from 20% to 50% for non-FTA countries starting Jan 1, 2026. H1 2026 exports to Mexico fell 25% to 210K units. However, retail sales of China-made cars in Mexico rose 27% in H1 (excl. Chery and BYD data).
-                            <br><br>
-                            <strong>Brazil:</strong> EV import tariff exemptions ended July 1, 2026, with rates returning to 35% (same as ICE vehicles), ending over a decade of preferential treatment.
-                            <br><br>
-                            <strong>United States:</strong> Biden administration raised additional tariffs to 100% (total 102.5%). The bipartisan "Connected Vehicle Security Act" introduced in May 2026 would codify restrictions on Chinese connected/autonomous vehicle tech.
-                            <br><br>
-                            <strong>Europe:</strong> EU remains conflicted—concerned about both falling behind in EV tech and protecting local industry, currently leaning restrictive but maintaining some flexibility.
-                        </div>
-                    </li>
-                </div>
-            </div>
-        </div>
-
-        <!-- Politics Section -->
-        <div id="politics" class="content">
-            <div class="section">
-                <h2>🌍 Global Politics</h2>
-
-                <h3>🇨🇳 China</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>Xi Jinping Attends SCO Summit, Visits Kyrgyzstan and Egypt</strong>
-                        <div class="news-meta">
-                            <span class="news-source">新华社 (Xinhua)</span> September 1-3, 2026
-                        </div>
-                        <div class="analysis-text">
-                            From August 30 to September 2, President Xi Jinping attended the 26th SCO Summit in Bishkek and conducted state visits to Kyrgyzstan and Egypt. Key outcomes:
-                            <br><br>
-                            <strong>SCO Summit (Sep 1):</strong> Xi delivered speech titled "Promoting Higher-Quality SCO Development" emphasizing regional cooperation, security coordination, and economic integration.
-                            <br><br>
-                            <strong>Egypt Visit (Sep 1-2):</strong> Xi held talks with President Sisi at the Heliopolis Palace. The two leaders witnessed signing of cooperation agreements covering Belt and Road, AI, economic/trade, and industrial supply chains. A joint statement on deepening comprehensive strategic partnership was issued. Over 20 additional agreements signed in digital economy, technology, education, and transportation.
-                            <br><br>
-                            <strong>Middle East Security Proposal:</strong> Xi put forward 4-point initiative for regional common security:
-                            1. Activate endogenous momentum for regional security
-                            2. Advance comprehensive governance of regional security
-                            3. Strengthen development foundations for lasting regional peace
-                            4. Enhance international coordination for regional security
-                        </div>
-                    </li>
-                    <li>
-                        <strong>MOFCOM Regular Press Conference (Sep 3, 2026)</strong>
-                        <div class="news-meta">
-                            <span class="news-source">商务部 (MOFCOM)</span> September 3, 2026
-                        </div>
-                        <div class="analysis-text">
-                            <strong>EU Trade Defense:</strong> Regarding EU Trade Commissioner Šefčovič's comments about using trade defense tools and closing markets if China negotiations fail, MOFCOM spokesperson Huang Ling emphasized that China-EU consultations should maintain stable, balanced partnership positioning and equal resolution of concerns. China urged EU to adhere to free trade and not slide toward protectionism.
-                            <br><br>
-                            <strong>France "Anti-Ultra Fast Fashion" Law:</strong> China expressed strong dissatisfaction and firm opposition to France's implementation of the law on September 1, which imposes environmental penalties on textile products. MOFCOM stated the law uses double standards, suspected of violating WTO non-discrimination principles, and causes significant losses to Chinese companies. China urged France to immediately stop implementation.
-                            <br><br>
-                            <strong>Consumer Goods Upgrade Policy:</strong> MOFCOM and 6 other departments issued "Implementation Opinions on Promoting Expansion and Upgrading of Commodity Consumption" with 20 measures for the "15th Five-Year Plan" period, focusing on:
-                            • Supply-demand coordination (R&D, standards, branding)
-                            • Category-specific policies (autos, home appliances, food, textiles)
-                            • Key demographics (elderly: exoskeleton robots, smart mattresses; youth: national brand trends, 3D printing, IP derivatives)
-                        </div>
-                    </li>
-                    <li>
-                        <strong>China's Nepal Aid Continues</strong>
-                        <div class="news-meta">
-                            <span class="news-source">外交部 (MFA)</span> September 2, 2026
-                        </div>
-                        <div class="analysis-text">
-                            China's second batch of emergency aid arrived in Kathmandu on September 2, including 5 DNA identification experts. A third batch is being prepared with Bailey bridges, mortuary equipment, epidemic prevention materials, and emergency communication equipment. China is also sending a second team of DNA experts.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>🇺🇸 United States</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>White House Presidential Actions (Sep 4, 2026)</strong>
-                        <div class="news-meta">
-                            <span class="news-source">The White House</span> September 4, 2026
-                        </div>
-                        <div class="analysis-text">
-                            <strong>Supporting American Ranchers:</strong> Presidential actions announced to support U.S. ranchers and promote competition in livestock markets, addressing concerns about market concentration and fair pricing for cattle producers.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>G20 Finance Ministers Meeting Fails to Issue Communiqué</strong>
-                        <div class="news-meta">
-                            <span class="news-source">外交部 (MFA)</span> September 2, 2026
-                        </div>
-                        <div class="analysis-text">
-                            The second G20 Finance Ministers and Central Bank Governors meeting (August 31 - September 1) failed to issue a communiqué due to disagreements on global imbalances. China expressed deep regret, stating that G20 should adhere to consensus-based, equal participation principles. China expects the U.S. as chair and other members to respect legitimate concerns and promote positive outcomes at the 2026 Miami Summit.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>U.S. Treasury Secretary on China Trade</strong>
-                        <div class="news-meta">
-                            <span class="news-source">商务部 (MOFCOM)</span> September 3, 2026
-                        </div>
-                        <div class="analysis-text">
-                            U.S. Treasury Secretary Bessent stated that despite "rapidly improving" bilateral trade conditions, China's current export surge is unsustainable. He will urge G20 members to review trade conditions with China to ease global imbalances and push China to reduce export dependence. China responded that bilateral trade is developing normally and urged U.S. to create fair trade environment.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>🇪🇺 Europe</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>EU-China Trade Consultations Continue</strong>
-                        <div class="news-meta">
-                            <span class="news-source">商务部/欧委会</span> August 31 - September 2, 2026
-                        </div>
-                        <div class="analysis-text">
-                            Vice Minister Ling Ji held talks with DG TRADE Deputy Director-General Redonnet from August 31 to September 2, conducting in-depth, candid, and constructive communication on issues of mutual concern. Both sides guided their teams in multiple rounds of professional consultations. China emphasized that consultations should maintain stable, balanced partnership positioning and equal resolution of concerns, not unilateral demands or market closure threats.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>France Anti-Fast Fashion Law Takes Effect</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Multiple Sources</span> September 1, 2026
-                        </div>
-                        <div class="analysis-text">
-                            France's "anti-ultra fast fashion" law officially took effect on September 1, 2026, imposing environmental penalties on qualifying textile products. This affects cross-border e-commerce platforms including Shein, Temu, and AliExpress operating in France. China has strongly opposed the measure, arguing it violates WTO non-discrimination principles and creates significant operating losses for Chinese companies.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>EU Packaging Regulation (PPWR)</strong>
-                        <div class="news-meta">
-                            <span class="news-source">EU Regulation</span> August 12, 2026
-                        </div>
-                        <div class="analysis-text">
-                            The EU's Packaging and Packaging Waste Regulation (PPWR, Regulation (EU) 2025/40) fully applies from August 12, 2026, replacing the 30-year-old directive. Key implications:
-                            • All packaging materials (paper, metal, glass, plastic, composite) covered
-                            • Industrial, commercial, consumer, and logistics packaging all included
-                            • No registration number = product delisting, FBA restrictions
-                            • Penalties up to 4-6% of annual turnover
-                            • Historical compliance issues traceable
-                        </div>
-                    </li>
-                </div>
-
-                <h3>🌏 Global</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>G20 Summit Outlook: Miami 2026</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Various</span> September 2026
-                        </div>
-                        <div class="analysis-text">
-                            The U.S. assumed G20 presidency in 2026, with the Miami Summit scheduled for later this year. However, the second Finance Ministers meeting failed to issue a communiqué due to disagreements on global economic imbalances. China, as an important member, actively participates but emphasizes that G20 should adhere to consensus-based principles. The world is watching whether the Miami Summit can produce meaningful outcomes amid rising trade tensions.
-                        </div>
-                    </li>
-                </div>
-            </div>
-        </div>
-
-        <!-- AI & Robotics Section -->
-        <div id="ai" class="content">
-            <div class="section">
-                <h2>🤖 AI & Robotics</h2>
-
-                <h3>📈 Key Stock Performance</h3>
-                <div class="cards">
-                    <div class="card">
-                        <h4>NVIDIA (NVDA)</h4>
-                        <div class="value">$230.17</div>
-                        <div class="change negative">↓ 0.04%</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Vol: 146.6M | Sep 4, 2026</div>
-                    </div>
-                    <div class="card">
-                        <h4>Tesla (TSLA)</h4>
-                        <div class="value">$354.08</div>
-                        <div class="change positive">↑ 0.02%</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Vol: 5.78M | Sep 4, 2026</div>
-                    </div>
-                    <div class="card">
-                        <h4>Tesla Market Cap</h4>
-                        <div class="value">$1.40T</div>
-                        <div class="change">—</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Sep 4, 2026</div>
-                    </div>
-                    <div class="card">
-                        <h4>Tesla 52W Range</h4>
-                        <div class="value">$213-429</div>
-                        <div class="change">—</div>
-                        <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Current: $354.08</div>
-                    </div>
-                </div>
-
-                <h3>🇺🇸 US Congress Report: China's AI Strategy</h3>
-                <div class="highlight-box">
-                    <h4>USCC Report - March 2026: "Two Loops: How China's Open AI Strategy Reinforces Its Industrial Dominance"</h4>
-                    <p class="analysis-text">
-                        The U.S.-China Economic and Security Review Commission (USCC) published a comprehensive analysis of China's AI strategy, highlighting:
-                        <br><br>
-                        <strong>Key Findings:</strong>
-                        • China's "open AI strategy" creates a dual-loop system reinforcing industrial dominance
-                        • DeepSeek R1 and other Chinese models demonstrate competitive capabilities at lower costs
-                        • Open-source approach allows rapid ecosystem development and standard-setting
-                        • Industrial policy integration (AI + manufacturing) creates compounding advantages
-                        <br><br>
-                        <strong>Implications:</strong>
-                        The report suggests China's approach of combining state-directed industrial policy with selective open-source release is creating structural advantages in AI development and deployment, particularly in manufacturing and robotics applications.
-                    </p>
-                </div>
-
-                <h3>🇨🇳 China's AI & Robotics Policy</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>MOFCOM Consumer Goods Policy: AI Products for Elderly</strong>
-                        <div class="news-meta">
-                            <span class="news-source">商务部 (MOFCOM)</span> September 3, 2026
-                        </div>
-                        <div class="analysis-text">
-                            China's new consumer goods upgrade policy specifically targets AI-powered products for the elderly ("silver economy"):
-                            • Exoskeleton robots for mobility assistance
-                            • Smart mattresses with health monitoring
-                            • Health monitoring devices and wearables
-                            <br><br>
-                            This represents significant policy support for robotics and AI hardware companies serving China's aging population.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>China-Egypt AI Cooperation</strong>
-                        <div class="news-meta">
-                            <span class="news-source">新华社 (Xinhua)</span> September 2, 2026
-                        </div>
-                        <div class="analysis-text">
-                            During Xi's Egypt visit, AI was one of the key cooperation areas in signed agreements. This follows China's pattern of using AI cooperation as part of broader diplomatic and economic partnerships, particularly with Belt and Road countries.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>🔍 Industry Analysis</h3>
-                <div class="news-list">
-                    <li>
-                        <strong>Tesla Stock Under Pressure</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Futu/东方财富</span> September 4, 2026
-                        </div>
-                        <div class="analysis-text">
-                            Tesla (TSLA) closed at $354.08 on September 4, 2026, down 5.92% from previous levels. Key metrics:
-                            • Market Cap: $1.40 trillion
-                            • P/E Ratio: 173.84
-                            • 52-week range: $213.00 - $429.00
-                            • Trading volume: 5.78 million shares
-                            <br><br>
-                            Tesla remains a key barometer for the EV and autonomous driving sectors, with its robotaxi and Optimus humanoid robot programs closely watched by investors.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>NVIDIA at $230: AI Chip Dominance Continues</strong>
-                        <div class="news-meta">
-                            <span class="news-source">Yahoo Finance</span> September 4, 2026
-                        </div>
-                        <div class="analysis-text">
-                            NVIDIA (NVDA) closed at $230.17 on September 4, with 146.6 million shares traded. The stock remains the primary proxy for AI infrastructure investment, with data center revenue continuing to drive growth amid intensifying competition from AMD, Intel, and custom silicon from Google, Amazon, and Microsoft.
-                        </div>
-                    </li>
-                </div>
-
-                <h3>🚀 Technology Trends to Watch</h3>
-                <div class="cards">
-                    <div class="card">
-                        <h4>Humanoid Robots</h4>
-                        <div class="value">🤖</div>
-                        <div class="analysis-text" style="font-size: 0.8rem; margin-top: 10px;">
-                            Tesla Optimus, Unitree, UBTech leading development. China policy supports elderly care applications.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h4>AI Chips</h4>
-                        <div class="value">💾</div>
-                        <div class="analysis-text" style="font-size: 0.8rem; margin-top: 10px;">
-                            NVIDIA maintains dominance but faces rising competition. USCC warns on China's open AI strategy.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h4>Autonomous Driving</h4>
-                        <div class="value">🚗</div>
-                        <div class="analysis-text" style="font-size: 0.8rem; margin-top: 10px;">
-                            Tesla FSD, Chinese players (Baidu Apollo, Pony.ai) advancing. Regulatory frameworks evolving globally.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h4>AI + Manufacturing</h4>
-                        <div class="value">🏭</div>
-                        <div class="analysis-text" style="font-size: 0.8rem; margin-top: 10px;">
-                            China's industrial AI integration creating compounding advantages in robotics and automation.
-                        </div>
-                    </div>
-                </div>
-
-                <h3>📊 AI/Chip Stock Tracker</h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Company</th>
-                                <th>Ticker</th>
-                                <th>Price</th>
-                                <th>Change</th>
-                                <th>Market Cap</th>
-                                <th>Focus Area</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>NVIDIA</strong></td>
-                                <td>NVDA</td>
-                                <td>$230.17</td>
-                                <td class="negative">-0.04%</td>
-                                <td>$5.6T+</td>
-                                <td>AI Chips / GPUs</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tesla</strong></td>
-                                <td>TSLA</td>
-                                <td>$354.08</td>
-                                <td class="positive">+0.02%</td>
-                                <td>$1.40T</td>
-                                <td>EV / Robotaxi / Optimus</td>
-                            </tr>
-                            <tr>
-                                <td><strong>UBTech</strong></td>
-                                <td>09880.HK</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>Humanoid Robots</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>Daily Briefing | Generated by Kimi Claw 🦞</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">
-                Data sources: Clarksons Research, Shanghai Shipping Exchange, Yahoo Finance, 财新网, Xinhua, MOFCOM, White House, USCC
-            </p>
-            <p style="margin-top: 5px; font-size: 0.75rem; color: #555;">
-                September 7, 2026 | For informational purposes only
-            </p>
-        </footer>
+  <div class="index-cards">
+    <div class="index-card">
+      <div class="name">BDI 波罗的海干散货指数</div>
+      <div class="value">3,575</div>
+      <div class="change down">▼ 1.46%（9月7日）</div>
     </div>
+    <div class="index-card">
+      <div class="name">BCI 好望角型指数</div>
+      <div class="value">6,286</div>
+      <div class="change down">▼ 2.2%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">BPI 巴拿马型指数</div>
+      <div class="value">2,431</div>
+      <div class="change down">▼ 0.7%（连续第二日回落）</div>
+    </div>
+    <div class="index-card">
+      <div class="name">BSI 超灵便型指数</div>
+      <div class="value">1,682</div>
+      <div class="change up">▲ 0.4%</div>
+    </div>
+  </div>
 
-    <script>
-        function showTab(tabName) {
-            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>📈 干散货：BDI 高位整固，仍处 2021年10月以来最强水平</h3>
+      <p>BDI 结束三日连升小幅回调 1.46% 至 3,575 点，但上月累计上涨 15.96%，<b>同比暴涨 77%</b>。BCI 收报 6,286 点，仍接近 2023年12月以来峰值；好望角型日均租金约 <b>$54,800/天</b>（周涨 22%），巴拿马型约 $22,000/天。驱动力：铁矿石与煤炭需求强劲 + 船舶供给紧张 + 地缘扰动拉长航距（美伊冲突推高绕行与保险成本）。Trading Economics 模型预计本季度末 BDI 约 3,663 点，12个月看至 4,152 点。</p>
+    </div>
+    <div class="news-item">
+      <h3>📦 集装箱：SCFI 与 FBX 背离，跨太平洋 vs 亚欧航线分化加剧</h3>
+      <p>最新一周 SCFI 上涨 2.3% 至 <b>3,590.05 点</b>，CCFI 微升 0.2% 至 1,837.01，NCFI 小跌 0.6% 至 2,591.28；而 Freightos FBX 全球指数下跌 2% 至 $3,520，Drewry WCI 基本持平。<b>跨太平洋航线运价韧性强，亚欧航线继续阴跌</b>——好望角绕行持续吸收全球约 5%–7% 集装箱船运力（170–240万TEU当量），是 H2 运价未如预期大跌的核心支撑。伊朗宣布将在霍尔木兹附近划定"限制区"并公布与阿曼商定的新航线，后续通航规则变化值得高度关注。</p>
+    </div>
+    <div class="news-item">
+      <h3>🏗️ 新造船：油轮订单管线饱满，扬子江再签 12 艘新船</h3>
+      <p>2026年至今原油轮新造订单达 <b>279 艘（含 217 艘 VLCC）</b>，交付管线创多年新高。扬子江船业新增 12 艘新造船订单约 5 亿美元，并计划 2026下半年再出售 3 艘运营船。市场显著特征：<b>"即期运力溢价"走阔</b>——2026年交付的 VLCC 转售价已喊到约 <b>$2.0亿</b>，远超 $1.302亿的新造基准价，反映船东为即时运力支付超额溢价的急切心态。</p>
+    </div>
+    <div class="news-item">
+      <h3>🔄 二手船：船龄溢价逻辑强化，5年船龄船价仍低于2024年中 12%</h3>
+      <p>二手船价格自 2024 年中以来回落约 12%（5年船龄基准），但"老船赚运费溢价"现象突出：老旧吨位因可即时投入高租金市场而备受追捧，油轮板块尤为明显。全球造船订单簿 2026–2029 年排产饱满，船台稀缺继续支撑新船价格中枢。</p>
+    </div>
+  </div>
 
-        // BDI Chart
-        const bdiCtx = document.getElementById('bdiChart');
-        if (bdiCtx) {
-            new Chart(bdiCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jun 2025', 'Jul 2025', 'Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026', 'Apr 2026', 'May 2026', 'Jun 2026'],
-                    datasets: [{
-                        label: 'BDI Index',
-                        data: [1900, 1850, 1750, 2100, 1950, 1800, 1700, 1400, 1300, 1250, 1350, 1400, 1380],
-                        borderColor: '#667eea',
-                        backgroundColor: 'rgba(102, 126, 234, 0.15)',
-                        borderWidth: 3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#667eea',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2,
-                        tension: 0.3,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: { 
-                                usePointStyle: true,
-                                color: '#e0e0e0'
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            ticks: { color: '#a0a0c0' },
-                            grid: { color: 'rgba(255,255,255,0.05)' }
-                        },
-                        y: {
-                            ticks: { color: '#a0a0c0' },
-                            grid: { color: 'rgba(255,255,255,0.05)' }
-                        }
-                    }
-                }
-            });
-        }
-    </script>
+  <div class="highlight-box">
+    <h4>🎯 航运分析与投资机会</h4>
+    <ul>
+      <li><b>干散货</b>：BDI 回调不改上行周期，铁矿去库 + 美伊冲突航距拉长双重支撑，关注中国港口铁矿石库存与四季度煤炭冬储节奏；好望角型租金 $5万+/天利好 Star Bulk、金海洋等纯散货船东。</li>
+      <li><b>油轮</b>：霍尔木兹通行量降至 5 月以来最低，VLCC 运价与油轮股波动率将维持高位；即期运力稀缺令 2026 年交付船转售溢价罕见，VLCC 资产本身成为交易标的。</li>
+      <li><b>集装箱</b>：航线分化下优先配置跨太平洋敞口高的班轮公司；若伊朗"限制区"落地导致保险费率跳升，亚欧线运价可能出现脉冲式反弹。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 📈 财经板块 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">📈</span> 全球财经全景</div>
+
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>🌍 全球市场：美股休市，亚洲股市接力大涨</h3>
+      <p>9月7日（周一）为美国<b>劳动节假期</b>，NYSE / Nasdaq 全日休市，美债市场亦关闭，9月8日（周二）21:30（新加坡时间）恢复交易。亚太市场强劲：日经 225 大涨 <b>+2.12%</b> 报 66,399.84，韩国 Kospi 飙升 <b>+4.61%</b> 报 6,995.39（三星 +5.68%、SK海力士 +8.26%、软银 +11.22%、Advantest +4.20%）；澳洲 ASX 200 微涨至 9,010.90；A股沪深300 收升 0.59% 报 4,575.02；港股恒生尾段跌 0.85%；欧洲 Stoxx 600 低开约 0.1%。</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>指数/资产</th><th>最新</th><th>变动</th><th>备注</th></tr>
+    <tr><td>日经225</td><td>66,399.84</td><td class="up">+2.12%</td><td>科技股领涨</td></tr>
+    <tr><td>韩国KOSPI</td><td>6,995.39</td><td class="up">+4.61%</td><td>存储芯片暴动</td></tr>
+    <tr><td>沪深300</td><td>4,575.02</td><td class="up">+0.59%</td><td>温和收高</td></tr>
+    <tr><td>恒生指数</td><td>—</td><td class="down">-0.85%</td><td>尾段走弱</td></tr>
+    <tr><td>澳洲ASX200</td><td>9,010.90</td><td class="up">微涨</td><td>接近平盘</td></tr>
+    <tr><td>欧洲Stoxx600</td><td>—</td><td class="down">-0.1%</td><td>低开</td></tr>
+    <tr><td>美股（9/7）</td><td colspan="3">劳动节休市，9/8 恢复交易</td></tr>
+  </table>
+
+  <div class="index-cards">
+    <div class="index-card">
+      <div class="name">Brent 原油</div>
+      <div class="value">$96.8–97.3</div>
+      <div class="change up">▲ 约 +1% · 逼近 $100</div>
+    </div>
+    <div class="index-card">
+      <div class="name">WTI 原油</div>
+      <div class="value">$92.1</div>
+      <div class="change up">▲ +0.7% · 六周高位</div>
+    </div>
+    <div class="index-card">
+      <div class="name">现货黄金</div>
+      <div class="value">≈$4,400</div>
+      <div class="change down">▼ 回踩 $4,400 关口</div>
+    </div>
+    <div class="index-card">
+      <div class="name">比特币 / 以太坊</div>
+      <div class="value">$78.9K / $2,480</div>
+      <div class="change down">▼ -1.1% / -0.8%</div>
+    </div>
+  </div>
+
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>🛢️ 大宗商品：油价剑指 $100，黄金高位回调</h3>
+      <p>美伊冲突升级推动油价连续第二周大涨——上周 Brent +7.8%、WTI +10%。周末美军击毁三艘伊朗油轮，伊朗称在霍尔木兹击中三艘"未经授权航线"船只，<b>海峡商品通行量降至 5 月以来最低</b>；伊朗最高安全委员会称数日内将宣布覆盖海湾的"限制区"。叠加柴油供应紧张（取暖油 $4.61，美国零售柴油创历史新高）、OPEC+ 维持 10 月产量不变，Brent 第一目标 $100。黄金受强劲非农引发的美联储加息预期压制，回落至 $4,400 附近测试（周五收盘 $4,477）；白银 $66.82；铜窄幅整理 -0.4%。</p>
+    </div>
+    <div class="news-item">
+      <h3>₿ 加密货币：ETF 资金持续流入，情绪仍处"贪婪"</h3>
+      <p>加密总市值约 $2.7 万亿（24h -3.15% 后企稳），BTC  dominance 59.14%。BTC 回落至 $78,500–79,000 区域，ETH 持稳 $2,480–2,510。尽管宏观逆风（加息预期），<b>现货 ETF 连续净流入</b>：ETH ETF 已连续三周流入，9 月至今超 $1.3亿；上周 BTC +5%、ETH +4%。恐惧贪婪指数 71（贪婪），但链上 DEX 费用同步下滑显示活跃度降温——情绪与盘面存在背离。阻力位：BTC $83K/$86K/$90K；支撑 $78K/$75K。</p>
+    </div>
+    <div class="news-item">
+      <h3>🏦 宏观焦点：强劲非农重燃加息预期，本周关键数据密集</h3>
+      <p>上周五美国非农就业大幅超预期，市场重新定价美联储加息路径（美联储主席 Kevin Warsh 主持 9 月 FOMC）。<b>本周重磅</b>：周四 PPI + 甲骨文财报，周五 CPI——通胀数据将直接决定 9 月是否加息及美股复市后的方向。欧洲同样面临利率难题；日元汇率与亚洲股市联动性增强。机构警示：若 Brent  decisively 突破 $100，通胀前景将显著复杂化。</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>🎯 财经分析与投资机会</h4>
+    <ul>
+      <li><b>能源</b>：霍尔木兹风险溢价尚未见顶，布油 $100 触手可及；油服、上游 E&P 及油轮股仍是地缘交易首选；但若美伊开启实质谈判，溢价回吐速度会同样快，注意双向波动。</li>
+      <li><b>科技股</b>：韩日存储/半导体暴动（SK海力士 +8.26%）预示 AI 内存"超级周期"叙事延续，美股复市后关注 NVDA、MU 映射机会；但 Cook 警告的存储芯片"百年一遇涨价洪水"也意味着下游成本压力。</li>
+      <li><b>加密</b>：BTC $78K 支撑有效前维持震荡偏多思路，ETF 持续流入是结构性压舱石；周五 CPI 是最大变量，建议控制杠杆。</li>
+      <li><b>黄金</b>：$4,400 是关键多空分水岭，欧洲央行持续从美国挪储（荷兰刚转 86 吨至伦敦）提供长期底层买盘，回调即是配置窗口。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 📰 时政板块 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">📰</span> 时政要闻与地缘博弈</div>
+
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>🔥 今日头条：美伊冲突海上升级，霍尔木兹成全球能源命门</h3>
+      <p>美军周末在霍尔木兹海峡击毁三艘伊朗原油运输船（回应伊朗弹道导弹袭击美舰），伊朗宣布击中三艘船只并计划宣布"限制区"；CENTCOM 持续打击、沙特支持的也门政府军对胡塞发动空袭。美国能源部长 Wright 表态：即使无正式协议，也要消除伊朗核能力。<b>油价、运价、保险费率与全球通胀预期均被这一事件链牵动。</b></p>
+    </div>
+    <div class="news-item">
+      <h3>🧊 北极成为"地缘政治板块碰撞点"</h3>
+      <p>冯德莱恩访问格陵兰，宣布欧盟追加 <b>2亿欧元</b> 援助并深化政治联系，回应特朗普"美国应控制格陵兰"的吞并言论。三方谈判（美/丹/格）仍无协议；北约 1 月斡旋的缓和正在被消耗。与此同时：8月中国集装箱船首航抵达俄罗斯摩尔曼斯克（北极航线破冰信号）；挪威在北极扣押俄船（乌克兰 42 亿美元克里米亚索赔案）；欧盟加速重审北极战略；芬兰将主办欧洲北极峰会。北极正从"安静的角落"变为大国角力主战场。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇺🇸 美国</h3>
+      <p>特朗普延续格陵兰立场考验北约团结与国际法底线；美俄接触继续（Witkoff/Kushner 与普京特使会谈，克宫称"有益但无突破"）；对土耳其实施新制裁（Golden Global Bank 被指为 IRGC 与中国贸易搭桥，<b>首次制裁北约成员国银行</b>）；乌战俘/扎波罗热核电站停火维修协议生效。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇨🇳 中国</h3>
+      <p><b>关键矿产成为中美博弈新筹码</b>：出口许可管制被解读为"无声禁运"，在 9 月 24 日习近平访美前纳入更广泛的经贸规则谈判——华盛顿要供应可预期性，北京要贸易与技术限制松绑。<b>去美元化</b>另一线索：欧洲央行持续将黄金储备撤出美国金库（荷兰央行 3–8 月已将 86 吨黄金从美加转至伦敦，纽约占比降至 18.5%），上海/香港正加速建设黄金托管基础设施争夺资金流。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇪🇺 欧洲</h3>
+      <p>德国 AfD 在萨克森-安哈尔特州选举中取得压倒性胜利（虽未能单独过半）；欧洲议会推进终止对匈牙利的第七条款程序；JLR（捷豹路虎）宣布全球裁员 4,000 人（约 10% 员工）——中国竞品、网络攻击与美国关税三重压力；五国寻求将移民遣送出欧盟的协议。</p>
+    </div>
+    <div class="news-item">
+      <h3>🌏 全球其他</h3>
+      <p>以色列空袭黎巴嫩南部致 7 人死亡；尼日尔指责法国煽动士兵哗变；拉夫罗夫否认俄罗斯涉莱比锡无人机事件并称指控是"真正战争的开端"；加拿大北极港口丘吉尔重启对欧粮食运输；巴拿马运河水位限制继续推升通行拍卖价。</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>🧭 地缘深度分析：三条主线正在合流</h4>
+    <p><b>① 能源-航运通道武器化</b>：霍尔木兹（油）+ 北极航道（资源与新航线）+ 巴拿马（水位）同时承压，全球贸易的"地理保险成本"系统性上移，这正是 BDI 同比 +77% 与油轮租金飙升的底层逻辑。<b>② 金融基础设施阵营化</b>：欧洲央行从美国搬黄金、中国建黄金托管、对北约成员银行制裁——美元体系的"武器化反噬"正在催生平行托管网络，长期利好黄金与人民币资产。<b>③ 技术-资源相互钳制</b>：美国握技术、中国握材料，"武器化相互依赖"使企业投资与供应链决策政治化；9 月 24 日习特会前，双方都在积累谈判筹码，市场波动性将维持高位。</p>
+  </div>
+</div>
+
+<!-- ============ 🤖 AI/机器人板块 ============ -->
+<div class="section">
+  <div class="section-title"><span class="icon">🤖</span> AI 与机器人前沿</div>
+
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>🏆 今日热点：人形机器人百米 9.39 秒"破博尔特纪录"</h3>
+      <p>第二届<b>世界人形机器人运动会</b>在北京"冰丝带"开幕，某人形机器人以 <b>9.39 秒</b> 完成 100 米，超越博尔特 2009 年柏林创造的 9.58 秒人类纪录。本届赛事扩至物流、酒店、家政等真实场景挑战。4 月深圳荣耀智能的人形机器人曾以 50 分 26 秒跑完北京亦庄半马——具身智能的"体能竞赛"已进入惊人加速度区间。</p>
+    </div>
+    <div class="news-item">
+      <h3>⚔️ 宇树发布全球首个实时世界模型驱动全自主人形格斗系统</h3>
+      <p>Unitree 公布 <b>UnifoLM-X2-1.0</b>，宣称突破世界-动作基础模型在即时规划、决策与动态交互执行上的瓶颈。路透社同日深度报道《从舞池到战场：中国为人形机器人作战做准备》，点明军民两用趋势——这也是西方国家加速具身智能投资的隐性催化剂。</p>
+    </div>
+    <div class="news-item">
+      <h3>☁️ Figure × Nscale 签署 $35亿 AI 算力协议</h3>
+      <p>美国人形机器人公司 Figure 与 AI 云厂商 Nscale 达成多年期合作：初期承诺 <b>$35亿</b> 算力，拟扩展至 <b>$60亿+</b>，计划部署 10 万张 NVIDIA GPU（Vera Rubin 平台），2027 下半年在得州 Barstow 投运。黄仁勋表态："人形机器人把物理 AI 带入为人类设计的世界，开启了重大新产业"——<b>物理 AI 飞轮（训练-仿真-部署闭环）正式成型</b>。</p>
+    </div>
+    <div class="news-item">
+      <h3>🏢 硅谷前沿</h3>
+      <p>Anthropic 发布 <b>Claude Fable 5.1 / Mythos 5.1</b>，agentic 任务成本最高降 45%，早期测试者称其已是顶级编码模型（此前经历 18 天出口管制中断）；OpenAI <b>GPT-6 Astra</b> 的 computer-use 能力引发关注（在 Google Calendar 中"画"出迈克尔·杰克逊图像演示）；苹果新 CEO John Ternus 预热 9 月 9 日 iPhone 发布会；卸任的库克警告 AI 数据中心引发存储芯片"百年一遇涨价洪水"，马斯克附和；NVIDIA 被曝对 AI 服务器提价 15%+。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇨🇳 中国动态</h3>
+      <p>具身智能融资进入"亿元时代"：<b>Spirit AI（智元系"脏数据"路线）</b>两轮融近 20 亿元，估值破 100 亿元（云锋、红杉中国、TCL 资本、渝杭国资参与）；<b>逐际动力 LimX Dynamics</b> A+ 轮落地，A 轮累计 5 亿元（阿里、蔚来资本、联想创投、招商局创投）；清华系 Zerith 酒店服务机器人 H1 获数千万美元，年内交付 500 台意向订单 1,390 万美元。此前中国已发布人形机器人/具身智能首批国家标准体系（六大板块、120 家机构参与）。</p>
+    </div>
+    <div class="news-item">
+      <h3>💹 产业判断</h3>
+      <p>ST 意法半导体点出人形机器人量产三大门槛：<b>手部灵巧度、边缘 AI 决策、整机成本</b>——制造场景将最先落地。行业预测 2030 年代中期人形机器人出货达 140 万台且可能继续上修。存储"超级周期"（SK海力士 +8.26%、三星 +5.68%）与 AI 服务器涨价，正在为整个硬件栈重新定价。</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>🔬 深度分析：从 Scaling Laws 到"物理 AI 飞轮"</h4>
+    <p>2026 年的 AI 主线正在从"更大的语言模型"切换到"<b>模型-算力-实体的闭环</b>"：Figure-Nscale $35亿 协议表明，训练人形机器人需要的算力已可比肩大模型预训练（10 万卡级）；NVIDIA Isaac Sim 仿真→Vera Rubin 训练→GPU 部署的"飞轮"标准化后，机器人迭代速度将复制 LLM 2023 年后的曲线。中国路径差异化明显——以<b>真实场景"脏数据"</b>（Spirit AI）、国家标准的制度先行、以及运动会/半马式的工程文化加速落地，叠加潜在军民两用纵深。投资视角：短期确定性在<b>算力与存储</b>（NVIDIA、SK海力士、三星），中期在<b>传感器/灵巧手/边缘芯片</b>，长期才是整机——当前应警惕整机概念估值先行、收入滞后的错配风险。</p>
+  </div>
+</div>
+
+<div class="warn-box">
+  ⚠️ <b>本周风险日历</b>：周四美国 PPI + 甲骨文财报；周五美国 CPI（决定 9 月 FOMC 加息概率）；美伊霍尔木兹局势随时可能再升级；9月24日习近平访美前的筹码博弈。建议控制单一方向敞口，关注波动率交易机会。
+</div>
+
+<footer>
+  简报由 AI 自动生成，资讯仅供参考，不构成投资建议。<br>
+  Generated by OpenClaw · 2026-09-08 07:30 SGT
+</footer>
+
+</div>
 </body>
 </html>
