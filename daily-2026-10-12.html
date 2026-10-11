@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年10月12日</title>
+  <!-- 设计参考：GitHub Dark 配色 + Bloomberg Terminal 信息密度 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --card-bg2: #1c2330;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-light: #9da7b3;
+      --accent: #58a6ff;
+      --accent2: #bc8cff;
+      --green: #3fb950;
+      --red: #f85149;
+      --orange: #d29922;
+      --pink: #ff7b72;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 60%, #1a2332 100%);
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 36px 30px; margin-bottom: 18px; text-align: center;
+    }
+    header h1 { font-size: 2rem; letter-spacing: 3px; margin-bottom: 8px; }
+    header h1 .accent { color: var(--accent); }
+    header .subtitle { color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px; }
+    header .date { color: var(--text-light); font-size: 0.85rem; }
+    header .date b { color: var(--orange); font-weight: 600; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; position: sticky; top: 0; background: var(--bg); padding: 10px 0; z-index: 100; }
+    .tab-btn {
+      flex: 1; min-width: 120px; padding: 12px 10px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--card-bg); color: var(--text-light); font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: all .15s ease;
+    }
+    .tab-btn:hover { border-color: var(--accent); color: var(--text); }
+    .tab-btn.active { background: linear-gradient(135deg, #1f6feb33, #bc8cff22); border-color: var(--accent); color: var(--accent); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .section {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; margin-bottom: 16px;
+    }
+    .section-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--accent); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .section-title .icon { font-size: 1.3rem; }
+    h4.sub { color: var(--accent2); font-size: 0.98rem; margin: 20px 0 10px; border-left: 3px solid var(--accent2); padding-left: 10px; }
+
+    .index-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .index-card { background: var(--card-bg2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
+    .index-card .name { font-size: 0.78rem; color: var(--text-light); margin-bottom: 5px; }
+    .index-card .value { font-size: 1.25rem; font-weight: 700; }
+    .index-card .change { font-size: 0.8rem; font-weight: 600; margin-top: 3px; }
+    .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--orange); }
+    .index-card .note { font-size: 0.68rem; color: var(--text-light); margin-top: 4px; }
+
+    .table-wrapper { overflow-x: auto; margin: 12px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    th { background: #21262d; color: var(--accent); padding: 10px 12px; text-align: left; font-weight: 600; white-space: nowrap; }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+    tr:nth-child(even) { background: #161b22; }
+    tr:hover { background: #1f242c; }
+
+    .news-grid { display: grid; gap: 12px; }
+    .news-item { padding: 15px 17px; background: var(--card-bg2); border-radius: 11px; border: 1px solid var(--border); }
+    .news-item h3 { font-size: 0.98rem; margin-bottom: 7px; line-height: 1.5; }
+    .news-item p { font-size: 0.86rem; color: var(--text-light); }
+    .news-item p b { color: var(--text); }
+    .tag { display: inline-block; background: #1f6feb33; color: var(--accent); font-size: 0.7rem; padding: 2px 9px; border-radius: 11px; margin-right: 6px; border: 1px solid #1f6feb55; }
+    .tag.red { background: #f8514922; color: var(--pink); border-color: #f8514955; }
+    .tag.green { background: #3fb95022; color: var(--green); border-color: #3fb95055; }
+    .tag.purple { background: #bc8cff22; color: var(--accent2); border-color: #bc8cff55; }
+    .src { color: #6e7681; font-size: 0.75rem; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #1f6feb18 0%, #bc8cff12 100%);
+      border: 1px solid #1f6feb44; border-radius: 12px; padding: 17px; margin-top: 16px;
+    }
+    .highlight-box h4 { color: var(--accent); margin-bottom: 8px; font-size: 0.95rem; }
+    .highlight-box p, .highlight-box li { font-size: 0.87rem; color: var(--text); }
+    .highlight-box ul { margin-left: 20px; margin-top: 6px; }
+    .warn-box { background: #d2992215; border: 1px solid #d2992244; border-radius: 12px; padding: 15px; margin-top: 14px; font-size: 0.86rem; }
+    .warn-box b { color: var(--orange); }
+
+    .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 14px 0; }
+    .chart-box { background: var(--card-bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .chart-box h5 { font-size: 0.85rem; color: var(--text-light); margin-bottom: 10px; text-align: center; }
+    .chart-box canvas { max-height: 240px; }
+
+    footer { text-align: center; color: #6e7681; font-size: 0.8rem; padding: 22px 0 30px; line-height: 1.9; }
+    .archives { text-align: center; margin-bottom: 18px; }
+    .archives a { color: var(--accent); text-decoration: none; font-size: 0.8rem; margin: 0 6px; }
+    .archives a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>每日资讯<span class="accent">简报</span></h1>
+  <div class="subtitle">航运 · 财经 · 时政 · AI 与机器人 —— 全维度深度扫描</div>
+  <div class="date">📅 <b>2026年10月12日 星期一</b> · 数据截至 10月9日（周五）收盘 / 周末要闻 · 新加坡时间 07:00 发布</div>
+</header>
+
+<div class="archives">
+  往期回顾：
+  <a href="./daily-2026-10-11.html">10/11</a>·
+  <a href="./daily-2026-10-07.html">10/07</a>·
+  <a href="./daily-2026-10-06.html">10/06</a>·
+  <a href="./daily-2026-10-05.html">10/05</a>·
+  <a href="./daily-2026-10-04.html">10/04</a>·
+  <a href="./daily-2026-10-03.html">10/03</a>·
+  <a href="./daily-2026-10-02.html">10/02</a>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab(0)">🚢 航运板块</button>
+  <button class="tab-btn" onclick="switchTab(1)">📈 财经板块</button>
+  <button class="tab-btn" onclick="switchTab(2)">📰 时政板块</button>
+  <button class="tab-btn" onclick="switchTab(3)">🤖 AI / 机器人</button>
+</div>
+
+<!-- ============ 航运板块 ============ -->
+<div class="tab-panel active">
+
+  <div class="section">
+    <div class="section-title"><span class="icon">🚢</span> 航运市场全景 <span class="tag red">干散六周新低</span><span class="tag green">油运历史级景气</span><span class="tag">集装箱温和</span></div>
+
+    <div class="index-cards">
+      <div class="index-card">
+        <div class="name">波罗的海干散货指数 BDI</div>
+        <div class="value down">2,973</div>
+        <div class="change down">▼ 21 点（-0.7%）</div>
+        <div class="note">10/8 收盘 · 8/25 以来最低</div>
+      </div>
+      <div class="index-card">
+        <div class="name">巴拿马型指数 BPI</div>
+        <div class="value up">逆势上涨</div>
+        <div class="change up">部分抵消海岬跌幅</div>
+        <div class="note">大小船型分化延续</div>
+      </div>
+      <div class="index-card">
+        <div class="name">ClarkSea 综合指数</div>
+        <div class="value up">$84,951/天</div>
+        <div class="change up">再创历史新高</div>
+        <div class="note">二手船交易远优于拆解</div>
+      </div>
+      <div class="index-card">
+        <div class="name">VLCC 油轮运价</div>
+        <div class="value up">极端紧张</div>
+        <div class="change up">美→中租船贵过火箭发射</div>
+        <div class="note">全球油轮短缺日益恶化</div>
+      </div>
+      <div class="index-card">
+        <div class="name">拆船市场</div>
+        <div class="value down">极度低迷</div>
+        <div class="change down">YTD 仅 840 万 dwt</div>
+        <div class="note">运费高企压制拆解意愿</div>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h5>BDI 近期关键点位（9月末–10月上旬）</h5>
+        <canvas id="bdiChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h5>航运景气分化：指数化周表现</h5>
+        <canvas id="tankerChart"></canvas>
+      </div>
+    </div>
+
+    <h4 class="sub">📋 船型租金与船舶价格</h4>
+    <div class="table-wrapper">
+      <table>
+        <tr><th>细分市场</th><th>状态</th><th>驱动因素</th><th>展望</th></tr>
+        <tr><td>好望角型 Capesize</td><td class="down">走弱</td><td>铁矿石货盘不足、矿价下跌</td><td>Q4 巴西/西非货盘回暖前偏弱</td></tr>
+        <tr><td>巴拿马型 Panamax</td><td class="up">相对抗跌</td><td>粮食、煤炭中小宗货盘稳定</td><td>区间震荡</td></tr>
+        <tr><td>超灵便型 Supramax</td><td class="up">小幅上涨</td><td>灵便船货盘补充</td><td>偏强</td></tr>
+        <tr><td>VLCC 油轮</td><td class="up">飙升</td><td>霍尔木兹袭击+影子舰队制裁</td><td>事件驱动，高波动</td></tr>
+        <tr><td>集装箱船</td><td class="flat">温和回升</td><td>黄金周后首批运价、FAK 调整</td><td>关注 10/19 MSC 新 FAK</td></tr>
+        <tr><td>二手船 (S&P)</td><td class="up">活跃</td><td>ClarkSea 新高，船东惜售</td><td>老旧船溢价收窄</td></tr>
+        <tr><td>新造船订单</td><td class="flat">结构分化</td><td>油轮订单受制裁扰动，箱船订单 40%+ 占比压制</td><td>油轮新造或迎补订窗口</td></tr>
+      </table>
+    </div>
+
+    <h4 class="sub">📋 市场动态</h4>
+    <div class="news-grid">
+      <div class="news-item">
+        <h3><span class="tag red">干散</span>BDI 跌至六周新低 2,973，海岬租金领跌</h3>
+        <p>波罗的海干散货指数周四（10/8）收于 <b>2,973 点</b>，单日跌 21 点，为 8 月 25 日以来最低；海岬型租金下滑拖累大盘，巴拿马型与超灵便型逆势小涨。<span class="src">Investing.com / Reuters，10/8</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag green">油运</span>"租一艘油轮比发射火箭还贵"：美→中 VLCC 运价超航天成本</h3>
+        <p>gCaptain 报道，受霍尔木兹袭击升级与影子舰队制裁双重挤压，<b>美国至中国油轮运价已高过 SpaceX 火箭发射报价</b>；同日美军在阿曼湾击伤一艘试图突破伊朗封锁的巴拿马籍货船（无人员伤亡），波斯湾航运风险持续计入运价。<span class="src">gCaptain / US CENTCOM，10/9–10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag purple">行业结构</span>拆船业"干旱"：全球 3.4 亿 gt 船龄超 20 年，创纪录老龄船队浮在水上</h3>
+        <p>Clarksons 数据：<b>20 年以上船龄运力达 3.4 亿 gt（占全球船队近 20%，5 年增 90%）</b>；其中 25 年以上 1.5 亿 gt、30 年以上 6,800 万 gt 均创纪录。油轮超 20 年船龄占比达 22%（5 年前仅 8%）。今年至今仅 840 万 dwt 送拆——<b>高运费时代拆解经济性极差</b>，老龄船堰塞湖将成为下一轮周期修正时的巨大供给释放阀。<span class="src">Splash247 / Clarksons，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">公司</span>Danaos 散装业务谋划挪威上市；Star Bulk 出售两艘 Kamsarmax</h3>
+        <p>Danaos 计划将散货船业务分拆赴奥斯陆上市；Star Bulk 向 Hermes 出售两艘 Kamsarmax；中国投资人入主沥青船东 Xin Yuan——二手船市场高景气下船东资本运作与船队置换频繁。<span class="src">Splash247，10/11</span></p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h4>🔍 航运分析与投资机会</h4>
+      <ul>
+        <li><b>油运仍是主线</b>：VLCC 运价的历史极值由"合规运力收缩+地缘风险溢价"双驱动，短期难证伪；关注 Frontline、DHT、招商轮船、中远海能的事件弹性，但需对"美伊选前缓和"类 headlines 保持对冲。</li>
+        <li><b>干散：数据真空期的错杀</b>：BDI 六周新低主因铁矿石货盘（矿价同步跌至多月低位），而非需求坍塌；Q4 铁矿/煤炭旺季+老龄船供给逻辑未破坏，回调是布局干散敞口的窗口。</li>
+        <li><b>供给端最大叙事：老龄船堰塞湖</b>。3.4 亿 gt 超龄运力一旦进入拆解周期，将同时利好新造船（中韩船厂订单）与存量运价——这是 2027–2028 年最确定的结构性主题。</li>
+        <li><b>箱船订单占比超 40%</b> 压制中长期集运运价中枢，油轮新造订单则处历史低位，油轮新造船与二手油轮或是船价维度最后的洼地。<span class="src">综合本周公开报道</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 财经板块 ============ -->
+<div class="tab-panel">
+
+  <div class="section">
+    <div class="section-title"><span class="icon">📈</span> 全球市场与资产价格 <span class="tag green">周线集体收阳</span><span class="tag red">CPI 前夜的紧绷</span><span class="tag">油价高位</span></div>
+
+    <div class="index-cards">
+      <div class="index-card">
+        <div class="name">道琼斯工业</div>
+        <div class="value up">51,654.95</div>
+        <div class="change up">+0.83%（周五）/ 周 +0.93%</div>
+        <div class="note">结束五周连跌</div>
+      </div>
+      <div class="index-card">
+        <div class="name">标普 500</div>
+        <div class="value up">7,811.54</div>
+        <div class="change up">+0.59%（周五）/ 周 +1.15%</div>
+        <div class="note">年内 +14%</div>
+      </div>
+      <div class="index-card">
+        <div class="name">纳斯达克综合</div>
+        <div class="value up">27,366.17</div>
+        <div class="change up">+0.64%（周五）</div>
+        <div class="note">周线四连阳</div>
+      </div>
+      <div class="index-card">
+        <div class="name">WTI / Brent</div>
+        <div class="value">$93 / $104.5</div>
+        <div class="change up">周涨幅显著</div>
+        <div class="note">霍尔木兹+沙特设施遇袭</div>
+      </div>
+      <div class="index-card">
+        <div class="name">比特币</div>
+        <div class="value down">~$83,700</div>
+        <div class="change down">周内低点 $80,400</div>
+        <div class="note">周日反弹 +0.94%</div>
+      </div>
+      <div class="index-card">
+        <div class="name">黄金</div>
+        <div class="value up">反弹走高</div>
+        <div class="change up">避险+通胀双支撑</div>
+        <div class="note">GLD 周五 +1.55%</div>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h5>标普 500 本周关键点位</h5>
+        <canvas id="spxChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h5>比特币本周（千美元）</h5>
+        <canvas id="btcChart"></canvas>
+      </div>
+    </div>
+
+    <h4 class="sub">📋 重点个股与板块</h4>
+    <div class="table-wrapper">
+      <table>
+        <tr><th>标的</th><th>收盘/状态</th><th>驱动</th></tr>
+        <tr><td>NVIDIA</td><td>持续新高</td><td>AI 算力需求+机器人/物理 AI 叙事</td></tr>
+        <tr><td>Meta</td><td>$718.67</td><td>Muse AI 与广告增长，看 $1,000 牛市叙事</td></tr>
+        <tr><td>Apple</td><td>$336.64</td><td>27 款新品周期，iPhone 需求存疑</td></tr>
+        <tr><td>Adobe</td><td>$242.27</td><td>AI 合作（Heathrow/NHL）与移民政策拖累</td></tr>
+        <tr><td>OpenAI（私营）</td><td class="down">收入下修 $180 亿</td><td>收入预期缺口震动 NVDA/Oracle 等 AI 链</td></tr>
+        <tr><td>美国银行</td><td>$54.32</td><td>周三财报，预期营收 $306 亿</td></tr>
+        <tr><td>房利美链条</td><td class="down">房贷利率 7.4%</td><td>2023 年 11 月以来最高，购房需求 -15%</td></tr>
+      </table>
+    </div>
+
+    <h4 class="sub">📋 本周关键宏观日历（10/12–10/16）</h4>
+    <div class="news-grid">
+      <div class="news-item">
+        <h3><span class="tag red">周三 10/14</span>美国 9 月 CPI：预期 3.6%（前值 3.4%），或定调 12 月加息</h3>
+        <p>市场一致预期 headline CPI 同比升至约 3.6%、环比 0.6%；核心 CPI 预期 2.5%。经济学家预计<b>美联储 10 月按兵不动、12 月再加息一次</b>。标普与纳指在纪录高位附近，几乎没有容错空间。<span class="src">FXEmpire / Benzinga，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">周二–三 10/13–14</span>Q3 财报季开启：摩根大通、高盛打头阵</h3>
+        <p>FactSet 数据显示分析师预期 Q3 盈利增长 <b>29.5%</b>（历史规律实际常超预期约 7 个百分点）；银行股交易收入接近 $190 亿，但高利率对净息差与投行的冲击是焦点；美银、大摩周三接棒，联合健康、强生同日发布。<span class="src">Benzinga，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">加密</span>BTC 周跌 4% 后于 $83.7K 企稳；Fed 纪要+Ledger 安全事件扰动</h3>
+        <p>10/9 凌晨 BTC 从 ~$83,200 急跌至 ~$80,400，单日清算超 $10 亿（多头 $8.62 亿）；导火索为<b>美联储 9 月纪要（多数官员支持年内再加息一次）</b>+五角大楼对伊备战报道。随后特朗普表态"选前不打伊朗"，油价与币价同步反弹。Ledger 就经销商渠道可能 compromised 的钱包展开调查（涉 $8,600 万）。<span class="src">ForkLog / Benzinga，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag purple">市场宽度</span>巴菲特警示：S&P 估值 top 40+，仅 35% 成分股站上 50 日线</h3>
+        <p>指数创新高背后市场宽度极差——<b>约 65% 的标普成分股位于 50 日均线下方</b>，指数上涨高度依赖少数权重；巴菲特就估值风险公开预警，房贷 7.4% 与债券收益率高企是估值的三座大山。<span class="src">beinsure / YouTube 市场综述，10/11</span></p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h4>🔍 财经分析与资产配置</h4>
+      <ul>
+        <li><b>本周是"宏观双考验"</b>：CPI + 银行财报。CPI ≤ 3.6% 且银行指引稳健 → 维持高位震荡偏多；CPI 超预期 → 纪录高位的指数将测试 SPX 7,662 / 纳指 25,803 支撑。</li>
+        <li><b>油价是隐藏主角</b>：Brent $104+ 若持续，将把"再通胀"叙事推向 12 月加息预期，利好能源股、伤害航空与利率敏感成长股；黄金在"避险+实际利率"拉扯中仍具配置价值。</li>
+        <li><b>警惕市场宽度陷阱</b>：35% 站上 50 日线的结构意味着指数 ETF 之外的个股选择风险极高，财报季建议以指数+质量因子替代个股押注。</li>
+        <li><b>加密</b>：$80K 一线获选前政策叙事支撑，但利率路径未明前维持 $80–87K 区间思维，严控杠杆。<span class="src">综合本周公开报道</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ 时政板块 ============ -->
+<div class="tab-panel">
+
+  <div class="section">
+    <div class="section-title"><span class="icon">📰</span> 全球时政要闻 <span class="tag red">中东高热</span><span class="tag">俄乌能源停火</span><span class="tag purple">中美欧密集互动</span></div>
+
+    <div class="news-grid">
+      <div class="news-item">
+        <h3><span class="tag">今日热点</span>特朗普宣布俄乌"能源停火"即时生效，泽连斯基：意外但接受</h3>
+        <p>特朗普周日（10/11）在 Truth Social 宣布<b>"俄乌战争能源停火即刻生效，双方已同意"</b>，要求"不要破坏它！"。泽连斯基对 Axios 表示感到意外但随时接受；俄乌双方暂未正式确认。该声明紧随周末哈尔科夫与基辅遭空袭、伤亡上升的背景——若落地，将显著改变欧洲能源与航运风险定价。<span class="src">SCMP / AFP，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag red">中东</span>霍尔木兹持续交火：更多油轮遇袭，美军击伤闯关货船</h3>
+        <p>周末波斯湾/阿曼湾事件频发：多艘油轮在霍尔木兹海峡附近遇袭；美军中央司令部称一架战机<b>击伤一艘无视警告、试图突破伊朗封锁的巴拿马籍货船</b>（无人员伤亡）。伊朗方面称美方最新回应"不充分"。特朗普此前与普京达成柴油释放安排（六名参议员联名要求推翻该计划），中东局势呈"高压脆平衡"。<span class="src">gCaptain / Yeni Şafak，10/9–10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">中欧</span>中欧经贸磋商机制第二次会议北京举行，第三轮定于明年 3 月</h3>
+        <p>中国商务部长王文涛与欧盟贸易委员塞夫科维奇 10/8–9 在北京共同主持<b>中欧贸易投资磋商机制第二次会议</b>，双方评价机制运行"顺畅高效"；第三次会议定于明年 3 月，明年 1 月先举行部长级视频会。同期王毅在大同与法国总统外事顾问博纳举行<b>第 28 次中法战略对话</b>，强调"互信是中欧关系底色"。<span class="src">China Daily，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag purple">台海</span>赖清德"双十"讲话引发两岸交锋；美媒聚焦灰色地带选项</h3>
+        <p>赖清德"双十"讲话被大陆方面批为"煽动两岸对立、推进分裂议程"，国民党主席郑丽文缺席官方活动并批评当局升高对抗；《美国保守派》分析称，<b>特朗普政府将稳定对华关系置于对台支持之上</b>（9 月华盛顿峰会后尤甚），全面攻台担忧下降，但灰色地带施压（网络、海警、经济）风险上升。台湾方面呼吁大陆停止"敌对言论"。<span class="src">Global Times / Taipei Times / AmCon，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">美国</span>关税议题拖累中期选情；IMF-世行年会聚焦中东战争与全球债务危机</h3>
+        <p>AP 民调显示<b>选民在中期选举前转向反对特朗普关税政策</b>，但白宫坚持加码；曼谷 IMF-世行年会将以"中东战争+全球债务危机"为双主题；德国 defies Trump 公开支持泽连斯基；希腊获美方 40 亿美元东地中海安全投资框架。<span class="src">Audacy / Modern Diplomacy，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag green">亚太</span>中美元首华盛顿会晤余温：AI 重塑大国竞争版图</h3>
+        <p>Bloomberg 评论指出<b>AI 正在重绘中美战略竞争地图</b>——继 9 月 Trump-Xi 华盛顿峰会后，双方在 AI 治理、芯片与台海议题上的"管控竞争"框架成型；印度方向，尽管 Xi-Modi 三次会晤、关系回暖，军事互信仍停留在 2020 年状态。<span class="src">Bloomberg / SCMP，10/11</span></p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h4>🔍 地缘政治 × 市场传导链</h4>
+      <p><b>本周核心链条</b>：俄乌"能源停火"若兑现 → 欧洲能源风险溢价回落 + 黑海/东地中海航运正常化预期；但其与霍尔木兹的高热形成"一冷一热"的对冲格局——油价的净方向取决于哪条主线占优。<b>中欧磋商机制常态化</b>利多跨欧亚贸易链与中远欧线货量预期；<b>中美"管控竞争"框架</b>则是全球风险资产的底部支撑叙事。中期选举（11/3）前，特朗普的一切外交动作（对伊、对俄、对华）都带有选时考量，政策可信度需打折评估。<span class="src">综合本周公开报道</span></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ AI / 机器人板块 ============ -->
+<div class="tab-panel">
+
+  <div class="section">
+    <div class="section-title"><span class="icon">🤖</span> AI 与机器人前沿 <span class="tag red">OpenAI 收入震动</span><span class="tag green">端侧 AI 竞赛</span><span class="tag purple">具身智能产业化</span></div>
+
+    <div class="news-grid">
+      <div class="news-item">
+        <h3><span class="tag red">今日热点</span>OpenAI 收入预期下修 $180 亿，AI 股集体震动</h3>
+        <p>OpenAI 向投资者确认收入预期较此前<b>低约 180 亿美元</b>，直接拖累 NVIDIA、Oracle 等 AI 核心链股票（此前已引发纳指 -1.25% 的单日波动）。同期动态：Google 发布可跨设备自主执行任务的 <b>Gemini Agent</b>；Anthropic 与 Mistral 发布新模型；UK ICO 获 10 家 AI 公司数据保护承诺。<span class="src">SC Media / SiliconAngle，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag green">端侧</span>高通：AI 公司要求 2028 年手机持续运行千亿参数模型</h3>
+        <p>高通 CEO Cristiano Amon 透露，多家 AI 公司提出明确需求——<b>2028 年手机需可持续运行至少 1,000 亿参数模型</b>；虽未公布芯片与时间表，但端侧推理的算力军备赛已经打响，利好先进制程、存储与 NPU IP 链。<span class="src">Pasquale Pillitteri，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag purple">机器人</span>人形机器人 DRAM 需求 2030 年将增 20 倍</h3>
+        <p>Counterpoint Research 预测：<b>人形机器人 DRAM 需求到 2030 年增长 20 倍以上</b>——世界模型+多模态感知要求机器人实时处理视觉/激光雷达/触觉数据，HBM 之后的下一个存储增长极浮现；NVIDIA GPU 的机器人侧需求同步看涨。三星、SK 海力士被视为直接受益者。<span class="src">朝鲜日报/Chosun，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">融资</span>机器人数据公司 Mecka AI 获 $60M（红杉领投，NVDA/M12 参投）</h3>
+        <p>2024 年成立的"机器人版 Scale AI" Mecka AI 完成 <b>6,000 万美元 B 轮</b>，通过真人佩戴传感器采集日常任务数据（做咖啡、修车等）为具身智能供能，此前被报道正以 5 亿美元估值融资。加上上周 Skild $1.4B、Apptronik $935M，具身智能资金沿"基础模型→数据→硬件"全链铺开。<span class="src">The Sequence，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">巨头</span>微软 Nadella 的"超级智能"新叙事：把 AI 当内部威胁来管</h3>
+        <p>Nadella 借白宫"Super Intelligence"话语框架发表文章，主张企业应将前沿 AI 模型<b>视同内部安全威胁来架构管控</b>（借鉴 Google DeepMind 此前建议），并借此向 OpenAI/Anthropic 施压。评论认为这更多是微软在自有前沿模型缺位下的防守话术，但也标志着"AI 安全"正式进入企业 CTO 议程。<span class="src">The Decoder，10/11</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag green">工具</span>AI 内容溯源升级：Google SynthID 扩围，OpenAI textGrain 上线</h3>
+        <p>Google 升级 <b>SynthID Detector</b>，检测范围扩展至 OpenAI、NVIDIA、Kakao 生成的图像/视频/音频，并将纳入 Apple；OpenAI 的 textGrain 水印检测器开放 API，且明确<b>不会用于检查学生作业/论文</b>——AI 内容认证体系正在成为平台级基础设施。<span class="src">Mashable / OpenAI Help，10/11</span></p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h4>🔍 AI 板块分析与投资主线</h4>
+      <ul>
+        <li><b>收入验证期到来</b>：OpenAI $180 亿下修是 AI 商业化叙事的第一记实锤，Q4 将进入"收入 vs 估值"的密集验证窗口；卖铲人（NVDA/台积电/存储）短期情绪受挫，但订单基本面未变，回调即观察承接力的试金石。</li>
+        <li><b>端侧与机器人是增量主战场</b>：千亿参数手机（2028）+ 20 倍 DRAM 需求（2030）两条曲线叠加，存储（三星/海力士/美光）与边缘 NPU 是确定性受益环节。</li>
+        <li><b>数据成为新瓶颈资产</b>：Mecka、Scale 类"机器人/AI 数据商"估值快速抬升，印证"模型→算力→数据"瓶颈轮动逻辑。</li>
+        <li><b>监管与认证基础设施</b>：内容水印（textGrain/SynthID）与企业级 AI 管控（Nadella 提案）将孕育新的合规工具赛道。<span class="src">综合本周公开报道</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  简报由 AI 自动生成 · 数据来自公开资讯（Tavily 搜索聚合）· 资讯仅供参考，不构成投资建议<br>
+  © 2026 每日资讯简报 · GitHub Pages 自动部署
+</footer>
+
+</div>
+
+<script>
+  const CHART_DEFAULTS = {
+    color: '#9da7b3',
+    borderColor: '#30363d',
+    font: { family: '-apple-system, "PingFang SC", sans-serif', size: 11 }
+  };
+  Chart.defaults.color = CHART_DEFAULTS.color;
+  Chart.defaults.borderColor = CHART_DEFAULTS.borderColor;
+  Chart.defaults.font = CHART_DEFAULTS.font;
+
+  // BDI 近期关键点位（公开报告）
+  new Chart(document.getElementById('bdiChart'), {
+    type: 'line',
+    data: {
+      labels: ['9/29', '10/2', '10/5', '10/6', '10/7', '10/8'],
+      datasets: [{
+        label: 'BDI',
+        data: [3120, 3050, 2995, 3018, 2994, 2973],
+        borderColor: '#58a6ff',
+        backgroundColor: 'rgba(88,166,255,0.12)',
+        fill: true, tension: 0.35, pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // 航运景气分化（指数化示意）
+  new Chart(document.getElementById('tankerChart'), {
+    type: 'bar',
+    data: {
+      labels: ['BDI 周变动', 'BPI(抗跌)', 'ClarkSea(新高)', 'VLCC 运价', '拆船量(YTD)'],
+      datasets: [{
+        label: '表现（指数化示意）',
+        data: [-3.5, 0.6, 5.0, 9.0, -40],
+        backgroundColor: ['rgba(248,81,73,0.55)', 'rgba(63,185,80,0.55)', 'rgba(63,185,80,0.55)', 'rgba(63,185,80,0.65)', 'rgba(248,81,73,0.45)'],
+        borderColor: ['#f85149', '#3fb950', '#3fb950', '#3fb950', '#f85149'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // 标普 500 本周关键点位
+  new Chart(document.getElementById('spxChart'), {
+    type: 'line',
+    data: {
+      labels: ['10/5', '10/6', '10/7', '10/8', '10/9 收'],
+      datasets: [{
+        label: 'S&P 500',
+        data: [7725, 7745, 7762, 7766, 7811],
+        borderColor: '#bc8cff',
+        backgroundColor: 'rgba(188,140,255,0.12)',
+        fill: true, tension: 0.35, pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // 比特币本周（千美元）
+  new Chart(document.getElementById('btcChart'), {
+    type: 'line',
+    data: {
+      labels: ['10/5', '10/7', '10/9 凌晨', '10/10', '10/11'],
+      datasets: [{
+        label: 'BTC (K$)',
+        data: [85.0, 83.2, 80.4, 82.3, 83.7],
+        borderColor: '#f7931a',
+        backgroundColor: 'rgba(247,147,26,0.12)',
+        fill: true, tension: 0.35, pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  function switchTab(idx) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
