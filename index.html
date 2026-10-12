@@ -4,541 +4,210 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>每日资讯简报 | 2026年10月13日</title>
-  <!-- 设计参考：GitHub Dark 配色 + Bloomberg Terminal 信息密度 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
-    :root {
-      --bg: #0d1117;
-      --card-bg: #161b22;
-      --card-bg2: #1c2330;
-      --border: #30363d;
-      --text: #e6edf3;
-      --text-light: #9da7b3;
-      --accent: #58a6ff;
-      --accent2: #bc8cff;
-      --green: #3fb950;
-      --red: #f85149;
-      --orange: #d29922;
-      --pink: #ff7b72;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.65;
-    }
-    .container { max-width: 1080px; margin: 0 auto; padding: 20px; }
-    header {
-      background: linear-gradient(135deg, #0d1117 0%, #161b22 60%, #1a2332 100%);
-      border: 1px solid var(--border); border-radius: 16px;
-      padding: 36px 30px; margin-bottom: 18px; text-align: center;
-    }
-    header h1 { font-size: 2rem; letter-spacing: 3px; margin-bottom: 8px; }
-    header h1 .accent { color: var(--accent); }
-    header .subtitle { color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px; }
-    header .date { color: var(--text-light); font-size: 0.85rem; }
-    header .date b { color: var(--orange); font-weight: 600; }
-
-    /* Tabs */
-    .tabs { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; position: sticky; top: 0; background: var(--bg); padding: 10px 0; z-index: 100; }
-    .tab-btn {
-      flex: 1; min-width: 120px; padding: 12px 10px; border-radius: 10px; border: 1px solid var(--border);
-      background: var(--card-bg); color: var(--text-light); font-size: 0.95rem; font-weight: 600;
-      cursor: pointer; transition: all .15s ease;
-    }
-    .tab-btn:hover { border-color: var(--accent); color: var(--text); }
-    .tab-btn.active { background: linear-gradient(135deg, #1f6feb33, #bc8cff22); border-color: var(--accent); color: var(--accent); }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    .section {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
-      padding: 24px; margin-bottom: 16px;
-    }
-    .section-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--accent); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .section-title .icon { font-size: 1.3rem; }
-    h4.sub { color: var(--accent2); font-size: 0.98rem; margin: 20px 0 10px; border-left: 3px solid var(--accent2); padding-left: 10px; }
-
-    .index-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 12px; margin-bottom: 18px; }
-    .index-card { background: var(--card-bg2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
-    .index-card .name { font-size: 0.78rem; color: var(--text-light); margin-bottom: 5px; }
-    .index-card .value { font-size: 1.25rem; font-weight: 700; }
-    .index-card .change { font-size: 0.8rem; font-weight: 600; margin-top: 3px; }
-    .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--orange); }
-    .index-card .note { font-size: 0.68rem; color: var(--text-light); margin-top: 4px; }
-
-    .table-wrapper { overflow-x: auto; margin: 12px 0; border-radius: 10px; border: 1px solid var(--border); }
-    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
-    th { background: #21262d; color: var(--accent); padding: 10px 12px; text-align: left; font-weight: 600; white-space: nowrap; }
-    td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
-    tr:nth-child(even) { background: #161b22; }
-    tr:hover { background: #1f242c; }
-
-    .news-grid { display: grid; gap: 12px; }
-    .news-item { padding: 15px 17px; background: var(--card-bg2); border-radius: 11px; border: 1px solid var(--border); }
-    .news-item h3 { font-size: 0.98rem; margin-bottom: 7px; line-height: 1.5; }
-    .news-item p { font-size: 0.86rem; color: var(--text-light); }
-    .news-item p b { color: var(--text); }
-    .tag { display: inline-block; background: #1f6feb33; color: var(--accent); font-size: 0.7rem; padding: 2px 9px; border-radius: 11px; margin-right: 6px; border: 1px solid #1f6feb55; }
-    .tag.red { background: #f8514922; color: var(--pink); border-color: #f8514955; }
-    .tag.green { background: #3fb95022; color: var(--green); border-color: #3fb95055; }
-    .tag.purple { background: #bc8cff22; color: var(--accent2); border-color: #bc8cff55; }
-    .src { color: #6e7681; font-size: 0.75rem; }
-
-    .highlight-box {
-      background: linear-gradient(135deg, #1f6feb18 0%, #bc8cff12 100%);
-      border: 1px solid #1f6feb44; border-radius: 12px; padding: 17px; margin-top: 16px;
-    }
-    .highlight-box h4 { color: var(--accent); margin-bottom: 8px; font-size: 0.95rem; }
-    .highlight-box p, .highlight-box li { font-size: 0.87rem; color: var(--text); }
-    .highlight-box ul { margin-left: 20px; margin-top: 6px; }
-    .warn-box { background: #d2992215; border: 1px solid #d2992244; border-radius: 12px; padding: 15px; margin-top: 14px; font-size: 0.86rem; }
-    .warn-box b { color: var(--orange); }
-
-    .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 14px 0; }
-    .chart-box { background: var(--card-bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-    .chart-box h5 { font-size: 0.85rem; color: var(--text-light); margin-bottom: 10px; text-align: center; }
-    .chart-box canvas { max-height: 240px; }
-
-    footer { text-align: center; color: #6e7681; font-size: 0.8rem; padding: 22px 0 30px; line-height: 1.9; }
-    .archives { text-align: center; margin-bottom: 18px; }
-    .archives a { color: var(--accent); text-decoration: none; font-size: 0.8rem; margin: 0 6px; }
-    .archives a:hover { text-decoration: underline; }
+    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:40px 20px; text-align:center; }
+    .header h1 { font-size:2em; margin-bottom:8px; }
+    .header .date { font-size:1.1em; opacity:.9; }
+    .header .update { font-size:.85em; opacity:.75; margin-top:8px; }
+    .tabs { display:flex; background:var(--primary); position:sticky; top:0; z-index:100; overflow-x:auto; }
+    .tab { flex:1; min-width:120px; padding:14px 10px; text-align:center; color:rgba(255,255,255,.7); cursor:pointer; border:none; background:none; font-size:15px; font-weight:600; transition:all .3s; white-space:nowrap; }
+    .tab:hover { background:rgba(255,255,255,.1); color:#fff; }
+    .tab.active { background:var(--accent); color:#fff; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .section { display:none; animation:fadeIn .4s; }
+    .section.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .card { background:var(--card); border-radius:10px; padding:22px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,.07); }
+    .card h2 { color:var(--primary); font-size:1.3em; margin-bottom:14px; padding-bottom:10px; border-bottom:3px solid var(--accent); }
+    .card h3 { color:var(--secondary); font-size:1.05em; margin:16px 0 8px; }
+    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
+    th { background:var(--primary); color:#fff; padding:9px 10px; text-align:left; font-weight:600; }
+    td { padding:8px 10px; border-bottom:1px solid var(--border); }
+    tr:hover { background:#f8f9ff; }
+    .up { color:var(--up); font-weight:600; }
+    .down { color:var(--down); font-weight:600; }
+    .flat { color:var(--light); }
+    .news-item { padding:11px 0; border-bottom:1px dashed var(--border); }
+    .news-item:last-child { border-bottom:none; }
+    .news-title { font-weight:600; color:var(--text); margin-bottom:3px; }
+    .news-summary { font-size:.92em; color:var(--light); }
+    .source { display:inline-block; font-size:.78em; color:var(--accent); margin-right:8px; font-weight:600; }
+    .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+    .stat-box { background:#f0f2ff; border-left:4px solid var(--accent); padding:12px 14px; border-radius:6px; }
+    .stat-box .label { font-size:.82em; color:var(--light); }
+    .stat-box .value { font-size:1.25em; font-weight:700; color:var(--primary); }
+    .note { font-size:.85em; color:var(--light); font-style:italic; margin-top:8px; }
+    .footer { text-align:center; padding:26px; color:var(--light); font-size:.85em; background:#eee; margin-top:20px; }
+    @media(max-width:640px){ .header h1{font-size:1.4em} .tab{font-size:13px;padding:12px 6px} }
   </style>
 </head>
 <body>
+<div style="background:#161b22;padding:10px 20px;font-size:.85em;border-bottom:1px solid #30363d;">
+<span style="color:#9da7b3;">归档：</span>
+<a href="daily-2026-10-13.html" style="color:#58a6ff;margin-right:10px;">10-13(本页)</a>
+<a href="daily-2026-10-12.html" style="color:#58a6ff;margin-right:10px;">10-12</a>
+<a href="daily-2026-10-05.html" style="color:#58a6ff;margin-right:10px;">10-05</a>
+<a href="daily-2026-10-04.html" style="color:#58a6ff;margin-right:10px;">10-04</a>
+<a href="daily-2026-10-03.html" style="color:#58a6ff;margin-right:10px;">10-03</a>
+<a href="daily-2026-10-02.html" style="color:#58a6ff;">10-02</a>
+</div>
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年10月13日 星期二 · 数据截至10月12日</div>
+  <div class="update">生成时间：07:35 (GMT+8) · 仅供内部参考</div>
+</div>
+<div class="tabs">
+  <button class="tab active" onclick="showTab(0)">🚢 航运</button>
+  <button class="tab" onclick="0;showTab(1)">💹 财经</button>
+  <button class="tab" onclick="showTab(2)">🌍 时政</button>
+  <button class="tab" onclick="showTab(3)">🤖 AI/机器人</button>
+</div>
 <div class="container">
 
-<header>
-  <h1>每日资讯<span class="accent">简报</span></h1>
-  <div class="subtitle">航运 · 财经 · 时政 · AI 与机器人 —— 全维度深度扫描</div>
-  <div class="date">📅 <b>2026年10月13日 星期二</b> · 数据截至 10月12日（周一）收盘/要闻 · 新加坡时间 07:00 发布</div>
-</header>
-
-<div class="archives">
-  往期回顾：
-  <a href="./daily-2026-10-12.html">10/12</a>·
-  <a href="./daily-2026-10-11.html">10/11</a>·
-  <a href="./daily-2026-10-07.html">10/07</a>·
-  <a href="./daily-2026-10-06.html">10/06</a>·
-  <a href="./daily-2026-10-05.html">10/05</a>·
-  <a href="./daily-2026-10-04.html">10/04</a>·
-  <a href="./daily-2026-10-03.html">10/03</a>·
-  <a href="./daily-2026-10-02.html">10/02</a>
-</div>
-
-<div class="tabs">
-  <button class="tab-btn active" onclick="switchTab(0)">🚢 航运板块</button>
-  <button class="tab-btn" onclick="switchTab(1)">📈 财经板块</button>
-  <button class="tab-btn" onclick="switchTab(2)">📰 时政板块</button>
-  <button class="tab-btn" onclick="switchTab(3)">🤖 AI / 机器人</button>
-</div>
-
-<!-- ============ 航运板块 ============ -->
-<div class="tab-panel active">
-
-  <div class="section">
-    <div class="section-title"><span class="icon">🚢</span> 航运市场全景 <span class="tag red">BDI 五连跌</span><span class="tag green">资产价格坚挺</span><span class="tag">油轮订单潮</span></div>
-
-    <div class="index-cards">
-      <div class="index-card">
-        <div class="name">波罗的海干散货指数 BDI</div>
-        <div class="value down">2,917</div>
-        <div class="change down">▼ 连跌五日 · 环比 -1.88%</div>
-        <div class="note">10/9 收盘 · 8/24 以来最低</div>
-      </div>
-      <div class="index-card">
-        <div class="name">巴拿马型指数 BPI</div>
-        <div class="value up">2,424</div>
-        <div class="change up">▲ +0.58%</div>
-        <div class="note">10/9 · 部分抵消海岬跌幅</div>
-      </div>
-      <div class="index-card">
-        <div class="name">海岬型 5 年船龄价值</div>
-        <div class="value up">$67.73M</div>
-        <div class="change up">年内 +23%</div>
-        <div class="note">创 2008/10 以来新高</div>
-      </div>
-      <div class="index-card">
-        <div class="name">海岬型 1 年期租</div>
-        <div class="value up">$23,067/天</div>
-        <div class="change up">年内 +33%</div>
-        <div class="note">资产与租金现背离</div>
-      </div>
-      <div class="index-card">
-        <div class="name">FBX 集装箱运价指数</div>
-        <div class="value">$2,282/FEU</div>
-        <div class="change down">周 -5%</div>
-        <div class="note">9 月中数据 · 波动率 3.78%</div>
-      </div>
+<!-- ================= 航运 ================= -->
+<div class="section active">
+  <div class="card">
+    <h2>🚢 航运市场概览</h2>
+    <div class="grid2">
+      <div class="stat-box"><div class="label">BDI 波罗的海干散货指数（10/9）</div><div class="value">2,917</div></div>
+      <div class="stat-box"><div class="label">BCI 海岬型指数（10/9）</div><div class="value">4,638</div></div>
+      <div class="stat-box"><div class="label">BDTI 原油油轮指数（10/8）</div><div class="value">7,678 ▲</div></div>
+      <div class="stat-box"><div class="label">SCFI 上海集装箱运价（10/9）</div><div class="value">3,664</div></div>
     </div>
-
-    <div class="chart-grid">
-      <div class="chart-box">
-        <h5>BDI 近期走势（10 月上旬）</h5>
-        <canvas id="bdiChart"></canvas>
-      </div>
-      <div class="chart-box">
-        <h5>船价 vs 租金：海岬型年内涨幅（%）</h5>
-        <canvas id="capeChart"></canvas>
-      </div>
-    </div>
-
-    <h4 class="sub">📋 船型租金与船舶价格</h4>
-    <div class="table-wrapper">
-      <table>
-        <tr><th>细分市场</th><th>状态</th><th>关键数据 / 驱动</th><th>展望</th></tr>
-        <tr><td>好望角型 Capesize</td><td class="down">走弱</td><td>BDI 五连跌主因；即期租金回落</td><td>Q4 铁矿/煤炭货盘回暖前偏弱</td></tr>
-        <tr><td>巴拿马型 Panamax</td><td class="up">抗跌</td><td>BPI 2,424（+0.58%）；粮食货盘支撑</td><td>区间震荡</td></tr>
-        <tr><td>二手散货船 (S&P)</td><td class="up">高位</td><td>5 年船龄海岬 $67.73M（17 年新高）</td><td>买家观望，成交放缓</td></tr>
-        <tr><td>油轮 VLCC</td><td class="flat">订单潮</td><td>90 天内 88 艘 VLCC 新订单</td><td>远期供给压力累积</td></tr>
-        <tr><td>多用途船 MPP</td><td class="flat">稳定</td><td>Toepfer：12,500 dwt 新造 $30M / 10 年船龄 $15M</td><td>订单温和，船价持稳</td></tr>
-        <tr><td>集装箱船</td><td class="flat">温和</td><td>FBX $2,282/FEU，周跌 5%</td><td>关注美线 Jones Act 豁免讨论</td></tr>
-        <tr><td>干散 2026/27 展望</td><td class="tag">BIMCO</td><td>2026 供需平衡（需求+2-3% vs 供给+2.5%）</td><td>2027 需求放缓+交付加速转软</td></tr>
-      </table>
-    </div>
-
-    <h4 class="sub">📋 交易动态与新造船订单</h4>
-    <div class="news-grid">
-      <div class="news-item">
-        <h3><span class="tag red">干散</span>BDI 五连跌至 2,917，创 8/24 以来新低</h3>
-        <p>波罗的海干散货指数 10/9 收于 <b>2,917 点</b>，环比跌 1.88%，连续第五日下滑（含零增长），近 11 个数据点中 9 跌 2 涨；海岬型领跌，巴拿马型（BPI 2,424，+0.58%）与灵便型部分抵消。<span class="src">Baltic Exchange / Plotio，10/9</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag green">资产</span>海岬型船价创 17 年新高，但租金未能同步</h3>
-        <p>5 年船龄 18 万 DWT 海岬型价值升至 <b>$67.73M（年内 +23%）</b>，为 2008 年 10 月以来最高；同期 1 年期租仅 $23,067/天（+33%）——<b>资产价格动能远超租金</b>，成交放缓显示买家在高价位犹豫，或等待回调。<span class="src">Marine Link / VesselsValue，10 月</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag purple">新造</span>油轮订单狂飙：90 天 88 艘 VLCC 订单</h3>
-        <p>Breakbulk 统计：过去 90 天 VLCC 新签订单达 <b>88 艘</b>，手持订单占比快速抬升；Greek 船东主导油轮 S&P 与新造市场重塑。BIMCO 警告：干散 2027 年需求增长（1-2%）将被 3% 的运力交付超越，高租金窗口或逐步关闭。<span class="src">Breakbulk / BIMCO，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">订单</span>Contships 在华启动 30 船支线箱船计划；COSCO 增订 14 艘重吊船</h3>
-        <p>Contships Logistics 在湖北广济船厂启动最多 30 艘支线集装箱船新造项目（含选择权，船队规模可翻倍）；中远海特运增订 14 艘 6 万 dwt 重吊船；Elbdeich Reederei 增订 2 艘集装箱船——新造船市场呈"箱船+特种船+油轮"多点开花。<span class="src">IndexBox / Baird Maritime，10 月上旬</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">集运</span>亚洲-美线运价涨跌互现；美国考虑 Jones Act 豁免</h3>
-        <p>ICIS：亚洲至美国集装箱即期运价多数走高，但货量疲软；美国方面考虑 <b>Jones Act 豁免</b>并审查承运人对美国托运人的附加费问题；FBX 全球指数 $2,282/FEU（周 -5%）。<span class="src">ICIS / Freightos，10 月</span></p>
-      </div>
-    </div>
-
-    <div class="highlight-box">
-      <h4>🔍 航运分析与投资机会</h4>
-      <ul>
-        <li><b>干散回调即布局窗口</b>：BDI 五连跌是铁矿石货盘真空+前期获利了结，Q4 旺季货盘与老龄船供给逻辑未破坏；关注 Q4 巴西/西非铁矿出货节奏。</li>
-        <li><b>船价-租金背离警示</b>：海岬资产价 17 年新高 vs 租金仅温和跟涨，反映流动性宽松下的资产通胀；二手船追高需谨慎，期租锁定（1 年 TC $23K）性价比优于买船。</li>
-        <li><b>油轮订单潮是远期空头信号</b>：88 艘 VLCC/90 天若延续，2027-28 年油轮供给将显著放量；当前油运股的"事件驱动高运价"宜以交易思维参与。</li>
-        <li><b>2027 转软共识形成</b>：BIMCO 已给出明确时间表（2027 需求 1-2% vs 供给 3%），干散敞口建议向 2026 年内收敛，远期曲线锁定。<span class="src">综合本周公开报道</span></li>
-      </ul>
-    </div>
+    <p class="note">注：波罗的海交易所10月12日（周一）指数于伦敦时间午后公布，本简报截稿时未获取，采用最近交易日数据。BDI自10月1日高点3,140连续回落至2,917。</p>
+    <h3>散货船日租金（TCE）</h3>
+    <table>
+      <tr><th>船型</th><th>航线/指标</th><th>水平</th><th>说明</th></tr>
+      <tr><td>Capesize 海岬型</td><td>5条基准航线平均(5TC)</td><td>约 $52,315/天</td><td>9月末第38周水平；10月初高位回落至4万美元区间</td></tr>
+      <tr><td>Capesize</td><td>C3 巴西→青岛</td><td>WS 42s 低位</td><td>铁矿石货盘偏弱</td></tr>
+      <tr><td>Capesize</td><td>C5 西澳→青岛</td><td>WS 16s 中高位</td><td>力拓/必和必拓询盘稳定</td></tr>
+      <tr><td>Panamax 巴拿马型</td><td>大西洋/太平洋往返</td><td>BPI 1,144（周均值）</td><td>Compass Maritime周度数据，粮食季前波动</td></tr>
+      <tr><td>Supramax 超灵便型</td><td>BSI</td><td>866（周均值）</td><td>太平洋市场平稳</td></tr>
+    </table>
+    <h3>油轮日租金（TCE，Optima Shipbroking）</h3>
+    <table>
+      <tr><th>船型</th><th>TCE（10/7-8数据）</th><th>周变动</th><th>备注</th></tr>
+      <tr><td>VLCC（中东→中国 TD3C）</td><td class="up">约 $923,728/天</td><td class="up">+67,769</td><td>WS 1302.5，伊朗危机推动历史极值</td></tr>
+      <tr><td>Suezmax（西非→欧陆 TD20）</td><td class="up">约 $674,950/天</td><td class="down">-11,386</td><td>WS 946.6，仍处历史高位</td></tr>
+      <tr><td>Aframax</td><td class="up">约 $374,056/天</td><td class="up">+22,218</td><td>地中海/黑海紧张</td></tr>
+    </table>
+    <h3>集装箱运价</h3>
+    <table>
+      <tr><th>指数</th><th>数值</th><th>日期</th></tr>
+      <tr><td>SCFI 上海出口集装箱运价指数</td><td>3,664</td><td>10月9日（周度）</td></tr>
+      <tr><td>Drewry WCI 世界集装箱指数</td><td>$4,351/FEU</td><td>10月8日</td></tr>
+    </table>
+    <p class="note">集装箱运价自三季度旺季高点逐步回落，红海绕航仍在持续吸收运力，欧线现货运价周环比走弱。</p>
   </div>
-
-</div>
-
-<!-- ============ 财经板块 ============ -->
-<div class="tab-panel">
-
-  <div class="section">
-    <div class="section-title"><span class="icon">📈</span> 全球市场与资产价格 <span class="tag red">CPI 前夜</span><span class="tag green">财报季开启</span><span class="tag">油价高位</span></div>
-
-    <div class="index-cards">
-      <div class="index-card">
-        <div class="name">道琼斯工业</div>
-        <div class="value up">+0.3%</div>
-        <div class="change up">周一收高</div>
-        <div class="note">科技股拖累标普/纳指</div>
-      </div>
-      <div class="index-card">
-        <div class="name">标普 500 / 纳指</div>
-        <div class="value down">小幅收跌</div>
-        <div class="change down">科技股承压</div>
-        <div class="note">10/12 哥伦布日，债市休市</div>
-      </div>
-      <div class="index-card">
-        <div class="name">布伦特原油</div>
-        <div class="value up">$106.65</div>
-        <div class="change up">▲ +1.8%</div>
-        <div class="note">俄袭乌能源设施</div>
-      </div>
-      <div class="index-card">
-        <div class="name">WTI 原油</div>
-        <div class="value up">~$93.6</div>
-        <div class="change up">▲ +1.94%</div>
-        <div class="note">10/9 收盘参考</div>
-      </div>
-      <div class="index-card">
-        <div class="name">比特币</div>
-        <div class="value up">$83,389</div>
-        <div class="change up">+0.17%</div>
-        <div class="note">10/12 · 市值 ~$1.33T</div>
-      </div>
-      <div class="index-card">
-        <div class="name">以太坊</div>
-        <div class="value up">$2,554</div>
-        <div class="change up">+2.44%</div>
-        <div class="note">10/12 · 年内 -38.6%</div>
-      </div>
-    </div>
-
-    <div class="chart-grid">
-      <div class="chart-box">
-        <h5>美股周一（10/12）：道指 vs 标普/纳指</h5>
-        <canvas id="usChart"></canvas>
-      </div>
-      <div class="chart-box">
-        <h5>BTC vs ETH 近期（千美元）</h5>
-        <canvas id="cryptoChart"></canvas>
-      </div>
-    </div>
-
-    <h4 class="sub">📋 全球股指与重点个股</h4>
-    <div class="table-wrapper">
-      <table>
-        <tr><th>市场/标的</th><th>表现（10/12）</th><th>驱动</th></tr>
-        <tr><td>德国 DAX / 英国 FTSE 100</td><td class="up">均 +0.8%</td><td>欧股全线走高，俄乌停火预期+能源板块</td></tr>
-        <tr><td>韩国 KOSPI</td><td class="down">-3.6%</td><td>朝鲜导弹+外资流出</td></tr>
-        <tr><td>上证综指 / 恒生</td><td class="down">-0.4% / -0.25%</td><td>亚洲整体偏弱，日经休市</td></tr>
-        <tr><td>Bumble (BMBL)</td><td class="up">+50%</td><td>WSJ 报道并购谈判</td></tr>
-        <tr><td>星巴克 (SBUX)</td><td class="up">小幅走高</td><td>辟谣收购 Chipotle；CMG -4%</td></tr>
-        <tr><td>SpaceX（上市后）</td><td class="up">+10%（近三月）</td><td>较 IPO 价 $150 涨 8%</td></tr>
-        <tr><td>能源股</td><td class="up">创纪录</td><td>油价飙升，乌克兰能源设施遇袭</td></tr>
-      </table>
-    </div>
-
-    <h4 class="sub">📋 关键宏观事件与商品</h4>
-    <div class="news-grid">
-      <div class="news-item">
-        <h3><span class="tag red">周三 10/14</span>美国 9 月 CPI 发布：加息预期敏感点</h3>
-        <p>CME 定价显示 10/28 美联储决议加息 25bp 概率约 <b>19.4%</b>（一周前 22.1%）；市场对 CPI 极度敏感。若通胀超预期，油价高企的"再通胀"叙事将推高加息押注，压制估值。<span class="src">CME / Cryptoticker，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">财报季</span>Q3 盈利预期 +25%：历史级增长能否兑现</h3>
-        <p>彭博情报：分析师预期标普 500 成分股 Q3 盈利同比增长约 <b>25%</b>，为历史最佳水平之一；本周大摩、高盛、奈飞等密集发布——高位指数容错空间极小，"beat 但指引弱"也可能引发回调。<span class="src">Yahoo Finance / Bloomberg，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">油价</span>俄袭击乌能源设施，"能源停火"数小时内破功</h3>
-        <p>特朗普宣布"能源停火"后数小时，俄罗斯即对乌克兰能源目标发动大规模打击；布伦特 <b>+1.8% 至 $106.65</b>，WTI 逼近 $94。地缘溢价重新定价，能源股创纪录新高。<span class="src">WSJ / MarketWatch，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag purple">加密</span>BTC $83.4K 企稳，ETH 反弹 +2.4%</h3>
-        <p>比特币在 $80-87K 区间运行，年内 -6.5%；ETH $2,554（年内 -38.6%），市值 $2,330 亿。就业数据"杀死"四个月新高后，市场聚焦周三 CPI 与月末 Fed。<span class="src">Fortune / Forbes，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">美国国内</span>消费者信心降至 5 月以来最低；房贷利率逼近 7.5%</h3>
-        <p>高利率与关税拖累消费信心；30 年期房贷利率接近 <b>7.5%</b>，为两年高位，购房需求同比下滑约 15%。众议院通过禁止议员炒股法案。<span class="src">Yahoo Finance / AP，10/9–12</span></p>
-      </div>
-    </div>
-
-    <div class="highlight-box">
-      <h4>🔍 财经分析与资产配置</h4>
-      <ul>
-        <li><b>本周双考验</b>：周三 CPI + 财报季密集披露。CPI ≤ 预期 + 财报稳健 → 指数高位续涨；CPI 超预期 → 测试近期支撑。</li>
-        <li><b>油价是核心变量</b>：Brent $106+ 若持续，将强化"再通胀→12 月加息"链条；利好能源股/黄金，利空航空、利率敏感成长股与高估值科技。</li>
-        <li><b>市场结构脆弱</b>：指数新高但宽度不足，建议指数+质量因子替代个股押注；财报季警惕"高预期陷阱"（+25% 盈利预期已被充分定价）。</li>
-        <li><b>加密</b>：$80K 支撑有效但上方 $87K 压力沉重，CPI 前维持区间思维，严控杠杆。<span class="src">综合本周公开报道</span></li>
-      </ul>
-    </div>
+  <div class="card">
+    <h2>新造船与二手船市场</h2>
+    <div class="news-item"><div class="news-title">VLCC新造订单创历史纪录，占油轮订单总量78%</div><div class="news-summary"><span class="source">TSG/The Signal Group</span>2026年油轮订单空前活跃，VLCC主导本轮订造周期。新造VLCC造价约$129.8m（同比+4%），而5年船龄二手VLCC估值已达$174.5m（同比+24%），20年船龄$59.7m（同比+64%）——二手溢价反映船东为即期运力支付高额代价。</div></div>
+    <div class="news-item"><div class="news-title">新船订单簿统计（Compass Maritime）</div><div class="news-summary"><span class="source">Compass Maritime</span>油轮：2025-2027年VLCC订单70艘、Suezmax 102艘、Aframax 203艘、MR等小型油轮622艘；散货船：Capesize 117艘、Panamax/Kamsarmax 408艘、Supramax 457艘、Handysize 308艘。过去数周多家船东在不同船厂批量下单，新造市场极度活跃。</div></div>
+    <div class="news-item"><div class="news-title">二手船交易：VLCC资产价格全线高于新造价</div><div class="news-summary"><span class="source">Signal Ocean估值</span>VLCC转售船(resale)估值$174.5m、5年船$143.0m，均远超$129.8m新造价格，船龄折价曲线趋平，资产端继续支撑创纪录的订造节奏。</div></div>
   </div>
-
-</div>
-
-<!-- ============ 时政板块 ============ -->
-<div class="tab-panel">
-
-  <div class="section">
-    <div class="section-title"><span class="icon">📰</span> 全球时政要闻 <span class="tag red">俄乌停火悬念</span><span class="tag">中欧贸易突破</span><span class="tag purple">亚太动态</span></div>
-
-    <div class="news-grid">
-      <div class="news-item">
-        <h3><span class="tag red">今日热点</span>特朗普宣布俄乌"能源停火"并达成美购俄柴油协议</h3>
-        <p>特朗普 10/11 宣布"俄乌能源停火即刻生效"，并披露<b>美国将向俄罗斯购买柴油</b>的协议；但数小时后俄罗斯即对乌克兰能源设施发动大规模打击，停火成色存疑。加拿大总理 Carney 与特朗普、泽连斯基通话，称该协议"与乌克兰的努力背道而驰"。<span class="src">Global News / WSJ，10/11-12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">中欧</span>欧盟-中国达成贸易安排：中国混动进口或减半</h3>
-        <p>欧盟与中国宣布新贸易安排，可能将中国混动汽车进口<b>削减一半以上</b>；比亚迪、奇瑞、上汽 MG（占中国品牌欧盟混动销量 90%）受冲击最大。巴黎车展同日开幕，欧中车企发布约 60 款新车。<span class="src">Reuters / NetNewsLedger，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">中国</span>9 月乘用车出口 91.9 万辆，同比 +64%</h3>
-        <p>中汽协数据：9 月乘用车出口 <b>91.9 万辆</b>，同比激增 64%；前三季度累计出口同比 +70%+。分析称 2026 年中国车企全球出口有望接近 1,000 万辆；中国产 EV 成本约 $20K vs 欧洲 $31K，价格竞争力持续压制欧日车企。<span class="src">AP / ABC，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag purple">亚太</span>朝鲜导弹、印度抗议与通胀、新加坡 AI 就业预警</h3>
-        <p>朝鲜在日本附近试射弹道导弹；印度 9 月 CPI 升至 <b>5.54%</b>，国内政治抗议蔓延；新加坡领导人警告 AI 对就业的冲击——亚太"安全+通胀+技术替代"三重议题并发。<span class="src">NetNewsLedger，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">美国</span>关税议题拖累选情；众议院通过议员禁炒股法案</h3>
-        <p>AP 民调显示选民在中期选举（11/3）前转向反对关税政策；白宫坚持加码。众议院通过禁止国会议员买卖股票法案。IMF-世行年会将聚焦中东战争与全球债务危机。<span class="src">AP / Audacy，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag green">中东</span>美伊对峙持续：美军打击伊朗火箭发射器；霍尔木兹封锁未解</h3>
-        <p>美军对伊朗火箭发射设施实施打击；对伊朗港口的"海军封锁"持续，切断中国约 <b>12% 的石油进口</b>。美购俄柴油协议被指与对伊政策相互矛盾，六名参议员要求推翻。<span class="src">ABC / NPR，10/12</span></p>
-      </div>
-    </div>
-
-    <div class="highlight-box">
-      <h4>🔍 地缘政治 × 市场传导链</h4>
-      <p><b>本周核心矛盾</b>：俄乌"能源停火"表态与"美购俄柴油"协议本应利空油价，但俄军随即打击乌能源设施、霍尔木兹封锁未解——<b>地缘供给风险不降反升</b>，油价获得双重支撑。<b>中欧贸易安排</b>短期利空中国混动出口链，但常态化磋商机制利好跨欧亚货流预期；<b>中美"管控竞争"</b>框架延续，为全球风险资产提供底部叙事。中期选举前（11/3），特朗普对俄、对伊、对华政策均带选时滤镜，可信度需打折。<span class="src">综合本周公开报道</span></p>
-    </div>
+  <div class="card">
+    <h2>行业新闻</h2>
+    <div class="news-item"><div class="news-title">霍尔木兹海峡油轮遇袭，Brent原油突破$101</div><div class="news-summary"><span class="source">Pintu/市场综述</span>10月7-8日，10年期美债收益率触及5.37%、霍尔木兹海峡发生油轮袭击事件，Brent原油升破101美元/桶，直接点燃油轮运价——BDTI单周上涨，VLCC TCE逼近百万美元/天量级，Suezmax亦超60万美元/天。</div></div>
+    <div class="news-item"><div class="news-title">美伊战争持续，油轮运费维持历史极值</div><div class="news-summary"><span class="source">Reuters/Yahoo Finance</span>美伊冲突进入消耗阶段，对航运的袭击与保险成本上升持续推高运费。EIA 10月7日上调2026年Brent均价预测至约98美元/桶。美国8月已对无人机进口加征最高100%关税，物流与供应链成本压力向货主传导。</div></div>
+    <div class="news-item"><div class="news-title">干散货：BDI自四年高位回落，铁矿石货盘放缓</div><div class="news-summary"><span class="source">FXBus/波罗的海交易所</span>BDI自10月1日3,140回落至10月9日2,917，为9月24日以来最大单日涨幅后的回调，海岬型船日租金从5万美元上方回落，市场关注四季度铁矿补库与粮食出口节奏。</div></div>
   </div>
-
 </div>
 
-<!-- ============ AI / 机器人板块 ============ -->
-<div class="tab-panel">
-
-  <div class="section">
-    <div class="section-title"><span class="icon">🤖</span> AI 与机器人前沿 <span class="tag green">具身智能拐点</span><span class="tag">安全运动兴起</span><span class="tag purple">物理 AI 基建</span></div>
-
-    <div class="news-grid">
-      <div class="news-item">
-        <h3><span class="tag green">今日热点</span>Figure 发布通用型人形机器人 AI：跨陌生环境泛化</h3>
-        <p>Figure 最新 AI 系统实现<b>在陌生家庭/物体间泛化已学技能</b>，被称机器人"圣杯"突破；公司计划向 Helix 模型投入 <b>$35 亿→$60 亿+</b> AI 基建，与 Nscale 合作获得最多 <b>10 万张 NVIDIA GPU</b>（2027 下半年起部署），并推进 Figure 03/04 量产。此前 Figure 还复刻了《终结者》特技（在芬兰铸造厂完成）。<span class="src">FutureTimeline，10/8</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag purple">机器人</span>Boston Dynamics 换帅：Rohit Prasad 接任 CEO；前 CEO 预言"物理 AI ChatGPT 时刻"</h3>
-        <p>亚马逊 Alexa 前负责人 <b>Rohit Prasad</b> 10/7 正式接任 Boston Dynamics（现代汽车旗下）CEO；前 CEO Playter 在同日 Global HR Forum 表示：人形机器人正从实验室走向工厂，<b>"物理 AI 的 ChatGPT 时刻"临近</b>——机器人将以协作而非取代的方式重塑工作。NVIDIA 黄仁勋表态愿投资韩国机器人/物理 AI。<span class="src">KED Global，10/13</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">学界</span>IROS 2026 匹兹堡：人形机器人专场成焦点</h3>
-        <p>IEEE 机器人学顶会 IROS 2026 设人形机器人舞蹈、体育等专场演示，双足运动控制与灵巧操作的成熟度显著提升；世界人形机器人运动会（北京）上，天工 Ultra 以 <b>8.64 秒</b>完成 100 米（快过博尔特官方纪录近 1 秒）。<span class="src">Instagram / Capitol Tech，10/9</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag red">安全</span>TeamHuman：Mark Rober + 60+ 顶流创作者呼吁放缓前沿 AI</h3>
-        <p>在 CAIS 支持下，Mark Rober 等 60+ YouTube 创作者发起 <b>TeamHuman</b> 运动，呼吁国际社会就最强 AI 系统建立安全协议，"给社会留出建立防护的时间"。AI 安全正从实验室议题进入大众议程；同期新加坡政府亦警告 AI 对就业的结构性冲击。<span class="src">YouTube / CAIS，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag">中国</span>Yole：中国人形集群优势——政策、产线、迭代速度</h3>
-        <p>Yole《Humanoid Robots 2026》报告：中国凭借政策支持、试点产线、本土供应链与快速迭代，占据全球人形机器人制造商半壁江山；北京/上海/深圳集群效应显著。<span class="src">Yole Group，10/12</span></p>
-      </div>
-      <div class="news-item">
-        <h3><span class="tag purple">算力</span>机器人训练的算力军备赛：10 万 GPU 集群成新标配</h3>
-        <p>Figure-Nscale 10 万卡集群标志着具身智能训练进入"超算时代"；端侧同样火热——高通透露 AI 公司要求 <b>2028 年手机可持续运行千亿参数模型</b>。"云训练+端推理"双端算力需求叠加，先进制程、HBM/DRAM 与网络互联持续受益。<span class="src">FutureTimeline / 高通，10 月</span></p>
-      </div>
-    </div>
-
-    <div class="highlight-box">
-      <h4>🔍 AI 板块分析与投资主线</h4>
-      <ul>
-        <li><b>具身智能进入产业化前夜</b>：Figure 泛化突破 + BD 换帅产业派 + 10 万卡训练集群，三信号共振确认"2027-28 人形放量"叙事；关注整机（Tesla Optimus 链、Figure/BMW 链）、执行器、减速器与传感器。</li>
-        <li><b>算力瓶颈从训练转向"训练+推理"双轮</b>：云端 10 万卡集群与端侧千亿参数并行，NVIDIA GPU、先进制程、HBM/DRAM（三星/海力士/美光）与先进封装是确定性环节。</li>
-        <li><b>安全与监管成为新估值因子</b>：TeamHuman 与各国 AI 就业警告显示监管拐点临近；合规/审计/内容溯源（水印、AI 管控）将孕育新工具赛道。</li>
-        <li><b>中国集群的性价比优势</b>：Yole 报告确认中国在人形制造成本与迭代速度上的结构性优势，A股/港股机器人链（减速器、丝杠、传感器）具备全球供应链卡位价值。<span class="src">综合本周公开报道</span></li>
-      </ul>
-    </div>
+<!-- ================= 财经 ================= -->
+<div class="section">
+  <div class="card">
+    <h2>💹 全球市场概览（10月12日收盘）</h2>
+    <table>
+      <tr><th>指数/资产</th><th>收盘</th><th>涨跌</th><th>备注</th></tr>
+      <tr><td>标普500（10/12）</td><td>约 7,806</td><td class="down">-0.07%</td><td>涨跌家数差：下跌5,421家 vs 上涨3,999家</td></tr>
+      <tr><td>纳斯达克100（10/12）</td><td>—</td><td class="down">-0.73%</td><td>芯片股普跌</td></tr>
+      <tr><td>道琼斯（10/12）</td><td>约 51,825</td><td class="up">+0.33%</td><td>防御与价值股护盘</td></tr>
+      <tr><td>纳斯达克综合（10/9收盘）</td><td>27,366.17</td><td class="flat">基准</td><td>上周五收盘参考</td></tr>
+      <tr><td>上证指数（10/12午间）</td><td>—</td><td class="down">-0.12%</td><td>深成指-1.03%，创业板指-1.27%</td></tr>
+      <tr><td>恒生指数（10/12收盘）</td><td>24,271.20</td><td class="up">+0.25%</td><td>恒生科技-0.67%，国企指数+0.2%</td></tr>
+      <tr><td>比特币 BTC</td><td>$83,146 – $84,077</td><td class="flat">周内 -1.8%</td><td>10月8日曾探底$80,324</td></tr>
+      <tr><td>以太坊 ETH</td><td>约 $2,550</td><td class="down">周内 -5.4%</td><td>现货ETF连续9日净流出约$6.97亿</td></tr>
+      <tr><td>Brent原油</td><td>约 $98–101</td><td class="up">高位</td><td>霍尔木兹油轮遇袭后升破$101，EIA上调2026均价预测至$98</td></tr>
+      <tr><td>现货黄金</td><td>约 $4,170</td><td class="down">年内约-3%</td><td>1月曾创纪录$5,595，2025年全年+64%</td></tr>
+      <tr><td>美债10年期收益率</td><td>5.25%–5.37%</td><td class="up">历史高位</td><td>30年期约5.64%</td></tr>
+    </table>
+    <p class="note">宏观焦点：美国9月CPI将于10月14日公布，市场预期 headline 3.7%（前值3.4%）；美股财报季本周开启，大型银行率先登场；10年期美债收益率高企（5.3%+）与油价是压制风险资产的主线。印度央行（RBI）10月加息25bp至5.50%。</p>
   </div>
-
+  <div class="card">
+    <h2>A股/港股要闻</h2>
+    <div class="news-item"><div class="news-title">股票ETF连续5个交易日净流入，10月9日单日净流入227.82亿元</div><div class="news-summary"><span class="source">财联社</span>资金面持续回暖，市场风险偏好修复中。</div></div>
+    <div class="news-item"><div class="news-title">港股：银行券商等大金融护盘，算力硬件（光通信/PCB/存储芯片）全线回调</div><div class="news-summary"><span class="source">东方财富</span>恒生指数收涨0.25%报24,271.20；腾讯10月12日回购23.5万股、耗资1亿港元，自8月17日以来连续40日回购、累计60.15亿港元。香港证监会宣布修订上市规则打击IPO及上市公司失当行为，预计2027年Q1生效。</div></div>
+    <div class="news-item"><div class="news-title">财政部/税务总局：新能源汽车出口退税率由13%下调至9%</div><div class="news-summary"><span class="source">财政部公告（10/12）</span>自2027年4月1日起实施，旨在优化出口结构；前三季度新能源汽车国内销量占比已达53.6%（中汽协）。</div></div>
+  </div>
+  <div class="card">
+    <h2>宏观与政策</h2>
+    <div class="news-item"><div class="news-title">2026年诺贝尔经济学奖授予Hall与Woodford</div><div class="news-summary"><span class="source">Reuters/FT/Nobelprize.org</span>斯坦福Robert E. Hall与Michael Woodford因"宏观经济稳定的微观经济基础"获奖；奖金1,200万瑞典克朗（125周年提额后）。评委会主席John Hassler：其模型为全球央行与政府的稳定政策提供了稳固的理论基础。2025年获奖者为Mokyr、Aghion、Howitt（创造性破坏）。</div></div>
+    <div class="news-item"><div class="news-title">美联储高利率+油价高企压制风险资产，市场静待CPI</div><div class="news-summary"><span class="source">Yahoo Finance/Pintu</span>10年期美债收益率7-8日触及5.37%，比特币ETF单周净流出6.789亿美元；策略师共识：CPI公布前市场维持区间震荡。</div></div>
+    <div class="news-item"><div class="news-title">华为折叠机累计发货突破2,000万台</div><div class="news-summary"><span class="source">财联社</span>2026年上半年华为折叠屏市场份额超70%。</div></div>
+  </div>
 </div>
 
-<footer>
-  简报由 AI 自动生成 · 数据来自公开资讯（Tavily 搜索聚合）· 资讯仅供参考，不构成投资建议<br>
-  © 2026 每日资讯简报 · GitHub Pages 自动部署
-</footer>
-
+<!-- ================= 时政 ================= -->
+<div class="section">
+  <div class="card">
+    <h2>🌍 国际要闻</h2>
+    <div class="news-item"><div class="news-title">2026诺贝尔周落幕：经济学奖花落Hall & Woodford</div><div class="news-summary"><span class="source">Nobelprize.org</span>文学奖授予加拿大诗人Anne Carson；和平奖授予南非法学家Navanethem "Navi" Pillay。</div></div>
+    <div class="news-item"><div class="news-title">乌克兰局势：泽连斯基提议"能源设施停火换炼油厂停袭"</div><div class="news-summary"><span class="source">BBC中文（10/11）</span>乌方称若俄停止打击能源设施，乌将停止袭击炼油厂；美国威胁以减少武器供应施压基辅。</div></div>
+    <div class="news-item"><div class="news-title">法国一日两案：Aubagne校园枪击+巴黎历史市场大火</div><div class="news-summary"><span class="source">France24/Wikipedia</span>14岁学生在Aubagne一所中学开枪致2名教职工受伤后被拘；巴黎最古老的Marché des Enfants Rouges食品市场遭大火焚毁。法国超市亦遭网络攻击，损失达数百万欧元。</div></div>
+    <div class="news-item"><div class="news-title">巴基斯坦：KP省进入紧急状态，大规模拘捕PTI成员</div><div class="news-summary"><span class="source">AFP/RFI</span>联邦政府暂停PTI领导的省政府并实施紧急统治，前首席部长Sohail Afridi等数百人被拘。</div></div>
+    <div class="news-item"><div class="news-title">爱沙尼亚：Ülle Madise就任总统</div><div class="news-summary"><span class="source">Estonian World</span>9月2日由国会Riigikogu选出，10月12日就职，接替Alar Karis。</div></div>
+    <div class="news-item"><div class="news-title">特朗普任命Katie Zacharia为白宫新闻秘书</div><div class="news-summary"><span class="source">白宫（10/11）</span>白宫高层通讯团队改组的一部分。</div></div>
+    <div class="news-item"><div class="news-title">BBC：特朗普政府拟从俄罗斯进口柴油，遭国内外反对</div><div class="news-summary"><span class="source">BBC中文（10/12）</span>在俄油制裁框架下寻求例外引发争议。</div></div>
+    <div class="news-item"><div class="news-title">美伊战争：红海与霍尔木兹航运持续受袭，和谈停滞</div><div class="news-summary"><span class="source">Reuters（8月以来持续）</span>伊朗称与美国重启临时和平协议无进展；油价与运费居高不下的地缘主线。</div></div>
+  </div>
+  <div class="card">
+    <h2>🇨🇳 国内要闻</h2>
+    <div class="news-item"><div class="news-title">中欧就混合动力汽车贸易达成谅解</div><div class="news-summary"><span class="source">商务部（10/8-9）</span>王文涛与欧委会执行副主席谢夫乔维奇在北京举行磋商，就混动车贸易安排达成一致，为电动车关税争端降温。</div></div>
+    <div class="news-item"><div class="news-title">王毅与法国总统外事顾问博纳举行中法战略对话</div><div class="news-summary"><span class="source">外交部</span>博纳10月9-13日访华，中法就乌克兰、贸易与气候议题沟通。</div></div>
+    <div class="news-item"><div class="news-title">外交部对巴拉圭、伯利兹相关部长采取反制措施</div><div class="news-summary"><span class="source">外交部（10/12）</span>针对两国涉台错误言行，分别对巴拉圭通信和技术部长比利亚特、伯利兹多部门部长丰塞卡实施反制。</div></div>
+    <div class="news-item"><div class="news-title">反腐：深圳原常委王守睿接受审查调查；国资委原副部长级干部潘良被公诉</div><div class="news-summary"><span class="source">中央纪委/最高检（10/12）</span>持续释放严的信号。</div></div>
+    <div class="news-item"><div class="news-title">人事：王娇萍任河北省委常委、统战部部长</div><div class="news-summary"><span class="source">河北日报（10/11）</span>近期省级党委换届陆续到位。</div></div>
+    <div class="news-item"><div class="news-title">应急：蒙古草原火蔓延至中蒙边境，内蒙古启动应急响应；超强厄尔尼诺事件形成（有监测以来最强）</div><div class="news-summary"><span class="source">应急管理部/气象局（10/9-12）</span>秋季火险与极端天气风险上升。</div></div>
+    <div class="news-item"><div class="news-title">产业：前三季度汽车出口820.5万辆；新能源汽车销量占比53.6%</div><div class="news-summary"><span class="source">中汽协/海关总署（10/12）</span>中国稳居全球第一大汽车出口国。</div></div>
+    <div class="news-item"><div class="news-title">金融：最高法等四部门联合发布金融消费者权益保护典型案例</div><div class="news-summary"><span class="source">最高人民法院（10/12）</span>覆盖非法荐股、网络贷款催收等高频纠纷场景。</div></div>
+  </div>
 </div>
 
+<!-- ================= AI/机器人 ================= -->
+<div class="section">
+  <div class="card">
+    <h2>🤖 AI产业动态（10月12日前后）</h2>
+    <div class="news-item"><div class="news-title">Meta发布Muse Wonder前沿模型，扎克伯格宣布"Meta已达AI前沿"</div><div class="news-summary"><span class="source">FT/TechCrunch</span>新模型在10项基准中6项跻身前三，但单任务成本更高；扎克伯格公开驳斥"AI投入应放缓"论调，Meta股价走强。</div></div>
+    <div class="news-item"><div class="news-title">微软发布自研AI芯片Maia 300：能效提升40%，降低对英伟达依赖</div><div class="news-summary"><span class="source">Microsoft/Reuters</span>同时与OpenAI签署修订后合作协议（据报道微软持股至2032年）。</div></div>
+    <div class="news-item"><div class="news-title">英伟达OCP全球峰会（10/12）：Vera Rubin开放架构亮相</div><div class="news-summary"><span class="source">NVIDIA/OCP</span>与谷歌共建Falcon Transport、与思科推USFP标准、与Meta合作Spectrum-X以太网。</div></div>
+    <div class="news-item"><div class="news-title">亚马逊洽谈以约70亿美元收购AI初创Decart</div><div class="news-summary"><span class="source">彭博</span>Decart主打可交互世界模型，若成行将是亚马逊最大AI收购之一。</div></div>
+    <div class="news-item"><div class="news-title">OpenAI解雇3名安全研究员（含Tomek Korbak），曾承诺外部审计</div><div class="news-summary"><span class="source">The Information</span>治理争议再起；同期GPT-6 Sol/Luna/Astra扩展至东南亚5国及台湾区域（AWS托管）。</div></div>
+    <div class="news-item"><div class="news-title">DeepSeek支持前腾讯AI科学家4亿美元机器人实验室</div><div class="news-summary"><span class="source">36氪/Reuters</span>具身智能军备竞赛延伸至大模型厂商直接下场。</div></div>
+    <div class="news-item"><div class="news-title">硬件战：AMD发布Helion参考设计（Zen 6 Venice，32,768核）；英特尔推Crescent Island AI加速器</div><div class="news-summary"><span class="source">OCP峰会</span>推理时代定制芯片百花齐放，挑战英伟达霸权。</div></div>
+    <div class="news-item"><div class="news-title">Bloomberg警示：AI资本循环（大厂互投+云厂商收入回流）结构类似2008年</div><div class="news-summary"><span class="source">Bloomberg</span>市场开始讨论OpenAI/Anthropic IPO以缓解资本压力；AI泡沫争论白热化。</div></div>
+    <div class="news-item"><div class="news-title">谷歌Gemini 4 Argon（10/1限量发布）；OpenAI搁置GPT-6.1 Astra；DevDay发布Dots代理框架</div><div class="news-summary"><span class="source">The Verge</span>前沿模型竞争进入"限量发布+代理化"新阶段。</div></div>
+  </div>
+  <div class="card">
+    <h2>🇨🇳 机器人产业动态</h2>
+    <div class="news-item"><div class="news-title">工信部：2026年全国人形机器人产量有望突破10万台</div><div class="news-summary"><span class="source">工信部/新华网（WAIC）</span>2026年前5月机器人规上企业营收超900亿元（+26.9%）；自主品牌工业机器人国内市占率升至58.5%；减速器/伺服/控制器国产化率突破85%。</div></div>
+    <div class="news-item"><div class="news-title">宇树科技完成科创板IPO注册：拟募资42亿元，冲刺全年1–2万台出货</div><div class="news-summary"><span class="source">上交所/36氪</span>2025年出货约4,200台（全球第二）；量产能力+资本弹药全面就位。</div></div>
+    <div class="news-item"><div class="news-title">智元机器人第15,000台具身智能机器人下线，3月第10,000台→6月第15,000台</div><div class="news-summary"><span class="source">OFweek</span>工序稳定作业成功率99.99%；2025年营收破10亿元，全球出货份额39%居首。</div></div>
+    <div class="news-item"><div class="news-title">优必选U1系列全尺寸人形机器人累计订单突破13,361台</div><div class="news-summary"><span class="source">公司公告</span>覆盖工业搬运与家庭陪伴双场景；柳州超级智慧工厂2026年产能目标1万台。</div></div>
+    <div class="news-item"><div class="news-title">展会预告：郑州国际具身智能与人形机器人核心部件展（10/15–17）</div><div class="news-summary"><span class="source">展会官网</span>智元、宇树、众擎、优必选等齐聚；河南设30亿元AI产业基金配套。</div></div>
+    <div class="news-item"><div class="news-title">行业判断：2026年步入"10-100"量产商业化阶段</div><div class="news-summary"><span class="source">开源证券/瑞银</span>2025年"0-1"技术收敛→2026年"1-10"→"10-100"量产落地；头部企业IPO潮（宇树、乐聚辅导中，智元/银河通用/众擎/星海图/松延动力已股改）。</div></div>
+  </div>
+</div>
+
+</div>
+<div class="footer">数据来源：波罗的海交易所、Optima Shipbroking、Compass Maritime、Reuters、FT、财联社、东方财富、Nobelprize.org、The Verge、36氪等公开报道。<br>本简报仅供内部参考，不构成任何投资建议。🦞 Kimi Claw 生成</div>
 <script>
-  const CHART_DEFAULTS = {
-    color: '#9da7b3',
-    borderColor: '#30363d',
-    font: { family: '-apple-system, "PingFang SC", sans-serif', size: 11 }
-  };
-  Chart.defaults.color = CHART_DEFAULTS.color;
-  Chart.defaults.borderColor = CHART_DEFAULTS.borderColor;
-  Chart.defaults.font = CHART_DEFAULTS.font;
-
-  // BDI 近期走势（10 月上旬）
-  new Chart(document.getElementById('bdiChart'), {
-    type: 'line',
-    data: {
-      labels: ['10/2', '10/5', '10/6', '10/7', '10/8', '10/9'],
-      datasets: [{
-        label: 'BDI',
-        data: [3050, 2995, 3018, 2994, 2973, 2917],
-        borderColor: '#58a6ff',
-        backgroundColor: 'rgba(88,166,255,0.12)',
-        fill: true, tension: 0.35, pointRadius: 3
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
-    }
-  });
-
-  // 海岬型：船价 vs 租金年内涨幅（%）
-  new Chart(document.getElementById('capeChart'), {
-    type: 'bar',
-    data: {
-      labels: ['5YO 船价', '1年租金 TC', 'BDI(近5日)'],
-      datasets: [{
-        label: '年内变动（%）',
-        data: [23, 33, -1.88],
-        backgroundColor: ['rgba(63,185,80,0.55)', 'rgba(63,185,80,0.45)', 'rgba(248,81,73,0.55)'],
-        borderColor: ['#3fb950', '#3fb950', '#f85149'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
-    }
-  });
-
-  // 美股周一表现（%）
-  new Chart(document.getElementById('usChart'), {
-    type: 'bar',
-    data: {
-      labels: ['道琼斯', '标普 500', '纳斯达克'],
-      datasets: [{
-        label: '10/12 涨跌幅（%）',
-        data: [0.3, -0.16, -0.33],
-        backgroundColor: ['rgba(63,185,80,0.55)', 'rgba(248,81,73,0.5)', 'rgba(248,81,73,0.55)'],
-        borderColor: ['#3fb950', '#f85149', '#f85149'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
-    }
-  });
-
-  // BTC vs ETH 近期（千美元）
-  new Chart(document.getElementById('cryptoChart'), {
-    type: 'line',
-    data: {
-      labels: ['10/5', '10/8', '10/9', '10/11', '10/12'],
-      datasets: [
-        {
-          label: 'BTC (K$)',
-          data: [85.0, 83.3, 80.4, 82.3, 83.4],
-          borderColor: '#f7931a',
-          backgroundColor: 'rgba(247,147,26,0.08)',
-          fill: true, tension: 0.35, pointRadius: 3
-        },
-        {
-          label: 'ETH (K$)',
-          data: [2.69, 2.53, 2.49, 2.49, 2.55],
-          borderColor: '#bc8cff',
-          backgroundColor: 'rgba(188,140,255,0.08)',
-          fill: true, tension: 0.35, pointRadius: 3
-        }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: true, labels: { boxWidth: 12 } } },
-      scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
-    }
-  });
-
-  function switchTab(idx) {
-    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
-    document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+function showTab(i){
+  document.querySelectorAll('.section').forEach(function(s,j){s.classList.toggle('active',i===j)});
+  document.querySelectorAll('.tab').forEach(function(t,j){t.classList.toggle('active',i===j)});
+}
 </script>
 </body>
 </html>
