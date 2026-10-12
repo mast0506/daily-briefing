@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 | 2026年10月12日</title>
+  <title>每日资讯简报 | 2026年10月13日</title>
   <!-- 设计参考：GitHub Dark 配色 + Bloomberg Terminal 信息密度 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
@@ -111,11 +111,12 @@
 <header>
   <h1>每日资讯<span class="accent">简报</span></h1>
   <div class="subtitle">航运 · 财经 · 时政 · AI 与机器人 —— 全维度深度扫描</div>
-  <div class="date">📅 <b>2026年10月12日 星期一</b> · 数据截至 10月9日（周五）收盘 / 周末要闻 · 新加坡时间 07:00 发布</div>
+  <div class="date">📅 <b>2026年10月13日 星期二</b> · 数据截至 10月12日（周一）收盘/要闻 · 新加坡时间 07:00 发布</div>
 </header>
 
 <div class="archives">
   往期回顾：
+  <a href="./daily-2026-10-12.html">10/12</a>·
   <a href="./daily-2026-10-11.html">10/11</a>·
   <a href="./daily-2026-10-07.html">10/07</a>·
   <a href="./daily-2026-10-06.html">10/06</a>·
@@ -136,93 +137,97 @@
 <div class="tab-panel active">
 
   <div class="section">
-    <div class="section-title"><span class="icon">🚢</span> 航运市场全景 <span class="tag red">干散六周新低</span><span class="tag green">油运历史级景气</span><span class="tag">集装箱温和</span></div>
+    <div class="section-title"><span class="icon">🚢</span> 航运市场全景 <span class="tag red">BDI 五连跌</span><span class="tag green">资产价格坚挺</span><span class="tag">油轮订单潮</span></div>
 
     <div class="index-cards">
       <div class="index-card">
         <div class="name">波罗的海干散货指数 BDI</div>
-        <div class="value down">2,973</div>
-        <div class="change down">▼ 21 点（-0.7%）</div>
-        <div class="note">10/8 收盘 · 8/25 以来最低</div>
+        <div class="value down">2,917</div>
+        <div class="change down">▼ 连跌五日 · 环比 -1.88%</div>
+        <div class="note">10/9 收盘 · 8/24 以来最低</div>
       </div>
       <div class="index-card">
         <div class="name">巴拿马型指数 BPI</div>
-        <div class="value up">逆势上涨</div>
-        <div class="change up">部分抵消海岬跌幅</div>
-        <div class="note">大小船型分化延续</div>
+        <div class="value up">2,424</div>
+        <div class="change up">▲ +0.58%</div>
+        <div class="note">10/9 · 部分抵消海岬跌幅</div>
       </div>
       <div class="index-card">
-        <div class="name">ClarkSea 综合指数</div>
-        <div class="value up">$84,951/天</div>
-        <div class="change up">再创历史新高</div>
-        <div class="note">二手船交易远优于拆解</div>
+        <div class="name">海岬型 5 年船龄价值</div>
+        <div class="value up">$67.73M</div>
+        <div class="change up">年内 +23%</div>
+        <div class="note">创 2008/10 以来新高</div>
       </div>
       <div class="index-card">
-        <div class="name">VLCC 油轮运价</div>
-        <div class="value up">极端紧张</div>
-        <div class="change up">美→中租船贵过火箭发射</div>
-        <div class="note">全球油轮短缺日益恶化</div>
+        <div class="name">海岬型 1 年期租</div>
+        <div class="value up">$23,067/天</div>
+        <div class="change up">年内 +33%</div>
+        <div class="note">资产与租金现背离</div>
       </div>
       <div class="index-card">
-        <div class="name">拆船市场</div>
-        <div class="value down">极度低迷</div>
-        <div class="change down">YTD 仅 840 万 dwt</div>
-        <div class="note">运费高企压制拆解意愿</div>
+        <div class="name">FBX 集装箱运价指数</div>
+        <div class="value">$2,282/FEU</div>
+        <div class="change down">周 -5%</div>
+        <div class="note">9 月中数据 · 波动率 3.78%</div>
       </div>
     </div>
 
     <div class="chart-grid">
       <div class="chart-box">
-        <h5>BDI 近期关键点位（9月末–10月上旬）</h5>
+        <h5>BDI 近期走势（10 月上旬）</h5>
         <canvas id="bdiChart"></canvas>
       </div>
       <div class="chart-box">
-        <h5>航运景气分化：指数化周表现</h5>
-        <canvas id="tankerChart"></canvas>
+        <h5>船价 vs 租金：海岬型年内涨幅（%）</h5>
+        <canvas id="capeChart"></canvas>
       </div>
     </div>
 
     <h4 class="sub">📋 船型租金与船舶价格</h4>
     <div class="table-wrapper">
       <table>
-        <tr><th>细分市场</th><th>状态</th><th>驱动因素</th><th>展望</th></tr>
-        <tr><td>好望角型 Capesize</td><td class="down">走弱</td><td>铁矿石货盘不足、矿价下跌</td><td>Q4 巴西/西非货盘回暖前偏弱</td></tr>
-        <tr><td>巴拿马型 Panamax</td><td class="up">相对抗跌</td><td>粮食、煤炭中小宗货盘稳定</td><td>区间震荡</td></tr>
-        <tr><td>超灵便型 Supramax</td><td class="up">小幅上涨</td><td>灵便船货盘补充</td><td>偏强</td></tr>
-        <tr><td>VLCC 油轮</td><td class="up">飙升</td><td>霍尔木兹袭击+影子舰队制裁</td><td>事件驱动，高波动</td></tr>
-        <tr><td>集装箱船</td><td class="flat">温和回升</td><td>黄金周后首批运价、FAK 调整</td><td>关注 10/19 MSC 新 FAK</td></tr>
-        <tr><td>二手船 (S&P)</td><td class="up">活跃</td><td>ClarkSea 新高，船东惜售</td><td>老旧船溢价收窄</td></tr>
-        <tr><td>新造船订单</td><td class="flat">结构分化</td><td>油轮订单受制裁扰动，箱船订单 40%+ 占比压制</td><td>油轮新造或迎补订窗口</td></tr>
+        <tr><th>细分市场</th><th>状态</th><th>关键数据 / 驱动</th><th>展望</th></tr>
+        <tr><td>好望角型 Capesize</td><td class="down">走弱</td><td>BDI 五连跌主因；即期租金回落</td><td>Q4 铁矿/煤炭货盘回暖前偏弱</td></tr>
+        <tr><td>巴拿马型 Panamax</td><td class="up">抗跌</td><td>BPI 2,424（+0.58%）；粮食货盘支撑</td><td>区间震荡</td></tr>
+        <tr><td>二手散货船 (S&P)</td><td class="up">高位</td><td>5 年船龄海岬 $67.73M（17 年新高）</td><td>买家观望，成交放缓</td></tr>
+        <tr><td>油轮 VLCC</td><td class="flat">订单潮</td><td>90 天内 88 艘 VLCC 新订单</td><td>远期供给压力累积</td></tr>
+        <tr><td>多用途船 MPP</td><td class="flat">稳定</td><td>Toepfer：12,500 dwt 新造 $30M / 10 年船龄 $15M</td><td>订单温和，船价持稳</td></tr>
+        <tr><td>集装箱船</td><td class="flat">温和</td><td>FBX $2,282/FEU，周跌 5%</td><td>关注美线 Jones Act 豁免讨论</td></tr>
+        <tr><td>干散 2026/27 展望</td><td class="tag">BIMCO</td><td>2026 供需平衡（需求+2-3% vs 供给+2.5%）</td><td>2027 需求放缓+交付加速转软</td></tr>
       </table>
     </div>
 
-    <h4 class="sub">📋 市场动态</h4>
+    <h4 class="sub">📋 交易动态与新造船订单</h4>
     <div class="news-grid">
       <div class="news-item">
-        <h3><span class="tag red">干散</span>BDI 跌至六周新低 2,973，海岬租金领跌</h3>
-        <p>波罗的海干散货指数周四（10/8）收于 <b>2,973 点</b>，单日跌 21 点，为 8 月 25 日以来最低；海岬型租金下滑拖累大盘，巴拿马型与超灵便型逆势小涨。<span class="src">Investing.com / Reuters，10/8</span></p>
+        <h3><span class="tag red">干散</span>BDI 五连跌至 2,917，创 8/24 以来新低</h3>
+        <p>波罗的海干散货指数 10/9 收于 <b>2,917 点</b>，环比跌 1.88%，连续第五日下滑（含零增长），近 11 个数据点中 9 跌 2 涨；海岬型领跌，巴拿马型（BPI 2,424，+0.58%）与灵便型部分抵消。<span class="src">Baltic Exchange / Plotio，10/9</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag green">油运</span>"租一艘油轮比发射火箭还贵"：美→中 VLCC 运价超航天成本</h3>
-        <p>gCaptain 报道，受霍尔木兹袭击升级与影子舰队制裁双重挤压，<b>美国至中国油轮运价已高过 SpaceX 火箭发射报价</b>；同日美军在阿曼湾击伤一艘试图突破伊朗封锁的巴拿马籍货船（无人员伤亡），波斯湾航运风险持续计入运价。<span class="src">gCaptain / US CENTCOM，10/9–10/11</span></p>
+        <h3><span class="tag green">资产</span>海岬型船价创 17 年新高，但租金未能同步</h3>
+        <p>5 年船龄 18 万 DWT 海岬型价值升至 <b>$67.73M（年内 +23%）</b>，为 2008 年 10 月以来最高；同期 1 年期租仅 $23,067/天（+33%）——<b>资产价格动能远超租金</b>，成交放缓显示买家在高价位犹豫，或等待回调。<span class="src">Marine Link / VesselsValue，10 月</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag purple">行业结构</span>拆船业"干旱"：全球 3.4 亿 gt 船龄超 20 年，创纪录老龄船队浮在水上</h3>
-        <p>Clarksons 数据：<b>20 年以上船龄运力达 3.4 亿 gt（占全球船队近 20%，5 年增 90%）</b>；其中 25 年以上 1.5 亿 gt、30 年以上 6,800 万 gt 均创纪录。油轮超 20 年船龄占比达 22%（5 年前仅 8%）。今年至今仅 840 万 dwt 送拆——<b>高运费时代拆解经济性极差</b>，老龄船堰塞湖将成为下一轮周期修正时的巨大供给释放阀。<span class="src">Splash247 / Clarksons，10/11</span></p>
+        <h3><span class="tag purple">新造</span>油轮订单狂飙：90 天 88 艘 VLCC 订单</h3>
+        <p>Breakbulk 统计：过去 90 天 VLCC 新签订单达 <b>88 艘</b>，手持订单占比快速抬升；Greek 船东主导油轮 S&P 与新造市场重塑。BIMCO 警告：干散 2027 年需求增长（1-2%）将被 3% 的运力交付超越，高租金窗口或逐步关闭。<span class="src">Breakbulk / BIMCO，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">公司</span>Danaos 散装业务谋划挪威上市；Star Bulk 出售两艘 Kamsarmax</h3>
-        <p>Danaos 计划将散货船业务分拆赴奥斯陆上市；Star Bulk 向 Hermes 出售两艘 Kamsarmax；中国投资人入主沥青船东 Xin Yuan——二手船市场高景气下船东资本运作与船队置换频繁。<span class="src">Splash247，10/11</span></p>
+        <h3><span class="tag">订单</span>Contships 在华启动 30 船支线箱船计划；COSCO 增订 14 艘重吊船</h3>
+        <p>Contships Logistics 在湖北广济船厂启动最多 30 艘支线集装箱船新造项目（含选择权，船队规模可翻倍）；中远海特运增订 14 艘 6 万 dwt 重吊船；Elbdeich Reederei 增订 2 艘集装箱船——新造船市场呈"箱船+特种船+油轮"多点开花。<span class="src">IndexBox / Baird Maritime，10 月上旬</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">集运</span>亚洲-美线运价涨跌互现；美国考虑 Jones Act 豁免</h3>
+        <p>ICIS：亚洲至美国集装箱即期运价多数走高，但货量疲软；美国方面考虑 <b>Jones Act 豁免</b>并审查承运人对美国托运人的附加费问题；FBX 全球指数 $2,282/FEU（周 -5%）。<span class="src">ICIS / Freightos，10 月</span></p>
       </div>
     </div>
 
     <div class="highlight-box">
       <h4>🔍 航运分析与投资机会</h4>
       <ul>
-        <li><b>油运仍是主线</b>：VLCC 运价的历史极值由"合规运力收缩+地缘风险溢价"双驱动，短期难证伪；关注 Frontline、DHT、招商轮船、中远海能的事件弹性，但需对"美伊选前缓和"类 headlines 保持对冲。</li>
-        <li><b>干散：数据真空期的错杀</b>：BDI 六周新低主因铁矿石货盘（矿价同步跌至多月低位），而非需求坍塌；Q4 铁矿/煤炭旺季+老龄船供给逻辑未破坏，回调是布局干散敞口的窗口。</li>
-        <li><b>供给端最大叙事：老龄船堰塞湖</b>。3.4 亿 gt 超龄运力一旦进入拆解周期，将同时利好新造船（中韩船厂订单）与存量运价——这是 2027–2028 年最确定的结构性主题。</li>
-        <li><b>箱船订单占比超 40%</b> 压制中长期集运运价中枢，油轮新造订单则处历史低位，油轮新造船与二手油轮或是船价维度最后的洼地。<span class="src">综合本周公开报道</span></li>
+        <li><b>干散回调即布局窗口</b>：BDI 五连跌是铁矿石货盘真空+前期获利了结，Q4 旺季货盘与老龄船供给逻辑未破坏；关注 Q4 巴西/西非铁矿出货节奏。</li>
+        <li><b>船价-租金背离警示</b>：海岬资产价 17 年新高 vs 租金仅温和跟涨，反映流动性宽松下的资产通胀；二手船追高需谨慎，期租锁定（1 年 TC $23K）性价比优于买船。</li>
+        <li><b>油轮订单潮是远期空头信号</b>：88 艘 VLCC/90 天若延续，2027-28 年油轮供给将显著放量；当前油运股的"事件驱动高运价"宜以交易思维参与。</li>
+        <li><b>2027 转软共识形成</b>：BIMCO 已给出明确时间表（2027 需求 1-2% vs 供给 3%），干散敞口建议向 2026 年内收敛，远期曲线锁定。<span class="src">综合本周公开报道</span></li>
       </ul>
     </div>
   </div>
@@ -233,99 +238,103 @@
 <div class="tab-panel">
 
   <div class="section">
-    <div class="section-title"><span class="icon">📈</span> 全球市场与资产价格 <span class="tag green">周线集体收阳</span><span class="tag red">CPI 前夜的紧绷</span><span class="tag">油价高位</span></div>
+    <div class="section-title"><span class="icon">📈</span> 全球市场与资产价格 <span class="tag red">CPI 前夜</span><span class="tag green">财报季开启</span><span class="tag">油价高位</span></div>
 
     <div class="index-cards">
       <div class="index-card">
         <div class="name">道琼斯工业</div>
-        <div class="value up">51,654.95</div>
-        <div class="change up">+0.83%（周五）/ 周 +0.93%</div>
-        <div class="note">结束五周连跌</div>
+        <div class="value up">+0.3%</div>
+        <div class="change up">周一收高</div>
+        <div class="note">科技股拖累标普/纳指</div>
       </div>
       <div class="index-card">
-        <div class="name">标普 500</div>
-        <div class="value up">7,811.54</div>
-        <div class="change up">+0.59%（周五）/ 周 +1.15%</div>
-        <div class="note">年内 +14%</div>
+        <div class="name">标普 500 / 纳指</div>
+        <div class="value down">小幅收跌</div>
+        <div class="change down">科技股承压</div>
+        <div class="note">10/12 哥伦布日，债市休市</div>
       </div>
       <div class="index-card">
-        <div class="name">纳斯达克综合</div>
-        <div class="value up">27,366.17</div>
-        <div class="change up">+0.64%（周五）</div>
-        <div class="note">周线四连阳</div>
+        <div class="name">布伦特原油</div>
+        <div class="value up">$106.65</div>
+        <div class="change up">▲ +1.8%</div>
+        <div class="note">俄袭乌能源设施</div>
       </div>
       <div class="index-card">
-        <div class="name">WTI / Brent</div>
-        <div class="value">$93 / $104.5</div>
-        <div class="change up">周涨幅显著</div>
-        <div class="note">霍尔木兹+沙特设施遇袭</div>
+        <div class="name">WTI 原油</div>
+        <div class="value up">~$93.6</div>
+        <div class="change up">▲ +1.94%</div>
+        <div class="note">10/9 收盘参考</div>
       </div>
       <div class="index-card">
         <div class="name">比特币</div>
-        <div class="value down">~$83,700</div>
-        <div class="change down">周内低点 $80,400</div>
-        <div class="note">周日反弹 +0.94%</div>
+        <div class="value up">$83,389</div>
+        <div class="change up">+0.17%</div>
+        <div class="note">10/12 · 市值 ~$1.33T</div>
       </div>
       <div class="index-card">
-        <div class="name">黄金</div>
-        <div class="value up">反弹走高</div>
-        <div class="change up">避险+通胀双支撑</div>
-        <div class="note">GLD 周五 +1.55%</div>
+        <div class="name">以太坊</div>
+        <div class="value up">$2,554</div>
+        <div class="change up">+2.44%</div>
+        <div class="note">10/12 · 年内 -38.6%</div>
       </div>
     </div>
 
     <div class="chart-grid">
       <div class="chart-box">
-        <h5>标普 500 本周关键点位</h5>
-        <canvas id="spxChart"></canvas>
+        <h5>美股周一（10/12）：道指 vs 标普/纳指</h5>
+        <canvas id="usChart"></canvas>
       </div>
       <div class="chart-box">
-        <h5>比特币本周（千美元）</h5>
-        <canvas id="btcChart"></canvas>
+        <h5>BTC vs ETH 近期（千美元）</h5>
+        <canvas id="cryptoChart"></canvas>
       </div>
     </div>
 
-    <h4 class="sub">📋 重点个股与板块</h4>
+    <h4 class="sub">📋 全球股指与重点个股</h4>
     <div class="table-wrapper">
       <table>
-        <tr><th>标的</th><th>收盘/状态</th><th>驱动</th></tr>
-        <tr><td>NVIDIA</td><td>持续新高</td><td>AI 算力需求+机器人/物理 AI 叙事</td></tr>
-        <tr><td>Meta</td><td>$718.67</td><td>Muse AI 与广告增长，看 $1,000 牛市叙事</td></tr>
-        <tr><td>Apple</td><td>$336.64</td><td>27 款新品周期，iPhone 需求存疑</td></tr>
-        <tr><td>Adobe</td><td>$242.27</td><td>AI 合作（Heathrow/NHL）与移民政策拖累</td></tr>
-        <tr><td>OpenAI（私营）</td><td class="down">收入下修 $180 亿</td><td>收入预期缺口震动 NVDA/Oracle 等 AI 链</td></tr>
-        <tr><td>美国银行</td><td>$54.32</td><td>周三财报，预期营收 $306 亿</td></tr>
-        <tr><td>房利美链条</td><td class="down">房贷利率 7.4%</td><td>2023 年 11 月以来最高，购房需求 -15%</td></tr>
+        <tr><th>市场/标的</th><th>表现（10/12）</th><th>驱动</th></tr>
+        <tr><td>德国 DAX / 英国 FTSE 100</td><td class="up">均 +0.8%</td><td>欧股全线走高，俄乌停火预期+能源板块</td></tr>
+        <tr><td>韩国 KOSPI</td><td class="down">-3.6%</td><td>朝鲜导弹+外资流出</td></tr>
+        <tr><td>上证综指 / 恒生</td><td class="down">-0.4% / -0.25%</td><td>亚洲整体偏弱，日经休市</td></tr>
+        <tr><td>Bumble (BMBL)</td><td class="up">+50%</td><td>WSJ 报道并购谈判</td></tr>
+        <tr><td>星巴克 (SBUX)</td><td class="up">小幅走高</td><td>辟谣收购 Chipotle；CMG -4%</td></tr>
+        <tr><td>SpaceX（上市后）</td><td class="up">+10%（近三月）</td><td>较 IPO 价 $150 涨 8%</td></tr>
+        <tr><td>能源股</td><td class="up">创纪录</td><td>油价飙升，乌克兰能源设施遇袭</td></tr>
       </table>
     </div>
 
-    <h4 class="sub">📋 本周关键宏观日历（10/12–10/16）</h4>
+    <h4 class="sub">📋 关键宏观事件与商品</h4>
     <div class="news-grid">
       <div class="news-item">
-        <h3><span class="tag red">周三 10/14</span>美国 9 月 CPI：预期 3.6%（前值 3.4%），或定调 12 月加息</h3>
-        <p>市场一致预期 headline CPI 同比升至约 3.6%、环比 0.6%；核心 CPI 预期 2.5%。经济学家预计<b>美联储 10 月按兵不动、12 月再加息一次</b>。标普与纳指在纪录高位附近，几乎没有容错空间。<span class="src">FXEmpire / Benzinga，10/11</span></p>
+        <h3><span class="tag red">周三 10/14</span>美国 9 月 CPI 发布：加息预期敏感点</h3>
+        <p>CME 定价显示 10/28 美联储决议加息 25bp 概率约 <b>19.4%</b>（一周前 22.1%）；市场对 CPI 极度敏感。若通胀超预期，油价高企的"再通胀"叙事将推高加息押注，压制估值。<span class="src">CME / Cryptoticker，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">周二–三 10/13–14</span>Q3 财报季开启：摩根大通、高盛打头阵</h3>
-        <p>FactSet 数据显示分析师预期 Q3 盈利增长 <b>29.5%</b>（历史规律实际常超预期约 7 个百分点）；银行股交易收入接近 $190 亿，但高利率对净息差与投行的冲击是焦点；美银、大摩周三接棒，联合健康、强生同日发布。<span class="src">Benzinga，10/11</span></p>
+        <h3><span class="tag">财报季</span>Q3 盈利预期 +25%：历史级增长能否兑现</h3>
+        <p>彭博情报：分析师预期标普 500 成分股 Q3 盈利同比增长约 <b>25%</b>，为历史最佳水平之一；本周大摩、高盛、奈飞等密集发布——高位指数容错空间极小，"beat 但指引弱"也可能引发回调。<span class="src">Yahoo Finance / Bloomberg，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">加密</span>BTC 周跌 4% 后于 $83.7K 企稳；Fed 纪要+Ledger 安全事件扰动</h3>
-        <p>10/9 凌晨 BTC 从 ~$83,200 急跌至 ~$80,400，单日清算超 $10 亿（多头 $8.62 亿）；导火索为<b>美联储 9 月纪要（多数官员支持年内再加息一次）</b>+五角大楼对伊备战报道。随后特朗普表态"选前不打伊朗"，油价与币价同步反弹。Ledger 就经销商渠道可能 compromised 的钱包展开调查（涉 $8,600 万）。<span class="src">ForkLog / Benzinga，10/11</span></p>
+        <h3><span class="tag">油价</span>俄袭击乌能源设施，"能源停火"数小时内破功</h3>
+        <p>特朗普宣布"能源停火"后数小时，俄罗斯即对乌克兰能源目标发动大规模打击；布伦特 <b>+1.8% 至 $106.65</b>，WTI 逼近 $94。地缘溢价重新定价，能源股创纪录新高。<span class="src">WSJ / MarketWatch，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag purple">市场宽度</span>巴菲特警示：S&P 估值 top 40+，仅 35% 成分股站上 50 日线</h3>
-        <p>指数创新高背后市场宽度极差——<b>约 65% 的标普成分股位于 50 日均线下方</b>，指数上涨高度依赖少数权重；巴菲特就估值风险公开预警，房贷 7.4% 与债券收益率高企是估值的三座大山。<span class="src">beinsure / YouTube 市场综述，10/11</span></p>
+        <h3><span class="tag purple">加密</span>BTC $83.4K 企稳，ETH 反弹 +2.4%</h3>
+        <p>比特币在 $80-87K 区间运行，年内 -6.5%；ETH $2,554（年内 -38.6%），市值 $2,330 亿。就业数据"杀死"四个月新高后，市场聚焦周三 CPI 与月末 Fed。<span class="src">Fortune / Forbes，10/12</span></p>
+      </div>
+      <div class="news-item">
+        <h3><span class="tag">美国国内</span>消费者信心降至 5 月以来最低；房贷利率逼近 7.5%</h3>
+        <p>高利率与关税拖累消费信心；30 年期房贷利率接近 <b>7.5%</b>，为两年高位，购房需求同比下滑约 15%。众议院通过禁止议员炒股法案。<span class="src">Yahoo Finance / AP，10/9–12</span></p>
       </div>
     </div>
 
     <div class="highlight-box">
       <h4>🔍 财经分析与资产配置</h4>
       <ul>
-        <li><b>本周是"宏观双考验"</b>：CPI + 银行财报。CPI ≤ 3.6% 且银行指引稳健 → 维持高位震荡偏多；CPI 超预期 → 纪录高位的指数将测试 SPX 7,662 / 纳指 25,803 支撑。</li>
-        <li><b>油价是隐藏主角</b>：Brent $104+ 若持续，将把"再通胀"叙事推向 12 月加息预期，利好能源股、伤害航空与利率敏感成长股；黄金在"避险+实际利率"拉扯中仍具配置价值。</li>
-        <li><b>警惕市场宽度陷阱</b>：35% 站上 50 日线的结构意味着指数 ETF 之外的个股选择风险极高，财报季建议以指数+质量因子替代个股押注。</li>
-        <li><b>加密</b>：$80K 一线获选前政策叙事支撑，但利率路径未明前维持 $80–87K 区间思维，严控杠杆。<span class="src">综合本周公开报道</span></li>
+        <li><b>本周双考验</b>：周三 CPI + 财报季密集披露。CPI ≤ 预期 + 财报稳健 → 指数高位续涨；CPI 超预期 → 测试近期支撑。</li>
+        <li><b>油价是核心变量</b>：Brent $106+ 若持续，将强化"再通胀→12 月加息"链条；利好能源股/黄金，利空航空、利率敏感成长股与高估值科技。</li>
+        <li><b>市场结构脆弱</b>：指数新高但宽度不足，建议指数+质量因子替代个股押注；财报季警惕"高预期陷阱"（+25% 盈利预期已被充分定价）。</li>
+        <li><b>加密</b>：$80K 支撑有效但上方 $87K 压力沉重，CPI 前维持区间思维，严控杠杆。<span class="src">综合本周公开报道</span></li>
       </ul>
     </div>
   </div>
@@ -336,38 +345,38 @@
 <div class="tab-panel">
 
   <div class="section">
-    <div class="section-title"><span class="icon">📰</span> 全球时政要闻 <span class="tag red">中东高热</span><span class="tag">俄乌能源停火</span><span class="tag purple">中美欧密集互动</span></div>
+    <div class="section-title"><span class="icon">📰</span> 全球时政要闻 <span class="tag red">俄乌停火悬念</span><span class="tag">中欧贸易突破</span><span class="tag purple">亚太动态</span></div>
 
     <div class="news-grid">
       <div class="news-item">
-        <h3><span class="tag">今日热点</span>特朗普宣布俄乌"能源停火"即时生效，泽连斯基：意外但接受</h3>
-        <p>特朗普周日（10/11）在 Truth Social 宣布<b>"俄乌战争能源停火即刻生效，双方已同意"</b>，要求"不要破坏它！"。泽连斯基对 Axios 表示感到意外但随时接受；俄乌双方暂未正式确认。该声明紧随周末哈尔科夫与基辅遭空袭、伤亡上升的背景——若落地，将显著改变欧洲能源与航运风险定价。<span class="src">SCMP / AFP，10/11</span></p>
+        <h3><span class="tag red">今日热点</span>特朗普宣布俄乌"能源停火"并达成美购俄柴油协议</h3>
+        <p>特朗普 10/11 宣布"俄乌能源停火即刻生效"，并披露<b>美国将向俄罗斯购买柴油</b>的协议；但数小时后俄罗斯即对乌克兰能源设施发动大规模打击，停火成色存疑。加拿大总理 Carney 与特朗普、泽连斯基通话，称该协议"与乌克兰的努力背道而驰"。<span class="src">Global News / WSJ，10/11-12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag red">中东</span>霍尔木兹持续交火：更多油轮遇袭，美军击伤闯关货船</h3>
-        <p>周末波斯湾/阿曼湾事件频发：多艘油轮在霍尔木兹海峡附近遇袭；美军中央司令部称一架战机<b>击伤一艘无视警告、试图突破伊朗封锁的巴拿马籍货船</b>（无人员伤亡）。伊朗方面称美方最新回应"不充分"。特朗普此前与普京达成柴油释放安排（六名参议员联名要求推翻该计划），中东局势呈"高压脆平衡"。<span class="src">gCaptain / Yeni Şafak，10/9–10/11</span></p>
+        <h3><span class="tag">中欧</span>欧盟-中国达成贸易安排：中国混动进口或减半</h3>
+        <p>欧盟与中国宣布新贸易安排，可能将中国混动汽车进口<b>削减一半以上</b>；比亚迪、奇瑞、上汽 MG（占中国品牌欧盟混动销量 90%）受冲击最大。巴黎车展同日开幕，欧中车企发布约 60 款新车。<span class="src">Reuters / NetNewsLedger，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">中欧</span>中欧经贸磋商机制第二次会议北京举行，第三轮定于明年 3 月</h3>
-        <p>中国商务部长王文涛与欧盟贸易委员塞夫科维奇 10/8–9 在北京共同主持<b>中欧贸易投资磋商机制第二次会议</b>，双方评价机制运行"顺畅高效"；第三次会议定于明年 3 月，明年 1 月先举行部长级视频会。同期王毅在大同与法国总统外事顾问博纳举行<b>第 28 次中法战略对话</b>，强调"互信是中欧关系底色"。<span class="src">China Daily，10/11</span></p>
+        <h3><span class="tag">中国</span>9 月乘用车出口 91.9 万辆，同比 +64%</h3>
+        <p>中汽协数据：9 月乘用车出口 <b>91.9 万辆</b>，同比激增 64%；前三季度累计出口同比 +70%+。分析称 2026 年中国车企全球出口有望接近 1,000 万辆；中国产 EV 成本约 $20K vs 欧洲 $31K，价格竞争力持续压制欧日车企。<span class="src">AP / ABC，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag purple">台海</span>赖清德"双十"讲话引发两岸交锋；美媒聚焦灰色地带选项</h3>
-        <p>赖清德"双十"讲话被大陆方面批为"煽动两岸对立、推进分裂议程"，国民党主席郑丽文缺席官方活动并批评当局升高对抗；《美国保守派》分析称，<b>特朗普政府将稳定对华关系置于对台支持之上</b>（9 月华盛顿峰会后尤甚），全面攻台担忧下降，但灰色地带施压（网络、海警、经济）风险上升。台湾方面呼吁大陆停止"敌对言论"。<span class="src">Global Times / Taipei Times / AmCon，10/11</span></p>
+        <h3><span class="tag purple">亚太</span>朝鲜导弹、印度抗议与通胀、新加坡 AI 就业预警</h3>
+        <p>朝鲜在日本附近试射弹道导弹；印度 9 月 CPI 升至 <b>5.54%</b>，国内政治抗议蔓延；新加坡领导人警告 AI 对就业的冲击——亚太"安全+通胀+技术替代"三重议题并发。<span class="src">NetNewsLedger，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">美国</span>关税议题拖累中期选情；IMF-世行年会聚焦中东战争与全球债务危机</h3>
-        <p>AP 民调显示<b>选民在中期选举前转向反对特朗普关税政策</b>，但白宫坚持加码；曼谷 IMF-世行年会将以"中东战争+全球债务危机"为双主题；德国 defies Trump 公开支持泽连斯基；希腊获美方 40 亿美元东地中海安全投资框架。<span class="src">Audacy / Modern Diplomacy，10/11</span></p>
+        <h3><span class="tag">美国</span>关税议题拖累选情；众议院通过议员禁炒股法案</h3>
+        <p>AP 民调显示选民在中期选举（11/3）前转向反对关税政策；白宫坚持加码。众议院通过禁止国会议员买卖股票法案。IMF-世行年会将聚焦中东战争与全球债务危机。<span class="src">AP / Audacy，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag green">亚太</span>中美元首华盛顿会晤余温：AI 重塑大国竞争版图</h3>
-        <p>Bloomberg 评论指出<b>AI 正在重绘中美战略竞争地图</b>——继 9 月 Trump-Xi 华盛顿峰会后，双方在 AI 治理、芯片与台海议题上的"管控竞争"框架成型；印度方向，尽管 Xi-Modi 三次会晤、关系回暖，军事互信仍停留在 2020 年状态。<span class="src">Bloomberg / SCMP，10/11</span></p>
+        <h3><span class="tag green">中东</span>美伊对峙持续：美军打击伊朗火箭发射器；霍尔木兹封锁未解</h3>
+        <p>美军对伊朗火箭发射设施实施打击；对伊朗港口的"海军封锁"持续，切断中国约 <b>12% 的石油进口</b>。美购俄柴油协议被指与对伊政策相互矛盾，六名参议员要求推翻。<span class="src">ABC / NPR，10/12</span></p>
       </div>
     </div>
 
     <div class="highlight-box">
       <h4>🔍 地缘政治 × 市场传导链</h4>
-      <p><b>本周核心链条</b>：俄乌"能源停火"若兑现 → 欧洲能源风险溢价回落 + 黑海/东地中海航运正常化预期；但其与霍尔木兹的高热形成"一冷一热"的对冲格局——油价的净方向取决于哪条主线占优。<b>中欧磋商机制常态化</b>利多跨欧亚贸易链与中远欧线货量预期；<b>中美"管控竞争"框架</b>则是全球风险资产的底部支撑叙事。中期选举（11/3）前，特朗普的一切外交动作（对伊、对俄、对华）都带有选时考量，政策可信度需打折评估。<span class="src">综合本周公开报道</span></p>
+      <p><b>本周核心矛盾</b>：俄乌"能源停火"表态与"美购俄柴油"协议本应利空油价，但俄军随即打击乌能源设施、霍尔木兹封锁未解——<b>地缘供给风险不降反升</b>，油价获得双重支撑。<b>中欧贸易安排</b>短期利空中国混动出口链，但常态化磋商机制利好跨欧亚货流预期；<b>中美"管控竞争"</b>框架延续，为全球风险资产提供底部叙事。中期选举前（11/3），特朗普对俄、对伊、对华政策均带选时滤镜，可信度需打折。<span class="src">综合本周公开报道</span></p>
     </div>
   </div>
 
@@ -377,42 +386,42 @@
 <div class="tab-panel">
 
   <div class="section">
-    <div class="section-title"><span class="icon">🤖</span> AI 与机器人前沿 <span class="tag red">OpenAI 收入震动</span><span class="tag green">端侧 AI 竞赛</span><span class="tag purple">具身智能产业化</span></div>
+    <div class="section-title"><span class="icon">🤖</span> AI 与机器人前沿 <span class="tag green">具身智能拐点</span><span class="tag">安全运动兴起</span><span class="tag purple">物理 AI 基建</span></div>
 
     <div class="news-grid">
       <div class="news-item">
-        <h3><span class="tag red">今日热点</span>OpenAI 收入预期下修 $180 亿，AI 股集体震动</h3>
-        <p>OpenAI 向投资者确认收入预期较此前<b>低约 180 亿美元</b>，直接拖累 NVIDIA、Oracle 等 AI 核心链股票（此前已引发纳指 -1.25% 的单日波动）。同期动态：Google 发布可跨设备自主执行任务的 <b>Gemini Agent</b>；Anthropic 与 Mistral 发布新模型；UK ICO 获 10 家 AI 公司数据保护承诺。<span class="src">SC Media / SiliconAngle，10/11</span></p>
+        <h3><span class="tag green">今日热点</span>Figure 发布通用型人形机器人 AI：跨陌生环境泛化</h3>
+        <p>Figure 最新 AI 系统实现<b>在陌生家庭/物体间泛化已学技能</b>，被称机器人"圣杯"突破；公司计划向 Helix 模型投入 <b>$35 亿→$60 亿+</b> AI 基建，与 Nscale 合作获得最多 <b>10 万张 NVIDIA GPU</b>（2027 下半年起部署），并推进 Figure 03/04 量产。此前 Figure 还复刻了《终结者》特技（在芬兰铸造厂完成）。<span class="src">FutureTimeline，10/8</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag green">端侧</span>高通：AI 公司要求 2028 年手机持续运行千亿参数模型</h3>
-        <p>高通 CEO Cristiano Amon 透露，多家 AI 公司提出明确需求——<b>2028 年手机需可持续运行至少 1,000 亿参数模型</b>；虽未公布芯片与时间表，但端侧推理的算力军备赛已经打响，利好先进制程、存储与 NPU IP 链。<span class="src">Pasquale Pillitteri，10/11</span></p>
+        <h3><span class="tag purple">机器人</span>Boston Dynamics 换帅：Rohit Prasad 接任 CEO；前 CEO 预言"物理 AI ChatGPT 时刻"</h3>
+        <p>亚马逊 Alexa 前负责人 <b>Rohit Prasad</b> 10/7 正式接任 Boston Dynamics（现代汽车旗下）CEO；前 CEO Playter 在同日 Global HR Forum 表示：人形机器人正从实验室走向工厂，<b>"物理 AI 的 ChatGPT 时刻"临近</b>——机器人将以协作而非取代的方式重塑工作。NVIDIA 黄仁勋表态愿投资韩国机器人/物理 AI。<span class="src">KED Global，10/13</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag purple">机器人</span>人形机器人 DRAM 需求 2030 年将增 20 倍</h3>
-        <p>Counterpoint Research 预测：<b>人形机器人 DRAM 需求到 2030 年增长 20 倍以上</b>——世界模型+多模态感知要求机器人实时处理视觉/激光雷达/触觉数据，HBM 之后的下一个存储增长极浮现；NVIDIA GPU 的机器人侧需求同步看涨。三星、SK 海力士被视为直接受益者。<span class="src">朝鲜日报/Chosun，10/11</span></p>
+        <h3><span class="tag">学界</span>IROS 2026 匹兹堡：人形机器人专场成焦点</h3>
+        <p>IEEE 机器人学顶会 IROS 2026 设人形机器人舞蹈、体育等专场演示，双足运动控制与灵巧操作的成熟度显著提升；世界人形机器人运动会（北京）上，天工 Ultra 以 <b>8.64 秒</b>完成 100 米（快过博尔特官方纪录近 1 秒）。<span class="src">Instagram / Capitol Tech，10/9</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">融资</span>机器人数据公司 Mecka AI 获 $60M（红杉领投，NVDA/M12 参投）</h3>
-        <p>2024 年成立的"机器人版 Scale AI" Mecka AI 完成 <b>6,000 万美元 B 轮</b>，通过真人佩戴传感器采集日常任务数据（做咖啡、修车等）为具身智能供能，此前被报道正以 5 亿美元估值融资。加上上周 Skild $1.4B、Apptronik $935M，具身智能资金沿"基础模型→数据→硬件"全链铺开。<span class="src">The Sequence，10/11</span></p>
+        <h3><span class="tag red">安全</span>TeamHuman：Mark Rober + 60+ 顶流创作者呼吁放缓前沿 AI</h3>
+        <p>在 CAIS 支持下，Mark Rober 等 60+ YouTube 创作者发起 <b>TeamHuman</b> 运动，呼吁国际社会就最强 AI 系统建立安全协议，"给社会留出建立防护的时间"。AI 安全正从实验室议题进入大众议程；同期新加坡政府亦警告 AI 对就业的结构性冲击。<span class="src">YouTube / CAIS，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag">巨头</span>微软 Nadella 的"超级智能"新叙事：把 AI 当内部威胁来管</h3>
-        <p>Nadella 借白宫"Super Intelligence"话语框架发表文章，主张企业应将前沿 AI 模型<b>视同内部安全威胁来架构管控</b>（借鉴 Google DeepMind 此前建议），并借此向 OpenAI/Anthropic 施压。评论认为这更多是微软在自有前沿模型缺位下的防守话术，但也标志着"AI 安全"正式进入企业 CTO 议程。<span class="src">The Decoder，10/11</span></p>
+        <h3><span class="tag">中国</span>Yole：中国人形集群优势——政策、产线、迭代速度</h3>
+        <p>Yole《Humanoid Robots 2026》报告：中国凭借政策支持、试点产线、本土供应链与快速迭代，占据全球人形机器人制造商半壁江山；北京/上海/深圳集群效应显著。<span class="src">Yole Group，10/12</span></p>
       </div>
       <div class="news-item">
-        <h3><span class="tag green">工具</span>AI 内容溯源升级：Google SynthID 扩围，OpenAI textGrain 上线</h3>
-        <p>Google 升级 <b>SynthID Detector</b>，检测范围扩展至 OpenAI、NVIDIA、Kakao 生成的图像/视频/音频，并将纳入 Apple；OpenAI 的 textGrain 水印检测器开放 API，且明确<b>不会用于检查学生作业/论文</b>——AI 内容认证体系正在成为平台级基础设施。<span class="src">Mashable / OpenAI Help，10/11</span></p>
+        <h3><span class="tag purple">算力</span>机器人训练的算力军备赛：10 万 GPU 集群成新标配</h3>
+        <p>Figure-Nscale 10 万卡集群标志着具身智能训练进入"超算时代"；端侧同样火热——高通透露 AI 公司要求 <b>2028 年手机可持续运行千亿参数模型</b>。"云训练+端推理"双端算力需求叠加，先进制程、HBM/DRAM 与网络互联持续受益。<span class="src">FutureTimeline / 高通，10 月</span></p>
       </div>
     </div>
 
     <div class="highlight-box">
       <h4>🔍 AI 板块分析与投资主线</h4>
       <ul>
-        <li><b>收入验证期到来</b>：OpenAI $180 亿下修是 AI 商业化叙事的第一记实锤，Q4 将进入"收入 vs 估值"的密集验证窗口；卖铲人（NVDA/台积电/存储）短期情绪受挫，但订单基本面未变，回调即观察承接力的试金石。</li>
-        <li><b>端侧与机器人是增量主战场</b>：千亿参数手机（2028）+ 20 倍 DRAM 需求（2030）两条曲线叠加，存储（三星/海力士/美光）与边缘 NPU 是确定性受益环节。</li>
-        <li><b>数据成为新瓶颈资产</b>：Mecka、Scale 类"机器人/AI 数据商"估值快速抬升，印证"模型→算力→数据"瓶颈轮动逻辑。</li>
-        <li><b>监管与认证基础设施</b>：内容水印（textGrain/SynthID）与企业级 AI 管控（Nadella 提案）将孕育新的合规工具赛道。<span class="src">综合本周公开报道</span></li>
+        <li><b>具身智能进入产业化前夜</b>：Figure 泛化突破 + BD 换帅产业派 + 10 万卡训练集群，三信号共振确认"2027-28 人形放量"叙事；关注整机（Tesla Optimus 链、Figure/BMW 链）、执行器、减速器与传感器。</li>
+        <li><b>算力瓶颈从训练转向"训练+推理"双轮</b>：云端 10 万卡集群与端侧千亿参数并行，NVIDIA GPU、先进制程、HBM/DRAM（三星/海力士/美光）与先进封装是确定性环节。</li>
+        <li><b>安全与监管成为新估值因子</b>：TeamHuman 与各国 AI 就业警告显示监管拐点临近；合规/审计/内容溯源（水印、AI 管控）将孕育新工具赛道。</li>
+        <li><b>中国集群的性价比优势</b>：Yole 报告确认中国在人形制造成本与迭代速度上的结构性优势，A股/港股机器人链（减速器、丝杠、传感器）具备全球供应链卡位价值。<span class="src">综合本周公开报道</span></li>
       </ul>
     </div>
   </div>
@@ -436,14 +445,14 @@
   Chart.defaults.borderColor = CHART_DEFAULTS.borderColor;
   Chart.defaults.font = CHART_DEFAULTS.font;
 
-  // BDI 近期关键点位（公开报告）
+  // BDI 近期走势（10 月上旬）
   new Chart(document.getElementById('bdiChart'), {
     type: 'line',
     data: {
-      labels: ['9/29', '10/2', '10/5', '10/6', '10/7', '10/8'],
+      labels: ['10/2', '10/5', '10/6', '10/7', '10/8', '10/9'],
       datasets: [{
         label: 'BDI',
-        data: [3120, 3050, 2995, 3018, 2994, 2973],
+        data: [3050, 2995, 3018, 2994, 2973, 2917],
         borderColor: '#58a6ff',
         backgroundColor: 'rgba(88,166,255,0.12)',
         fill: true, tension: 0.35, pointRadius: 3
@@ -456,16 +465,16 @@
     }
   });
 
-  // 航运景气分化（指数化示意）
-  new Chart(document.getElementById('tankerChart'), {
+  // 海岬型：船价 vs 租金年内涨幅（%）
+  new Chart(document.getElementById('capeChart'), {
     type: 'bar',
     data: {
-      labels: ['BDI 周变动', 'BPI(抗跌)', 'ClarkSea(新高)', 'VLCC 运价', '拆船量(YTD)'],
+      labels: ['5YO 船价', '1年租金 TC', 'BDI(近5日)'],
       datasets: [{
-        label: '表现（指数化示意）',
-        data: [-3.5, 0.6, 5.0, 9.0, -40],
-        backgroundColor: ['rgba(248,81,73,0.55)', 'rgba(63,185,80,0.55)', 'rgba(63,185,80,0.55)', 'rgba(63,185,80,0.65)', 'rgba(248,81,73,0.45)'],
-        borderColor: ['#f85149', '#3fb950', '#3fb950', '#3fb950', '#f85149'],
+        label: '年内变动（%）',
+        data: [23, 33, -1.88],
+        backgroundColor: ['rgba(63,185,80,0.55)', 'rgba(63,185,80,0.45)', 'rgba(248,81,73,0.55)'],
+        borderColor: ['#3fb950', '#3fb950', '#f85149'],
         borderWidth: 1
       }]
     },
@@ -476,17 +485,17 @@
     }
   });
 
-  // 标普 500 本周关键点位
-  new Chart(document.getElementById('spxChart'), {
-    type: 'line',
+  // 美股周一表现（%）
+  new Chart(document.getElementById('usChart'), {
+    type: 'bar',
     data: {
-      labels: ['10/5', '10/6', '10/7', '10/8', '10/9 收'],
+      labels: ['道琼斯', '标普 500', '纳斯达克'],
       datasets: [{
-        label: 'S&P 500',
-        data: [7725, 7745, 7762, 7766, 7811],
-        borderColor: '#bc8cff',
-        backgroundColor: 'rgba(188,140,255,0.12)',
-        fill: true, tension: 0.35, pointRadius: 3
+        label: '10/12 涨跌幅（%）',
+        data: [0.3, -0.16, -0.33],
+        backgroundColor: ['rgba(63,185,80,0.55)', 'rgba(248,81,73,0.5)', 'rgba(248,81,73,0.55)'],
+        borderColor: ['#3fb950', '#f85149', '#f85149'],
+        borderWidth: 1
       }]
     },
     options: {
@@ -496,22 +505,31 @@
     }
   });
 
-  // 比特币本周（千美元）
-  new Chart(document.getElementById('btcChart'), {
+  // BTC vs ETH 近期（千美元）
+  new Chart(document.getElementById('cryptoChart'), {
     type: 'line',
     data: {
-      labels: ['10/5', '10/7', '10/9 凌晨', '10/10', '10/11'],
-      datasets: [{
-        label: 'BTC (K$)',
-        data: [85.0, 83.2, 80.4, 82.3, 83.7],
-        borderColor: '#f7931a',
-        backgroundColor: 'rgba(247,147,26,0.12)',
-        fill: true, tension: 0.35, pointRadius: 3
-      }]
+      labels: ['10/5', '10/8', '10/9', '10/11', '10/12'],
+      datasets: [
+        {
+          label: 'BTC (K$)',
+          data: [85.0, 83.3, 80.4, 82.3, 83.4],
+          borderColor: '#f7931a',
+          backgroundColor: 'rgba(247,147,26,0.08)',
+          fill: true, tension: 0.35, pointRadius: 3
+        },
+        {
+          label: 'ETH (K$)',
+          data: [2.69, 2.53, 2.49, 2.49, 2.55],
+          borderColor: '#bc8cff',
+          backgroundColor: 'rgba(188,140,255,0.08)',
+          fill: true, tension: 0.35, pointRadius: 3
+        }
+      ]
     },
     options: {
       responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
+      plugins: { legend: { display: true, labels: { boxWidth: 12 } } },
       scales: { y: { grid: { color: '#21262d' } }, x: { grid: { display: false } } }
     }
   });
