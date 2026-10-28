@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年10月29日</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #ff6f00;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --success: #4caf50;
+      --danger: #f44336;
+      --warning: #ff9800;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 20px; }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 42px 30px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,35,126,0.3);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 2px; }
+    header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 12px; }
+    header .date { font-size: 0.95rem; opacity: 0.8; }
+    .section {
+      background: var(--card-bg); border-radius: 16px; padding: 28px; margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid var(--primary);
+    }
+    .section-title { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .section-title .icon { font-size: 1.5rem; }
+    .index-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 20px; }
+    .index-card { background: #fafafa; border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+    .index-card .name { font-size: 0.85rem; color: var(--text-light); margin-bottom: 6px; }
+    .index-card .value { font-size: 1.38rem; font-weight: 700; color: var(--primary); }
+    .index-card .change { font-size: 0.84rem; font-weight: 600; margin-top: 4px; }
+    .up { color: var(--success); } .down { color: var(--danger); } .flat { color: var(--warning); }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
+    .news-item { padding: 16px; background: #fafafa; border-radius: 12px; border: 1px solid var(--border); }
+    .news-item h3 { font-size: 1.04rem; color: var(--primary); margin-bottom: 8px; line-height: 1.45; }
+    .news-item p { font-size: 0.9rem; color: var(--text-light); }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.9rem; }
+    th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:nth-child(even) { background: #fafafa; }
+    .highlight-box {
+      background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+      border-radius: 12px; padding: 18px; margin-top: 18px; border-left: 4px solid var(--accent);
+    }
+    .highlight-box h4 { color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
+    .highlight-box p, .highlight-box li { font-size: 0.9rem; color: var(--text); }
+    .highlight-box ul { margin-left: 20px; margin-top: 6px; }
+    .tag { display: inline-block; background: var(--primary); color: #fff; font-size: 0.72rem; padding: 2px 10px; border-radius: 12px; margin-right: 6px; }
+    .meta { font-size: 0.82rem; color: var(--text-light); margin-top: 8px; }
+    footer { text-align: center; padding: 24px; color: var(--text-light); font-size: 0.85rem; }
+    footer a { color: var(--secondary); text-decoration: none; }
+    h4.sub { color: var(--secondary); font-size: 1rem; margin: 18px 0 10px; }
+    .archives { text-align: center; margin-bottom: 20px; font-size: 0.85rem; }
+    .archives a { color: var(--secondary); text-decoration: none; margin: 0 4px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>每日资讯简报</h1>
+  <div class="subtitle">航运 · 财经 · 时政 · AI与机器人</div>
+  <div class="date">2026年10月29日 星期四 | 新加坡时间 07:00</div>
+</header>
+
+<div class="archives">
+  📂 归档：<a href="daily-2026-10-26.html">10/26</a> · <a href="daily-2026-10-25.html">10/25</a> · <a href="daily-2026-10-23.html">10/23</a> · <a href="daily-2026-10-22.html">10/22</a>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🧭</span>今日主线</div>
+  <div class="highlight-box">
+    <h4>⚡ 三条核心逻辑</h4>
+    <ul>
+      <li><strong>美联储按兵不动，科技财报定调市场</strong>：FOMC 以 10-2 投票维持利率不变，主席 Warsh 表态"愿意让经济保持热度"；美股三大指数小幅收涨，但 Alphabet 盘后重挫约 8%（三季度营收不及预期、自由现金流 -90.65 亿美元），微软 6 万人买断计划与资本开支指引成为 AI 叙事的试金石。</li>
+      <li><strong>中东战事风险骤然升温，油价跳涨</strong>：WSJ 报道美国已通报多个海湾国家"为对伊朗短暂而密集的军事行动做准备"，叠加胡塞武装袭击沙特最大炼厂，布伦特重回 $115 上方、WTI 升破 $101，油轮与 LPG 运费持续处于暴利区间。</li>
+      <li><strong>AI 进入"军备+监管"双线时刻</strong>：Google 一日之内连发 Gemini 4 Carbon（登顶智能指数榜首）与 Genie 4 世界模型；Meta 完成 950 亿美元 AI 融资（Nvidia 30 亿 + AMD 10 亿入股）；美国国会议员要求五大 AI 公司 48 小时内上报模型"失调事件"。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🚢</span>航运市场</div>
+
+  <h4 class="sub">核心指数与景气指标</h4>
+  <div class="index-cards">
+    <div class="index-card">
+      <div class="name">BDI（波罗的海干散货）</div>
+      <div class="value">2,652</div>
+      <div class="change up">▲ 10/28 +49点（+1.88%）</div>
+    </div>
+    <div class="index-card">
+      <div class="name">BDI（10/27 收盘）</div>
+      <div class="value">2,603</div>
+      <div class="change down">▼ 当日 -25点（-0.95%）</div>
+    </div>
+    <div class="index-card">
+      <div class="name">LPG 即期租金（Dorian 船队）</div>
+      <div class="value">≈$76,000/天</div>
+      <div class="change up">▲ 同比近翻倍</div>
+    </div>
+    <div class="index-card">
+      <div class="name">新造船订单</div>
+      <div class="value">持续活跃</div>
+      <div class="change flat">■ 美船东 $345M 订造3船</div>
+    </div>
+  </div>
+
+  <h4 class="sub">船型租金与运价动态</h4>
+  <table>
+    <tr><th>板块</th><th>动态</th><th>说明</th></tr>
+    <tr><td><strong>好望角型 Capesize</strong></td><td class="up">走强</td><td>10/28 BDI 反弹主要由好望角型运价回升驱动，铁矿与铝土矿货盘支撑大西洋与太平洋市场</td></tr>
+    <tr><td><strong>巴拿马型 Panamax</strong></td><td class="down">前日走弱</td><td>10/26–27 连续两日 BDI 下跌均由 capesize 与 panamax 板块租金回落施压</td></tr>
+    <tr><td><strong>LPG/气体船</strong></td><td class="up">暴利区间</td><td>霍尔木兹海峡"事实性关闭"下，Dorian LPG 即期日租金近 $7.6 万，亚洲买家转向美国湾货源，公司警告暴利或不可持续</td></tr>
+    <tr><td><strong>油轮</strong></td><td class="up">风险溢价抬升</td><td>美伊军事冲突预期 + 胡塞袭击沙特炼厂，油轮运价风险溢价与战争险保费同步走高</td></tr>
+  </table>
+
+  <h4 class="sub">交易动态与行业新闻</h4>
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>🆕 美国船东 $3.45 亿订造 3 艘新船</h3>
+      <p>康涅狄格州 Stamford 航运公司借霍尔木兹封锁带来的创纪录收益扩大船队，投入 3.45 亿美元订造三艘新船，成为"运价暴利驱动新造船"的典型案例。</p>
+    </div>
+    <div class="news-item">
+      <h3>⚔️ 红海-霍尔木兹"双封锁"重塑贸易航线</h3>
+      <p>亚洲 LPG/原油买家加速转向美国湾出口，吨海里需求显著拉长；绕行与保险费推升综合物流成本，部分集装箱与散货航商重新评估 2026 年度运力布局。</p>
+    </div>
+    <div class="news-item">
+      <h3>📉 二手船交易趋于谨慎</h3>
+      <p>随着运价处于历史高分位，船东对二手船高位接盘意愿降温，S&P 市场议价周期拉长；但新造船价格与船台排期仍维持坚挺，船厂议价权未松动。</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>🔍 航运分析与投资机会</h4>
+    <ul>
+      <li><strong>干散货</strong>：BDI 在 2,600–2,700 区间震荡整固，好望角型货盘回补显示四季度铁矿发运旺季仍有支撑，回调即布局机会，关注 BDI 能否站稳 2,700。</li>
+      <li><strong>油轮/LPG</strong>：美伊冲突"期权价值"是当前运价的最大弹性来源——若军事打击落地，VLCC/LPG 运价可能复制 Dorian 式跳涨；反之若外交缓和（美伊临时协议下制裁豁免已在推进），溢价回吐速度快，适合事件驱动型仓位、严格止损。</li>
+      <li><strong>新造船 vs 二手船</strong>：运价高位+船价坚挺下，"买二手弹性"逻辑弱化，"持有现有运力+高分红"策略优于追高造船订单。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📈</span>财经市场</div>
+
+  <h4 class="sub">全球主要股指（10/28 美股收盘）</h4>
+  <div class="index-cards">
+    <div class="index-card">
+      <div class="name">道琼斯</div>
+      <div class="value">52,475.10</div>
+      <div class="change up">▲ +0.19%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">纳斯达克</div>
+      <div class="value">26,549.85</div>
+      <div class="change up">▲ +0.27%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">标普500</div>
+      <div class="value">7,743.98</div>
+      <div class="change up">▲ +0.28%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">费城半导体</div>
+      <div class="value">+3% 以上</div>
+      <div class="change up">▲ SK海力士暴涨13%</div>
+    </div>
+  </div>
+
+  <h4 class="sub">重点个股表现</h4>
+  <table>
+    <tr><th>标的</th><th>表现</th><th>要点</th></tr>
+    <tr><td><strong>Oracle (ORCL)</strong></td><td class="up">+10.58% → $144.34</td><td>将 ChatGPT 与 Codex 集成进自家应用并扩展云端自研芯片阵容</td></tr>
+    <tr><td><strong>SK 海力士</strong></td><td class="up">+13% 以上</td><td>存储超级周期业绩大超预期，HBM 供给持续紧张</td></tr>
+    <tr><td><strong>Alphabet (GOOGL)</strong></td><td class="down">盘后约 -8%</td><td>Q3 营收与净利不及预期，自由现金流 -90.65 亿美元，AI 搜索转型成本引担忧</td></tr>
+    <tr><td><strong>Amazon</strong></td><td class="down">-5.09% → $249.01</td><td>财报前夕获利了结，云业务资本开支成焦点</td></tr>
+    <tr><td><strong>Caterpillar / Boeing</strong></td><td class="down">-5.61% / -2.67%</td><td>工业与航空板块走弱，JPMorgan 警告 K 型经济或引发宏观冲击</td></tr>
+    <tr><td><strong>Apple</strong></td><td class="up">+0.87% → $346.98</td><td>财报临近，防御属性获资金青睐</td></tr>
+    <tr><td><strong>Robinhood</strong></td><td class="down">大跌</td><td>财报逊于预期，散户交易降温信号</td></tr>
+  </table>
+
+  <h4 class="sub">大宗商品（10/28 盘中/最新报价）</h4>
+  <div class="index-cards">
+    <div class="index-card">
+      <div class="name">WTI 原油</div>
+      <div class="value">$101.65–102</div>
+      <div class="change up">▲ +1.75%~2% 地缘推动</div>
+    </div>
+    <div class="index-card">
+      <div class="name">布伦特原油</div>
+      <div class="value">$115.11–115.99</div>
+      <div class="change up">▲ +1.08%~1.5%</div>
+    </div>
+    <div class="index-card">
+      <div class="name">黄金</div>
+      <div class="value">≈$4,056/oz</div>
+      <div class="change down">▼ 期货 -0.5%（现货 3,992）</div>
+    </div>
+    <div class="index-card">
+      <div class="name">白银 / 铜</div>
+      <div class="value">$53.4 / $6.44每磅</div>
+      <div class="change flat">■ 高位震荡（铜 $14,449/吨）</div>
+    </div>
+    <div class="index-card">
+      <div class="name">铁矿石</div>
+      <div class="value">$90.73/吨</div>
+      <div class="change flat">■ 大商所矿 675 元/吨</div>
+    </div>
+    <div class="index-card">
+      <div class="name">欧洲基准气价</div>
+      <div class="value">€100.16/MWh</div>
+      <div class="change up">▲ +4.5%</div>
+    </div>
+  </div>
+
+  <h4 class="sub">加密货币</h4>
+  <table>
+    <tr><th>币种</th><th>价格（约）</th><th>动态</th></tr>
+    <tr><td><strong>BTC</strong></td><td>$82,300</td><td>24h 区间 $80,000–$84,700；周二曾跌破 8 万关口，卖压缓解后于美联储决议前收复 8.1 万，市场聚焦 12 月是否加息</td></tr>
+    <tr><td><strong>ETH</strong></td><td>$2,363–2,395</td><td>7 日 -6.3%，表现弱于大盘；K33 提示 Anthropic IPO 或分流加密市场资金</td></tr>
+    <tr><td><strong>XRP</strong></td><td>≈$1.30</td><td>Ripple 获 OCC 国家信托银行最终批准，但币价仍承压</td></tr>
+    <tr><td><strong>SOL / ADA / DOGE</strong></td><td>—</td><td>山寨普跌，散户情绪偏防御，DOGE 多头试探阶段性底部</td></tr>
+  </table>
+
+  <div class="highlight-box">
+    <h4>🔍 财经分析与投资机会</h4>
+    <ul>
+      <li><strong>美联储 10-2 分裂投票按兵不动</strong>：Warsh 主政下的"鹰派暂停"——愿意为抗通胀让经济"跑热"，12 月加息概率上升。短端利率敏感资产（区域银行、高负债成长股）波动将加剧，建议关注 2 年期美债收益率方向。</li>
+      <li><strong>AI 财报进入"证真"窗口</strong>：Oracle +10%、SK 海力士 +13% 证明算力/存储需求真实强劲；但 Alphabet 自由现金流转负敲响警钟——AI 军备竞赛的利润兑现节奏分化，"卖铲子"（芯片、存储、电力设备）仍优于"烧钱的应用层"。</li>
+      <li><strong>原油：事件驱动的双刃剑</strong>：布油站稳 $115 上方，若美伊冲突在 11/3 中期选举后落地，上看前高；若外交缓和则快速回吐。黄金 4,000 关口震荡，实际利率与避险需求拉锯，回调至 3,950 下方可关注配置机会。</li>
+      <li><strong>加密</strong>：BTC 8 万美元是多空分水岭，Fed 转鹰+Anthropic IPO 抽血双重压制下，右侧确认前控制仓位，ETH/BTC 比值弱势未改。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">📰</span>时政要闻</div>
+
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>🇺🇸 美伊冲突进入"读秒阶段"</h3>
+      <p>WSJ 报道：美国已通报多个波斯湾国家为"短暂而密集的对伊军事行动"做准备，特朗普尚未最终决定，但倾向在中期选举（11/3）后动手；同日胡塞武装宣称袭击沙特最大炼厂。此前美已依据临时协议部分豁免对伊制裁。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇮🇱 以色列大选陷僵局</h3>
+      <p>周二投票后计票胶着：内塔尼亚胡阵营领先但未获多数，阿拉伯政党可能成组阁"造王者"；前政府发言人 Eylon Levy 称这可能是"内塔尼亚胡时代的终结开端"。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇨🇳 二十届五中全会今日闭幕</h3>
+      <p>10/26–29 在京举行，核心议程为"持之以恒推进全面从严治党"，多名落马高官处分将明朗；官方报道强调中共以"刀刃向内"的反腐赢得执政韧性，为世界政党治理提供"中国之治"样本。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇺🇸 美国中期选举倒计时</h3>
+      <p>下周二投票，民主党策略师评估选情胶着；分析认为国会有望出现分裂格局，对华科技出口管制与能源政策成两党少数共识领域。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇪🇺 欧洲多方接触俄罗斯</h3>
+      <p>北欧四国领导人与普京举行罕见通话；经历数月摇摆后，欧洲表态"准备好与俄罗斯谈判"；同时德国与日本强化经济纽带以应对全球紧张。</p>
+    </div>
+    <div class="news-item">
+      <h3>🇨🇦 欧盟-加拿大峰会聚焦学生与太空</h3>
+      <p>双方在自贸协定与防务采购基础上，希望将合作扩展至教育交流与太空领域；"加拿大准成员国"地位议题引发欧盟内部争论。</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>🌍 地缘政治深度分析</h4>
+    <p>当前全球市场定价的核心变量是<strong>"美伊冲突概率 × 中东选举周期"</strong>的叠加：以色列选举僵局意味着对伊强硬政策短期难以转向，而美国把军事选项押后到中期选举之后，给了市场约一周的"避险定价窗口"。对航运而言，霍尔木兹的风险溢价已实质计入 LPG 与油轮运价；对大宗商品而言，油价尾部风险上行但基准情形仍是"威慑多于实战"。中国五中全会聚焦党建而非经济，显示政策重心在"稳"字当头，四中全会以来的刺激脉络预计延续，短期无需期待增量政策。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="icon">🤖</span>AI 与机器人</div>
+
+  <h4 class="sub">今日热点</h4>
+  <div class="news-grid">
+    <div class="news-item">
+      <h3>💎 Google 发布 Gemini 4 Carbon</h3>
+      <p>10/28 正式亮相：输入 $2/百万 token、输出 $10/百万 token；以 59 分登顶 Artificial Analysis Intelligence Index v5，网络安全基准表现突出（SEC-bench Pro 88.2%），经 Fairwind 计划优先交付网络防御方。</p>
+    </div>
+    <div class="news-item">
+      <h3>🌐 DeepMind 世界模型 Genie 4 登场</h3>
+      <p>AI 生成的世界中 NPC 可对话、自带音轨；演示中一台人形机器人在模拟世界里下国际跳棋，展现 Google"世界模型+具身智能"的融合路线。</p>
+    </div>
+    <div class="news-item">
+      <h3>💰 Meta 950 亿美元 AI 融资落定</h3>
+      <p>Nvidia 出资 30 亿、AMD 出资 10 亿参与；Muse AI 智能体自 9/8 上线累计下载 1,090 万、日活 250 万。消费级个人智能体成为芯片巨头新的必争之地。</p>
+    </div>
+    <div class="news-item">
+      <h3>📉 OpenAI 再次下调模型价格</h3>
+      <p>同日 OpenAI 公布内部模型"证伪指数时间假设"的研究成果，Anthropic 也发布 Claude 同类论文；AI-for-Physics 实验室发布五篇配机器验证证明的量子物理论文。</p>
+    </div>
+    <div class="news-item">
+      <h3>🏛️ 特朗普：政府文件禁用"AI"一词</h3>
+      <p>宣称将在所有相关官方文件中"BANNING the term AI"，代之以"Super Intelligence"，延续其重塑联邦 AI 话语体系的路线；美国会议员同日致函五大 AI 公司，要求 48 小时内上报模型失调事件。</p>
+    </div>
+    <div class="news-item">
+      <h3>🤖 日本 JR 东日本测试链锯人形机器人</h3>
+      <p>轨道车载金属人形机器人用链锯与抓取臂清理侵入铁轨的树枝，目前由人远程操控，未来拟通过 AI 视觉分析实现全自主作业，应对铁路劳动力短缺。</p>
+    </div>
+  </div>
+
+  <h4 class="sub">AI 生态数据</h4>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>含义</th></tr>
+    <tr><td>AI token 用量（2025/6 以来）</td><td class="up">+2,400%</td><td>Forbes 援引专家数据，AI 实际使用强度远超股市估值反映的水平</td></tr>
+    <tr><td>Meta Muse 下载 / 日活</td><td>1,090万 / 250万</td><td>消费级 Agent 起量最快的案例之一，验证了"个人智能体"叙事</td></tr>
+    <tr><td>Gemini 4 Carbon 定价</td><td>$2 / $10 每百万 token</td><td>旗舰能力下沉至中端价格带，推理成本通缩继续</td></tr>
+    <tr><td>中国 BEV 注册量（H1 2026）</td><td class="down">美国仅 6%，-22%</td><td>中欧拉开差距，AI 驱动的机器人/智驾产业重心持续东移</td></tr>
+  </table>
+
+  <div class="highlight-box">
+    <h4>🔍 AI 深度分析</h4>
+    <p>今天的行业图景可概括为<strong>"三股力量同时加速"</strong>：<strong>能力侧</strong>，Gemini 4 Carbon 登顶 + Genie 4 世界模型显示 Google 正以"多模态世界理解"对冲 OpenAI/Anthropic 的推理优势；<strong>资本侧</strong>，Meta 950 亿融资引入 Nvidia/AMD 作为战略股东，标志着芯片厂商从"供应商"变成"生态投资人"，绑定式投资正在重塑 AI 资本结构；<strong>治理侧</strong>，美国议员 48 小时上报要求与特朗普话语政策并行，监管从"原则性框架"进入"事件驱动式执法"。投资视角：推理成本通缩利好应用层毛利，但 Alphabet 现金流转负提醒市场——<strong>AI 的资本开支竞赛短期看不到终点，"算力-存储-电力"链条的确定性仍高于应用层</strong>。具身智能方面，从 Google 的模拟世界下跳棋到 JR 东日本的链锯机器人，2026 年正在成为"物理 AI"从演示走向岗位替代的元年。</p>
+  </div>
+</div>
+
+<footer>
+  <p>📅 简报由 AI 自动生成，资讯仅供参考，不构成投资建议</p>
+  <p style="margin-top:8px;">历史归档见本页顶部 · Powered by OpenClaw</p>
+</footer>
+
+</div>
+</body>
+</html>
