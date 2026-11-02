@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年11月3日</title>
+  <style>
+    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:40px 20px; text-align:center; }
+    .header h1 { font-size:2em; margin-bottom:10px; }
+    .header .date { font-size:1.1em; opacity:.9; }
+    .header .meta { margin-top:10px; font-size:.85em; opacity:.75; }
+    .nav { background:var(--card); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:100; display:flex; justify-content:center; flex-wrap:wrap; }
+    .nav button { padding:15px 30px; border:none; background:none; font-size:16px; cursor:pointer; color:var(--light); border-bottom:3px solid transparent; transition:all .3s; font-family:inherit; }
+    .nav button.active { color:var(--primary); border-bottom-color:var(--accent); font-weight:600; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .section { display:none; animation:fadeIn .3s; }
+    .section.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .card { background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .card h2 { color:var(--primary); font-size:1.4em; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent); }
+    .card h3 { color:var(--secondary); font-size:1.1em; margin:18px 0 10px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:16px 0; }
+    .stat { background:#f8f9fa; border-radius:8px; padding:16px; border-left:4px solid var(--accent); }
+    .stat .label { font-size:.85em; color:var(--light); }
+    .stat .value { font-size:1.45em; font-weight:700; color:var(--primary); margin:4px 0; }
+    .stat .note { font-size:.82em; color:var(--light); }
+    .up { color:var(--up); } .down { color:var(--down); }
+    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
+    th { background:var(--primary); color:#fff; padding:10px; text-align:left; }
+    td { padding:10px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:hover { background:#f5f5f5; }
+    .news-item { padding:14px 0; border-bottom:1px solid var(--border); }
+    .news-item:last-child { border-bottom:none; }
+    .news-item .title { font-weight:600; color:var(--primary); margin-bottom:4px; }
+    .news-item .source { font-size:.8em; color:var(--light); margin-bottom:6px; }
+    .news-item .summary { font-size:.92em; color:var(--text); }
+    .tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.75em; font-weight:600; margin-right:6px; }
+    .tag-red { background:#ffebee; color:#c62828; } .tag-green { background:#e8f5e9; color:#2e7d32; }
+    .tag-blue { background:#e3f2fd; color:#1565c0; } .tag-orange { background:#fff3e0; color:#ef6c00; }
+    .tag-gray { background:#eceff1; color:#455a64; }
+    .highlight-box { background:#fff8e1; border-left:4px solid #ffc107; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .risk-box { background:#ffebee; border-left:4px solid #ef5350; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .insight-box { background:#e8f5e9; border-left:4px solid #66bb6a; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .footer { text-align:center; padding:30px 20px; color:var(--light); font-size:.85em; }
+    a { color:#1565c0; text-decoration:none; } a:hover { text-decoration:underline; }
+    @media (max-width:600px) { .header h1{font-size:1.4em} .grid{grid-template-columns:1fr} .nav button{padding:12px 16px;font-size:14px} .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📰 每日资讯简报</h1>
+    <div class="date">2026年11月3日 星期二</div>
+    <div class="meta">数据主要截至 11月2日（周一）美股收盘 / 11月3日早间消息 | 来源：Baltic Exchange、Drewry、Clarksons、TradingKey、MarketWatch、Trading Economics、Euronews、Yahoo Finance、The Information、Reuters</div>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
+    <button onclick="showSection('finance',this)">💰 财经</button>
+    <button onclick="showSection('politics',this)">🌍 时政</button>
+    <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
+  </div>
+
+  <div class="container">
+
+    <!-- ==================== 航运板块 ==================== -->
+    <div id="shipping" class="section active">
+      <div class="card">
+        <h2>🚢 核心运价指数：集运美线坚挺、欧线续跌；干散货偏弱震荡</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">BDI（10月30日读数）</div><div class="value">2,603</div><div class="down">周跌约 2.1%；近期 Hellenic 报“一周低位”</div></div>
+          <div class="stat"><div class="label">BCI 好望角型</div><div class="value">3,702</div><div class="down">日均收益约 $33,575，高位降温</div></div>
+          <div class="stat"><div class="label">SCFI（最新周读数）</div><div class="value">3,590.05</div><div class="up">周涨 2.3%；CCFI 1,837.01（+0.2%）</div></div>
+          <div class="stat"><div class="label">Drewry WCI（10月上旬）</div><div class="value">$4,351/FEU</div><div class="note">综合指数高位企稳，内部分化加剧</div></div>
+        </div>
+        <p>集装箱市场呈现罕见的“美强欧弱”剪刀差：SCFI 周涨 2.3% 至 3,590 点，跨太平洋航线受美国补库和美国进口需求支撑维持高位（上海—洛杉矶约 $7,624/FEU、上海—纽约约 $10,220/FEU）；而上海—鹿特丹跌至约 $3,337/FEU，连续 13 周下滑。干散货方面，BDI 在 2,600 点附近偏弱震荡，铁矿石发运对 Capesize 的支撑仍在，但巴拿马型、超灵便型同步走弱。</p>
+        <div class="risk-box"><strong>短线判断：</strong>苏伊士航线恢复通行是压制欧线运价的关键变量；若红海正常化持续，欧线运价可能继续向成本线回归，而美线将独享“高基数+旺季尾声”支撑。BDI 需观察 Capesize 能否守住 3,000 点关口，否则中小型船压力将拖累指数下探 2,500 区间。</div>
+      </div>
+
+      <div class="card">
+        <h2>🚢 主要航线与船型租金/收益</h2>
+        <table>
+          <thead><tr><th>市场/航线</th><th>最新数据</th><th>变化</th><th>要点</th></tr></thead>
+          <tbody>
+            <tr><td>Capesize 平均日收益</td><td>约 $33,575/天</td><td class="down">日跌约 $220</td><td>铁矿发运强，但指数从高位回落。</td></tr>
+            <tr><td>上海—洛杉矶</td><td>约 $7,624/FEU</td><td class="up">相对坚挺</td><td>美线受进口需求支撑，明显强于欧线。</td></tr>
+            <tr><td>上海—纽约</td><td>约 $10,220/FEU</td><td>高位</td><td>美东运价为全球最高基准航线。</td></tr>
+            <tr><td>上海—鹿特丹</td><td>约 $3,337/FEU</td><td class="down">连续13周下跌</td><td>苏伊士恢复+运力回流压制欧线。</td></tr>
+            <tr><td>VLCC TD3C（中东—中国）</td><td>&gt;$200,000/天</td><td class="up">创2020年5月以来最高</td><td>油轮超级周期持续，地缘风险溢价高企。</td></tr>
+            <tr><td>VLCC 一年期租</td><td>&gt;$130,000/天</td><td class="up">历史高位区间</td><td>船东信心极强，远期曲线继续上行。</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.9em;color:var(--light)">来源：Baltic Exchange、Container News、Drewry、Clarksons、Hellenic Shipping News。油轮数据为 Q1—Q3 2026 市场读数，显示油轮与干散货、集运走势显著分化。</p>
+      </div>
+
+      <div class="card">
+        <h2>🚢 新造船、二手船与行业动态</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">VLCC 转售船价</div><div class="value">$1.68亿</div><div class="up">较新造船价 $1.285亿 高 $3,950万；创60年船型史新高</div></div>
+          <div class="stat"><div class="label">10年船龄 VLCC</div><div class="value">$1.10亿</div><div class="up">年内 +22%</div></div>
+          <div class="stat"><div class="label">15年船龄 VLCC</div><div class="value">$0.80亿</div><div class="up">年内 +29%</div></div>
+          <div class="stat"><div class="label">LNG 船新造基准价</div><div class="value">$2.45亿</div><div class="down">较去年高点回落，中韩船厂竞争加剧</div></div>
+        </div>
+        <div class="news-item"><div class="title">油轮资产价格狂飙：VLCC 转售溢价创历史纪录</div><div class="source">Clarksons / iMarine · Q1—Q3 2026</div><div class="summary">VLCC 新船转售价达 1.68 亿美元，比新造船价高出近 4,000 万美元，为 60 年船型历史首次。Gibson 归因于四重因素：运力紧张、吨海里需求扩张、船东集中度提升和地缘环境脆弱。Q1 VLCC 投资金额逼近单一船型季度纪录。</div></div>
+        <div class="news-item"><div class="title">霍尔木兹 VLCC 通行量回升，曼德海峡持稳</div><div class="source">Hellenic Shipping News · 10月末</div><div class="summary">VLCC 在霍尔木兹海峡的通行量连续攀升，曼德海峡第二日保持稳定；中东—远东油运风险溢价仍未消退，支撑 TD3C 高位运行。</div></div>
+        <div class="news-item"><div class="title">新造船价格见顶回落，2027 年订单或减速 30%</div><div class="source">Clarksons / HD现代 · 11月初</div><div class="summary">LNG 船基准价降至 2.45 亿美元，超大型集装箱船约 2.42 亿美元。中国船厂以激进报价切入高附加值船型，韩国船企高价手持订单交付后利润回摆风险上升；Clarksons 预测 2027 年新接订单量同比减少约 30%，但仍高于常规年份。</div></div>
+        <div class="news-item"><div class="title">二手船市场观望情绪上升</div><div class="source">本周公开报道整理</div><div class="summary">运价回调、资产价格高位与利率不确定性共同压低成交意愿，公开确认的大型 S&amp;P 成交偏少。油轮二手资产因即期租金坚挺仍受追捧，散货船和集装箱船资产议价空间扩大。</div></div>
+        <div class="news-item"><div class="title">俄罗斯柴油回流大西洋航线</div><div class="source">Hellenic Shipping News · 10月28日</div><div class="summary">俄柴油重返大西洋市场形成新的贸易流，MR/LR 型成品油轮吨海里需求结构生变，欧洲成品油进口格局继续重塑。</div></div>
+        <div class="insight-box"><strong>航运投资观察：</strong>油轮是当前航运链条中确定性最强的板块（VLCC 租金+资产价格双高）；集运关注美线 11 月涨价落地率；干散货等待中国钢铁季节性拐点。船厂链短期盈利仍强，但新造价格回落与订单减速信号已开始积累。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 财经板块 ==================== -->
+    <div id="finance" class="section">
+      <div class="card">
+        <h2>💰 全球市场：美股涨跌互现，科技股抛售延续</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">Dow Jones（11月2日收盘）</div><div class="value">51,983.98</div><div class="up">+0.41%；油价大跌提振成分股</div></div>
+          <div class="stat"><div class="label">S&P 500（11月2日收盘）</div><div class="value">7,541.40</div><div class="down">-0.51%；盘中涨幅回吐</div></div>
+          <div class="stat"><div class="label">Nasdaq Composite</div><div class="value">25,164.32</div><div class="down">-1.07%；AI 担忧持续发酵</div></div>
+          <div class="stat"><div class="label">费城半导体指数</div><div class="value">SOX</div><div class="down">跌逾 3%；Marvell -12.7%、Lumentum -18.6%</div></div>
+        </div>
+        <p>周一美股走势分化：早盘纳指 100 期货一度涨 0.7%、标普期货涨 0.33%，但科技股反弹迅速消退，纳指收跌 1.07%，资金继续从科技向其他板块轮动。AI 融资担忧成为新压力源——MarketWatch 报道 OpenAI 据传将融资目标下调 100 亿美元；Oracle 跌逾 8%，Marvell 暴跌 12.7%，Lumentum 重挫 18.6%。道指则在油价大跌提振下收涨 0.41%。</p>
+        <div class="risk-box"><strong>主线变化：</strong>市场焦点从“AI 收入叙事”进一步切换到“AI 资本开支的资金来源与回报周期”。本周风险事件密集：11月3日美国中期选举、OPEC+ 会议、ISM PMI、欧元区 CPI、英国央行决议、美国非农就业报告，任何一项都可能放大波动。</div>
+      </div>
+
+      <div class="card">
+        <h2>💰 大宗商品与加密资产：油价暴跌，黄金创一年新低</h2>
+        <table>
+          <thead><tr><th>资产</th><th>最新价格</th><th>表现</th><th>驱动因素</th></tr></thead>
+          <tbody>
+            <tr><td>Brent 原油</td><td>约 $106.2/桶</td><td class="down">单日暴跌 6.3%</td><td>美伊谈判预期升温，中东风险溢价快速回吐。</td></tr>
+            <tr><td>WTI 原油</td><td>约 $97.4/桶</td><td class="down">单日暴跌 6.4%</td><td>特朗普被曝拟给外交更多时间，卡塔尔—伊朗连谈三日。</td></tr>
+            <tr><td>黄金</td><td>低于 $4,000/盎司</td><td class="down">创一年以来最低</td><td>强美元+高利率压制；较8月峰值回撤显著。</td></tr>
+            <tr><td>白银/铜</td><td>—</td><td class="down">同步遭抛售</td><td>贵金属整体承压，铜价走弱反映增长担忧。</td></tr>
+            <tr><td>比特币</td><td>约 $79,000—82,500</td><td class="up">自周末低点回升</td><td>币安安全事件（史上最大加密黑客）冲击后修复，ETF 流入改善。</td></tr>
+            <tr><td>以太坊</td><td>约 $2,700（目标位）</td><td>震荡企稳</td><td>买盘活跃，跟随大盘修复。</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.9em;color:var(--light)">注：油价为 11月2日 美盘收盘；黄金为盘中公开报道口径；加密资产为 11月2—3日 公开报价，盘中波动较大。美债收益率跌至近 8 周低位，德意志银行警告市场可能严重低估通胀冲击。</p>
+      </div>
+
+      <div class="card">
+        <h2>💰 财报、宏观与跨资产分析</h2>
+        <div class="news-item"><div class="title">Apple 财报压轴本周科技股</div><div class="source">MarketWatch / TradingKey · 11月2日</div><div class="summary">Apple 于美股盘后发布 2026 财年 Q4 业绩，分析师预期超预期结果可能推动股价冲击 350 美元纪录；Palantir 亦于盘后公布业绩。</div></div>
+        <div class="news-item"><div class="title">OpenAI 据传下调融资目标 100 亿美元</div><div class="source">MarketWatch · 11月2日</div><div class="summary">AI 估值泡沫担忧升温，直接触发当日 AI 概念股抛售；市场开始重新审问“烧钱换增长”模式的可持续性。</div></div>
+        <div class="news-item"><div class="title">油价暴跌成为当日最重要宏观事件</div><div class="source">TradingKey / Trading Economics · 11月2日</div><div class="summary">美伊谈判希望+OPEC+ 会议前博弈，油价创数月最大单日跌幅；若地缘溢价继续回吐，将显著缓解全球通胀压力并利好风险资产。</div></div>
+        <div class="news-item"><div class="title">币安安全事件：史上最大加密黑客案</div><div class="source">Yahoo Finance / 公开报道 · 11月1—2日</div><div class="summary">周末黑客事件一度冲击市场，BTC 跌至 $77,500 附近后修复；ETF 资金流改善帮助比特币重回 $82,500 上方。</div></div>
+        <div class="news-item"><div class="title">欧洲个股巨震：Alstom 暴跌 28%</div><div class="source">MarketWatch · 11月2日</div><div class="summary">法国轨道交通巨头发布盈利预警，股价单日崩跌 28%，成为欧洲市场当日最大黑天鹅。</div></div>
+        <div class="news-item"><div class="title">亚洲：韩国 10 月出口近乎翻倍</div><div class="source">Reuters / Asahi · 11月2日</div><div class="summary">受 AI 投资热潮驱动，韩国 10 月出口同比近翻倍，贸易顺差 425 亿美元；前 10 月累计出口 9,300 亿美元，11 月有望成为第四个年出口破万亿的国家。</div></div>
+        <div class="highlight-box"><strong>配置视角：</strong>油价若确认进入“地缘溢价回吐”通道，通胀交易（空债、多油）需快速转向；黄金跌破一年低点后技术面偏弱，等待利率信号；科技板块波动率仍高，仓位宜防御。本周中选的财政含义（关税 vs 补贴）将是跨资产配置的下一个锚。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 时政板块 ==================== -->
+    <div id="politics" class="section">
+      <div class="card">
+        <h2>🌍 今日时政热点：美国中期选举投票日</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">美国中期选举</div><div class="value">11月3日</div><div class="note">决出国会两院控制权；最终民调显示选情胶着</div></div>
+          <div class="stat"><div class="label">APEC 领导人会议</div><div class="value">11月18-19日</div><div class="note">深圳举办；“特普习”三方峰会构想引发热议</div></div>
+          <div class="stat"><div class="label">法国抗议</div><div class="value">32万人</div><div class="note">连续第三个周末；565人被捕，11月5日全国罢工</div></div>
+          <div class="stat"><div class="label">比利时政府</div><div class="value">危机</div><div class="note">预算僵局致德韦弗首相拟辞职</div></div>
+        </div>
+        <p>11月3日是美国中期选举正式投票日，最终结果将重塑特朗普第二任期的政策路径——关税、对乌援助、能源与财政议程均悬于两院归属。北约内部已出现“若共和党大败，特朗普可能转向对欧施压”的忧虑；欧洲多国政局同步承压。</p>
+      </div>
+
+      <div class="card">
+        <h2>🌍 区域要闻</h2>
+        <div class="news-item"><div class="title">习近平：中国无意参加乌克兰问题三方峰会</div><div class="source">ProtoThema / 俄媒引述 · 11月2日</div><div class="summary">习近平称乌克兰冲突“是欧洲的事务”，表态降低 APEC 期间“特普习”三方峰会预期；泽连斯基多次强调任何涉乌决定须有基辅参与，并称准备好与特朗普、普京在伊斯坦布尔会晤。</div></div>
+        <div class="news-item"><div class="title">美国批准对乌导弹军售；特朗普将援助与选票挂钩</div><div class="source">Yahoo News / AP · 11月2日</div><div class="summary">美国批准乌克兰导弹销售案引发关注；同日 headlines 指特朗普将对外援助与中期选举投票挂钩，选后援乌政策走向存重大不确定性。</div></div>
+        <div class="news-item"><div class="title">特朗普 farm belt 冲刺助选；密歇根参议院争议发酵</div><div class="source">WORLD Radio / Democracy Now · 11月2日</div><div class="summary">特朗普在爱荷华迪比克举行集会；密歇根州 Haley Stevens 转而背书 Mike Rogers 遭党内黑人领袖抨击为“政治作秀”，对手 El-Sayed 随后募得 120 万美元。</div></div>
+        <div class="news-item"><div class="title">佛罗里达 Learjet 坠毁 9 人遇难</div><div class="source">AP / Yahoo · 11月1—2日</div><div class="summary">南佛州发生致命空难，9 人死亡；NTSB 已介入调查，万圣节期间多起枪击案亦占据美国新闻版面。</div></div>
+        <div class="news-item"><div class="title">法国生活成本抗议蔓延；比利时政府倒台风险</div><div class="source">Democracy Now / Euronews · 11月2日</div><div class="summary">法国约 32 万人参加第三周抗议，巴黎 565 人被捕，学生计划本周封锁校园，11月5日工会发起全国罢工；比利时因预算僵局，首相德韦弗宣布拟辞职。</div></div>
+        <div class="news-item"><div class="title">保加利亚总统选举次轮投票举行</div><div class="source">Euronews · 11月1日</div><div class="summary">紧张局势下的总统决选落幕，结果将影响这个欧盟成员国的对俄立场与政局稳定。</div></div>
+        <div class="insight-box"><strong>地缘—市场联动：</strong>中期选举结果将直接决定美元、关税与能源政策路径：共和党横扫或强化“关税+化石能源”交易；若国会分裂，财政僵局与债务上限风险将重新定价。APEC 三方峰会与否，决定 11 月中下旬俄乌停火谈判的市场预期。</div>
+      </div>
+    </div>
+
+    <!-- ==================== AI/机器人板块 ==================== -->
+    <div id="ai" class="section">
+      <div class="card">
+        <h2>🤖 AI 今日热点：OpenAI 转向 Google 芯片，AI 估值遭遇拷问</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">OpenAI 融资目标</div><div class="value">-100亿美元</div><div class="down">据传下调融资规模，引发 AI 股抛售</div></div>
+          <div class="stat"><div class="label">OpenAI × Google TPU</div><div class="value">采购协议</div><div class="note">打破 NVIDIA 独家依赖；自研“Jalapeño”芯片据称早期跑分超越 NVIDIA</div></div>
+          <div class="stat"><div class="label">Foxconn AI 服务器</div><div class="value">51%</div><div class="up">云与网络产品占 Q2 营收过半；与 OpenAI 探讨新合作</div></div>
+          <div class="stat"><div class="label">斯坦福 AI Index</div><div class="value">60%+</div><div class="note">NVIDIA 占全球 AI 算力容量份额；前沿模型单次训练碳排放达 7.2 万吨</div></div>
+        </div>
+        <p>本周 AI 产业信号密集且矛盾：一边是 OpenAI 多元化算力（Google TPU + 自研芯片）、Foxconn 人形机器人落地等里程碑；另一边是融资目标下调、AI 概念股连续重挫——资本市场的“回报审问”已经到来。</p>
+      </div>
+
+      <div class="card">
+        <h2>🤖 硅谷前沿</h2>
+        <div class="news-item"><div class="title">OpenAI 计划采购 Google TPU，算力“去 NVIDIA 化”</div><div class="source">The Information / MacObserver · 11月1—2日</div><div class="summary">OpenAI 拟购入 Google TPU，金额、数量与交付表未披露；自研芯片（代号 Jalapeño，与 Broadcom 合作）据称早期基准测试超越 NVIDIA 最新硬件，计划 2026 年底前部署。Google CFO 预计 2026 年底确认小部分 TPU 外售收入，大头在 2027 年。</div></div>
+        <div class="news-item"><div class="title">Foxconn 与 OpenAI 探索新合作，人形机器人进驻德州</div><div class="source">Reuters / ETDatacenters · 11月1日</div><div class="summary">董事长刘扬伟与 Altman 会面暗示将宣布新合作；富士康休斯顿工厂已部署 10 余台基于 NVIDIA GR00T 模型的人形机器人用于内部生产，并计划自研机器人 AI 模型。</div></div>
+        <div class="news-item"><div class="title">OpenAI 亲自下场造人形机器人</div><div class="source">Forbes · 9月报道（持续发酵）</div><div class="summary">Sam Altman 表示“每个人都应该拥有一台”人形机器人，OpenAI 从“机器人大脑”走向“整机制造”，与 Figure、Tesla Optimus 正面竞争。</div></div>
+        <div class="news-item"><div class="title">NVIDIA GTC Berlin：AI 智能体安全平台+人形机器人设计</div><div class="source">AOL / 公开报道 · 10月19日</div><div class="summary">NVIDIA 发布防止 AI agent“失控”的安全平台及人形机器人参考设计，巩固其在物理 AI 生态的基建地位。</div></div>
+        <div class="news-item"><div class="title">Google 双线出击：Gemini Carbon 网络安全+ NASA 太空医疗机器人</div><div class="source">AI Business / 公开报道 · 11月1日</div><div class="summary">Gemini Carbon 强化 AI 网络防御（目前仅向少数客户开放）；Google 与 NASA 合作为深空任务开发机器人医疗助手。</div></div>
+        <div class="news-item"><div class="title">Linus Torvalds 用 Claude Code 开发 Linux 内核</div><div class="source">公开报道 · 11月1日</div><div class="summary">实验引发社区对 AI 编程助手进入关键基础设施的广泛讨论。</div></div>
+      </div>
+
+      <div class="card">
+        <h2>🤖 中国动态、机器人军事化与长期趋势</h2>
+        <div class="news-item"><div class="title">美国 humanoid 机器人现身乌克兰战场测试</div><div class="source">AI Business · 2026年报道（持续发酵）</div><div class="summary">旧金山 Foundation Future Industries 首席执行官向 CNBC 证实，其数台人形机器人已被送往乌克兰进行测试，拟用于前线及工业场景；军事自主技术竞赛升温。</div></div>
+        <div class="news-item"><div class="title">斯坦福 AI Index 2026：中美竞争进入“效率+生态”阶段</div><div class="source">IEEE Spectrum · 2026年度</div><div class="summary">美国在模型数量上领先，中国精炼全球 90% 以上稀土——芯片、能源与稀土构成 AI 权力地理三重底座；Humanity's Last Exam 最高分已超 50%（Claude Opus 4.6、Gemini 3.1 Pro），推理能力突破成为新主线。</div></div>
+        <div class="news-item"><div class="title">韩国 AI 出口狂飙：10月出口近翻倍</div><div class="source">Reuters / Asahi · 11月2日</div><div class="summary">三星、SK 海力士芯片利润飙升，AI 投资热潮使韩国迈向年出口万亿美元俱乐部；半导体成为亚洲 AI 链条最确定的受益者。</div></div>
+        <div class="highlight-box"><strong>趋势判断：</strong>AI 竞争正从“单一芯片依赖”转向“算力多元化+自研芯片+推理优化”。机器人 2026 年的关键词是“落地”：富士康产线、乌克兰战场、太空医疗——成本、可靠性与安全认证决定商业化速度。</div>
+        <div class="risk-box"><strong>市场提示：</strong>AI 融资节奏放缓（OpenAI 下调目标）是估值敏感的先行指标；短期 AI 股波动或继续高于大盘，关注算力供应链（TPU 外售利好 Google 生态）、推理成本下降与具身智能订单拐点。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>简报由 AI 自动采集与整理，仅供资讯参考，不构成投资建议。</p>
+    <p>归档页面：daily-2026-11-03.html · 部署仓库：mast0506/daily-briefing</p>
+  </div>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
