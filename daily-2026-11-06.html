@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年11月6日</title>
+  <style>
+    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:40px 20px; text-align:center; }
+    .header h1 { font-size:2em; margin-bottom:10px; }
+    .header .date { font-size:1.1em; opacity:.9; }
+    .header .meta { margin-top:10px; font-size:.85em; opacity:.75; }
+    .nav { background:var(--card); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:100; display:flex; justify-content:center; flex-wrap:wrap; }
+    .nav button { padding:15px 30px; border:none; background:none; font-size:16px; cursor:pointer; color:var(--light); border-bottom:3px solid transparent; transition:all .3s; font-family:inherit; }
+    .nav button.active { color:var(--primary); border-bottom-color:var(--accent); font-weight:600; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .section { display:none; animation:fadeIn .3s; }
+    .section.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .card { background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .card h2 { color:var(--primary); font-size:1.4em; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent); }
+    .card h3 { color:var(--secondary); font-size:1.1em; margin:18px 0 10px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:16px 0; }
+    .stat { background:#f8f9fa; border-radius:8px; padding:16px; border-left:4px solid var(--accent); }
+    .stat .label { font-size:.85em; color:var(--light); }
+    .stat .value { font-size:1.45em; font-weight:700; color:var(--primary); margin:4px 0; }
+    .stat .note { font-size:.82em; color:var(--light); }
+    .up { color:var(--up); } .down { color:var(--down); }
+    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
+    th { background:var(--primary); color:#fff; padding:10px; text-align:left; }
+    td { padding:10px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:hover { background:#f5f5f5; }
+    .news-item { padding:14px 0; border-bottom:1px solid var(--border); }
+    .news-item:last-child { border-bottom:none; }
+    .news-item .title { font-weight:600; color:var(--primary); margin-bottom:4px; }
+    .news-item .source { font-size:.8em; color:var(--light); margin-bottom:6px; }
+    .news-item .summary { font-size:.92em; color:var(--text); }
+    .tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.75em; font-weight:600; margin-right:6px; }
+    .tag-red { background:#ffebee; color:#c62828; } .tag-green { background:#e8f5e9; color:#2e7d32; }
+    .tag-blue { background:#e3f2fd; color:#1565c0; } .tag-orange { background:#fff3e0; color:#ef6c00; }
+    .tag-gray { background:#eceff1; color:#455a64; }
+    .highlight-box { background:#fff8e1; border-left:4px solid #ffc107; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .risk-box { background:#ffebee; border-left:4px solid #ef5350; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .insight-box { background:#e8f5e9; border-left:4px solid #66bb6a; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .footer { text-align:center; padding:30px 20px; color:var(--light); font-size:.85em; }
+    a { color:#1565c0; text-decoration:none; } a:hover { text-decoration:underline; }
+    @media (max-width:600px) { .header h1{font-size:1.4em} .grid{grid-template-columns:1fr} .nav button{padding:12px 16px;font-size:14px} .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📰 每日资讯简报</h1>
+    <div class="date">2026年11月6日 星期五</div>
+    <div class="meta">数据主要截至 11月5日（周四）美股收盘 / 11月6日早间消息 | 来源：JournalArta、StockTitan、Barron's、Yahoo Finance、Jefferies、Braemar ACM、Euronews、Hindustan Times、U.S. News、ABC News、Crunchbase、Global Times</div>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
+    <button onclick="showSection('finance',this)">💰 财经</button>
+    <button onclick="showSection('politics',this)">🌍 时政</button>
+    <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
+  </div>
+
+  <div class="container">
+
+    <!-- ==================== 航运板块 ==================== -->
+    <div id="shipping" class="section active">
+      <div class="card">
+        <h2>🚢 集运：关税推动的美线运费飙升显现见顶迹象</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">SCFI 美西航线（上海—美西）</div><div class="value">约 $6,000/FEU</div><div class="up">一周前为 $5,172，单周大幅跳涨</div></div>
+          <div class="stat"><div class="label">集运综合指数</div><div class="value">高位</div><div class="note">SCFI 本周有望再度录得上涨（Jefferies）</div></div>
+          <div class="stat"><div class="label">二手船市场</div><div class="value">"狂热"</div><div class="up">Braemar ACM：船价全面飙升</div></div>
+          <div class="stat"><div class="label">油轮资产价格</div><div class="value">年内 +12%</div><div class="up">部分船型较2020年末低点反弹 25%</div></div>
+        </div>
+        <p>Jefferies 航运分析师 Omar Nokta 在客户报告中指出，受关税驱动的集装箱运价飙升正在显现见顶迹象：SCFI 美西航线现货运价达 6,000 美元/FEU，较上周的 5,172 美元大幅跳涨，但"急涨+基数抬高"的组合通常意味着动能接近衰竭。与此同时，二手船市场却是另一幅景象——Braemar ACM Shipbroking 用"狂热（frenzy）"形容当前二手船交易，散货船尤其是老龄船价值录得可观涨幅，油轮价值年内累计上涨 12%。</p>
+        <p>新造船端则明显遇冷：在当前运价与资产价格高位背景下，船东对新订单态度谨慎，市场抑制情绪浓厚。全球手持订单总量约 10,293 艘，新船订单结构（散货船、集装箱船、油轮、LNG 等）显示造船产能仍然紧张，但下单节奏显著放缓。</p>
+        <div class="risk-box"><strong>短线判断：</strong>集运美线运价的"最后一涨"风险上升——若 11 月下旬美线现货回落，集运股将面临运价与估值双杀；相反，二手船与油轮资产价格的持续走强表明资金仍在押注 2027 年运力紧张格局，干散货老龄船 S&amp;P 是较好的间接参与方式。</div>
+      </div>
+
+      <div class="card">
+        <h2>🚢 市场结构与近期动态</h2>
+        <table>
+          <thead><tr><th>市场/板块</th><th>最新动态</th><th>方向</th><th>要点</th></tr></thead>
+          <tbody>
+            <tr><td>集装箱现货（美线）</td><td>SCFI 美西 $6,000/FEU</td><td class="up">急涨后见顶风险</td><td>关税前置进口驱动，动能或近衰竭（Jefferies）。</td></tr>
+            <tr><td>二手散货船</td><td>价值"可观涨幅"</td><td class="up">持续走强</td><td>Braemar ACM 形容市场为"狂热"，老龄船受追捧。</td></tr>
+            <tr><td>油轮资产</td><td>年内 +12%</td><td class="up">稳步上行</td><td>部分船型较2020年末低点反弹25%，S&amp;P 活跃。</td></tr>
+            <tr><td>新造船订单</td><td>明显受抑制</td><td class="down">节奏放缓</td><td>高船价+利率不确定性压低船东下单意愿。</td></tr>
+            <tr><td>全球手持订单</td><td>约 10,293 艘</td><td>高位</td><td>船厂产能仍紧张，排期至 2028 年后。</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.9em;color:var(--light)">来源：Jefferies（Omar Nokta 客户报告）、Braemar ACM Shipbroking、New-Ships.com 全球新造船数据库。BDI 今日官方读数暂未获取，昨日参考值约 2,600 点区间偏弱震荡。</p>
+      </div>
+
+      <div class="card">
+        <h2>🚢 交易动态与行业新闻</h2>
+        <div class="news-item"><div class="title">二手船 S&amp;P 进入"狂热"模式，船价全面飙升</div><div class="source">Braemar ACM Shipbroking · 本周</div><div class="summary">二手船市场活跃度大幅攀升，散货船特别是老龄船价值录得可观涨幅；油轮价值年内上涨 12%，部分船型较 2020 年末低点反弹 25%。船东在运价高企、资产升值与运力紧张预期下加速囤船。</div></div>
+        <div class="news-item"><div class="title">新造船订单受抑制，船东观望情绪浓</div><div class="source">New-Ships.com / New Vessels Weekly · 本周</div><div class="summary">高船价、利率不确定性与运价见顶担忧共同压制新签订单；全球手持订单约 10,293 艘，船厂产能排期依然紧张，但新接订单节奏明显慢于 2025 年。</div></div>
+        <div class="news-item"><div class="title">关税驱动的集运抢运潮或近尾声</div><div class="source">Yahoo Finance / Jefferies · 11月5日</div><div class="summary">SCFI 美西航线单周大涨至 $6,000/FEU，但分析师提示"关税推动的运价飙升显现见顶迹象"——前置进口需求透支后，12 月运价回落风险显著。</div></div>
+        <div class="insight-box"><strong>航运投资观察：</strong>当前航运市场的核心矛盾是"运价见顶 vs 资产价格走强"。策略上，集运股宜逢高减仓；油轮与老龄散货船的 S&amp;P 市场仍具配置价值；船厂链短期盈利无虞，但 2027 年订单减速 30% 的预期开始积累在估值中。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 财经板块 ==================== -->
+    <div id="finance" class="section">
+      <div class="card">
+        <h2>💰 全球市场：AI 股雪崩，纳指创 19 个月最大单日跌幅</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">Nasdaq Composite（11月5日收盘）</div><div class="value">24,315.0</div><div class="down">-5.52%；19个月最大单日跌幅</div></div>
+          <div class="stat"><div class="label">S&amp;P 500（11月5日收盘）</div><div class="value">7,353.73</div><div class="down">-4.36%；盘中一度跌逾 3.8% 触及熔断关注区</div></div>
+          <div class="stat"><div class="label">Dow Jones（11月5日收盘）</div><div class="value">51,523.06</div><div class="down">-3.44%；跌幅相对较小</div></div>
+          <div class="stat"><div class="label">费城半导体</div><div class="value">重挫</div><div class="down">芯片股连续第二日领跌</div></div>
+        </div>
+        <p>周四美股遭遇 AI 抛售风暴：纳斯达克暴跌 5.52% 至 24,315 点，创 19 个月最大单日跌幅；标普 500 收跌 4.36% 报 7,353.73；道指跌 3.44% 报 51,523.06。AI 相关个股成为重灾区，芯片股连续第二日领跌。市场焦点已从"AI 收入叙事"彻底转向"AI 资本开支的回报审问"——此前 OpenAI 下调融资目标、Amazon/Intel 财报暴露 AI 成本压力等信号在连续发酵。</p>
+        <div class="risk-box"><strong>市场结构警示：</strong>10 月已是纳斯达克自 2020 年 3 月以来最差月份；当前抛售由"估值+融资+算力成本"三重因素驱动，与 2021 年利率冲击型调整不同，短期或有技术性反弹，但 AI 主线需要盈利验证才能真正企稳。</div>
+      </div>
+
+      <div class="card">
+        <h2>💰 大宗商品与加密资产：油价反弹，黄金走强，BTC 承压</h2>
+        <table>
+          <thead><tr><th>资产</th><th>最新价格</th><th>表现</th><th>驱动因素</th></tr></thead>
+          <tbody>
+            <tr><td>WTI 原油</td><td>约 $84.2—90/桶</td><td class="up">单日反弹逾 6%</td><td>美伊谈判反复，地缘溢价回补；此前曾因谈判预期单日暴跌 6%+。</td></tr>
+            <tr><td>Brent 原油</td><td>约 $88—103/桶</td><td class="up">同步反弹约 6.4%</td><td>霍尔木兹通行波动+谈判拉锯，油价双向波动加剧。</td></tr>
+            <tr><td>黄金</td><td>$4,098.3/盎司</td><td class="up">+1.48%</td><td>避险需求+降息预期重燃，自一年低点回升。</td></tr>
+            <tr><td>比特币</td><td>$64,411.78</td><td class="up">+0.95%</td><td>自币安黑客事件低点修复，但距前高仍远；ETF 流向待观察。</td></tr>
+            <tr><td>美债 10Y</td><td>约 4.62%</td><td>高位</td><td>BOE 加息日+美国中选后财政路径不确定。</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.9em;color:var(--light)">注：油价各口径差异较大（盘中 vs 收盘、近月 vs 连二合约），本表给出近期公开报道区间。11月2日 Brent 一度因伊朗示好谈判跌破 $107；随后两日谈判拉锯使溢价回补。</p>
+      </div>
+
+      <div class="card">
+        <h2>💰 宏观事件与跨资产分析</h2>
+        <div class="news-item"><div class="title">英国央行（BOE）周四决议：市场预期加息</div><div class="source">StockTitan / 市场一致预期 · 11月5日</div><div class="summary">英国央行利率决议（美东 7:30）是当日最重要央行事件；通胀压力与油价波动使"更高更久"重新成为发达市场主题。</div></div>
+        <div class="news-item"><div class="title">AI 抛售链：从 OpenAI 融资下调到芯片股崩跌</div><div class="source">JournalArta / StockTitan · 11月5日</div><div class="summary">纳指单日 -5.52% 的背后：AI 资本开支回报质疑 + 财报季成本担忧 + 估值高企三重共振；市场甚至讨论标普触发熔断机制的可能性。</div></div>
+        <div class="news-item"><div class="title">油价双向巨震：谈判预期与地缘现实的拉锯</div><div class="source">Oil &amp; Gas 360 / Barron's · 11月2—5日</div><div class="summary">周一 Brent 因伊朗谈判信号跌破 $107（单日 -6%）；随后美伊谈判反复+霍尔木兹扰动，油价两日反弹逾 6%。地缘溢价成为油市主导变量。</div></div>
+        <div class="news-item"><div class="title">比特币在 $64,000 附近企稳</div><div class="source">Barron's 实时行情 · 11月5日</div><div class="summary">BTC 报 $64,411（+0.95%），自 11 月初币安安全事件冲击后温和修复；黄金 $4,098（+1.48%）受避险与降息预期双重支撑。</div></div>
+        <div class="highlight-box"><strong>配置视角：</strong>①AI 急跌后不建议急于接飞刀，等待算力龙头盈利指引；②油价地缘溢价双向波动加剧，趋势单风险高，可考虑期权结构；③黄金自一年低点连续反弹，若 12 月美联储转向鸽派，修复空间打开；④日本/英国央行的鹰派转向使"非美加息交易"成为美元的新逆风。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 时政板块 ==================== -->
+    <div id="politics" class="section">
+      <div class="card">
+        <h2>🌍 今日最大事件：美国中期选举尘埃落定，民主党获胜</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">美国中期选举</div><div class="value">民主党获胜</div><div class="note">多家媒体测算/确认；全球领导人密集表态</div></div>
+          <div class="stat"><div class="label">市场反应</div><div class="value">股跌债稳</div><div class="note">美股周四重挫（AI 抛售），财政路径不确定性上升</div></div>
+          <div class="stat"><div class="label">中欧关系</div><div class="value">紧张升级</div><div class="note">中国警告就欧盟"kill-switch"工具采取报复</div></div>
+          <div class="stat"><div class="label">APEC 峰会</div><div class="value">11月中旬</div><div class="note">"特普习"三方峰会预期降温：习近平明确无意参加</div></div>
+        </div>
+        <p>11月3日美国中期选举结果陆续揭晓：民主党取得胜利，特朗普遭遇其第二任期的首次重大政治挫败。从中俄到英国，各国领导人反应迅速而微妙。分析指出，特朗普的"政治屈辱"对中国是"短期获利、长期承压"——民主党主导国会可能在对华技术出口管制上更趋强硬，同时在关税问题上掣肘特朗普的单边行动。</p>
+      </div>
+
+      <div class="card">
+        <h2>🌍 区域要闻</h2>
+        <div class="news-item"><div class="title">世界领导人回应美国中期选举结果</div><div class="source">Hindustan Times / OPB · 11月5日</div><div class="summary">从中国、俄罗斯到英国，各国围绕民主党胜选密集表态；分析普遍认为美国外交政策短期延续、中期不确定性大增，盟友与对手都在为"特朗普跛脚"情景做预案。</div></div>
+        <div class="news-item"><div class="title">中国警告就欧盟"kill-switch"计划采取报复</div><div class="source">Euronews · 11月5日</div><div class="summary">欧盟正考虑设立所谓"kill-switch"（紧急切断）机制以保护其市场免受外部冲击；中国威胁采取报复措施。中欧经贸博弈进入工具化对抗新阶段。</div></div>
+        <div class="news-item"><div class="title">习近平对"特普习"三方峰会不感兴趣</div><div class="source">Yahoo News / 大西洋理事会分析 · 11月5日</div><div class="summary">习近平表态无意参加与特朗普、普京的三方会晤，意味着 APEC 期间的"特普习"峰会预期大幅降温；中方立场降低俄乌问题快速突破的市场预期。</div></div>
+        <div class="news-item"><div class="title">分析：特朗普受挫对中国"短期获利、长期有痛"</div><div class="source">U.S. News · 11月5日</div><div class="summary">短期看，国会分裂削弱特朗普关税与对台政策的执行力；长期看，民主党的对华技术封锁与联盟外交可能更具结构性压力。</div></div>
+        <div class="insight-box"><strong>地缘—市场联动：</strong>中选结果+美股 AI 抛售构成双重冲击：财政僵局风险（债务上限、政府停摆）将重新进入定价；对华关税执行力度存疑利好出口链情绪修复，但技术管制加码利空半导体设备。俄乌停火预期随三方峰会降温而降温，油价地缘溢价中枢难下。</div>
+      </div>
+    </div>
+
+    <!-- ==================== AI/机器人板块 ==================== -->
+    <div id="ai" class="section">
+      <div class="card">
+        <h2>🤖 AI 今日热点：AI 估值遭市场拷问，OpenAI 推出数据中心新政</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">纳指（AI 抛售）</div><div class="value">-5.52%</div><div class="down">19 个月最大单日跌幅；AI 股全线重挫</div></div>
+          <div class="stat"><div class="label">OpenAI 数据中心</div><div class="value">社区新政</div><div class="note">中选后推出 National Community Compact</div></div>
+          <div class="stat"><div class="label">小鹏机器人融资</div><div class="value">$9亿+</div><div class="up">中国具身智能最大单轮融资，投后估值超 $63亿</div></div>
+          <div class="stat"><div class="label">Galbot 智元融资</div><div class="value">25亿元</div><div class="up">国家AI基金、中石化、中信入局</div></div>
+        </div>
+        <p>AI 板块正经历"资本审问"与"政策纠偏"的双重时刻：一边是美股 AI 股史诗级抛售——市场重新追问千亿级资本开支的回报路径；另一边是 OpenAI 在中选后迅速推出数据中心社区新政，回应民主党对 AI 设施社区影响的担忧。中国具身智能赛道则继续高歌猛进，融资纪录被不断刷新。</p>
+      </div>
+
+      <div class="card">
+        <h2>🤖 硅谷前沿</h2>
+        <div class="news-item"><div class="title">OpenAI 推出数据中心"社区新政"</div><div class="source">Yahoo Finance / ABC News · 11月5日</div><div class="summary">中期选举后，OpenAI 发布 National Community Compact：承诺公开数据中心社区影响数据、用电高峰限电、设定本地雇佣目标。背景：2026 年 Q2 价值 880 亿美元的数据中心项目曾因社区反对而受扰动；民主党议员对 AI 设施能耗与就业的质疑是中选重要议题。</div></div>
+        <div class="news-item"><div class="title">黄仁勋：NVIDIA 对开放/封闭模型客户一视同仁</div><div class="source">公开报道整理 · 本周</div><div class="summary">Jensen Huang 表示公司愿为任何模型路线（open 或 closed）的客户提供算力，强调 agent harness（智能体框架）突破与人工超级智能前景；在 AI 抛售潮中为算力需求叙事背书。</div></div>
+        <div class="news-item"><div class="title">AI 估值遭市场拷问：纳指创 19 个月最大跌幅</div><div class="source">JournalArta / StockTitan · 11月5日</div><div class="summary">AI 抛售从芯片股蔓延至全市场；前期 OpenAI 融资目标下调 100 亿美元、Amazon/Intel 财报暴露 AI 成本压力等信号持续发酵，"烧钱换增长"模式遭遇系统性重估。</div></div>
+      </div>
+
+      <div class="card">
+        <h2>🤖 中国动态与投资前沿</h2>
+        <div class="news-item"><div class="title">小鹏机器人完成超 9 亿美元融资</div><div class="source">XPeng 官方 / Crunchbase · 近期</div><div class="summary">IDG 资本领投，投后估值超 63 亿美元——中国具身智能行业史上最大单轮融资；资金将用于人形机器人量产与场景落地。</div></div>
+        <div class="news-item"><div class="title">Galbot（智元）完成 25 亿元新融资</div><div class="source">Global Times · 近期</div><div class="summary">国家AI产业基金、中石化、中信投资控股入局；银河通用（Galaxea AI）此前完成 4.35 亿美元 B 轮及扩展轮（估值 14 亿美元），TARS 等初创持续吸金。</div></div>
+        <div class="news-item"><div class="title">行业判断：机器人大脑或在 2027 年底迎来"ChatGPT 时刻"</div><div class="source">BNN Bloomberg（ACE Robotics 董事长） · 2026年8月观点，持续发酵</div><div class="summary">投资人越来越看重真实场景部署（而非跳舞/田径表演）；具身智能模型的智能与自主性决定商业化速度。</div></div>
+        <div class="highlight-box"><strong>趋势判断：</strong>AI 正进入"证真"阶段——从融资故事走向单位经济模型（unit economics）。算力侧关注 TPU/自研芯片多元化；应用侧关注 agent harness 与人形机器人量产订单。短期市场波动不改变长期趋势，但估值中枢将显著下移。</div>
+        <div class="risk-box"><strong>市场提示：</strong>AI 股波动率或持续高于大盘；关注算力供应链（Google TPU 外售利好）、推理成本下降曲线与具身智能真实订单（而非融资新闻）作为板块企稳信号。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>简报由 AI 自动采集与整理，仅供资讯参考，不构成投资建议。</p>
+    <p>归档页面：daily-2026-11-06.html · 部署仓库：mast0506/daily-briefing</p>
+  </div>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
