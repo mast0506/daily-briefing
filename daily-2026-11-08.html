@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年11月8日</title>
+  <style>
+    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:40px 20px; text-align:center; }
+    .header h1 { font-size:2em; margin-bottom:10px; }
+    .header .date { font-size:1.1em; opacity:.9; }
+    .header .meta { margin-top:10px; font-size:.85em; opacity:.75; }
+    .nav { background:var(--card); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:100; display:flex; justify-content:center; flex-wrap:wrap; }
+    .nav button { padding:15px 30px; border:none; background:none; font-size:16px; cursor:pointer; color:var(--light); border-bottom:3px solid transparent; transition:all .3s; font-family:inherit; }
+    .nav button.active { color:var(--primary); border-bottom-color:var(--accent); font-weight:600; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .section { display:none; animation:fadeIn .3s; }
+    .section.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .card { background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .card h2 { color:var(--primary); font-size:1.4em; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent); }
+    .card h3 { color:var(--secondary); font-size:1.1em; margin:18px 0 10px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:16px 0; }
+    .stat { background:#f8f9fa; border-radius:8px; padding:16px; border-left:4px solid var(--accent); }
+    .stat .label { font-size:.85em; color:var(--light); }
+    .stat .value { font-size:1.45em; font-weight:700; color:var(--primary); margin:4px 0; }
+    .stat .note { font-size:.82em; color:var(--light); }
+    .up { color:var(--up); } .down { color:var(--down); }
+    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
+    th { background:var(--primary); color:#fff; padding:10px; text-align:left; }
+    td { padding:10px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:hover { background:#f5f5f5; }
+    .news-item { padding:14px 0; border-bottom:1px solid var(--border); }
+    .news-item:last-child { border-bottom:none; }
+    .news-item .title { font-weight:600; color:var(--primary); margin-bottom:4px; }
+    .news-item .source { font-size:.8em; color:var(--light); margin-bottom:6px; }
+    .news-item .summary { font-size:.92em; color:var(--text); }
+    .tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.75em; font-weight:600; margin-right:6px; }
+    .tag-red { background:#ffebee; color:#c62828; } .tag-green { background:#e8f5e9; color:#2e7d32; }
+    .tag-blue { background:#e3f2fd; color:#1565c0; } .tag-orange { background:#fff3e0; color:#ef6c00; }
+    .tag-gray { background:#eceff1; color:#455a64; }
+    .highlight-box { background:#fff8e1; border-left:4px solid #ffc107; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .risk-box { background:#ffebee; border-left:4px solid #ef5350; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .insight-box { background:#e8f5e9; border-left:4px solid #66bb6a; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .footer { text-align:center; padding:30px 20px; color:var(--light); font-size:.85em; }
+    a { color:#1565c0; text-decoration:none; } a:hover { text-decoration:underline; }
+    @media (max-width:600px) { .header h1{font-size:1.4em} .grid{grid-template-columns:1fr} .nav button{padding:12px 16px;font-size:14px} .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📰 每日资讯简报</h1>
+    <div class="date">2026年11月8日 星期日</div>
+    <div class="meta">数据主要截至 11月7日（周五）全球收盘与当日消息 | 来源：Trading Economics、Maritime Professional、Investing.com、Xinde Marine、Plus500、Yahoo Finance、Bruegel、Al Jazeera、Euronews、CNBC、Business Insider、Interesting Engineering、AISA</div>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
+    <button onclick="showSection('finance',this)">💰 财经</button>
+    <button onclick="showSection('politics',this)">🌍 时政</button>
+    <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
+  </div>
+
+  <div class="container">
+
+    <!-- ==================== 航运板块 ==================== -->
+    <div id="shipping" class="section active">
+      <div class="card">
+        <h2>🚢 干散货：BDI 录得三连周涨，海岬型、巴拿马型齐升</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">Baltic Dry Index（BDI，11月6日）</div><div class="value">2,805 点</div><div class="up">+65（+2.37%），三连周涨，周线 +3.4%</div></div>
+          <div class="stat"><div class="label">海岬型 BCI</div><div class="value">4,344 点</div><div class="up">+153（+3.65%），周线 +5.3%，近一月高位</div></div>
+          <div class="stat"><div class="label">巴拿马型 BPI</div><div class="value">2,003 点</div><div class="up">+47（+2.40%），周线 +6%，为 10月27日以来最高</div></div>
+          <div class="stat"><div class="label">海岬型日均租金</div><div class="value">$35,892/天</div><div class="up">+$1,382；巴拿马型 $18,030/天（+$427）</div></div>
+        </div>
+        <p>波罗的海干散货指数周五上涨 65 点至 2,805 点，录得连续第三周上涨（周涨 3.4%），为 10月12日以来最高水平。海岬型指数领涨：BCI 涨 3.65% 至 4,344 点，日均租金升至 $35,892，受铁矿石、煤炭长航线需求支撑；巴拿马型指数涨 2.40% 至 2,003 点，周涨 6%，粮食与煤炭航线活跃。惟超灵便型（Supramax）逆势下跌 0.49% 至 1,815 点，录得连续第二周下滑，大小船走势分化明显。</p>
+        <div class="highlight-box"><strong>趋势判断：</strong>BDI 连续三周走强且站稳 2,800 点关口，验证了四季度干散货旺季逻辑。海岬型租金逼近 $36,000/天，船东盈利窗口打开；但需警惕中国钢铁利润疲弱对铁矿石需求的传导——近期大连铁矿石价格一度触及 18 个月低位，若钢厂冬储补库不及预期，运价上行斜率将放缓。</div>
+      </div>
+
+      <div class="card">
+        <h2>🚢 集装箱：SCFI 终结四周连涨，美东失守 $10,000</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">SCFI 综合指数</div><div class="value">四周连涨终结</div><div class="down">美东航线单周暴跌 $342，跌破 $10,000/FEU</div></div>
+          <div class="stat"><div class="label">Drewry WCI（10月月均）</div><div class="value">$4,457/40ft</div><div class="note">2026年全球箱量需求增速预测 +3.1%</div></div>
+          <div class="stat"><div class="label">全球港口拥堵</div><div class="value">430万 TEU</div><div class="note">一度超越疫情峰值，巴拿马缩减通行时段</div></div>
+          <div class="stat"><div class="label">准班率（9月）</div><div class="value">40%</div><div class="note">运力同比增长 10%，有效运力仍偏紧</div></div>
+        </div>
+        <p>SCFI 终结四周连涨，美东航线单周大跌 $342 失守 $10,000/FEU。11-12 月为传统出货淡季，叠加深圳 APEC 会议交通管控或拖慢华南出货节奏，运价进入季节性回调。但结构性支撑仍在：红海绕航持续吸收运力、港口拥堵（曾达 430 万 TEU 超疫情峰值）、霍尔木兹扰动与船期不稳，使名义运力增长与实际有效运力出现错配——H2 运价跌幅小于此前预期。</p>
+        <div class="news-item"><div class="title">新造船：订单节奏显著放缓，2027 起交付压力上升</div><div class="source">Xinde Marine News</div><div class="summary">截至 8 月中 2026 年新签订单约 190 万 TEU，远低于 2025 年同期约 500 万 TEU，且新订单向中小型船倾斜（如 KMTC 在黄埔文冲订造 6 艘箱船、CSSC  Chengxi 获 4 艘 3,700 TEU 订单）。但既有订单管道的 2027-2028 年集中交付（多为大型/超大型船）才是实质性供给挑战。</div></div>
+        <div class="insight-box"><strong>航运投资观察：</strong>干散货与油轮的中期供需格局优于集运。散货船在手订单占比低、老龄船比例高，二手船资产价格有望随 BDI 同步走强；集运则面临 2027 交付洪峰与淡季回调的双重压制，集运股宜在运价反弹中逐步兑现。关注下周北半球天气对粮食航线（巴拿马型）的扰动。</div>
+      </div>
+
+      <div class="card">
+        <h2>🚢 行业新闻与地缘风险</h2>
+        <div class="news-item"><div class="title">伊朗对霍尔木兹海峡实施差异化通行限制</div><div class="source">Al Jazeera · 本周</div><div class="summary">伊朗宣布对霍尔木兹海峡船只实施通行限制，但豁免印度、中国、卡塔尔、伊拉克。油轮地缘风险溢价与战争险成本上升，VLCC 绕航需求或增加，对油轮运价形成潜在支撑。</div></div>
+        <div class="news-item"><div class="title">英国扣押"影子油轮"，印度船长被捕</div><div class="source">Al Jazeera · 本周</div><div class="summary">英国皇家海军在国际水域扣押涉嫌违反对俄制裁的影子油轮，印度方面强烈反应。制裁执法趋严推高合规与法律成本，"影子船队"收缩或进一步收紧合规油运运力。</div></div>
+        <div class="news-item"><div class="title">马士基警示鹿特丹铁路瓶颈延烧至 2027</div><div class="source">Breakbulk News · 11月6日</div><div class="summary">Maersk 预警欧洲供应链中断与鹿特丹铁路运力约束将持续至 2027 年，欧洲内陆集疏运效率仍是集装箱链路的薄弱环节。</div></div>
+      </div>
+    </div>
+
+    <!-- ==================== 财经板块 ==================== -->
+    <div id="finance" class="section">
+      <div class="card">
+        <h2>💰 全球市场：中期选举落地，"受约束的特朗普"交易开启</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">Dow Jones（11月6日收盘）</div><div class="value">51,285.73</div><div class="down">-237.33（-0.46%）</div></div>
+          <div class="stat"><div class="label">选举后反应（11月4日）</div><div class="value">道指 +3.0%</div><div class="up">标普 +1.6%，纳指 +1.4%，民主党横扫两院</div></div>
+          <div class="stat"><div class="label">现货黄金</div><div class="value">$4,134/盎司</div><div class="up">创两周新高，美元与美债收益率走弱</div></div>
+          <div class="stat"><div class="label">WTI 原油（11月6日收盘）</div><div class="value">$90.83</div><div class="down">周内一度跌逾 8% 后回稳，伊朗局势主导波动</div></div>
+        </div>
+        <p>11月3日美国中期选举揭晓：民主党拿下国会两院，全球市场对"制衡版特朗普"报以积极反应——11月4日道指大涨 3.0%，标普 500 涨 1.6%，纳指涨 1.4%（Bruegel 评论：被约束的特朗普利好世界经济，或意味着更便宜的能源与更少的关税冲击）。随后两个交易日市场高位整固，11月6日道指微跌 0.46% 至 51,285.73。黄金受益美元与收益率回落，冲上 $4,134/盎司两周新高；原油则随伊朗局势预期反复剧烈波动，WTI 一度单日暴跌逾 8%，周五回稳至 $90.83。</p>
+        <div class="highlight-box"><strong>宏观逻辑：</strong>选举结果改变了美国的政策弹性——关税与能源政策不确定性下降，但财政扩张与对乌援助可能重启；12月国防部对欧洲驻军的评估报告或成下一地缘变量。分化的国会通常利好风险资产与黄金的中期组合。</div>
+      </div>
+
+      <div class="card">
+        <h2>💰 大宗商品与加密货币</h2>
+        <table>
+          <thead><tr><th>资产</th><th>最新水平</th><th>动态</th><th>驱动因素</th></tr></thead>
+          <tbody>
+            <tr><td>黄金</td><td>~$4,134/oz</td><td class="up">两周新高</td><td>美元走弱+美债收益率回落+选举后避险重定价</td></tr>
+            <tr><td>WTI 原油</td><td>$90.83</td><td class="down">高波动</td><td>伊朗冲突预期反复：霍尔木兹扰动 vs 和谈希望</td></tr>
+            <tr><td>Brent 原油</td><td>~$89 上方</td><td class="down">周内一度重挫 8%+</td><td>美国-以色列-伊朗局势主导，地缘溢价快速摆动</td></tr>
+            <tr><td>比特币</td><td>重回 $80,000 上方</td><td class="up">选后反弹</td><td>特朗普媒体关联钱包约 4,259 BTC 转入 Crypto.com 引发抛压疑云后被消化</td></tr>
+            <tr><td>以太坊</td><td>随大盘反弹</td><td class="tag-gray">高波动</td><td>ETH/BTC 比值回吐年内大部分涨幅，山寨板块深跌后修复</td></tr>
+          </tbody>
+        </table>
+        <div class="risk-box"><strong>风险提示：</strong>油价对伊朗消息的敏感度极高，任何霍尔木兹通行政策的实质变化都可能引发两位数波动；BTC 在 $80K 附近的韧性有待成交量验证，关联钱包的大额转账（如 Trump Media 的 4,259 BTC）仍是悬顶的供给端隐忧。</div>
+      </div>
+
+      <div class="card">
+        <h2>💰 分析总结与投资机会</h2>
+        <div class="insight-box"><strong>跨资产配置建议：</strong>① 股票——"分政府"历史组合偏多，顺周期与医疗保健（民主党政策优先项）相对受益，关税敏感板块修复；② 商品——黄金突破 $4,100 后趋势完好，回调即买点；原油波段操作优于趋势持仓；③ 加密——BTC 站稳 $80K 前控制仓位，等待链上抛压数据明朗；④ 关注下周美国 CPI 与联储官员讲话对降息路径的再定价。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 时政板块 ==================== -->
+    <div id="politics" class="section">
+      <div class="card">
+        <h2>🌍 今日热点：美国中期选举重塑全球政治格局</h2>
+        <div class="news-item"><div class="title">民主党横扫两院，"受约束的特朗普"时代开启</div><div class="source">Bruegel · 11月5日</div><div class="summary">民主党在 11月3日中期选举中控制参众两院。分析指出：市场押注总统冲动决策将受到本党之外的制衡——两年关税压力、联储独立性受挑战与能源冲击后，这对世界经济是好消息。但外交政策不确定性仍在：对华已现缓和迹象（2026 年四次峰会），而对乌克兰与欧洲的支持可能恢复，日本及欧洲盟友则感到被边缘化。</div></div>
+        <div class="news-item"><div class="title">APEC 或见证"特朗普-普京-习近平"三方峰会</div><div class="source">Al Jazeera · 11月6日</div><div class="summary">11月18-19日 APEC 会议期间可能举行三方峰会。对普京而言，参会即是胜利——等同于获邀参与欧洲安全架构的"新雅尔塔"式讨论；但北京态度冷淡，且选后削弱的特朗普筹码更少。乌克兰问题与欧洲安全秩序或成峰会潜台词。</div></div>
+      </div>
+
+      <div class="card">
+        <h2>🌍 分区域要闻</h2>
+        <table>
+          <thead><tr><th>区域</th><th>要闻</th><th>影响</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag tag-red">中国</span></td><td>进博会签下大单：中国东航为 101 架 A320neo 选定 CFM LEAP-1A 发动机（11月6日签约，含 202 台发动机及长期服务协议）；同时就欧盟"kill-switch"（市场防御工具）发出报复警告。</td><td>中欧贸易关系紧张升级，航空产业链合作深化。</td></tr>
+            <tr><td><span class="tag tag-blue">美国</span></td><td>中期选举后政策重心内移：12月将出炉对欧洲驻军的国防部评估，或裁减驻欧美军；对乌援助恢复预期升温。</td><td>跨大西洋安全架构承压，欧洲防务自主议题升温。</td></tr>
+            <tr><td><span class="tag tag-orange">欧洲</span></td><td>欧盟酝酿对中国商品启用"kill-switch"防御工具，北京警告报复；欧洲智库讨论"与美国关系的重新定义"。</td><td>中欧经贸摩擦风险上升，或波及航运与出口链。</td></tr>
+            <tr><td><span class="tag tag-gray">中东</span></td><td>伊朗对霍尔木兹海峡实施差异化通行限制（豁免中印卡伊四国）；美伊冲突预期反复主导油价。</td><td>能源通道安全再成全球焦点，油运保险成本上行。</td></tr>
+          </tbody>
+        </table>
+        <div class="insight-box"><strong>深度分析：</strong>本轮美国选举的外溢效应大于内政效应——对华政策或延续缓和交易，对俄则因国会换色而承压，欧洲被迫在"重新界定对美关系"与加速战略自主之间做选择。11月18-19日 APEC 三方峰会是本月最大地缘政治变量，若成行，全球风险资产与油价将迎来新一轮重定价。</div>
+      </div>
+    </div>
+
+    <!-- ==================== AI/机器人板块 ==================== -->
+    <div id="ai" class="section">
+      <div class="card">
+        <h2>🤖 今日热点：OpenAI 硬件原型一周落地 + Gemini 4 Carbon 登顶</h2>
+        <div class="news-item"><div class="title">OpenAI 用 GPT-6/Astra 一周内设计出可工作的硬件设备</div><div class="source">Interesting Engineering · 11月3日</div><div class="summary">OpenAI 展示 GPT-6 与 Astra 在一周内完成从外壳、PCB、固件到软件集成的完整硬件原型（为 Codex 配套设备）。短板在于制造公差与量产工艺仍需工程师多轮修正——AI 设计能力已跨过"概念验证"门槛，工程落地仍需人类把关。</div></div>
+        <div class="news-item"><div class="title">Google Gemini 4 Carbon 登顶 Artificial Analysis 智能指数</div><div class="source">AISA · 本周（11月1日更新）</div><div class="summary">Gemini 4 Carbon 拿下 AI 基准榜第一；Mistral 发布欧洲最大开源权重模型；GitHub 报告显示 AI Agent 已发起超过 40% 的 Pull Request——编程工作流的 Agent 化拐点已至。</div></div>
+      </div>
+
+      <div class="card">
+        <h2>🤖 硅谷前沿与公司动态</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">OpenAI Q3 收入增速</div><div class="value">+70%</div><div class="up">企业销售翻倍；最新一轮投前估值传闻 $1.25 万亿</div></div>
+          <div class="stat"><div class="label">ChatGPT 搜索份额</div><div class="value">约 20%</div><div class="note">相当于 Google 式查询的两成，商业化变现加速</div></div>
+          <div class="stat"><div class="label">IPO 时间表</div><div class="value">2027 年前后</div><div class="note">CFO Sarah Friar：中期选举"未显著改变"IPO 计划</div></div>
+          <div class="stat"><div class="label">AI Agent 编程渗透</div><div class="value">40%+ PR</div><div class="up">GitHub：Agent 发起的 Pull Request 占比已超四成</div></div>
+        </div>
+        <div class="news-item"><div class="title">OpenAI 承诺全额支付数据中心电费，回应选民 AI 焦虑</div><div class="source">CNBC · 11月5日</div><div class="summary">中期选举中选民明确反对 AI 无序扩张后，OpenAI 发布系列承诺：全额承担自建数据中心电费、公开建设计划、对公众官员不使用 NDA，并推动立法化。AI 数据中心开发商及相关股票在选举后承压——"社区接受度"成为 AI 扩张的新约束。</div></div>
+        <div class="news-item"><div class="title">具身智能：人形机器人走出工厂</div><div class="source">Interesting Engineering</div><div class="summary">Figure 人形机器人工作组首次迈出美国工厂；AGIBOT 六台人形机器人完成 24 小时便利店轮班；Meta 打造 105 磅人形原型探索家庭场景——商用场景从演示转向真实岗位测试。</div></div>
+      </div>
+
+      <div class="card">
+        <h2>🤖 深度分析</h2>
+        <div class="highlight-box"><strong>技术趋势：</strong>AI 竞争从"模型参数战"转向"落地能力战"——OpenAI 一周内产出硬件原型、40% 的 PR 由 Agent 发起、ChatGPT 吃掉两成搜索查询，三条线索共同指向：模型能力正以前所未有的速度转化为工程产出与商业入口。地缘层面，欧洲开源（Mistral）与中美闭源模型的三极格局初现。</div>
+        <div class="risk-box"><strong>风险观察：</strong>政治变量正成为 AI 行业的实质约束——美国选民对数据中心的反弹已促使 OpenAI 主动让渡商业条款。对投资者而言，"AI 基建"叙事需加入"社会牌照"折价；对从业者而言，能源与社区沟通能力和模型能力同等重要。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>📰 每日资讯简报 · 2026年11月8日 · 由 AI 自动生成，资讯仅供参考，不构成投资建议</p>
+  </div>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  </script>
+</body>
+</html>
