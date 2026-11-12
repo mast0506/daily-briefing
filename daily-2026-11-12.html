@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年11月12日</title>
+  <style>
+    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:40px 20px; text-align:center; }
+    .header h1 { font-size:2em; margin-bottom:10px; }
+    .header .date { font-size:1.1em; opacity:.9; }
+    .header .meta { margin-top:10px; font-size:.85em; opacity:.75; }
+    .nav { background:var(--card); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:100; display:flex; justify-content:center; flex-wrap:wrap; }
+    .nav button { padding:15px 30px; border:none; background:none; font-size:16px; cursor:pointer; color:var(--light); border-bottom:3px solid transparent; transition:all .3s; font-family:inherit; }
+    .nav button.active { color:var(--primary); border-bottom-color:var(--accent); font-weight:600; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .section { display:none; animation:fadeIn .3s; }
+    .section.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .card { background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .card h2 { color:var(--primary); font-size:1.4em; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent); }
+    .card h3 { color:var(--secondary); font-size:1.1em; margin:18px 0 10px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:16px 0; }
+    .stat { background:#f8f9fa; border-radius:8px; padding:16px; border-left:4px solid var(--accent); }
+    .stat .label { font-size:.85em; color:var(--light); }
+    .stat .value { font-size:1.45em; font-weight:700; color:var(--primary); margin:4px 0; }
+    .stat .note { font-size:.82em; color:var(--light); }
+    .up { color:var(--up); } .down { color:var(--down); }
+    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
+    th { background:var(--primary); color:#fff; padding:10px; text-align:left; }
+    td { padding:10px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:hover { background:#f5f5f5; }
+    .news-item { padding:14px 0; border-bottom:1px solid var(--border); }
+    .news-item:last-child { border-bottom:none; }
+    .news-item .title { font-weight:600; color:var(--primary); margin-bottom:4px; }
+    .news-item .source { font-size:.8em; color:var(--light); margin-bottom:6px; }
+    .news-item .summary { font-size:.92em; color:var(--text); }
+    .tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.75em; font-weight:600; margin-right:6px; }
+    .tag-red { background:#ffebee; color:#c62828; } .tag-green { background:#e8f5e9; color:#2e7d32; }
+    .tag-blue { background:#e3f2fd; color:#1565c0; } .tag-orange { background:#fff3e0; color:#ef6c00; }
+    .tag-gray { background:#eceff1; color:#455a64; }
+    .highlight-box { background:#fff8e1; border-left:4px solid #ffc107; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .risk-box { background:#ffebee; border-left:4px solid #ef5350; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .insight-box { background:#e8f5e9; border-left:4px solid #66bb6a; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .footer { text-align:center; padding:30px 20px; color:var(--light); font-size:.85em; }
+    a { color:#1565c0; text-decoration:none; } a:hover { text-decoration:underline; }
+    @media (max-width:600px) { .header h1{font-size:1.4em} .grid{grid-template-columns:1fr} .nav button{padding:12px 16px;font-size:14px} .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📰 每日资讯简报</h1>
+    <div class="date">2026年11月12日 星期四</div>
+    <div class="meta">数据主要截至 11月11日（周三）全球收盘与当日消息 | 来源：Reuters、AP、CNBC、Motley Fool、Schaeffer's、CoinDesk、Fortune、Washington Post、Al Jazeera、Guardian、Baltic Exchange（DCN）、Splash247、IndexBox、CoRL、AI Insider</div>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
+    <button onclick="showSection('finance',this)">💰 财经</button>
+    <button onclick="showSection('politics',this)">🌍 时政</button>
+    <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
+  </div>
+
+  <div class="container">
+
+    <!-- ==================== 航运板块 ==================== -->
+    <div id="shipping" class="section active">
+      <div class="card">
+        <h2>🚢 干散货：BDI 周线收于 2,805 点，煤炭贸易格局重塑中小船型市场</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">Baltic Dry Index（BDI，11月6日周收盘）</div><div class="value">2,805 点</div><div class="up">周涨 3.4%（前周 2,714），延续11月初反弹势头</div></div>
+          <div class="stat"><div class="label">海岬型 BCI</div><div class="value">4,344 点</div><div class="up">近一月高位，铁矿长航线需求支撑</div></div>
+          <div class="stat"><div class="label">巴拿马型 BPI</div><div class="value">2,003 点</div><div class="up">升破 2,000 点，大西洋货盘增加</div></div>
+          <div class="stat"><div class="label">超灵便型 BSI</div><div class="value">1,815 点</div><div class="down">中小船型持续偏弱，与大海岬走势分化</div></div>
+        </div>
+        <p>最新一期 Baltic Exchange 周报（11月6日）显示：BDI 周涨 3.4% 收于 2,805 点。海岬型市场先弱后强——太平洋航段 C5 从 $13.80 一度回落至 $13.00 区间，矿山询盘有韧性但压价明显，周中情绪修复；巴拿马型两大洋货盘均有改善，大西洋 transtlantic 与 fronthaul 询价增多、西地中海运力收紧，一艘 82,000 载重吨船灵便型成交于接近该水平。</p>
+        <div class="highlight-box"><strong>趋势判断：</strong>BDI 自 11月3日低点 2,590 累计反弹 8.3%，四季度旺季逻辑不变。但结构上"海岬强、灵便弱"的分化延续，说明反弹完全由铁矿石驱动，区域贸易与工业制成品需求仍偏弱——若铁矿冬储补库放缓，2,800-2,900 区间将有反复。</div>
+      </div>
+
+      <div class="card">
+        <h2>🚢 煤炭贸易大挪移：印尼退潮、非洲创十年新高，重塑干散货航线</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">印尼煤炭出口（1-10月）</div><div class="value">-8% YoY</div><div class="down">海岬型发运量暴跌 24%，Supramax/Ultramax -12%</div></div>
+          <div class="stat"><div class="label">南部非洲动力煤出口</div><div class="value">10年新高</div><div class="up">填补印尼缺口，长航线吨海里需求增加</div></div>
+          <div class="stat"><div class="label">中国承诺（2027-28）</div><div class="value">增购美国煤</div><div class="note">中美贸易休战框架下的采购承诺，利好太平洋航线</div></div>
+          <div class="stat"><div class="label">澳大利亚发运</div><div class="value">回升</div><div class="note">部分替代印尼供应，典型吨海里结构改善</div></div>
+        </div>
+        <p>Splash247/IndexBox 分析指出，2026 年煤炭贸易流正在重写干散货航运版图：印尼因出口政策与低水位制约，1-10 月发运同比下滑 8%，其中海岬型装船量骤降 24%；南部非洲动力煤出口创十年新高，澳大利亚发运回升。对中国而言，2027-28 年增购美国煤的承诺若落地，将带来典型的"长航线替代短航线"吨海里红利。亚洲进口需求日趋碎片化，中小船型受益不均——这解释了 BSI 与海岬型的走势分化。</p>
+        <div class="insight-box"><strong>航运投资观察：</strong>吨海里逻辑继续利好干散货船东：南非→远东、美湾/东岸→远东等替代航线显著拉长航距。中期供需格局干散货与油轮仍优于集运；但需警惕 2027-28 新船集中交付（全球订单簿 CGT 已超 2008 年峰值）对远期运价中枢的压制。集运侧，11-12 月出货淡季叠加 FAK 涨价落地存疑，集运股难有趋势性行情。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 财经板块 ==================== -->
+    <div id="finance" class="section">
+      <div class="card">
+        <h2>💰 全球市场：CoreWeave 业绩引爆 AI 股反攻，三大指数全线收高</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">S&P 500（11月11日）</div><div class="value">7,619.38</div><div class="up">+1.31%（+98.45），距历史高点仅约 2.5%</div></div>
+          <div class="stat"><div class="label">Dow Jones（11月11日）</div><div class="value">52,486.30</div><div class="up">+0.49%（+254.60），连续第四日 VIX 回落</div></div>
+          <div class="stat"><div class="label">Nasdaq（11月11日）</div><div class="value">25,466.19</div><div class="up">+1.60%（+400.31），科技股领涨反攻</div></div>
+          <div class="stat"><div class="label">CoreWeave（CRWV）</div><div class="value">+25%</div><div class="up">业绩超预期+上调收入指引，重燃 AI 交易</div></div>
+        </div>
+        <p>周三（11月11日，美国债市因退伍军人节休市）美股全线反弹：CoreWeave 财报大超预期并上调指引，股价飙升约 25%，带动 Nebius、Applied Digital 等 neocloud 与半导体股集体走强，纳指 +1.6% 领涨。此前周二 10 月 CPI 环比 +0.4%（连续第三月超预期）曾引发抛售，S&P 收 7,520.93、纳指 25,065.87。值得注意的是，尽管通胀高烧，S&P 500 已收复 11月5日 AI 崩盘（纳指 -5.5%）以来大部分失地，距历史高点仅 2.5%。<strong>市场主线：一边是 12 月加息概率逼近 90% 的紧缩定价，一边是 AI 资本开支的持续验证，两股力量反复拉锯。</strong></p>
+        <h3>重点个股表现（11月11日）</h3>
+        <table>
+          <tr><th>股票</th><th>价格</th><th>涨跌</th><th>备注</th></tr>
+          <tr><td>NVDA 英伟达</td><td>$173.73</td><td class="up">+2.9%</td><td>黄仁勋治理争议+遭分析师下调评级，但随板块反弹</td></tr>
+          <tr><td>TSLA 特斯拉</td><td>$390.84</td><td class="up">+2.9%</td><td>Optimus 量产进展与租赁模式讨论提振</td></tr>
+          <tr><td>AAPL 苹果</td><td>$355.63</td><td class="up">+2.0%</td><td>大盘科技股同步修复</td></tr>
+          <tr><td>GOOG 谷歌</td><td>$290.63</td><td class="up">+2.0%</td><td>自研 TPU 发布后续发酵</td></tr>
+          <tr><td>META</td><td>$628.77</td><td class="down">-2.0%</td><td>Superintelligence 巨额投入遭质疑</td></tr>
+          <tr><td>MSFT 微软</td><td>$521.13</td><td class="down">-2.3%</td><td>逆势走弱，资金向 AI 基建纯标的集中</td></tr>
+          <tr><td>AMZN 亚马逊</td><td>$266.17</td><td class="down">-1.7%</td><td>同上，云计算资本开支担忧</td></tr>
+        </table>
+        <div class="highlight-box"><strong>宏观焦点：</strong>10 月核心 CPI 连续第三个月 +0.3% 以上，CME 定价 12 月加息 25bp 概率约 90%；10 年期美债收益率逼近 5.00%。BofA 分析师警告：市场可能低估了美联储需要收紧的幅度——"如果为支付义务而被迫融资，流出风险将实质性上升"。</div>
+      </div>
+
+      <div class="card">
+        <h2>💰 商品与加密：黄金跌破 $4,000，BTC 困守 $74K，油市地缘政治溢价高企</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">黄金（12月期货，11月11日）</div><div class="value">$3,992/oz</div><div class="down">-0.7%，一周多以来首次跌破 $4,000 关口</div></div>
+          <div class="stat"><div class="label">WTI 原油（12月合约）</div><div class="value">$86.63</div><div class="down">-0.7% 收市，但霍尔木兹局势令油价维持高企</div></div>
+          <div class="stat"><div class="label">Bitcoin</div><div class="value">≈$74,000</div><div class="down">较高点回撤约 40%，11月初 ETF 净流出约 $13 亿</div></div>
+          <div class="stat"><div class="label">Ethereum</div><div class="value">≈$2,090</div><div class="down">随大盘走弱，Layer2 活跃度下降</div></div>
+        </div>
+        <p><strong>黄金：</strong>受加息预期压制，12 月期金跌破 $4,000 心理关口。尽管地缘风险（伊朗袭击油轮、霍尔木兹布雷）仍在，实际利率上行对无息资产的挤压占主导。多家机构年末目标价仍看 $4,100-4,500，但短期波动性显著放大。<strong>油市：</strong>伊朗军队称一艘油轮在霍尔木兹海峡触雷起火，德黑兰持续打击"未经许可"通行船只；美以在中期选举后存在恢复对伊军事行动的可能，油价的地缘溢价难以消退。<strong>加密：</strong>BTC 在 $74K 附近挣扎，"加息定价+ETF 持续流出+英伟达风波"三重压制下，加密市场未能跟随美股反弹；Peter Schiff 警告 BTC 或创历史首次连续两年下跌，Van De Poppe 则视当前为买入机会，分歧极大。</p>
+        <div class="risk-box"><strong>资产配置视角：</strong>高利率环境下"现金为王"的窗口仍未关闭。股票端 AI 基建链（neocloud、电力、网络设备）盈利验证最扎实；商品端黄金短期受实际利率压制但央行购金与地缘风险提供中期支撑；加密与长久期成长股同属高 Beta 资产，在加息落地前建议控制敞口。</div>
+      </div>
+    </div>
+
+    <!-- ==================== 时政板块 ==================== -->
+    <div id="politics" class="section">
+      <div class="card">
+        <h2>🌍 今日热点：APEC 前夜——中美吉隆坡对表，全球屏息以待"习特会"</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">APEC 峰会</div><div class="value">吉隆坡</div><div class="note">美国谈判代表团（Bessent、Greer）已于11月11日抵达KL</div></div>
+          <div class="stat"><div class="label">中美元首会晤</div><div class="value">预期落地</div><div class="up">市场已提前定价"习特会"，美股周二因此企稳</div></div>
+          <div class="stat"><div class="label">关键矿产脱钩</div><div class="value">特朗普表态</div><div class="down">宣布将采取措施降低美国对中国关键矿产的依赖</div></div>
+          <div class="stat"><div class="label">中国贸易顺差</div><div class="value">$1万亿+</div><div class="down">全年有望超 2025 年 $1.2 万亿纪录，美欧反制升级</div></div>
+        </div>
+        <p>本周全球政治的中心在吉隆坡。APEC 峰会召开在即，美方财长 Bessent 与贸易代表 Greer 已先行抵达展开工作层磋商，市场对中美元首会晤的预期持续升温——这被视为 11月5日中期选举（民主党"蓝色浪潮"）后特朗普政府最重要的外交秀场。特朗普提前放话将"降低对中国关键矿产的依赖"，为会晤预设强硬基调。与此同时，中国前 10 月贸易顺差突破 1 万亿美元，欧盟随即宣布对中国混合动力车实施每年 35 万辆的进口上限——<strong>即便中美在 APEC 达成阶段性缓和，围绕"过剩产能"的全球贸易防线仍在加高。</strong></p>
+        <div class="news-item"><div class="title">俄乌谈判在阿布扎比进入第二天，美方居中斡旋</div><div class="source">AFP · 11月11日</div><div class="summary">俄乌在阿布扎比开启新一轮直接谈判，华盛顿担任调解人。泽连斯基公开表示欢迎美国立场的"变化"。同日，俄军对基辅发动今年迄今最大规模无人机袭击，造成 1 死 90 伤——谈判与战场升级同步进行，凸显斡旋脆弱性。</div></div>
+        <div class="news-item"><div class="title">日本首相高市内阁改组</div><div class="source">日经/国际媒体 · 本周</div><div class="summary">因政治资金丑闻压力，日本首相高市早苗启动内阁改组，试图在物价与安保议题上重振支持率；其对美关税谈判立场与日元政策值得关注。</div></div>
+        <div class="news-item"><div class="title">美国发布北极国家安全战略，剑指中俄</div><div class="source">美国政府 · 本周</div><div class="summary">新战略将北极定义为"大国竞争前沿"，强化对俄罗斯、中国在北极活动的制衡，涉及航道控制、资源与军事存在，极地地缘政治升温。</div></div>
+        <div class="news-item"><div class="title">波兰独立日：数万人极右翼大游行</div><div class="source">Reuters · 11月11日</div><div class="summary">波兰民族主义总统与数万名右翼支持者走上华沙街头，欧洲极右翼民粹浪潮在选举周期中延续（呼应美国中期选举"蓝色浪潮"后欧洲的观望情绪）。</div></div>
+        <div class="news-item"><div class="title">COP31：联合国秘书长敦促化石燃料行动</div><div class="source">AFP · 11月11日</div><div class="summary">气候大会开幕，秘书长古特雷斯呼吁各国直面化石燃料问题；伊朗总统借机控诉美以军事行动"破坏环境"。值得关注的是，多方在战时能源安全与绿色转型之间陷入两难——霍尔木兹危机正在推高全球对化石燃料的短期依赖。</div></div>
+        <div class="highlight-box"><strong>深度分析：</strong>11月的地缘政治棋盘呈现"三场谈判+一条海峡"的格局：中美（APEC）、俄乌（阿布扎比）、伊朗（美以威胁恢复打击）三线并行，而霍尔木兹海峡是共同的风险放大器。对市场而言：1）中美缓和是风险资产的短期利好，但关键矿产脱钩表态提醒"科技脱钩"并未逆转；2）俄乌若真出现停火框架，欧洲能源与粮食溢价将快速回吐，利好欧元与欧洲股市；3）伊朗方向是唯一可能引发油价失控的黑天鹅，值得在商品组合中保留尾部对冲。</div>
+      </div>
+    </div>
+
+    <!-- ==================== AI/机器人板块 ==================== -->
+    <div id="ai" class="section">
+      <div class="card">
+        <h2>🤖 今日热点：CoreWeave 一季报点燃 AI 反攻，SC26 与 CoRL 双会揭幕硬件新周期</h2>
+        <div class="grid">
+          <div class="stat"><div class="label">CoreWeave Q3</div><div class="value">收入超预期</div><div class="up">股价单日 +25%，上调全年指引，AI 算力需求再获验证</div></div>
+          <div class="stat"><div class="label">英伟达 Vera Rubin</div><div class="value">NVL144 CPX</div><div class="note">SC26（周日开幕）将展出其史上最大 AI 系统</div></div>
+          <div class="stat"><div class="label">AMD MI500 系列</div><div class="value">2nm 工艺</div><div class="note">2027 年推出，正面竞逐下一代训练芯片</div></div>
+          <div class="stat"><div class="label">CoreWeave 2026 收入预期</div><div class="value">$100 亿+</div><div class="up">AI 基建纯标的的盈利可见度在改善</div></div>
+        </div>
+        <p>11月5日 AI 崩盘后的第一次大考——CoreWeave 财报——以完胜收场：收入超预期、全年指引上调、股价单日暴涨约 25%，直接引爆周三美股 AI 板块反攻（纳指 +1.6%）。这暂时击退了"AI 资本开支失控"的空头叙事：至少对 neocloud 层而言，需求与融资仍在正循环。与此同时，本周全球 AI 进入"会议季"：德州 CoRL 2026（机器人学习顶会，英伟达 Jim Fan 主旨演讲世界行动模型）、日本 NexTech Week（宇树 G1 搭载 GR00T 模型现场演示、优必选/商汤人形机器人同台）、以及周日在亚特兰大开幕的 SC26（英伟达将展出 Vera Rubin NVL144 CPX——其史上最大规模的单一 AI 系统，AMD 同期宣布 2nm MI500 于 2027 年上市）。</p>
+        <div class="news-item"><div class="title">马斯克：Starship V3 可在 2-3 年内实现"太空 AI 数据中心"</div><div class="source">The Information/媒体综合 · 11月</div><div class="summary">马斯克称 SpaceX 已与 OpenAI、Anthropic、谷歌探讨太空数据中心方案——将 AI 算力部署到卫星上，绕开地面电力与散热约束。远期叙事惊人，短期更多体现为 AI 基建瓶颈（电力/土地）倒逼的极端想象。</div></div>
+        <div class="news-item"><div class="title">Tesla Optimus：拟"租赁而非出售"，Fremont 量产启动但"痛苦地慢"</div><div class="source">媒体综合 · 11月11日</div><div class="summary">马斯克透露 Optimus 可能采用租赁模式（价格未定），Fremont 工厂已启动生产但爬坡缓慢，2027 年对外发售仍无时间表。同期 Figure 放出数十台 F.03 列队视频，比亚迪宣布 2026 年起每家门店部署 3 台"小迪"人形机器人——中美量产竞赛进入展示期。</div></div>
+        <div class="news-item"><div class="title">OpenAI 聘请 Hactron 开展内部调查；新模型发布在即</div><div class="source">AI Insider · 11月9日</div><div class="summary">OpenAI 引入外部安全公司 Hactron 进行专项调查；同时被曝正在筹备一次重大模型发布，Sora 2 App 下载破百万。公司还发布了 robots.txt 退出 AI 训练的信号标准，试图在内容版权上释放善意。</div></div>
+        <div class="news-item"><div class="title">Anthropic 披露 Claude "Dreaming" 机制</div><div class="source">AI Insider · 本周</div><div class="summary">Anthropic 详解 Claude 在空闲期进行类"做梦"的内部处理过程，称可提升长任务表现——可解释性研究进入新阶段。公司收入运行率据报道已达约 $130 亿级。</div></div>
+        <div class="news-item"><div class="title">AI 安全警钟：微软披露"Lazarus"后门攻击</div><div class="source">微软研究 · 11月11日</div><div class="summary">微软披露一种通过修改 AI Agent 少于 10 个神经元即可植入后门的攻击方法（代号 Lazarus），并发布用户闲置 GPU 租用专利。Agent 安全正成为企业级 AI 落地的下一个门槛；同期曝出价值 $1,140 万的英伟达硬件在运输途中被盗。</div></div>
+        <div class="risk-box"><strong>深度判断：</strong>CoreWeave 财报确认了 AI 需求叙事仍有余温，但也掩盖不了结构分化：MSFT、AMZN 下跌说明资金正在从"通用云巨头"向"AI 基建纯标的"再集中——这本身就是风险偏好收窄的信号。硬件侧，Vera Rubin NVL144 与 AMD MI500 的发布节奏意味着 2027 年将迎来又一次换代窗口，存量 H100/B200 的折旧预期与租赁价格将提前反映。机器人侧，中美量产竞赛（Optimus 租赁模式 vs 比亚迪门店机器人）标志行业从 demo 进入"商业模式探索"阶段。投资含义：AI 链波动率系统性抬升，宜持有盈利可见度最高的环节（neocloud、电力设备、光模块），规避纯叙事标的。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>📰 每日资讯简报 · 2026年11月12日 · 由 AI 自动生成，资讯仅供参考，不构成投资建议</p>
+  </div>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  </script>
+</body>
+</html>
