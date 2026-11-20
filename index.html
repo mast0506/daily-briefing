@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 | 2026年11月20日</title>
+  <title>每日资讯简报 | 2026年11月21日</title>
   <style>
     :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -52,164 +52,140 @@
 <body>
   <div class="header">
     <h1>📰 每日资讯简报</h1>
-    <div class="date">2026年11月20日 星期五</div>
-    <div class="meta">数据主要截至 11月19日（周四）全球收盘与11月20日（周五）当日早间消息 | 来源：Baltic Exchange、TradingEconomics、Seatrade Maritime、Star Bulk（Q3 财报电话会）、Precious Shipping、Affinity Shipping、S&amp;P Global、Drewry、TradingKey、FXEmpire、CoinDesk、The Economist、Euronews、RFERL、AI Weekly、TechTarget、WSJ</div>
+    <div class="date">2026年11月21日 星期六</div>
+    <div class="meta">数据主要截至 11月20日（周五）全球收盘与当日早间消息 | 来源：Baltic Exchange、TradingEconomics、上海航运交易所、Lloyd's List、Splash247、CNN、Reuters、CNBC、CryptoRank、Yahoo Finance、Dealroom、Humanoids Daily 等</div>
   </div>
 
   <div class="nav">
     <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
-    <button onclick="showSection('finance',this)">💰 财经</button>
-    <button onclick="showSection('politics',this)">🌍 时政</button>
+    <button onclick="showSection('finance',this)">📈 财经</button>
+    <button onclick="showSection('politics',this)">📰 时政</button>
     <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
   </div>
 
   <div class="container">
 
-    <!-- ==================== 航运板块 ==================== -->
-    <div id="shipping" class="section active">
+  <!-- ============ 航运 ============ -->
+  <div id="shipping" class="section active">
+    <div class="card">
+      <h2>🚢 航运市场深度</h2>
 
-      <div class="card">
-        <h2>🚢 干散货：BDI 收复失地报 2,914，月度涨幅扩大至 14.5%</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">Baltic Dry Index（BDI，11月18日收盘）</div><div class="value">2,914 点</div><div class="up">日涨 0.73%，收复11月13日回调失地</div><div class="note">近一月 +14.45%，同比 +28.9%；11月19日 CFD 盘面指向约 3,032 点</div></div>
-          <div class="stat"><div class="label">海岬型即期（Q4 定约口径）</div><div class="value">≈$38,000/天</div><div class="up">Star Bulk 财报会：Q4 海岬型定约价已接近 $3.8万/天</div><div class="note">Jefferies 分析师会上确认"Q4 bookings look strong"</div></div>
-          <div class="stat"><div class="label">海岬型 1 年期期租（预测）</div><div class="value">&gt;$14,000/天</div><div class="up">Precious Shipping 管理层指引：一年期 TC 将超 $1.4万/天</div><div class="note">西芒杜（Simandou）铁矿出口放量为核心支撑</div></div>
-          <div class="stat"><div class="label">Handysize / Supramax（WCSA）</div><div class="value">$16,094 / $19,632</div><div class="up">同比显著增长</div><div class="note">ECSA 货盘活跃 + 厄尔尼诺相关船期延误推涨（Affinity）</div></div>
-        </div>
-        <p>据 TradingEconomics / Baltic Exchange 数据，11月18日 BDI 收报 <b>2,914 点</b>，单日上涨 0.73%，完全收复 11月13日（2,980 高点）后的回调；过去一个月累计上涨 14.45%，较去年同期上涨近 29%。11月19 日 CFD 盘面交易价格约 3,032 点，显示市场对波罗的海交易所官方指数进一步上行有预期。</p>
-        <h3>船东财报验证旺季成色：Star Bulk 派息创 2022 年以来最高</h3>
-        <p><b>Star Bulk（SBLK）</b>发布 Q3 2026 财报：净利润 <b>1.419 亿美元</b>，并宣布每股派息 $1.00，为 <b>2022 年三季度以来最高</b>。财报电话会透露：Q4 海岬型船定约租金已接近 <b>$38,000/天</b>，管理层对 2027 年运价维持乐观。同期 <b>Precious Shipping</b> 业绩会亦给出积极信号：一年期海岬型期租将突破 $14,000/天，西芒杜铁矿出口增长被点名为大船需求的关键边际增量。</p>
-        <h3>供给端：订单簿有限，2026 年船队仅增 3.3%</h3>
-        <p>Affinity Shipping 数据：2026 年干散货船队规模仅增长 3.3%，手持订单 1,465 艘，且交付结构以 Newcastlemax 为主——中小型船型供给几乎零增长。近期成交案例：Pendulum 与 Star Eva 两轮出售完成，合计回笼约 <b>$3,190 万</b>。Seatrade Maritime 11月18日周报更新了油轮与干散货期租周度运价矩阵。</p>
-        <h3>集运与港口货量</h3>
-        <div class="grid">
-          <div class="stat"><div class="label">美国进口（1-10月累计）</div><div class="value">2,526 万 TEU</div><div class="up">同比 +2.7%（S&amp;P Global）</div><div class="note">10月货量坚实，2026 全年有望创纪录；部分增量来自 AI 相关货物抢运</div></div>
-          <div class="stat"><div class="label">美国卡车即期运价</div><div class="value">2026 年新高</div><div class="up">Q3 即期价创 2021 年以来最高（RXO "Curve"）</div><div class="note">承运商运力持续收紧；感恩节前货量走弱、运价涨跌互现</div></div>
-        </div>
-        <div class="highlight-box"><strong>趋势判断：</strong>干散货"低订单 + 旺季货盘 + 西芒杜增量"三重逻辑继续强化——BDI 月线 +14.5%、海岬型 Q4 定约近 $3.8万/天、船东分红创三年新高，行业进入"量价利齐升"窗口。集运端美线进口创纪录，但需跟踪停航与罢工扰动；陆运端卡车运力收紧推涨即期价，供应链通胀风险值得警惕。</div>
+      <h3>📊 核心指数</h3>
+      <div class="grid">
+        <div class="stat"><div class="label">Baltic Dry Index (BDI)</div><div class="value">2,901</div><div class="note"><span class="down">▼ -0.45%</span>（11/19，周四）｜月环比仍涨约14%</div></div>
+        <div class="stat"><div class="label">Baltic Capesize Index (BCI)</div><div class="value">4,514</div><div class="note"><span class="down">▼ -0.8%</span> 海岬型运价指数高位回落</div></div>
+        <div class="stat"><div class="label">Capesize 日租金（周收盘）</div><div class="value">$42,798/天</div><div class="note"><span class="up">▲ +$3,403</span>（第46周，11/13收盘）</div></div>
+        <div class="stat"><div class="label">Panamax 日租金（周收盘）</div><div class="value">$19,063/天</div><div class="note"><span class="up">▲ +$1,033</span> 巴拿马型同步走强</div></div>
+        <div class="stat"><div class="label">SCFI 上海集装箱运价指数</div><div class="value">1,814</div><div class="note"><span class="down">▼ -5.66%</span>（截至11/17当周，-108.95点）</div></div>
+        <div class="stat"><div class="label">上海→美西即期运价</div><div class="value">$1,460/FEU</div><div class="note"><span class="down">▼ -11% w/w</span> 已跌破盈亏平衡线（Lloyd's List）</div></div>
       </div>
 
-      <div class="card">
-        <h2>🚢 新造船与二手船：船东高位锁运力，绿色船型溢价延续</h2>
-        <table>
-          <thead><tr><th>维度</th><th>动态</th><th>解读</th></tr></thead>
-          <tbody>
-            <tr><td>新造船订单簿</td><td>干散货手持订单 1,465 艘，2026 年船队增速仅 3.3%；Newcastlemax 为交付主力船型</td><td>供给纪律良好，新船价获支撑；中小型船型近乎无新增供给</td></tr>
-            <tr><td>期租与资产联动</td><td>海岬型 1 年期 TC 预测 &gt;$14,000/天，Q4 即期近 $38,000/天</td><td>租金强势向二手船估值传导，干散货 S&amp;P 市场活跃度提升</td></tr>
-            <tr><td>船东资本运作</td><td>Star Bulk Q3 净利 $1.419 亿、派息 $1.00/股（2022 年以来最高）；Pendulum、Star Eva 两轮出售净回笼 ~$3,190 万</td><td>龙头船东"高分红 + 卖旧船"并举，行业现金流处于近年最好水平</td></tr>
-            <tr><td>绿色燃料船型</td><td>MOL 命名 3 艘氨燃料海岬型散货船；氨/甲醇双燃料溢价持续</td><td>IMO 中期减排规则临近，绿色船型资产溢价将进一步扩大</td></tr>
-            <tr><td>需求增量</td><td>西芒杜铁矿出口启动在即；中国铁矿石、煤炭进口吨海里数上升</td><td>长航线货盘结构利好大船运价中枢上移</td></tr>
-          </tbody>
-        </table>
-        <div class="insight-box"><strong>航运投资观察：</strong>① 干散货——Q4 旺季获财报验证，回调即配置窗口，重点关注海岬型敞口高的船东（SBLK、GOGL 等）；② 资产端——租金中枢上移支撑二手船价格，但需甄别部分船型二手/新船价格倒挂风险；③ 绿色转型——氨燃料订单落地节奏加快，IMO 规则成文化是 2027 年资产定价的核心变量。</div>
-      </div>
+      <h3>📈 干散货：强势格局延续，回调不改上行</h3>
+      <p>BDI 自 11月初 2,805 点一路冲高至 3,063–3,020 点区间（创6月以来新高）后，近两日小幅回落至 2,901 点。Baltic Exchange 第46周报告显示，海岬型、巴拿马型、超灵便型和灵便型租金全线走高，但涨势在海岬型与其他船型之间出现分化——铁矿石期货走强是本轮海岬型行情的主要推手。当前 BDI 仍处高位平台，月环比涨幅约14%，短期回调属获利回吐性质。</p>
 
+      <h3>📦 集装箱：运价加速探底，美西线击穿盈亏线</h3>
+      <div class="risk-box"><b>⚠️ 重点提示：</b>SCFI 连续下滑至 1,814 点；上海→美西即期价 $1,460/FEU，单周跌 11%，已低于船公司盈亏平衡水平。2026年集运市场的核心矛盾从"红海扰动推升运价"切换为"运力过剩压制运价"——尽管红海危机仍在、部分航线仍有绕行，但新增运力投放速度超过需求增长，运价中枢持续下移。亚洲-美西航线竞争最为惨烈。</div>
+
+      <h3>🏗️ 新造船与二手船（S&amp;P）</h3>
+      <p>本周公开渠道新造船订单与二手船成交披露有限。结合近期市场：干散货船东盈利改善（海岬型日租金超 $42,000）正带动二手散货船询盘回暖，船价坚挺；集装箱船新造订单则在运价下行预期下趋于谨慎，船厂坞位更多转向油轮与气体船。新造船价格指数预计维持高位盘整。</p>
+
+      <h3>🔥 行业动态</h3>
+      <div class="news-item"><div class="title">BDI 创6月来新高后高位整固，各船型走势分化</div><div class="source">Baird Maritime / TradingEconomics</div><div class="summary">主指数一度升破 3,060 点，海岬型日收益逼近 $42,700，铁矿石期货上涨提供支撑。</div></div>
+      <div class="news-item"><div class="title">集装箱即期运价回落至红海危机以来最低区域</div><div class="source">Splash247</div><div class="summary">班轮市场运价动能持续流失，Q2 平均 SCFI 同比已低 37%，船公司空白航班（blank sailing）力度加大。</div></div>
+
+      <div class="insight-box"><b>💡 分析与投资机会：</b>干散货（海岬型敞口大的船东如 Star Bulk、金海洋等）短期盈利弹性仍佳，铁矿旺季+中国刺激预期支撑运价；集运股（如马士基、赫伯罗特）则面临运价与盈利双杀风险，宜规避。油轮方面，中东局势升级（伊朗相关）若推升绕行与保险成本，VLCC 运价可能复制2024年脉冲行情，值得跟踪。二手散货船资产价格滞后于租金上涨，存在补涨窗口。</div>
     </div>
+  </div>
 
-    <!-- ==================== 财经板块 ==================== -->
-    <div id="finance" class="section">
+  <!-- ============ 财经 ============ -->
+  <div id="finance" class="section">
+    <div class="card">
+      <h2>📈 全球财经深度</h2>
 
-      <div class="card">
-        <h2>💰 全球市场：Anthropic 上市前夜美股冲高回落，纳指独涨</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">道琼斯（11月19日收盘）</div><div class="value">50,198.17</div><div class="down">-1.11%（-563点），盘中回吐早盘涨幅</div></div>
-          <div class="stat"><div class="label">标普 500</div><div class="value">7,323.63</div><div class="down">-0.23%（早盘一度 +1.3%）</div></div>
-          <div class="stat"><div class="label">纳斯达克综合</div><div class="value">24,429.88</div><div class="up">+0.42%（早盘曾涨 2.1%）</div><div class="note">交易员等待 Anthropic 挂牌交易</div></div>
-          <div class="stat"><div class="label">美元指数 / 10Y 美债</div><div class="value">走强 / 上行</div><div class="down">美元走强压制商品与加密</div><div class="note">鹰派纪要 + 降息路径疑虑</div></div>
-        </div>
-        <p>美股周四（11月19日）高开低走：三大指数早盘齐涨（纳指一度 +2.1%、标普 +1.3%），但随着<b>Anthropic 挂牌交易</b>临近，交易员选择获利了结，道指最终收跌 1.11% 报 50,198 点，标普微跌 0.23% 至 7,323 点，纳指凭借科技股尾盘回稳独涨 0.42% 报 24,429 点。个股亮点：<b>Intel 大涨</b>——斩获代工业务胜利并宣布与微软达成合作；AMD 走弱。</p>
-        <h3>宏观：美联储纪要释放鹰派信号，警告 AI 债务风险</h3>
-        <p>最新公布的美联储会议纪要措辞偏鹰：官员们对降息路径分歧加大，并罕见地直接警告 <b>AI 基建狂飙带来的债务风险</b>——数据中心资本开支若依赖高杠杆融资，可能成为金融稳定的新隐患。美元指数走强、10 年期美债收益率上行，Risk-off 情绪压制高估值资产。</p>
-        <h3>重点个股</h3>
-        <table>
-          <thead><tr><th>标的</th><th>表现/事件</th><th>驱动</th></tr></thead>
-          <tbody>
-            <tr><td><b>Intel（INTC）</b></td><td>大涨</td><td>代工业务赢得关键客户 + 与微软达成合作</td></tr>
-            <tr><td><b>AMD</b></td><td>走弱</td><td>美国拟收紧 AI 芯片出口规则（涉及 Nvidia、AMD）施压</td></tr>
-            <tr><td><b>Anthropic</b></td><td>上市前夜，交易总额达 <b>$900 亿</b></td><td>估值超越 SpaceX；挂牌被视为 AI 商业化里程碑事件</td></tr>
-            <tr><td>Nvidia</td><td>承压</td><td>AI 芯片出口规则收紧预期 + 黄仁勋离任后过渡期不确定性</td></tr>
-          </tbody>
-        </table>
-        <div class="risk-box"><strong>风险提示：</strong>美联储对"AI 债务风险"的点名意味着科技股估值逻辑正在切换——从"讲故事"转向"看现金流"。Anthropic 上市后若破发，可能触发 AI 板块整体估值重估；美元走强周期中新兴市场与高杠杆资产压力加大。</div>
+      <h3>🌍 全球市场概览（11/20 收盘，数据源间存在口径差异）</h3>
+      <div class="grid">
+        <div class="stat"><div class="label">S&amp;P 500</div><div class="value">~7,400–7,680</div><div class="note"><span class="down">▼ 约-0.05%～-1.9%</span> 各快照口径不一，整体走弱</div></div>
+        <div class="stat"><div class="label">Dow Jones</div><div class="value">~51,300–52,400</div><div class="note"><span class="down">▼ 约-0.2%～-1.4%</span></div></div>
+        <div class="stat"><div class="label">Nasdaq / Nasdaq 100</div><div class="value">~24,500–30,400</div><div class="note"><span class="down">▼ 科技股领跌</span></div></div>
+        <div class="stat"><div class="label">黄金</div><div class="value">$4,149.5</div><div class="note"><span class="up">▲ +0.40%</span> 白银 $53.46（+0.74%）</div></div>
+        <div class="stat"><div class="label">原油（WTI）</div><div class="value">$77–86 区间</div><div class="note"><span class="up">▲ 周度大幅波动</span> 伊朗局势驱动，单日曾飙升5%+</div></div>
+        <div class="stat"><div class="label">天然气</div><div class="value">$3.21</div><div class="note"><span class="up">▲ +6.3%</span></div></div>
       </div>
+      <div class="risk-box"><b>⚠️ 风险事件：</b>消息称伊朗相关地缘冲突推升 WTI 突破 $77/桶，叠加油价飙升、国债收益率走高与美联储偏鹰预期，美股周五承压下跌，科技股与高估值板块回调明显。金价逆势小涨，避险与通胀对冲需求并存。</div>
 
-      <div class="card">
-        <h2>💰 大宗商品与加密货币：黄金续创高位，BTC 跌破 6.4 万</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">现货黄金（11月19日）</div><div class="value">$3,753.61/oz</div><div class="up">+0.78%，历史高位区域</div><div class="note">地缘风险（伊朗袭击海湾）+ 央行购金延续</div></div>
-          <div class="stat"><div class="label">现货白银</div><div class="value">$45.72/oz</div><div class="up">+1.5%</div><div class="note">金银比收窄，工业需求支撑</div></div>
-          <div class="stat"><div class="label">WTI 原油</div><div class="value">$81.80/桶</div><div class="up">+0.18%</div><div class="note">伊朗袭击巴林/科威特，供应风险溢价回升</div></div>
-          <div class="stat"><div class="label">Brent 原油</div><div class="value">$89.69/桶</div><div class="down">-1.61%</div><div class="note">前期冲高后获利回吐，供需两端拉锯</div></div>
-          <div class="stat"><div class="label">比特币（BTC）</div><div class="value">$63,184</div><div class="down">-2.29%，三个月新低</div><div class="note">11月15日 $65K 失守后再下一城；美元走强 + 降息预期降温</div></div>
-          <div class="stat"><div class="label">以太坊（ETH）</div><div class="value">$1,784</div><div class="down">-1.8%</div><div class="note">持续跑输 BTC，链上活跃度低迷</div></div>
-        </div>
-        <p><b>商品：</b>黄金无视美元走强续涨 0.78% 至 $3,753，创历史高位区域——伊朗 11月18日对巴林、科威特的无人机与导弹袭击（约两个月来首次）推升避险需求；白银跟涨 1.5%。原油走势分化：WTI 微涨、Brent 回落 1.6%，市场对海湾局势的定价仍偏克制。<b>加密：</b>BTC 续跌 2.3% 至 $63,184，较 11月中旬 $65K 的"三个月低点"再下一城；美联储鹰派纪要 + 美元走强形成双重压制，ETH 跌破 $1,800 关口，山寨市场流动性持续萎缩。</p>
-        <div class="insight-box"><strong>资产配置观察：</strong>黄金是当前环境下最顺风的资产（地缘 + 央行购金 + 实际利率下行预期），回调即买点；原油在地缘脉冲与需求放缓之间震荡，适合区间操作；加密处于"流动性收缩 + 叙事真空"阶段，$60K 是 BTC 的关键心理与技术面双重关口，破位可能引发新一轮去杠杆。</div>
-      </div>
+      <h3>₿ 加密货币：BTC 击穿周末低点，ETH 深度下挫</h3>
+      <table>
+        <tr><th>资产</th><th>价格</th><th>24h</th><th>点评</th></tr>
+        <tr><td><b>BTC</b></td><td>~$62,000</td><td class="down">-2.14%</td><td>收盘跌破周末低点，创约3个月新低；避险情绪蔓延</td></tr>
+        <tr><td><b>ETH</b></td><td>$1,620–1,740</td><td class="down">-3.2%～-7.8%</td><td>技术形态偏空，$2,315 下方承压；年内跌幅惨重（较去年约-40%）</td></tr>
+        <tr><td><b>NEAR</b></td><td>—</td><td class="down">-10.51%</td><td>山寨板块普跌，高 beta 资产遭抛售</td></tr>
+        <tr><td><b>Sky (SKY)</b></td><td>—</td><td class="down">-8.69%</td><td>成交量异常放大，波动加剧</td></tr>
+      </table>
 
+      <h3>📋 宏观与政策</h3>
+      <div class="news-item"><div class="title">油价成市场主线：伊朗局势推升原油，风险资产承压</div><div class="source">Economic Times</div><div class="summary">WTI 单周波动剧烈，能源股与油服板块相对抗跌，航空、消费等高油耗行业承压。</div></div>
+      <div class="news-item"><div class="title">美债收益率走高+降息预期降温，成长股估值承压</div><div class="source">Sunday Guardian Live</div><div class="summary">市场对美联储政策路径分歧加大，纳指100 高位回调。</div></div>
+
+      <div class="insight-box"><b>💡 分析总结与投资机会：</b>① 短期"地缘溢价"主导：油金走强、股币双杀的组合或延续至局势明朗，建议控制权益仓位、增配能源与黄金相关资产；② 油运（VLCC）、上游油气股、黄金矿企是地缘升级的直接受益者；③ BTC 跌破关键支撑后技术面走弱，$60,000 心理关口岌岌可危，抄底需谨慎，等待企稳信号；④ 关注下周美联储官员讲话与PMI数据，若鸽派转向则成长股有望修复。</div>
     </div>
+  </div>
 
-    <!-- ==================== 时政板块 ==================== -->
-    <div id="politics" class="section">
+  <!-- ============ 时政 ============ -->
+  <div id="politics" class="section">
+    <div class="card">
+      <h2>📰 时政要闻深度</h2>
 
-      <div class="card">
-        <h2>🌍 今日焦点：中美元首+普京深圳举行史上首次三方峰会</h2>
-        <div class="news-item"><div class="title">特朗普、习近平、普京首次同框：全球三大军事强国领导人举行三方会谈</div><div class="source">The Economist / Euronews / RFERL 11月19日报道</div><div class="summary">11月18-19日，借 <b>APEC 峰会</b>在深圳举行之机，特朗普、习近平、普京举行<b>史上首次三方峰会</b>。议题涵盖全球安全、核武器与乌克兰战争。特朗普在会前表示"<b>美国和中国都希望帮助结束乌克兰战争</b>"。三方还讨论了联合国改革与大国战略稳定。欧洲与基辅方面担忧：三大国可能绕开乌克兰与欧洲"划分势力范围"。RFERL 盘点四大要点：<b>历史已创造，但无突破性成果</b>——峰会确立了三方沟通机制，但在台湾、乌克兰等核心议题上分歧依旧。习近平对特朗普给予高规格接待，特朗普称"这是极大的尊重，我很感激"。</div></div>
-        <div class="news-item"><div class="title">伊朗袭击海湾国家：无人机与导弹打击巴林、科威特</div><div class="source">RFERL 11月18日报道</div><div class="summary">伊朗对<b>巴林和科威特</b>发动无人机与导弹袭击，为约两个月来首次此类行动，海湾局势骤然升级——直接推高黄金与 WTI 原油的避险/供应溢价，并扰动霍尔木兹海峡航运安全预期。</div></div>
-        <div class="news-item"><div class="title">欧盟委员会内部系统遭网络攻击</div><div class="source">多家媒体 11月19日晚间新闻</div><div class="summary">网络攻击导致<b>欧盟委员会内部员工系统中断</b>，攻击者身份尚未确认。欧洲机构网络安全与关键基础设施防护议题再受关注。</div></div>
-        <div class="news-item"><div class="title">朝鲜动向</div><div class="source">RFERL 综述</div><div class="summary">报道同时提及朝鲜相关动作（细节有限），东北亚安全格局与三方峰会共振，值得持续跟踪。</div></div>
-      </div>
+      <div class="highlight-box"><b>🔥 今日头条：</b>11月18–19日，<b>历史性的中·美·俄三方峰会</b>在深圳举行——特朗普、习近平、普京首次同框会晤。习近平警告：大国若相互冲突，"世界将陷入混乱"；特朗普称峰会"历史性"并呼吁合作削减核武器与降低核风险。会晤聚焦乌克兰与伊朗战事、核武、能源安全与全球稳定。</div>
 
-      <div class="card">
-        <h2>🌍 深度分析：深圳峰会的地缘含义</h2>
-        <table>
-          <thead><tr><th>维度</th><th>观察</th><th>市场影响</th></tr></thead>
-          <tbody>
-            <tr><td>大国关系</td><td>中美"稳定双边关系"共识增强；特朗普-普京、三方会谈机制化</td><td>风险偏好边际改善，但需观察后续具体协议</td></tr>
-            <tr><td>乌克兰</td><td>中美均表态愿推动停火，但欧洲/基辅被排除在桌外引发不安</td><td>若停火推进，欧洲重建与能源贸易格局将重塑</td></tr>
-            <tr><td>台湾问题</td><td>核心分歧未解，峰会未释放突破性信号</td><td>半导体与航运险溢价维持高位</td></tr>
-            <tr><td>中东</td><td>伊朗袭击海湾国家，与峰会形成"两翼压力"</td><td>油运运价、战争险费率上行风险；黄金受支撑</td></tr>
-            <tr><td>贸易</td><td>APEC 框架下中美互动增多，301 港口费等议题进入观察窗</td><td>航运、出口链短期不确定性缓解</td></tr>
-          </tbody>
-        </table>
-        <div class="highlight-box"><strong>地缘主线判断：</strong>"深圳时刻"确立了三方直接对话的新常态，短期利好风险资产情绪；但"无突破性成果"意味着台海、乌克兰等结构性矛盾未解。真正需要盯紧的是两条暗线：① 伊朗-海湾冲突是否外溢至霍尔木兹（航运与能源的直接变量）；② 中美在 APEC 期间的经贸细节磋商（港口费、关税休战延展）。</div>
-      </div>
+      <h3>🇨🇳 中国</h3>
+      <div class="news-item"><div class="title">主场外交高光：中美俄三方峰会落子深圳</div><div class="source">Reuters / CNN / CNBC</div><div class="summary">习近平在麒麟山庄会晤特朗普、普京，强调大国和谐相处是"世界必然要求"；中国以主办国身份重塑全球治理话语权， middle powers（中等强国）被迫重新校准外交路线。</div></div>
 
+      <h3>🇺🇸 美国 / 🇷🇺 俄罗斯</h3>
+      <div class="news-item"><div class="title">普京在峰会后数小时，俄军大规模空袭基辅</div><div class="source">CNN</div><div class="summary">至少5人死亡，关键基础设施受损。普京离开中国前曾誓言"报复乌克兰"。峰会未能就四年多的乌克兰战争取得任何突破，停火前景渺茫。</div></div>
+      <div class="news-item"><div class="title">特朗普称普京为"我的朋友"</div><div class="source">CNBC</div><div class="summary">三人红地毯合影后，特朗普与普京举行单独双边会谈。此举引发欧洲盟友不安——德国总理 Merittz 公开称此次三方峰会为"摆拍"（photo op）。</div></div>
+
+      <h3>🇪🇺 欧洲</h3>
+      <div class="news-item"><div class="title">波兰：不明物体自俄方向越境落入波兰境内</div><div class="source">Reuters</div><div class="summary">波兰总理 Tusk 称系"蓄意挑衅"，北约东翼紧张升级；峰会余波与战场动作同步发酵。</div></div>
+
+      <h3>🌏 全球其他</h3>
+      <div class="news-item"><div class="title">"中等强国"加速自主布局</div><div class="source">Reuters</div><div class="summary">随着特朗普同时拉拢中俄，印度、巴西、土耳其、海湾国家等 middle powers 纷纷抢占外交空档，多极化交易加速。</div></div>
+
+      <div class="insight-box"><b>💡 深度分析：</b>深圳峰会是2026年最具标志性的地缘政治事件——形式大于实质（无乌克兰停火突破），但象征意义巨大：美国以"同时接触中俄"取代阵营对抗，中国以主办国身份坐上全球稳定"担保人"位置，俄罗斯则在战场上继续扩大既成事实。对市场而言：① 核风险话语升温利好黄金长期叙事；② 乌克兰战争持续=欧洲能源与防务开支高企，欧元区财政压力延续；③ 中美缓和信号若延续，航运（尤其跨太平洋集运）与出口链有望获得喘息，但需观察后续关税与制裁动向；④ 波兰事件提示北约-俄罗斯直接摩擦尾部风险，不可完全排除。</div>
     </div>
+  </div>
 
-    <!-- ==================== AI/机器人板块 ==================== -->
-    <div id="ai" class="section">
+  <!-- ============ AI/机器人 ============ -->
+  <div id="ai" class="section">
+    <div class="card">
+      <h2>🤖 AI 与机器人深度</h2>
 
-      <div class="card">
-        <h2>🤖 今日热点：Google 发布 Gemini 4 Neon，性价比旗舰反杀自家旗舰</h2>
-        <div class="news-item"><div class="title">Gemini 4 Neon：$3/$15 每百万 token，跑分超越旗舰 Carbon</div><div class="source">AI Weekly / 科技媒体 11月19日报道</div><div class="summary">Google 发布中端前沿模型 <b>Gemini 4 Neon</b>：输入 $3 / 输出 $15 每百万 token，1M 上下文，四档可调思考级别。在 Artificial Analysis 智能指数上以 <b>61 分超越自家旗舰 Gemini 4 Carbon（60 分）</b>，位列总榜第三、Vals 指数第二、Agent Arena 第二。"中端价格、旗舰性能"的定价策略直指 API 市场份额，对 OpenAI 与 Anthropic 形成正面压力。</div></div>
-        <div class="news-item"><div class="title">"AI 决策模型"赛道爆发：OpenAI、Databricks、Cloudflare、AWS、微软、Snowflake 全员入场</div><div class="source">TechTarget 深度报道</div><div class="summary">继 TypeSafe 9月发布 Jev 后，OpenAI、Databricks、Cloudflare、AWS 及众多初创迅速跟进；微软与 Snowflake 10月发布产品，Google 推出 Gemini Decisions。<b>决策/判断模型（Decision &amp; Judgment Model）</b>正成为继 Agent 之后的新品类，企业级 AI 从"生成内容"走向"生成决策"。</div></div>
-        <div class="news-item"><div class="title">Anthropic 交易总额达 $900 亿，超越 SpaceX；挂牌交易成本周市场最大事件</div><div class="source">TradingKey / FXEmpire 11月19日报道</div><div class="summary">Anthropic 相关交易总额已至 <b>$900 亿</b>，超越 SpaceX，成为估值最高的非上市科技公司之一。其挂牌交易令全市场屏息——WSJ 同期刊发长文《Anthropic 为 AI 按下重置键》，讨论 AI 资本开支与营收兑现的世纪之问。</div></div>
-        <div class="news-item"><div class="title">黄仁勋离任余波：AI 外交格局面临重排</div><div class="source">The National 11月19日报道</div><div class="summary">分析指出，黄仁勋多年经营的从海湾到中国的政商关系网络，在其卸任后可能失序——<b>AI 芯片外交</b>进入敏感期。叠加美国拟进一步收紧 AI 芯片出口规则（涉及 Nvidia、AMD），全球算力供应链政治化程度继续加深。</div></div>
-      </div>
+      <div class="highlight-box"><b>🔥 今日热点：</b><b>Anthropic 于11月19日在纳斯达克上市，为史上最大规模IPO</b>；同日 Google 发布 <b>Gemini 4 Neon</b>——更快、更便宜的推理增强模型。AI 资本与技术双节点共振。</div>
 
-      <div class="card">
-        <h2>🤖 板块透视：从技术竞赛到资本大考</h2>
-        <table>
-          <thead><tr><th>主题</th><th>动态</th><th>看点</th></tr></thead>
-          <tbody>
-            <tr><td>模型层</td><td>Gemini 4 Neon 以中端价位实现旗舰级跑分；多档思考级别成为标配</td><td>推理成本快速通缩，应用层利润池扩大</td></tr>
-            <tr><td>新品类</td><td>决策模型（Jev、Gemini Decisions、Snowflake/Azure 方案）集中涌现</td><td>企业 AI 预算从 Copilot 转向决策自动化</td></tr>
-            <tr><td>资本层</td><td>Anthropic 交易总额 $900 亿超 SpaceX；IPO 定价成为 AI 泡沫论试金石</td><td>若上市表现强劲，一级市场估值体系重置</td></tr>
-            <tr><td>监管/地缘</td><td>美联储纪要警告 AI 债务风险；美国收紧芯片出口；黄仁勋离任影响 AI 外交</td><td>算力政治化 + 金融稳定审视双压</td></tr>
-            <tr><td>情绪指标</td><td>AI Weekly 热度榜：Chips、NVIDIA、Agents、Funding 热度同比均超 +1000%</td><td>叙事极热 vs 美联储警告，波动放大</td></tr>
-          </tbody>
-        </table>
-        <div class="insight-box"><strong>AI 深度分析：</strong>本周 AI 叙事完成一次关键切换——从"模型军备赛"转向"资本与合规大考"。Gemini 4 Neon 证明推理成本曲线仍在陡峭下行，应用端利好；但美联储对 AI 债务的点名、芯片出口收紧、以及 Anthropic IPO 这只"试金石"，共同把问题抛给市场：<b>万亿美元级资本开支，谁来买单？</b>短期看，AI 板块波动率将显著放大；中长期看，决策模型与推理成本通缩是真正的产业级趋势。</div>
-      </div>
+      <h3>🏢 硅谷前沿</h3>
+      <div class="news-item"><div class="title">Anthropic 纳斯达克首秀：史上最大IPO</div><div class="source">Instagram Tech Roundup 等</div><div class="summary">AI 安全叙事成功转化为资本市场超级事件，二级市场 AI 定价锚正式确立；此前 NVDA 财报超预期已为板块铺路。</div></div>
+      <div class="news-item"><div class="title">Google 发布 Gemini 4 Neon</div><div class="source">Medium AI Weekly</div><div class="summary">11/18  unveiled：在保持高级推理能力的同时大幅提升执行速度、降低成本——直指推理（inference）侧商业化竞争。</div></div>
+      <div class="news-item"><div class="title">OpenAI 机器人团队并入研究体系，GPT-6 Astra 直接接管机器人控制</div><div class="source">Humanoids Daily</div><div class="summary">机器人研究人员改向首席研究官 Mark Chen 汇报，硬件团队归入 Brockman 的应用体系；OpenAI 明确"通用模型直接控机器人"路线，不再单设独立机器人部门。</div></div>
 
+      <h3>🇫🇷 欧洲/全球投资动态</h3>
+      <div class="news-item"><div class="title">法国 Genesis AI 完成 $5 亿融资，估值 $35 亿</div><div class="source">Medium</div><div class="summary">投资方豪华阵容：Nvidia、AMD、Xavier Niel、Eric Schmidt、Bpifrance。产品 Eno：双臂+灵巧手+轮式底盘的通用机器人。欧洲具身智能旗舰诞生。</div></div>
+      <div class="news-item"><div class="title">人形机器人 VC 投资额 2026 年达 $110 亿，超2025全年两倍</div><div class="source">Dealroom</div><div class="summary">（2025 全年纪录为 $48 亿）日本大成建设另设 $1.5 亿 AI/机器人基金。资本正从"模型竞赛"大规模流向"物理AI"。</div></div>
+      <div class="news-item"><div class="title">北美 Q3 机器人订单 +25%：10,989 台 / $7.235 亿</div><div class="source">Seeking Alpha / A3</div><div class="summary">制造业劳动力缺口持续，仓储与工厂自动化加速渗透。</div></div>
+
+      <h3>🇨🇳 中国动态</h3>
+      <div class="news-item"><div class="title">美芯片限制下，中国企业加速"借用"美国大模型能力</div><div class="source">多方报道</div><div class="summary">算力受限背景下，国产厂商通过 API 调用 OpenAI/Anthropic 模型进行蒸馏与研发，监管与技术博弈并行；深圳峰会或为此带来变量。</div></div>
+
+      <h3>📈 核心标的观察</h3>
+      <p>NVDA（财报超预期、黄仁勋放话"回归"）、Anthropic（新上市定价锚）、Google（Gemini 4 Neon 推理性价比）、Genesis AI（欧洲具身智能新星）构成本周 AI 行情主线；MSFT/AMD 跟随。二级市场注意：Anthropic 巨型 IPO 短期或抽离板块流动性。</p>
+
+      <div class="insight-box"><b>💡 深度分析：</b>行业正经历三个结构性迁移：① <b>从 Scaling 到推理</b>——Gemini 4 Neon 与 GPT-6 Astra 的竞争焦点已从训练规模转向推理成本与速度；② <b>从语言到物理</b>——$110 亿 VC 洪流与 OpenAI 的组织调整说明"通用模型+本体"成为主流路线，独立机器人算法公司的窗口正在收窄；③ <b>从私募到公开市场</b>——Anthropic 上市开启 AI 资产二级市场定价时代，估值透明度提升但也引入波动性。投资上：卖铲人（NVDA/AMD）与本体+场景绑定深的公司确定性最高；纯模型层面临价格通缩与 IPO 抽血双重压力。</div>
     </div>
+  </div>
 
   </div>
 
   <div class="footer">
-    <p>📰 每日资讯简报 · 由 AI 自动生成，资讯仅供参考，不构成投资建议</p>
-    <p style="margin-top:6px">历史归档：<a href="./daily-2026-11-19.html">11月19日</a> · <a href="./daily-2026-11-15.html">11月15日</a> · <a href="./daily-2026-11-14.html">11月14日</a></p>
+    <p>简报由 AI 自动生成，数据仅供参考，不构成投资建议</p>
+    <p>📅 <a href="daily-2026-11-20.html">← 11月20日</a> | 每日资讯简报 | 2026-11-21</p>
   </div>
 
   <script>

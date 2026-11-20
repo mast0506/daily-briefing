@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日资讯简报 | 2026年11月21日</title>
+  <style>
+    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#4caf50; --down:#f44336; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:40px 20px; text-align:center; }
+    .header h1 { font-size:2em; margin-bottom:10px; }
+    .header .date { font-size:1.1em; opacity:.9; }
+    .header .meta { margin-top:10px; font-size:.85em; opacity:.75; }
+    .nav { background:var(--card); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:100; display:flex; justify-content:center; flex-wrap:wrap; }
+    .nav button { padding:15px 30px; border:none; background:none; font-size:16px; cursor:pointer; color:var(--light); border-bottom:3px solid transparent; transition:all .3s; font-family:inherit; }
+    .nav button.active { color:var(--primary); border-bottom-color:var(--accent); font-weight:600; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    .section { display:none; animation:fadeIn .3s; }
+    .section.active { display:block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .card { background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .card h2 { color:var(--primary); font-size:1.4em; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent); }
+    .card h3 { color:var(--secondary); font-size:1.1em; margin:18px 0 10px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:16px 0; }
+    .stat { background:#f8f9fa; border-radius:8px; padding:16px; border-left:4px solid var(--accent); }
+    .stat .label { font-size:.85em; color:var(--light); }
+    .stat .value { font-size:1.45em; font-weight:700; color:var(--primary); margin:4px 0; }
+    .stat .note { font-size:.82em; color:var(--light); }
+    .up { color:var(--up); } .down { color:var(--down); }
+    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
+    th { background:var(--primary); color:#fff; padding:10px; text-align:left; }
+    td { padding:10px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:hover { background:#f5f5f5; }
+    .news-item { padding:14px 0; border-bottom:1px solid var(--border); }
+    .news-item:last-child { border-bottom:none; }
+    .news-item .title { font-weight:600; color:var(--primary); margin-bottom:4px; }
+    .news-item .source { font-size:.8em; color:var(--light); margin-bottom:6px; }
+    .news-item .summary { font-size:.92em; color:var(--text); }
+    .tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.75em; font-weight:600; margin-right:6px; }
+    .tag-red { background:#ffebee; color:#c62828; } .tag-green { background:#e8f5e9; color:#2e7d32; }
+    .tag-blue { background:#e3f2fd; color:#1565c0; } .tag-orange { background:#fff3e0; color:#ef6c00; }
+    .tag-gray { background:#eceff1; color:#455a64; }
+    .highlight-box { background:#fff8e1; border-left:4px solid #ffc107; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .risk-box { background:#ffebee; border-left:4px solid #ef5350; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .insight-box { background:#e8f5e9; border-left:4px solid #66bb6a; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
+    .footer { text-align:center; padding:30px 20px; color:var(--light); font-size:.85em; }
+    a { color:#1565c0; text-decoration:none; } a:hover { text-decoration:underline; }
+    @media (max-width:600px) { .header h1{font-size:1.4em} .grid{grid-template-columns:1fr} .nav button{padding:12px 16px;font-size:14px} .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📰 每日资讯简报</h1>
+    <div class="date">2026年11月21日 星期六</div>
+    <div class="meta">数据主要截至 11月20日（周五）全球收盘与当日早间消息 | 来源：Baltic Exchange、TradingEconomics、上海航运交易所、Lloyd's List、Splash247、CNN、Reuters、CNBC、CryptoRank、Yahoo Finance、Dealroom、Humanoids Daily 等</div>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
+    <button onclick="showSection('finance',this)">📈 财经</button>
+    <button onclick="showSection('politics',this)">📰 时政</button>
+    <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
+  </div>
+
+  <div class="container">
+
+  <!-- ============ 航运 ============ -->
+  <div id="shipping" class="section active">
+    <div class="card">
+      <h2>🚢 航运市场深度</h2>
+
+      <h3>📊 核心指数</h3>
+      <div class="grid">
+        <div class="stat"><div class="label">Baltic Dry Index (BDI)</div><div class="value">2,901</div><div class="note"><span class="down">▼ -0.45%</span>（11/19，周四）｜月环比仍涨约14%</div></div>
+        <div class="stat"><div class="label">Baltic Capesize Index (BCI)</div><div class="value">4,514</div><div class="note"><span class="down">▼ -0.8%</span> 海岬型运价指数高位回落</div></div>
+        <div class="stat"><div class="label">Capesize 日租金（周收盘）</div><div class="value">$42,798/天</div><div class="note"><span class="up">▲ +$3,403</span>（第46周，11/13收盘）</div></div>
+        <div class="stat"><div class="label">Panamax 日租金（周收盘）</div><div class="value">$19,063/天</div><div class="note"><span class="up">▲ +$1,033</span> 巴拿马型同步走强</div></div>
+        <div class="stat"><div class="label">SCFI 上海集装箱运价指数</div><div class="value">1,814</div><div class="note"><span class="down">▼ -5.66%</span>（截至11/17当周，-108.95点）</div></div>
+        <div class="stat"><div class="label">上海→美西即期运价</div><div class="value">$1,460/FEU</div><div class="note"><span class="down">▼ -11% w/w</span> 已跌破盈亏平衡线（Lloyd's List）</div></div>
+      </div>
+
+      <h3>📈 干散货：强势格局延续，回调不改上行</h3>
+      <p>BDI 自 11月初 2,805 点一路冲高至 3,063–3,020 点区间（创6月以来新高）后，近两日小幅回落至 2,901 点。Baltic Exchange 第46周报告显示，海岬型、巴拿马型、超灵便型和灵便型租金全线走高，但涨势在海岬型与其他船型之间出现分化——铁矿石期货走强是本轮海岬型行情的主要推手。当前 BDI 仍处高位平台，月环比涨幅约14%，短期回调属获利回吐性质。</p>
+
+      <h3>📦 集装箱：运价加速探底，美西线击穿盈亏线</h3>
+      <div class="risk-box"><b>⚠️ 重点提示：</b>SCFI 连续下滑至 1,814 点；上海→美西即期价 $1,460/FEU，单周跌 11%，已低于船公司盈亏平衡水平。2026年集运市场的核心矛盾从"红海扰动推升运价"切换为"运力过剩压制运价"——尽管红海危机仍在、部分航线仍有绕行，但新增运力投放速度超过需求增长，运价中枢持续下移。亚洲-美西航线竞争最为惨烈。</div>
+
+      <h3>🏗️ 新造船与二手船（S&amp;P）</h3>
+      <p>本周公开渠道新造船订单与二手船成交披露有限。结合近期市场：干散货船东盈利改善（海岬型日租金超 $42,000）正带动二手散货船询盘回暖，船价坚挺；集装箱船新造订单则在运价下行预期下趋于谨慎，船厂坞位更多转向油轮与气体船。新造船价格指数预计维持高位盘整。</p>
+
+      <h3>🔥 行业动态</h3>
+      <div class="news-item"><div class="title">BDI 创6月来新高后高位整固，各船型走势分化</div><div class="source">Baird Maritime / TradingEconomics</div><div class="summary">主指数一度升破 3,060 点，海岬型日收益逼近 $42,700，铁矿石期货上涨提供支撑。</div></div>
+      <div class="news-item"><div class="title">集装箱即期运价回落至红海危机以来最低区域</div><div class="source">Splash247</div><div class="summary">班轮市场运价动能持续流失，Q2 平均 SCFI 同比已低 37%，船公司空白航班（blank sailing）力度加大。</div></div>
+
+      <div class="insight-box"><b>💡 分析与投资机会：</b>干散货（海岬型敞口大的船东如 Star Bulk、金海洋等）短期盈利弹性仍佳，铁矿旺季+中国刺激预期支撑运价；集运股（如马士基、赫伯罗特）则面临运价与盈利双杀风险，宜规避。油轮方面，中东局势升级（伊朗相关）若推升绕行与保险成本，VLCC 运价可能复制2024年脉冲行情，值得跟踪。二手散货船资产价格滞后于租金上涨，存在补涨窗口。</div>
+    </div>
+  </div>
+
+  <!-- ============ 财经 ============ -->
+  <div id="finance" class="section">
+    <div class="card">
+      <h2>📈 全球财经深度</h2>
+
+      <h3>🌍 全球市场概览（11/20 收盘，数据源间存在口径差异）</h3>
+      <div class="grid">
+        <div class="stat"><div class="label">S&amp;P 500</div><div class="value">~7,400–7,680</div><div class="note"><span class="down">▼ 约-0.05%～-1.9%</span> 各快照口径不一，整体走弱</div></div>
+        <div class="stat"><div class="label">Dow Jones</div><div class="value">~51,300–52,400</div><div class="note"><span class="down">▼ 约-0.2%～-1.4%</span></div></div>
+        <div class="stat"><div class="label">Nasdaq / Nasdaq 100</div><div class="value">~24,500–30,400</div><div class="note"><span class="down">▼ 科技股领跌</span></div></div>
+        <div class="stat"><div class="label">黄金</div><div class="value">$4,149.5</div><div class="note"><span class="up">▲ +0.40%</span> 白银 $53.46（+0.74%）</div></div>
+        <div class="stat"><div class="label">原油（WTI）</div><div class="value">$77–86 区间</div><div class="note"><span class="up">▲ 周度大幅波动</span> 伊朗局势驱动，单日曾飙升5%+</div></div>
+        <div class="stat"><div class="label">天然气</div><div class="value">$3.21</div><div class="note"><span class="up">▲ +6.3%</span></div></div>
+      </div>
+      <div class="risk-box"><b>⚠️ 风险事件：</b>消息称伊朗相关地缘冲突推升 WTI 突破 $77/桶，叠加油价飙升、国债收益率走高与美联储偏鹰预期，美股周五承压下跌，科技股与高估值板块回调明显。金价逆势小涨，避险与通胀对冲需求并存。</div>
+
+      <h3>₿ 加密货币：BTC 击穿周末低点，ETH 深度下挫</h3>
+      <table>
+        <tr><th>资产</th><th>价格</th><th>24h</th><th>点评</th></tr>
+        <tr><td><b>BTC</b></td><td>~$62,000</td><td class="down">-2.14%</td><td>收盘跌破周末低点，创约3个月新低；避险情绪蔓延</td></tr>
+        <tr><td><b>ETH</b></td><td>$1,620–1,740</td><td class="down">-3.2%～-7.8%</td><td>技术形态偏空，$2,315 下方承压；年内跌幅惨重（较去年约-40%）</td></tr>
+        <tr><td><b>NEAR</b></td><td>—</td><td class="down">-10.51%</td><td>山寨板块普跌，高 beta 资产遭抛售</td></tr>
+        <tr><td><b>Sky (SKY)</b></td><td>—</td><td class="down">-8.69%</td><td>成交量异常放大，波动加剧</td></tr>
+      </table>
+
+      <h3>📋 宏观与政策</h3>
+      <div class="news-item"><div class="title">油价成市场主线：伊朗局势推升原油，风险资产承压</div><div class="source">Economic Times</div><div class="summary">WTI 单周波动剧烈，能源股与油服板块相对抗跌，航空、消费等高油耗行业承压。</div></div>
+      <div class="news-item"><div class="title">美债收益率走高+降息预期降温，成长股估值承压</div><div class="source">Sunday Guardian Live</div><div class="summary">市场对美联储政策路径分歧加大，纳指100 高位回调。</div></div>
+
+      <div class="insight-box"><b>💡 分析总结与投资机会：</b>① 短期"地缘溢价"主导：油金走强、股币双杀的组合或延续至局势明朗，建议控制权益仓位、增配能源与黄金相关资产；② 油运（VLCC）、上游油气股、黄金矿企是地缘升级的直接受益者；③ BTC 跌破关键支撑后技术面走弱，$60,000 心理关口岌岌可危，抄底需谨慎，等待企稳信号；④ 关注下周美联储官员讲话与PMI数据，若鸽派转向则成长股有望修复。</div>
+    </div>
+  </div>
+
+  <!-- ============ 时政 ============ -->
+  <div id="politics" class="section">
+    <div class="card">
+      <h2>📰 时政要闻深度</h2>
+
+      <div class="highlight-box"><b>🔥 今日头条：</b>11月18–19日，<b>历史性的中·美·俄三方峰会</b>在深圳举行——特朗普、习近平、普京首次同框会晤。习近平警告：大国若相互冲突，"世界将陷入混乱"；特朗普称峰会"历史性"并呼吁合作削减核武器与降低核风险。会晤聚焦乌克兰与伊朗战事、核武、能源安全与全球稳定。</div>
+
+      <h3>🇨🇳 中国</h3>
+      <div class="news-item"><div class="title">主场外交高光：中美俄三方峰会落子深圳</div><div class="source">Reuters / CNN / CNBC</div><div class="summary">习近平在麒麟山庄会晤特朗普、普京，强调大国和谐相处是"世界必然要求"；中国以主办国身份重塑全球治理话语权， middle powers（中等强国）被迫重新校准外交路线。</div></div>
+
+      <h3>🇺🇸 美国 / 🇷🇺 俄罗斯</h3>
+      <div class="news-item"><div class="title">普京在峰会后数小时，俄军大规模空袭基辅</div><div class="source">CNN</div><div class="summary">至少5人死亡，关键基础设施受损。普京离开中国前曾誓言"报复乌克兰"。峰会未能就四年多的乌克兰战争取得任何突破，停火前景渺茫。</div></div>
+      <div class="news-item"><div class="title">特朗普称普京为"我的朋友"</div><div class="source">CNBC</div><div class="summary">三人红地毯合影后，特朗普与普京举行单独双边会谈。此举引发欧洲盟友不安——德国总理 Merittz 公开称此次三方峰会为"摆拍"（photo op）。</div></div>
+
+      <h3>🇪🇺 欧洲</h3>
+      <div class="news-item"><div class="title">波兰：不明物体自俄方向越境落入波兰境内</div><div class="source">Reuters</div><div class="summary">波兰总理 Tusk 称系"蓄意挑衅"，北约东翼紧张升级；峰会余波与战场动作同步发酵。</div></div>
+
+      <h3>🌏 全球其他</h3>
+      <div class="news-item"><div class="title">"中等强国"加速自主布局</div><div class="source">Reuters</div><div class="summary">随着特朗普同时拉拢中俄，印度、巴西、土耳其、海湾国家等 middle powers 纷纷抢占外交空档，多极化交易加速。</div></div>
+
+      <div class="insight-box"><b>💡 深度分析：</b>深圳峰会是2026年最具标志性的地缘政治事件——形式大于实质（无乌克兰停火突破），但象征意义巨大：美国以"同时接触中俄"取代阵营对抗，中国以主办国身份坐上全球稳定"担保人"位置，俄罗斯则在战场上继续扩大既成事实。对市场而言：① 核风险话语升温利好黄金长期叙事；② 乌克兰战争持续=欧洲能源与防务开支高企，欧元区财政压力延续；③ 中美缓和信号若延续，航运（尤其跨太平洋集运）与出口链有望获得喘息，但需观察后续关税与制裁动向；④ 波兰事件提示北约-俄罗斯直接摩擦尾部风险，不可完全排除。</div>
+    </div>
+  </div>
+
+  <!-- ============ AI/机器人 ============ -->
+  <div id="ai" class="section">
+    <div class="card">
+      <h2>🤖 AI 与机器人深度</h2>
+
+      <div class="highlight-box"><b>🔥 今日热点：</b><b>Anthropic 于11月19日在纳斯达克上市，为史上最大规模IPO</b>；同日 Google 发布 <b>Gemini 4 Neon</b>——更快、更便宜的推理增强模型。AI 资本与技术双节点共振。</div>
+
+      <h3>🏢 硅谷前沿</h3>
+      <div class="news-item"><div class="title">Anthropic 纳斯达克首秀：史上最大IPO</div><div class="source">Instagram Tech Roundup 等</div><div class="summary">AI 安全叙事成功转化为资本市场超级事件，二级市场 AI 定价锚正式确立；此前 NVDA 财报超预期已为板块铺路。</div></div>
+      <div class="news-item"><div class="title">Google 发布 Gemini 4 Neon</div><div class="source">Medium AI Weekly</div><div class="summary">11/18  unveiled：在保持高级推理能力的同时大幅提升执行速度、降低成本——直指推理（inference）侧商业化竞争。</div></div>
+      <div class="news-item"><div class="title">OpenAI 机器人团队并入研究体系，GPT-6 Astra 直接接管机器人控制</div><div class="source">Humanoids Daily</div><div class="summary">机器人研究人员改向首席研究官 Mark Chen 汇报，硬件团队归入 Brockman 的应用体系；OpenAI 明确"通用模型直接控机器人"路线，不再单设独立机器人部门。</div></div>
+
+      <h3>🇫🇷 欧洲/全球投资动态</h3>
+      <div class="news-item"><div class="title">法国 Genesis AI 完成 $5 亿融资，估值 $35 亿</div><div class="source">Medium</div><div class="summary">投资方豪华阵容：Nvidia、AMD、Xavier Niel、Eric Schmidt、Bpifrance。产品 Eno：双臂+灵巧手+轮式底盘的通用机器人。欧洲具身智能旗舰诞生。</div></div>
+      <div class="news-item"><div class="title">人形机器人 VC 投资额 2026 年达 $110 亿，超2025全年两倍</div><div class="source">Dealroom</div><div class="summary">（2025 全年纪录为 $48 亿）日本大成建设另设 $1.5 亿 AI/机器人基金。资本正从"模型竞赛"大规模流向"物理AI"。</div></div>
+      <div class="news-item"><div class="title">北美 Q3 机器人订单 +25%：10,989 台 / $7.235 亿</div><div class="source">Seeking Alpha / A3</div><div class="summary">制造业劳动力缺口持续，仓储与工厂自动化加速渗透。</div></div>
+
+      <h3>🇨🇳 中国动态</h3>
+      <div class="news-item"><div class="title">美芯片限制下，中国企业加速"借用"美国大模型能力</div><div class="source">多方报道</div><div class="summary">算力受限背景下，国产厂商通过 API 调用 OpenAI/Anthropic 模型进行蒸馏与研发，监管与技术博弈并行；深圳峰会或为此带来变量。</div></div>
+
+      <h3>📈 核心标的观察</h3>
+      <p>NVDA（财报超预期、黄仁勋放话"回归"）、Anthropic（新上市定价锚）、Google（Gemini 4 Neon 推理性价比）、Genesis AI（欧洲具身智能新星）构成本周 AI 行情主线；MSFT/AMD 跟随。二级市场注意：Anthropic 巨型 IPO 短期或抽离板块流动性。</p>
+
+      <div class="insight-box"><b>💡 深度分析：</b>行业正经历三个结构性迁移：① <b>从 Scaling 到推理</b>——Gemini 4 Neon 与 GPT-6 Astra 的竞争焦点已从训练规模转向推理成本与速度；② <b>从语言到物理</b>——$110 亿 VC 洪流与 OpenAI 的组织调整说明"通用模型+本体"成为主流路线，独立机器人算法公司的窗口正在收窄；③ <b>从私募到公开市场</b>——Anthropic 上市开启 AI 资产二级市场定价时代，估值透明度提升但也引入波动性。投资上：卖铲人（NVDA/AMD）与本体+场景绑定深的公司确定性最高；纯模型层面临价格通缩与 IPO 抽血双重压力。</div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="footer">
+    <p>简报由 AI 自动生成，数据仅供参考，不构成投资建议</p>
+    <p>📅 <a href="daily-2026-11-20.html">← 11月20日</a> | 每日资讯简报 | 2026-11-21</p>
+  </div>
+
+  <script>
+    function showSection(id, btn) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
