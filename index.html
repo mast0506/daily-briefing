@@ -1,420 +1,195 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 | 2026年11月26日</title>
-  <style>
-    :root { --primary:#1a237e; --secondary:#283593; --accent:#ff6f00; --bg:#f5f5f5; --card:#fff; --text:#333; --light:#666; --border:#e0e0e0; --up:#2e7d32; --down:#c62828; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.72; }
-    .header { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; padding:42px 20px; text-align:center; }
-    .header h1 { font-size:2em; margin-bottom:10px; }
-    .header .date { font-size:1.1em; opacity:.94; }
-    .header .meta { margin-top:10px; font-size:.86em; opacity:.8; max-width:1120px; margin-left:auto; margin-right:auto; }
-    .nav { background:var(--card); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:100; display:flex; justify-content:center; flex-wrap:wrap; box-shadow:0 2px 8px rgba(0,0,0,.04); }
-    .nav button { padding:15px 30px; border:none; background:none; font-size:16px; cursor:pointer; color:var(--light); border-bottom:3px solid transparent; transition:all .3s; font-family:inherit; }
-    .nav button.active { color:var(--primary); border-bottom-color:var(--accent); font-weight:700; }
-    .container { max-width:1200px; margin:0 auto; padding:20px; }
-    .section { display:none; animation:fadeIn .3s; }
-    .section.active { display:block; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-    .card { background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
-    .card h2 { color:var(--primary); font-size:1.42em; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--accent); }
-    .card h3 { color:var(--secondary); font-size:1.12em; margin:18px 0 10px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin:16px 0; }
-    .stat { background:#f8f9fa; border-radius:8px; padding:16px; border-left:4px solid var(--accent); }
-    .stat .label { font-size:.85em; color:var(--light); }
-    .stat .value { font-size:1.42em; font-weight:700; color:var(--primary); margin:4px 0; }
-    .up { color:var(--up); font-weight:600; } .down { color:var(--down); font-weight:600; } .flat { color:var(--light); font-weight:600; }
-    table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92em; }
-    th { background:var(--primary); color:#fff; padding:10px; text-align:left; }
-    td { padding:10px; border-bottom:1px solid var(--border); vertical-align:top; }
-    tr:hover { background:#f5f5f5; }
-    .news-item { padding:14px 0; border-bottom:1px solid var(--border); }
-    .news-item:last-child { border-bottom:none; }
-    .news-item .title { font-weight:700; color:var(--primary); margin-bottom:4px; }
-    .news-item .source { font-size:.8em; color:var(--light); margin-bottom:6px; }
-    .news-item .summary { font-size:.93em; }
-    .news-item a { color:var(--secondary); text-decoration:none; border-bottom:1px dotted var(--secondary); }
-    .news-item a:hover { color:var(--accent); }
-    .tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:.75em; font-weight:700; margin-right:6px; }
-    .tag-red { background:#ffebee; color:#c62828; } .tag-green { background:#e8f5e9; color:#2e7d32; }
-    .tag-blue { background:#e3f2fd; color:#1565c0; } .tag-orange { background:#fff3e0; color:#ef6c00; }
-    .highlight-box { background:#fff8e1; border-left:4px solid #ffc107; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
-    .risk-box { background:#ffebee; border-left:4px solid #c62828; padding:14px 18px; border-radius:0 8px 8px 0; margin:14px 0; }
-    .note { font-size:.88em; color:var(--light); margin-top:8px; }
-    .source-list { font-size:.86em; color:var(--light); line-height:1.9; }
-    .source-list a { color:var(--secondary); text-decoration:none; border-bottom:1px dotted var(--secondary); }
-    .footer { text-align:center; padding:30px 20px; color:var(--light); font-size:.85em; }
-    @media (max-width:600px) { .header h1{font-size:1.4em} .grid{grid-template-columns:1fr} .nav button{padding:12px 16px;font-size:14px} .card{padding:18px} table{font-size:.84em} }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日深度简报 · 2026年11月27日</title>
+<style>
+  :root{
+    --bg:#0d1117;--card:#161b22;--card2:#1c2330;--border:#2d333b;
+    --text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;
+    --up:#3fb950;--down:#f85149;--gold:#d29922;--purple:#bc8cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:20px}
+  .wrap{max-width:960px;margin:0 auto}
+  header{text-align:center;padding:36px 20px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(135deg,#161b22 0%,#1a2233 100%);margin-bottom:24px}
+  header h1{font-size:28px;letter-spacing:2px}
+  header .date{color:var(--muted);margin-top:8px;font-size:14px}
+  header .tags{margin-top:14px}
+  header .tag{display:inline-block;padding:3px 12px;margin:3px;border-radius:20px;font-size:12px;border:1px solid var(--border);color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:24px}
+  .card h2{font-size:20px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+  .card h3{font-size:16px;margin:20px 0 10px;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+  .metric{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  .metric .label{font-size:12px;color:var(--muted)}
+  .metric .value{font-size:20px;font-weight:700;margin:4px 0}
+  .metric .chg{font-size:13px}
+  .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border)}
+  th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase}
+  ul{padding-left:20px}
+  li{margin:8px 0}
+  .hl{background:var(--card2);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px}
+  .hl.gold{border-left-color:var(--gold)}
+  .hl.red{border-left-color:var(--down)}
+  .hl.green{border-left-color:var(--up)}
+  .hl.purple{border-left-color:var(--purple)}
+  .src{color:var(--muted);font-size:12px}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
+  a{color:var(--accent);text-decoration:none}
+</style>
 </head>
 <body>
-  <div class="header">
-    <h1>📰 每日资讯简报</h1>
-    <div class="date">2026年11月26日 星期四</div>
-    <div class="meta">数据截至 11月25日美股收盘 / 11月26日早间（新加坡） | 重点：BDI反弹至七周高位、WCI四连跌、美国PCE升温与12月加息预期、特朗普对14个贸易伙伴新关税、AI抛售延续、OpenAI/Google通用模型接管机器人</div>
+<div class="wrap">
+
+<header>
+  <h1>📊 每日深度简报</h1>
+  <div class="date">2026年11月27日 星期五 · 新加坡时间 07:00 · 数据截至 11月26日</div>
+  <div class="tags">
+    <span class="tag">🚢 航运</span><span class="tag">📈 财经</span>
+    <span class="tag">📰 时政</span><span class="tag">🤖 AI/机器人</span>
+  </div>
+</header>
+
+<!-- ============ 时政 ============ -->
+<div class="card">
+  <h2>📰 时政要闻</h2>
+
+  <h3>🔥 头条：美国拟对14个贸易伙伴加征新关税，对华税率最高或达40%</h3>
+  <ul>
+    <li>特朗普政府依据"301条款"产能调查，计划对 <b>14个主要贸易伙伴</b> 加征新关税：对中国商品 <b>加征20%</b>（叠加现有税率，若谈判因素失效最高或达 <b>40%</b>）；对柬埔寨、印尼、泰国、孟加拉、马来西亚征 <b>18%</b>；对欧盟、日本、韩国、台湾、瑞士征 <b>15%</b>（在已达成协议上限内）；新加坡 <b>10%</b>；越南若达成协定按20%，否则最高 <b>35%</b>。</li>
+    <li>新关税预计 <b>明年（2027年）初</b> 才会生效，为谈判留出窗口。此前最高法院推翻了特朗普今年早些时候 sweeping 全球关税，此次是"重建"关税议程的尝试。</li>
+    <li>背景：特朗普上周刚在深圳与习近平会晤，气氛"友好"；双方拟于下月在佛州G20峰会再谈，议题包括稀土准入与农产品采购。巴西因谈判停滞被"额外惩罚"——糖加征关税并对飞机新征10%关税（冲击巴西航空工业公司Embraer）。</li>
+  </ul>
+  <div class="hl red"><b>影响研判：</b>关税重启预期是本轮美股波动（尤其科技股）的重要催化剂之一。若落地，将推高进口成本、强化通胀粘性，直接压缩美联储降息空间，并扰动跨太平洋集装箱货量预期——航运、出口链、新兴市场货币均需警惕。</div>
+
+  <h3>🌏 其他要点</h3>
+  <ul>
+    <li><b>中美关系：</b>特朗普宣称促成黄仁勋复任NVIDIA CEO，但两党对"先进芯片经绕道流入中国军方"的关切未消，出口管制博弈延续。</li>
+    <li><b>中东局势：</b>海湾地区出现袭击事件，推动布伦特原油升至95美元上方，地缘风险溢价回升。</li>
+    <li><b>美国国内：</b>中期选举选民对经济政策的"否决"并未阻止关税议程推进，政策不确定性成为市场定价的常态变量。</li>
+  </ul>
+</div>
+
+<!-- ============ 航运 ============ -->
+<div class="card">
+  <h2>🚢 航运市场</h2>
+
+  <h3>📊 核心指数（截至11月24-25日）</h3>
+  <div class="grid">
+    <div class="metric"><div class="label">BDI 波罗的海干散货</div><div class="value">3,068</div><div class="chg up">+2.3% · 10月5日以来新高</div></div>
+    <div class="metric"><div class="label">BCI 好望角型</div><div class="value">4,942</div><div class="chg up">+3.4%</div></div>
+    <div class="metric"><div class="label">BPI 巴拿马型</div><div class="value">2,179</div><div class="chg up">+1.4%</div></div>
+    <div class="metric"><div class="label">BSI 超灵便型</div><div class="value">1,811</div><div class="chg up">+0.1%</div></div>
   </div>
 
-  <div class="nav">
-    <button class="active" onclick="showSection('shipping',this)">🚢 航运</button>
-    <button onclick="showSection('finance',this)">💰 财经</button>
-    <button onclick="showSection('politics',this)">🌍 时政</button>
-    <button onclick="showSection('ai',this)">🤖 AI/机器人</button>
+  <h3>💰 船型日租金（TCE）</h3>
+  <table>
+    <tr><th>船型</th><th>日均收益</th><th>动态</th></tr>
+    <tr><td>好望角型 (Capesize)</td><td>约 $40,357/天</td><td class="up">周涨8.6%，大西洋航线领涨</td></tr>
+    <tr><td>巴拿马型 (Panamax)</td><td>约 $19,054/天</td><td class="up">周涨5.7%，10月22日以来最高</td></tr>
+    <tr><td>超灵便型 (Supramax)</td><td>—</td><td class="flat">周涨1.2%，亚洲区运力偏紧</td></tr>
+    <tr><td>灵便型 (Handysize)</td><td>—</td><td class="flat">周涨2.3%，亚洲现货紧张尚未完全传导至运价</td></tr>
+  </table>
+
+  <h3>📈 市场动态</h3>
+  <ul>
+    <li><b>BDI连续第二日上涨</b>，站稳3,000点上方，创一个多月新高。第46周（截至11/13）BDI报2,980点，四大船型全线上涨，由大西洋航线好望角与巴拿马型引领。</li>
+    <li><b>结构分化信号：</b>远期运力数据显示，好望角/巴拿马航线趋于平衡或过剩（C5西澳-中国航线第15天仍过剩29艘），而<b>亚洲Supramax/Handysize已出现运力短缺</b>，小型船运价存在补涨空间。</li>
+    <li><b>铁矿石支撑：</b>中国需求削减幅度小于预期，铁矿石价格企稳，支撑好望角型需求。</li>
+    <li><b>集装箱/油运：</b>海湾袭击推升油价与地缘溢价，油运情绪受提振；新关税若落地，跨太平洋箱量与抢运节奏将再受扰动。</li>
+  </ul>
+
+  <div class="hl"><b>分析与机会：</b>短期干散货动能偏强，BDI站稳3000点后，Q4旺季+亚洲小型船运力紧张构成结构性机会；但好望角型远期过剩与关税对货量的潜在压制是主要风险。关注：① 亚洲区域航线小型船东弹性；② 油价上行受益的油运板块；③ 关税抢运窗口期的集装箱运价脉冲。</div>
+</div>
+
+<!-- ============ 财经 ============ -->
+<div class="card">
+  <h2>📈 全球财经</h2>
+
+  <h3>🇺🇸 美股（11月25日收盘 · 26日感恩节休市）</h3>
+  <div class="grid">
+    <div class="metric"><div class="label">S&P 500</div><div class="value">7,182.78</div><div class="chg down">-0.25%（盘中曾暴跌3.2%后收复）</div></div>
+    <div class="metric"><div class="label">Nasdaq 100</div><div class="value">—</div><div class="chg down">-0.64%（盘中一度触及熊市线-20%）</div></div>
+    <div class="metric"><div class="label">Dow Jones</div><div class="value">—</div><div class="chg up">+0.33%</div></div>
+    <div class="metric"><div class="label">Russell 2000</div><div class="value">—</div><div class="chg up">+0.71%</div></div>
   </div>
+  <ul>
+    <li><b>剧烈反转日：</b>S&P 500盘中暴跌3.2%后基本收复，收报7,182.78；纳指100盘中一度跌入技术性熊市（较10月高点-20%），抄底资金入场。资金呈现从超大盘科技向道指/小盘轮动的迹象。</li>
+    <li><b>个股：</b>NVIDIA -3.9%（S&P Global就其公司治理发出潜在评级下调警告）；Deere +4.4%；Lam Research -5.7%、Applied Materials -3.9%，半导体设备普跌；Analog Devices +6.4%。</li>
+    <li><b>宏观：</b>核心PCE通胀升至 <b>3.3%</b>（2023年以来最高），市场对 <b>12月加息</b> 的定价高达97.8%——"更高更久"重新成为基准情形。</li>
+    <li><b>今日（11/27）：</b>美股感恩节后缩短交易（美东1:00pm收盘），流动性偏薄，注意波动放大；关注纳指100能否守住26,000、S&P能否收复7,300。</li>
+  </ul>
 
-  <div class="container">
+  <h3>🌏 亚欧市场（11月26日）</h3>
+  <table>
+    <tr><th>指数</th><th>表现</th></tr>
+    <tr><td>恒生科技指数</td><td class="up">+4%+（半导体、光通信、PCB领涨；智谱02513.HK涨超15%）</td></tr>
+    <tr><td>台湾加权</td><td class="up">+1.96% → 38,944</td></tr>
+    <tr><td>日经225</td><td class="up">+1.53%</td></tr>
+    <tr><td>韩国KOSPI</td><td class="up">+0.62%（SK海力士+3.98%，三星+1.64%）</td></tr>
+  </table>
 
-    <!-- ==================== 航运板块 ==================== -->
-    <div id="shipping" class="section active">
-      <div class="card">
-        <h2>🚢 干散货：BDI反弹至3,068，好望角型重新领涨</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">BDI（11月24日）</div><div class="value">3,068</div><div class="up">▲ +68点 · +2.27%</div></div>
-          <div class="stat"><div class="label">BCI / 好望角型</div><div class="value">4,942</div><div class="up">▲ +163点 · +3.41%</div></div>
-          <div class="stat"><div class="label">BPI / 巴拿马型</div><div class="value">2,179</div><div class="up">▲ +30点 · 10月21日以来最高</div></div>
-          <div class="stat"><div class="label">BSI / 超灵便型</div><div class="value">1,811</div><div class="up">▲ +2点 · +0.1%</div></div>
-        </div>
-        <div class="highlight-box"><strong>结构判断：</strong>BDI在11月12日站上3,020后，11月13日至19日一度回落至2,901；11月24日全船型反弹，指数升至3,068，创10月5日以来新高。核心驱动仍是大船：Capesize日均收益升至41,314美元，显示铁矿/铝土矿货盘与太平洋—大西洋运力再平衡重新支撑市场。Panamax亦升至10月下旬以来高位，但Supramax仅微涨，说明本轮不是小宗商品全面走强，而是“铁矿链条+大西洋货盘”主导。</div>
-        <table>
-          <tr><th>指标</th><th>最新水平</th><th>变化</th><th>解读</th></tr>
-          <tr><td>BDI综合指数</td><td>3,068</td><td class="up">+68点 / +2.27%</td><td>七周高位；11月中旬回调被快速修复</td></tr>
-          <tr><td>好望角型日均收益</td><td>$41,314/日</td><td class="up">+$1,471/日</td><td>铁矿价格周度走强、FFA预期改善</td></tr>
-          <tr><td>巴拿马型日均收益</td><td>$19,611/日</td><td class="up">+$268/日</td><td>煤炭/谷物货盘稳定，大西洋需求回暖</td></tr>
-          <tr><td>超灵便型指数</td><td>1,811</td><td class="up">+2点 / +0.1%</td><td>小宗商品区域分化，弹性弱于大船</td></tr>
-        </table>
-        <p class="note">注：Baltic Exchange日度数据存在发布时滞；本页采用11月24日Baird Maritime/Reuters口径，并与11月19日回调数据交叉验证趋势。</p>
-      </div>
-
-      <div class="card">
-        <h2>📦 集装箱：WCI四连跌至$4,176，美线仍弱、欧线酝酿涨价</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">Drewry WCI（11月19日）</div><div class="value">$4,176/FEU</div><div class="down">▼ -3% WoW · 同比+126%</div></div>
-          <div class="stat"><div class="label">上海—纽约</div><div class="value">$8,194/FEU</div><div class="down">▼ -9% · 15周低点</div></div>
-          <div class="stat"><div class="label">上海—洛杉矶</div><div class="value">$7,026/FEU</div><div class="down">▼ -5% · 12周低点</div></div>
-          <div class="stat"><div class="label">上海—热那亚</div><div class="value">$4,436/FEU</div><div class="up">▲ +6% · 欧线/地线相对强</div></div>
-        </div>
-        <table>
-          <tr><th>航线 / 指标</th><th>最新值</th><th>变化</th><th>市场含义</th></tr>
-          <tr><td>上海—鹿特丹</td><td>$3,496/FEU</td><td class="flat">持平</td><td>亚欧线止跌，12月PSS/FAK尝试托底</td></tr>
-          <tr><td>跨太平洋空白航班</td><td>下周10班</td><td class="up">高于本周4班</td><td>船公司主动缩舱，但需求仍偏弱</td></tr>
-          <tr><td>北欧港口拥堵</td><td>恶化</td><td class="down">空箱回流延迟</td><td>可能阶段性收紧设备供给</td></tr>
-          <tr><td>12月欧线PSS</td><td>$1,000–1,600/FEU</td><td class="up">船公司公告</td><td>新合同季+春节前备货预期支撑</td></tr>
-          <tr><td>2,500 TEU一年期租（11/13）</td><td>$42,000/日</td><td class="up"> feeder/支线仍紧</td><td>二手箱船价格接近2022年中以来高位</td></tr>
-        </table>
-        <div class="news-item">
-          <div class="title">运价走弱但非崩盘：船公司用空白航班和旺季附加费对冲供给压力</div>
-          <div class="source">来源：<a href="https://www.interiordaily.com/article/9894798/drewry-reports-fourth-consecutive-weekly-decline-in-global-container-freight-rates" target="_blank">Drewry via InteriorDaily</a>、<a href="https://westworldtrade.com/en/blog/container-rates-fall-transpacific-november-2026" target="_blank">WestWorldTrade</a></div>
-          <div class="summary">WCI连续第四周下跌，主因跨太平洋需求疲弱；但亚洲—欧洲/地中海在12月新合同季与2027年春节前置货预期下，船公司计划征收1,000–1,600美元/FEU旺季附加费。若北欧拥堵继续恶化，空箱回流延迟可能在12月放大即期价波动。</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>🏗️ 新造船与二手船：新船价再创新高边缘，油轮S&amp;P金额创纪录</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">Clarksons新造船指数（11/20）</div><div class="value">187.26</div><div class="up">▲ +0.11点 WoW</div></div>
-          <div class="stat"><div class="label">VLCC / Suezmax新船价</div><div class="value">各+$0.5m</div><div class="up">▲ 大型油轮领涨</div></div>
-          <div class="stat"><div class="label">2026二手油轮成交</div><div class="value">$29.7bn</div><div class="up">▲ 前10月已创年度纪录</div></div>
-          <div class="stat"><div class="label">二手船价格指数（Q3）</div><div class="value">+2.5%</div><div class="up">▲ 环比Q2，接近2022年中高位</div></div>
-        </div>
-        <table>
-          <tr><th>资产 / 订单指标</th><th>最新数据</th><th>关键变化</th></tr>
-          <tr><td>全球新接订单（10月）</td><td>4.31m CGT / 142艘</td><td class="down">环比-56%，同比+5%</td></tr>
-          <tr><td>中国船厂手持订单</td><td>156.47m CGT / 68%份额</td><td class="up">韩国38.56m CGT / 17%</td></tr>
-          <tr><td>LNG船基准新船价（10/23）</td><td>$245m</td><td class="down">同比-$3m，中国竞争压价</td></tr>
-          <tr><td>超大型集装箱船新船价</td><td>约$242m</td><td class="down">自$266.5m回落</td></tr>
-          <tr><td>油轮二手成交数量</td><td>首10月较2022全年纪录+8%</td><td class="up">VLCC为绝对主力</td></tr>
-        </table>
-        <div class="news-item">
-          <div class="title">新造船“高价+长排期”继续，但高端船型价格开始出现分化</div>
-          <div class="source">来源：<a href="https://www.asiasis.com/news/news_en_view.php?idx_no=97549" target="_blank">Asiasis / Clarksons</a>、<a href="https://www.imarinenews.com/40688.html" target="_blank">iMarine</a>、<a href="https://cyprusshippingnews.com/2026/10/30/lng-carrier-prices-fall-to-245-million-threatening-korean-shipbuilders-margins" target="_blank">Cyprus Shipping News</a></div>
-          <div class="summary">Clarksons新造船指数11月20日升至187.26，VLCC与Suezmax各涨50万美元；但LNG船与超大型集装箱船价格同比下滑，反映中国船厂进入高端船型后带来的报价竞争。订单端10月环比腰斩，但手持订单仍足以支撑一线船厂至2028–2029年。</div>
-        </div>
-        <div class="news-item">
-          <div class="title">二手油轮市场进入“价格发现”阶段：现船溢价考验未来运价</div>
-          <div class="source">来源：<a href="https://www.xindemarinenews.com/news/2122345525392244737" target="_blank">Xinde Marine News / Splash247 / Clarksons Research</a></div>
-          <div class="summary">2026年前10个月二手油轮交易额达297亿美元，几乎为2025全年162亿美元的两倍；成交艘数也较2022年年度纪录高8%。这说明买家愿意为即时现金流支付高溢价，但也意味着一旦VLCC/Suezmax收益回落，高估值资产将面临重估。</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>🧭 航运分析与投资机会</h2>
-        <ul>
-          <li><strong>干散货：</strong>BDI重回3,000上方后，Capesize弹性仍最大；但11月中旬的急跌说明市场对铁矿需求和中国钢铁利润极敏感。短期关注澳洲/巴西发运、Simandou增量、冬储与钢厂利润。策略上偏向Capesize敞口高、资产负债表强的船东；Supramax/Handysize更适合作为区域贸易防御仓位。</li>
-          <li><strong>集装箱：</strong>即期价仍在探底，但欧线/地线12月PSS与春节前备货提供交易性反弹机会。关注空白航班执行率、北欧拥堵与洛杉矶/长滩劳工谈判；若跨太平洋继续走弱，船公司可能被迫进一步加大停航。</li>
-          <li><strong>油轮资产：</strong>二手船成交额创纪录是强周期信号，但不是无风险信号。高运价支撑Q4业绩，然而“现船贵、交期远”的组合在冲突缓和或OPEC供给恢复时会迅速压缩。追高二手机油轮需谨慎，优先看现代节能船与长约有保障资产。</li>
-          <li><strong>造船链：</strong>中国船厂份额约68%，韩国17%；关注高端LNG/超大型箱船价格承压与油轮、散货船价格坚挺之间的结构差异。双燃料主机、脱硫塔、能效改造与IMO净零框架相关设备仍是确定性增量。</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🔗 航运参考来源</h2>
-        <div class="source-list">
-          <a href="https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/broad-vessel-gains-lift-baltic-dry-bulk-index-to-seven-week-high" target="_blank">Baird Maritime / Reuters：BDI、BCI、BPI、BSI（11/24）</a> ｜
-          <a href="https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/capesize-supramax-declines-pull-baltic-dry-bulk-index-lower" target="_blank">Baird Maritime / Reuters：11/19回调</a> ｜
-          <a href="https://www.interiordaily.com/article/9894798/drewry-reports-fourth-consecutive-weekly-decline-in-global-container-freight-rates" target="_blank">Drewry：WCI与航线运价（11/19）</a> ｜
-          <a href="https://yihang-shipping.com/insights/index-12-november-2026" target="_blank">Yihang Shipping：SCFI/WCI/Freightos</a> ｜
-          <a href="https://www.asiasis.com/news/news_en_view.php?idx_no=97549" target="_blank">Asiasis：Clarksons新造船指数（11/20）</a> ｜
-          <a href="https://www.xindemarinenews.com/news/2122345525392244737" target="_blank">Xinde Marine：二手油轮S&amp;P纪录</a> ｜
-          <a href="https://www.euroseas.gr/files/Euroseas-Q3-2026.pdf" target="_blank">Euroseas Q3：集装箱船租价与二手船价</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== 财经板块 ==================== -->
-    <div id="finance" class="section">
-      <div class="card">
-        <h2>🌐 全球市场：AI抛售未止，道指翻身、纳指仍跌</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">道琼斯（11/25）</div><div class="value">+0.3%~+0.5%</div><div class="up">▲ 抹去逾1%盘中跌幅</div></div>
-          <div class="stat"><div class="label">标普500（11/25）</div><div class="value">-0.2%</div><div class="down">▼ 低位回收</div></div>
-          <div class="stat"><div class="label">纳斯达克综合（11/25）</div><div class="value">23,585.80</div><div class="down">▼ -147.73 / -0.62%</div></div>
-          <div class="stat"><div class="label">11/24收盘基准</div><div class="value">S&P 7,201.09</div><div class="flat">道指50,018.70 / 纳指23,733.54</div></div>
-        </div>
-        <div class="risk-box"><strong>当日主线：</strong>周三美股在AI/半导体抛售、新关税与更热PCE之间剧烈拉锯。纳指一度大跌后回收部分失地，道指在价值/能源/防御板块支撑下收涨；市场焦点转向12月是否加息25bp，以及AI资本开支回报能否覆盖更高融资成本。</div>
-        <table>
-          <tr><th>市场</th><th>最新表现</th><th>驱动因素</th></tr>
-          <tr><td>美国</td><td><span class="up">道指+0.3%~+0.5%</span>；<span class="down">标普-0.2%</span>；<span class="down">纳指-0.6%</span></td><td>PCE 3.8%强化12月加息预期；NVDA/半导体继续承压；逢低买盘入场</td></tr>
-          <tr><td>欧洲（11/25盘中/收盘报道）</td><td><span class="up">FTSE +0.8%</span>；<span class="up">DAX +1.1%</span>；<span class="up">CAC +0.7%</span></td><td>原油反弹提振能源股；基本金属普涨支撑矿业</td></tr>
-          <tr><td>亚洲（11/25）</td><td><span class="down">KOSPI -6%+</span>；<span class="down">日经 -2.88%</span>；<span class="down">CSI300 -1.49%</span>；<span class="down">恒指 -0.13%</span></td><td>全球AI/半导体抛售传导；关税与利率不确定性压制风险偏好</td></tr>
-          <tr><td>重点个股</td><td><span class="down">NVDA -5.07%</span>；<span class="down">LRCX -7.31%</span>；<span class="down">AMAT -6.09%</span>；<span class="down">MU -5.73%</span>；<span class="up">HPQ +10.79%</span></td><td>半导体设备/存储领跌；HP因业绩/AI PC预期反弹</td></tr>
-        </table>
-        <p class="note">注：道指收盘涨幅在不同快讯中记为+0.3%或+0.5%；纳指点位采用Yahoo Finance收盘数据。</p>
-      </div>
-
-      <div class="card">
-        <h2>🏦 宏观：PCE升至3.8%，GDP上修至4.3%，12月加息预期升温</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">10月PCE同比</div><div class="value">3.8%</div><div class="down">▲ 2023年以来最高</div></div>
-          <div class="stat"><div class="label">核心PCE同比</div><div class="value">3.3%</div><div class="down">▲ 高于预期3.2%</div></div>
-          <div class="stat"><div class="label">Q3 GDP年化</div><div class="value">4.3%</div><div class="up">▲ Q2为2.2%</div></div>
-          <div class="stat"><div class="label">12月加息25bp概率</div><div class="value">约98%</div><div class="down">▲ CME FedWatch口径</div></div>
-        </div>
-        <table>
-          <tr><th>数据 / 事件</th><th>结果</th><th>市场含义</th></tr>
-          <tr><td>PCE价格指数</td><td>环比+0.3%，同比+3.8%</td><td>通胀重新远离目标，限制美联储鸽派空间</td></tr>
-          <tr><td>核心PCE</td><td>环比+0.3%，同比+3.3%</td><td>服务与关税传导仍是核心压力</td></tr>
-          <tr><td>Q3 GDP终值</td><td>年化+4.3%</td><td>增长强、通胀高，形成“更高更久/再加息”组合</td></tr>
-          <tr><td>美联储Beige Book</td><td>能源、交通、医疗、保险、关税成本持续上升</td><td>企业难以完全转嫁成本，利润率承压</td></tr>
-          <tr><td>周四/周五安排</td><td>周四感恩节休市；周五提前至13:00 ET收盘</td><td>流动性下降，易放大波动</td></tr>
-        </table>
-        <div class="highlight-box"><strong>跨资产含义：</strong>强增长+高通胀组合通常利好短端美元现金与部分能源/价值股，但压制长久期科技估值。若12月加息落地且2027年点阵图继续偏鹰，AI/半导体的高资本开支叙事将接受更严苛的ROIC检验。</div>
-      </div>
-
-      <div class="card">
-        <h2>🛢️ 商品与加密：油金铜走强，BTC/ETH仍处极端恐惧</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">Brent原油</div><div class="value">$93.59</div><div class="up">▲ +2.3%</div></div>
-          <div class="stat"><div class="label">WTI原油</div><div class="value">$87.64</div><div class="up">▲ +1.9%</div></div>
-          <div class="stat"><div class="label">COMEX黄金</div><div class="value">$4,286.20</div><div class="up">▲ +0.5% · 终结四连跌</div></div>
-          <div class="stat"><div class="label">LME铜</div><div class="value">+0.8%</div><div class="up">▲ 基本金属普涨</div></div>
-        </div>
-        <table>
-          <tr><th>资产</th><th>最新状态</th><th>解读</th></tr>
-          <tr><td>BTC</td><td class="down">11/25跌破$59,000；11/26早盘回到$60,000附近仍脆弱</td><td>五连ETF流出约$570m、清算约$827m；恐惧贪婪指数降至7</td></tr>
-          <tr><td>ETH</td><td class="down">跌破$1,700</td><td>随BTC与科技股同步去杠杆；关键看$1,700能否收复</td></tr>
-          <tr><td>原油</td><td class="up">Brent $93.59 / WTI $87.64</td><td>能源股支撑欧洲市场；通胀预期再添变量</td></tr>
-          <tr><td>黄金</td><td class="up">$4,286.20，周度仍跌约2.3%</td><td>美元回落带来反弹，但鹰派Fed仍是上限</td></tr>
-          <tr><td>铜/基本金属</td><td class="up">LME铜+0.8%，铝/锌/镍普涨</td><td>能源转型与电网投资叙事仍在，但高价抑制下游补库</td></tr>
-        </table>
-        <div class="news-item">
-          <div class="title">加密市场与AI股出现同向去杠杆</div>
-          <div class="source">来源：<a href="https://economictimes.indiatimes.com/topic/bitcoin-btc-usd-price-ethereum-eth-and-xrp-today" target="_blank">Economic Times加密专题</a>、Yahoo Finance</div>
-          <div class="summary">BTC从11月23日Nvidia相关反弹高点回落，11月25日跌破59,000美元；ETF连续流出、强平放大波动。ETH跌破1,700美元。加密与AI股同步下跌说明本轮不是单一行业问题，而是高估值风险资产在利率上行预期下的共同压缩。</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>🧭 财经分析与投资机会</h2>
-        <ul>
-          <li><strong>美股：</strong>短期不宜把纳指盘中回收理解为调整结束。半导体设备、存储、AI云仍是高beta脆弱区；若12月加息落地，现金流强、回购高、估值已压缩的巨头相对占优。关注Dell/HP这类“AI硬件销售兑现但估值较低”的方向是否继续跑赢纯叙事AI股。</li>
-          <li><strong>债券/美元：</strong>PCE与GDP组合支持短端收益率高位；在Beige Book显示成本压力广泛存在时，做多长债仍需等待通胀二次确认。</li>
-          <li><strong>商品：</strong>原油反弹强化能源股相对收益；黄金在美元回调时反弹，但鹰派Fed限制趋势性上行。铜更像“高波动政策/电网投资”交易，而非单纯中国需求交易。</li>
-          <li><strong>加密：</strong>BTC 59,000–60,000是情绪观察区；ETF流向比单日反弹更重要。若流出停止且NVDA/纳指企稳，才具备交易性修复条件。</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🔗 财经参考来源</h2>
-        <div class="source-list">
-          <a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html" target="_blank">Yahoo Finance：11/25美股直播、PCE/GDP/Beige Book</a> ｜
-          <a href="https://www.chartmill.com/news/PWR/Chartmill-59190-SP-500-Top-Movers-November-25-2026-Gainers-and-Losers" target="_blank">ChartMill：11/25 S&amp;P 500涨跌榜</a> ｜
-          <a href="https://portfolio-terminal.com/markets/stock-market-close" target="_blank">Portfolio Terminal：11/24指数收盘</a> ｜
-          <a href="https://www.cnbc.com/2026/11/24/stock-market-today-live-updates-.html" target="_blank">CNBC：11/25盘前与亚欧市场</a> ｜
-          <a href="https://economictimes.indiatimes.com/topic/bitcoin-btc-usd-price-ethereum-eth-and-xrp-today" target="_blank">Economic Times：BTC/ETH</a> ｜
-          <a href="https://uk.finance.yahoo.com/news/ftse-100-climbs-oil-rebounds-084411618.html" target="_blank">Yahoo UK：欧洲股市、油、铜</a> ｜
-          <a href="https://www.wsj.com/business/basic-materials-roundup-market-talk-e3a8f635" target="_blank">WSJ Market Talk：黄金/白银</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== 时政板块 ==================== -->
-    <div id="politics" class="section">
-      <div class="card">
-        <h2>🌍 今日热点：特朗普对14个贸易伙伴抛出“产能过剩关税”</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">涉及经济体</div><div class="value">14个</div><div class="down">含中国、欧盟、日本、韩国、印度等</div></div>
-          <div class="stat"><div class="label">中国商品拟加征</div><div class="value">+20%</div><div class="down">针对补贴/过剩产能</div></div>
-          <div class="stat"><div class="label">法律路径</div><div class="value">Section 301</div><div class="flat">不叠加232汽车/钢铝税</div></div>
-          <div class="stat"><div class="label">市场影响</div><div class="value">风险偏好↓</div><div class="down">科技、出口链、航运情绪承压</div></div>
-        </div>
-        <div class="risk-box"><strong>核心事件：</strong>特朗普政府计划以“补贴与过剩产能”为由，对中国商品额外加征20%关税，并提高欧盟、日本、韩国、台湾等14个主要贸易伙伴进口税。官员强调新税不叠加于汽车、钢铝等232关税，且部分中国商品仍可能通过双边“Board of Trade”机制获得减免。</div>
-        <table>
-          <tr><th>区域</th><th>要点</th><th>影响链条</th></tr>
-          <tr><td>美国</td><td>中期选举失利后仍推进保护主义；关税用于替代被最高法院限制的紧急状态关税收入</td><td>进口成本、通胀、制造业回流议题升温</td></tr>
-          <tr><td>中国</td><td>使馆否认“过剩产能”，呼吁落实特朗普—习近平共识；未直接威胁报复</td><td>稀土、农产品采购、G20佛罗里达会晤成下一看点</td></tr>
-          <tr><td>欧盟/日韩/印度</td><td>被纳入14个经济体清单；韩国15%关税上限保留，但未来可升至25%</td><td>汽车、半导体、钢铝、造船链政策不确定性上升</td></tr>
-          <tr><td>俄乌/中东</td><td>APEC期间特朗普—普京—习近平三方会晤未产出重大突破；核军控、乌克兰、伊朗仍分歧深</td><td>地缘风险溢价仍在，但市场更关注关税与利率</td></tr>
-        </table>
-      </div>
-
-      <div class="card">
-        <h2>🇺🇸🇨🇳🇷🇺 APEC后续：三方会晤更多是姿态，实质成果有限</h2>
-        <div class="news-item">
-          <div class="title">特朗普—习近平—普京深圳会晤：象征意义大于协议</div>
-          <div class="source">来源：<a href="https://www.cnbc.com/2026/11/16/trump-xi-putin-ukraine-nuclear-tariffs-russia-iran-.html" target="_blank">CNBC</a>、<a href="https://www.aljazeera.com/news/2026/11/19/trump-meets-putin-and-xi-ahead-of-us-russia-china-trilateral-talks" target="_blank">Al Jazeera</a>、<a href="https://www.dw.com/en/apec-summit-what-trump-xi-and-putin-want/a-79970462" target="_blank">DW</a></div>
-          <div class="summary">这是三国领导人首次三方同场。议题覆盖核不扩散、乌克兰、伊朗、中东战争与贸易。分析普遍认为短期难有重大协议：特朗普想要核谈判与俄乌停火筹码，普京希望提升外交地位，习近平则通过“主场召集”强化全球治理形象。小企业担忧被大国交易边缘化。</div>
-        </div>
-        <div class="news-item">
-          <div class="title">新的关税清单与APEC休战并存：美国对华策略“边谈边压”</div>
-          <div class="source">来源：<a href="https://apnews.com/article/trump-tariffs-china-european-union-367083ea32f71fd7f70029ba7df66bf0" target="_blank">AP</a>、<a href="https://www.asahi.com/ajw/articles/17080603" target="_blank">Asahi / Reuters</a></div>
-          <div class="summary">特朗普在APEC与习近平会晤后仍宣布新关税，显示美国对华政策进入“战术稳定+结构施压”阶段：一方面维持Board of Trade、农产品采购与稀土谈判渠道，另一方面用301关税回应补贴与过剩产能。中国暂未报复，但保留后续反制空间。</div>
-        </div>
-        <div class="news-item">
-          <div class="title">韩国与日本面临“盟友也要付代价”的贸易现实</div>
-          <div class="source">来源：<a href="https://news.sbs.co.kr/english/article.do?news_id=N1008863933" target="_blank">SBS</a>、AP</div>
-          <div class="summary">美国维持对韩15%关税上限，但保留升至25%的空间；日本同样被列入新关税名单。对出口型经济体而言，美国市场规则的不确定性正在从“税率”扩展为“税率+产能过剩认定+双边机制豁免”的复合博弈。</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>🧭 时政深度：关税—通胀—航运的三角传导</h2>
-        <ul>
-          <li><strong>关税→通胀：</strong>Beige Book已提到关税相关成本上升；若新关税落地，美国进口价格与核心PCE下行空间被压缩，12月加息概率进一步巩固。</li>
-          <li><strong>通胀→利率→科技估值：</strong>强GDP与高PCE使“降息交易”彻底反转。高久期AI资产对贴现率最敏感，市场会更严格区分真实订单与概念性资本开支。</li>
-          <li><strong>贸易政策→航运：</strong>关税前置出货可能短期推高部分航线订舱，但若需求被提前透支，2027年合同季与春节后运价更容易承压。欧线PSS能否落地，是观察船公司议价权的关键窗口。</li>
-          <li><strong>地缘→资产价格：</strong>俄乌、伊朗、中东航线风险仍未解除；但一旦APEC后出现缓和信号，油轮风险溢价与黄金避险需求可能同步回落。</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🔗 时政参考来源</h2>
-        <div class="source-list">
-          <a href="https://apnews.com/article/trump-tariffs-china-european-union-367083ea32f71fd7f70029ba7df66bf0" target="_blank">AP：美国拟对14个贸易伙伴加征关税</a> ｜
-          <a href="https://www.asahi.com/ajw/articles/17080603" target="_blank">Asahi / Reuters：关税与中方回应</a> ｜
-          <a href="https://news.sbs.co.kr/english/article.do?news_id=N1008863933" target="_blank">SBS：韩国关税上限与美国通胀</a> ｜
-          <a href="https://www.cnbc.com/2026/11/16/trump-xi-putin-ukraine-nuclear-tariffs-russia-iran-.html" target="_blank">CNBC：特朗普—习近平—普京会晤</a> ｜
-          <a href="https://www.aljazeera.com/news/2026/11/19/trump-meets-putin-and-xi-ahead-of-us-russia-china-trilateral-talks" target="_blank">Al Jazeera：三方会谈现场</a> ｜
-          <a href="https://www.dw.com/en/apec-summit-what-trump-xi-and-putin-want/a-79970462" target="_blank">DW：APEC三方各自诉求</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== AI/机器人板块 ==================== -->
-    <div id="ai" class="section">
-      <div class="card">
-        <h2>🤖 今日头条：通用大模型开始“接管”机器人</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">OpenAI机器人团队</div><div class="value">并入研究/应用</div><div class="flat">否认解散，保留15个机器人岗位</div></div>
-          <div class="stat"><div class="label">GPT-6 Astra机器人基准</div><div class="value">74.8%</div><div class="up">▲ 模拟操作任务；专用模型51.0%</div></div>
-          <div class="stat"><div class="label">Google Gemini 4 Hydrogen</div><div class="value">替代专用模型</div><div class="up">▲ 优于Gemini Robotics ER 2</div></div>
-          <div class="stat"><div class="label">OpenAI人形机器人</div><div class="value">2027演示</div><div class="flat">仍无设计/名称/制造伙伴</div></div>
-        </div>
-        <div class="highlight-box"><strong>趋势判断：</strong>AI机器人正在从“专用机器人模型+专用控制栈”转向“通用多模态模型作为大脑，专用策略/硬件作为小脑与四肢”。OpenAI将机器人研究并入Mark Chen负责的研究体系、应用硬件并入Greg Brockman体系；Google一周后用更便宜的Gemini 4 Hydrogen替代Gemini Robotics ER 2。短期看这是成本与算力约束下的组织收敛，长期看是“谁掌握通用模型，谁定义机器人身体”的平台战。</div>
-        <table>
-          <tr><th>公司 / 事件</th><th>最新进展</th><th>意义</th></tr>
-          <tr><td>OpenAI</td><td>机器人团队重组；GPT-6 Astra可直接控制模拟机器人；Altman称2027年公开展示</td><td>通用模型路线压过专用机器人团队，但硬件落地仍未验证</td></tr>
-          <tr><td>Google DeepMind</td><td>Gemini 4 Hydrogen取代Gemini Robotics ER 2</td><td>低成本通用模型进入工业/机器人工作流</td></tr>
-          <tr><td>Anthropic</td><td>Claude Fable 5.2在RoboDojo双臂模拟中64.9%，高于Astra的29.8%（Anthropic自测）</td><td>双臂精细操作仍是通用模型的短板</td></tr>
-          <tr><td>NVIDIA</td><td>GR00T 2、Isaac Lab 3.0、Cosmos、Jetson Thor、参考人形设计</td><td>无论哪种机器人获胜，NVIDIA都想卖“机器人平台税”</td></tr>
-          <tr><td>Meta</td><td>与上海Fourier合作开发106磅人形“Max”</td><td>地缘安全审查与供应链本土化风险上升</td></tr>
-        </table>
-      </div>
-
-      <div class="card">
-        <h2>🏭 人形机器人融资与量产：钱继续流向工业与平台，家用仍待验证</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">Skild</div><div class="value">近$1.4bn</div><div class="up">▲ 估值$14bn+；自称ARR超$100m</div></div>
-          <div class="stat"><div class="label">Figure</div><div class="value">$39bn</div><div class="up">▲ 报道投后估值</div></div>
-          <div class="stat"><div class="label">Unitree</div><div class="value">Q3收入+69.93%</div><div class="up">▲ 上海上市后持续放量</div></div>
-          <div class="stat"><div class="label">XPENG Robotics</div><div class="value">$900m+协议</div><div class="up">▲ 估值$6.3bn+</div></div>
-        </div>
-        <table>
-          <tr><th>资金方向</th><th>代表案例</th><th>判断</th></tr>
-          <tr><td>机器人基础模型</td><td>Skild近$1.4bn；Physical Intelligence传谈$1bn+/$20bn；General Intuition $220m/$6.2bn</td><td>“大脑”仍是最贵赛道，但收入验证开始分化</td></tr>
-          <tr><td>全栈工业人形</td><td>Figure $39bn；Apptronik $935m+；NEURA最高$1.4bn；Humanoid $152m</td><td>工厂/物流场景最接近商业闭环</td></tr>
-          <tr><td>中国规模OEM</td><td>Unitree上市、XPENG协议、UBTech人形收入RMB590.3m、Astribot 10亿元</td><td>中国胜在供应链与量产速度，美国胜在单笔大额融资</td></tr>
-          <tr><td>家用/服务人形</td><td>7月至11月初无大型 dedicated home-humanoid round</td><td>安全、成本、任务泛化仍未过关</td></tr>
-        </table>
-        <div class="news-item">
-          <div class="title">Meta × Fourier引发“机器人供应链安全”争议</div>
-          <div class="source">来源：<a href="https://www.humanoidmegahub.com/news/category/technology" target="_blank">HumanoidMegaHub</a></div>
-          <div class="summary">Meta被曝与上海Fourier合作开发人形机器人“Max”，而华盛顿三天前刚将外国机器人列为安全风险。该事件可能成为美国审查AI机器人硬件供应链的标志性案例：模型可以全球化，执行器、传感器与整机制造却会被重新纳入国家安全框架。</div>
-        </div>
-        <div class="news-item">
-          <div class="title">NVIDIA的“卖铲人”策略：GR00T、Isaac、Cosmos、Jetson Thor全栈布局</div>
-          <div class="source">来源：<a href="https://www.humanoidmegahub.com/news/category/technology" target="_blank">HumanoidMegaHub</a>、NVIDIA GTC Berlin资料</div>
-          <div class="summary">NVIDIA在GTC Berlin集中发布Isaac Lab 3.0、Isaac OS、GR00T训练工作流、数据集、仿真资产与参考人形设计。其目标不是押注某一家机器人公司，而是让训练、仿真、边缘计算、安全认证都跑在NVIDIA栈上。</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>📉 AI概念股：NVDA再跌5%，半导体设备/存储承压</h2>
-        <div class="grid">
-          <div class="stat"><div class="label">NVDA（11/25）</div><div class="value">$147.51</div><div class="down">▼ -5.07%</div></div>
-          <div class="stat"><div class="label">LRCX</div><div class="value">$181.82</div><div class="down">▼ -7.31%</div></div>
-          <div class="stat"><div class="label">AMAT</div><div class="value">$304.03</div><div class="down">▼ -6.09%</div></div>
-          <div class="stat"><div class="label">MU</div><div class="value">$593.72</div><div class="down">▼ -5.73%</div></div>
-        </div>
-        <table>
-          <tr><th>个股</th><th>表现</th><th>解读</th></tr>
-          <tr><td>NVDA</td><td class="down">-5.07%至$147.51；一个月-28.71%</td><td>Jensen Huang回归提高治理与国会审查 stakes；AI交易对任何负面消息更敏感</td></tr>
-          <tr><td>半导体设备</td><td class="down">LRCX -7.31%、AMAT -6.09%</td><td>资本开支回报质疑+出口管制不确定性</td></tr>
-          <tr><td>存储/硬件</td><td class="down">MU -5.73%、SNDK -6.98%、ORCL -5.22%</td><td>AI服务器成本、数据中心融资与利润率担忧</td></tr>
-          <tr><td>反弹方向</td><td class="up">HPQ +10.79%、CHTR +7.01%、AXON +6.19%</td><td>低估值硬件、现金流与非纯AI叙事获资金轮动</td></tr>
-          <tr><td>Anthropic</td><td class="down">跌破IPO价</td><td>新上市AI资产在流动性收紧时承压</td></tr>
-        </table>
-      </div>
-
-      <div class="card">
-        <h2>🧭 AI/机器人分析与投资机会</h2>
-        <ul>
-          <li><strong>模型层：</strong>通用模型直接控制机器人是2026年最重要范式变化。短期降低专用机器人模型估值溢价，长期扩大模型调用量与仿真/数据需求。关注能证明真实任务成功率、而非只展示演示视频的团队。</li>
-          <li><strong>硬件层：</strong>执行器、减速器、灵巧手、力控传感器、边缘算力仍是瓶颈。NVIDIA平台化强化“卖铲人”逻辑；中国供应链在整机成本与迭代速度上占优，但面临美国安全审查。</li>
-          <li><strong>应用层：</strong>工业人形优于家用人形。汽车工厂、物流搬运、机床上下料、危险环境巡检更可能先形成付费闭环；家用场景需要等待安全标准、保险与维护体系。</li>
-          <li><strong>二级市场：</strong>AI股进入“证明ROIC”阶段。优先看订单可验证、毛利率稳定、现金流强且估值已压缩的公司；回避高资本开支、低利用率、依赖再融资的数据中心/AI云叙事。</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>🔗 AI/机器人参考来源</h2>
-        <div class="source-list">
-          <a href="https://www.humanoidsdaily.com/news/openai-robotics-team-reorganized-gpt-6-astra" target="_blank">Humanoids Daily：OpenAI机器人重组与GPT-6 Astra</a> ｜
-          <a href="https://tech.yahoo.com/ai/articles/exclusive-openai-disbands-stand-alone-170530559.html" target="_blank">Yahoo Tech：OpenAI机器人团队重组细节</a> ｜
-          <a href="https://newmarketpitch.com/blogs/news/humanoid-robotics-money-where" target="_blank">New Market Pitch：人形机器人资金流向</a> ｜
-          <a href="https://presspool.ai/niches/humanoid-robots" target="_blank">Presspool：人形机器人公司与融资</a> ｜
-          <a href="https://www.humanoidmegahub.com/news/category/technology" target="_blank">HumanoidMegaHub：Meta/Fourier、NVIDIA、执行器</a> ｜
-          <a href="https://www.chartmill.com/news/PWR/Chartmill-59190-SP-500-Top-Movers-November-25-2026-Gainers-and-Losers" target="_blank">ChartMill：AI/半导体个股表现</a>
-        </div>
-      </div>
-    </div>
-
+  <h3>🛢️ 大宗商品</h3>
+  <div class="grid">
+    <div class="metric"><div class="label">布伦特原油</div><div class="value">$95.58</div><div class="chg up">海湾袭击推动，$100在望</div></div>
+    <div class="metric"><div class="label">WTI原油</div><div class="value">$84.70</div><div class="chg up">持续攀升</div></div>
+    <div class="metric"><div class="label">黄金</div><div class="value">~$3,570-3,600</div><div class="chg flat">盘中跌破$3,500后回升</div></div>
+    <div class="metric"><div class="label">白银</div><div class="value">—</div><div class="chg up">+1%，跑赢黄金</div></div>
   </div>
+  <ul>
+    <li><b>油：</b>海湾袭击事件推升供应风险溢价，布伦特挑战$100关口。</li>
+    <li><b>金：</b>核心PCE超预期→加息预期强化→金价承压，盘中创逾一年新低后随美元/收益率回落修复至$3,600附近；COMEX未平仓合约大幅缩减。AI股反弹降低"卖金换流动性"需求，买盘回归。</li>
+  </ul>
 
-  <div class="footer">
-    <p>简报由 AI 自动生成，资讯仅供参考，不构成投资建议。</p>
-    <p>发布：GitHub Pages / mast0506.github.io/daily-briefing/ ｜ 生成时间：2026-11-26 07:00 SGT</p>
-  </div>
+  <h3>₿ 加密货币</h3>
+  <ul>
+    <li><b>BTC ~$60,700-61,000</b>（+3.2%），较11月20日低点（$1.3B强制平仓后）反弹约10%。</li>
+    <li><b>现货ETF连续第7日净流出</b>，单日-$453M（贝莱德IBIT为主）；期权市场看跌持仓仍显著多于看涨。</li>
+    <li>监管/机构动态：Fidelity提交Chainlink基金申请；比特币储备法案提交众议院全会。ETH随大盘反弹，恐慌贪婪指数转向温和乐观。</li>
+  </ul>
 
-  <script>
-    function showSection(id, btn) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      btn.classList.add('active');
-      window.scrollTo({top:0, behavior:'smooth'});
-    }
-  </script>
+  <div class="hl gold"><b>跨资产研判：</b>核心矛盾="通胀粘性(3.3%)+12月加息(97%)+关税重启"vs"AI估值消化"。短期：① 美股波动未消，节后薄流动性下警惕二次探底，道指/价值/小盘相对占优；② 油价是最确定的多头主线（地缘+供给），$100布伦特不是终点；③ 黄金在加息周期重启下难有趋势性行情，$3,500一线反复争夺；④ BTC处于ETF流出+去杠杆后的筑底阶段，$60K心理关口得失关键。</div>
+</div>
+
+<!-- ============ AI/机器人 ============ -->
+<div class="card">
+  <h2>🤖 AI 与机器人</h2>
+
+  <h3>🔥 头条：OpenAI GPT-6.2 Astra 登顶人形机器人基准测试</h3>
+  <ul>
+    <li>Artificial Analysis发布 <b>AA-Robotics-Sim v0.1</b> 基准（11/25）：9个前沿大模型操控虚拟宇树G1人形机器人（29关节、三指灵巧手、头戴相机）完成10项家庭/工业任务。<b>OpenAI GPT-6.2 Astra 击败 Anthropic 与 Google 模型</b>，前三名中占两席。</li>
+    <li>能力边界依然清晰：最佳模型能弹玩具钢琴，却无法把一件衣物放进洗衣机——"走到房间"易，"到位后操作"难，移动操作（mobile manipulation）仍是硬骨头。</li>
+  </ul>
+
+  <h3>🏢 巨头动态</h3>
+  <ul>
+    <li><b>NVIDIA 宫斗落幕：</b>黄仁勋11月12日因个人风波辞职 → <b>11月23日董事会一致投票复任</b>，称获"美国政府高层反馈"确认无国家安全风险。特朗普宣称此为他的功劳。但S&P Global以公司治理为由警告可能下调评级，NVDA当日-3.9%。</li>
+    <li><b>NVIDIA GR00T 2 发布（CoRL 2026）：</b>世界动作模型可从<b>人类第一视角视频</b>学习技能，训练数据含40.3万小时第一人称视频；同步发布 Isaac Lab 3.0（Newton物理引擎，训练吞吐量最高2.5倍）及 Human-1M-100K 数据集（10万小时人类视频，允许商用）。机器人基础模型竞争进入"数据规模"阶段。</li>
+    <li><b>OpenAI 解散独立机器人团队：</b>研究人员并入主线，战略转向"通用大模型直接控制机器人"；自研人形机器人目标2027年公开演示（此前与Figure合作已于2025年2月终止）。</li>
+    <li><b>Google</b> 推进多智能体（multi-agent）研究；<b>Anthropic</b> 参与AI抛售潮领跌；<b>ElevenLabs</b> 发布新语音能力；<b>Microsoft 365</b> 出现服务中断。</li>
+  </ul>
+
+  <h3>💹 AI 概念股</h3>
+  <table>
+    <tr><th>标的</th><th>动态</th></tr>
+    <tr><td>NVDA</td><td class="down">-3.9%（治理评级警告+AI抛售），此前因黄仁勋复任单日暴涨33%后回吐</td></tr>
+    <tr><td>Lam Research / Applied Materials</td><td class="down">-5.7% / -3.9%，半导体设备承压</td></tr>
+    <tr><td>Anthropic（未上市）</td><td>被视为本轮AI抛售的风眼之一</td></tr>
+    <tr><td>港股AI链</td><td class="up">恒生科技+4%，智谱+15%，SK海力士+4%（HBM逻辑）</td></tr>
+  </table>
+
+  <div class="hl purple"><b>深度观察：</b>行业正沿两条线收敛——① <b>通用模型吞噬专用栈</b>：OpenAI解散机器人团队、GR00T 2用人类视频训练，说明"大模型+仿真+海量人类数据"路线正在取代为机器人单独建模的旧范式；② <b>估值消化期</b>：纳指盘中入熊、NVDA治理折价、加息预期回归，AI板块从"信仰定价"切换到"现金流定价"。短期波动大，但基准测试显示模型操作能力逐月跃迁——回调或是长线布局窗口，优选有真实订单兑现的算力/机器人供应链。</div>
+</div>
+
+<footer>
+  简报由 AI 自动生成 · 数据来源：AP / CNBC / Politico / TradingEconomics / Baltic Exchange / Saxo / XTB / Fortune / eWeek / TechRepublic 等<br>
+  仅供参考，不构成投资建议 · <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a>
+</footer>
+
+</div>
 </body>
 </html>
