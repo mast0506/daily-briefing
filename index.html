@@ -3,43 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日深度简报 · 2026年11月27日</title>
+<title>每日深度简报 · 2026年11月28日</title>
 <style>
   :root{
     --bg:#0d1117;--card:#161b22;--card2:#1c2330;--border:#2d333b;
     --text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;
-    --up:#3fb950;--down:#f85149;--gold:#d29922;--purple:#bc8cff;
+    --up:#3fb950;--down:#f85149;--gold:#d29922;--purple:#bc8cff;--cyan:#39c5cf;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:20px}
-  .wrap{max-width:960px;margin:0 auto}
-  header{text-align:center;padding:36px 20px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(135deg,#161b22 0%,#1a2233 100%);margin-bottom:24px}
-  header h1{font-size:28px;letter-spacing:2px}
-  header .date{color:var(--muted);margin-top:8px;font-size:14px}
-  header .tags{margin-top:14px}
-  header .tag{display:inline-block;padding:3px 12px;margin:3px;border-radius:20px;font-size:12px;border:1px solid var(--border);color:var(--muted)}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:24px}
-  .card h2{font-size:20px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-  .card h3{font-size:16px;margin:20px 0 10px;color:var(--accent)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
-  .metric{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.72;padding:20px}
+  .wrap{max-width:1040px;margin:0 auto}
+  header{text-align:center;padding:38px 22px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,#161b22 0%,#182236 55%,#121826 100%);margin-bottom:24px}
+  header h1{font-size:30px;letter-spacing:2px}
+  header .date{color:var(--muted);margin-top:10px;font-size:14px}
+  header .tags{margin-top:15px}
+  header .tag{display:inline-block;padding:4px 12px;margin:3px;border-radius:20px;font-size:12px;border:1px solid var(--border);color:var(--muted);background:rgba(255,255,255,.02)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 10px 30px rgba(0,0,0,.16)}
+  .card h2{font-size:21px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+  .card h3{font-size:16px;margin:22px 0 10px;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+  .metric{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;min-height:104px}
   .metric .label{font-size:12px;color:var(--muted)}
-  .metric .value{font-size:20px;font-weight:700;margin:4px 0}
+  .metric .value{font-size:21px;font-weight:800;margin:5px 0}
   .metric .chg{font-size:13px}
-  .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
+  .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}.gold{color:var(--gold)}.purple{color:var(--purple)}.cyan{color:var(--cyan)}
   table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
-  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border)}
-  th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase}
-  ul{padding-left:20px}
-  li{margin:8px 0}
-  .hl{background:var(--card2);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14px}
-  .hl.gold{border-left-color:var(--gold)}
-  .hl.red{border-left-color:var(--down)}
-  .hl.green{border-left-color:var(--up)}
-  .hl.purple{border-left-color:var(--purple)}
-  .src{color:var(--muted);font-size:12px}
-  footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
+  th,td{padding:10px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  tr:hover td{background:rgba(88,166,255,.04)}
+  ul{padding-left:21px}
+  li{margin:9px 0}
+  .hl{background:var(--card2);border-left:3px solid var(--accent);padding:15px 17px;border-radius:0 12px 12px 0;margin:15px 0;font-size:14px}
+  .hl.gold{border-left-color:var(--gold)}.hl.red{border-left-color:var(--down)}.hl.green{border-left-color:var(--up)}.hl.purple{border-left-color:var(--purple)}.hl.cyan{border-left-color:var(--cyan)}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .mini{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .mini h4{font-size:14px;margin-bottom:8px;color:var(--text)}
+  .src{color:var(--muted);font-size:12px;margin-top:12px}
+  .note{font-size:12px;color:var(--muted);margin-top:10px}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 10px 10px}
   a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .divider{height:1px;background:var(--border);margin:22px 0}
+  @media(max-width:640px){body{padding:12px}.card{padding:20px}header h1{font-size:24px}.metric .value{font-size:18px}}
 </style>
 </head>
 <body>
@@ -47,260 +52,269 @@
 
 <header>
   <h1>📊 每日深度简报</h1>
-  <div class="date">2026年11月27日 星期五 · 北京时间 07:30 · 数据截至 11月26日（美股因感恩节休市，采用11/25收盘）</div>
+  <div class="date">2026年11月28日 星期六 · 新加坡时间 07:00 · 数据截至 11月27日美股收盘 / 11月28日早盘前</div>
   <div class="tags">
     <span class="tag">🚢 航运</span><span class="tag">📈 财经</span>
     <span class="tag">📰 时政</span><span class="tag">🤖 AI/机器人</span>
+    <span class="tag">🔗 GitHub Pages</span>
   </div>
 </header>
 
-<!-- ============ 航运 ============ -->
+<!-- ============ 摘要 ============ -->
 <div class="card">
-  <h2>🚢 航运市场</h2>
-
-  <h3>📊 波罗的海交易所核心指数（11月25-26日）</h3>
-  <div class="grid">
-    <div class="metric"><div class="label">BDI 干散货综合</div><div class="value">3,152</div><div class="chg up">+1.45% · 11/26</div></div>
-    <div class="metric"><div class="label">BCI 好望角型</div><div class="value">5,014</div><div class="chg up">+1.14% · 11/25</div></div>
-    <div class="metric"><div class="label">BPI 巴拿马型</div><div class="value">2,223</div><div class="chg up">+0.63% · 11/25</div></div>
-    <div class="metric"><div class="label">BSI 超灵便型</div><div class="value">1,814</div><div class="chg up">+0.61% · 11/25</div></div>
-    <div class="metric"><div class="label">BHSI 灵便型</div><div class="value">1,079</div><div class="chg flat">11/25</div></div>
-    <div class="metric"><div class="label">BDTI 原油轮</div><div class="value">1,331</div><div class="chg down">-2.28% · 11/25</div></div>
-    <div class="metric"><div class="label">BCTI 成品油轮</div><div class="value">631</div><div class="chg down">-2.17% · 11/25</div></div>
+  <h2>🧭 今日总览</h2>
+  <div class="cols">
+    <div class="mini">
+      <h4>市场主线</h4>
+      <ul>
+        <li>美股在感恩节后的缩短交易日强势反弹，S&P 500 涨 <b>1.6%</b>，Nasdaq 涨 <b>2.3%</b>；AI/半导体成为修复核心，但11月整体仍是高波动月。</li>
+        <li>干散货 BDI 周五小幅回落至 <b>3,137</b>，仍录得周涨约 <b>4.6%</b>；好望角型获利回吐，巴拿马/超灵便型继续上行。</li>
+        <li>集装箱运价明显分化：跨太平洋继续下跌，亚洲—地中海/欧洲在旺季附加费与春节前备货预期下走强。</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>风险雷达</h4>
+      <ul>
+        <li>美国拟对14个贸易伙伴加征新关税，中国税率20%、谈判破裂时最高或达40%；中方称保留采取必要措施权利。</li>
+        <li>中东袭击与霍尔木兹/红海航运风险推升能源与保险成本，油运、集运、航空与化工链均受扰动。</li>
+        <li>AI 交易从“叙事扩张”进入“回报验证”阶段：资本开支、债务融资、出口管制与安全阈值共同决定估值弹性。</li>
+      </ul>
+    </div>
   </div>
-  <ul>
-    <li>BDI报3,152点（11/26，Trading Economics），单日+1.45%，延续升势站稳3,000上方；市场模型季度末目标3,380点。</li>
-    <li>干散货四大船型11/25全线走强：BCI 5,014（+1.14%）、BPI 2,223（+0.63%）、BSI 1,814（+0.61%）；油运板块回调，BDTI 1,331（-2.28%）、BCTI 631（-2.17%）。</li>
-  </ul>
-
-  <h3>💰 各船型日租金（TCE）</h3>
-  <table>
-    <tr><th>船型</th><th>日均收益</th><th>动态</th></tr>
-    <tr><td>Capesize 好望角型（5TC）</td><td>$36,002/天（11/26）· 周均 $35,962</td><td class="up">大西洋航线领涨，周涨约8.6%</td></tr>
-    <tr><td>Panamax 巴拿马型</td><td>约 $19,054/天</td><td class="up">周涨5.7%，10月22日以来最高</td></tr>
-    <tr><td>Supramax 超灵便型</td><td>—</td><td class="flat">周涨1.2%，亚洲区运力偏紧</td></tr>
-    <tr><td>Handysize 灵便型</td><td>—</td><td class="flat">周涨2.3%，亚洲现货紧张尚未完全传导至运价</td></tr>
-    <tr><td>VLCC 超大型油轮</td><td>—</td><td class="down">BDTI回落，运价随油价高位震荡</td></tr>
-    <tr><td>Suezmax 苏伊士型 / Aframax 阿芙拉型</td><td>—</td><td class="down">成品油轮运价指数走弱（BCTI -2.17%）</td></tr>
-  </table>
-  <div class="src">来源：Baltic Exchange / Trading Economics / Saxo，2026-11-25/26</div>
-
-  <h3>🏗️ 新造船订单详情</h3>
-  <table>
-    <tr><th>时间</th><th>船东/买方</th><th>船型</th><th>数量</th><th>船厂</th><th>备注</th></tr>
-    <tr><td>第47周（11/16-22）</td><td>全行业合计</td><td>全船型</td><td>167艘</td><td>—</td><td>合计2,762,473 DWT；其中油轮28艘/2,278,600 DWT（7家船厂/7家船东）、散货船4艘/324,000 DWT、气体船7艘、海工118艘、客船4艘、杂货船3艘</td></tr>
-    <tr><td>11/17-23当周</td><td>Navios</td><td>成品油轮 50,000 dwt</td><td>2艘</td><td>芜湖造船厂</td><td>—</td></tr>
-    <tr><td>11/17-23当周</td><td>JHI Steamship</td><td>成品油轮 50,000 dwt</td><td>2艘</td><td>K Shipbuilding（韩国）</td><td>—</td></tr>
-    <tr><td>11/18开工</td><td>—（Jones Act项目）</td><td>MR成品油轮 49,500 dwt</td><td>4艘（首艘开工）</td><td>Hanwha Philly Shipyard（美国）</td><td>2026年11月18日首艘切钢，该项目首批MR新造</td></tr>
-    <tr><td>2026年内累计</td><td>—</td><td>散货船 211,000 dwt + VLCC 319,000 dwt</td><td>4艘散货 + 6艘VLCC</td><td>芜湖造船厂南通基地</td><td>创该基地接单吨位纪录</td></tr>
-    <tr><td>年内（背景）</td><td>Yangzijiang Maritime</td><td>Kamsarmax 82,000 dwt + LR2 114,000 dwt</td><td>4艘散货 + 7艘油轮</td><td>中国船厂</td><td>2029-2030年交付；其新造组合达111艘（含备选），过去10个月签订18艘新造销售合同，总值8.08亿美元</td></tr>
-  </table>
-  <div class="src">来源：New-Ships（第47周订单簿）/ Lloyd's List / Hanwha Philly / MarineLink，2026-11</div>
-
-  <h3>🔄 二手船交易（上海航交所周报，11/21发布，覆盖11/10-16周度成交）</h3>
-  <div class="grid">
-    <div class="metric"><div class="label">上海船舶价格指数</div><div class="value">1,324.36</div><div class="chg up">+0.83%</div></div>
-    <div class="metric"><div class="label">二手散货船成交</div><div class="value">14艘 / 79.5万dwt</div><div class="chg flat">$2.70亿 · 平均船龄14.93年</div></div>
-    <div class="metric"><div class="label">二手油轮成交</div><div class="value">14艘 / 77.6万dwt</div><div class="chg flat">$6.04亿 · 平均船龄11.21年</div></div>
-  </div>
-  <div class="src">来源：上海航运交易所（经新浪财经转载），2026-11-21</div>
-
-  <h3>📰 行业新闻</h3>
-  <ul>
-    <li><b>BDI站稳3,000点创一个多月新高</b>（11/24-26）：大西洋航线好望角与巴拿马型领涨；中国铁矿石需求削减小于预期，矿价企稳支撑Capesize。<span class="src">[Trading Economics / Saxo 11/26]</span></li>
-    <li><b>结构分化信号</b>：远期运力数据显示C5西澳-中国航线第15天仍过剩29艘，好望角/巴拿马趋于平衡；而<b>亚洲Supramax/Handysize已现运力短缺</b>，小型船运价有补涨空间。<span class="src">[Saxo 11/25]</span></li>
-    <li><b>芜湖造船厂南通基地接单创纪录</b>：2026年内相继获4艘21.1万吨散货船、6艘31.9万吨VLCC订单，刷新造船企业接单吨位纪录；该基地已向恒通海悦、港航平5等交付多个海上风电运维平台。<span class="src">[MarineLink/百度百科 11月]</span></li>
-    <li><b>韩国造船产能动态</b>：K Shipbuilding获JHI Steamship两艘5万吨成品油轮订单；扬子江船业扬子宏远新厂（含VLCC船坞、1800吨吊机、年产能80万dwt）预计2026年内投产。<span class="src">[Lloyd's List / TradeWinds 11月]</span></li>
-    <li><b>关税与货量风险</b>：美国11/26公布301拟议关税（对华最高40%），若2027年落地将扰动跨太平洋箱量与抢运节奏。<span class="src">[NPR 11/26]</span></li>
-  </ul>
-
-  <div class="hl"><b>航运研判：</b>干散货短期动能偏强——BDI站稳3,000点后，Q4旺季+亚洲小型船运力紧张构成结构性机会；油运随BDTI/BCTI回调进入观望，但海湾地缘溢价（布伦特冲$95+）为油轮运价托底。风险端：好望角远期过剩、301关税对货量的潜在压制。关注：① 亚洲区域航线小型船东弹性；② 油价上行受益的油运板块；③ 关税抢运窗口期的集装箱运价脉冲。</div>
-</div>
-
-<!-- ============ 财经 ============ -->
-<div class="card">
-  <h2>📈 全球财经</h2>
-
-  <h3>🌏 全球市场概览（11月26日收盘，美股为11/25收盘）</h3>
-  <div class="grid">
-    <div class="metric"><div class="label">上证指数</div><div class="value">3,476.88</div><div class="chg up">+0.01%</div></div>
-    <div class="metric"><div class="label">深证成指</div><div class="value">10,084.04</div><div class="chg down">-0.02%</div></div>
-    <div class="metric"><div class="label">创业板指</div><div class="value">2,189.82</div><div class="chg up">+0.29%</div></div>
-    <div class="metric"><div class="label">科创50</div><div class="value">1,169.99</div><div class="chg down">-1.36%</div></div>
-    <div class="metric"><div class="label">恒生指数</div><div class="value">22,226.88</div><div class="chg up">+1.19%（+260.87）</div></div>
-    <div class="metric"><div class="label">道琼斯（11/25）</div><div class="value">50,182.95</div><div class="chg up">+0.33%</div></div>
-    <div class="metric"><div class="label">S&P 500（11/25）</div><div class="value">7,182.78</div><div class="chg down">-0.25%</div></div>
-    <div class="metric"><div class="label">纳斯达克（11/25）</div><div class="value">23,585.80</div><div class="chg down">-0.62%</div></div>
-  </div>
-
-  <h3>🇨🇳 A股详情（11/26）</h3>
-  <ul>
-    <li>三大指数涨跌不一：沪指+0.01%收报3,476.88（仍未收复3,500点），深成指-0.02%，创业板指+0.29%；科创50领跌-1.36%。</li>
-    <li>沪深两市成交<b>1.3万亿元</b>，较上一交易日缩量657亿元；全市场3,642只个股下跌、1,766只上涨。</li>
-    <li>板块：PCB、存储芯片、算力概念活跃，CPO概念尾盘回升；贵金属、煤炭等周期板块涨幅居前；<b>银行板块午后走强</b>，南京银行、成都银行股价创历史新高。航空机场、文娱用品、生物制品、人形机器人、AI漫剧等跌幅居前。</li>
-  </ul>
-  <div class="src">来源：财新数据 11/26</div>
-
-  <h3>🇭🇰 港股（11/26）</h3>
-  <ul>
-    <li>恒生指数收报22,226.88，<b>+260.87（+1.19%）</b>；盘中最高22,543.75。</li>
-    <li>恒生科技夜盘报3,398点，-0.50%。</li>
-  </ul>
-  <div class="src">来源：Yahoo Finance 11/26</div>
-
-  <h3>🇺🇸 美股（11/25收盘 · 11/26感恩节休市 · 11/27黑色星期五半天交易）</h3>
-  <ul>
-    <li><b>剧烈反转日</b>：S&P 500盘中一度暴跌3.2%后基本收复，收报7,182.78（-0.25%）；纳指盘中一度较10月高点回撤20%（技术性熊市边缘），抄底资金入场；道指+0.33%收报50,182.95；小盘Russell 2000 +0.71%。资金呈从超大盘科技向道指/小盘轮动迹象。</li>
-    <li><b>个股</b>：NVIDIA 11/25收报$149.30（-3.91%），盘后回升至$151.22（+1.29%）；市值3.67万亿美元，P/E 16.04，52周区间$124.50-243.37。S&P Global就其公司治理发出潜在评级下调警告。Deere +4.4%；Lam Research -5.7%、Applied Materials -3.9%（半导体设备普跌）；Analog Devices +6.4%。</li>
-    <li><b>宏观</b>：美国10月<b>核心PCE通胀升至3.3%</b>（预期3.2%，2023年以来最高）；市场对<b>12月加息25bp</b>的定价高达98%——"更高更久"重新成为基准情形。</li>
-    <li><b>今日（11/27）</b>：美股感恩节后缩短交易（美东13:00收盘），流动性偏薄，注意波动放大。</li>
-  </ul>
-  <div class="src">来源：Yahoo Finance / CNBC / Forbes 11/25-26</div>
-
-  <h3>🌏 亚太其他（11/26）</h3>
-  <table>
-    <tr><th>指数</th><th>表现</th></tr>
-    <tr><td>台湾加权</td><td class="up">+1.96% → 38,944</td></tr>
-    <tr><td>日经225</td><td class="up">+1.53%</td></tr>
-    <tr><td>韩国KOSPI</td><td class="up">+0.62%（SK海力士+3.98%，三星+1.64%）</td></tr>
-  </table>
-
-  <h3>🛢️ 大宗商品</h3>
-  <div class="grid">
-    <div class="metric"><div class="label">布伦特原油</div><div class="value">$94.90</div><div class="chg up">+0.49% · 开盘$94.45</div></div>
-    <div class="metric"><div class="label">WTI原油</div><div class="value">$84.44</div><div class="chg up">+1.12% · 开盘$83.78</div></div>
-    <div class="metric"><div class="label">黄金</div><div class="value">$3,581.52</div><div class="chg down">-0.16%</div></div>
-    <div class="metric"><div class="label">白银</div><div class="value">$41.60</div><div class="chg down">-1.72%</div></div>
-  </div>
-  <ul>
-    <li><b>油</b>：海湾地区袭击事件推升供应风险溢价，布伦特挑战$95、$100在望；年内涨幅持续扩大。</li>
-    <li><b>金</b>：核心PCE超预期→加息预期强化→金价承压，盘中创逾一年新低后修复至$3,580附近；COMEX未平仓合约大幅缩减。AI股反弹降低"卖金换流动性"需求，买盘回归。</li>
-    <li><b>国内成品油</b>：11月26日24时起，国内汽、柴油价格每吨分别<b>下调440元、425元</b>。<span class="src">[央视新闻 11/26]</span></li>
-  </ul>
-  <div class="src">来源：Forbes Advisor / TradingEconomics 11/26</div>
-
-  <h3>₿ 加密货币</h3>
-  <ul>
-    <li><b>BTC ~$60,584</b>（11/26收盘，+1.6%），日内区间$59,800-61,580，较11月20日低点（约$13亿强制平仓后）反弹约10%。</li>
-    <li><b>ETH $1,640.88</b>（-2.11%），跑输大盘。</li>
-    <li><b>现货ETF连续第7日净流出</b>，单日-4.53亿美元（贝莱德IBIT为主）；期权市场看跌持仓仍显著多于看涨。Fidelity提交Chainlink基金申请；比特币储备法案提交众议院全会。恐慌贪婪指数转向温和乐观。</li>
-  </ul>
-
-  <h3>🏦 宏观与央行</h3>
-  <ul>
-    <li><b>美联储</b>：核心PCE 3.3%（10月）超预期，12月加息25bp概率98%；"更高更久"回归基准情形。<span class="src">[Forbes/CNBC 11/25]</span></li>
-    <li><b>关税</b>：特朗普11/25宣布新20%关税；11/26依据301条款产能调查提议对14个贸易伙伴加征——<b>中国最高40%（协议税率20%）、越南35%（未达成协议）、柬埔寨/印尼/泰国/孟加拉/马来西亚18%、欧盟/日本/韩国/台湾/瑞士15%、新加坡10%</b>；预计2027年初生效。此前最高法院已推翻其今年早些时候的全球性关税，此次为"重建"关税议程。商务部回应：注意到301拟议措施中对300亿美元对等降税清单产品进行了豁免，望美方加快程序、推动对等降税安排尽快落地。<span class="src">[NPR/商务部 11/26]</span></li>
-    <li><b>中美经贸</b>：11月23-24日中美贸易理事会项下<b>农业工作组首次会议</b>在北京举行，就农产品监管及市场准入、农产品贸易坦诚深入交流。<span class="src">[新华社 11/25]</span></li>
-  </ul>
-
-  <div class="hl gold"><b>💡 投资机会分析：</b><br>
-  ① <b>原油多头主线</b>：地缘（海湾袭击）+供给约束下布伦特$95→$100是最确定的交易，关注油服、油运弹性标的；<br>
-  ② <b>美股防御轮动</b>：核心PCE 3.3%+12月加息98%定价，超大盘科技估值继续消化，道指/价值/小盘（Russell 2000 +0.71%）相对占优，警惕节后薄流动性下纳指二次探底；<br>
-  ③ <b>A股结构行情</b>：缩量至1.3万亿下算力硬件（PCB/存储/CPO）与银行（南京银行、成都银行新高）双主线，回避人形机器人等前期高位题材；<br>
-  ④ <b>黄金观望</b>：加息周期重启下难有趋势行情，$3,500一线反复争夺，等待实际利率见顶信号；<br>
-  ⑤ <b>BTC筑底</b>：ETF流出+去杠杆后$60K心理关口得失关键，右侧信号出现前不急于重仓。</div>
+  <div class="hl gold"><b>一句话判断：</b>短线是“风险资产修复 + 地缘风险溢价”并存；中期看，关税、OPEC+、AI资本开支回报与航运供给交付峰值，将决定12月资产价格的第二波方向。</div>
 </div>
 
 <!-- ============ 时政 ============ -->
 <div class="card">
   <h2>📰 时政要闻</h2>
 
-  <h3>🇨🇳 中国要闻</h3>
+  <h3>🔥 头条：美国“先拥抱、再加税”，对华新关税最高或至40%</h3>
   <ul>
-    <li><b>习近平对党内法规工作作出重要指示</b>（11/25，新华社）：强调坚持把依规治党当作管党治党基本方式，持续高质量推进党内法规制度建设；更加注重制度系统集成、制度学习教育、制度执行、党内法规同国家法律法规衔接协调。全国党内法规工作会议11月24-25日在京召开，蔡奇出席并讲话。<span class="src">[新华社 11/25]</span></li>
-    <li><b>中巴航天员联合飞行互致贺电</b>（11/25）：习近平同巴基斯坦总统扎尔达里互致贺电，庆祝巴基斯坦航天员成为中国空间站<b>首位外籍航天员</b>；今年恰逢中巴建交75周年，习近平称中国空间站是"和平之舟、友谊之舟、合作之舟"。<span class="src">[外交部/新华社 11/25]</span></li>
-    <li><b>中美农业工作组首次会议</b>（11/23-24，北京）：双方以中美元首会晤重要共识为引领，就农产品监管及市场准入、农产品贸易等议题坦诚、深入、建设性交流。<span class="src">[新华社 11/25]</span></li>
-    <li><b>国防部回应台湾自杀式无人艇计划</b>（11/26）：台媒报道台湾地区计划2031年前建造1,320艘自杀式无人艇；国防部新闻发言人陈曦表示，"台独"武装妄图靠几件装备以武拒统完全不自量力。同日就藏南问题表态：中方从不承认印度非法设立的所谓"阿伦大恰尔邦"。<span class="src">[央视/中新网 11/26]</span></li>
-    <li><b>商务部回应美301拟议措施</b>（11/26）：注意到美方"产能过剩"301拟议措施中对300亿美元对等降税清单产品进行了豁免，希望美方加快内部程序，与中方共同推动对等降税安排尽快落地实施；中美经贸团队就吉隆坡经贸磋商联合安排延期保持密切沟通。<span class="src">[央视新闻 11/26]</span></li>
-    <li><b>其他</b>：截至11/24中欧班列"东通道"绥芬河铁路口岸累计通行量突破5,000列；朝鲜因瑞士将松涛园夏令营列入制裁名单，要求关闭瑞士驻朝外交办事处。<span class="src">[新华社/央视 11/24-26]</span></li>
+    <li>特朗普政府拟依据“301/产能过剩”调查，对 <b>14个主要贸易伙伴</b> 加征新关税：对中国拟征 <b>20%</b>，若谈判破裂威胁升至 <b>40%</b>；对欧盟、日本、韩国、台湾、瑞士约 <b>15%</b>；对柬埔寨、印尼、泰国、孟加拉、马来西亚约 <b>18%</b>；新加坡 <b>10%</b>；越南视协定情况 <b>20%—35%</b>。</li>
+    <li>中国商务部/外交部回应称，美方以“产能过剩”为借口搞单边主义，违反WTO规则；中方敦促回到对话协商，并保留采取必要措施维护权益的权利。现有贸易休战 <b>2027年1月10日</b> 到期，12月G20迈阿密峰会前谈判窗口收窄。</li>
+    <li>美方称新关税仍在既有谈判框架内，并可能对约 <b>300亿美元</b> 商品给予豁免；市场解读为“会晤后恢复施压”的经典谈判节奏，而非立即撕毁休战。</li>
+  </ul>
+  <div class="hl red"><b>影响研判：</b>关税重新成为通胀与供应链定价变量。若落地，将推高美国进口成本、强化“高利率更久”预期，并影响跨太平洋货量、抢运节奏、人民币/亚洲出口链与航运保险成本。</div>
+
+  <h3>🌏 区域动态</h3>
+  <div class="cols">
+    <div class="mini">
+      <h4>美国/欧洲</h4>
+      <ul>
+        <li>特朗普与北约秘书长吕特会晤后，呼吁普京停止对欧洲“一切军事侵略”；IISS称截至2026年9月的一年中，俄相关破坏/袭扰事件增加 <b>16%</b>，手法更复杂。</li>
+        <li>欧盟峰会未能就2028—2034长期预算及追加 <b>450亿欧元</b> 乌克兰贷款达成一致，援乌资金与预算政治继续拉扯。</li>
+        <li>欧洲股市周五反弹，但11月仍受AI估值波动、通胀粘性与关税预期压制。</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>俄乌/黑海—地中海</h4>
+      <ul>
+        <li>路透社报道，一支载有军用车辆、原驶往利比亚的俄罗斯船队，在11月22日乌克兰海上无人艇于班加西港击沉俄军舰后掉头；显示乌方远程海上打击已外溢至地中海。</li>
+        <li>泽连斯基公开抨击特朗普与普京的“奇怪友谊”，称普京是侵略者；俄乌围绕船舶、港口、能源设施与无人机/网络战的对抗仍在升级。</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>中东/全球其他</h4>
+      <ul>
+        <li>海湾安全事件继续发酵：沙特能源设施、红海港口、霍尔木兹海峡油轮/水雷报告推高风险溢价；巴基斯坦、沙特、土耳其在“麦加 pact”框架下谴责胡塞袭击并承诺维护沙特安全。</li>
+        <li>The Economist 将伊朗政治过渡/葬礼动员、俄乌战争、中东战争、AI与世界经济列为当前核心议题；MSZ/加沙人道局势仍紧张。</li>
+        <li>新西兰右翼联合政府失去议会多数，政局进入不确定期；非洲多国用户加速转向Starlink，反映基础设施与治理缺口。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>🧠 地缘—市场传导</h3>
+  <ul>
+    <li><b>能源：</b>中东袭击使布伦特维持96—97美元高位区间，OPEC+ 11月29日会议成为下一个供应端锚点。</li>
+    <li><b>航运：</b>霍尔木兹/红海/黑海—地中海风险提高战争险、绕航与有效运力损耗；集运淡季不淡与干散货走强都可能被地缘溢价放大。</li>
+    <li><b>贸易：</b>关税与出口管制交织，企业“提前拉货/改线/转港”的行为会增加短期运价波动，而非单向趋势。</li>
+  </ul>
+</div>
+
+<!-- ============ 航运 ============ -->
+<div class="card">
+  <h2>🚢 航运市场</h2>
+
+  <h3>📊 核心指数</h3>
+  <div class="grid">
+    <div class="metric"><div class="label">BDI 波罗的海干散货</div><div class="value">3,137</div><div class="chg down">-0.48% · 周涨约4.6%</div></div>
+    <div class="metric"><div class="label">BCI 好望角型</div><div class="value">5,023</div><div class="chg down">-1.51% · 高位回吐</div></div>
+    <div class="metric"><div class="label">BPI 巴拿马型</div><div class="value">2,315</div><div class="chg up">+1.85% · 10/19以来高位区</div></div>
+    <div class="metric"><div class="label">BSI 超灵便型</div><div class="value">1,818</div><div class="chg up">+0.11% · 稳中有升</div></div>
+    <div class="metric"><div class="label">Drewry WCI</div><div class="value">$4,032</div><div class="chg down">-3% · 40ft，连续偏弱</div></div>
+    <div class="metric"><div class="label">SCFI 综合</div><div class="value">3,503.78</div><div class="chg down">-1.92% · 11/20，三连降</div></div>
+  </div>
+
+  <h3>💰 船型租金与运价</h3>
+  <table>
+    <tr><th>板块</th><th>最新读数</th><th>变化/结构</th><th>解读</th></tr>
+    <tr><td>好望角型 Capesize</td><td>BCI 5,023；前一日TCE约 $42,747/天</td><td class="down">周五回落，周内一度接近两月高点</td><td>澳巴铁矿发运、冬季补库与几内亚铝土/铁矿增量支撑；但高位获利与远期运力过剩预期引发回吐。</td></tr>
+    <tr><td>巴拿马型 Panamax</td><td>BPI 2,315；前一日TCE约 $20,456/天</td><td class="up">周五继续上行</td><td>煤炭/谷物需求与大西洋运力偏紧支撑，涨幅强于大船。</td></tr>
+    <tr><td>超灵便/灵便型</td><td>BSI 1,818</td><td class="up">小幅上行</td><td>亚洲区域货源与印度洋运力再平衡，小船补涨逻辑仍在。</td></tr>
+    <tr><td>集装箱 跨太平洋</td><td>上海—纽约 $7,615；上海—洛杉矶 $6,437</td><td class="down">-7% / -8%，连续第八周走弱</td><td>感恩节前后需求平淡、运力投放高；船公司继续用空班与涨价函试图止血。</td></tr>
+    <tr><td>集装箱 亚洲—欧洲/地中海</td><td>上海—热那亚 $4,802；上海—鹿特丹 $3,485</td><td class="up">地中海+8%，北欧持平</td><td>12月旺季附加费 $1,000—1,500/40ft、春节前备货与新合同季支撑；SCFI地中海40ft报 $4,871。</td></tr>
+  </table>
+
+  <h3>🏗️ 新造船 / 二手船 / 订单</h3>
+  <ul>
+    <li><b>资产价格倒挂仍在：</b>经纪周报显示，一艘Capesize转售船 Arriktos 报 <b>$90m</b>，高于同型新造船合同价约 <b>$76.5m</b>；近期S&amp;P成交降至39笔但大额单突出。</li>
+    <li><b>油轮二手船暴涨：</b>2013年造VLCC Seaking 报 <b>$177m</b>，2010年造Suezmax Tataki 报 <b>$96.0—96.5m</b>；Xclusiv 10月评估10年VLCC $186m（同比+117%）、15年VLCC $160.4m（同比+178%），而新造VLCC仅 $131.5m。</li>
+    <li><b>新造船价：</b>Ultramax、Aframax、MR 新造船价周环比上涨约 $0.5m；10月评估VLCC $131.5m、Suezmax $90.5m、Aframax $78m、MR2 $52.5m，同比分别约+4%/+5%/+8%/+8%。</li>
+    <li><b>订单簿警示：</b>全球新造船订单簿10月达 <b>226.1m CGT</b>，超过2008年9月峰值；希腊船东在手订单1,021艘，其中油轮458艘、散货207艘。散货船订单1,826艘/172.7m dwt，订单/船队比升至 <b>15.7%</b>。</li>
   </ul>
 
-  <h3>🇺🇸 美国要闻</h3>
+  <h3>🌊 行业新闻</h3>
   <ul>
-    <li><b>特朗普政府提议对14个贸易伙伴加征301关税</b>（11/26，NPR）：中国商品最高40%（协议税率20%）、越南最高35%、其他20-25%不等，预计2027年初生效，为谈判留出窗口。巴西因谈判停滞被"额外惩罚"——糖加征关税并对飞机新征10%关税（冲击巴西航空工业Embraer）。新关税甫一公布即遭反对。</li>
-    <li><b>关税背景</b>：特朗普上周刚在深圳与习近平会晤，气氛"友好"；双方拟于下月G20峰会再谈，议题包括稀土准入与农产品采购。此前最高法院已推翻特朗普今年早些时候的全球性关税，此次是"重建"关税议程的尝试。</li>
-    <li><b>中期选举后续</b>：民主党增获9个参议院席位，众议院席位数为1990年代以来最高；副总统万斯（Vance）将失利归咎于伊朗战争。选民对经济政策的"否决"并未阻止关税议程推进。</li>
-    <li><b>白宫×AI</b>：特朗普宣称促成黄仁勋复任NVIDIA CEO，但两党对"先进芯片经绕道流入中国军方"的关切未消，出口管制博弈延续；黄仁勋将于12月3日出席参议院银行委员会听证。</li>
-  </ul>
-  <div class="src">来源：NPR / The Hill / AP 11/25-26</div>
-
-  <h3>🇪🇺 欧洲要闻</h3>
-  <ul>
-    <li><b>欧盟特别峰会（11/26-27，布鲁塞尔）首日无果</b>：议题为2028-2034七年期预算（MFF）与对乌克兰融资。马克龙设定<b>年底最后期限</b>，下轮会议12月17-18日；其称12月31日后因法国大选临近将无法重启谈判。预算约占欧盟平均GNI的1%-1.2%。<span class="src">[AP 11/26]</span></li>
-    <li><b>490亿美元乌克兰贷款存分歧</b>：预算方案含7年1,000亿欧元援乌额度；保加利亚、捷克、匈牙利、斯洛伐克反对用预算资金支持对乌军事援助；德国总理默茨要求全体成员"无一例外"作出集体承诺，并威胁阻挠协议；捷克总理巴比什主张援乌融资应单独谈判。克宫称欧盟预算援乌将令基辅"更倾向继续战争"。<span class="src">[AP 11/26]</span></li>
-    <li><b>预算内斗细节</b>：荷兰首相Jetten要求"预算现代化并缩减"；法意领导的"凝聚之友"捍卫农业与凝聚政策（各占预算约1/3）；欧洲理事会主席科斯塔上周提议数字服务税（约50亿欧元/年）。峰会26日以欧元峰会开幕，拉加德出席——本次峰会亦涉及<b>欧洲央行领导层换届</b>。<span class="src">[AP/欧盟理事会 11/26]</span></li>
-    <li><b>欧盟对俄新制裁</b>（11/25）：将15家与俄罗斯军事工业综合体关联的实体列入军民两用物项出口限制名单，同时移除1家。<span class="src">[欧盟理事会 11/25]</span></li>
-    <li><b>法国政局</b>：法国4月总统大选，极右翼目前领先——这是马克龙坚持年底敲定欧盟预算的国内政治动因。<span class="src">[AP 11/26]</span></li>
+    <li><b>地缘扰动：</b>沙特Jazan炼厂、Ras Tanura出口枢纽、红海港口与霍尔木兹油轮风险，推升油价、战争险与绕航成本；俄罗斯赴利比亚船队因军舰被击沉而掉头，说明海上无人艇战术正在改变区域海军资产部署。</li>
+    <li><b>集运分化：</b>Drewry WCI 11/26跌至 $4,032/40ft；跨太平洋八周连跌，亚洲—地中海逆势上涨。船公司宣布12月亚洲—欧洲旺季附加费，12月运力预计升至约40万TEU/周，高于11月约35万TEU/周。</li>
+    <li><b>干散货逻辑：</b>BDI周五虽跌，但周涨幅约4.6%；澳巴至中国铁矿发运、冬季补库、几内亚Simandou相关增量与铝土出口共同支撑大船需求。</li>
   </ul>
 
-  <h3>🌍 全球其他</h3>
+  <div class="hl"><b>分析与机会：</b>干散货短线趋势仍偏多，但好望角型周五回吐提示“高波动、快轮动”；更稳的结构性机会在亚洲小型船与区域航线。集运不宜用单一指数判断，应按航线定价：跨太平洋弱势未止，欧地线有旺季与PSS支撑。油运资产已现泡沫化信号，二手VLCC价格高于新造，意味着船东更愿买“即期运力”，但交付峰值与制裁正常化可能反向冲击2027—2028运价。</div>
+</div>
+
+<!-- ============ 财经 ============ -->
+<div class="card">
+  <h2>📈 全球财经</h2>
+
+  <h3>🇺🇸 美股：黑五缩短交易日强势收官</h3>
+  <div class="grid">
+    <div class="metric"><div class="label">S&amp;P 500</div><div class="value">7,297.49</div><div class="chg up">+1.60% · 周涨5.6%</div></div>
+    <div class="metric"><div class="label">Dow Jones</div><div class="value">50,774.94</div><div class="chg up">+1.18% · 周涨5.5%</div></div>
+    <div class="metric"><div class="label">Nasdaq</div><div class="value">24,129.50</div><div class="chg up">+2.31% · 周涨6.7%</div></div>
+    <div class="metric"><div class="label">Russell 2000</div><div class="value">2,750.30</div><div class="chg up">+1.71% · 周涨6.5%</div></div>
+  </div>
   <ul>
-    <li><b>中东</b>：海湾地区出现袭击事件，布伦特原油升至$95上方，地缘风险溢价回升；美方持续推动霍尔木兹海峡相关谈判。</li>
-    <li><b>克宫表态</b>：佩斯科夫称欧盟预算援乌计划将使基辅"更不愿走向和平进程"。</li>
-    <li><b>美伊议题</b>：万斯将中期选举失利归咎于伊朗战争，反映美国国内对中东介入的疲劳情绪，后续对伊政策或更谨慎。</li>
+    <li>周五反弹广度改善，约四分之三股票上涨；S&amp;P 500录得2025年4月以来最佳周表现，Dow为2022年10月以来最佳周涨幅。</li>
+    <li>科技/AI是核心驱动：Meta涨超3%、Amazon约4%、Broadcom近4%、Anthropic涨11%；Nvidia盘中反复，终盘约+0.8%，仍较10月高点回撤逾37%。</li>
+    <li>10年期美债收益率由4.85%升至约4.91%；强经济数据、通胀粘性与关税预期使市场对12月美联储路径保持鹰派定价。</li>
   </ul>
 
-  <div class="hl red"><b>📌 时政深度分析：</b>11/26的301关税提案是全球市场最大变量——它不立即生效（2027年初），本质是谈判筹码：对华"协议税率20%"与"最高40%"的双轨设计，复刻了2018-2019年的极限施压剧本，但最高法院已推翻其关税法律依据，行政当局的"重建"尝试存在司法不确定性。欧洲方面，马克龙把欧盟预算谈判与国内大选时钟捆绑、默茨以阻挠相要挟，显示"援乌共识"在成员国财政疲劳下出现真实裂痕；若12月17-18日仍无协议，乌2027年资金缺口将成为 Q1 的持续性风险事件。中国侧的应对呈现"该反制反制、该谈照谈"的双轨：国防部对台强硬表态与商务部欢迎降税安排同日发布，牌面清晰。</div>
+  <h3>🌍 欧亚市场</h3>
+  <table>
+    <tr><th>市场</th><th>收盘</th><th>涨跌</th><th>备注</th></tr>
+    <tr><td>STOXX Europe 600</td><td>643.85</td><td class="up">+1.08% · 周涨2.91%</td><td>科技、矿业、银行领涨；ASML/ASM/Infineon强。</td></tr>
+    <tr><td>Germany DAX</td><td>25,441.24</td><td class="up">+0.90%</td><td>工业与半导体设备修复。</td></tr>
+    <tr><td>UK FTSE 100</td><td>10,698.81</td><td class="up">+0.84%</td><td>矿业权重受益铜金反弹。</td></tr>
+    <tr><td>France CAC 40</td><td>8,156.09</td><td class="up">+0.58%</td><td>法国三季度GDP环比-0.2%压制弹性。</td></tr>
+    <tr><td>Japan Nikkei 225</td><td>58,711.11</td><td class="up">+2.11%</td><td>芯片/AI买气回归，日元159附近。</td></tr>
+    <tr><td>Hong Kong Hang Seng</td><td>22,694.77</td><td class="up">+2.1%</td><td>科技与中国政策预期支撑。</td></tr>
+    <tr><td>Shanghai Composite</td><td>3,608.41</td><td class="up">+3.78%</td><td>国务院/政策层释放资本市场支持信号。</td></tr>
+    <tr><td>CSI 300</td><td>4,062.33</td><td class="up">+4.15%</td><td>政策预期+科技权重反弹。</td></tr>
+    <tr><td>Korea Kospi</td><td>4,915.68</td><td class="up">+4.34%</td><td>外资净买，半导体领涨；Kosdaq +8.13%。</td></tr>
+    <tr><td>India Sensex</td><td>83,339.26</td><td class="down">-1.17%</td><td>IT/汽车/金融拖累，油价与关税预期压制。</td></tr>
+  </table>
+
+  <h3>🛢️ 大宗商品与加密</h3>
+  <div class="grid">
+    <div class="metric"><div class="label">Brent 原油</div><div class="value">$95.4—97.4</div><div class="chg gold">高位震荡 · 中东风险溢价</div></div>
+    <div class="metric"><div class="label">WTI 原油</div><div class="value">$85.1—86.6</div><div class="chg up">+1.8%—2.4%区间</div></div>
+    <div class="metric"><div class="label">COMEX 黄金</div><div class="value">$3,657.60</div><div class="chg up">+2.7%</div></div>
+    <div class="metric"><div class="label">铜</div><div class="value">$12,201/t</div><div class="chg up">+3.0% · 回到1.2万美元上方</div></div>
+    <div class="metric"><div class="label">BTC</div><div class="value">$61,584</div><div class="chg up">+1.55% · 有望止7周连跌</div></div>
+    <div class="metric"><div class="label">ETH</div><div class="value">$1,724.94</div><div class="chg up">+1.55% · 仍弱于BTC</div></div>
+  </div>
+  <ul>
+    <li><b>原油：</b>胡塞袭击沙特能源设施、油轮/水雷报告与OPEC+ 11月29日会议预期，使油价在“供应中断风险”与“Q4供应过剩/需求疲弱”之间拉锯；美国库存增幅低于预期提供短线支撑。</li>
+    <li><b>贵金属/工业金属：</b>AI交易修复风险偏好，黄金自低位反弹，铜受全球股市回暖与中国政策预期提振；欧洲天然气跌5.2%至€83.04/MWh。</li>
+    <li><b>加密：</b>BTC从上周低点 $55,130 修复，11月仍跌约20%；Deribit约70亿美元期权到期后，市场关注 $62k—64k 阻力与 $57.5k—58k 支撑。ETH期权仍偏防御，深层虚值看跌占优，$1,780—1,820为上方压力。</li>
+  </ul>
+
+  <h3>🏦 宏观与财经事件</h3>
+  <ul>
+    <li><b>美国：</b>10月通胀再度升温、消费支出停滞，核心PCE动能偏高；市场将12月FOMC与是否“更大幅度加息”的讨论重新摆上台面。</li>
+    <li><b>欧洲：</b>法国11月CPI初值与三季度GDP终值、德国失业数据、欧元区工业/经济景气构成周末前数据链；经济景气指数降至95.8，低于长期均值。</li>
+    <li><b>中国：</b>资本市场支持政策预期点燃A股/港股，人民币资产在关税压力下呈现“政策托底 vs 外需不确定”的对冲交易。</li>
+    <li><b>下周关注：</b>OPEC+部长级会议（11/29）、美国 jobs data/利率预期、12月AI财报与出口管制听证、G20迈阿密峰会前中美磋商。</li>
+  </ul>
+
+  <div class="hl green"><b>跨资产结论：</b>周五是“AI修复 + 中国政策预期 + 欧洲补涨”的共振反弹，但债券收益率上行说明市场并未真正转向鸽派。配置上，短线偏向高质量科技/半导体设备、受政策托底的中国beta、能源与贵金属对冲；回避对关税敏感且缺乏定价权的出口制造。加密只宜按高beta风险资产处理，BTC反弹不等于趋势反转。</div>
 </div>
 
 <!-- ============ AI/机器人 ============ -->
 <div class="card">
-  <h2>🤖 AI 与机器人</h2>
+  <h2>🤖 AI / 机器人</h2>
 
-  <h3>🔥 头条：OpenAI GPT-6.2 Astra 登顶人形机器人基准测试</h3>
+  <h3>🔥 今日热点</h3>
   <ul>
-    <li>Artificial Analysis发布 <b>AA-Robotics-Sim v0.1</b> 基准（11/25）：9个前沿大模型操控虚拟宇树G1人形机器人（29关节、三指灵巧手、头戴相机）完成10项家庭/工业任务。<b>OpenAI GPT-6.2 Astra 击败 Anthropic 与 Google 模型</b>，前三名中占两席。</li>
-    <li>能力边界依然清晰：最佳模型能弹玩具钢琴，却无法把一件衣物放进洗衣机——"走到房间"易，"到位后操作"难，移动操作（mobile manipulation）仍是硬骨头。</li>
+    <li><b>OpenAI 安全阈值与隐私推理：</b>首席科学家Jakub Pachocki发布内部“log-perplexity/智能指标”文章，建议对最强模型训练设置共同上限；Sam Altman称其是“近期最重要的公开内容”。同时OpenAI被报道向小部分企业客户测试 <b>Private Inference</b>，属Private Intelligence框架，用硬件隔离 confidential computing 保护推理数据。</li>
+    <li><b>NVIDIA 领导层与出口管制：</b>Jensen Huang 11/23复任CEO后，股价周一暴涨31.5%，随后因政治/安全与中国业务担忧回落；周五有关Blackwell芯片出现在上海数据中心的报道再度引发出口管制敏感。</li>
+    <li><b>Anthropic 上市后剧烈修复：</b>股价周五涨约11%至 <b>$91.88</b>，较 $83 IPO价高约10.7%，但仍低于首日收盘；AI新股价格发现仍未完成。</li>
+    <li><b>中国具身智能落地提速：</b>XPENG在AI Day发布IRON人形机器人路线图：2027年1月硬件量产，Q1进店实习，Q2公开发布；满产目标每 <b>2.5分钟</b> 一台。</li>
   </ul>
-  <div class="src">来源：eWeek / TechRepublic 11/25</div>
 
-  <h3>🏢 硅谷前沿</h3>
-  <ul>
-    <li><b>NVIDIA 宫斗落幕与余波</b>：黄仁勋11/12因个人风波辞职 → <b>11/23董事会一致投票复任</b>，称获"美国政府高层反馈"确认无国家安全风险；特朗普宣称此为他的功劳。当日NVDA暴涨31%（11/23收$165.05），但随后两日回吐（11/24 -5.86%、11/25 -3.91%收$149.30）。S&P Global以公司治理为由发出潜在评级下调警告（11/25）。<b>黄仁勋将于12/3出席参议院银行委员会听证</b>；黄仁勋侄女Alice Huang涉"为中国窃取技术"间谍争议持续发酵。<span class="src">[Yahoo Finance/WSJ 11/23-25]</span></li>
-    <li><b>英伟达暂停向东南亚出货芯片</b>（11/26-27，WSJ/TechCrunch）：审查发现其处理器经马来西亚等第三国流向中国，暂停出货以堵"绕道"漏洞——印证美国两党对芯片走私的关切，东南亚AI算力建设节奏受扰。</li>
-    <li><b>NVIDIA GR00T 2 发布（CoRL 2026）</b>：世界动作模型可从<b>人类第一视角视频</b>学习技能，训练数据含40.3万小时第一人称视频；同步发布 Isaac Lab 3.0（Newton物理引擎，训练吞吐量最高2.5倍）及 Human-1M-100K 数据集（10万小时人类视频，允许商用）。机器人基础模型竞争进入"数据规模"阶段。</li>
-    <li><b>OpenAI 解散独立机器人团队</b>：研究人员并入主线，战略转向"通用大模型直接控制机器人"；自研人形机器人目标2027年公开演示（与Figure的合作已于2025年2月终止）。<b>OpenAI与Anthropic员工联合警告当前模型"已过于强大"</b>（Fortune 11/25），呼应监管收紧预期。</li>
-    <li><b>Figure 03 摘苹果视频引爆争议</b>：CEO Brett Adcock 11/23发布Figure 03"零样本、全自主"摘苹果视频，回应马斯克"摆拍"质疑；马斯克称Optimus真实演示还需1-2个月。<b>梅拉尼娅·特朗普在白宫教育峰会介绍Figure人形机器人</b>，机器人进入白宫公关场景。</li>
-    <li><b>IREN（AI云）</b>：年初至今跌66%，但分析师看340%上行空间（TipRanks）；AI基建股深度回调与信仰坚守并存。<span class="src">[TipRanks 11月]</span></li>
-  </ul>
+  <h3>🧪 硅谷前沿</h3>
+  <table>
+    <tr><th>公司</th><th>动态</th><th>市场/产业含义</th></tr>
+    <tr><td>OpenAI</td><td>Private Inference测试；Pachocki安全阈值；Altman呼吁共同限制；人形机器人2027展示预期。</td><td>从模型能力竞争转向“可控能力 + 企业隐私 + 物理载体”三线作战。</td></tr>
+    <tr><td>Google</td><td>社区报道称Gemini 4 Neon agent swarms蓝图、Antigravity配额重置与效率提升；Agent-first coding成为新战场。</td><td>编排器-工人架构若成熟，将压低复杂任务成本，但会提高可观测/权限治理要求。</td></tr>
+    <tr><td>Meta / Amazon / Microsoft / Oracle</td><td>周五普涨2%—5%， hyperscaler与AI基础设施反弹。</td><td>资本开支仍是核心矛盾：市场愿意给“算力收入确定性”溢价，但惩罚无回报扩张。</td></tr>
+    <tr><td>NVIDIA / AMD / Broadcom / Micron / Marvell</td><td>半导体反弹；Micron +7.6%、Marvell +7.3%、AMD/Broadcom盘前/盘中显著上涨；NVDA相对落后。</td><td>AI链内部从“GPU唯一叙事”扩散到HBM、网络、光互连、存储与定制ASIC。</td></tr>
+  </table>
 
   <h3>🇨🇳 中国动态</h3>
   <ul>
-    <li><b>中国AI模型未达基准、头部延期</b>（Reuters 11/26）：智谱 Z.AI 与月之暗面 Kimi 的新模型发布延期，中国前沿模型在部分基准上仍落后于美国同行——与资本市场上港股AI链强势形成反差（恒生科技11/25大涨、智谱11/25单日+15%后11/26高位震荡）。</li>
-    <li><b>量产格局（2026年半年报/出货数据）</b>：智元机器人上半年出货9,700台；宇树G1累计下线1-2万台；优必选上半年人形机器人总销量16,123台（全尺寸921台+非全尺寸15,202台），总量居全球第一。2026上半年全球人形机器人出货1.91万台（同比+200%），<b>中国厂商占97%份额</b>：智元市占44%（8,400台）、宇树31%（5,900台）。</li>
-    <li><b>行业资本寒冬</b>（财新11/14）：具身智能上市全面延期，融资低迷预计持续至2027年；手术机器人龙慧医疗、清洁机器人深兰医疗进入破产程序，水下机器人智橙动力预重整，四足机器人无境动力传停工。市场等待通用大模型操控能力的颠覆点（GPT-6 Astra已显现该迹象）。</li>
-    <li><b>本月技术亮点</b>：英伟达GR00T 2、智元WITA-Omni具身全模态大模型与灵犀X2焕新版、波士顿动力轮式Atlas完成360度旋转跳、苹果披露HALO人形机器人控制系统、小米人形机器人完成8小时产线作业、启元第10,000台个人机器人下线。</li>
+    <li><b>XPENG IRON：</b>1.70m/62kg，76个自由度，1,500+全身触觉点，3颗Turing芯片提供2,250 TOPS本地算力；采用固态电池、双通信冗余、防跌倒/碰撞保持抓取等安全设计。商业模式不是一次性卖硬件，而是硬件+软件订阅+token技能更新。</li>
+    <li><b>量产与数据：</b>50,000㎡ Robot Data Factory覆盖250+场景、15类岗位；自动产线满产每2.5分钟一台，2027年目标销售数万台，价格可能接近电动车中位数。</li>
+    <li><b>产业意义：</b>中国玩家把汽车供应链、制造节拍、真实门店场景和订阅收入结合，可能把“人形机器人演示”快速推向“可控场景商业化”。</li>
   </ul>
 
-  <h3>🌏 新加坡/东南亚视角</h3>
-  <ul>
-    <li><b>英伟达暂停对东南亚芯片出货</b>：马来西亚等第三国转口漏洞被点名审查，东南亚各国（新加坡、马来西亚、印尼）的AI数据中心建设面临供应链不确定性；此前字节跳动曾获马来西亚合规承诺，本轮收紧后区域算力项目或重新评估采购路径。</li>
-    <li><b>关税维度</b>：新加坡在301拟议清单中税率10%，为14伙伴中最低档，相对避风港地位强化；越南面临最高35%税率，其"中国+1"制造业替代逻辑受考验。</li>
-  </ul>
-
-  <h3>💹 AI 概念股</h3>
+  <h3>💹 AI 相关股价快照（11/27报道口径）</h3>
   <table>
-    <tr><th>标的</th><th>动态</th></tr>
-    <tr><td>NVDA（11/25）</td><td class="down">$149.30（-3.91%），盘后+1.29%；市值$3.67T，P/E 16.04；黄仁勋复任单日+31%后持续回吐，S&P治理警告压制</td></tr>
-    <tr><td>半导体设备（11/25）</td><td class="down">Lam Research -5.7%、Applied Materials -3.9%，板块普跌</td></tr>
-    <tr><td>A股算力链（11/26）</td><td class="up">PCB、存储芯片、CPO概念活跃；科创50 -1.36%分化</td></tr>
-    <tr><td>港股AI（11/26）</td><td class="up">恒生指数+1.19%；智谱前期+15%后高位震荡（模型延期消息压制）</td></tr>
-    <tr><td>韩股存储（11/26）</td><td class="up">SK海力士+3.98%、三星+1.64%，HBM逻辑强化</td></tr>
+    <tr><th>标的</th><th>表现</th><th>备注</th></tr>
+    <tr><td>Anthropic (ANT)</td><td class="up">+11% 至 $91.88</td><td>IPO后价格发现；仍低于首日收盘。</td></tr>
+    <tr><td>NVIDIA (NVDA)</td><td class="up">约 +0.8%</td><td>盘初强、盘中弱；仍较10月高点低逾37%。</td></tr>
+    <tr><td>Micron / Marvell</td><td class="up">+7.6% / +7.3%</td><td>存储与定制芯片反弹，Marvell财报超预期。</td></tr>
+    <tr><td>Broadcom / AMD</td><td class="up">显著反弹</td><td>ASIC/网络与GPU替代预期回温。</td></tr>
+    <tr><td>Meta / Amazon / Tesla</td><td class="up">约 +3% / +4% / +5%</td><td>Magnificent Seven多数参与修复。</td></tr>
+    <tr><td>Nebius / CoreWeave</td><td class="up">反弹</td><td>AI云/neocloud修复；但CoreWeave债券收益率飙升提示融资压力。</td></tr>
   </table>
 
-  <h3>💰 投资动态</h3>
-  <ul>
-    <li><b>Mecka AI</b>：获红杉领投6,000万美元B轮（人形机器人方向）。</li>
-    <li><b>马斯克X平台动作</b>：SpaceXAI将更名为SpaceXSI；Optimus考虑"只租不售"模式。</li>
-    <li><b>资本趋势</b>：具身智能一级市场融资低迷持续（财新判断至2027年），资金向头部（智元、宇树等）与有真实订单的供应链集中；二级市场对AI基建股（IREN -66% YTD）与治理瑕疵股（NVDA）惩罚力度加大。</li>
-  </ul>
+  <div class="hl purple"><b>深度分析：</b>AI行情没有结束，但定价逻辑变了：从“模型更大=股价更高”转向“谁能把算力变成可计费收入、谁能控制供应链与电力、谁能通过安全/出口管制审查”。机器人是下一阶段最大叙事，但商业化顺序会更像XPENG路线：门店/接待/教育/工业巡检等半结构化场景先行，家庭通用机器人延后。投资上，优先看卖铲人（HBM、网络、光互连、电力设备、数据中心REIT/融资链）与有真实部署数据闭环的整机厂；警惕高杠杆AI云与只有演示没有运维成本的机器人故事。</div>
+</div>
 
-  <div class="hl purple"><b>🧠 AI板块深度观察：</b>行业沿两条线收敛——① <b>通用模型吞噬专用栈</b>：OpenAI解散机器人团队、GR00T 2用人类视频训练、GPT-6.2 Astra登顶机器人基准，"大模型+仿真+海量人类数据"路线正在取代为机器人单独建模的旧范式；② <b>估值消化期</b>：纳指盘中入熊、NVDA治理折价、核心PCE 3.3%+12月加息98%定价，AI板块从"信仰定价"切换到"现金流定价"。地缘上，东南亚芯片转口被堵说明AI算力已成为中美博弈的战略物资，供应链"去漏洞化"将长期化。短期波动大，但基准测试显示模型操作能力逐月跃迁——回调或是长线布局窗口，优选有真实订单兑现的算力/存储/机器人供应链（HBM、先进封装、电机减速器）。</div>
+<!-- ============ 机会与风险 ============ -->
+<div class="card">
+  <h2>🎯 今日关注清单</h2>
+  <div class="cols">
+    <div class="mini">
+      <h4>可关注</h4>
+      <ul>
+        <li>干散货：BDI周涨后的回调是否守住3,050—3,100；关注Capesize成交与中国铁矿补库。</li>
+        <li>集运：12月亚洲—欧洲PSS是否真正落地；跨太平洋是否出现更大规模空班。</li>
+        <li>AI：半导体设备/HBM/网络/电力链强于纯叙事应用；Anthropic能否站稳IPO价上方。</li>
+        <li>中国资产：政策托底下的A股/港股科技、券商、机器人产业链弹性。</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>需规避/对冲</h4>
+      <ul>
+        <li>关税敏感出口链、低毛利代工、依赖美国单一市场的消费电子。</li>
+        <li>高估值但现金流为负的AI云/机器人概念股，尤其债务融资驱动扩张者。</li>
+        <li>原油空头需防OPEC+与中东袭击超预期；油运多头需防2027交付峰值。</li>
+        <li>加密高杠杆合约：BTC仍处熊市结构修复期，ETH/BTC未确认反转。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hl cyan"><b>下周催化剂：</b>OPEC+（11/29）→ 美国就业/利率预期 → 12月FOMC → G20迈阿密中美会晤 → AI公司财报/出口管制进展 → 12月船公司涨价函执行率。</div>
+</div>
+
+<!-- ============ 来源 ============ -->
+<div class="card">
+  <h2>🔎 主要信息来源</h2>
+  <ul class="src">
+    <li>Baltic/干散货：KuCoin/Bloomberg Finance快讯、Trading Economics、Baird Maritime/Reuters、IndexBox。</li>
+    <li>集运/船舶资产：Drewry WCI（经InteriorDaily/The Loadstar转引）、Shanghai Shipping Exchange SCFI（经Container News/LinkedIn转引）、TR Maritime Weekly、Xclusiv/S&amp;P Global/Clarksons（经Hellenic Shipping News/Lloyd's List转引）。</li>
+    <li>市场：Yahoo Finance/AP、CNBC、Morningstar/Dow Jones、MarketWatch、Reuters、AFP、MLQ.ai。</li>
+    <li>商品/加密：Morningstar/Dow Jones Commodities Roundup、NDTV Profit、SMM、CoinDesk、Economic Times、Benzinga。</li>
+    <li>时政：Al Jazeera、WSJ、AFP、SCMP、France 24、Reuters/Hindustan Times、The Economist。</li>
+    <li>AI/机器人：Gasgoo、StockTitan/XPENG、Yahoo/Proactive、AIWeekly、i10X、BigGo Finance、Oninvest。</li>
+  </ul>
+  <p class="note">说明：周末数据以11月27日收盘与11月28日早盘前公开报道为准；部分市场报价存在时区与截稿时间差异，文中以区间或“报道口径”标注。本简报仅供资讯参考，不构成投资建议。</p>
 </div>
 
 <footer>
-  简报由 AI 自动生成 · 数据来源：Baltic Exchange / Trading Economics / 上海航运交易所 / Yahoo Finance / 财新 / 新华社 / 外交部 / NPR / AP / 欧盟理事会 / Reuters / Fortune / WSJ / TechCrunch / Caixin 等<br>
-  仅供参考，不构成投资建议 · <a href="https://mast0506.github.io/daily-briefing/">mast0506.github.io/daily-briefing</a>
+  简报由 AI 自动生成 · 部署：GitHub Pages / mast0506/daily-briefing · <a href="https://mast0506.github.io/daily-briefing/">https://mast0506.github.io/daily-briefing/</a>
 </footer>
 
 </div>
